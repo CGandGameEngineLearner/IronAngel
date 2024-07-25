@@ -9,7 +9,7 @@ C#
 C# Dev Kit
 IntelliCode for C# Dev Kit
 C# XML Documentation Comments
-(安装完以上C#相关插件后，使用插件自带的功能安装.Net8，不要跑网上乱下)
+(安装完以上C#相关插件后，使用插件自带的功能安装.Net8和.Net Framework4.7.1，不要跑网上乱下)
 Unity
 Markdown Preview Enhanced
 PlantUML
