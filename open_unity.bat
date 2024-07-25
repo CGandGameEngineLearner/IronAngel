@@ -1,0 +1,1 @@
+start Unity.exe -projectpath .
