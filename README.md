@@ -20,7 +20,7 @@ Bookmarks
 双击`open_unity.bat`
 
 
-### 支持多重状态管理的LogicStateManager使用说明
+### 支持多重逻辑状态管理的LogicStateManager使用说明
 假设你需要新增一个状态，名为PlayerMoving,当玩家正在位移时就会添加这个状态，玩家禁止时移除这个状态。
 那么你需要找程序员在ELogicState中添加这个枚举，并且在LogicStatesSettings的列表LogicStateTemplates中添加这个状态的生成模板对象。
 然后策划在Assets/Config目录中找到对应的配置，并且设置它。
