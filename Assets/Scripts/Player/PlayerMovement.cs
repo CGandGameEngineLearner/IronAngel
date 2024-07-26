@@ -52,14 +52,27 @@ public class PlayerMovement
         m_Player.transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - 90.0f);
     }
 
-    public void Dash(Vector2 dir)
+    public void Dash()
+    {
+        var v2 = m_Rigidbody.position;
+        v2.x += _dashDir.x * m_DashSpeed * Time.deltaTime;
+        v2.y += _dashDir.y * m_DashSpeed * Time.deltaTime;
+        m_Rigidbody.MovePosition(v2);
+    }
+
+    public void SetDashDirection(Vector2 dir)
+    {
+        _dashDir = dir.normalized;
+    }
+
+    public bool StartDash()
     {
         if(m_DashCount > 0)
         {
             m_DashCount--;
-            _dashRemainTime = m_DashTime;
-            _dashDir = dir.normalized;
+            return true;
         }
+        return false;
     }
 
     public Vector3 GetPlayerPosition()
