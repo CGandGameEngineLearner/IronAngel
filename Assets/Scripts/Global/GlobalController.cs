@@ -78,7 +78,7 @@ public class GlobalController : MonoBehaviour
 
     private void RegisterInputActionFunc()
     {
-        // ¾µÍ·¿ØÖÆ
+        // ï¿½ï¿½Í·ï¿½ï¿½ï¿½ï¿½
         m_InputController.AddStartedActionToCameraViewTypeSwitch(() =>
         {
             m_CameraController.SetCameraDistanceToMax();
@@ -87,7 +87,7 @@ public class GlobalController : MonoBehaviour
         {
             m_CameraController.SetCmaeraDistanceToMin();
         });
-        // Êó±êÏÞÖÆ
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         m_InputController.SetCursorLockState(CursorLockMode.Confined);
         // Íæ¼Ò³å´Ì
         m_InputController.AddStartedActionToPlayerDash(() =>
