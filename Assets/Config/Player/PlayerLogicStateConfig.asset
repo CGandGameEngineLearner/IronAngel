@@ -13,6 +13,11 @@ MonoBehaviour:
   m_Name: PlayerLogicStateConfig
   m_EditorClassIdentifier: 
   StateRelations:
-  - stateEnum: 1
-    included: 01000000
-    excluded: 00000000
+  - stateEnum: 2
+    Duration: Infinity
+    included: 
+    excluded: 
+  - stateEnum: 3
+    Duration: Infinity
+    included: 
+    excluded: 

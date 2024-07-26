@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.SceneManagement;
 using UnityEngine;
@@ -73,13 +73,14 @@ public class GlobalController : MonoBehaviour
     {
         m_InputController.ExcuteActionWhilePlayerMoveInputPerformedAndStay(() =>
         {
+            m_Player.GetPlayer().GetComponent<LogicStateManager>().AddState(ELogicState.PlayerMoving);
             m_Player.Move(m_InputController.GetPlayerMoveInputVector2());
         });
     }
 
     private void RegisterInputActionFunc()
     {
-        // ��ͷ����
+        // 视角拉远
         m_InputController.AddStartedActionToCameraViewTypeSwitch(() =>
         {
             m_CameraController.SetCameraDistanceToMax();
@@ -88,11 +89,12 @@ public class GlobalController : MonoBehaviour
         {
             m_CameraController.SetCmaeraDistanceToMin();
         });
-        // �������?
+        // 鼠标状态
         m_InputController.SetCursorLockState(CursorLockMode.Confined);
-        // ��ҳ��
+        // 玩家冲刺
         m_InputController.AddStartedActionToPlayerDash(() =>
         {
+            m_Player.GetPlayer().GetComponent<LogicStateManager>().AddState(ELogicState.PlayerDashing);
             var v3 = m_InputController.GetMousePositionInWorldSpace(m_CameraController.GetCamera()) - m_Player.GetPlayerPosition();
             var v2 = m_InputController.GetPlayerMoveInputVector2() == Vector2.zero ? new Vector2(v3.x, v3.y) : m_InputController.GetPlayerMoveInputVector2();
             m_Player.Dash(v2);

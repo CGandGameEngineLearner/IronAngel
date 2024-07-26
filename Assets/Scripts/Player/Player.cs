@@ -48,6 +48,10 @@ public class Player
     {
         m_PlayerMovement.Dash(dir);
     }
+    public GameObject GetPlayer()
+    {
+        return m_Player;
+    }
 
     public void Update()
     {

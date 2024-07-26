@@ -21,5 +21,6 @@ public static class LogicStatesSettings
         new LogicState((int)ELogicState.Default),
         new LogicStateExample((int)ELogicState.Example),
         new LogicState((int)ELogicState.PlayerMoving),
+        new LogicState_PlayerDashing((int)ELogicState.PlayerDashing),
     };
 }
