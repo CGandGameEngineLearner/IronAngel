@@ -15,10 +15,10 @@ public class LogicStateConfig:ScriptableObject
     /// <typeparam name="StateRelation"></typeparam>
     /// <returns></returns>
     [SerializeField]
-    public List<LogicStateRelation> StateRelations = new List<LogicStateRelation>();
+    public List<LogicStateSetting> StateRelations = new List<LogicStateSetting>();
 
-    private static LogicStateRelation DefaultLogicStateRelation = new LogicStateRelation();
-    public LogicStateRelation GetLogicStateRelation(ELogicState stateEnum)
+    private static LogicStateSetting DefaultLogicStateRelation = new LogicStateSetting();
+    public LogicStateSetting GetLogicStateRelation(ELogicState stateEnum)
     {
         if (!m_LogicStateEnumDic.ContainsKey(stateEnum))
         {
@@ -41,18 +41,35 @@ public class LogicStateConfig:ScriptableObject
         }
     }
 
-    private Dictionary<ELogicState, LogicStateRelation> m_LogicStateEnumDic  = new Dictionary<ELogicState, LogicStateRelation>();
+    private Dictionary<ELogicState, LogicStateSetting> m_LogicStateEnumDic  = new Dictionary<ELogicState, LogicStateSetting>();
 }
 
 [Serializable]
-public class LogicStateRelation
+public class LogicStateSetting
 {
-
+    /// <summary>
+    /// 状态类型枚举
+    /// </summary>
     public ELogicState stateEnum = ELogicState.Default;
 
+    /// <summary>
+    /// 状态持续时长
+    /// </summary>
+    public float Duration = float.PositiveInfinity;
+
+    /// <summary>
+    /// 必须有这些状态，这个状态才能存在
+    /// </summary>
+    /// <typeparam name="ELogicState"></typeparam>
+    /// <returns></returns>
     [SerializeField]
     public List<ELogicState> included = new List<ELogicState>();
 
+    /// <summary>
+    /// 必须没有这些状态，这个状态才能存在
+    /// </summary>
+    /// <typeparam name="ELogicState"></typeparam>
+    /// <returns></returns>
     [SerializeField]
     public List<ELogicState> excluded = new List<ELogicState>();
 }

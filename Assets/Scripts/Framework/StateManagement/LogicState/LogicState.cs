@@ -1,6 +1,29 @@
 
+using UnityEngine;
+
 public class LogicState
 {
+
+
+    /// <summary>
+    /// 默认的状态持续时长是无限
+    /// </summary>
+    public float Duration 
+    {
+        get {return m_Duration;}
+        set {m_Duration=value;}
+    }
+
+    public float StartTime
+    {
+        get { return m_StartTime; }
+        set {m_StartTime=value;}
+    }
+
+    public float EndTime 
+    {
+        get { return StartTime+Duration; }
+    }
     public LogicState()
     {
         
@@ -55,6 +78,10 @@ public class LogicState
     protected LogicStateManager m_parent = null;
 
     private int m_HashCode = 0;
+
+    private float m_StartTime = Time.time;
+    
+    private float m_Duration = float.PositiveInfinity;
 
     
     public void SetHashCode(int hashCode)

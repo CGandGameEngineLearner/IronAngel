@@ -16,7 +16,7 @@ public class LogicStateManager : MonoBehaviour
 
     public void AddState(ELogicState stateEnum)
     {
-        LogicStateRelation stateRelation = LogicStateConfig.GetLogicStateRelation(stateEnum);
+        LogicStateSetting stateRelation = LogicStateConfig.GetLogicStateRelation(stateEnum);
         if(CheckState(stateRelation.included,stateRelation.excluded))
         {
             m_FutureStates.Enqueue(stateEnum);
@@ -62,13 +62,17 @@ public class LogicStateManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // 不满足容斥配置或达到结束时间的状态会被立即移除
         foreach(ELogicState stateEnum in m_LogicStateDic.Keys)
         {
-            LogicStateRelation stateRelation = LogicStateConfig.GetLogicStateRelation(stateEnum);
+            LogicStateSetting stateRelation = LogicStateConfig.GetLogicStateRelation(stateEnum);
             if(!CheckState(stateRelation.included,stateRelation.excluded))
             {
-                m_LogicStateDic[stateEnum].SetActive(false);
-                m_LogicStateDic[stateEnum].OnStateOut();
+                RemoveStateImmediately(stateEnum);
+            }
+            if(Time.time >= m_LogicStateDic[stateEnum].EndTime)
+            {
+                RemoveStateImmediately(stateEnum);
             }
         }
         foreach(var state in m_LogicStateDic.Values)
