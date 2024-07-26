@@ -18,7 +18,7 @@ public class LogicStateConfig:ScriptableObject
     public List<LogicStateSetting> StateRelations = new List<LogicStateSetting>();
 
     private static LogicStateSetting DefaultLogicStateRelation = new LogicStateSetting();
-    public LogicStateSetting GetLogicStateRelation(ELogicState stateEnum)
+    public LogicStateSetting GetLogicStateSetting(ELogicState stateEnum)
     {
         if (!m_LogicStateEnumDic.ContainsKey(stateEnum))
         {
