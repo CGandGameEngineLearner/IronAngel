@@ -2,46 +2,49 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using System.Reflection;
+
 
 public class LogicStateManager : MonoBehaviour
 {
-    private Dictionary<int,LogicState> m_LogicStateDic;
-    private Queue<int> m_FutureStates;
-    private Queue<int> m_AbandenStates;
+    private Dictionary<ELogicState,LogicState> m_LogicStateDic = new Dictionary<ELogicState, LogicState>();
+    private Queue<ELogicState> m_FutureStates = new Queue<ELogicState>();
+    private Queue<ELogicState> m_AbandenStates = new Queue<ELogicState>();
+
+    
+    public LogicStateConfig LogicStateConfig;
     // Start is called before the first frame update
 
-    public void AddState(int stateCode)
+    public void AddState(ELogicState stateEnum)
     {
-        LogicStateRelation stateRelation = LogicStateConfig.GetLogicStateRelation(stateCode);
+        LogicStateRelation stateRelation = LogicStateConfig.GetLogicStateRelation(stateEnum);
         if(CheckState(stateRelation.included,stateRelation.excluded))
         {
-            m_FutureStates.Enqueue(stateCode);
+            m_FutureStates.Enqueue(stateEnum);
         }
     }
 
-    public void RemoveState(int stateCode)
+    public void RemoveState(ELogicState stateEnum)
     {
-        m_AbandenStates.Enqueue(stateCode);
+        m_AbandenStates.Enqueue(stateEnum);
     }
 
-    public bool IncludeState(int stateCode)
+    public bool IncludeState(ELogicState stateEnum)
     {
-        return m_LogicStateDic.ContainsKey(stateCode);
+        return m_LogicStateDic.ContainsKey(stateEnum);
     }
 
-    public bool CheckState(List<int> included, List<int> excluded)
+    public bool CheckState(List<ELogicState> included, List<ELogicState> excluded)
     {
-        foreach (int stateCode in included)
+        foreach (var stateEnum in included)
         {
-            if(!IncludeState(stateCode))
+            if(!IncludeState(stateEnum))
             {
                 return false;
             }
         }
-        foreach (int stateCode in excluded)
+        foreach (var stateEnum in excluded)
         {
-            if(IncludeState(stateCode))
+            if(IncludeState(stateEnum))
             {
                 return false;
             }
@@ -59,13 +62,13 @@ public class LogicStateManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        foreach(int stateCode in m_LogicStateDic.Keys)
+        foreach(ELogicState stateEnum in m_LogicStateDic.Keys)
         {
-            LogicStateRelation stateRelation = LogicStateConfig.GetLogicStateRelation(stateCode);
+            LogicStateRelation stateRelation = LogicStateConfig.GetLogicStateRelation(stateEnum);
             if(!CheckState(stateRelation.included,stateRelation.excluded))
             {
-                m_LogicStateDic[stateCode].SetActive(false);
-                m_LogicStateDic[stateCode].OnStateOut();
+                m_LogicStateDic[stateEnum].SetActive(false);
+                m_LogicStateDic[stateEnum].OnStateOut();
             }
         }
         foreach(var state in m_LogicStateDic.Values)
@@ -81,31 +84,34 @@ public class LogicStateManager : MonoBehaviour
     {
         while(m_AbandenStates.Count>0)
         {
-            var stateCode = m_AbandenStates.Dequeue();
-            RemoveStateImmediately(stateCode);
+            var stateEnum = m_AbandenStates.Dequeue();
+            RemoveStateImmediately(stateEnum);
         }
 
         while(m_FutureStates.Count>0)
         {
-            var stateCode = m_FutureStates.Dequeue();
-            AddStateImmediately(stateCode);
+            var stateEnum = m_FutureStates.Dequeue();
+            AddStateImmediately(stateEnum);
         }
 
         
     }
 
 
-    private void AddStateImmediately(int stateCode)
+    private void AddStateImmediately(ELogicState stateEnum)
     {
-        if(m_LogicStateDic.ContainsKey(stateCode))
+        int stateCode = (int)stateEnum;
+        if(m_LogicStateDic.ContainsKey(stateEnum))
         {
-            m_LogicStateDic[stateCode].SetActive(true);
-            m_LogicStateDic[stateCode].OnStateIn();
+            m_LogicStateDic[stateEnum].SetActive(true);
+            m_LogicStateDic[stateEnum].OnStateIn();
         }
         else
         {
-            var stateTemplate = LogicStateConfig.LogicStateDictionary[stateCode];
-            Type stateType = stateTemplate.GetType();
+        
+            LogicState state = LogicStateConfig.GetLogicStateTemplate(stateEnum);
+
+            Type stateType = state.GetType();
             
             LogicState newState = (LogicState)Activator.CreateInstance(stateType);
             newState.SetHashCode(stateCode);
@@ -113,19 +119,19 @@ public class LogicStateManager : MonoBehaviour
             newState.SetActive(true);
             newState.OnStateIn();
 
-            m_LogicStateDic[stateCode]=newState;
+            m_LogicStateDic[stateEnum]=newState;
             
             
             
         }
     }
     
-    private void RemoveStateImmediately(int stateCode)
+    private void RemoveStateImmediately(ELogicState stateEnum)
     {
-        if(m_LogicStateDic.ContainsKey(stateCode))
+        if(m_LogicStateDic.ContainsKey(stateEnum))
         {
-            m_LogicStateDic[stateCode].SetActive(false);
-            m_LogicStateDic[stateCode].OnStateOut();
+            m_LogicStateDic[stateEnum].SetActive(false);
+            m_LogicStateDic[stateEnum].OnStateOut();
         }
     }
     

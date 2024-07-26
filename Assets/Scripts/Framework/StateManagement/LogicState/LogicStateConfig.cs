@@ -1,34 +1,12 @@
 using System;
 using System.Collections.Generic;
-
+using Unity.VisualScripting;
 using UnityEngine;
 
-/// <summary>
-/// 新增状态先在这里加枚举,再添加到LogicStateArray
-/// </summary> <summary>
-/// 
-/// </summary>
-public enum ELogicState
-{
-    None = 0,
-    Example = 1,
-    SimpleExample = 2,
-}
 
-
-
-public static class LogicStateConfig
+public class LogicStateConfig:ScriptableObject
 {
     
-    /// <summary>
-    /// 新增状态记得添加到这个数组，构造参数和枚举值一致
-    /// </summary>
-    /// <value></value>
-    static private LogicState[] LogicStateArray = new LogicState[]
-    {
-        null,
-        new LogicStateExample((int)ELogicState.Example), // 新增状态在以类似的方式枚举
-    };
 
     /// <summary>
     /// 状态容斥关系配置
@@ -36,45 +14,45 @@ public static class LogicStateConfig
     /// <typeparam name="int"></typeparam>
     /// <typeparam name="StateRelation"></typeparam>
     /// <returns></returns>
-    private static Dictionary<int, LogicStateRelation> StateRelationDic = new Dictionary<int, LogicStateRelation>()
-    {
-        {(int)ELogicState.Example, new LogicStateRelation{included=new List<int>(), excluded=new List<int>()} }
-    };
+    [SerializeField]
+    public List<LogicStateRelation> StateRelations = new List<LogicStateRelation>();
 
-    
-    static public LogicStateRelation GetLogicStateRelation(int stateCode)
+    private static LogicStateRelation DefaultLogicStateRelation = new LogicStateRelation();
+    public LogicStateRelation GetLogicStateRelation(ELogicState stateEnum)
     {
-        if(!StateRelationDic.ContainsKey(stateCode))
+        if (!m_LogicStateEnumDic.ContainsKey(stateEnum))
         {
-            Debug.LogError("未查询到stateCode为"+stateCode+"的逻辑状态的容斥关系，请查看StateRelationDic是否配置");
-            return null;
+            return DefaultLogicStateRelation;
         }
-        return StateRelationDic[stateCode];
+        var result = m_LogicStateEnumDic[stateEnum];
+        return result;
     }
     
-
-    static LogicStateConfig()
+    public LogicState GetLogicStateTemplate(ELogicState stateEnum)
     {
-        foreach (var state in LogicStateArray)
+        return LogicStatesSettings.LogicStateTemplates[(int)stateEnum];
+    }
+
+    public LogicStateConfig()
+    {
+        foreach(var stateRelation in StateRelations)
         {
-            m_LogicStateDictionary[state.GetHashCode()] = state;
+            m_LogicStateEnumDic[stateRelation.stateEnum]=stateRelation;
         }
     }
 
-    static private Dictionary<int,LogicState> m_LogicStateDictionary;
-    static public Dictionary<int,LogicState> LogicStateDictionary
-    {
-        get{return m_LogicStateDictionary;}
-        private set{m_LogicStateDictionary=value;}
-    }
-
-    
-    
+    private Dictionary<ELogicState, LogicStateRelation> m_LogicStateEnumDic  = new Dictionary<ELogicState, LogicStateRelation>();
 }
 
-
+[Serializable]
 public class LogicStateRelation
 {
-    public List<int> included { get; set; }
-    public List<int> excluded { get; set; }
+
+    public ELogicState stateEnum = ELogicState.Default;
+
+    [SerializeField]
+    public List<ELogicState> included = new List<ELogicState>();
+
+    [SerializeField]
+    public List<ELogicState> excluded = new List<ELogicState>();
 }
