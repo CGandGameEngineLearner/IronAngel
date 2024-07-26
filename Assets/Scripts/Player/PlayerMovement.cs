@@ -16,11 +16,13 @@ public class PlayerMovement
 
     public void Move(Vector3 dir)
     {
-        m_Player.transform.Translate(dir * m_Speed);
+        m_Player.transform.Translate(dir * m_Speed * Time.deltaTime, Space.World);
     }
 
-    public void LookAt(Vector3 dir)
+    public void LookAt(Vector2 dir)
     {
-        m_Player.transform.LookAt(dir);
+        dir = dir.normalized;
+        float angle = Vector2.Angle(new Vector2(0, 1), dir);
+        m_Player.transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - 90.0f);
     }
 }

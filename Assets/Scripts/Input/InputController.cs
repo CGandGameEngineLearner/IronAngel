@@ -14,14 +14,29 @@ public class InputController
         m_PlayerInputConfig.Enable();
     }
 
-    public void DisablePlayerInput()
+    public void DisableAllInput()
     {
         m_PlayerInputConfig.Disable();
     }
 
-    public void EnablePlayerInput()
+    public void EnableAllInput()
     {
         m_PlayerInputConfig.Enable();
+    }
+
+    public void DisablePlayerInput()
+    {
+        m_PlayerInputConfig.Player.Disable();
+    }
+
+    public void EnablePlayerInput()
+    {
+        m_PlayerInputConfig.Player.Enable();
+    }
+
+    public Vector2 GetPlayerMoveInputVector2()
+    {
+        return m_PlayerInputConfig.Player.Move.ReadValue<Vector2>();
     }
 
     public Vector3 GetMousePositionOnScreen()
@@ -52,7 +67,7 @@ public class InputController
         };
     }
 
-    public void AddPerformActionToCameraViewTypeSwitch(Action func)
+    public void AddPerformedActionToCameraViewTypeSwitch(Action func)
     {
         m_PlayerInputConfig.Camera.ViewTypeSwitch.performed += ctx =>
         {
@@ -60,7 +75,7 @@ public class InputController
         };
     }
 
-    public void RemovePerformActionFromCameraViewTypeSwitch(Action func)
+    public void RemovePerformedActionFromCameraViewTypeSwitch(Action func)
     {
         m_PlayerInputConfig.Camera.ViewTypeSwitch.performed -= ctx =>
         {
@@ -86,5 +101,61 @@ public class InputController
     public void SetCursorLockState(CursorLockMode mode)
     {
         Cursor.lockState = mode;
+    }
+
+    public void AddStartedActionToPlayerMove(Action func)
+    {
+        m_PlayerInputConfig.Player.Move.started += ctx =>
+        {
+            func?.Invoke();
+        };
+    }
+
+    public void RemoveStartedActionToPlayerMove(Action func)
+    {
+        m_PlayerInputConfig.Player.Move.started -= ctx =>
+        {
+            func?.Invoke();
+        };
+    }
+
+    public void AddPerformedActionToPlayerMove(Action func)
+    {
+        m_PlayerInputConfig.Player.Move.performed += ctx =>
+        {
+            func?.Invoke();
+        };
+    }
+
+    public void RemovePerformedActionToPlayerMove(Action func)
+    {
+        m_PlayerInputConfig.Player.Move.performed -= ctx =>
+        {
+            func?.Invoke();
+        };
+    }
+
+    public void AddCanceledActionToPlayerMove(Action func)
+    {
+        m_PlayerInputConfig.Player.Move.canceled += ctx =>
+        {
+            func?.Invoke();
+        };
+    }
+
+    public void RemoveCanceledActionToPlayerMove(Action func)
+    {
+        m_PlayerInputConfig.Player.Move.canceled -= ctx =>
+        {
+            func?.Invoke();
+        };
+    }
+
+    public void ExcuteActionWhilePlayerMoveInputPerformedAndStay(Action func)
+    {
+        if(m_PlayerInputConfig.Player.Move.ReadValue<Vector2>() != Vector2.zero)
+        {
+            func?.Invoke();
+        }
     }
 }
