@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-
 using UnityEngine;
 
 /// <summary>
@@ -16,10 +15,8 @@ public enum ELogicState
 }
 
 
-
 public static class LogicStateConfig
 {
-    
     /// <summary>
     /// 新增状态记得添加到这个数组，构造参数和枚举值一致
     /// </summary>
@@ -38,20 +35,21 @@ public static class LogicStateConfig
     /// <returns></returns>
     private static Dictionary<int, LogicStateRelation> StateRelationDic = new Dictionary<int, LogicStateRelation>()
     {
-        {(int)ELogicState.Example, new LogicStateRelation{included=new List<int>(), excluded=new List<int>()} }
+        { (int)ELogicState.Example, new LogicStateRelation { included = new List<int>(), excluded = new List<int>() } }
     };
 
-    
+
     static public LogicStateRelation GetLogicStateRelation(int stateCode)
     {
-        if(!StateRelationDic.ContainsKey(stateCode))
+        if (!StateRelationDic.ContainsKey(stateCode))
         {
-            Debug.LogError("未查询到stateCode为"+stateCode+"的逻辑状态的容斥关系，请查看StateRelationDic是否配置");
+            Debug.LogError("未查询到stateCode为" + stateCode + "的逻辑状态的容斥关系，请查看StateRelationDic是否配置");
             return null;
         }
+
         return StateRelationDic[stateCode];
     }
-    
+
 
     static LogicStateConfig()
     {
@@ -61,15 +59,13 @@ public static class LogicStateConfig
         }
     }
 
-    static private Dictionary<int,LogicState> m_LogicStateDictionary;
-    static public Dictionary<int,LogicState> LogicStateDictionary
-    {
-        get{return m_LogicStateDictionary;}
-        private set{m_LogicStateDictionary=value;}
-    }
+    static private Dictionary<int, LogicState> m_LogicStateDictionary;
 
-    
-    
+    static public Dictionary<int, LogicState> LogicStateDictionary
+    {
+        get { return m_LogicStateDictionary; }
+        private set { m_LogicStateDictionary = value; }
+    }
 }
 
 
