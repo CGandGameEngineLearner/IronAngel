@@ -2,6 +2,7 @@
 public enum EventType
 {
     None,
+    StateToGlobal_PlayerDashState,
 }
 
 public delegate void Callback();

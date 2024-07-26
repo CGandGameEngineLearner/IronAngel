@@ -44,13 +44,18 @@ public class Player
         m_PlayerMovement.LookAt(dir);
     }
 
-    public void Dash(Vector2 dir)
+    public void Dash()
     {
-        m_PlayerMovement.Dash(dir);
+        m_PlayerMovement.Dash();
     }
     public GameObject GetPlayer()
     {
         return m_Player;
+    }
+
+    public void SetDashDirection(Vector2 dir)
+    {
+        m_PlayerMovement.SetDashDirection(dir);
     }
 
     public void Update()
@@ -61,6 +66,11 @@ public class Player
     public void FixedUpdate()
     {
         m_PlayerMovement.FixedUpdate();
+    }
+
+    public bool StartDash()
+    {
+        return m_PlayerMovement.StartDash();
     }
 }
 
