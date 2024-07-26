@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c6cef29a85f39841a2251319324bcb2, type: 3}
   m_Name: PlayerLogicStateConfig
   m_EditorClassIdentifier: 
-  StateRelations:
-  - stateEnum: 2
-    Duration: Infinity
+  LogicStateSettings:
+  - stateEnum: 3
+    Duration: 0.2
     included: 
     excluded: 
-  - stateEnum: 3
+  - stateEnum: 2
     Duration: Infinity
     included: 
     excluded: 

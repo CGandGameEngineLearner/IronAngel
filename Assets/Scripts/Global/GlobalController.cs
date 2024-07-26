@@ -73,7 +73,7 @@ public class GlobalController : MonoBehaviour
     {
         m_InputController.ExcuteActionWhilePlayerMoveInputPerformedAndStay(() =>
         {
-            m_Player.GetPlayer().GetComponent<LogicStateManager>().AddState(ELogicState.PlayerMoving);
+            m_Player.GetPlayer().GetComponent<LogicStateManager>().AddState(ELogicState.PlayerWalking);
             m_Player.Move(m_InputController.GetPlayerMoveInputVector2());
         });
     }
