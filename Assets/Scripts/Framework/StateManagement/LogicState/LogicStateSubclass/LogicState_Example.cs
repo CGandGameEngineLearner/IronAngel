@@ -1,9 +1,9 @@
 
 using UnityEngine;
 
-public class LogicStateExample:LogicState
+public class LogicState_Example:LogicState
 {
-    public LogicStateExample(int hashCode):base(hashCode){}
+    public LogicState_Example(ELogicState stateEnum):base(stateEnum){}
     public override void OnStateIn()
     {
         

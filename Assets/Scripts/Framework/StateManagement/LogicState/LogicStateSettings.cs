@@ -18,9 +18,9 @@ public static class LogicStatesSettings
     /// <returns></returns>
     public static List<LogicState> LogicStateTemplates = new List<LogicState>()
     {
-        new LogicState((int)ELogicState.Default),
-        new LogicStateExample((int)ELogicState.Example),
-        new LogicState((int)ELogicState.PlayerMoving),
-        new LogicState_PlayerDashing((int)ELogicState.PlayerDashing),
+        new LogicState(ELogicState.Default),
+        new LogicState_Example(ELogicState.Example),
+        new LogicState(ELogicState.PlayerMoving),
+        new LogicState_PlayerDashing(ELogicState.PlayerDashing),
     };
 }

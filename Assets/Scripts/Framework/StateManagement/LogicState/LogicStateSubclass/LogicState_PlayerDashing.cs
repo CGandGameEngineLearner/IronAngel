@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LogicState_PlayerDashing : LogicState
 {
-    public LogicState_PlayerDashing(int hashCode) : base(hashCode) { }
+    public LogicState_PlayerDashing(ELogicState stateEnum) : base(stateEnum) { }
     public override void OnStateIn()
     {
         GetParent().RemoveState(ELogicState.PlayerMoving);

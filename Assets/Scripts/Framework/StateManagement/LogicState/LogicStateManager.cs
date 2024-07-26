@@ -16,7 +16,7 @@ public class LogicStateManager : MonoBehaviour
 
     public void AddState(ELogicState stateEnum)
     {
-        LogicStateSetting stateRelation = LogicStateConfig.GetLogicStateRelation(stateEnum);
+        LogicStateSetting stateRelation = LogicStateConfig.GetLogicStateSetting(stateEnum);
         if(CheckState(stateRelation.included,stateRelation.excluded))
         {
             m_FutureStates.Enqueue(stateEnum);
@@ -59,7 +59,7 @@ public class LogicStateManager : MonoBehaviour
         // 不满足容斥配置或达到结束时间的状态会被立即移除
         foreach(ELogicState stateEnum in m_LogicStateDic.Keys)
         {
-            LogicStateSetting stateRelation = LogicStateConfig.GetLogicStateRelation(stateEnum);
+            LogicStateSetting stateRelation = LogicStateConfig.GetLogicStateSetting(stateEnum);
             if(!CheckState(stateRelation.included,stateRelation.excluded))
             {
                 RemoveStateImmediately(stateEnum);
@@ -96,10 +96,20 @@ public class LogicStateManager : MonoBehaviour
         
     }
 
+    void FixedUpdate()
+    {
+        foreach(var state in m_LogicStateDic.Values)
+        {
+            if(state.GetActive())
+            {
+                state.FixedUpdate();
+            }
+        }
+    }
+
 
     private void AddStateImmediately(ELogicState stateEnum)
     {
-        int stateCode = (int)stateEnum;
         if(m_LogicStateDic.ContainsKey(stateEnum))
         {
             m_LogicStateDic[stateEnum].SetActive(true);
@@ -112,7 +122,7 @@ public class LogicStateManager : MonoBehaviour
 
             Type stateType = state.GetType();
             
-            LogicState newState = (LogicState)(Activator.CreateInstance(stateType,stateCode));
+            LogicState newState = (LogicState)(Activator.CreateInstance(stateType,stateEnum));
             newState.SetParent(this);
             newState.SetActive(true);
             newState.OnStateIn();
