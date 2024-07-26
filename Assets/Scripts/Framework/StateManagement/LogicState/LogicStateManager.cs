@@ -96,10 +96,20 @@ public class LogicStateManager : MonoBehaviour
         
     }
 
+    void FixedUpdate()
+    {
+        foreach(var state in m_LogicStateDic.Values)
+        {
+            if(state.GetActive())
+            {
+                state.FixedUpdate();
+            }
+        }
+    }
+
 
     private void AddStateImmediately(ELogicState stateEnum)
     {
-        int stateCode = (int)stateEnum;
         if(m_LogicStateDic.ContainsKey(stateEnum))
         {
             m_LogicStateDic[stateEnum].SetActive(true);
@@ -112,7 +122,7 @@ public class LogicStateManager : MonoBehaviour
 
             Type stateType = state.GetType();
             
-            LogicState newState = (LogicState)(Activator.CreateInstance(stateType,stateCode));
+            LogicState newState = (LogicState)(Activator.CreateInstance(stateType,stateEnum));
             newState.SetParent(this);
             newState.SetActive(true);
             newState.OnStateIn();

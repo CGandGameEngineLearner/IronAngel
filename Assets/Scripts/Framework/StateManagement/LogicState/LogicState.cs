@@ -29,15 +29,15 @@ public class LogicState
         
     }
     
-    public LogicState(int hashCode)
+    public LogicState(ELogicState stateEnum)
     {
-         m_HashCode = hashCode;
+        m_HashCode = (int)stateEnum;
     }
 
-    public LogicState(int hashCode,LogicStateManager parent)
+    public LogicState(ELogicState stateEnum,LogicStateManager parent)
     {
         m_parent = parent == null ? null : parent;
-        m_HashCode = hashCode;
+        m_HashCode = (int)stateEnum;
     }
 
     virtual public void OnStateIn()
@@ -46,6 +46,12 @@ public class LogicState
     }
 
     virtual public void Update(float deltaTime)
+    {
+
+    }
+
+
+    virtual public void FixedUpdate()
     {
 
     }
