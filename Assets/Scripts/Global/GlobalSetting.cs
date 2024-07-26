@@ -16,4 +16,5 @@ public class GlobalSetting : MonoBehaviour
 
     [Header("Player")]
     public GameObject _Player;
+    public float _MoveSpeed;
 }

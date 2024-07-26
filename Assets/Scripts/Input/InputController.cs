@@ -32,7 +32,7 @@ public class InputController
     public Vector3 GetMousePositionInWorldSpace(Camera mainCamera)
     {
         var pos = Input.mousePosition;
-        pos.z = mainCamera.WorldToScreenPoint(new Vector3(mainCamera.transform.position.x, mainCamera.transform.position.y - 5, mainCamera.transform.position.z)).z;
+        pos.z = mainCamera.WorldToScreenPoint(new Vector3(mainCamera.transform.position.x, mainCamera.transform.position.y, 0)).z;
         return mainCamera.ScreenToWorldPoint(pos);
     }
 
