@@ -21,7 +21,15 @@ public class GlobalController : MonoBehaviour
         m_CameraController.Init(setting._Camera, setting._VirtualCamera, setting._VirtualCameraTarget, setting._CameraMinDistance, setting._CameraMaxDistance);
 
         m_Player = new Player();
-        m_Player.Init(setting._Player, setting._MoveSpeed);
+        PlayerSpec playerSpec = new PlayerSpec();
+        playerSpec.m_Player = setting._Player;
+        playerSpec.m_NormalSpeed = setting._MoveSpeed;
+        playerSpec.m_DashTime = setting._DashTime;
+        playerSpec.m_DashCoolDownTime = setting._DashCoolDownTime;
+        playerSpec.m_DashCount = setting._DashCount;
+        playerSpec.m_MaxDashCount = setting._MaxDashCount;
+        playerSpec.m_DashSpeed = setting._DashSpeed;
+        m_Player.Init(playerSpec);
 
         m_InputController = new InputController();
         m_InputController.Init();
@@ -38,6 +46,11 @@ public class GlobalController : MonoBehaviour
     {
         UpdateCameraPosition();
         UpdatePlayerRotation();
+        m_Player.Update();
+    }
+
+    private void FixedUpdate()
+    {
         MovePlayer();
     }
 
@@ -51,7 +64,7 @@ public class GlobalController : MonoBehaviour
 
     private void UpdatePlayerRotation()
     {
-        Vector3 v3 = m_InputController.GetMousePositionInWorldSpace(m_CameraController.GetCamera());
+        Vector3 v3 = m_InputController.GetMousePositionInWorldSpace(m_CameraController.GetCamera()) - m_Player.GetPlayerPosition();
         m_Player.LookAt(new Vector2(v3.x, v3.y));
     }
 
@@ -59,8 +72,7 @@ public class GlobalController : MonoBehaviour
     {
         m_InputController.ExcuteActionWhilePlayerMoveInputPerformedAndStay(() =>
         {
-            var v2 = m_InputController.GetPlayerMoveInputVector2();
-            m_Player.Move(new Vector3(v2.x, v2.y, 0));
+            m_Player.Move(m_InputController.GetPlayerMoveInputVector2());
         });
     }
 
@@ -77,5 +89,10 @@ public class GlobalController : MonoBehaviour
         });
         // 鼠标限制
         m_InputController.SetCursorLockState(CursorLockMode.Confined);
+        // 玩家冲刺
+        m_InputController.AddStartedActionToPlayerDash(() =>
+        {
+            m_Player.Dash(m_InputController.GetPlayerMoveInputVector2());
+        });
     }
 }

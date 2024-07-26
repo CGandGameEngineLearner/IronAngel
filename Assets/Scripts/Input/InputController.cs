@@ -158,4 +158,36 @@ public class InputController
             func?.Invoke();
         }
     }
+
+    public void AddStartedActionToPlayerDash(Action func)
+    {
+        m_PlayerInputConfig.Player.Dash.started += ctx =>
+        {
+            func?.Invoke();
+        };
+    }
+
+    public void RemoveStartedActionToPlayerDash(Action func)
+    {
+        m_PlayerInputConfig.Player.Dash.started -= ctx =>
+        {
+            func?.Invoke();
+        };
+    }
+
+    public void AddCanceledActionToPlayerDash(Action func)
+    {
+        m_PlayerInputConfig.Player.Dash.canceled += ctx =>
+        {
+            func?.Invoke();
+        };
+    }
+
+    public void RemoveCanceledActionToPlayerDash(Action func)
+    {
+        m_PlayerInputConfig.Player.Dash.canceled -= ctx =>
+        {
+            func?.Invoke();
+        };
+    }
 }

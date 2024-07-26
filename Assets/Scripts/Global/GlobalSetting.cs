@@ -17,4 +17,9 @@ public class GlobalSetting : MonoBehaviour
     [Header("Player")]
     public GameObject _Player;
     public float _MoveSpeed;
+    public float _DashCoolDownTime;
+    public int _DashCount;
+    public float _DashSpeed;
+    public float _DashTime;
+    public int _MaxDashCount;
 }
