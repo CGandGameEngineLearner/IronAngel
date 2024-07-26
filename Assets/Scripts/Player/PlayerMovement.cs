@@ -69,6 +69,10 @@ public class PlayerMovement
     public void Update()
     {
         UpdateDashCount();
+    }
+
+    public void FixedUpdate()
+    {
         ResetSpeed();
     }
 
@@ -79,7 +83,7 @@ public class PlayerMovement
         {
             return;
         }
-        _dashRemainTime -= Time.deltaTime;
+        _dashRemainTime -= Time.fixedDeltaTime;
         if(_dashRemainTime < 0)
         {
             m_Speed = m_NormalSpeed;

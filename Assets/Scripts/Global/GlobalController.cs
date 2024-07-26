@@ -52,6 +52,7 @@ public class GlobalController : MonoBehaviour
     private void FixedUpdate()
     {
         MovePlayer();
+        m_Player.FixedUpdate();
     }
 
     private void UpdateCameraPosition()
@@ -87,7 +88,7 @@ public class GlobalController : MonoBehaviour
         {
             m_CameraController.SetCmaeraDistanceToMin();
         });
-        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿?
         m_InputController.SetCursorLockState(CursorLockMode.Confined);
         // Íæ¼Ò³å´Ì
         m_InputController.AddStartedActionToPlayerDash(() =>

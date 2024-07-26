@@ -53,6 +53,11 @@ public class Player
     {
         m_PlayerMovement.Update();
     }
+
+    public void FixedUpdate()
+    {
+        m_PlayerMovement.FixedUpdate();
+    }
 }
 
 public struct PlayerSpec
