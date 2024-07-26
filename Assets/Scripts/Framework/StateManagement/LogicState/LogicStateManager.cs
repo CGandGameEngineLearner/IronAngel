@@ -53,12 +53,6 @@ public class LogicStateManager : MonoBehaviour
         return true;
     }
 
-
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -74,6 +68,7 @@ public class LogicStateManager : MonoBehaviour
             {
                 RemoveStateImmediately(stateEnum);
             }
+            Debug.Log(stateEnum.ToString());
         }
         foreach(var state in m_LogicStateDic.Values)
         {
@@ -101,10 +96,20 @@ public class LogicStateManager : MonoBehaviour
         
     }
 
+    void FixedUpdate()
+    {
+        foreach(var state in m_LogicStateDic.Values)
+        {
+            if(state.GetActive())
+            {
+                state.FixedUpdate();
+            }
+        }
+    }
+
 
     private void AddStateImmediately(ELogicState stateEnum)
     {
-        int stateCode = (int)stateEnum;
         if(m_LogicStateDic.ContainsKey(stateEnum))
         {
             m_LogicStateDic[stateEnum].SetActive(true);
@@ -117,8 +122,7 @@ public class LogicStateManager : MonoBehaviour
 
             Type stateType = state.GetType();
             
-            LogicState newState = (LogicState)Activator.CreateInstance(stateType);
-            newState.SetHashCode(stateCode);
+            LogicState newState = (LogicState)(Activator.CreateInstance(stateType,stateEnum));
             newState.SetParent(this);
             newState.SetActive(true);
             newState.OnStateIn();
