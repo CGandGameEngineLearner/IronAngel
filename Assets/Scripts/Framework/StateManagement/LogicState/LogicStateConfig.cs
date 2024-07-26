@@ -28,7 +28,6 @@ public static class LogicStateConfig
     {
         null,
         new LogicStateExample((int)ELogicState.Example), // 新增状态在以类似的方式枚举
-        new SimpleLogicState((int)ELogicState.SimpleExample), // 简单状态
     };
 
     /// <summary>
