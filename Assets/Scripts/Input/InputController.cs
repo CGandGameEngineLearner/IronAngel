@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class InputController
@@ -186,6 +187,101 @@ public class InputController
     public void RemoveCanceledActionToPlayerDash(Action func)
     {
         m_PlayerInputConfig.Player.Dash.canceled -= ctx =>
+        {
+            func?.Invoke();
+        };
+    }
+
+    public void AddStartedActionToPlayerShootLeft(Action func)
+    {
+        m_PlayerInputConfig.Player.Shoot_Left.started += ctx =>
+        {
+            func?.Invoke();
+        };
+    }
+
+    public void RemoveStartedActionToPlayerShootLeft(Action func)
+    {
+        m_PlayerInputConfig.Player.Shoot_Left.started -= ctx =>
+        {
+            func?.Invoke();
+        };
+    }
+
+    public void ExcuteActionWhilePlayerShootLeftInputPerformedAndStay(Action func)
+    {
+        if(m_PlayerInputConfig.Player.Shoot_Left.ReadValue<float>() != 0f)
+        {
+            func?.Invoke();
+        }
+    }
+
+    public void AddStartedActionToPlayerShootRight(Action func)
+    {
+        m_PlayerInputConfig.Player.Shoot_Right.started += ctx =>
+        {
+            func?.Invoke();
+        };
+    }
+
+    public void RemoveStartedActionToPlayerShootRight(Action func)
+    {
+        m_PlayerInputConfig.Player.Shoot_Right.started -= ctx =>
+        {
+            func?.Invoke();
+        };
+    }
+
+    public void ExcuteActionWhilePlayerShootRightInputPerformedAndStay(Action func)
+    {
+        if(m_PlayerInputConfig.Player.Shoot_Right.ReadValue<float>() != 0f)
+        {
+            func?.Invoke();
+        }
+    }
+
+    public void AddPerformedActionToPlayerThrowAndPickLeft(Action func)
+    {
+        m_PlayerInputConfig.Player.ThrowAndPick_Left.performed += ctx =>
+        {
+            func?.Invoke();
+        };
+    }
+
+    public void RemovePerformedActionToPlayerThrowAndPickLeft(Action func)
+    {
+        m_PlayerInputConfig.Player.ThrowAndPick_Left.performed -= ctx =>
+        {
+            func?.Invoke();
+        };
+    }
+
+    public void AddPerformedActionToPlayerThrowAndPickRight(Action func)
+    {
+        m_PlayerInputConfig.Player.ThrowAndPick_Right.performed += ctx =>
+        {
+            func?.Invoke();
+        };
+    }
+
+    public void RemovePerformedActionToPlayerThrowAndPickRight(Action func)
+    {
+        m_PlayerInputConfig.Player.ThrowAndPick_Right.performed -= ctx =>
+        {
+            func?.Invoke();
+        };
+    }
+    public void AddPerformedActionToPlayerInteract(Action func)
+    {
+        m_PlayerInputConfig.Player.Interact.performed += ctx =>
+        {
+            func?.Invoke();
+        };
+    }
+
+    public void RemovePerformedActionToPlayerInteract(Action func)
+    {
+        m_PlayerInputConfig.Player.Interact.performed -= ctx =>
         {
             func?.Invoke();
         };

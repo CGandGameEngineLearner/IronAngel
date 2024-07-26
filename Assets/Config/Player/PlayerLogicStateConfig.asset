@@ -13,11 +13,15 @@ MonoBehaviour:
   m_Name: PlayerLogicStateConfig
   m_EditorClassIdentifier: 
   LogicStateSettings:
-  - stateEnum: 3
-    Duration: 0.2
+  - stateEnum: 0
+    Duration: 0
     included: 
     excluded: 
   - stateEnum: 2
-    Duration: Infinity
+    Duration: 0
+    included: 
+    excluded: 03000000
+  - stateEnum: 3
+    Duration: 0
     included: 
     excluded: 
