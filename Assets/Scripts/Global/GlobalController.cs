@@ -95,6 +95,7 @@ public class GlobalController : MonoBehaviour
         m_InputController.AddStartedActionToPlayerDash(() =>
         {
             m_Player.GetPlayer().GetComponent<LogicStateManager>().AddState(ELogicState.PlayerDashing);
+            Debug.Log("add dash state");
         });
     }
     

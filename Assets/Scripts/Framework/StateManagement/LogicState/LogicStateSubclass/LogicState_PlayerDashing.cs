@@ -13,6 +13,11 @@ public class LogicState_PlayerDashing : LogicState
 
     public override void Update(float deltaTime)
     {
+        
+    }
+
+    public override void FixedUpdate()
+    {
         EventCenter.Broadcast<bool>(EventType.StateToGlobal_PlayerDashState, false);
     }
 
