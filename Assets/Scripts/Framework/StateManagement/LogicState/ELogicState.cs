@@ -4,6 +4,7 @@ public enum ELogicState
     Default = 0,
     Example = 1,
     PlayerMoving = 2,
+    PlayerDashing = 3,
 }
 
 public static class LogicStatesSettings

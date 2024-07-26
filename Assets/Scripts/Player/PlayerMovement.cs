@@ -60,11 +60,18 @@ public class PlayerMovement
             _dashRemainTime = m_DashTime;
             _dashDir = dir.normalized;
         }
-        else
-        {
-            return;
-        }
     }
+
+    public Vector3 GetPlayerPosition()
+    {
+        return m_Player.transform.position;
+    }
+
+    public Quaternion GetPlayerRotation()
+    {
+        return m_Player.transform.rotation;
+    }
+
 
     public void Update()
     {

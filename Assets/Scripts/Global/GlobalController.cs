@@ -93,7 +93,9 @@ public class GlobalController : MonoBehaviour
         // Íæ¼Ò³å´Ì
         m_InputController.AddStartedActionToPlayerDash(() =>
         {
-            m_Player.Dash(m_InputController.GetPlayerMoveInputVector2());
+            var v3 = m_InputController.GetMousePositionInWorldSpace(m_CameraController.GetCamera()) - m_Player.GetPlayerPosition();
+            var v2 = m_InputController.GetPlayerMoveInputVector2() == Vector2.zero ? new Vector2(v3.x, v3.y) : m_InputController.GetPlayerMoveInputVector2();
+            m_Player.Dash(v2);
         });
     }
 }
