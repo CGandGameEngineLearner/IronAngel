@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Reflection;
 
-public class LogicStateManager : MonoBehaviour, IStateManager
+public class LogicStateManager : MonoBehaviour
 {
     private Dictionary<int,LogicState> m_LogicStateDic;
     private Queue<int> m_FutureStates;
