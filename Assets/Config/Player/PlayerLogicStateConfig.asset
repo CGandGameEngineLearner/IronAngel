@@ -16,8 +16,8 @@ MonoBehaviour:
   - stateEnum: 2
     Duration: Infinity
     included: 
-    excluded: 
+    excluded: 03000000
   - stateEnum: 3
-    Duration: Infinity
+    Duration: 0.2
     included: 
-    excluded: 
+    excluded: 03000000

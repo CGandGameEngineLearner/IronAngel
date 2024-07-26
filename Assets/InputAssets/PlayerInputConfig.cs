@@ -44,6 +44,60 @@ public partial class @PlayerInputConfig: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Shoot_Left"",
+                    ""type"": ""Value"",
+                    ""id"": ""081671cd-e5da-4231-8eb1-feabfa4d30b6"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Shoot_Right"",
+                    ""type"": ""Value"",
+                    ""id"": ""8388e3e6-4706-40d3-8add-6d5aec664d70"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""ThrowAndPick_Left"",
+                    ""type"": ""Button"",
+                    ""id"": ""6c05597d-a5ed-4226-a6cb-b4012db42db5"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ThrowAndPick_Right"",
+                    ""type"": ""Button"",
+                    ""id"": ""7e54c571-98db-4bed-a42d-4fc2eb9c53f5"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""98de6537-a427-46d1-a0b3-1295a87443c9"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Melee"",
+                    ""type"": ""Button"",
+                    ""id"": ""7e3bba5b-9bb1-4f80-ac47-23dd87a3fb72"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -104,23 +158,78 @@ public partial class @PlayerInputConfig: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""b5ba35ff-4363-4d0b-acf5-56261c01564f"",
-                    ""path"": ""<Gamepad>/leftStick"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""760fea5f-fdd5-4391-90b2-8540b1f9b4a5"",
                     ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Dash"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7af38b93-49b1-46ac-a005-b92af700a851"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Shoot_Left"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c13a4a13-08d1-4725-a494-816a42ac8b1d"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Shoot_Right"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1fa56bc8-18cf-47f3-945a-0c77486d5bcb"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ThrowAndPick_Left"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f92038fc-402a-4176-924e-ee968bf3cd5a"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ThrowAndPick_Right"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c21eb57c-f12b-446e-ae09-260842bc713f"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2513ddee-90a3-47fc-9c9c-0aff66b66f49"",
+                    ""path"": ""<Mouse>/middleButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Melee"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -161,6 +270,12 @@ public partial class @PlayerInputConfig: IInputActionCollection2, IDisposable
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_Dash = m_Player.FindAction("Dash", throwIfNotFound: true);
+        m_Player_Shoot_Left = m_Player.FindAction("Shoot_Left", throwIfNotFound: true);
+        m_Player_Shoot_Right = m_Player.FindAction("Shoot_Right", throwIfNotFound: true);
+        m_Player_ThrowAndPick_Left = m_Player.FindAction("ThrowAndPick_Left", throwIfNotFound: true);
+        m_Player_ThrowAndPick_Right = m_Player.FindAction("ThrowAndPick_Right", throwIfNotFound: true);
+        m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
+        m_Player_Melee = m_Player.FindAction("Melee", throwIfNotFound: true);
         // Camera
         m_Camera = asset.FindActionMap("Camera", throwIfNotFound: true);
         m_Camera_ViewTypeSwitch = m_Camera.FindAction("ViewTypeSwitch", throwIfNotFound: true);
@@ -227,12 +342,24 @@ public partial class @PlayerInputConfig: IInputActionCollection2, IDisposable
     private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
     private readonly InputAction m_Player_Move;
     private readonly InputAction m_Player_Dash;
+    private readonly InputAction m_Player_Shoot_Left;
+    private readonly InputAction m_Player_Shoot_Right;
+    private readonly InputAction m_Player_ThrowAndPick_Left;
+    private readonly InputAction m_Player_ThrowAndPick_Right;
+    private readonly InputAction m_Player_Interact;
+    private readonly InputAction m_Player_Melee;
     public struct PlayerActions
     {
         private @PlayerInputConfig m_Wrapper;
         public PlayerActions(@PlayerInputConfig wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Player_Move;
         public InputAction @Dash => m_Wrapper.m_Player_Dash;
+        public InputAction @Shoot_Left => m_Wrapper.m_Player_Shoot_Left;
+        public InputAction @Shoot_Right => m_Wrapper.m_Player_Shoot_Right;
+        public InputAction @ThrowAndPick_Left => m_Wrapper.m_Player_ThrowAndPick_Left;
+        public InputAction @ThrowAndPick_Right => m_Wrapper.m_Player_ThrowAndPick_Right;
+        public InputAction @Interact => m_Wrapper.m_Player_Interact;
+        public InputAction @Melee => m_Wrapper.m_Player_Melee;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -248,6 +375,24 @@ public partial class @PlayerInputConfig: IInputActionCollection2, IDisposable
             @Dash.started += instance.OnDash;
             @Dash.performed += instance.OnDash;
             @Dash.canceled += instance.OnDash;
+            @Shoot_Left.started += instance.OnShoot_Left;
+            @Shoot_Left.performed += instance.OnShoot_Left;
+            @Shoot_Left.canceled += instance.OnShoot_Left;
+            @Shoot_Right.started += instance.OnShoot_Right;
+            @Shoot_Right.performed += instance.OnShoot_Right;
+            @Shoot_Right.canceled += instance.OnShoot_Right;
+            @ThrowAndPick_Left.started += instance.OnThrowAndPick_Left;
+            @ThrowAndPick_Left.performed += instance.OnThrowAndPick_Left;
+            @ThrowAndPick_Left.canceled += instance.OnThrowAndPick_Left;
+            @ThrowAndPick_Right.started += instance.OnThrowAndPick_Right;
+            @ThrowAndPick_Right.performed += instance.OnThrowAndPick_Right;
+            @ThrowAndPick_Right.canceled += instance.OnThrowAndPick_Right;
+            @Interact.started += instance.OnInteract;
+            @Interact.performed += instance.OnInteract;
+            @Interact.canceled += instance.OnInteract;
+            @Melee.started += instance.OnMelee;
+            @Melee.performed += instance.OnMelee;
+            @Melee.canceled += instance.OnMelee;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -258,6 +403,24 @@ public partial class @PlayerInputConfig: IInputActionCollection2, IDisposable
             @Dash.started -= instance.OnDash;
             @Dash.performed -= instance.OnDash;
             @Dash.canceled -= instance.OnDash;
+            @Shoot_Left.started -= instance.OnShoot_Left;
+            @Shoot_Left.performed -= instance.OnShoot_Left;
+            @Shoot_Left.canceled -= instance.OnShoot_Left;
+            @Shoot_Right.started -= instance.OnShoot_Right;
+            @Shoot_Right.performed -= instance.OnShoot_Right;
+            @Shoot_Right.canceled -= instance.OnShoot_Right;
+            @ThrowAndPick_Left.started -= instance.OnThrowAndPick_Left;
+            @ThrowAndPick_Left.performed -= instance.OnThrowAndPick_Left;
+            @ThrowAndPick_Left.canceled -= instance.OnThrowAndPick_Left;
+            @ThrowAndPick_Right.started -= instance.OnThrowAndPick_Right;
+            @ThrowAndPick_Right.performed -= instance.OnThrowAndPick_Right;
+            @ThrowAndPick_Right.canceled -= instance.OnThrowAndPick_Right;
+            @Interact.started -= instance.OnInteract;
+            @Interact.performed -= instance.OnInteract;
+            @Interact.canceled -= instance.OnInteract;
+            @Melee.started -= instance.OnMelee;
+            @Melee.performed -= instance.OnMelee;
+            @Melee.canceled -= instance.OnMelee;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -325,6 +488,12 @@ public partial class @PlayerInputConfig: IInputActionCollection2, IDisposable
     {
         void OnMove(InputAction.CallbackContext context);
         void OnDash(InputAction.CallbackContext context);
+        void OnShoot_Left(InputAction.CallbackContext context);
+        void OnShoot_Right(InputAction.CallbackContext context);
+        void OnThrowAndPick_Left(InputAction.CallbackContext context);
+        void OnThrowAndPick_Right(InputAction.CallbackContext context);
+        void OnInteract(InputAction.CallbackContext context);
+        void OnMelee(InputAction.CallbackContext context);
     }
     public interface ICameraActions
     {
