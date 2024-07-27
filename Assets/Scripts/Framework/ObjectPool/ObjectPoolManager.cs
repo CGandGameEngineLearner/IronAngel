@@ -14,7 +14,7 @@ public enum ObjectType
 [System.Serializable]
 public struct ObjectPoolCategory
 {
-    public ObjectType objType;
+    public string objType;
     public GameObject prefab;
     public int defaultSize;
     public int maxSize;
@@ -23,7 +23,14 @@ public struct ObjectPoolCategory
 // 管理所有对象池的类
 public class ObjectPoolManager
 {
-    private Dictionary<ObjectType, ObjectPool<GameObject>> m_ObjectDictionary = new();
+    public static ObjectPoolManager Instance => m_Instance;
+    
+    private static ObjectPoolManager m_Instance = new ObjectPoolManager();
+    private Dictionary<string, ObjectPool<GameObject>> m_ObjectDictionary = new();
+
+    private ObjectPoolManager()
+    {
+    }
 
     // 初始化所有对象池
     public void Init(List<ObjectPoolCategory> categoriesToAdd)
@@ -42,13 +49,18 @@ public class ObjectPoolManager
         }
     }
 
-    public int GetObjectCount(ObjectType objectType)
+    /// <summary>
+    /// typeof(Weapon) + value 
+    /// </summary>
+    /// <param name="objectType"></param>
+    /// <returns></returns>
+    public int GetObjectCount(string objectType)
     {
         return m_ObjectDictionary[objectType].CountAll;
     }
 
     // 获取特定类型的对象
-    public GameObject GetObject(ObjectType type)
+    public GameObject GetObject(string type)
     {
         if (m_ObjectDictionary.TryGetValue(type, out var pool))
         {
@@ -64,7 +76,7 @@ public class ObjectPoolManager
     }
 
     // 获取特定类型的对象
-    public GameObject GetObject(ObjectType type, Vector3 position, Quaternion quaternion)
+    public GameObject GetObject(string type, Vector3 position, Quaternion quaternion)
     {
         if (m_ObjectDictionary.TryGetValue(type, out var pool))
         {
@@ -85,7 +97,7 @@ public class ObjectPoolManager
 
 
     // 获取特定类型的对象
-    public GameObject GetObject(ObjectType type, Vector3 position, Vector3 rotation)
+    public GameObject GetObject(string type, Vector3 position, Vector3 rotation)
     {
         if (m_ObjectDictionary.TryGetValue(type, out var pool))
         {
@@ -105,7 +117,7 @@ public class ObjectPoolManager
     }
 
     // 释放特定类型的对象
-    public void ReleaseObject(ObjectType type, GameObject obj)
+    public void ReleaseObject(string type, GameObject obj)
     {
         if (m_ObjectDictionary.TryGetValue(type, out var pool))
         {
