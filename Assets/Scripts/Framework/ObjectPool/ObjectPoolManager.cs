@@ -6,7 +6,8 @@ using UnityEngine.Pool;
 public enum ObjectType
 {
     Cube,
-    Sphere
+    Sphere,
+    Lazer,
 }
 
 // 用来存储每个对象池的配置信息
