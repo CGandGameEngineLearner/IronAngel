@@ -173,6 +173,10 @@ MonoBehaviour:
   _PlayerRightHand: {fileID: 154590028}
   _Energy: 0
   _EnergyThreshold: 0
+  _EnergyLimition: 0
+  _Armor: 0
+  _BaseHP: 0
+  _AudioConfig: {fileID: 11400000, guid: 4acc25dfd8dc1264298860c5fd8abc67, type: 2}
 --- !u!114 &154519273
 MonoBehaviour:
   m_ObjectHideFlags: 0
