@@ -20,10 +20,13 @@ public class GlobalSetting : MonoBehaviour
     public float _DashCoolDownTime;
     public int _DashCount;
     public float _DashSpeed;
-    public float _DashTime;
     public int _MaxDashCount;
 
     [Header("PlayerHand")]
     public GameObject _PlayerLeftHand;
     public GameObject _PlayerRightHand;
+
+    [Header("PlayerProperties")]
+    public float _Energy = 0;
+    public float _EnergyThreshold;
 }
