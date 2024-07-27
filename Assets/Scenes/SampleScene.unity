@@ -246,9 +246,11 @@ MonoBehaviour:
   _MoveSpeed: 5
   _DashCoolDownTime: 3
   _DashCount: 2
-  _DashSpeed: 150
+  _DashSpeed: 30
   _DashTime: 0.2
   _MaxDashCount: 5
+  _PlayerLeftHand: {fileID: 128815572}
+  _PlayerRightHand: {fileID: 154590028}
 --- !u!114 &154519273
 MonoBehaviour:
   m_ObjectHideFlags: 0
