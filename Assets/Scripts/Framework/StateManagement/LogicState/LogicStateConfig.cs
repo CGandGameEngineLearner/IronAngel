@@ -70,6 +70,11 @@ public class LogicStateSetting
     public float Duration = float.PositiveInfinity;
 
     /// <summary>
+    /// 不满足容斥条件时，是否自动退出状态
+    /// </summary>
+    public bool AutoStateOut = false;
+
+    /// <summary>
     /// 必须有这些状态，这个状态才能存在
     /// </summary>
     /// <typeparam name="ELogicState"></typeparam>
