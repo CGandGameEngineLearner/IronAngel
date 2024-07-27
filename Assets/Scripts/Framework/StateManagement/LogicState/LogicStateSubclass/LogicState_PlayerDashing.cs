@@ -7,7 +7,7 @@ public class LogicState_PlayerDashing : LogicState
     public LogicState_PlayerDashing(ELogicState stateEnum) : base(stateEnum) { }
     public override void OnStateIn()
     {
-        GetParent().RemoveState(ELogicState.PlayerWalking);
+        GetOwner().RemoveState(ELogicState.PlayerWalking);
         Debug.Log("start time" + Time.time);
         EventCenter.Broadcast<bool>(EventType.StateToGlobal_PlayerDashState, true);
     }
