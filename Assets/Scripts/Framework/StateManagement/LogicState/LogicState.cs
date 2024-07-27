@@ -39,6 +39,11 @@ public class LogicState
         m_Owner = parent == null ? null : parent;
         m_HashCode = (int)stateEnum;
     }
+    
+    virtual public void Init()
+    {
+
+    }
 
     virtual public void OnStateIn()
     {
@@ -57,6 +62,11 @@ public class LogicState
     }
 
     virtual public void OnStateOut()
+    {
+        
+    }
+
+    virtual public void UnInit()
     {
         
     }
