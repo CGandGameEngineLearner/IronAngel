@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "com.h8man.2d.navmeshplus": "https://github.com/h8man/NavMeshPlus.git",
     "com.unity.ai.navigation": "1.1.5",
     "com.unity.cinemachine": "2.9.7",
     "com.unity.collab-proxy": "2.4.3",
