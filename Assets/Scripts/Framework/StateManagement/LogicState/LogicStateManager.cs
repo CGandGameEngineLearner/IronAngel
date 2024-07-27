@@ -113,9 +113,11 @@ public class LogicStateManager : MonoBehaviour
     {
         if(m_LogicStateDic.ContainsKey(stateEnum))
         {
-            m_LogicStateDic[stateEnum].StartTime = Time.time;
-            m_LogicStateDic[stateEnum].SetActive(true);
-            m_LogicStateDic[stateEnum].OnStateIn();
+            var state = m_LogicStateDic[stateEnum];
+            state.StartTime = Time.time;
+            state.Init();
+            state.SetActive(true);
+            state.OnStateIn();
         }
         else
         {
@@ -128,6 +130,7 @@ public class LogicStateManager : MonoBehaviour
             newState.SetParent(this);
             newState.Duration = stateTemplate.Duration;
             newState.StartTime = Time.time;
+            newState.Init();
             newState.SetActive(true);
             newState.OnStateIn();
 
@@ -142,8 +145,11 @@ public class LogicStateManager : MonoBehaviour
     {
         if(m_LogicStateDic.ContainsKey(stateEnum))
         {
-            m_LogicStateDic[stateEnum].SetActive(false);
-            m_LogicStateDic[stateEnum].OnStateOut();
+            var state = m_LogicStateDic[stateEnum];
+            state.SetActive(false);
+            state.OnStateOut();
+            state.UnInit();
+            
         }
     }
     
