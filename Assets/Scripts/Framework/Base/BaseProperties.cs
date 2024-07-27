@@ -12,7 +12,7 @@ public abstract class BaseProperties
     protected int m_CurrentHP;
     protected int m_CurrentArmor;
     //  public--------------------------------------
-    // 继承需要自定义一个Init方法
+    // 缁ф壙闇�瑕佽嚜瀹氫箟涓�涓狪nit鏂规硶
 
     public virtual void SetEnergy(int val)
     {
