@@ -38,6 +38,11 @@ public class GlobalController : MonoBehaviour
         m_InputController = new InputController();
         m_InputController.Init();
 
+        foreach (var audioConfig in setting._AudioConfig.m_Config)
+        {
+            AudioUtils.m_Audios.Add(audioConfig._AudioType, audioConfig);
+        }
+
         Destroy(setting);
     }
 
@@ -52,6 +57,7 @@ public class GlobalController : MonoBehaviour
         UpdateCameraPosition();
         UpdatePlayerRotation();
         m_Player.Update();
+        m_InputController.UpdateInputDevice();
     }
 
     private void FixedUpdate()
@@ -70,8 +76,18 @@ public class GlobalController : MonoBehaviour
 
     private void UpdatePlayerRotation()
     {
-        Vector3 v3 = m_InputController.GetMousePositionInWorldSpace(m_CameraController.GetCamera()) - m_Player.GetPlayerPosition();
-        m_Player.LookAt(new Vector2(v3.x, v3.y));
+        if(m_InputController.IsGamePadInput())
+        {
+            if(m_InputController.GetGamePadViewInput() != Vector2.zero)
+            {
+                m_Player.LookAt(m_InputController.GetGamePadViewInput());
+            }
+        }
+        else
+        {
+            Vector3 v3 = m_InputController.GetMousePositionInWorldSpace(m_CameraController.GetCamera()) - m_Player.GetPlayerPosition();
+            m_Player.LookAt(new Vector2(v3.x, v3.y));
+        }
     }
 
     private void MovePlayer()

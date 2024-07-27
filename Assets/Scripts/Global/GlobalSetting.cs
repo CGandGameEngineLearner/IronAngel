@@ -32,4 +32,7 @@ public class GlobalSetting : MonoBehaviour
     public int _EnergyLimition;
     public int _Armor;
     public int _BaseHP;
+
+    [Header("AudioUtils")]
+    public AudioConfig _AudioConfig;
 }
