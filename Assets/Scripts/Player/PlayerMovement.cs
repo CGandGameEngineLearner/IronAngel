@@ -17,7 +17,6 @@ public class PlayerMovement
     private Rigidbody2D m_Rigidbody;
 
 
-    private float _dashRemainTime = -1;
     private float _dashCoolDownRemainTime = -1;
     private Vector2 _dashDir = Vector2.zero;
 //  public-----------------------------------------
@@ -26,7 +25,6 @@ public class PlayerMovement
         m_Player = spec.m_Player;
         m_NormalSpeed = spec.m_NormalSpeed;
         m_Speed = spec.m_NormalSpeed;
-        m_DashTime = spec.m_DashTime;
         m_DashSpeed = spec.m_DashSpeed;
         m_DashCoolDownTime = spec.m_DashCoolDownTime;
         m_DashCount = spec.m_DashCount;
@@ -55,8 +53,8 @@ public class PlayerMovement
     public void Dash()
     {
         var v2 = m_Rigidbody.position;
-        v2.x += _dashDir.x * m_DashSpeed * Time.deltaTime;
-        v2.y += _dashDir.y * m_DashSpeed * Time.deltaTime;
+        v2.x += _dashDir.x * m_DashSpeed * Time.fixedDeltaTime;
+        v2.y += _dashDir.y * m_DashSpeed * Time.fixedDeltaTime;
         m_Rigidbody.MovePosition(v2);
     }
 
@@ -67,12 +65,7 @@ public class PlayerMovement
 
     public bool StartDash()
     {
-        if(m_DashCount > 0)
-        {
-            m_DashCount--;
-            return true;
-        }
-        return false;
+        return m_DashCount > 0;
     }
 
     public Vector3 GetPlayerPosition()
@@ -85,6 +78,11 @@ public class PlayerMovement
         return m_Player.transform.rotation;
     }
 
+    public void ChangeDashCount(int val)
+    {
+        m_DashCount = m_DashCount + val >= 0 ?  m_DashCount + val : 0;
+    }
+
 
     public void Update()
     {
@@ -93,27 +91,10 @@ public class PlayerMovement
 
     public void FixedUpdate()
     {
-        ResetSpeed();
+;
     }
 
 //  private-----------------------------------------------------------------------
-    private void ResetSpeed()
-    {
-        if(_dashRemainTime < 0)
-        {
-            return;
-        }
-        _dashRemainTime -= Time.fixedDeltaTime;
-        if(_dashRemainTime < 0)
-        {
-            m_Speed = m_NormalSpeed;
-        }
-        else
-        {
-            m_Speed = m_DashSpeed;
-            Move(_dashDir);
-        }
-    }
 
     private void UpdateDashCount()
     {
@@ -133,7 +114,6 @@ public struct PlayerMovementSpec
 {
     public GameObject m_Player;
     public float m_NormalSpeed;
-    public float m_DashTime;
     public float m_DashSpeed;
     public float m_DashCoolDownTime;
     public int m_DashCount;

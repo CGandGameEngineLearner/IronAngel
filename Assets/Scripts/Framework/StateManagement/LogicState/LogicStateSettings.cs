@@ -3,7 +3,7 @@ public enum ELogicState
 {
     Default = 0,
     Example = 1,
-    PlayerMoving = 2,
+    PlayerWalking = 2,
     PlayerDashing = 3,
 }
 
@@ -20,7 +20,7 @@ public static class LogicStatesSettings
     {
         new LogicState(ELogicState.Default),
         new LogicState_Example(ELogicState.Example),
-        new LogicState(ELogicState.PlayerMoving),
+        new LogicState(ELogicState.PlayerWalking),
         new LogicState_PlayerDashing(ELogicState.PlayerDashing),
     };
 }

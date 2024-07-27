@@ -8,7 +8,6 @@ public class GlobalController : MonoBehaviour
     private CameraController m_CameraController;
     private Player m_Player;
     private InputController m_InputController;
-    
 
     //  public------------------------------------------
     // private------------------------------------------
@@ -23,11 +22,14 @@ public class GlobalController : MonoBehaviour
         PlayerSpec playerSpec = new PlayerSpec();
         playerSpec.m_Player = setting._Player;
         playerSpec.m_NormalSpeed = setting._MoveSpeed;
-        playerSpec.m_DashTime = setting._DashTime;
         playerSpec.m_DashCoolDownTime = setting._DashCoolDownTime;
         playerSpec.m_DashCount = setting._DashCount;
         playerSpec.m_MaxDashCount = setting._MaxDashCount;
         playerSpec.m_DashSpeed = setting._DashSpeed;
+        playerSpec.m_PlayerLeftHand = setting._PlayerLeftHand;
+        playerSpec.m_PlayerRightHand = setting._PlayerRightHand;
+        playerSpec.m_Energy = setting._Energy;
+        playerSpec.m_EnergyThreshold = setting._EnergyThreshold;
         m_Player.Init(playerSpec);
 
         m_InputController = new InputController();
@@ -73,7 +75,7 @@ public class GlobalController : MonoBehaviour
     {
         m_InputController.ExcuteActionWhilePlayerMoveInputPerformedAndStay(() =>
         {
-            m_Player.GetPlayer().GetComponent<LogicStateManager>().AddState(ELogicState.PlayerMoving);
+            m_Player.GetPlayer().GetComponent<LogicStateManager>().AddState(ELogicState.PlayerWalking);
             m_Player.Move(m_InputController.GetPlayerMoveInputVector2());
         });
     }
@@ -94,7 +96,10 @@ public class GlobalController : MonoBehaviour
         // 玩家冲刺
         m_InputController.AddStartedActionToPlayerDash(() =>
         {
-            m_Player.GetPlayer().GetComponent<LogicStateManager>().AddState(ELogicState.PlayerDashing);
+            if(m_Player.StartDash())
+            {
+                m_Player.GetPlayer().GetComponent<LogicStateManager>().AddState(ELogicState.PlayerDashing);
+            }
         });
     }
     
@@ -105,13 +110,10 @@ public class GlobalController : MonoBehaviour
         {
             if(startDash)
             {
+                m_Player.ChangeDashCount(-1);
                 var v3 = m_InputController.GetMousePositionInWorldSpace(m_CameraController.GetCamera()) - m_Player.GetPlayerPosition();
                 var v2 = m_InputController.GetPlayerMoveInputVector2() == Vector2.zero ? new Vector2(v3.x, v3.y) : m_InputController.GetPlayerMoveInputVector2();
                 m_Player.SetDashDirection(v2);
-                if(m_Player.StartDash())
-                {
-                    m_Player.GetPlayer().GetComponent<LogicStateManager>().RemoveState(ELogicState.PlayerDashing);
-                }
             }
             else
             {

@@ -6,6 +6,8 @@ public class Player
 {
     private GameObject m_Player;
     private PlayerMovement m_PlayerMovement;
+    private PlayerHand m_PlayerHand;
+    private PlayerProperties m_PlayerProperties;
 
     //  public--------------------------------------------------
     public void Init(PlayerSpec spec)
@@ -16,12 +18,21 @@ public class Player
         PlayerMovementSpec moveSpec = new PlayerMovementSpec();
         moveSpec.m_Player = m_Player;
         moveSpec.m_NormalSpeed = spec.m_NormalSpeed;
-        moveSpec.m_DashTime = spec.m_DashTime;
         moveSpec.m_DashSpeed = spec.m_DashSpeed;
         moveSpec.m_DashCoolDownTime = spec.m_DashCoolDownTime;
         moveSpec.m_DashCount = spec.m_DashCount;
         moveSpec.m_MaxDashCount = spec.m_MaxDashCount;
         m_PlayerMovement.Init(moveSpec);
+
+        m_PlayerHand = new PlayerHand();
+        PlayerHandSpec handSpec = new PlayerHandSpec();
+        handSpec.m_PlayerLeftHand = spec.m_PlayerLeftHand;
+        handSpec.m_PlayerRightHand = spec.m_PlayerRightHand;
+
+        m_PlayerProperties = new PlayerProperties();
+        PlayerPropertiesSpec propertiesSpec = new PlayerPropertiesSpec();
+        propertiesSpec.m_Energy = spec.m_Energy;
+        propertiesSpec.m_EnergyThreshold = spec.m_EnergyThreshold;
     }
 
     public Vector3 GetPlayerPosition()
@@ -72,6 +83,31 @@ public class Player
     {
         return m_PlayerMovement.StartDash();
     }
+
+    public void ChangeDashCount(int val)
+    {
+        m_PlayerMovement.ChangeDashCount(val);
+    }
+
+    public void SetPlayerLeftHandObject(GameObject obj)
+    {
+        m_PlayerHand.SetPlayerLeftHandObject(obj);
+    }
+
+    public void SetPlayerRightHandObject(GameObject obj)
+    {
+        m_PlayerHand.SetPlayerRightHandObject(obj);
+    }
+
+    public GameObject GetPlayerLeftHandObject()
+    {
+        return m_PlayerHand.GetPlayerLeftHandObject();
+    }
+
+    public GameObject GetPlayerRightHandObject()
+    {
+        return m_PlayerHand.GetPlayerRightHandObject();
+    }
 }
 
 public struct PlayerSpec
@@ -80,9 +116,16 @@ public struct PlayerSpec
 
     // Movement
     public float m_NormalSpeed;
-    public float m_DashTime;
     public float m_DashSpeed;
     public float m_DashCoolDownTime;
     public int m_DashCount;
     public int m_MaxDashCount;
+
+    // Hand
+    public GameObject m_PlayerLeftHand;
+    public GameObject m_PlayerRightHand;
+
+    // Properties
+    public float m_Energy;
+    public float m_EnergyThreshold;
 }
