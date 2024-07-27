@@ -8,6 +8,7 @@ public class LogicState_PlayerDashing : LogicState
     public override void OnStateIn()
     {
         GetParent().RemoveState(ELogicState.PlayerWalking);
+        Debug.Log("start time" + Time.time);
         EventCenter.Broadcast<bool>(EventType.StateToGlobal_PlayerDashState, true);
     }
 
@@ -23,6 +24,6 @@ public class LogicState_PlayerDashing : LogicState
 
     public override void OnStateOut()
     {
-
+        Debug.Log("exit time" + Time.time);
     }
 }

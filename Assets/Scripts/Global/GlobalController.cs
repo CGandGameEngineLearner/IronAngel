@@ -94,8 +94,10 @@ public class GlobalController : MonoBehaviour
         // 玩家冲刺
         m_InputController.AddStartedActionToPlayerDash(() =>
         {
-            m_Player.GetPlayer().GetComponent<LogicStateManager>().AddState(ELogicState.PlayerDashing);
-            Debug.Log("add dash state");
+            if(m_Player.StartDash())
+            {
+                m_Player.GetPlayer().GetComponent<LogicStateManager>().AddState(ELogicState.PlayerDashing);
+            }
         });
     }
     
@@ -109,14 +111,11 @@ public class GlobalController : MonoBehaviour
                 var v3 = m_InputController.GetMousePositionInWorldSpace(m_CameraController.GetCamera()) - m_Player.GetPlayerPosition();
                 var v2 = m_InputController.GetPlayerMoveInputVector2() == Vector2.zero ? new Vector2(v3.x, v3.y) : m_InputController.GetPlayerMoveInputVector2();
                 m_Player.SetDashDirection(v2);
-                if(m_Player.StartDash())
-                {
-                    m_Player.GetPlayer().GetComponent<LogicStateManager>().RemoveState(ELogicState.PlayerDashing);
-                }
             }
             else
             {
                 m_Player.Dash();
+                Debug.Log("dashing");
             }
         });
     }

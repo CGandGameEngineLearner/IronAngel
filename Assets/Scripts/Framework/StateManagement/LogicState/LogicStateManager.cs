@@ -68,7 +68,6 @@ public class LogicStateManager : MonoBehaviour
             if(Time.time >= m_LogicStateDic[stateEnum].EndTime)
             {
                 RemoveStateImmediately(stateEnum);
-                Debug.Log("remove state" + stateEnum);
             }
         }
         foreach(var state in m_LogicStateDic.Values)

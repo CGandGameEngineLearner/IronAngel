@@ -22,4 +22,7 @@ public class GlobalSetting : MonoBehaviour
     public float _DashSpeed;
     public float _DashTime;
     public int _MaxDashCount;
+
+    [Header("PlayerHand")]
+    public GameObject _PlayerLeftHand;
 }

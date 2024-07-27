@@ -55,8 +55,8 @@ public class PlayerMovement
     public void Dash()
     {
         var v2 = m_Rigidbody.position;
-        v2.x += _dashDir.x * m_DashSpeed * Time.deltaTime;
-        v2.y += _dashDir.y * m_DashSpeed * Time.deltaTime;
+        v2.x += _dashDir.x * m_DashSpeed * Time.fixedDeltaTime;
+        v2.y += _dashDir.y * m_DashSpeed * Time.fixedDeltaTime;
         m_Rigidbody.MovePosition(v2);
     }
 

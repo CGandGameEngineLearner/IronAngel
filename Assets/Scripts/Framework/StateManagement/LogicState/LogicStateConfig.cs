@@ -29,7 +29,7 @@ public class LogicStateConfig:ScriptableObject
         var result = m_LogicStateEnumDic[stateEnum];
         if(stateEnum==ELogicState.PlayerDashing)
         {
-            Debug.Log(result.Duration);
+            
         }
         return result;
     }
