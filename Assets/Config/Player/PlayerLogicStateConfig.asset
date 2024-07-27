@@ -15,13 +15,16 @@ MonoBehaviour:
   LogicStateSettings:
   - stateEnum: 0
     Duration: 0
+    AutoStateOut: 0
     included: 
     excluded: 
   - stateEnum: 2
-    Duration: 0
+    Duration: Infinity
+    AutoStateOut: 0
     included: 
     excluded: 03000000
   - stateEnum: 3
-    Duration: 5
+    Duration: 0.2
+    AutoStateOut: 0
     included: 
     excluded: 03000000
