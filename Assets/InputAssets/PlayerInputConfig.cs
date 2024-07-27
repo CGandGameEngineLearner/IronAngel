@@ -192,7 +192,7 @@ public partial class @PlayerInputConfig: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""8ea1cf80-4fed-450b-b419-2dee147fda7a"",
-                    ""path"": ""<XInputController>/buttonSouth"",
+                    ""path"": ""<XInputController>/rightTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -203,7 +203,7 @@ public partial class @PlayerInputConfig: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""908b6f9c-49b0-4415-8b25-4b4457dac28a"",
-                    ""path"": ""<DualShockGamepad>/buttonSouth"",
+                    ""path"": ""<DualShockGamepad>/rightTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -390,7 +390,7 @@ public partial class @PlayerInputConfig: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""894bb230-c9db-4e04-b69a-f1aab9bc591b"",
-                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""path"": ""<XInputController>/buttonSouth"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -401,7 +401,7 @@ public partial class @PlayerInputConfig: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""8d2b797f-2fd8-480a-8543-bc8481e3074d"",
-                    ""path"": ""<DualShockGamepad>/rightTrigger"",
+                    ""path"": ""<DualShockGamepad>/buttonSouth"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
