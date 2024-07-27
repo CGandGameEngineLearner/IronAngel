@@ -40,15 +40,27 @@ public class LogicState
         m_HashCode = (int)stateEnum;
     }
     
+    /// <summary>
+    /// 每个状态进入时先调用Init初始化成员变量，再调用OnStateIn,
+    /// 所以请在这里初始化成员变量到初始状态
+    /// </summary>
     virtual public void Init()
     {
 
     }
 
+    /// <summary>
+    /// Init完后调用OnStateIn,此时已被设为激活状态
+    /// </summary>
     virtual public void OnStateIn()
     {
 
     }
+
+    /// <summary>
+    /// 状态被激活后，每帧调用
+    /// </summary>
+    /// <param name="deltaTime"></param>
 
     virtual public void Update(float deltaTime)
     {
@@ -61,11 +73,17 @@ public class LogicState
 
     }
 
+    /// <summary>
+    /// 先调StateOut，再会掉UnInit，析构成员变量。
+    /// </summary>
     virtual public void OnStateOut()
     {
         
     }
-
+    
+    /// <summary>
+    /// 析构成员变量
+    /// </summary>
     virtual public void UnInit()
     {
         

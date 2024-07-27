@@ -69,10 +69,10 @@ public class LogicStateManager : MonoBehaviour
             {
                 LogicStateSetting stateSetting = LogicStateConfig.GetLogicStateSetting(stateEnum);
                 state.Duration = stateSetting.Duration;
-                if(!CheckState(stateSetting.included,stateSetting.excluded))
-                {
-                    RemoveStateImmediately(stateEnum);
-                }
+                // if(!CheckState(stateSetting.included,stateSetting.excluded))
+                // {
+                //     RemoveStateImmediately(stateEnum);
+                // }
                 if(Time.time >= state.EndTime)
                 {
                     RemoveStateImmediately(stateEnum);
