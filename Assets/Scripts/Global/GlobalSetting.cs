@@ -25,4 +25,5 @@ public class GlobalSetting : MonoBehaviour
 
     [Header("PlayerHand")]
     public GameObject _PlayerLeftHand;
+    public GameObject _PlayerRightHand;
 }
