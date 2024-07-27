@@ -8,8 +8,13 @@ public class LogicState_Example:LogicState
     public override void Init()
     {
         Debug.Log(GetType()+"Init()");
-        //调用LogicStateManager的外部模块，遵循谁调用谁监听原则，监听对LogicStateManager进行操作后得到的事件。
-        EventCenter.AddListener<LogicStateManager,ELogicState,string>(EventType.LogicState_Example_StateIn,OnEventLogicStateExampleStateIn);
+        //调用LogicStateManager的外部模块，遵循谁调用谁监听原则，
+        //前两个参数必须为所属的LogicStateManager和状态类型枚举，
+        //监听对LogicStateManager进行操作后得到的事件。
+        EventCenter.AddListener<LogicStateManager,ELogicState,string>(
+            EventType.LogicState_Example_StateIn,
+            OnEventLogicStateExampleStateIn
+        );
     }
     public override void OnStateIn()
     {
