@@ -14,12 +14,17 @@ public class LogicStateManager : MonoBehaviour
     public LogicStateConfig LogicStateConfig;
     // Start is called before the first frame update
 
-    public void AddState(ELogicState stateEnum)
+    public bool AddState(ELogicState stateEnum)
     {
         LogicStateSetting stateSetting = LogicStateConfig.GetLogicStateSetting(stateEnum);
         if(CheckState(stateSetting.included,stateSetting.excluded))
         {
             m_FutureStates.Enqueue(stateEnum);
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
 
@@ -59,16 +64,22 @@ public class LogicStateManager : MonoBehaviour
         // 不满足容斥配置或达到结束时间的状态会被立即移除
         foreach(ELogicState stateEnum in m_LogicStateDic.Keys)
         {
-            LogicStateSetting stateSetting = LogicStateConfig.GetLogicStateSetting(stateEnum);
-            m_LogicStateDic[stateEnum].Duration = stateSetting.Duration;
-            if(!CheckState(stateSetting.included,stateSetting.excluded))
+            var state = m_LogicStateDic[stateEnum];
+            if(state.GetActive())
             {
-                RemoveStateImmediately(stateEnum);
+                LogicStateSetting stateSetting = LogicStateConfig.GetLogicStateSetting(stateEnum);
+                state.Duration = stateSetting.Duration;
+                if(!CheckState(stateSetting.included,stateSetting.excluded))
+                {
+                    RemoveStateImmediately(stateEnum);
+                }
+                if(Time.time >= state.EndTime)
+                {
+                    RemoveStateImmediately(stateEnum);
+                    //Debug.Log("remove state" + stateEnum);
+                }
             }
-            if(Time.time >= m_LogicStateDic[stateEnum].EndTime)
-            {
-                RemoveStateImmediately(stateEnum);
-            }
+            
         }
         foreach(var state in m_LogicStateDic.Values)
         {
@@ -112,9 +123,11 @@ public class LogicStateManager : MonoBehaviour
     {
         if(m_LogicStateDic.ContainsKey(stateEnum))
         {
-            m_LogicStateDic[stateEnum].StartTime = Time.time;
-            m_LogicStateDic[stateEnum].SetActive(true);
-            m_LogicStateDic[stateEnum].OnStateIn();
+            var state = m_LogicStateDic[stateEnum];
+            state.StartTime = Time.time;
+            state.Init();
+            state.SetActive(true);
+            state.OnStateIn();
         }
         else
         {
@@ -124,9 +137,11 @@ public class LogicStateManager : MonoBehaviour
             Type stateType = stateTemplate.GetType();
             
             LogicState newState = (LogicState)(Activator.CreateInstance(stateType,stateEnum));
-            newState.SetParent(this);
+            newState.SetOwner(this);
             newState.Duration = stateTemplate.Duration;
             newState.StartTime = Time.time;
+    
+            newState.Init();
             newState.SetActive(true);
             newState.OnStateIn();
 
@@ -141,8 +156,11 @@ public class LogicStateManager : MonoBehaviour
     {
         if(m_LogicStateDic.ContainsKey(stateEnum))
         {
-            m_LogicStateDic[stateEnum].SetActive(false);
-            m_LogicStateDic[stateEnum].OnStateOut();
+            var state = m_LogicStateDic[stateEnum];
+
+            state.SetActive(false);
+            state.UnInit();
+            state.OnStateOut();
         }
     }
     

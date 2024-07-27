@@ -27,10 +27,6 @@ public class LogicStateConfig:ScriptableObject
             return DefaultLogicStateSetting;
         }
         var result = m_LogicStateEnumDic[stateEnum];
-        if(stateEnum==ELogicState.PlayerDashing)
-        {
-            
-        }
         return result;
     }
     
