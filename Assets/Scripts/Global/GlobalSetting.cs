@@ -27,6 +27,9 @@ public class GlobalSetting : MonoBehaviour
     public GameObject _PlayerRightHand;
 
     [Header("PlayerProperties")]
-    public float _Energy = 0;
-    public float _EnergyThreshold;
+    public int _Energy = 0;
+    public int _EnergyThreshold;
+    public int _EnergyLimition;
+    public int _Armor;
+    public int _BaseHP;
 }

@@ -30,6 +30,9 @@ public class GlobalController : MonoBehaviour
         playerSpec.m_PlayerRightHand = setting._PlayerRightHand;
         playerSpec.m_Energy = setting._Energy;
         playerSpec.m_EnergyThreshold = setting._EnergyThreshold;
+        playerSpec.m_EnergyLimition = setting._EnergyLimition;
+        playerSpec.m_BaseHP = setting._BaseHP;
+        playerSpec.m_Armor = setting._Armor;
         m_Player.Init(playerSpec);
 
         m_InputController = new InputController();

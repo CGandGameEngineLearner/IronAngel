@@ -33,6 +33,10 @@ public class Player
         PlayerPropertiesSpec propertiesSpec = new PlayerPropertiesSpec();
         propertiesSpec.m_Energy = spec.m_Energy;
         propertiesSpec.m_EnergyThreshold = spec.m_EnergyThreshold;
+        propertiesSpec.m_EnergyLimition = spec.m_EnergyLimition;
+        propertiesSpec.m_BaseHP = spec.m_BaseHP;
+        propertiesSpec.m_Armor = spec.m_Armor;
+        m_PlayerProperties.Init(propertiesSpec);
     }
 
     public Vector3 GetPlayerPosition()
@@ -108,6 +112,91 @@ public class Player
     {
         return m_PlayerHand.GetPlayerRightHandObject();
     }
+
+    public void SetPlayerEnergy(int val)
+    {
+        m_PlayerProperties.SetEnergy(val);
+    }
+
+    public int GetPlayerEnergy()
+    {
+        return m_PlayerProperties.GetEnergy();
+    }
+
+    public void ChangePlayerEnergy(int val)
+    {
+        m_PlayerProperties.ChangeEnergy(val);
+    }
+
+    public void SetPlayerArmor(int val)
+    {
+        m_PlayerProperties.SetArmor(val);
+    }
+
+    public int GetPlayerArmor()
+    {
+        return m_PlayerProperties.GetArmor();
+    }
+
+    public void SetPlayerBaseHP(int val)
+    {
+        m_PlayerProperties.SetBaseHP(val);
+    }
+
+    public int GetPlayerBaseHP()
+    {
+        return m_PlayerProperties.GetBaseHP();
+    }
+
+    public int GetPlayerCurrentHP()
+    {
+        return m_PlayerProperties.GetCurrentHP();
+    }
+
+    public void SetPlayerCurrentHP(int val)
+    {
+        m_PlayerProperties.SetCurrentHP(val);
+    }
+
+    public void ChangePlayerCurrentHP(int val)
+    {
+        m_PlayerProperties.ChangeCurrentHP(val);
+    }
+
+    public void SetPlayerCurrentArmor(int val)
+    {
+        m_PlayerProperties.SetCurrentArmor(val);
+    }
+
+    public int GetPlayerCurrentArmor()
+    {
+        return m_PlayerProperties.GetCurrentArmor();
+    }
+
+    public void ChangePlayerCurrentArmor(int val)
+    {
+        m_PlayerProperties.ChangeCurrentArmor(val);
+    }
+
+    public void SetPlayerEnergyThreshold(int val)
+    {
+        m_PlayerProperties.SetEnergyThreshold(val);
+    }
+
+    public int GetPlayerEnergyThreshold()
+    {
+        return m_PlayerProperties.GetEnergyThreshold();
+    }
+
+    public void SetPlayerEnergyLimition(int val)
+    {
+        m_PlayerProperties.SetEnergyLimition(val);
+    }
+
+    public int GetPlayerEnergyLimition()
+    {
+        return m_PlayerProperties.GetEnergyLimition();
+    }
 }
 
 public struct PlayerSpec
@@ -126,6 +215,9 @@ public struct PlayerSpec
     public GameObject m_PlayerRightHand;
 
     // Properties
-    public float m_Energy;
-    public float m_EnergyThreshold;
+    public int m_Energy;
+    public int m_EnergyThreshold;
+    public int m_EnergyLimition;
+    public int m_BaseHP;
+    public int m_Armor;
 }
