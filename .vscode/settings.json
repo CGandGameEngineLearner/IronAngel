@@ -51,5 +51,6 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "IronAngel.sln"
+    "dotnet.defaultSolution": "IronAngel.sln",
+    "dotnet.preferCSharpExtension": true
 }

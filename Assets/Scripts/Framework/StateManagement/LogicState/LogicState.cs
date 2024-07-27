@@ -36,7 +36,7 @@ public class LogicState
 
     public LogicState(ELogicState stateEnum,LogicStateManager parent)
     {
-        m_parent = parent == null ? null : parent;
+        m_Owner = parent == null ? null : parent;
         m_HashCode = (int)stateEnum;
     }
 
@@ -102,18 +102,28 @@ public class LogicState
         return m_Active;
     }
 
-    virtual public void SetParent(LogicStateManager parent)
+
+    /// <summary>
+    /// 设置状态所在的LogicStateManager
+    /// </summary>
+    /// <param name="owner"></param>
+    virtual public void SetOwner(LogicStateManager owner)
     {
-        m_parent = parent;
+        m_Owner = owner;
     }
-    virtual public LogicStateManager GetParent()
+
+    /// <summary>
+    /// 获取状态所在的LogicStateManager
+    /// </summary>
+    /// <returns></returns>
+    virtual public LogicStateManager GetOwner()
     {
-        return m_parent;
+        return m_Owner;
     }
 
     private bool m_Active = false;
 
-    protected LogicStateManager m_parent = null;
+    protected LogicStateManager m_Owner = null;
 
     private int m_HashCode = 0;
 

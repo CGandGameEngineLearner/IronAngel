@@ -27,6 +27,20 @@ public static class EventCenter
             m_EventListeners[eventType] = (Callback<T1,T2>)previous + callback;
     }
 
+    public static void AddListener<T1,T2,T3>(EventType eventType, Callback<T1,T2,T3> callback)
+    {
+        Delegate previous;
+        if (CheckPreviousListeners(eventType, callback, out previous))
+            m_EventListeners[eventType] = (Callback<T1,T2,T3>)previous + callback;
+    }
+
+    public static void AddListener<T1,T2,T3,T4>(EventType eventType, Callback<T1,T2,T3,T4> callback)
+    {
+        Delegate previous;
+        if (CheckPreviousListeners(eventType, callback, out previous))
+            m_EventListeners[eventType] = (Callback<T1,T2,T3,T4>)previous + callback;
+    }
+
     public static void RemoveListener(EventType eventType, Callback callback)
     {
         Delegate previous;
@@ -47,6 +61,22 @@ public static class EventCenter
         Delegate previous;
         if (CheckPreviousListeners(eventType, callback, out previous) && previous != null)
             m_EventListeners[eventType] = (Callback<T1,T2>)m_EventListeners[eventType] - callback;
+        AfterListenerRemoved(eventType);
+    }
+
+    public static void RemoveListener<T1,T2,T3>(EventType eventType, Callback<T1,T2,T3> callback)
+    {
+        Delegate previous;
+        if (CheckPreviousListeners(eventType, callback, out previous) && previous != null)
+            m_EventListeners[eventType] = (Callback<T1,T2,T3>)m_EventListeners[eventType] - callback;
+        AfterListenerRemoved(eventType);
+    }
+
+    public static void RemoveListener<T1,T2,T3,T4>(EventType eventType, Callback<T1,T2,T3,T4> callback)
+    {
+        Delegate previous;
+        if (CheckPreviousListeners(eventType, callback, out previous) && previous != null)
+            m_EventListeners[eventType] = (Callback<T1,T2,T3,T4>)m_EventListeners[eventType] - callback;
         AfterListenerRemoved(eventType);
     }
 
@@ -79,6 +109,28 @@ public static class EventCenter
             callback?.Invoke(arg1,arg2);
         }
     }
+
+    public static void Broadcast<T1,T2,T3>(EventType eventType, T1 arg1, T2 arg2, T3 arg3)
+    {
+        Delegate listener;
+        if(m_EventListeners.TryGetValue(eventType, out listener))
+        {
+            Callback<T1,T2,T3> callback = listener as Callback<T1,T2,T3>;
+            callback?.Invoke(arg1,arg2,arg3);
+        }
+    }
+
+    public static void Broadcast<T1,T2,T3,T4>(EventType eventType, T1 arg1, T2 arg2, T3 arg3, T4 arg4)
+    {
+        Delegate listener;
+        if(m_EventListeners.TryGetValue(eventType, out listener))
+        {
+            Callback<T1,T2,T3,T4> callback = listener as Callback<T1,T2,T3,T4>;
+            callback?.Invoke(arg1,arg2,arg3,arg4);
+        }
+    }
+
+
 //private--------------------------------------------------------------------
     private static bool CheckPreviousListeners(EventType eventType, Delegate callback, out Delegate previous)
     {
