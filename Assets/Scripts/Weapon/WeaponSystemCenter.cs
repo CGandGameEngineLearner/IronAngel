@@ -1,72 +1,58 @@
 using System;
 using System.Collections.Generic;
+using BehaviorDesigner.Runtime;
+using Unity.Mathematics;
 using UnityEngine;
 
-public enum AmmunitionType
-{
-    Bullet = 0,
-}
-
-public enum WeaponType
-{
-    ShotGun = 0,
-    Laser = 1,
-    MissileLauncher = 2,
-}
-
-[CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/Weapon/WeaponConfig", order = 1)]
-public class WeaponConfig : ScriptableObject
-{
-    // 武器类型
-    public WeaponType weaponType;
-
-    // 武器挂载子弹
-    public AmmunitionConfig ammunitionConfig;
-
-    // 射击间隔(等同于激光的判定间隔)
-    public float interval;
-
-    // 弹夹大小
-    public float magSize;
-
-    // 同时射击数量
-    public int simShots;
-
-    // 声音素材
-
-    // 特效素材
-}
-
-// WeaponHandle: HP Sheild Mag Object
-// AmmuntionHandle: Start Dir Object
-
-[CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/Weapon/AmmunitionConfig", order = 1)]
-public class AmmunitionConfig : ScriptableObject
-{
-    // 子弹类型
-    public AmmunitionType ammunitionType;
-    public float speed;
-    public float lifeDistance;
-}
-
-// 由WeaponConfig可以得到AmmunitionConfig，通过注册武器GameObject可以得到索引表。武器子弹由武器得到索引关系
 public class WeaponSystemCenter
 {
-    // // 武器表
-    // private Dictionary<GameObject, WeaponConfig> m_WeaponConfigs = new();
-    //
-    // // 子弹表
-    // private Dictionary<GameObject, AmmunitionHandle> m_AmmunitionConfigs = new();
-
-    private WeaponUpdater m_WeaponUpdater = new();
-    private AmmunitionUpdater m_AmmunitionUpdater = new();
+    private ObjectPoolManager<WeaponType> m_WeaponPool = new();
+    private ObjectPoolManager<AmmunitionType> m_AmmunitionPool = new();
+    private WeaponFactory m_WeaponFactory = new();
+    private AmmunitionFactory m_AmmunitionFactory = new();
 
     /// <summary>
     /// 更新子弹
     /// </summary>
     public void Update()
     {
-        m_AmmunitionUpdater.Update();
+        m_AmmunitionFactory.Update();
+    }
+
+    public void Init(List<KeyValuePair<WeaponType, WeaponConfig>> weaponConfigList,
+        List<KeyValuePair<AmmunitionType, AmmunitionConfig>> ammunitionConfigList)
+    {
+        foreach (var weaponConfig in weaponConfigList)
+        {
+            m_WeaponPool.AddPool(weaponConfig.Key,
+                new ObjectCategory()
+                {
+                    prefab = weaponConfig.Value.prefab, defaultSize = weaponConfig.Value.minPoolSize,
+                    maxSize = weaponConfig.Value.minPoolSize
+                });
+        }
+        
+        foreach (var ammunitionConfig in ammunitionConfigList)
+        {
+            m_AmmunitionPool.AddPool(ammunitionConfig.Key,
+                new ObjectCategory()
+                {
+                    prefab = ammunitionConfig.Value.prefab, defaultSize = ammunitionConfig.Value.minPoolSize,
+                    maxSize = ammunitionConfig.Value.minPoolSize
+                });
+        }
+
+        m_WeaponFactory.Init(weaponConfigList,
+            (weaponType, weapon) => { m_WeaponPool.ReleaseObject(weaponType, weapon); });
+
+        m_AmmunitionFactory.Init(ammunitionConfigList,
+            (ammunitionType, ammunition) => { m_AmmunitionPool.ReleaseObject(ammunitionType, ammunition); });
+    }
+
+    public (GameObject, WeaponConfig) GetWeapon(WeaponType weaponType)
+    {
+        return (m_WeaponPool.GetObject(weaponType),
+            m_WeaponFactory.GetWeaponConfig(weaponType));
     }
 
     // TODO:爆炸物可能同时影响到多个unit，内部已经处理ammunition重复加入的问题，这里只是需要拿到表
@@ -75,43 +61,50 @@ public class WeaponSystemCenter
     /// <summary>
     /// 伤害判定流程
     /// </summary>
-    /// <param name="unit"></param>
-    /// <param name="ammunition"></param>
     public void JudgeWithAmmunition(GameObject unitAtker, GameObject unitToDamage, GameObject ammunition)
     {
+        // TODO: 结算流程
         InternalUnRegisterAmmunition(ammunition);
     }
 
     public void FireWith(GameObject weapon, Vector2 startPoint, Vector2 dir)
     {
-        if (!m_WeaponUpdater.HasWeapon(weapon)) throw new Exception("This weapon is not in WeaponUpdater");
+        if (!m_WeaponFactory.HasWeapon(weapon)) throw new Exception("This weapon is not in WeaponUpdater");
 
-        WeaponConfig weaponConfig = m_WeaponUpdater.GetWeaponHandle(weapon).weaponConfig;
-        AmmunitionType ammunitionType = weaponConfig.ammunitionConfig.ammunitionType;
+        WeaponConfig weaponConfig = m_WeaponFactory.GetWeaponHandle(weapon).weaponConfig;
+        AmmunitionType ammunitionType = weaponConfig.ammunitionType;
         // 注册子弹
-        var ammunition = ObjectPoolManager.Instance.GetObject(weaponConfig.ammunitionConfig.ammunitionType.ToString());
-        InternalRegisterAmmunition(ammunition, weaponConfig.ammunitionConfig, weaponConfig.weaponType, startPoint, dir);
+        // TODO;修改方向
+        var (ammunition, ammunitionConfig) = InternalGetAmmunition(ammunitionType, startPoint, quaternion.identity);
+        InternalRegisterAmmunition(ammunition, ammunitionConfig, weaponConfig.atkType, startPoint, dir);
     }
 
     public void RegisterWeapon(GameObject weapon, WeaponConfig weaponConfig)
     {
-        m_WeaponUpdater.RegisterWeapon(weapon, weaponConfig);
+        m_WeaponFactory.RegisterWeapon(weapon, weaponConfig);
     }
 
     public void UnRegisterWeapon(GameObject weapon)
     {
-        m_WeaponUpdater.UnRegisterWeapon(weapon);
+        WeaponType weaponType = m_WeaponFactory.GetWeaponType(weapon);
+        m_WeaponFactory.UnRegisterWeapon(weapon);
     }
 
     private void InternalUnRegisterAmmunition(GameObject ammunition)
     {
-        m_AmmunitionUpdater.UnRegisterAmmunition(ammunition);
+        m_AmmunitionFactory.UnRegisterAmmunition(ammunition);
     }
 
     private void InternalRegisterAmmunition(GameObject ammunition, AmmunitionConfig ammunitionConfig,
-        WeaponType weaponType, Vector2 startPoint,
+        AtkType atkType, Vector2 startPoint,
         Vector2 dir)
     {
-        m_AmmunitionUpdater.RegisterAmmunition(ammunition, ammunitionConfig, weaponType, startPoint, dir);
+        m_AmmunitionFactory.RegisterAmmunition(ammunition, ammunitionConfig, atkType, startPoint, dir);
+    }
+
+    private (GameObject, AmmunitionConfig) InternalGetAmmunition(AmmunitionType ammunitionType, Vector3 startPoint, Quaternion quaternion)
+    {
+        return (m_AmmunitionPool.GetObject(ammunitionType ,startPoint, quaternion),
+            m_AmmunitionFactory.GetAmmunitionConfig(ammunitionType));
     }
 }
