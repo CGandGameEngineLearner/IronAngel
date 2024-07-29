@@ -20,6 +20,23 @@ public class GlobalSetting : MonoBehaviour
     public float _DashCoolDownTime;
     public int _DashCount;
     public float _DashSpeed;
-    public float _DashTime;
     public int _MaxDashCount;
+
+    [Header("PlayerHand")]
+    public GameObject _PlayerLeftHand;
+    public GameObject _PlayerRightHand;
+
+    [Header("PlayerProperties")]
+    public int _Energy = 0;
+    public int _EnergyThreshold;
+    public int _EnergyLimition;
+    public int _Armor;
+    public int _BaseHP;
+
+    [Header("AudioUtils")]
+    public AudioConfig _AudioConfig;
+
+    [Header("WeaponConfig")]
+    public List<WeaponCat> _WeaponCats = new List<WeaponCat>();
+    public List<AmmunitionCat> _AmmunitionCats = new();
 }

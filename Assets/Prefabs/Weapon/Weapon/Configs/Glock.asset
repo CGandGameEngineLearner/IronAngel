@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: Glock
+  m_EditorClassIdentifier: Assembly-CSharp::WeaponConfig
+  m_Prefab: {fileID: 8270290095630009083, guid: 17e3fdf0100b0ce49baf705ea79b9cc8, type: 3}
+  m_MinPoolSize: 5
+  m_MaxPoolSize: 10
+  m_AtkType: 0
+  m_ammunitionType: 0
+  m_Interval: 0.5
+  m_MagSize: 30
+  m_SimShots: 1
+  m_SoundEffect: {fileID: 0}
+  m_EffectPrefab: {fileID: 0}

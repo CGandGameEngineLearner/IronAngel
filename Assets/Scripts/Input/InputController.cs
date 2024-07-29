@@ -1,17 +1,29 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class InputController
 {
     private PlayerInputConfig m_PlayerInputConfig;
+    private Gamepad m_GamePad;
 
 //  public---------------------------------------------------
     public void Init()
     {
         m_PlayerInputConfig = new PlayerInputConfig();
         m_PlayerInputConfig.Enable();
+    }
+    public void UpdateInputDevice()
+    {
+        m_GamePad = Gamepad.current;
+    }
+
+    public bool IsGamePadInput()
+    {
+        return m_GamePad != null;
     }
 
     public void DisableAllInput()
@@ -32,6 +44,11 @@ public class InputController
     public void EnablePlayerInput()
     {
         m_PlayerInputConfig.Player.Enable();
+    }
+
+    public Vector2 GetGamePadViewInput()
+    {
+        return m_PlayerInputConfig.Camera.View.ReadValue<Vector2>();
     }
 
     public Vector2 GetPlayerMoveInputVector2()
@@ -186,6 +203,101 @@ public class InputController
     public void RemoveCanceledActionToPlayerDash(Action func)
     {
         m_PlayerInputConfig.Player.Dash.canceled -= ctx =>
+        {
+            func?.Invoke();
+        };
+    }
+
+    public void AddStartedActionToPlayerShootLeft(Action func)
+    {
+        m_PlayerInputConfig.Player.Shoot_Left.started += ctx =>
+        {
+            func?.Invoke();
+        };
+    }
+
+    public void RemoveStartedActionToPlayerShootLeft(Action func)
+    {
+        m_PlayerInputConfig.Player.Shoot_Left.started -= ctx =>
+        {
+            func?.Invoke();
+        };
+    }
+
+    public void ExcuteActionWhilePlayerShootLeftInputPerformedAndStay(Action func)
+    {
+        if(m_PlayerInputConfig.Player.Shoot_Left.ReadValue<float>() != 0f)
+        {
+            func?.Invoke();
+        }
+    }
+
+    public void AddStartedActionToPlayerShootRight(Action func)
+    {
+        m_PlayerInputConfig.Player.Shoot_Right.started += ctx =>
+        {
+            func?.Invoke();
+        };
+    }
+
+    public void RemoveStartedActionToPlayerShootRight(Action func)
+    {
+        m_PlayerInputConfig.Player.Shoot_Right.started -= ctx =>
+        {
+            func?.Invoke();
+        };
+    }
+
+    public void ExcuteActionWhilePlayerShootRightInputPerformedAndStay(Action func)
+    {
+        if(m_PlayerInputConfig.Player.Shoot_Right.ReadValue<float>() != 0f)
+        {
+            func?.Invoke();
+        }
+    }
+
+    public void AddPerformedActionToPlayerThrowAndPickLeft(Action func)
+    {
+        m_PlayerInputConfig.Player.ThrowAndPick_Left.performed += ctx =>
+        {
+            func?.Invoke();
+        };
+    }
+
+    public void RemovePerformedActionToPlayerThrowAndPickLeft(Action func)
+    {
+        m_PlayerInputConfig.Player.ThrowAndPick_Left.performed -= ctx =>
+        {
+            func?.Invoke();
+        };
+    }
+
+    public void AddPerformedActionToPlayerThrowAndPickRight(Action func)
+    {
+        m_PlayerInputConfig.Player.ThrowAndPick_Right.performed += ctx =>
+        {
+            func?.Invoke();
+        };
+    }
+
+    public void RemovePerformedActionToPlayerThrowAndPickRight(Action func)
+    {
+        m_PlayerInputConfig.Player.ThrowAndPick_Right.performed -= ctx =>
+        {
+            func?.Invoke();
+        };
+    }
+    public void AddPerformedActionToPlayerInteract(Action func)
+    {
+        m_PlayerInputConfig.Player.Interact.performed += ctx =>
+        {
+            func?.Invoke();
+        };
+    }
+
+    public void RemovePerformedActionToPlayerInteract(Action func)
+    {
+        m_PlayerInputConfig.Player.Interact.performed -= ctx =>
         {
             func?.Invoke();
         };
