@@ -86,23 +86,43 @@ public class LogicStateManager : MonoBehaviour
         return m_LogicStateDic.ContainsKey(stateEnum)&&m_LogicStateDic[stateEnum].GetActive();
     }
 
-    public bool CheckState(List<ELogicState> included, List<ELogicState> excluded)
+    public bool IncludeState(List<ELogicState> stateEnums)
     {
-        foreach (var stateEnum in included)
+        foreach (var stateEnum in stateEnums)
         {
-            if(!IncludeState(stateEnum))
+            if (!IncludeState(stateEnum))
             {
                 return false;
             }
         }
-        foreach (var stateEnum in excluded)
+        return true;
+    }
+    
+
+    public bool CheckState(List<ELogicState> included, List<ELogicState> excluded)
+    {
+        if (included != null)
         {
-            if(IncludeState(stateEnum))
+            foreach (var stateEnum in included)
             {
-                return false;
+                if(!IncludeState(stateEnum))
+                {
+                    return false;
+                }
             }
         }
 
+        if (excluded != null)
+        {
+            foreach (var stateEnum in excluded)
+            {
+                if(IncludeState(stateEnum))
+                {
+                    return false;
+                }
+            }
+        }
+        
         return true;
     }
     
