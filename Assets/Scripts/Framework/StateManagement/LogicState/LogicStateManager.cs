@@ -7,12 +7,16 @@ using UnityEngine;
 
 public class LogicStateManager : MonoBehaviour
 {
-    private Dictionary<ELogicState,LogicState> m_LogicStateDic = new Dictionary<ELogicState, LogicState>();
-    private Dictionary<ELogicState,LogicState> m_FutureStatesBuffer = new Dictionary<ELogicState,LogicState>();
+    /// <summary>
+    /// 状态字典的哈希桶初始容量
+    /// </summary>
+    public int StateDictionaryCapacity = (int)ELogicState.Count;
+    private Dictionary<ELogicState, LogicState> m_LogicStateDic;
+    private Dictionary<ELogicState, LogicState> m_FutureStatesBuffer;
     
     
     public LogicStateConfig LogicStateConfig;
-    // Start is called before the first frame update
+    
 
     public bool AddState(ELogicState stateEnum)
     {
@@ -100,6 +104,13 @@ public class LogicStateManager : MonoBehaviour
         }
 
         return true;
+    }
+    
+    // Start is called before the first frame update
+    void Start()
+    {
+        m_LogicStateDic = new Dictionary<ELogicState, LogicState>(StateDictionaryCapacity);
+        m_FutureStatesBuffer = new Dictionary<ELogicState, LogicState>(StateDictionaryCapacity);
     }
 
     // Update is called once per frame

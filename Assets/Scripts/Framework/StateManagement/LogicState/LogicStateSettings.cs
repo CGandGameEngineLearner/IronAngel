@@ -6,6 +6,10 @@ public enum ELogicState
     PlayerWalking,
     PlayerDashing,
     AIPatroling,
+    
+    
+    
+    Count //此枚举的值为ELogicState的枚举种类的计数 所有的新增枚举不要加在它后面
 }
 
 public static class LogicStatesSettings
