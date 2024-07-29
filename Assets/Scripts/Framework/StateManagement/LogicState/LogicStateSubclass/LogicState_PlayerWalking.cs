@@ -24,5 +24,6 @@ public class LogicState_PlayerWalking : LogicState
     public override void OnStateOut()
     {
         Debug.Log("exit" + GetType());
+        EventCenter.Broadcast<bool>(EventType.StateToGlobal_PlayerWalkState, false);
     }
 }
