@@ -8,7 +8,7 @@ public class LogicState_PlayerDashing : LogicState
     public override void OnStateIn()
     {
         Debug.Log("enter" + GetType());
-        GetOwner().RemoveState(ELogicState.PlayerWalking);
+        //GetOwner().RemoveState(ELogicState.PlayerWalking);
         EventCenter.Broadcast<bool>(EventType.StateToGlobal_PlayerDashState, true);
     }
 
