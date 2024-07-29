@@ -1,17 +1,15 @@
 using UnityEngine;
 using BehaviorDesigner.Runtime.Tasks;
 
-public class Action_Patrol : Action
+public class Action_Chase : Action
 {
     private AIController m_AIController;
     public override void OnAwake()
     {
-        Debug.Log(GetType()+"OnEnable()");
         m_AIController = GetComponent<AIController>();
     }
     public override void OnStart()
     {
-        Debug.Log(GetType()+"OnStart()");
-        m_AIController.Patrol();
+        //m_AIController.Chase();
     }
 }

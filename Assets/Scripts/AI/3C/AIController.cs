@@ -1,12 +1,13 @@
 
 using UnityEngine;
 using UnityEngine.Splines;
-
+using System.Collections.Generic;
 
 
 public class AIController : MonoBehaviour
 {
     private AIMovement m_AIMovement;
+    private IAISensor m_AISensor;
 
     /// <summary>
     /// 训练路线
@@ -16,6 +17,7 @@ public class AIController : MonoBehaviour
     void Start()
     {
         m_AIMovement = GetComponent<AIMovement>();
+        m_AISensor = GetComponent<IAISensor>();
     }
 
     // Update is called once per frame
@@ -36,9 +38,18 @@ public class AIController : MonoBehaviour
         }
     }
 
+    public virtual void Chase(GameObject target)
+    {
+        m_AIMovement.Chase(target);
+    }
+
     public virtual bool SetDestination(Vector3 target)
     {
         return m_AIMovement.SetDestination(target);
     }
 
+    public List<GameObject> GetPerceiveGameObjects()
+    {
+        return m_AISensor.GetPerceiveGameObjects();
+    }
 }
