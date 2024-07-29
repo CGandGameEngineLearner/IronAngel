@@ -13,11 +13,12 @@ public class AmmunitionHandle
     public AmmunitionType ammunitionType;
     public AmmunitionConfig ammunitionConfig;
 
-    public void Init(GameObject ammunition, AmmunitionConfig ammunitionConfig, AtkType atkType,
+    public void Init(GameObject ammunition, AmmunitionType ammunitionType, AmmunitionConfig ammunitionConfig, AtkType atkType,
         Vector2 startPoint, Vector2 dir)
     {
         active = true;
-
+        
+        this.ammunitionType = ammunitionType;
         this.ammunition = ammunition;
         this.atkType = atkType;
         this.rigidbody2D = ammunition.GetComponent<Rigidbody2D>();
@@ -35,6 +36,7 @@ public class AmmunitionHandle
         ammunitionConfig = null;
         startPoint = Vector2.zero;
         dir = Vector2.up;
+        this.ammunitionType = AmmunitionType.Bullet;
     }
 }
 
@@ -87,15 +89,18 @@ public class AmmunitionFactory
     {
         return m_AmmunitionsDict[ammunition];
     }
+    
+    public bool GetAmmunitionHandleActive(GameObject ammunition)
+    {
+        return m_AmmunitionsDict[ammunition].active;
+    }
 
-
-    public void RegisterAmmunition(GameObject ammunition, AmmunitionConfig ammunitionConfig, AtkType atkType,
-        Vector2 startPoint,
-        Vector2 dir)
+    public void RegisterAmmunition(GameObject ammunition, AmmunitionType ammunitionType, AmmunitionConfig ammunitionConfig, AtkType atkType,
+        Vector2 startPoint, Vector2 dir)
     {
         if (m_AmmunitionsDict.ContainsKey(ammunition)) return;
 
-        m_HandlesToAdd.Enqueue(InternalGetAmmunitionHandle(ammunition, ammunitionConfig, atkType, startPoint, dir));
+        m_HandlesToAdd.Enqueue(InternalGetAmmunitionHandle(ammunition, ammunitionType, ammunitionConfig, atkType, startPoint, dir));
     }
 
 
@@ -155,25 +160,23 @@ public class AmmunitionFactory
                     AmmunitionHandle handle = m_AmmunitionsDict[ammunition];
                     InternalRecycleAmmunitionHandle(handle);
                 }
-
-                m_AmmunitionsDict.Remove(ammunition);
             }
         }
     }
 
 
-    private AmmunitionHandle InternalGetAmmunitionHandle(GameObject ammunition, AmmunitionConfig ammunitionConfig,
-        AtkType atkType,
+    private AmmunitionHandle InternalGetAmmunitionHandle(GameObject ammunition, AmmunitionType ammunitionType, AmmunitionConfig ammunitionConfig, AtkType atkType,
         Vector2 startPoint, Vector2 dir)
     {
         AmmunitionHandle handle = m_UsableQueue.Count > 0 ? m_UsableQueue.Dequeue() : new AmmunitionHandle();
-        handle.Init(ammunition, ammunitionConfig, atkType, startPoint, dir);
+        handle.Init(ammunition, ammunitionType, ammunitionConfig, atkType, startPoint, dir);
 
         return handle;
     }
 
     private void InternalRecycleAmmunitionHandle(AmmunitionHandle ammunitionHandle)
     {
+        m_AmmunitionsDict.Remove(ammunitionHandle.ammunition);
         onRecycle?.Invoke(ammunitionHandle.ammunitionType, ammunitionHandle.ammunition);
 
         ammunitionHandle.Clear();
