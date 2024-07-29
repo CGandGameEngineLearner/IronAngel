@@ -20,7 +20,7 @@ MonoBehaviour:
     excluded: 
   - stateEnum: 2
     Duration: Infinity
-    AutoStateOut: 0
+    AutoStateOut: 1
     included: 
     excluded: 03000000
   - stateEnum: 3

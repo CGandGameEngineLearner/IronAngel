@@ -15,7 +15,7 @@ public class AIController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        m_AIMovement = new AIMovement(gameObject);
+        m_AIMovement = GetComponent<AIMovement>();
     }
 
     // Update is called once per frame

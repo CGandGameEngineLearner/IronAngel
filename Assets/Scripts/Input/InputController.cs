@@ -10,6 +10,10 @@ public class InputController
     private PlayerInputConfig m_PlayerInputConfig;
     private Gamepad m_GamePad;
 
+    private Action m_PlayerMoveInputExcuting;
+    private Action m_PlayerLeftHandShooting;
+    private Action m_PlayerRightHandShooting;
+
 //  public---------------------------------------------------
     public void Init()
     {
@@ -54,6 +58,11 @@ public class InputController
     public Vector2 GetPlayerMoveInputVector2()
     {
         return m_PlayerInputConfig.Player.Move.ReadValue<Vector2>();
+    }
+
+    public bool IsPlayerMoveInput()
+    {
+        return m_PlayerInputConfig.Player.Move.ReadValue<Vector2>() != Vector2.zero;
     }
 
     public Vector3 GetMousePositionOnScreen()
@@ -168,12 +177,22 @@ public class InputController
         };
     }
 
-    public void ExcuteActionWhilePlayerMoveInputPerformedAndStay(Action func)
+    public void ExcuteActionWhilePlayerMoveInputPerformedAndStay()
     {
         if(m_PlayerInputConfig.Player.Move.ReadValue<Vector2>() != Vector2.zero)
         {
-            func?.Invoke();
+            m_PlayerMoveInputExcuting?.Invoke();
         }
+    }
+
+    public void AddActionWhilePlayerMoveInputPerformedAndStay(Action func)
+    {
+        m_PlayerMoveInputExcuting += func;
+    }
+
+    public void RemoveActionWhilePlayerMoveInputPerformedAndStay(Action func)
+    {
+        m_PlayerMoveInputExcuting -= func;
     }
 
     public void AddStartedActionToPlayerDash(Action func)
@@ -224,12 +243,22 @@ public class InputController
         };
     }
 
-    public void ExcuteActionWhilePlayerShootLeftInputPerformedAndStay(Action func)
+    public void ExcuteActionWhilePlayerShootLeftInputPerformedAndStay()
     {
         if(m_PlayerInputConfig.Player.Shoot_Left.ReadValue<float>() != 0f)
         {
-            func?.Invoke();
+            m_PlayerLeftHandShooting?.Invoke();
         }
+    }
+
+    public void AddActionWhilePlayerShootLeftInputPerformedAndStay(Action func)
+    {
+        m_PlayerLeftHandShooting += func;
+    }
+
+    public void RemoveActionWhilePlayerShootLeftInputPerformedAndStay(Action func)
+    {
+        m_PlayerLeftHandShooting -= func;
     }
 
     public void AddStartedActionToPlayerShootRight(Action func)
@@ -248,12 +277,22 @@ public class InputController
         };
     }
 
-    public void ExcuteActionWhilePlayerShootRightInputPerformedAndStay(Action func)
+    public void ExcuteActionWhilePlayerShootRightInputPerformedAndStay()
     {
         if(m_PlayerInputConfig.Player.Shoot_Right.ReadValue<float>() != 0f)
         {
-            func?.Invoke();
+            m_PlayerRightHandShooting?.Invoke();
         }
+    }
+
+    public void AddActionWhilePlayerShootRightInputPerformedAndStay(Action func)
+    {
+        m_PlayerRightHandShooting += func;
+    }
+
+    public void RemoveActionWhilePlayerShootRightInputPerformedAndStay(Action func)
+    {
+        m_PlayerRightHandShooting -= func;
     }
 
     public void AddPerformedActionToPlayerThrowAndPickLeft(Action func)

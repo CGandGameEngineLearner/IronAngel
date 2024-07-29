@@ -23,7 +23,9 @@ public class LogicStateConfig:ScriptableObject
     {
         if (!m_LogicStateEnumDic.ContainsKey(stateEnum))
         {
-            Debug.Log(stateEnum.ToString()+"使用了默认设置" );
+            #if UNITY_EDITOR
+            //Debug.Log(stateEnum.ToString()+"使用了默认设置" );
+            #endif
             return DefaultLogicStateSetting;
         }
         var result = m_LogicStateEnumDic[stateEnum];

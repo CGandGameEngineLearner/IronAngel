@@ -1,10 +1,15 @@
 using System.Collections.Generic;
 public enum ELogicState
 {
-    Default = 0,
-    Example = 1,
-    PlayerWalking = 2,
-    PlayerDashing = 3,
+    Default,
+    Example,
+    PlayerWalking,
+    PlayerDashing,
+    AIPatroling,
+    
+    
+    
+    Count //此枚举的值为ELogicState的枚举种类的计数 所有的新增枚举不要加在它后面
 }
 
 public static class LogicStatesSettings
@@ -20,7 +25,8 @@ public static class LogicStatesSettings
     {
         new LogicState(ELogicState.Default),
         new LogicState_Example(ELogicState.Example),
-        new LogicState(ELogicState.PlayerWalking),
+        new LogicState_PlayerWalking(ELogicState.PlayerWalking),
         new LogicState_PlayerDashing(ELogicState.PlayerDashing),
+        new LogicState(ELogicState.AIPatroling),
     };
 }

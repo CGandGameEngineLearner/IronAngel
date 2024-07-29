@@ -89,11 +89,11 @@ public class LogicState
         
     }
 
-    virtual public void SetActive(bool active)
+    public void SetActive(bool active)
     {
         m_Active = active;
     }
-    virtual public bool GetActive()
+    public bool GetActive()
     {
         return m_Active;
     }
@@ -103,7 +103,7 @@ public class LogicState
     /// 设置状态所在的LogicStateManager
     /// </summary>
     /// <param name="owner"></param>
-    virtual public void SetOwner(LogicStateManager owner)
+    public void SetOwner(LogicStateManager owner)
     {
         m_Owner = owner;
     }
@@ -112,7 +112,7 @@ public class LogicState
     /// 获取状态所在的LogicStateManager
     /// </summary>
     /// <returns></returns>
-    virtual public LogicStateManager GetOwner()
+    public LogicStateManager GetOwner()
     {
         return m_Owner;
     }
