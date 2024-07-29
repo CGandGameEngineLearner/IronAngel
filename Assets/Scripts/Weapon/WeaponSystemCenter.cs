@@ -31,7 +31,7 @@ public class WeaponSystemCenter
                     maxSize = weaponConfig.Value.minPoolSize
                 });
         }
-        
+
         foreach (var ammunitionConfig in ammunitionConfigList)
         {
             m_AmmunitionPool.AddPool(ammunitionConfig.Key,
@@ -55,16 +55,26 @@ public class WeaponSystemCenter
             m_WeaponFactory.GetWeaponConfig(weaponType));
     }
 
-    // TODO:爆炸物可能同时影响到多个unit，内部已经处理ammunition重复加入的问题，这里只是需要拿到表
-    // 但是之前就被注销掉的ammunition，后续就拿不到映射关系
-
     /// <summary>
     /// 伤害判定流程
     /// </summary>
     public void JudgeWithAmmunition(GameObject unitAtker, GameObject unitToDamage, GameObject ammunition)
     {
         // TODO: 结算流程
-        InternalUnRegisterAmmunition(ammunition);
+        // InternalUnRegisterAmmunition(ammunition);
+
+        // GetConfig and Handle
+        var ammunitionHandle = m_AmmunitionFactory.GetAmmunitionHandle(ammunition);
+        var ammunitionConfig = ammunitionHandle.ammunitionConfig;
+
+        // ProcessDamage 这里可以相应所有人的请求
+
+        // PostProcess只允许相应一个人的需求
+        
+        // PostProcess 生成后置物品，用默认的攻击类型，即放置在原地
+        var (postAmmunition, postAmmunitionConfig) = InternalGetAmmunition(ammunitionConfig.postAmmunitionType, ammunitionHandle.rigidbody2D.transform.position,
+            Quaternion.identity);
+        InternalRegisterAmmunition(postAmmunition, postAmmunitionConfig, AtkType.Default, ammunitionHandle.rigidbody2D.transform.position, Vector2.up);
     }
 
     public void FireWith(GameObject weapon, Vector2 startPoint, Vector2 dir)
@@ -102,9 +112,20 @@ public class WeaponSystemCenter
         m_AmmunitionFactory.RegisterAmmunition(ammunition, ammunitionConfig, atkType, startPoint, dir);
     }
 
-    private (GameObject, AmmunitionConfig) InternalGetAmmunition(AmmunitionType ammunitionType, Vector3 startPoint, Quaternion quaternion)
+    private (GameObject, AmmunitionConfig) InternalGetAmmunition(AmmunitionType ammunitionType, Vector3 startPoint,
+        Quaternion quaternion)
     {
-        return (m_AmmunitionPool.GetObject(ammunitionType ,startPoint, quaternion),
+        return (m_AmmunitionPool.GetObject(ammunitionType, startPoint, quaternion),
             m_AmmunitionFactory.GetAmmunitionConfig(ammunitionType));
+    }
+
+    /// <summary>
+    /// 获取子弹的后处理是否已经被请求。
+    /// 此行为只会在一帧内被调用多次，不存在跨帧的行为
+    /// </summary>
+    /// <returns></returns>
+    private bool InternalGetAmmunitionPostExisted(GameObject ammunRequester)
+    {
+        return (m_AmmunitionFactory.GetAmmunitionPostExisted(ammunRequester)) ;
     }
 }

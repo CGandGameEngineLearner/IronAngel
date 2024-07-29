@@ -53,11 +53,12 @@ public class AmmunitionFactory
     private Queue<AmmunitionHandle> m_UsableQueue = new();
 
     // AmmunitionStore----------------------
-    private HashSet<GameObject> m_ActiveAmmunition = new();
     private Queue<AmmunitionHandle> m_HandlesToAdd = new();
-    private Queue<GameObject> m_AmmunitionToRemove = new();
-
-    private Dictionary<GameObject, AmmunitionHandle> m_AmmunitionToUpdate = new();
+    private Dictionary<GameObject, AmmunitionHandle> m_AmmunitionsDict = new();
+    private Queue<AmmunitionHandle>[] m_AmmunitionQueueSwapChain = new []{new Queue<AmmunitionHandle>(), new Queue<AmmunitionHandle>()};
+    private int m_ChainIdx = 0;
+    // 已经被注册后处理的子弹集合
+    private HashSet<GameObject> m_AmmunitionPostSet = new();
 
     // recycle------------------------------
     private RecycleHandle onRecycle;
@@ -82,12 +83,17 @@ public class AmmunitionFactory
         return m_AmmunitionConfigs[ammunitionType];
     }
 
+    public AmmunitionHandle GetAmmunitionHandle(GameObject ammunition)
+    {
+        return m_AmmunitionsDict[ammunition];
+    }
+
 
     public void RegisterAmmunition(GameObject ammunition, AmmunitionConfig ammunitionConfig, AtkType atkType,
         Vector2 startPoint,
         Vector2 dir)
     {
-        if (m_ActiveAmmunition.Contains(ammunition)) return;
+        if (m_AmmunitionsDict.ContainsKey(ammunition)) return;
 
         m_HandlesToAdd.Enqueue(InternalGetAmmunitionHandle(ammunition, ammunitionConfig, atkType, startPoint, dir));
     }
@@ -95,45 +101,62 @@ public class AmmunitionFactory
 
     public void UnRegisterAmmunition(GameObject ammunition)
     {
-        if (!m_ActiveAmmunition.Contains(ammunition)) return;
+        if (!m_AmmunitionsDict.ContainsKey(ammunition)) return;
 
-        m_AmmunitionToRemove.Enqueue(ammunition);
+        m_AmmunitionsDict[ammunition].active = false;
     }
 
     public void Update()
     {
-        // 回收
-        while (m_AmmunitionToRemove.Count > 0)
-        {
-            GameObject ammunition = m_AmmunitionToRemove.Dequeue();
-            // get handle
-            if (m_AmmunitionToUpdate.ContainsKey(ammunition))
-            {
-                AmmunitionHandle handle = m_AmmunitionToUpdate[ammunition];
-                InternalRecycleAmmunitionHandle(handle);
-            }
+        // 交换链
+        var ammunitionQueueToUpdate = m_AmmunitionQueueSwapChain[m_ChainIdx];
+        m_ChainIdx = (m_ChainIdx + 1) % 2;
+        var ammunitionQueueToAddNextFrame = m_AmmunitionQueueSwapChain[m_ChainIdx];
 
-            m_ActiveAmmunition.Remove(ammunition);
-            m_AmmunitionToUpdate.Remove(ammunition);
-        }
 
         // 添加
         while (m_HandlesToAdd.Count > 0)
         {
             AmmunitionHandle ammunitionHandle = m_HandlesToAdd.Dequeue();
-            m_AmmunitionToUpdate.Add(ammunitionHandle.ammunition, ammunitionHandle);
+            if(m_AmmunitionsDict.ContainsKey(ammunitionHandle.ammunition)) continue;
+            
+            m_AmmunitionsDict.Add(ammunitionHandle.ammunition, ammunitionHandle);
+            ammunitionQueueToUpdate.Enqueue(ammunitionHandle);
         }
 
-        foreach (var ammunition in m_AmmunitionToUpdate)
+        // lastChainIdx是上一帧的子弹，更行完后加入到这一帧的m_ChainIdx
+        while (ammunitionQueueToUpdate.Count > 0)
         {
-            if (ammunition.Value.active == false) continue;
-            switch (ammunition.Value.atkType)
+            // 如果handle激活态,就进行更新，如果非激活态，就删除
+            var ammunitionHandle = ammunitionQueueToUpdate.Dequeue();
+            if (ammunitionHandle.active)
             {
-                case AtkType.ShotGun:
-                    // 执行路线
-                    InternalProcessShotGunAmmunition(ammunition.Key, ammunition.Value);
-                    break;
-                default: break;
+                // update
+                switch (ammunitionHandle.atkType)
+                {
+                    case AtkType.Default:
+                        break;
+                    case AtkType.ShotGun:
+                        InternalProcessShotGunAmmunition(ammunitionHandle);
+                        break;
+                    case AtkType.Laser:
+                        break;
+                }
+
+                ammunitionQueueToAddNextFrame.Enqueue(ammunitionHandle);
+            }
+            else
+            {
+                // release 
+                GameObject ammunition = ammunitionHandle.ammunition;
+                // get handle
+                if (m_AmmunitionsDict.ContainsKey(ammunition))
+                {
+                    AmmunitionHandle handle = m_AmmunitionsDict[ammunition];
+                    InternalRecycleAmmunitionHandle(handle);
+                }
+
+                m_AmmunitionsDict.Remove(ammunition);
             }
         }
     }
@@ -144,9 +167,7 @@ public class AmmunitionFactory
         Vector2 startPoint, Vector2 dir)
     {
         AmmunitionHandle handle = m_UsableQueue.Count > 0 ? m_UsableQueue.Dequeue() : new AmmunitionHandle();
-
         handle.Init(ammunition, ammunitionConfig, atkType, startPoint, dir);
-        m_ActiveAmmunition.Add(ammunition);
 
         return handle;
     }
@@ -159,9 +180,10 @@ public class AmmunitionFactory
         m_UsableQueue.Enqueue(ammunitionHandle);
     }
 
-    private void InternalProcessShotGunAmmunition(GameObject gameObject, AmmunitionHandle ammunitionHandle)
+    private void InternalProcessShotGunAmmunition(AmmunitionHandle ammunitionHandle)
     {
         // gameObject.GetComponent<Rigidbody2D>()
+        GameObject ammunition = ammunitionHandle.ammunition;
         Rigidbody2D rigidbody2D = ammunitionHandle.rigidbody2D;
         float speed = ammunitionHandle.ammunitionConfig.speed;
         float lifeDis = ammunitionHandle.ammunitionConfig.lifeDistance;
@@ -175,7 +197,12 @@ public class AmmunitionFactory
 
         if ((position - startPoint).magnitude > lifeDis)
         {
-            UnRegisterAmmunition(gameObject);
+            UnRegisterAmmunition(ammunition);
         }
+    }
+
+    public bool GetAmmunitionPostExisted(GameObject ammunitionRequester)
+    {
+        return true;
     }
 }

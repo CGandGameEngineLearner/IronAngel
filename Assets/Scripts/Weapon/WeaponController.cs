@@ -6,15 +6,14 @@ using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
 
 
-
 public class WeaponController : MonoBehaviour
 {
     [SerializeField] private Transform character;
     [SerializeField] private List<WeaponCat> m_WeaponCats = new List<WeaponCat>();
     [SerializeField] private List<AmmunitionCat> m_AmmunitionCats = new();
 
-
-    [Space] [SerializeField] private GameObject weapon;
+    [Space] 
+    [SerializeField] private GameObject weapon;
 
 
     private WeaponSystemCenter m_WeaponSystemCenter = new();
@@ -42,7 +41,7 @@ public class WeaponController : MonoBehaviour
         var (newWeapon, newConfig) = m_WeaponSystemCenter.GetWeapon(WeaponType.Glock);
         this.weapon = newWeapon;
         m_WeaponSystemCenter.RegisterWeapon(weapon, newConfig);
-        
+
         weapon.transform.SetParent(transform);
         weapon.transform.localPosition = Vector3.zero;
     }
@@ -56,7 +55,7 @@ public class WeaponController : MonoBehaviour
             Vector3 mousePosition = Input.mousePosition;
             mousePosition.z = -10; // 设置深度值
             Vector3 worldPosition = Camera.main.ScreenToWorldPoint(mousePosition);
-            
+
             m_WeaponSystemCenter.FireWith(weapon, transform.position, worldPosition - transform.position);
         }
     }
