@@ -17,7 +17,7 @@ public class GlobalController : MonoBehaviour
         m_WeaponSystemCenter.RegisterWeapon(newWeapon, newConfig);
         m_InputController.AddActionWhilePlayerShootLeftInputPerformedAndStay(() =>
         {
-            m_WeaponSystemCenter.FireWith(newWeapon, m_Player.GetPlayerLeftHandPosition(), m_InputController.GetMousePositionInWorldSpace(m_CameraController.GetCamera()) - m_Player.GetPlayerLeftHandPosition());
+            m_WeaponSystemCenter.FireWith(newWeapon, m_Player.GetPlayerLeftHandPosition(), (m_InputController.GetMousePositionInWorldSpace(m_CameraController.GetCamera()) - m_Player.GetPlayerPosition()).normalized);
         });
     }
     // private------------------------------------------
