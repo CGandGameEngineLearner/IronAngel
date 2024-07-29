@@ -165,10 +165,10 @@ MonoBehaviour:
   _CameraMaxDistance: 0.378
   _Player: {fileID: 1709157211}
   _MoveSpeed: 5
-  _DashCoolDownTime: 3
+  _DashCoolDownTime: 1
   _DashCount: 2
   _DashSpeed: 30
-  _MaxDashCount: 5
+  _MaxDashCount: 100
   _PlayerLeftHand: {fileID: 128815572}
   _PlayerRightHand: {fileID: 154590028}
   _Energy: 0

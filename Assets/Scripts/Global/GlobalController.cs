@@ -10,20 +10,14 @@ public class GlobalController : MonoBehaviour
     private InputController m_InputController;
     private WeaponSystemCenter m_WeaponSystemCenter;
 
-    private GameObject g;
-
     //  public------------------------------------------
     public void Test()
     {
         var (newWeapon, newConfig) = m_WeaponSystemCenter.GetWeapon(WeaponType.Glock);
         m_WeaponSystemCenter.RegisterWeapon(newWeapon, newConfig);
-        g = newWeapon;
-    }
-    public void Test1()
-    {
-        m_InputController.ExcuteActionWhilePlayerShootLeftInputPerformedAndStay(() =>
+        m_InputController.AddActionWhilePlayerShootLeftInputPerformedAndStay(() =>
         {
-            m_WeaponSystemCenter.FireWith(g, m_Player.GetPlayerLeftHandPosition(), m_InputController.GetMousePositionInWorldSpace(m_CameraController.GetCamera()) - m_Player.GetPlayerLeftHandPosition());
+            m_WeaponSystemCenter.FireWith(newWeapon, m_Player.GetPlayerLeftHandPosition(), m_InputController.GetMousePositionInWorldSpace(m_CameraController.GetCamera()) - m_Player.GetPlayerLeftHandPosition());
         });
     }
     // private------------------------------------------
@@ -89,17 +83,18 @@ public class GlobalController : MonoBehaviour
     {
         UpdateCameraPosition();
         UpdatePlayerRotation();
+        UpdatePlayerMovement();
         m_Player.Update();
         m_InputController.UpdateInputDevice();
         m_WeaponSystemCenter.Update();
-
-        Test1();
     }
 
     private void FixedUpdate()
     {
-        MovePlayer();
         m_Player.FixedUpdate();
+        m_InputController.ExcuteActionWhilePlayerMoveInputPerformedAndStay();
+        m_InputController.ExcuteActionWhilePlayerShootLeftInputPerformedAndStay();
+        m_InputController.ExcuteActionWhilePlayerShootRightInputPerformedAndStay();
     }
 
     private void UpdateCameraPosition()
@@ -126,13 +121,16 @@ public class GlobalController : MonoBehaviour
         }
     }
 
-    private void MovePlayer()
+    private void UpdatePlayerMovement()
     {
-        m_InputController.ExcuteActionWhilePlayerMoveInputPerformedAndStay(() =>
+        if(m_InputController.IsPlayerMoveInput())
         {
             m_Player.GetPlayer().GetComponent<LogicStateManager>().AddState(ELogicState.PlayerWalking);
-            m_Player.Move(m_InputController.GetPlayerMoveInputVector2());
-        });
+        }
+        else
+        {
+            m_Player.GetPlayer().GetComponent<LogicStateManager>().RemoveState(ELogicState.PlayerWalking);
+        }
     }
 
     private void RegisterInputActionFunc()
@@ -174,6 +172,11 @@ public class GlobalController : MonoBehaviour
             {
                 m_Player.Dash();
             }
+        });
+        // 玩家移动
+        EventCenter.AddListener<bool>(EventType.StateToGlobal_PlayerWalkState, (walking) =>
+        {
+            m_Player.Move(m_InputController.GetPlayerMoveInputVector2());
         });
     }
 }

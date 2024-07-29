@@ -2,24 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LogicState_PlayerDashing : LogicState
+public class LogicState_PlayerWalking : LogicState
 {
-    public LogicState_PlayerDashing(ELogicState stateEnum) : base(stateEnum) { }
+    public LogicState_PlayerWalking(ELogicState stateEnum) : base(stateEnum) { }
     public override void OnStateIn()
     {
         Debug.Log("enter" + GetType());
-        GetOwner().RemoveState(ELogicState.PlayerWalking);
-        EventCenter.Broadcast<bool>(EventType.StateToGlobal_PlayerDashState, true);
+        
     }
 
     public override void Update(float deltaTime)
     {
-        
+
     }
 
     public override void FixedUpdate()
     {
-        EventCenter.Broadcast<bool>(EventType.StateToGlobal_PlayerDashState, false);
+        EventCenter.Broadcast<bool>(EventType.StateToGlobal_PlayerWalkState, true);
     }
 
     public override void OnStateOut()
