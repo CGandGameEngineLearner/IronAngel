@@ -171,7 +171,7 @@ MonoBehaviour:
   _MaxDashCount: 100
   _PlayerLeftHand: {fileID: 128815572}
   _PlayerRightHand: {fileID: 154590028}
-  _DetectRange: 3
+  _DetectRange: 5
   _WeaponLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -1026,7 +1026,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8394665457635139403, guid: b319a1beeb967194bbc9b9fa245fb3d7, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 8394665457635139403, guid: b319a1beeb967194bbc9b9fa245fb3d7, type: 3}
       propertyPath: m_LocalPosition.x

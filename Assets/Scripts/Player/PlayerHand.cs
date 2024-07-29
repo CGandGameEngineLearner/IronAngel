@@ -21,6 +21,7 @@ public class PlayerHand
         m_PlayerLeftHand = spec.m_PlayerLeftHand ;
         m_PlayerRightHand = spec.m_PlayerRightHand;
         m_DetectRange = spec.m_DetectRange;
+        m_WeaponLayer = spec.m_WeaponLayer;
     }
 
     public Vector3 GetPlayerLeftHandPosition()
