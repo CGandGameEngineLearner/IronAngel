@@ -37,11 +37,13 @@ public class PlayerHand
     public void SetPlayerLeftHandObject(GameObject obj)
     {
         m_ObjectInLeftHand = obj;
+        obj?.SetActive(false);
     }
 
     public void SetPlayerRightHandObject(GameObject obj)
     {
         m_ObjectInRightHand = obj;
+        obj?.SetActive(false);
     }
 
     public GameObject GetPlayerLeftHandObject()
@@ -49,9 +51,33 @@ public class PlayerHand
         return m_ObjectInLeftHand;
     }
 
+    public GameObject DropPlayerLeftHandObject(Vector3 pos)
+    {
+        if(m_ObjectInLeftHand != null)
+        {
+            m_ObjectInLeftHand.SetActive(true);
+            m_ObjectInLeftHand.transform.position = pos;
+        }
+        var g = m_ObjectInLeftHand;
+        m_ObjectInLeftHand = null;
+        return g;
+    }
+
     public GameObject GetPlayerRightHandObject()
     {
         return m_ObjectInRightHand;
+    }
+
+    public GameObject DropPlayerRightHandObject(Vector3 pos)
+    {
+        if(m_ObjectInRightHand != null)
+        {
+            m_ObjectInRightHand.SetActive(true);
+            m_ObjectInRightHand.transform.position = pos;
+        }
+        var g = m_ObjectInRightHand;
+        m_ObjectInRightHand = null;
+        return g;
     }
 
     public Collider2D[] DetectAllWeaponInCircle()

@@ -159,14 +159,10 @@ public class GlobalController : MonoBehaviour
         // 玩家拾取武器
         m_InputController.AddPerformedActionToPlayerThrowAndPickLeft(() =>
         {
-            var handWeapon = m_Player.GetPlayerLeftHandObject();
+            var handWeapon = m_Player.DropPlayerLeftHandObject(m_Player.GetPlayerPosition());
             var nearestWeapon = m_Player.GetNearestWeapon();
-
+            Debug.Log(handWeapon);
             m_Player.SetPlayerLeftHandObject(nearestWeapon);
-            if(handWeapon)
-            {
-                handWeapon.transform.position = m_Player.GetPlayerLeftHandObject().transform.position;
-            }
         });
         m_InputController.AddPerformedActionToPlayerThrowAndPickRight(() =>
         {

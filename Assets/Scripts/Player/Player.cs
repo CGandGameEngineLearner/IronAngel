@@ -216,6 +216,16 @@ public class Player
     {
         return m_PlayerHand.GetNearestWeapon();
     }
+
+    public GameObject DropPlayerLeftHandObject(Vector3 pos)
+    {
+        return m_PlayerHand.DropPlayerLeftHandObject(pos);
+    }
+
+    public GameObject DropPlayerRightHandObject(Vector3 pos)
+    {
+        return m_PlayerHand.DropPlayerRightHandObject(pos);
+    }
 }
 
 public struct PlayerSpec
