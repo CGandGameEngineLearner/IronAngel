@@ -6,11 +6,16 @@ public enum AtkType
     ShotGun = 0,
     Laser = 1,
     MissileLauncher = 2,
+    Default,
 }
 
 public enum AmmunitionType
 {
-    Bullet = 0,
+    // PostProcess
+    PostProcess_Expolde = 0,
+    
+    
+    Bullet,
 }
 
 public enum WeaponType
@@ -61,9 +66,11 @@ public class AmmunitionConfig : ItemConfig
 {
     public float speed => m_Speed;
     public float lifeDistance => m_LifeDistance;
+    public AmmunitionType postAmmunitionType => m_PostAmmunitionType;
 
     [Header("子弹属性配置")]
     [SerializeField] private float m_Speed;
     [SerializeField] private float m_LifeDistance;
-    
+    [SerializeField] private AmmunitionType m_PostAmmunitionType;
+
 }

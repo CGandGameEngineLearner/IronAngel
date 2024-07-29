@@ -37,7 +37,10 @@ public class PlayerHand
     public void SetPlayerLeftHandWeapon(GameObject obj)
     {
         m_ObjectInLeftHand = obj;
-        if(m_ObjectInLeftHand != null)
+#if UNITY_EDITOR
+        Debug.Log("Left hand get" + obj);
+#endif
+        if (m_ObjectInLeftHand != null)
         {
             if(obj.TryGetComponent<BoxCollider2D>(out var collider))
             {
@@ -50,6 +53,9 @@ public class PlayerHand
     public void SetPlayerRightHandWeapon(GameObject obj)
     {
         m_ObjectInRightHand = obj;
+#if UNITY_EDITOR
+        Debug.Log("Right hand get" +  obj);
+#endif
         if( m_ObjectInRightHand != null)
         {
             if (obj.TryGetComponent<BoxCollider2D>(out var collider))

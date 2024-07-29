@@ -11,13 +11,33 @@ public class GlobalController : MonoBehaviour
     private WeaponSystemCenter m_WeaponSystemCenter;
 
     //  public------------------------------------------
+    public WeaponSystemCenter WeaponSystemCenter
+    {
+        get { return m_WeaponSystemCenter; }
+    }
+    public Player Player
+    {
+        get { return m_Player; }
+    }
+    public InputController InputController
+    {
+        get { return m_InputController; }
+    }
+    public CameraController CameraController
+    {
+        get { return CameraController; }
+    }
     public void Test()
     {
         var (newWeapon, newConfig) = m_WeaponSystemCenter.GetWeapon(WeaponType.Glock);
         m_WeaponSystemCenter.RegisterWeapon(newWeapon, newConfig);
         m_InputController.AddActionWhilePlayerShootLeftInputPerformedAndStay(() =>
         {
-            m_WeaponSystemCenter.FireWith(newWeapon, m_Player.GetPlayerLeftHandPosition(), (m_InputController.GetMousePositionInWorldSpace(m_CameraController.GetCamera()) - m_Player.GetPlayerPosition()).normalized);
+            m_WeaponSystemCenter.FireWith(newWeapon, m_Player.GetPlayerLeftHandPosition(), m_InputController.GetMousePositionInWorldSpace(m_CameraController.GetCamera()) - m_Player.GetPlayerPosition());
+        });
+        m_InputController.AddActionWhilePlayerShootRightInputPerformedAndStay(() =>
+        {
+            m_WeaponSystemCenter.FireWith(newWeapon, m_Player.GetPlayerRightHandPosition(), m_InputController.GetMousePositionInWorldSpace(m_CameraController.GetCamera()) - m_Player.GetPlayerPosition());
         });
     }
     // private------------------------------------------
@@ -169,7 +189,13 @@ public class GlobalController : MonoBehaviour
         });
         m_InputController.AddPerformedActionToPlayerThrowAndPickRight(() =>
         {
+            // 这里的交互顺序不能换
+            // 必须先获取最近武器再使得玩家丢下武器
+            // 否则会有碰撞体冲突的问题
+            var nearestWeapon = m_Player.GetNearestWeapon();
+            var handWeapon = m_Player.DropPlayerRightHandWeapon(m_Player.GetPlayerPosition());
 
+            m_Player.SetPlayerRightHandWeapon(nearestWeapon);
         });
     }
     
