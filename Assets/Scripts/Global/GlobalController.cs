@@ -43,6 +43,8 @@ public class GlobalController : MonoBehaviour
         playerSpec.m_EnergyLimition = setting._EnergyLimition;
         playerSpec.m_BaseHP = setting._BaseHP;
         playerSpec.m_Armor = setting._Armor;
+        playerSpec.m_DetectRange = setting._DetectRange;
+        playerSpec.m_WeaponLayer = setting._WeaponLayer;
         m_Player.Init(playerSpec);
 
         m_InputController = new InputController();
@@ -153,6 +155,15 @@ public class GlobalController : MonoBehaviour
             {
                 m_Player.GetPlayer().GetComponent<LogicStateManager>().AddState(ELogicState.PlayerDashing);
             }
+        });
+        // 玩家拾取武器
+        m_InputController.AddPerformedActionToPlayerThrowAndPickLeft(() =>
+        {
+
+        });
+        m_InputController.AddPerformedActionToPlayerThrowAndPickRight(() =>
+        {
+
         });
     }
     

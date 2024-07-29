@@ -26,8 +26,11 @@ public class Player
 
         m_PlayerHand = new PlayerHand();
         PlayerHandSpec handSpec = new PlayerHandSpec();
+        handSpec.m_Player = m_Player;
         handSpec.m_PlayerLeftHand = spec.m_PlayerLeftHand;
         handSpec.m_PlayerRightHand = spec.m_PlayerRightHand;
+        handSpec.m_DetectRange = spec.m_DetectRange;
+        handSpec.m_WeaponLayer = spec.m_WeaponLayer;
         m_PlayerHand.Init(handSpec);
 
         m_PlayerProperties = new PlayerProperties();
@@ -208,6 +211,11 @@ public class Player
     {
         return m_PlayerHand.GetPlayerRightHandPosition();
     }
+
+    public GameObject GetNearestWeapon()
+    {
+        return m_PlayerHand.GetNearestWeapon();
+    }
 }
 
 public struct PlayerSpec
@@ -224,6 +232,8 @@ public struct PlayerSpec
     // Hand
     public GameObject m_PlayerLeftHand;
     public GameObject m_PlayerRightHand;
+    public float m_DetectRange;
+    public LayerMask m_WeaponLayer;
 
     // Properties
     public int m_Energy;
