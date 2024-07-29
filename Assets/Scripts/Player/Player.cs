@@ -97,24 +97,24 @@ public class Player
         m_PlayerMovement.ChangeDashCount(val);
     }
 
-    public void SetPlayerLeftHandObject(GameObject obj)
+    public void SetPlayerLeftHandWeapon(GameObject obj)
     {
-        m_PlayerHand.SetPlayerLeftHandObject(obj);
+        m_PlayerHand.SetPlayerLeftHandWeapon(obj);
     }
 
-    public void SetPlayerRightHandObject(GameObject obj)
+    public void SetPlayerRightHandWeapon(GameObject obj)
     {
-        m_PlayerHand.SetPlayerRightHandObject(obj);
+        m_PlayerHand.SetPlayerRightHandWeapon(obj);
     }
 
-    public GameObject GetPlayerLeftHandObject()
+    public GameObject GetPlayerLeftHandWeapon()
     {
-        return m_PlayerHand.GetPlayerLeftHandObject();
+        return m_PlayerHand.GetPlayerLeftHandWeapon();
     }
 
-    public GameObject GetPlayerRightHandObject()
+    public GameObject GetPlayerRightHandWeapon()
     {
-        return m_PlayerHand.GetPlayerRightHandObject();
+        return m_PlayerHand.GetPlayerRightHandWeapon();
     }
 
     public void SetPlayerEnergy(int val)
@@ -217,14 +217,14 @@ public class Player
         return m_PlayerHand.GetNearestWeapon();
     }
 
-    public GameObject DropPlayerLeftHandObject(Vector3 pos)
+    public GameObject DropPlayerLeftHandWeapon(Vector3 pos)
     {
-        return m_PlayerHand.DropPlayerLeftHandObject(pos);
+        return m_PlayerHand.DropPlayerLeftHandWeapon(pos);
     }
 
-    public GameObject DropPlayerRightHandObject(Vector3 pos)
+    public GameObject DropPlayerRightHandWeapon(Vector3 pos)
     {
-        return m_PlayerHand.DropPlayerRightHandObject(pos);
+        return m_PlayerHand.DropPlayerRightHandWeapon(pos);
     }
 }
 

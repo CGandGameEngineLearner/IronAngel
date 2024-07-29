@@ -34,46 +34,68 @@ public class PlayerHand
         return m_PlayerRightHand.transform.position;
     }
 
-    public void SetPlayerLeftHandObject(GameObject obj)
+    public void SetPlayerLeftHandWeapon(GameObject obj)
     {
         m_ObjectInLeftHand = obj;
-        obj?.SetActive(false);
+        if(m_ObjectInLeftHand != null)
+        {
+            if(obj.TryGetComponent<BoxCollider2D>(out var collider))
+            {
+                collider.enabled = false;
+            }
+            obj.SetActive(false);
+        }
     }
 
-    public void SetPlayerRightHandObject(GameObject obj)
+    public void SetPlayerRightHandWeapon(GameObject obj)
     {
         m_ObjectInRightHand = obj;
-        obj?.SetActive(false);
+        if( m_ObjectInRightHand != null)
+        {
+            if (obj.TryGetComponent<BoxCollider2D>(out var collider))
+            {
+                collider.enabled = false;
+            }
+            obj.SetActive(false);
+        }
     }
 
-    public GameObject GetPlayerLeftHandObject()
+    public GameObject GetPlayerLeftHandWeapon()
     {
         return m_ObjectInLeftHand;
     }
 
-    public GameObject DropPlayerLeftHandObject(Vector3 pos)
+    public GameObject DropPlayerLeftHandWeapon(Vector3 pos)
     {
         if(m_ObjectInLeftHand != null)
         {
             m_ObjectInLeftHand.SetActive(true);
             m_ObjectInLeftHand.transform.position = pos;
+            if(m_ObjectInLeftHand.TryGetComponent<BoxCollider2D>(out var collider))
+            {
+                collider.enabled = true;
+            }
         }
         var g = m_ObjectInLeftHand;
         m_ObjectInLeftHand = null;
         return g;
     }
 
-    public GameObject GetPlayerRightHandObject()
+    public GameObject GetPlayerRightHandWeapon()
     {
         return m_ObjectInRightHand;
     }
 
-    public GameObject DropPlayerRightHandObject(Vector3 pos)
+    public GameObject DropPlayerRightHandWeapon(Vector3 pos)
     {
         if(m_ObjectInRightHand != null)
         {
             m_ObjectInRightHand.SetActive(true);
             m_ObjectInRightHand.transform.position = pos;
+            if(m_ObjectInRightHand.TryGetComponent<BoxCollider2D>(out var collider))
+            {
+                collider.enabled = true;
+            }
         }
         var g = m_ObjectInRightHand;
         m_ObjectInRightHand = null;
