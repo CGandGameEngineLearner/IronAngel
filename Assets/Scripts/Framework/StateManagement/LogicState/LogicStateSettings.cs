@@ -6,7 +6,7 @@ public enum ELogicState
     PlayerWalking,
     PlayerDashing,
     AIPatroling,
-    
+    AIVisionPerceived,
     
     
     Count //此枚举的值为ELogicState的枚举种类的计数 所有的新增枚举不要加在它后面
@@ -28,5 +28,6 @@ public static class LogicStatesSettings
         new LogicState_PlayerWalking(ELogicState.PlayerWalking),
         new LogicState_PlayerDashing(ELogicState.PlayerDashing),
         new LogicState(ELogicState.AIPatroling),
+        new LogicState(ELogicState.AIVisionPerceived),
     };
 }
