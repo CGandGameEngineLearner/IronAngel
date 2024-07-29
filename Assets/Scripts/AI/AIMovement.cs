@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.AI;
-
+using UnityEngine.Splines;
+using System.Collections;
+using UnityEngine.Animations;
 public class AIMovement
 {
     private GameObject m_GameObject;
@@ -11,9 +13,20 @@ public class AIMovement
         agent = m_GameObject.GetComponent<NavMeshAgent>();
     }
 
-    public void SetDestination(Vector3 target)
+    public virtual bool SetDestination(Vector3 target)
     {
-        agent.SetDestination(target);
+        return agent.SetDestination(target);
     }
+
+    public virtual void Patrol(SplineContainer PatrolRoute)
+    {
+
+    }
+
+    // public virtual IEnumerator RunPatrolWithFixedRoute(SplineContainer PatrolRoute)
+    // {
+    //     Vector3 firstPoint = PatrolRoute.GetPoint(0);
+    
+    // }
        
 }
