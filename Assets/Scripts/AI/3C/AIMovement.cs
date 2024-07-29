@@ -8,11 +8,25 @@ public class AIMovement : MonoBehaviour
     
     private NavMeshAgent agent;
     private LogicStateManager m_LogicStateManager;
+    private Vector3 m_LastPos;
+    private Vector3 m_MoveDirection = Vector3.zero;
 
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         m_LogicStateManager = GetComponent<LogicStateManager>();
+        m_LastPos = transform.position;
+    }
+
+    private void Update()
+    {
+        m_MoveDirection = (transform.position - m_LastPos).normalized;
+        m_LastPos = transform.position;
+        if (m_MoveDirection.magnitude > 0)
+        {
+            float angle = Vector2.Angle(new Vector2(0, 1), m_MoveDirection);
+            transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(m_MoveDirection.y,m_MoveDirection.x) * Mathf.Rad2Deg );
+        }
     }
 
     public virtual bool SetDestination(Vector3 target)

@@ -37,6 +37,7 @@ public class VisionSensor:MonoBehaviour,IAISensor
 
     private void Start()
     {
+        RelativeSightDirection.Normalize();
         m_AbsoluteSightDirection = transform.TransformDirection(RelativeSightDirection);
         m_LogicStateManager = GetComponent<LogicStateManager>();
     }
