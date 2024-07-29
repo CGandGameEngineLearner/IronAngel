@@ -1,10 +1,11 @@
 using System.Collections.Generic;
 public enum ELogicState
 {
-    Default = 0,
-    Example = 1,
-    PlayerWalking = 2,
-    PlayerDashing = 3,
+    Default,
+    Example,
+    PlayerWalking,
+    PlayerDashing,
+    AIPatroling,
 }
 
 public static class LogicStatesSettings
@@ -22,5 +23,6 @@ public static class LogicStatesSettings
         new LogicState_Example(ELogicState.Example),
         new LogicState(ELogicState.PlayerWalking),
         new LogicState_PlayerDashing(ELogicState.PlayerDashing),
+        new LogicState(ELogicState.AIPatroling),
     };
 }
