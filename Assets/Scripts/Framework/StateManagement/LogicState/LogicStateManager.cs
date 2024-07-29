@@ -1,15 +1,15 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 
 public class LogicStateManager : MonoBehaviour
 {
     private Dictionary<ELogicState,LogicState> m_LogicStateDic = new Dictionary<ELogicState, LogicState>();
-    private Queue<ELogicState> m_FutureStates = new Queue<ELogicState>();
-    private Queue<ELogicState> m_AbandenStates = new Queue<ELogicState>();
-
+    private Dictionary<ELogicState,LogicState> m_FutureStatesBuffer = new Dictionary<ELogicState,LogicState>();
+    
     
     public LogicStateConfig LogicStateConfig;
     // Start is called before the first frame update
@@ -19,7 +19,27 @@ public class LogicStateManager : MonoBehaviour
         LogicStateSetting stateSetting = LogicStateConfig.GetLogicStateSetting(stateEnum);
         if(CheckState(stateSetting.included,stateSetting.excluded))
         {
-            m_FutureStates.Enqueue(stateEnum);
+            
+            if(m_LogicStateDic.ContainsKey(stateEnum))
+            {
+                var state = m_LogicStateDic[stateEnum];
+                state.StartTime = Time.time;
+                state.Init();
+                state.OnStateIn();
+                m_FutureStatesBuffer[stateEnum] = state;
+            }
+            else
+            {
+                LogicState stateTemplate = LogicStateConfig.GetLogicStateTemplate(stateEnum);
+                Type stateType = stateTemplate.GetType();
+                LogicState newState = (LogicState)(Activator.CreateInstance(stateType,stateEnum));
+                newState.SetOwner(this);
+                newState.Duration = stateTemplate.Duration;
+                newState.StartTime = Time.time;
+                newState.Init();
+                newState.OnStateIn();
+                m_FutureStatesBuffer[stateEnum] = newState;
+            }
             return true;
         }
         else
@@ -28,13 +48,34 @@ public class LogicStateManager : MonoBehaviour
         }
     }
 
-    public void RemoveState(ELogicState stateEnum)
+    public bool RemoveState(ELogicState stateEnum)
     {
-        m_AbandenStates.Enqueue(stateEnum);
+        if (m_FutureStatesBuffer.ContainsKey(stateEnum))
+        {
+            m_FutureStatesBuffer[stateEnum].OnStateOut();
+            m_FutureStatesBuffer[stateEnum].UnInit();
+            m_FutureStatesBuffer.Remove(stateEnum);
+        }
+        else if(m_LogicStateDic.ContainsKey(stateEnum))
+        {
+            m_LogicStateDic[stateEnum].SetActive(false);
+            m_LogicStateDic[stateEnum].OnStateOut();
+            m_LogicStateDic[stateEnum].UnInit();
+        }
+        else
+        {
+            return false;
+        }
+
+        return true;
     }
 
     public bool IncludeState(ELogicState stateEnum)
     {
+        if (m_FutureStatesBuffer.ContainsKey(stateEnum))
+        {
+            return true;
+        }
         return m_LogicStateDic.ContainsKey(stateEnum)&&m_LogicStateDic[stateEnum].GetActive();
     }
 
@@ -71,18 +112,19 @@ public class LogicStateManager : MonoBehaviour
                 state.Duration = stateSetting.Duration;
                 if(stateSetting.AutoStateOut&&!CheckState(stateSetting.included,stateSetting.excluded))
                 {
-                    RemoveStateImmediately(stateEnum);
+                    RemoveState(stateEnum);
                 }
                 if(Time.time >= state.EndTime)
                 {
-                    RemoveStateImmediately(stateEnum);
+                    RemoveState(stateEnum);
                     //Debug.Log("remove state" + stateEnum);
                 }
             }
             
         }
-        foreach(var state in m_LogicStateDic.Values)
+        foreach(var stateEnum in m_LogicStateDic.Keys)
         {
+            var state = m_LogicStateDic[stateEnum];
             if(state.GetActive())
             {
                 state.Update(Time.deltaTime);
@@ -92,19 +134,12 @@ public class LogicStateManager : MonoBehaviour
 
     void LateUpdate()
     {
-        while(m_AbandenStates.Count>0)
+        foreach (var futureStatePair in m_FutureStatesBuffer)
         {
-            var stateEnum = m_AbandenStates.Dequeue();
-            RemoveStateImmediately(stateEnum);
+            futureStatePair.Value.SetActive(true);
+            m_LogicStateDic[futureStatePair.Key] = futureStatePair.Value;
         }
-
-        while(m_FutureStates.Count>0)
-        {
-            var stateEnum = m_FutureStates.Dequeue();
-            AddStateImmediately(stateEnum);
-        }
-
-        
+        m_FutureStatesBuffer.Clear();
     }
 
     void FixedUpdate()
@@ -117,51 +152,4 @@ public class LogicStateManager : MonoBehaviour
             }
         }
     }
-
-
-    private void AddStateImmediately(ELogicState stateEnum)
-    {
-        if(m_LogicStateDic.ContainsKey(stateEnum))
-        {
-            var state = m_LogicStateDic[stateEnum];
-            state.StartTime = Time.time;
-            state.Init();
-            state.SetActive(true);
-            state.OnStateIn();
-        }
-        else
-        {
-        
-            LogicState stateTemplate = LogicStateConfig.GetLogicStateTemplate(stateEnum);
-
-            Type stateType = stateTemplate.GetType();
-            
-            LogicState newState = (LogicState)(Activator.CreateInstance(stateType,stateEnum));
-            newState.SetOwner(this);
-            newState.Duration = stateTemplate.Duration;
-            newState.StartTime = Time.time;
-    
-            newState.Init();
-            newState.SetActive(true);
-            newState.OnStateIn();
-
-            m_LogicStateDic[stateEnum]=newState;
-            
-            
-            
-        }
-    }
-    
-    private void RemoveStateImmediately(ELogicState stateEnum)
-    {
-        if(m_LogicStateDic.ContainsKey(stateEnum))
-        {
-            var state = m_LogicStateDic[stateEnum];
-
-            state.SetActive(false);
-            state.UnInit();
-            state.OnStateOut();
-        }
-    }
-    
 }
