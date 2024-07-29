@@ -38,9 +38,18 @@ public class AIController : MonoBehaviour
         }
     }
 
-    public virtual void Chase(GameObject target)
+    public virtual void Chase()
     {
-        m_AIMovement.Chase(target);
+        var chaseGameObjects = m_AISensor.GetPerceiveGameObjects();
+        if (chaseGameObjects.Count > 0)
+        {
+            Debug.Log("AI正在追逐"+chaseGameObjects[0]);
+            m_AIMovement.Chase(chaseGameObjects[0]);
+        }
+        else
+        {
+            Debug.Log("没有可以追逐的人");
+        }
     }
 
     public virtual bool SetDestination(Vector3 target)
