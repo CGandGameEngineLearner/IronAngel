@@ -40,6 +40,16 @@ public class InputController
         m_PlayerInputConfig.Enable();
     }
 
+    public bool IsPlayerShootLeftInput()
+    {
+        return m_PlayerInputConfig.Player.Shoot_Left.ReadValue<float>() != 0;
+    }
+
+    public bool IsPlayerShootRightInput()
+    {
+        return m_PlayerInputConfig.Player.Shoot_Right.ReadValue<float>() != 0;
+    }
+
     public void DisablePlayerInput()
     {
         m_PlayerInputConfig.Player.Disable();
