@@ -185,7 +185,7 @@ MonoBehaviour:
   - weaponType: 0
     weaponConfig: {fileID: 11400000, guid: 464a91e925d39464685d07751719c80b, type: 2}
   _AmmunitionCats:
-  - ammunitionType: 0
+  - ammunitionType: 1
     ammunitionConfig: {fileID: 11400000, guid: cc5d849529d30174fbf2bafe04a08c50, type: 2}
 --- !u!114 &154519273
 MonoBehaviour:
