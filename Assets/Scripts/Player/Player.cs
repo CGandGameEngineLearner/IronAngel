@@ -28,6 +28,7 @@ public class Player
         PlayerHandSpec handSpec = new PlayerHandSpec();
         handSpec.m_PlayerLeftHand = spec.m_PlayerLeftHand;
         handSpec.m_PlayerRightHand = spec.m_PlayerRightHand;
+        m_PlayerHand.Init(handSpec);
 
         m_PlayerProperties = new PlayerProperties();
         PlayerPropertiesSpec propertiesSpec = new PlayerPropertiesSpec();
@@ -196,6 +197,16 @@ public class Player
     public int GetPlayerEnergyLimition()
     {
         return m_PlayerProperties.GetEnergyLimition();
+    }
+
+    public Vector3 GetPlayerLeftHandPosition()
+    {
+        return m_PlayerHand.GetPlayerLeftHandPosition();
+    }
+
+    public Vector3 GetPlayerRightHandPosition()
+    {
+        return m_PlayerHand.GetPlayerRightHandPosition();
     }
 }
 

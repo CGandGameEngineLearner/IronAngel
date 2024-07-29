@@ -8,8 +8,24 @@ public class GlobalController : MonoBehaviour
     private CameraController m_CameraController;
     private Player m_Player;
     private InputController m_InputController;
+    private WeaponSystemCenter m_WeaponSystemCenter;
+
+    private GameObject g;
 
     //  public------------------------------------------
+    public void Test()
+    {
+        var (newWeapon, newConfig) = m_WeaponSystemCenter.GetWeapon(WeaponType.Glock);
+        m_WeaponSystemCenter.RegisterWeapon(newWeapon, newConfig);
+        g = newWeapon;
+    }
+    public void Test1()
+    {
+        m_InputController.ExcuteActionWhilePlayerShootLeftInputPerformedAndStay(() =>
+        {
+            m_WeaponSystemCenter.FireWith(g, m_Player.GetPlayerLeftHandPosition(), m_InputController.GetMousePositionInWorldSpace(m_CameraController.GetCamera()) - m_Player.GetPlayerLeftHandPosition());
+        });
+    }
     // private------------------------------------------
     private void Awake()
     {
@@ -43,6 +59,21 @@ public class GlobalController : MonoBehaviour
             AudioUtils.m_Audios.Add(audioConfig._AudioType, audioConfig);
         }
 
+        List<KeyValuePair<WeaponType, WeaponConfig>> weaponConfigList = new();
+        List<KeyValuePair<AmmunitionType, AmmunitionConfig>> ammunitionConfigList = new();
+        m_WeaponSystemCenter = new WeaponSystemCenter();
+        foreach(var weaponCat in setting._WeaponCats)
+        {
+            weaponConfigList.Add(new KeyValuePair<WeaponType, WeaponConfig>(weaponCat.weaponType, weaponCat.weaponConfig));
+        }
+        foreach(var ammunitionCat in setting._AmmunitionCats)
+        {
+            ammunitionConfigList.Add(new KeyValuePair<AmmunitionType, AmmunitionConfig>(ammunitionCat.ammunitionType, ammunitionCat.ammunitionConfig));
+        }
+        m_WeaponSystemCenter.Init(weaponConfigList, ammunitionConfigList);
+
+        Utils.GlobalController = this;
+
         Destroy(setting);
     }
 
@@ -50,6 +81,8 @@ public class GlobalController : MonoBehaviour
     {
         RegisterInputActionFunc();
         RegisterGameEvent();
+
+        Test();
     }
 
     private void Update()
@@ -58,6 +91,9 @@ public class GlobalController : MonoBehaviour
         UpdatePlayerRotation();
         m_Player.Update();
         m_InputController.UpdateInputDevice();
+        m_WeaponSystemCenter.Update();
+
+        Test1();
     }
 
     private void FixedUpdate()
@@ -140,4 +176,18 @@ public class GlobalController : MonoBehaviour
             }
         });
     }
+}
+
+[System.Serializable]
+public struct WeaponCat
+{
+    public WeaponType weaponType;
+    public WeaponConfig weaponConfig;
+}
+
+[System.Serializable]
+public struct AmmunitionCat
+{
+    public AmmunitionType ammunitionType;
+    public AmmunitionConfig ammunitionConfig;
 }

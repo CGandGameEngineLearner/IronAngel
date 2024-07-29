@@ -17,6 +17,16 @@ public class PlayerHand
         m_PlayerRightHand = spec.m_PlayerRightHand;
     }
 
+    public Vector3 GetPlayerLeftHandPosition()
+    {
+        return m_PlayerLeftHand.transform.position;
+    }
+
+    public Vector3 GetPlayerRightHandPosition()
+    {
+        return m_PlayerRightHand.transform.position;
+    }
+
     public void SetPlayerLeftHandObject(GameObject obj)
     {
         m_ObjectInLeftHand = obj;

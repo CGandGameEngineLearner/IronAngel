@@ -177,6 +177,12 @@ MonoBehaviour:
   _Armor: 0
   _BaseHP: 0
   _AudioConfig: {fileID: 11400000, guid: 4acc25dfd8dc1264298860c5fd8abc67, type: 2}
+  _WeaponCats:
+  - weaponType: 0
+    weaponConfig: {fileID: 11400000, guid: 464a91e925d39464685d07751719c80b, type: 2}
+  _AmmunitionCats:
+  - ammunitionType: 0
+    ammunitionConfig: {fileID: 11400000, guid: cc5d849529d30174fbf2bafe04a08c50, type: 2}
 --- !u!114 &154519273
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -727,26 +733,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4474593638482675318, guid: b319a1beeb967194bbc9b9fa245fb3d7, type: 3}
   m_PrefabInstance: {fileID: 1456569164666470170}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1709157212
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1709157211}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43796da83fba45a3a9e7a6c185985982, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  character: {fileID: 1456569164666470171}
-  m_WeaponCats:
-  - weaponType: 0
-    weaponConfig: {fileID: 11400000, guid: 464a91e925d39464685d07751719c80b, type: 2}
-  m_AmmunitionCats:
-  - ammunitionType: 0
-    ammunitionConfig: {fileID: 11400000, guid: cc5d849529d30174fbf2bafe04a08c50, type: 2}
-  weapon: {fileID: 0}
 --- !u!1 &1986174468
 GameObject:
   m_ObjectHideFlags: 0
@@ -1020,13 +1006,5 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4474593638482675318, guid: b319a1beeb967194bbc9b9fa245fb3d7, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1709157212}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b319a1beeb967194bbc9b9fa245fb3d7, type: 3}
---- !u!4 &1456569164666470171 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8394665457635139403, guid: b319a1beeb967194bbc9b9fa245fb3d7, type: 3}
-  m_PrefabInstance: {fileID: 1456569164666470170}
-  m_PrefabAsset: {fileID: 0}
