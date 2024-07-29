@@ -3,6 +3,7 @@ public enum EventType
 {
     None,
     StateToGlobal_PlayerDashState,
+    StateToGlobal_PlayerWalkState,
 
     LogicState_Example_StateIn,
 }

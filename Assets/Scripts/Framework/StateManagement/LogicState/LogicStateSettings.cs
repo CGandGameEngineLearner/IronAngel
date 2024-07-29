@@ -21,7 +21,7 @@ public static class LogicStatesSettings
     {
         new LogicState(ELogicState.Default),
         new LogicState_Example(ELogicState.Example),
-        new LogicState(ELogicState.PlayerWalking),
+        new LogicState_PlayerWalking(ELogicState.PlayerWalking),
         new LogicState_PlayerDashing(ELogicState.PlayerDashing),
         new LogicState(ELogicState.AIPatroling),
     };
