@@ -5,19 +5,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
 
-[System.Serializable]
-public struct WeaponCat
-{
-    public WeaponType weaponType;
-    public WeaponConfig weaponConfig;
-}
 
-[System.Serializable]
-public struct AmmunitionCat
-{
-    public AmmunitionType ammunitionType;
-    public AmmunitionConfig ammunitionConfig;
-}
 
 public class WeaponController : MonoBehaviour
 {

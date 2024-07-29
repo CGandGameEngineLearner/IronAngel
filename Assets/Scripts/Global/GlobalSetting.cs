@@ -35,4 +35,8 @@ public class GlobalSetting : MonoBehaviour
 
     [Header("AudioUtils")]
     public AudioConfig _AudioConfig;
+
+    [Header("WeaponConfig")]
+    public List<WeaponCat> _WeaponCats = new List<WeaponCat>();
+    public List<AmmunitionCat> _AmmunitionCats = new();
 }
