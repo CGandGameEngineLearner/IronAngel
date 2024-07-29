@@ -159,10 +159,13 @@ public class GlobalController : MonoBehaviour
         // 玩家拾取武器
         m_InputController.AddPerformedActionToPlayerThrowAndPickLeft(() =>
         {
-            var handWeapon = m_Player.DropPlayerLeftHandObject(m_Player.GetPlayerPosition());
+            // 这里的交互顺序不能换
+            // 必须先获取最近武器再使得玩家丢下武器
+            // 否则会有碰撞体冲突的问题
             var nearestWeapon = m_Player.GetNearestWeapon();
-            Debug.Log(handWeapon);
-            m_Player.SetPlayerLeftHandObject(nearestWeapon);
+            var handWeapon = m_Player.DropPlayerLeftHandWeapon(m_Player.GetPlayerPosition());
+            
+            m_Player.SetPlayerLeftHandWeapon(nearestWeapon);
         });
         m_InputController.AddPerformedActionToPlayerThrowAndPickRight(() =>
         {
