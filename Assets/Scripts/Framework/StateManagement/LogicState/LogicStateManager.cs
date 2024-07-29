@@ -52,15 +52,18 @@ public class LogicStateManager : MonoBehaviour
     {
         if (m_FutureStatesBuffer.ContainsKey(stateEnum))
         {
-            m_FutureStatesBuffer[stateEnum].OnStateOut();
-            m_FutureStatesBuffer[stateEnum].UnInit();
+            var state = m_FutureStatesBuffer[stateEnum];
+            state.SetActive(false);
+            state.OnStateOut();
+            state.UnInit();
             m_FutureStatesBuffer.Remove(stateEnum);
         }
         else if(m_LogicStateDic.ContainsKey(stateEnum))
         {
-            m_LogicStateDic[stateEnum].SetActive(false);
-            m_LogicStateDic[stateEnum].OnStateOut();
-            m_LogicStateDic[stateEnum].UnInit();
+            var state = m_LogicStateDic[stateEnum];
+            state.SetActive(false);
+            state.OnStateOut();
+            state.UnInit();
         }
         else
         {
