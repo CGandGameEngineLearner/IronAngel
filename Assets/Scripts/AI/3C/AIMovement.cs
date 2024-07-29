@@ -20,9 +20,9 @@ public class AIMovement : MonoBehaviour
         return agent.SetDestination(target);
     }
     
-    public virtual void Chase(GameObject gameObject)
+    public virtual void Chase(GameObject targetGameObject)
     {
-        
+        agent.SetDestination(targetGameObject.transform.position);
     }
 
     protected IEnumerator ChaseCoroutine(GameObject target)
