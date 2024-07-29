@@ -8,6 +8,7 @@ public class AIController : MonoBehaviour
 {
     private AIMovement m_AIMovement;
     private IAISensor m_AISensor;
+    private GameObject m_ChaseGO;
 
     /// <summary>
     /// 训练路线
@@ -43,12 +44,17 @@ public class AIController : MonoBehaviour
         var chaseGameObjects = m_AISensor.GetPerceiveGameObjects();
         if (chaseGameObjects.Count > 0)
         {
+            m_ChaseGO = chaseGameObjects[0];
             Debug.Log("AI正在追逐"+chaseGameObjects[0]);
             m_AIMovement.Chase(chaseGameObjects[0]);
         }
         else
         {
-            Debug.Log("没有可以追逐的人");
+            if (m_ChaseGO!=null)
+            {
+                m_AIMovement.Chase(m_ChaseGO);
+            }
+
         }
     }
 
