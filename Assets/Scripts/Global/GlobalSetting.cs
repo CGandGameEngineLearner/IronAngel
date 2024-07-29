@@ -25,6 +25,8 @@ public class GlobalSetting : MonoBehaviour
     [Header("PlayerHand")]
     public GameObject _PlayerLeftHand;
     public GameObject _PlayerRightHand;
+    public float _DetectRange;
+    public LayerMask _WeaponLayer;
 
     [Header("PlayerProperties")]
     public int _Energy = 0;
