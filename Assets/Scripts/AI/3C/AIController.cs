@@ -26,7 +26,14 @@ public class AIController : MonoBehaviour
 
     public virtual void Patrol()
     {
-        //m_AIMovement.Patrol(PatrolRoute);
+        if (PatrolRoute != null)
+        {
+            m_AIMovement.PatrolWithFixedRoute(PatrolRoute);
+        }
+        else
+        {
+            Debug.Log("没有设置巡逻路线");
+        }
     }
 
     public virtual bool SetDestination(Vector3 target)

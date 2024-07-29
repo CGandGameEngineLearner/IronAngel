@@ -20,37 +20,40 @@ public class AIMovement : MonoBehaviour
         return agent.SetDestination(target);
     }
 
-    public virtual void Patrol(SplineContainer PatrolRoute)
+    public virtual void PatrolWithFixedRoute(SplineContainer patrolRoute)
     {
-        if (PatrolRoute == null)
+        if (patrolRoute == null)
         {
             return;
         }
 
-        StartCoroutine(PatrolWithFixedRouteCoroutine(PatrolRoute));
+        StartCoroutine(PatrolWithFixedRouteCoroutine(patrolRoute));
     }
 
-    protected IEnumerator PatrolWithFixedRouteCoroutine(SplineContainer PatrolRoute)
+    protected IEnumerator PatrolWithFixedRouteCoroutine(SplineContainer patrolRoute)
     {
-        if (PatrolRoute.Spline.Count <= 0)
+        if (!patrolRoute ||patrolRoute.Spline.Count <= 0)
         {
             yield break;
         }
         
-        Vector3 firstPoint = PatrolRoute.Spline[0].Position;
-        yield return StartCoroutine(MoveToDestinationCoroutine(firstPoint));//等待走到目的位置
+        int currentSplineIndex = 0;// 当前前往的样条线节点下标
+
         m_LogicStateManager.AddState(ELogicState.AIPatroling);
-        while (m_LogicStateManager.IncludeState(ELogicState.AIPatroling))
+        
+        while(m_LogicStateManager.IncludeState(ELogicState.AIPatroling))
         {
-            
-            //yield return 
+            currentSplineIndex = currentSplineIndex % (patrolRoute.Spline.Count+1);
+            float t = currentSplineIndex*1.0f/patrolRoute.Spline.Count;
+            var target = patrolRoute.EvaluatePosition(t);
+            currentSplineIndex += 1;
+            yield return StartCoroutine(MoveToDestinationCoroutine(target));
         }
     }
 
     public IEnumerator MoveToDestinationCoroutine(Vector3 target)
     {
         SetDestination(target);
-        yield return null;
         yield return new WaitUntil(() => agent.remainingDistance == 0);
     }
        
