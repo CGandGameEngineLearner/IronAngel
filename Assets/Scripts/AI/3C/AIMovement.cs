@@ -19,6 +19,17 @@ public class AIMovement : MonoBehaviour
     {
         return agent.SetDestination(target);
     }
+    
+    public virtual void Chase(GameObject gameObject)
+    {
+        
+    }
+
+    protected IEnumerator ChaseCoroutine(GameObject target)
+    {
+        StartCoroutine(MoveToDestinationCoroutine(target.transform.position));
+        yield break;
+    }
 
     public virtual void PatrolWithFixedRoute(SplineContainer patrolRoute)
     {
@@ -51,7 +62,7 @@ public class AIMovement : MonoBehaviour
         }
     }
 
-    public IEnumerator MoveToDestinationCoroutine(Vector3 target)
+    protected IEnumerator MoveToDestinationCoroutine(Vector3 target)
     {
         SetDestination(target);
         yield return new WaitUntil(() => agent.remainingDistance == 0);
