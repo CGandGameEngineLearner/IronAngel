@@ -104,7 +104,6 @@ public class GlobalController : MonoBehaviour
     private void Update()
     {
         UpdateCameraPosition();
-        UpdatePlayerRotation();
         UpdatePlayerMovement();
         m_Player.Update();
         m_InputController.UpdateInputDevice();
@@ -114,6 +113,7 @@ public class GlobalController : MonoBehaviour
     private void FixedUpdate()
     {
         m_Player.FixedUpdate();
+        UpdatePlayerRotation();
         m_InputController.ExcuteActionWhilePlayerMoveInputPerformedAndStay();
         m_InputController.ExcuteActionWhilePlayerShootLeftInputPerformedAndStay();
         m_InputController.ExcuteActionWhilePlayerShootRightInputPerformedAndStay();
