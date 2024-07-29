@@ -15,7 +15,31 @@ public class GlobalController : MonoBehaviour
     {
         get { return m_WeaponSystemCenter; }
     }
-
+    public Player Player
+    {
+        get { return m_Player; }
+    }
+    public InputController InputController
+    {
+        get { return m_InputController; }
+    }
+    public CameraController CameraController
+    {
+        get { return CameraController; }
+    }
+    public void Test()
+    {
+        var (newWeapon, newConfig) = m_WeaponSystemCenter.GetWeapon(WeaponType.Glock);
+        m_WeaponSystemCenter.RegisterWeapon(newWeapon, newConfig);
+        m_InputController.AddActionWhilePlayerShootLeftInputPerformedAndStay(() =>
+        {
+            m_WeaponSystemCenter.FireWith(newWeapon, m_Player.GetPlayerLeftHandPosition(), m_InputController.GetMousePositionInWorldSpace(m_CameraController.GetCamera()) - m_Player.GetPlayerPosition());
+        });
+        m_InputController.AddActionWhilePlayerShootRightInputPerformedAndStay(() =>
+        {
+            m_WeaponSystemCenter.FireWith(newWeapon, m_Player.GetPlayerRightHandPosition(), m_InputController.GetMousePositionInWorldSpace(m_CameraController.GetCamera()) - m_Player.GetPlayerPosition());
+        });
+    }
     // private------------------------------------------
     private void Awake()
     {
@@ -73,6 +97,8 @@ public class GlobalController : MonoBehaviour
     {
         RegisterInputActionFunc();
         RegisterGameEvent();
+
+        Test();
     }
 
     private void Update()
