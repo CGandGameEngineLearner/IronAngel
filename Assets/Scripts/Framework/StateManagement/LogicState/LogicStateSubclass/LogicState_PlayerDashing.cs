@@ -7,8 +7,9 @@ public class LogicState_PlayerDashing : LogicState
     public LogicState_PlayerDashing(ELogicState stateEnum) : base(stateEnum) { }
     public override void OnStateIn()
     {
+#if UNITY_EDITOR
         Debug.Log("enter" + GetType());
-        //GetOwner().RemoveState(ELogicState.PlayerWalking);
+#endif
         EventCenter.Broadcast<bool>(EventType.StateToGlobal_PlayerDashState, true);
     }
 
@@ -24,6 +25,8 @@ public class LogicState_PlayerDashing : LogicState
 
     public override void OnStateOut()
     {
+#if UNITY_EDITOR
         Debug.Log("exit" + GetType());
+#endif
     }
 }

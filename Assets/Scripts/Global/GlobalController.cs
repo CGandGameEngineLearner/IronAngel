@@ -11,15 +11,11 @@ public class GlobalController : MonoBehaviour
     private WeaponSystemCenter m_WeaponSystemCenter;
 
     //  public------------------------------------------
-    public void Test()
+    public WeaponSystemCenter WeaponSystemCenter
     {
-        var (newWeapon, newConfig) = m_WeaponSystemCenter.GetWeapon(WeaponType.Glock);
-        m_WeaponSystemCenter.RegisterWeapon(newWeapon, newConfig);
-        m_InputController.AddActionWhilePlayerShootLeftInputPerformedAndStay(() =>
-        {
-            m_WeaponSystemCenter.FireWith(newWeapon, m_Player.GetPlayerLeftHandPosition(), (m_InputController.GetMousePositionInWorldSpace(m_CameraController.GetCamera()) - m_Player.GetPlayerPosition()).normalized);
-        });
+        get { return m_WeaponSystemCenter; }
     }
+
     // private------------------------------------------
     private void Awake()
     {
@@ -77,8 +73,6 @@ public class GlobalController : MonoBehaviour
     {
         RegisterInputActionFunc();
         RegisterGameEvent();
-
-        Test();
     }
 
     private void Update()
@@ -169,7 +163,13 @@ public class GlobalController : MonoBehaviour
         });
         m_InputController.AddPerformedActionToPlayerThrowAndPickRight(() =>
         {
+            // 这里的交互顺序不能换
+            // 必须先获取最近武器再使得玩家丢下武器
+            // 否则会有碰撞体冲突的问题
+            var nearestWeapon = m_Player.GetNearestWeapon();
+            var handWeapon = m_Player.DropPlayerRightHandWeapon(m_Player.GetPlayerPosition());
 
+            m_Player.SetPlayerRightHandWeapon(nearestWeapon);
         });
     }
     
