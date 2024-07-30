@@ -58,23 +58,30 @@ public class WeaponSystemCenter
     /// <summary>
     /// 伤害判定流程
     /// </summary>
-    public void JudgeWithAmmunition(GameObject unitAtker, GameObject unitToDamage, GameObject ammunition)
+    public void JudgeWithAmmunition(GameObject unitToDamage, GameObject ammunition)
     {
         // TODO: 结算流程
         // InternalUnRegisterAmmunition(ammunition);
+
+
+        if (!m_AmmunitionFactory.GetAmmunitionHandleActive(ammunition)) return;
 
         // GetConfig and Handle
         var ammunitionHandle = m_AmmunitionFactory.GetAmmunitionHandle(ammunition);
         var ammunitionConfig = ammunitionHandle.ammunitionConfig;
 
+        InternalUnRegisterAmmunition(ammunition);
+
         // ProcessDamage 这里可以相应所有人的请求
 
         // PostProcess只允许相应一个人的需求
-        
+
         // PostProcess 生成后置物品，用默认的攻击类型，即放置在原地
-        var (postAmmunition, postAmmunitionConfig) = InternalGetAmmunition(ammunitionConfig.postAmmunitionType, ammunitionHandle.rigidbody2D.transform.position,
+        var (postAmmunition, postAmmunitionConfig) = InternalGetAmmunition(ammunitionConfig.postAmmunitionType,
+            ammunitionHandle.rigidbody2D.transform.position,
             Quaternion.identity);
-        InternalRegisterAmmunition(postAmmunition, postAmmunitionConfig, AtkType.Default, ammunitionHandle.rigidbody2D.transform.position, Vector2.up);
+        InternalRegisterAmmunition(postAmmunition, postAmmunitionConfig.postAmmunitionType, postAmmunitionConfig,
+            AtkType.Default, ammunitionHandle.rigidbody2D.transform.position, Vector2.up);
     }
 
     public void FireWith(GameObject weapon, Vector2 startPoint, Vector2 dir)
@@ -86,7 +93,8 @@ public class WeaponSystemCenter
         // 注册子弹
         // TODO;修改方向
         var (ammunition, ammunitionConfig) = InternalGetAmmunition(ammunitionType, startPoint, quaternion.identity);
-        InternalRegisterAmmunition(ammunition, ammunitionConfig, weaponConfig.atkType, startPoint, dir);
+        InternalRegisterAmmunition(ammunition, weaponConfig.ammunitionType, ammunitionConfig, weaponConfig.atkType,
+            startPoint, dir);
     }
 
     public void RegisterWeapon(GameObject weapon, WeaponConfig weaponConfig)
@@ -105,11 +113,11 @@ public class WeaponSystemCenter
         m_AmmunitionFactory.UnRegisterAmmunition(ammunition);
     }
 
-    private void InternalRegisterAmmunition(GameObject ammunition, AmmunitionConfig ammunitionConfig,
-        AtkType atkType, Vector2 startPoint,
-        Vector2 dir)
+    private void InternalRegisterAmmunition(GameObject ammunition, AmmunitionType ammunitionType,
+        AmmunitionConfig ammunitionConfig, AtkType atkType,
+        Vector2 startPoint, Vector2 dir)
     {
-        m_AmmunitionFactory.RegisterAmmunition(ammunition, ammunitionConfig, atkType, startPoint, dir);
+        m_AmmunitionFactory.RegisterAmmunition(ammunition, ammunitionType, ammunitionConfig, atkType, startPoint, dir);
     }
 
     private (GameObject, AmmunitionConfig) InternalGetAmmunition(AmmunitionType ammunitionType, Vector3 startPoint,
@@ -126,6 +134,6 @@ public class WeaponSystemCenter
     /// <returns></returns>
     private bool InternalGetAmmunitionPostExisted(GameObject ammunRequester)
     {
-        return (m_AmmunitionFactory.GetAmmunitionPostExisted(ammunRequester)) ;
+        return (m_AmmunitionFactory.GetAmmunitionPostExisted(ammunRequester));
     }
 }

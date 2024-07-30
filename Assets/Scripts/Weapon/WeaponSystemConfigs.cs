@@ -13,9 +13,8 @@ public enum AmmunitionType
 {
     // PostProcess
     PostProcess_Expolde = 0,
-    
-    
     Bullet,
+    None,
 }
 
 public enum WeaponType

@@ -2,12 +2,14 @@
 using UnityEngine;
 using UnityEngine.Splines;
 using System.Collections.Generic;
+using Mirror;
 
 
-public class AIController : MonoBehaviour
+public class AIController : NetworkBehaviour
 {
     private AIMovement m_AIMovement;
     private IAISensor m_AISensor;
+    private GameObject m_ChaseGO;
 
     /// <summary>
     /// 训练路线
@@ -25,7 +27,8 @@ public class AIController : MonoBehaviour
     {
         
     }
-
+    
+    [ServerCallback]
     public virtual void Patrol()
     {
         if (PatrolRoute != null)
@@ -38,16 +41,32 @@ public class AIController : MonoBehaviour
         }
     }
 
-    public virtual void Chase(GameObject target)
+    [ServerCallback]
+    public virtual void Chase()
     {
-        m_AIMovement.Chase(target);
-    }
+        var chaseGameObjects = m_AISensor.GetPerceiveGameObjects();
+        if (chaseGameObjects.Count > 0)
+        {
+            m_ChaseGO = chaseGameObjects[0];
+            Debug.Log("AI正在追逐"+chaseGameObjects[0]);
+            m_AIMovement.Chase(chaseGameObjects[0]);
+        }
+        else
+        {
+            if (m_ChaseGO!=null)
+            {
+                m_AIMovement.Chase(m_ChaseGO);
+            }
 
+        }
+    }
+    [ServerCallback]
     public virtual bool SetDestination(Vector3 target)
     {
         return m_AIMovement.SetDestination(target);
     }
-
+    
+    [ServerCallback]
     public List<GameObject> GetPerceiveGameObjects()
     {
         return m_AISensor.GetPerceiveGameObjects();

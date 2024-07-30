@@ -5,6 +5,7 @@ public enum ELogicState
     Example,
     PlayerWalking,
     PlayerDashing,
+    PlayerShooting,
     AIPatroling,
     AIVisionPerceived,
     
@@ -29,5 +30,6 @@ public static class LogicStatesSettings
         new LogicState_PlayerDashing(ELogicState.PlayerDashing),
         new LogicState(ELogicState.AIPatroling),
         new LogicState(ELogicState.AIVisionPerceived),
+        new LogicState_PlayerShooting(ELogicState.PlayerShooting),
     };
 }
