@@ -13,7 +13,7 @@ public class Action_Patrol : Action
     }
     public override void OnStart()
     {
-        Debug.Log(GetType()+"OnStart()");
+        //Debug.Log(GetType()+"OnStart()");
         m_AIController.Patrol();
     }
 
