@@ -136,6 +136,7 @@ public class GlobalController : NetworkBehaviour
         m_InputController.ExcuteActionWhilePlayerShootRightInputPerformedAndStay();
     }
 
+    [ClientCallback]
     private void LateUpdate()
     {
         if (m_CameraController == null)
@@ -146,6 +147,7 @@ public class GlobalController : NetworkBehaviour
     }
 
 #if !UNITY_SERVER
+    [ClientCallback]
     private void UpdateCameraPosition()
     {
         Vector3 targetPos = m_InputController.GetMousePositionInWorldSpace(m_CameraController.GetCamera()) - m_Player.GetPlayerPosition();
