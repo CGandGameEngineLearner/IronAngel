@@ -52,25 +52,8 @@ public class GlobalController : NetworkBehaviour
     {
         Debug.LogWarning("start local player");
         GlobalSetting setting = GetComponent<GlobalSetting>();
-        Debug.Log(Camera.main);
-        m_CameraController.Init(Camera.main, GameObject.FindAnyObjectByType<CinemachineVirtualCamera>().GetComponent<CinemachineVirtualCamera>(), GameObject.FindWithTag("CameraTarget").transform, setting._CameraMinDistance, setting._CameraMaxDistance);
-
-        RegisterInputActionFunc();
-        RegisterGameEvent();
-    }
-#endif
 
 
-    public void OnDestroy()
-    {
-        PlayerControllers.Remove(this);
-    }
-    // private------------------------------------------
-    private void Awake()
-    {
-        GlobalSetting setting = GetComponent<GlobalSetting>();
-
-        
 
         m_Player = new Player();
         PlayerSpec playerSpec = new PlayerSpec();
@@ -90,6 +73,23 @@ public class GlobalController : NetworkBehaviour
         m_Player.Init(playerSpec);
 
         m_InputController.Init();
+        Debug.Log(Camera.main);
+        m_CameraController.Init(Camera.main, GameObject.FindAnyObjectByType<CinemachineVirtualCamera>().GetComponent<CinemachineVirtualCamera>(), GameObject.FindWithTag("CameraTarget").transform, setting._CameraMinDistance, setting._CameraMaxDistance);
+
+        RegisterInputActionFunc();
+        RegisterGameEvent();
+    }
+#endif
+
+
+    public void OnDestroy()
+    {
+        PlayerControllers.Remove(this);
+    }
+    // private------------------------------------------
+    private void Awake()
+    {
+        
 
         
 
