@@ -48,7 +48,6 @@ public class PlayerController : NetworkBehaviour
         m_Player.Init(playerSpec);
 
         m_Player.SetPlayerLeftHandWeapon(gameObject);
-        
     }
 
 

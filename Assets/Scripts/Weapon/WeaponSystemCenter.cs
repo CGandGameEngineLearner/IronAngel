@@ -4,6 +4,7 @@ using BehaviorDesigner.Runtime;
 using Mirror;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class WeaponSystemCenter: NetworkBehaviour
 {
@@ -113,7 +114,7 @@ public class WeaponSystemCenter: NetworkBehaviour
     {
         if (!m_WeaponFactory.HasWeapon(weapon)) throw new Exception("This weapon is not in WeaponUpdater");
 
-        WeaponConfig weaponConfig = m_WeaponFactory.GetWeaponHandle(weapon).weaponConfig;
+        WeaponConfig weaponConfig = m_WeaponFactory.GetWeaponHandle(weapon).WeaponConfig;
         AmmunitionType ammunitionType = weaponConfig.ammunitionType;
         // 注册子弹
         // TODO;修改方向
@@ -167,7 +168,7 @@ public class WeaponSystemCenter: NetworkBehaviour
 public struct WeaponCat
 {
     public WeaponType weaponType;
-    public WeaponConfig weaponConfig;
+    [FormerlySerializedAs("weaponSystemConfig")] public WeaponConfig weaponConfig;
 }
 
 [System.Serializable]

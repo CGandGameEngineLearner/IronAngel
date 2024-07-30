@@ -5,21 +5,21 @@ using UnityEngine;
 public class WeaponHandle
 {
     public GameObject weapon;
-    public WeaponConfig weaponConfig;
+    public WeaponConfig WeaponConfig;
     public WeaponType weaponType;
     public int currentMag;
 
     public WeaponHandle Init(GameObject weapon, WeaponConfig weaponConfig)
     {
         this.weapon = weapon;
-        this.weaponConfig = weaponConfig;
+        this.WeaponConfig = weaponConfig;
         return this;
     }
 
     public WeaponHandle Clear()
     {
         this.weapon = null;
-        this.weaponConfig = null;
+        this.WeaponConfig = null;
         this.currentMag = 0;
 
         return this;
