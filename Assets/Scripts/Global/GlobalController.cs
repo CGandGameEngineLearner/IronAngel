@@ -119,7 +119,7 @@ public class GlobalController : NetworkBehaviour
         {
             return;
         }
-        UpdateCameraPosition();
+        
         UpdatePlayerMovement();
         m_Player.Update();
         m_InputController.UpdateInputDevice();
@@ -136,7 +136,12 @@ public class GlobalController : NetworkBehaviour
         m_InputController.ExcuteActionWhilePlayerShootRightInputPerformedAndStay();
     }
 
-    [ClientCallback]
+    private void LateUpdate()
+    {
+        UpdateCameraPosition();
+    }
+
+#if !UNITY_SERVER
     private void UpdateCameraPosition()
     {
         Vector3 targetPos = m_InputController.GetMousePositionInWorldSpace(m_CameraController.GetCamera()) - m_Player.GetPlayerPosition();
@@ -144,6 +149,7 @@ public class GlobalController : NetworkBehaviour
         targetPos.z = 0;
         m_CameraController.SetVirtualCameraTargetPosition(targetPos + m_Player.GetPlayerPosition());
     }
+#endif
 
     [ServerCallback]
     private void UpdatePlayerRotation()
