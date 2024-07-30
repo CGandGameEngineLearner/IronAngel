@@ -49,6 +49,7 @@ public class GlobalController : NetworkBehaviour
     
     public override void OnStartLocalPlayer()
     {
+        Debug.LogWarning("start local player");
         GlobalSetting setting = GetComponent<GlobalSetting>();
         m_CameraController.Init(Camera.main, GameObject.FindAnyObjectByType<CinemachineVirtualCamera>().GetComponent<CinemachineVirtualCamera>(), GameObject.FindWithTag("CameraTarget").transform, setting._CameraMinDistance, setting._CameraMaxDistance);
     }
@@ -115,10 +116,7 @@ public class GlobalController : NetworkBehaviour
     [ClientCallback]
     private void Update()
     {
-        if(m_CameraController == null)
-        {
-            return;
-        }
+        
         
         UpdatePlayerMovement();
         m_Player.Update();
@@ -138,6 +136,10 @@ public class GlobalController : NetworkBehaviour
 
     private void LateUpdate()
     {
+        if (m_CameraController == null)
+        {
+            return;
+        }
         UpdateCameraPosition();
     }
 
