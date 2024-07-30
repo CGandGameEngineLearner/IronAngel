@@ -31,7 +31,7 @@ public class GlobalController : NetworkBehaviour
     }
     public void Test()
     {
-        var (newWeapon, newConfig) = m_WeaponSystemCenter.GetWeapon(WeaponType.Glock);
+        /*var (newWeapon, newConfig) = m_WeaponSystemCenter.GetWeapon(WeaponType.Glock);
         m_WeaponSystemCenter.RegisterWeapon(newWeapon, newConfig);
         m_InputController.AddActionWhilePlayerShootLeftInputPerformedAndStay(() =>
         {
@@ -40,7 +40,7 @@ public class GlobalController : NetworkBehaviour
         m_InputController.AddActionWhilePlayerShootRightInputPerformedAndStay(() =>
         {
             m_WeaponSystemCenter.FireWith(newWeapon, m_Player.GetPlayerRightHandPosition(), m_InputController.GetMousePositionInWorldSpace(m_CameraController.GetCamera()) - m_Player.GetPlayerPosition());
-        });
+        });*/
     }
 #if !UNITY_SERVER
     public override void OnStartLocalPlayer()
@@ -141,7 +141,7 @@ public class GlobalController : NetworkBehaviour
         UpdatePlayerMovement();
         m_Player.Update();
         m_InputController.UpdateInputDevice();
-        m_WeaponSystemCenter.Update();
+        //m_WeaponSystemCenter.Update();
     }
 
     [ClientCallback]
