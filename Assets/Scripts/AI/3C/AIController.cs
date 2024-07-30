@@ -2,9 +2,10 @@
 using UnityEngine;
 using UnityEngine.Splines;
 using System.Collections.Generic;
+using Mirror;
 
 
-public class AIController : MonoBehaviour
+public class AIController : NetworkBehaviour
 {
     private AIMovement m_AIMovement;
     private IAISensor m_AISensor;
@@ -26,7 +27,8 @@ public class AIController : MonoBehaviour
     {
         
     }
-
+    
+    [ServerCallback]
     public virtual void Patrol()
     {
         if (PatrolRoute != null)
@@ -39,6 +41,7 @@ public class AIController : MonoBehaviour
         }
     }
 
+    [ServerCallback]
     public virtual void Chase()
     {
         var chaseGameObjects = m_AISensor.GetPerceiveGameObjects();
@@ -57,12 +60,13 @@ public class AIController : MonoBehaviour
 
         }
     }
-
+    [ServerCallback]
     public virtual bool SetDestination(Vector3 target)
     {
         return m_AIMovement.SetDestination(target);
     }
-
+    
+    [ServerCallback]
     public List<GameObject> GetPerceiveGameObjects()
     {
         return m_AISensor.GetPerceiveGameObjects();
