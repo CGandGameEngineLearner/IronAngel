@@ -48,7 +48,12 @@ public class GlobalController : NetworkBehaviour
     
     public override void OnStartLocalPlayer()
     {
-       
+        GlobalSetting setting = GetComponent<GlobalSetting>();
+        m_CameraController = new CameraController();
+        Instantiate(setting._Camera);
+        Instantiate((setting._VirtualCamera));
+        Instantiate(setting._VirtualCameraTarget);
+        m_CameraController.Init(setting._Camera, setting._VirtualCamera, setting._VirtualCameraTarget, setting._CameraMinDistance, setting._CameraMaxDistance);
     }
 
 
@@ -61,11 +66,7 @@ public class GlobalController : NetworkBehaviour
     {
         GlobalSetting setting = GetComponent<GlobalSetting>();
 
-        m_CameraController = new CameraController();
-        Instantiate(setting._Camera);
-        Instantiate((setting._VirtualCamera));
-        Instantiate(setting._VirtualCameraTarget);
-        m_CameraController.Init(setting._Camera, setting._VirtualCamera, setting._VirtualCameraTarget, setting._CameraMinDistance, setting._CameraMaxDistance);
+        
 
         m_Player = new Player();
         PlayerSpec playerSpec = new PlayerSpec();
