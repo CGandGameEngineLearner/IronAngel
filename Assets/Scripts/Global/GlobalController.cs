@@ -42,7 +42,7 @@ public class GlobalController : NetworkBehaviour
             m_WeaponSystemCenter.FireWith(newWeapon, m_Player.GetPlayerRightHandPosition(), m_InputController.GetMousePositionInWorldSpace(m_CameraController.GetCamera()) - m_Player.GetPlayerPosition());
         });*/
     }
-#if !UNITY_SERVER
+
     public override void OnStartLocalPlayer()
     {
         GlobalSetting setting = GetComponent<GlobalSetting>();
@@ -77,7 +77,7 @@ public class GlobalController : NetworkBehaviour
 
         Test();
     }
-#endif
+
 
     public void OnDestroy()
     {
