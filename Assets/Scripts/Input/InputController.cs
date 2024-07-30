@@ -75,15 +75,16 @@ public class InputController
         return m_PlayerInputConfig.Player.Move.ReadValue<Vector2>() != Vector2.zero;
     }
 
-    public Vector3 GetMousePositionOnScreen()
+    public Vector2 GetMousePositionOnScreen()
     {
-        return Input.mousePosition;
+        return Mouse.current.position.ReadValue();
     }
 
     public Vector3 GetMousePositionInWorldSpace(Camera mainCamera)
     {
-        var pos = Input.mousePosition;
-        pos.z = mainCamera.WorldToScreenPoint(new Vector3(mainCamera.transform.position.x, mainCamera.transform.position.y, 0)).z;
+        var pos = Mouse.current.position.ReadValue();
+        var v3 = new Vector3(pos.x, pos.y, 0);
+        v3.z = mainCamera.WorldToScreenPoint(new Vector3(mainCamera.transform.position.x, mainCamera.transform.position.y, 0)).z;
         return mainCamera.ScreenToWorldPoint(pos);
     }
 
