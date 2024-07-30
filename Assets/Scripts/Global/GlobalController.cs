@@ -158,7 +158,7 @@ public class GlobalController : NetworkBehaviour
     }
 #endif
 
-    [ServerCallback]
+    [ClientCallback]
     private void UpdatePlayerRotation()
     {
         if(m_InputController.IsGamePadInput())
