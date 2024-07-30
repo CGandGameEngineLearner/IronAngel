@@ -13,6 +13,18 @@ MonoBehaviour:
   m_Name: PlotConfig
   m_EditorClassIdentifier: 
   m_PlotConfigList:
-  - m_SpeakerName: 
-    m_Content: 
+  - m_SpeakerName: 1
+    m_Content: 123513
+    m_PlotOptions: []
+  - m_SpeakerName: 3
+    m_Content: 13513153
+    m_PlotOptions: []
+  - m_SpeakerName: 53
+    m_Content: 1531534534
+    m_PlotOptions: []
+  - m_SpeakerName: 4535843
+    m_Content: 43433
+    m_PlotOptions: []
+  - m_SpeakerName: 5353
+    m_Content: 54345343453453453453
     m_PlotOptions: []
