@@ -44,9 +44,10 @@ public class PlayerController : NetworkBehaviour
 
         var (gameObject, weaponConfig) =  WeaponSystemCenter.Instance.GetWeapon(WeaponType.Glock);
         WeaponSystemCenter.Instance.RegisterWeapon(gameObject, weaponConfig);
-        playerSpec.m_PlayerLeftHand = gameObject;
         
         m_Player.Init(playerSpec);
+
+        m_Player.SetPlayerLeftHandWeapon(gameObject);
         
     }
 
@@ -184,6 +185,11 @@ public class PlayerController : NetworkBehaviour
             var handWeapon = m_Player.DropPlayerRightHandWeapon(m_Player.GetPlayerPosition());
 
             m_Player.SetPlayerRightHandWeapon(nearestWeapon);
+        });
+        // 玩家攻击测试
+        m_InputController.AddActionWhilePlayerShootLeftInputPerformedAndStay(() =>
+        {
+            WeaponSystemCenter.Instance.FireWith(m_Player.GetPlayerLeftHandWeapon(), m_Player.GetPlayerLeftHandPosition(), m_InputController.GetMousePositionInWorldSpace(m_CameraController.GetCamera()) - m_Player.GetPlayerPosition());
         });
     }
     [ClientCallback]
