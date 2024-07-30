@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEditor.SceneManagement;
 using UnityEngine;
+using Cinemachine;
 
 public class GlobalController : NetworkBehaviour
 {
@@ -49,10 +50,7 @@ public class GlobalController : NetworkBehaviour
     public override void OnStartLocalPlayer()
     {
         GlobalSetting setting = GetComponent<GlobalSetting>();
-        Instantiate(setting._Camera);
-        Instantiate((setting._VirtualCamera));
-        Instantiate(setting._VirtualCameraTarget);
-        m_CameraController.Init(setting._Camera, setting._VirtualCamera, setting._VirtualCameraTarget, setting._CameraMinDistance, setting._CameraMaxDistance);
+        m_CameraController.Init(Camera.main, GameObject.FindAnyObjectByType<CinemachineVirtualCamera>().GetComponent<CinemachineVirtualCamera>(), GameObject.FindWithTag("CameraTarget").transform, setting._CameraMinDistance, setting._CameraMaxDistance);
     }
 
 
