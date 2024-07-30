@@ -52,6 +52,7 @@ public class GlobalController : NetworkBehaviour
     {
         Debug.LogWarning("start local player");
         GlobalSetting setting = GetComponent<GlobalSetting>();
+        Debug.Log(Camera.main);
         m_CameraController.Init(Camera.main, GameObject.FindAnyObjectByType<CinemachineVirtualCamera>().GetComponent<CinemachineVirtualCamera>(), GameObject.FindWithTag("CameraTarget").transform, setting._CameraMinDistance, setting._CameraMaxDistance);
     }
 #endif
