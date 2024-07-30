@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -234,6 +235,8 @@ public class Player
     }
 }
 
+
+[Serializable]
 public struct PlayerSpec
 {
     public GameObject m_Player;

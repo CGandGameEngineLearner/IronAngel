@@ -4,5 +4,5 @@ using UnityEngine;
 
 public static class Utils
 {
-    public static GlobalController GlobalController { get; set; }
+    public static PlayerController playerController { get; set; }
 }
