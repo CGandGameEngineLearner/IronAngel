@@ -346,24 +346,25 @@ MonoBehaviour:
   _VirtualCamera: {fileID: 1380324233139244480, guid: 1736d91bd8315dd4fab24ac4cf362c84, type: 3}
   _VirtualCameraTarget: {fileID: 2183100947221233307, guid: f60d361751150f54f854a59e3f71fbb1, type: 3}
   _CameraMinDistance: 0.021
-  _CameraMaxDistance: 0.409
-  _Player: {fileID: 4474593638482675318}
-  _MoveSpeed: 10
-  _DashCoolDownTime: 1
-  _DashCount: 2
-  _DashSpeed: 30
-  _MaxDashCount: 10
-  _PlayerLeftHand: {fileID: 2047706506950990064}
-  _PlayerRightHand: {fileID: 6735988052764041402}
-  _DetectRange: 1.3
-  _WeaponLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  _Energy: 0
-  _EnergyThreshold: 0
-  _EnergyLimition: 0
-  _Armor: 0
-  _BaseHP: 0
+  _CameraMaxDistance: 0.475
+  _PlayerSpec:
+    m_Player: {fileID: 0}
+    m_NormalSpeed: 5
+    m_DashSpeed: 30
+    m_DashCoolDownTime: 1
+    m_DashCount: 2
+    m_MaxDashCount: 50
+    m_PlayerLeftHand: {fileID: 2047706506950990064}
+    m_PlayerRightHand: {fileID: 6735988052764041402}
+    m_DetectRange: 1.3
+    m_WeaponLayer:
+      serializedVersion: 2
+      m_Bits: 64
+    m_Energy: 0
+    m_EnergyThreshold: 0
+    m_EnergyLimition: 0
+    m_BaseHP: 0
+    m_Armor: 0
   _AudioConfig: {fileID: 11400000, guid: 4acc25dfd8dc1264298860c5fd8abc67, type: 2}
   _WeaponCats: []
   _AmmunitionCats: []
