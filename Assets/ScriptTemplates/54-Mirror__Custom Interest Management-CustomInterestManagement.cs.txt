@@ -75,7 +75,7 @@ public class #SCRIPTNAME# : InterestManagement
     /// Called by NetworkServer in Initialize and Shutdown
     /// </summary>
     [ServerCallback]
-    public override void ResetState() { }
+    public override void Reset() { }
 
     [ServerCallback]
     void Update()
