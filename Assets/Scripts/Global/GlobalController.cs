@@ -45,14 +45,16 @@ public class GlobalController : NetworkBehaviour
             m_WeaponSystemCenter.FireWith(newWeapon, m_Player.GetPlayerRightHandPosition(), m_InputController.GetMousePositionInWorldSpace(m_CameraController.GetCamera()) - m_Player.GetPlayerPosition());
         });*/
     }
-    
-    
+
+
+#if !UNITY_SERVER
     public override void OnStartLocalPlayer()
     {
         Debug.LogWarning("start local player");
         GlobalSetting setting = GetComponent<GlobalSetting>();
         m_CameraController.Init(Camera.main, GameObject.FindAnyObjectByType<CinemachineVirtualCamera>().GetComponent<CinemachineVirtualCamera>(), GameObject.FindWithTag("CameraTarget").transform, setting._CameraMinDistance, setting._CameraMaxDistance);
     }
+#endif
 
 
     public void OnDestroy()
