@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AmmunitionConfig
   m_Prefab: {fileID: 1307551525373832665, guid: 41010c699e51fda41baea37030b6f9ce, type: 3}
   m_MinPoolSize: 10
-  m_MaxPoolSize: 20
+  m_MaxPoolSize: 40
   m_Speed: 1
   m_LifeDistance: 2
-  m_PostAmmunitionType: 0
+  m_PostAmmunitionType: 2

@@ -1,16 +1,32 @@
 using System;
 using System.Collections.Generic;
 using BehaviorDesigner.Runtime;
+using Mirror;
 using Unity.Mathematics;
 using UnityEngine;
 
-public class WeaponSystemCenter
+public class WeaponSystemCenter: NetworkBehaviour
 {
+    public static WeaponSystemCenter Instance { get; private set; }
+    
     private ObjectPoolManager<WeaponType> m_WeaponPool = new();
     private ObjectPoolManager<AmmunitionType> m_AmmunitionPool = new();
     private WeaponFactory m_WeaponFactory = new();
     private AmmunitionFactory m_AmmunitionFactory = new();
 
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+    }
+    
     /// <summary>
     /// 更新子弹
     /// </summary>
@@ -55,9 +71,11 @@ public class WeaponSystemCenter
             m_WeaponFactory.GetWeaponConfig(weaponType));
     }
 
+    
     /// <summary>
     /// 伤害判定流程
     /// </summary>
+    [ClientRpc]
     public void JudgeWithAmmunition(GameObject unitToDamage, GameObject ammunition)
     {
         // TODO: 结算流程
@@ -73,6 +91,7 @@ public class WeaponSystemCenter
         InternalUnRegisterAmmunition(ammunition);
 
         // ProcessDamage 这里可以相应所有人的请求
+        DamagePlayer();
 
         // PostProcess只允许相应一个人的需求
 
@@ -82,6 +101,12 @@ public class WeaponSystemCenter
             Quaternion.identity);
         InternalRegisterAmmunition(postAmmunition, postAmmunitionConfig.postAmmunitionType, postAmmunitionConfig,
             AtkType.Default, ammunitionHandle.rigidbody2D.transform.position, Vector2.up);
+    }
+
+    // [ClientRpc]
+    public void DamagePlayer()
+    {
+        Debug.Log("I'm damage");
     }
 
     public void FireWith(GameObject weapon, Vector2 startPoint, Vector2 dir)

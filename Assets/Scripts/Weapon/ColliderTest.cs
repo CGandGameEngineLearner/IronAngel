@@ -1,12 +1,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Mirror;
 using UnityEngine;
 
-public class ColliderTest : MonoBehaviour
+public class ColliderTest : NetworkBehaviour
 {
+    [Server]
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Utils.playerController.WeaponSystemCenter.JudgeWithAmmunition(gameObject, other.gameObject);
+        WeaponSystemCenter.Instance.JudgeWithAmmunition(gameObject, other.gameObject);
     }
 }
