@@ -158,21 +158,25 @@ public class GlobalController : NetworkBehaviour
     }
 #endif
 
-    [ClientCallback]
+    
     private void UpdatePlayerRotation()
     {
-        if(m_InputController.IsGamePadInput())
+        if (isLocalPlayer)
         {
-            if(m_InputController.GetGamePadViewInput() != Vector2.zero)
+            if(m_InputController.IsGamePadInput())
             {
-                m_Player.LookAt(m_InputController.GetGamePadViewInput());
+                if(m_InputController.GetGamePadViewInput() != Vector2.zero)
+                {
+                    m_Player.LookAt(m_InputController.GetGamePadViewInput());
+                }
+            }
+            else
+            {
+                Vector3 v3 = m_InputController.GetMousePositionInWorldSpace(m_CameraController.GetCamera()) - m_Player.GetPlayerPosition();
+                m_Player.LookAt(new Vector2(v3.x, v3.y));
             }
         }
-        else
-        {
-            Vector3 v3 = m_InputController.GetMousePositionInWorldSpace(m_CameraController.GetCamera()) - m_Player.GetPlayerPosition();
-            m_Player.LookAt(new Vector2(v3.x, v3.y));
-        }
+        
     }
 
     [ServerCallback]
