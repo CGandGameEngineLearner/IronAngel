@@ -1,6 +1,8 @@
-﻿using Mirror;
+﻿using System;
+using Mirror;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 
@@ -43,42 +45,10 @@ public class GlobalController : NetworkBehaviour
         });*/
     }
     
-    [ServerCallback]
+    
     public override void OnStartLocalPlayer()
     {
-        GlobalSetting setting = GetComponent<GlobalSetting>();
-
-        m_CameraController = new CameraController();
-        Instantiate(setting._Camera);
-        Instantiate(setting._VirtualCamera);
-        Instantiate(setting._VirtualCameraTarget);
-        m_CameraController.Init(setting._Camera, setting._VirtualCamera, setting._VirtualCameraTarget, setting._CameraMinDistance, setting._CameraMaxDistance);
-
-        PlayerSpec playerSpec = new PlayerSpec();
-        playerSpec.m_Player = setting._Player;
-        playerSpec.m_NormalSpeed = setting._MoveSpeed;
-        playerSpec.m_DashCoolDownTime = setting._DashCoolDownTime;
-        playerSpec.m_DashCount = setting._DashCount;
-        playerSpec.m_MaxDashCount = setting._MaxDashCount;
-        playerSpec.m_DashSpeed = setting._DashSpeed;
-        playerSpec.m_Energy = setting._Energy;
-        playerSpec.m_EnergyThreshold = setting._EnergyThreshold;
-        playerSpec.m_EnergyLimition = setting._EnergyLimition;
-        playerSpec.m_BaseHP = setting._BaseHP;
-        playerSpec.m_Armor = setting._Armor;
-        playerSpec.m_DetectRange = setting._DetectRange;
-        playerSpec.m_WeaponLayer = setting._WeaponLayer;
-        m_Player.Init(playerSpec);
-
-        m_InputController = new InputController();
-        m_InputController.Init();
-
-        PlayerControllers.Add(this);
-
-        RegisterInputActionFunc();
-        RegisterGameEvent();
-
-        Test();
+       
     }
 
 
@@ -91,7 +61,10 @@ public class GlobalController : NetworkBehaviour
     {
         GlobalSetting setting = GetComponent<GlobalSetting>();
 
-        /*m_CameraController = new CameraController();
+        m_CameraController = new CameraController();
+        Instantiate(setting._Camera);
+        Instantiate((setting._VirtualCamera));
+        Instantiate(setting._VirtualCameraTarget);
         m_CameraController.Init(setting._Camera, setting._VirtualCamera, setting._VirtualCameraTarget, setting._CameraMinDistance, setting._CameraMaxDistance);
 
         m_Player = new Player();
@@ -112,7 +85,10 @@ public class GlobalController : NetworkBehaviour
         m_Player.Init(playerSpec);
 
         m_InputController = new InputController();
-        m_InputController.Init();*/
+        m_InputController.Init();
+
+        RegisterInputActionFunc();
+        RegisterGameEvent();
 
         /*foreach (var audioConfig in setting._AudioConfig.m_Config)
         {
@@ -136,6 +112,8 @@ public class GlobalController : NetworkBehaviour
 
         //Destroy(setting);
     }
+    
+    
 
     [ClientCallback]
     private void Update()
