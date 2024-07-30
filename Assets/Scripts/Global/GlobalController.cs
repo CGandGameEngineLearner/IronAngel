@@ -54,6 +54,9 @@ public class GlobalController : NetworkBehaviour
         GlobalSetting setting = GetComponent<GlobalSetting>();
         Debug.Log(Camera.main);
         m_CameraController.Init(Camera.main, GameObject.FindAnyObjectByType<CinemachineVirtualCamera>().GetComponent<CinemachineVirtualCamera>(), GameObject.FindWithTag("CameraTarget").transform, setting._CameraMinDistance, setting._CameraMaxDistance);
+
+        RegisterInputActionFunc();
+        RegisterGameEvent();
     }
 #endif
 
@@ -88,8 +91,7 @@ public class GlobalController : NetworkBehaviour
 
         m_InputController.Init();
 
-        RegisterInputActionFunc();
-        RegisterGameEvent();
+        
 
         /*foreach (var audioConfig in setting._AudioConfig.m_Config)
         {
