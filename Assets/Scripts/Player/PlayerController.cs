@@ -39,19 +39,8 @@ public class PlayerController : NetworkBehaviour
         m_LogicStateManager = GetComponent<LogicStateManager>();
         PlayerSetting setting = GetComponent<PlayerSetting>();
         PlayerSpec playerSpec = new PlayerSpec();
+        playerSpec = setting._PlayerSpec;
         playerSpec.m_Player = this.gameObject;
-        playerSpec.m_NormalSpeed = setting._MoveSpeed;
-        playerSpec.m_DashCoolDownTime = setting._DashCoolDownTime;
-        playerSpec.m_DashCount = setting._DashCount;
-        playerSpec.m_MaxDashCount = setting._MaxDashCount;
-        playerSpec.m_DashSpeed = setting._DashSpeed;
-        playerSpec.m_Energy = setting._Energy;
-        playerSpec.m_EnergyThreshold = setting._EnergyThreshold;
-        playerSpec.m_EnergyLimition = setting._EnergyLimition;
-        playerSpec.m_BaseHP = setting._BaseHP;
-        playerSpec.m_Armor = setting._Armor;
-        playerSpec.m_DetectRange = setting._DetectRange;
-        playerSpec.m_WeaponLayer = setting._WeaponLayer;
         m_Player.Init(playerSpec);
         
     }
@@ -68,6 +57,7 @@ public class PlayerController : NetworkBehaviour
         RegisterInputActionFunc();
         RegisterGameEvent();
 
+        PlayerControllers.Add(this);
         m_AfterStartLocalPlayer = true;
     }
 #endif
@@ -78,19 +68,15 @@ public class PlayerController : NetworkBehaviour
         PlayerControllers.Remove(this);
     }
     // private------------------------------------------
-
-    
-
     [ClientCallback]
     private void Update()
     {
         if (!m_AfterStartLocalPlayer)
             return;
         
-        UpdatePlayerMovement();
+        
         m_Player.Update();
         m_InputController.UpdateInputDevice();
-        //m_WeaponSystemCenter.Update();
     }
 
     [ClientCallback]
@@ -100,6 +86,7 @@ public class PlayerController : NetworkBehaviour
             return;
         m_Player.FixedUpdate();
         UpdatePlayerRotation();
+        UpdatePlayerMovement();
         m_InputController.ExcuteActionWhilePlayerMoveInputPerformedAndStay();
         m_InputController.ExcuteActionWhilePlayerShootLeftInputPerformedAndStay();
         m_InputController.ExcuteActionWhilePlayerShootRightInputPerformedAndStay();
@@ -124,11 +111,9 @@ public class PlayerController : NetworkBehaviour
     }
 #endif
 
-    
+    [ClientCallback]
     private void UpdatePlayerRotation()
     {
-        // if (isLocalPlayer)
-        // {
             if(m_InputController.IsGamePadInput())
             {
                 if(m_InputController.GetGamePadViewInput() != Vector2.zero)
@@ -141,8 +126,6 @@ public class PlayerController : NetworkBehaviour
                 Vector3 v3 = m_InputController.GetMousePositionInWorldSpace(m_CameraController.GetCamera()) - m_Player.GetPlayerPosition();
                 m_Player.LookAt(new Vector2(v3.x, v3.y));
             }
-        // }
-        
     }
 
     [ClientCallback]
@@ -157,7 +140,7 @@ public class PlayerController : NetworkBehaviour
             m_LogicStateManager.RemoveState(ELogicState.PlayerWalking);
         }
     }
-
+    [ClientCallback]
     private void RegisterInputActionFunc()
     {
         // 视角拉远
@@ -201,7 +184,7 @@ public class PlayerController : NetworkBehaviour
             m_Player.SetPlayerRightHandWeapon(nearestWeapon);
         });
     }
-    
+    [ClientCallback]
     private void RegisterGameEvent()
     {
         // 玩家冲刺
@@ -227,16 +210,4 @@ public class PlayerController : NetworkBehaviour
     }
 }
 
-[System.Serializable]
-public struct WeaponCat
-{
-    public WeaponType weaponType;
-    public WeaponConfig weaponConfig;
-}
 
-[System.Serializable]
-public struct AmmunitionCat
-{
-    public AmmunitionType ammunitionType;
-    public AmmunitionConfig ammunitionConfig;
-}

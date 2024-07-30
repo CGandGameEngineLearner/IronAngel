@@ -8,7 +8,7 @@ public class LogicState_PlayerWalking : LogicState
     public override void OnStateIn()
     {
 #if UNITY_EDITOR
-        //Debug.Log("enter" + GetType());
+        Debug.Log("enter" + GetType());
 #endif
     }
 
@@ -25,8 +25,7 @@ public class LogicState_PlayerWalking : LogicState
     public override void OnStateOut()
     {
 #if UNITY_EDITOR
-        //Debug.Log("exit" + GetType());
+        Debug.Log("exit" + GetType());
 #endif
-        EventCenter.Broadcast<bool>(EventType.StateToGlobal_PlayerWalkState, false);
     }
 }
