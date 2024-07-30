@@ -69,7 +69,7 @@ public class GlobalController : NetworkBehaviour
 
         m_Player = new Player();
         PlayerSpec playerSpec = new PlayerSpec();
-        playerSpec.m_Player = setting._Player;
+        playerSpec.m_Player = this.gameObject;
         playerSpec.m_NormalSpeed = setting._MoveSpeed;
         playerSpec.m_DashCoolDownTime = setting._DashCoolDownTime;
         playerSpec.m_DashCount = setting._DashCount;
