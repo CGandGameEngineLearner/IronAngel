@@ -76,7 +76,7 @@ public class WeaponSystemCenter: NetworkBehaviour
     /// <summary>
     /// 伤害判定流程
     /// </summary>
-    [ClientRpc]
+    //[ClientRpc]
     public void JudgeWithAmmunition(GameObject unitToDamage, GameObject ammunition)
     {
         // TODO: 结算流程

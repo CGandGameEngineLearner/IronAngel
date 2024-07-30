@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using Mirror;
 using UnityEngine;
 
-public class ColliderTest : NetworkBehaviour
+public class ColliderTest : MonoBehaviour
 {
-    [Server]
+    //[Server]
     private void OnTriggerEnter2D(Collider2D other)
     {
         WeaponSystemCenter.Instance.JudgeWithAmmunition(gameObject, other.gameObject);
