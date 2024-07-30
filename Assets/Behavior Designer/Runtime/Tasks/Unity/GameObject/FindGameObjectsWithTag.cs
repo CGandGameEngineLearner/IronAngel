@@ -14,7 +14,6 @@ namespace BehaviorDesigner.Runtime.Tasks.Unity.UnityGameObject
 
         public override TaskStatus OnUpdate()
         {
-            storeValue.Value.Clear();
             var gameObjects = GameObject.FindGameObjectsWithTag(tag.Value);
             for (int i = 0; i < gameObjects.Length; ++i) {
                 storeValue.Value.Add(gameObjects[i]);
