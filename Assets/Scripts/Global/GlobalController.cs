@@ -9,9 +9,9 @@ using UnityEngine;
 public class GlobalController : NetworkBehaviour
 {
     public readonly static List<GlobalController> PlayerControllers = new List<GlobalController>();
-    private CameraController m_CameraController;
+    private CameraController m_CameraController = new CameraController();
     private Player m_Player = new Player();
-    private InputController m_InputController;
+    private InputController m_InputController = new InputController();
     private WeaponSystemCenter m_WeaponSystemCenter;
 
     //  public------------------------------------------
@@ -49,7 +49,6 @@ public class GlobalController : NetworkBehaviour
     public override void OnStartLocalPlayer()
     {
         GlobalSetting setting = GetComponent<GlobalSetting>();
-        m_CameraController = new CameraController();
         Instantiate(setting._Camera);
         Instantiate((setting._VirtualCamera));
         Instantiate(setting._VirtualCameraTarget);
@@ -85,7 +84,6 @@ public class GlobalController : NetworkBehaviour
         playerSpec.m_WeaponLayer = setting._WeaponLayer;
         m_Player.Init(playerSpec);
 
-        m_InputController = new InputController();
         m_InputController.Init();
 
         RegisterInputActionFunc();
