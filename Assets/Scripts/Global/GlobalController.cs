@@ -183,7 +183,7 @@ public class GlobalController : NetworkBehaviour
         
     }
 
-    [ServerCallback]
+    [ClientCallback]
     private void UpdatePlayerMovement()
     {
         if(m_InputController.IsPlayerMoveInput())
