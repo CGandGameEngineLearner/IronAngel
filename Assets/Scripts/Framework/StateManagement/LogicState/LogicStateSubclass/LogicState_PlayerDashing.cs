@@ -8,7 +8,7 @@ public class LogicState_PlayerDashing : LogicState
     public override void OnStateIn()
     {
 #if UNITY_EDITOR
-        //Debug.Log("enter" + GetType());
+        Debug.Log("enter" + GetType());
 #endif
         EventCenter.Broadcast<bool>(EventType.StateToGlobal_PlayerDashState, true);
     }
@@ -26,7 +26,7 @@ public class LogicState_PlayerDashing : LogicState
     public override void OnStateOut()
     {
 #if UNITY_EDITOR
-        //Debug.Log("exit" + GetType());
+        Debug.Log("exit" + GetType());
 #endif
     }
 }
