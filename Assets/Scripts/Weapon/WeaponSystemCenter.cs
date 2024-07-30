@@ -36,7 +36,7 @@ public class WeaponSystemCenter: NetworkBehaviour
         m_AmmunitionFactory.Update();
     }
 
-    public void Init(List<KeyValuePair<WeaponType, WeaponSystemConfig>> weaponConfigList,
+    public void Init(List<KeyValuePair<WeaponType, WeaponConfig>> weaponConfigList,
         List<KeyValuePair<AmmunitionType, AmmunitionConfig>> ammunitionConfigList)
     {
         foreach (var weaponConfig in weaponConfigList)
@@ -66,7 +66,7 @@ public class WeaponSystemCenter: NetworkBehaviour
             (ammunitionType, ammunition) => { m_AmmunitionPool.ReleaseObject(ammunitionType, ammunition); });
     }
 
-    public (GameObject, WeaponSystemConfig) GetWeapon(WeaponType weaponType)
+    public (GameObject, WeaponConfig) GetWeapon(WeaponType weaponType)
     {
         return (m_WeaponPool.GetObject(weaponType),
             m_WeaponFactory.GetWeaponConfig(weaponType));
@@ -119,13 +119,13 @@ public class WeaponSystemCenter: NetworkBehaviour
         // 注册子弹
         // TODO;修改方向
         var (ammunition, ammunitionConfig) = InternalGetAmmunition(ammunitionType, startPoint, quaternion.identity);
-        InternalRegisterAmmunition(ammunition, weaponSystemConfig.ammunitionType, ammunitionConfig, weaponSystemConfig.atkType,
+        InternalRegisterAmmunition(ammunition, weaponConfig.ammunitionType, ammunitionConfig, weaponConfig.atkType,
             startPoint, dir);
     }
 
-    public void RegisterWeapon(GameObject weapon, WeaponSystemConfig weaponSystemConfig)
+    public void RegisterWeapon(GameObject weapon, WeaponConfig weaponConfig)
     {
-        m_WeaponFactory.RegisterWeapon(weapon, weaponSystemConfig);
+        m_WeaponFactory.RegisterWeapon(weapon, weaponConfig);
     }
 
     public void UnRegisterWeapon(GameObject weapon)
