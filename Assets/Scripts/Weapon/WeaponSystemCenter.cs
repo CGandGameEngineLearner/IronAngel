@@ -4,6 +4,7 @@ using BehaviorDesigner.Runtime;
 using Mirror;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class WeaponSystemCenter: NetworkBehaviour
 {
@@ -35,7 +36,7 @@ public class WeaponSystemCenter: NetworkBehaviour
         m_AmmunitionFactory.Update();
     }
 
-    public void Init(List<KeyValuePair<WeaponType, WeaponConfig>> weaponConfigList,
+    public void Init(List<KeyValuePair<WeaponType, WeaponSystemConfig>> weaponConfigList,
         List<KeyValuePair<AmmunitionType, AmmunitionConfig>> ammunitionConfigList)
     {
         foreach (var weaponConfig in weaponConfigList)
@@ -65,7 +66,7 @@ public class WeaponSystemCenter: NetworkBehaviour
             (ammunitionType, ammunition) => { m_AmmunitionPool.ReleaseObject(ammunitionType, ammunition); });
     }
 
-    public (GameObject, WeaponConfig) GetWeapon(WeaponType weaponType)
+    public (GameObject, WeaponSystemConfig) GetWeapon(WeaponType weaponType)
     {
         return (m_WeaponPool.GetObject(weaponType),
             m_WeaponFactory.GetWeaponConfig(weaponType));
@@ -113,18 +114,18 @@ public class WeaponSystemCenter: NetworkBehaviour
     {
         if (!m_WeaponFactory.HasWeapon(weapon)) throw new Exception("This weapon is not in WeaponUpdater");
 
-        WeaponConfig weaponConfig = m_WeaponFactory.GetWeaponHandle(weapon).weaponConfig;
-        AmmunitionType ammunitionType = weaponConfig.ammunitionType;
+        WeaponSystemConfig weaponSystemConfig = m_WeaponFactory.GetWeaponHandle(weapon).WeaponSystemConfig;
+        AmmunitionType ammunitionType = weaponSystemConfig.ammunitionType;
         // 注册子弹
         // TODO;修改方向
         var (ammunition, ammunitionConfig) = InternalGetAmmunition(ammunitionType, startPoint, quaternion.identity);
-        InternalRegisterAmmunition(ammunition, weaponConfig.ammunitionType, ammunitionConfig, weaponConfig.atkType,
+        InternalRegisterAmmunition(ammunition, weaponSystemConfig.ammunitionType, ammunitionConfig, weaponSystemConfig.atkType,
             startPoint, dir);
     }
 
-    public void RegisterWeapon(GameObject weapon, WeaponConfig weaponConfig)
+    public void RegisterWeapon(GameObject weapon, WeaponSystemConfig weaponSystemConfig)
     {
-        m_WeaponFactory.RegisterWeapon(weapon, weaponConfig);
+        m_WeaponFactory.RegisterWeapon(weapon, weaponSystemConfig);
     }
 
     public void UnRegisterWeapon(GameObject weapon)
@@ -167,7 +168,7 @@ public class WeaponSystemCenter: NetworkBehaviour
 public struct WeaponCat
 {
     public WeaponType weaponType;
-    public WeaponConfig weaponConfig;
+    [FormerlySerializedAs("weaponConfig")] public WeaponSystemConfig weaponSystemConfig;
 }
 
 [System.Serializable]

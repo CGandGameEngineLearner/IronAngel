@@ -21,7 +21,7 @@ public enum WeaponType
 {
     Glock,
 }
-
+[CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/Weapon/ItemConfig", order = 1)]
 public class ItemConfig : ScriptableObject
 {
     public GameObject prefab => m_Prefab;
@@ -35,7 +35,7 @@ public class ItemConfig : ScriptableObject
 }
 
 [CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/Weapon/WeaponConfig", order = 1)]
-public class WeaponConfig : ItemConfig
+public class WeaponSystemConfig : ItemConfig
 {
     // 武器类型
     public AtkType atkType => m_AtkType;
@@ -47,13 +47,13 @@ public class WeaponConfig : ItemConfig
     public ParticleSystem effectPrefab => m_EffectPrefab;
 
     [Header("武器属性配置")]
-    [SerializeField] private AtkType m_AtkType;
-    [SerializeField] private AmmunitionType m_ammunitionType;
-    [SerializeField] private float m_Interval;
-    [SerializeField] private float m_MagSize;
-    [SerializeField] private int m_SimShots;
-    [SerializeField] private AudioClip m_SoundEffect;
-    [SerializeField] private ParticleSystem m_EffectPrefab;
+    public AtkType m_AtkType;
+    public AmmunitionType m_ammunitionType;
+    public float m_Interval;
+    public float m_MagSize;
+    public int m_SimShots;
+    public AudioClip m_SoundEffect;
+    public ParticleSystem m_EffectPrefab;
     
 }
 
