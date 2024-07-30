@@ -131,7 +131,11 @@ public class GlobalController : NetworkBehaviour
     private void FixedUpdate()
     {
         m_Player.FixedUpdate();
-        UpdatePlayerRotation();
+        if(m_CameraController.GetCamera() != null)
+        {
+            UpdatePlayerRotation();
+        }
+        
         m_InputController.ExcuteActionWhilePlayerMoveInputPerformedAndStay();
         m_InputController.ExcuteActionWhilePlayerShootLeftInputPerformedAndStay();
         m_InputController.ExcuteActionWhilePlayerShootRightInputPerformedAndStay();
