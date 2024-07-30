@@ -117,6 +117,10 @@ public class GlobalController : NetworkBehaviour
     [ClientCallback]
     private void Update()
     {
+        if(m_CameraController == null)
+        {
+            return;
+        }
         UpdateCameraPosition();
         UpdatePlayerMovement();
         m_Player.Update();
