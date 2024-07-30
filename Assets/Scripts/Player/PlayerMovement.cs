@@ -22,7 +22,6 @@ public class PlayerMovement
 //  public-----------------------------------------
     public void Init(PlayerMovementSpec spec)
     {
-        Debug.Log(GetType()+"Init()");
         m_Player = spec.m_Player;
         m_NormalSpeed = spec.m_NormalSpeed;
         m_Speed = spec.m_NormalSpeed;

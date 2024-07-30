@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GlobalSetting : MonoBehaviour
+public class PlayerSetting : MonoBehaviour
 {
     [Header("Camera")]
     public Camera _Camera;

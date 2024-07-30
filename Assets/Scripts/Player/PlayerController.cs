@@ -1,21 +1,21 @@
-﻿using System;
+﻿
 using Mirror;
-using System.Collections;
+
 using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor.SceneManagement;
+
 using UnityEngine;
 using Cinemachine;
 
-public class GlobalController : NetworkBehaviour
+public class PlayerController : NetworkBehaviour
 {
-    public readonly static List<GlobalController> PlayerControllers = new List<GlobalController>();
+    public readonly static List<PlayerController> PlayerControllers = new List<PlayerController>();
     private CameraController m_CameraController = new CameraController();
     private Player m_Player = new Player();
     private InputController m_InputController = new InputController();
     private WeaponSystemCenter m_WeaponSystemCenter;
+    private LogicStateManager m_LogicStateManager;
 
-    bool isInit = false;
+    bool m_AfterStartLocalPlayer = false;
     //  public------------------------------------------
     public WeaponSystemCenter WeaponSystemCenter
     {
@@ -33,30 +33,11 @@ public class GlobalController : NetworkBehaviour
     {
         get { return CameraController; }
     }
-    public void Test()
+
+    private void Start()
     {
-        /*var (newWeapon, newConfig) = m_WeaponSystemCenter.GetWeapon(WeaponType.Glock);
-        m_WeaponSystemCenter.RegisterWeapon(newWeapon, newConfig);
-        m_InputController.AddActionWhilePlayerShootLeftInputPerformedAndStay(() =>
-        {
-            m_WeaponSystemCenter.FireWith(newWeapon, m_Player.GetPlayerLeftHandPosition(), m_InputController.GetMousePositionInWorldSpace(m_CameraController.GetCamera()) - m_Player.GetPlayerPosition());
-        });
-        m_InputController.AddActionWhilePlayerShootRightInputPerformedAndStay(() =>
-        {
-            m_WeaponSystemCenter.FireWith(newWeapon, m_Player.GetPlayerRightHandPosition(), m_InputController.GetMousePositionInWorldSpace(m_CameraController.GetCamera()) - m_Player.GetPlayerPosition());
-        });*/
-    }
-
-
-#if !UNITY_SERVER
-    public override void OnStartLocalPlayer()
-    {
-        Debug.LogWarning("start local player");
-        GlobalSetting setting = GetComponent<GlobalSetting>();
-
-
-
-        m_Player = new Player();
+        m_LogicStateManager = GetComponent<LogicStateManager>();
+        PlayerSetting setting = GetComponent<PlayerSetting>();
         PlayerSpec playerSpec = new PlayerSpec();
         playerSpec.m_Player = this.gameObject;
         playerSpec.m_NormalSpeed = setting._MoveSpeed;
@@ -72,15 +53,22 @@ public class GlobalController : NetworkBehaviour
         playerSpec.m_DetectRange = setting._DetectRange;
         playerSpec.m_WeaponLayer = setting._WeaponLayer;
         m_Player.Init(playerSpec);
+        
+    }
 
-        m_InputController.Init();
-        Debug.Log(Camera.main);
+
+#if !UNITY_SERVER
+    public override void OnStartLocalPlayer()
+    {
+        PlayerSetting setting = GetComponent<PlayerSetting>();
+        
         m_CameraController.Init(Camera.main, GameObject.FindAnyObjectByType<CinemachineVirtualCamera>().GetComponent<CinemachineVirtualCamera>(), GameObject.FindWithTag("CameraTarget").transform, setting._CameraMinDistance, setting._CameraMaxDistance);
-
+        m_InputController.Init();
+        
         RegisterInputActionFunc();
         RegisterGameEvent();
 
-        isInit = true;
+        m_AfterStartLocalPlayer = true;
     }
 #endif
 
@@ -90,41 +78,13 @@ public class GlobalController : NetworkBehaviour
         PlayerControllers.Remove(this);
     }
     // private------------------------------------------
-    private void Awake()
-    {
-        
 
-        
-
-        /*foreach (var audioConfig in setting._AudioConfig.m_Config)
-        {
-            AudioUtils.m_Audios.Add(audioConfig._AudioType, audioConfig);
-        }
-
-        List<KeyValuePair<WeaponType, WeaponConfig>> weaponConfigList = new();
-        List<KeyValuePair<AmmunitionType, AmmunitionConfig>> ammunitionConfigList = new();
-        m_WeaponSystemCenter = new WeaponSystemCenter();
-        foreach(var weaponCat in setting._WeaponCats)
-        {
-            weaponConfigList.Add(new KeyValuePair<WeaponType, WeaponConfig>(weaponCat.weaponType, weaponCat.weaponConfig));
-        }
-        foreach(var ammunitionCat in setting._AmmunitionCats)
-        {
-            ammunitionConfigList.Add(new KeyValuePair<AmmunitionType, AmmunitionConfig>(ammunitionCat.ammunitionType, ammunitionCat.ammunitionConfig));
-        }
-        m_WeaponSystemCenter.Init(weaponConfigList, ammunitionConfigList);*/
-
-        Utils.GlobalController = this;
-
-        //Destroy(setting);
-    }
-    
     
 
     [ClientCallback]
     private void Update()
     {
-        if (!isInit)
+        if (!m_AfterStartLocalPlayer)
             return;
         
         UpdatePlayerMovement();
@@ -136,14 +96,10 @@ public class GlobalController : NetworkBehaviour
     [ClientCallback]
     private void FixedUpdate()
     {
-        if (!isInit)
+        if (!m_AfterStartLocalPlayer)
             return;
         m_Player.FixedUpdate();
-        if(m_CameraController.GetCamera() != null)
-        {
-            UpdatePlayerRotation();
-        }
-        
+        UpdatePlayerRotation();
         m_InputController.ExcuteActionWhilePlayerMoveInputPerformedAndStay();
         m_InputController.ExcuteActionWhilePlayerShootLeftInputPerformedAndStay();
         m_InputController.ExcuteActionWhilePlayerShootRightInputPerformedAndStay();
@@ -152,12 +108,8 @@ public class GlobalController : NetworkBehaviour
     [ClientCallback]
     private void LateUpdate()
     {
-        if (!isInit)
+        if (!m_AfterStartLocalPlayer)
             return;
-        if (m_CameraController.GetCamera() == null)
-        {
-            return;
-        }
         UpdateCameraPosition();
     }
 
@@ -175,8 +127,8 @@ public class GlobalController : NetworkBehaviour
     
     private void UpdatePlayerRotation()
     {
-        if (isLocalPlayer)
-        {
+        // if (isLocalPlayer)
+        // {
             if(m_InputController.IsGamePadInput())
             {
                 if(m_InputController.GetGamePadViewInput() != Vector2.zero)
@@ -189,7 +141,7 @@ public class GlobalController : NetworkBehaviour
                 Vector3 v3 = m_InputController.GetMousePositionInWorldSpace(m_CameraController.GetCamera()) - m_Player.GetPlayerPosition();
                 m_Player.LookAt(new Vector2(v3.x, v3.y));
             }
-        }
+        // }
         
     }
 
@@ -198,11 +150,11 @@ public class GlobalController : NetworkBehaviour
     {
         if(m_InputController.IsPlayerMoveInput())
         {
-            m_Player.GetPlayer().GetComponent<LogicStateManager>().AddState(ELogicState.PlayerWalking);
+            m_LogicStateManager.AddState(ELogicState.PlayerWalking);
         }
         else
         {
-            m_Player.GetPlayer().GetComponent<LogicStateManager>().RemoveState(ELogicState.PlayerWalking);
+            m_LogicStateManager.RemoveState(ELogicState.PlayerWalking);
         }
     }
 
