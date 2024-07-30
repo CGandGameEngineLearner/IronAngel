@@ -18,6 +18,8 @@ public class PlayerSetting : MonoBehaviour
     [Header("Player Spec")]
     public PlayerSpec _PlayerSpec;
 
+
+
     [Header("AudioUtils")]
     public AudioConfig _AudioConfig;
 
