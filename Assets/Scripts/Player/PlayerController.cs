@@ -41,14 +41,11 @@ public class PlayerController : NetworkBehaviour
         PlayerSpec playerSpec = new PlayerSpec();
         playerSpec = setting._PlayerSpec;
         playerSpec.m_Player = this.gameObject;
-<<<<<<< Updated upstream
-=======
 
         var (gameObject, weaponConfig) =  WeaponSystemCenter.Instance.GetWeapon(WeaponType.Glock);
         WeaponSystemCenter.Instance.RegisterWeapon(gameObject, weaponConfig);
         playerSpec.m_PlayerLeftHand = gameObject;
-
->>>>>>> Stashed changes
+        
         m_Player.Init(playerSpec);
         
     }
