@@ -1,4 +1,4 @@
-public class DamgeProcesser
+public class LDamgeProcesser
 {
     
 }
