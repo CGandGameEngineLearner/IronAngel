@@ -1,15 +1,18 @@
-﻿using Mirror;
+﻿using System;
+using Mirror;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor.SceneManagement;
 using UnityEngine;
+using Cinemachine;
 
 public class GlobalController : NetworkBehaviour
 {
     public readonly static List<GlobalController> PlayerControllers = new List<GlobalController>();
-    private CameraController m_CameraController;
-    private Player m_Player;
-    private InputController m_InputController;
+    private CameraController m_CameraController = new CameraController();
+    private Player m_Player = new Player();
+    private InputController m_InputController = new InputController();
     private WeaponSystemCenter m_WeaponSystemCenter;
 
     //  public------------------------------------------
@@ -43,43 +46,16 @@ public class GlobalController : NetworkBehaviour
         });*/
     }
 
+
+#if !UNITY_SERVER
     public override void OnStartLocalPlayer()
     {
+        Debug.LogWarning("start local player");
         GlobalSetting setting = GetComponent<GlobalSetting>();
-
-        m_CameraController = new CameraController();
-        Instantiate(setting._Camera);
-        Instantiate(setting._VirtualCamera);
-        Instantiate(setting._VirtualCameraTarget);
-        m_CameraController.Init(setting._Camera, setting._VirtualCamera, setting._VirtualCameraTarget, setting._CameraMinDistance, setting._CameraMaxDistance);
-
-        m_Player = new Player();
-        PlayerSpec playerSpec = new PlayerSpec();
-        playerSpec.m_Player = setting._Player;
-        playerSpec.m_NormalSpeed = setting._MoveSpeed;
-        playerSpec.m_DashCoolDownTime = setting._DashCoolDownTime;
-        playerSpec.m_DashCount = setting._DashCount;
-        playerSpec.m_MaxDashCount = setting._MaxDashCount;
-        playerSpec.m_DashSpeed = setting._DashSpeed;
-        playerSpec.m_Energy = setting._Energy;
-        playerSpec.m_EnergyThreshold = setting._EnergyThreshold;
-        playerSpec.m_EnergyLimition = setting._EnergyLimition;
-        playerSpec.m_BaseHP = setting._BaseHP;
-        playerSpec.m_Armor = setting._Armor;
-        playerSpec.m_DetectRange = setting._DetectRange;
-        playerSpec.m_WeaponLayer = setting._WeaponLayer;
-        m_Player.Init(playerSpec);
-
-        m_InputController = new InputController();
-        m_InputController.Init();
-
-        PlayerControllers.Add(this);
-
-        RegisterInputActionFunc();
-        RegisterGameEvent();
-
-        Test();
+        Debug.Log(Camera.main);
+        m_CameraController.Init(Camera.main, GameObject.FindAnyObjectByType<CinemachineVirtualCamera>().GetComponent<CinemachineVirtualCamera>(), GameObject.FindWithTag("CameraTarget").transform, setting._CameraMinDistance, setting._CameraMaxDistance);
     }
+#endif
 
 
     public void OnDestroy()
@@ -91,12 +67,11 @@ public class GlobalController : NetworkBehaviour
     {
         GlobalSetting setting = GetComponent<GlobalSetting>();
 
-        /*m_CameraController = new CameraController();
-        m_CameraController.Init(setting._Camera, setting._VirtualCamera, setting._VirtualCameraTarget, setting._CameraMinDistance, setting._CameraMaxDistance);
+        
 
         m_Player = new Player();
         PlayerSpec playerSpec = new PlayerSpec();
-        playerSpec.m_Player = setting._Player;
+        playerSpec.m_Player = this.gameObject;
         playerSpec.m_NormalSpeed = setting._MoveSpeed;
         playerSpec.m_DashCoolDownTime = setting._DashCoolDownTime;
         playerSpec.m_DashCount = setting._DashCount;
@@ -111,8 +86,10 @@ public class GlobalController : NetworkBehaviour
         playerSpec.m_WeaponLayer = setting._WeaponLayer;
         m_Player.Init(playerSpec);
 
-        m_InputController = new InputController();
-        m_InputController.Init();*/
+        m_InputController.Init();
+
+        RegisterInputActionFunc();
+        RegisterGameEvent();
 
         /*foreach (var audioConfig in setting._AudioConfig.m_Config)
         {
@@ -136,11 +113,14 @@ public class GlobalController : NetworkBehaviour
 
         //Destroy(setting);
     }
+    
+    
 
     [ClientCallback]
     private void Update()
     {
-        UpdateCameraPosition();
+        
+        
         UpdatePlayerMovement();
         m_Player.Update();
         m_InputController.UpdateInputDevice();
@@ -151,12 +131,27 @@ public class GlobalController : NetworkBehaviour
     private void FixedUpdate()
     {
         m_Player.FixedUpdate();
-        UpdatePlayerRotation();
+        if(m_CameraController.GetCamera() != null)
+        {
+            UpdatePlayerRotation();
+        }
+        
         m_InputController.ExcuteActionWhilePlayerMoveInputPerformedAndStay();
         m_InputController.ExcuteActionWhilePlayerShootLeftInputPerformedAndStay();
         m_InputController.ExcuteActionWhilePlayerShootRightInputPerformedAndStay();
     }
 
+    [ClientCallback]
+    private void LateUpdate()
+    {
+        if (m_CameraController.GetCamera() == null)
+        {
+            return;
+        }
+        UpdateCameraPosition();
+    }
+
+#if !UNITY_SERVER
     [ClientCallback]
     private void UpdateCameraPosition()
     {
@@ -165,22 +160,27 @@ public class GlobalController : NetworkBehaviour
         targetPos.z = 0;
         m_CameraController.SetVirtualCameraTargetPosition(targetPos + m_Player.GetPlayerPosition());
     }
+#endif
 
-    [ServerCallback]
+    
     private void UpdatePlayerRotation()
     {
-        if(m_InputController.IsGamePadInput())
+        if (isLocalPlayer)
         {
-            if(m_InputController.GetGamePadViewInput() != Vector2.zero)
+            if(m_InputController.IsGamePadInput())
             {
-                m_Player.LookAt(m_InputController.GetGamePadViewInput());
+                if(m_InputController.GetGamePadViewInput() != Vector2.zero)
+                {
+                    m_Player.LookAt(m_InputController.GetGamePadViewInput());
+                }
+            }
+            else
+            {
+                Vector3 v3 = m_InputController.GetMousePositionInWorldSpace(m_CameraController.GetCamera()) - m_Player.GetPlayerPosition();
+                m_Player.LookAt(new Vector2(v3.x, v3.y));
             }
         }
-        else
-        {
-            Vector3 v3 = m_InputController.GetMousePositionInWorldSpace(m_CameraController.GetCamera()) - m_Player.GetPlayerPosition();
-            m_Player.LookAt(new Vector2(v3.x, v3.y));
-        }
+        
     }
 
     [ServerCallback]

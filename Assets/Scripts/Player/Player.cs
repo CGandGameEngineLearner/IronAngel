@@ -43,6 +43,12 @@ public class Player
         m_PlayerProperties.Init(propertiesSpec);
     }
 
+    public void SetPlayer(GameObject player)
+    {
+        m_Player = player;
+
+    }
+
     public Vector3 GetPlayerPosition()
     {
         return m_Player.transform.position;
