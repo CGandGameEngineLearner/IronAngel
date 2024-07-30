@@ -46,10 +46,6 @@ namespace BehaviorDesigner.Runtime.Tasks
 
         public override TaskStatus OnUpdate()
         {
-            if (behaviorTree == null) {
-                return TaskStatus.Failure;
-            }
-
             // Send the event and return success
             if (argument1 == null || argument1.IsNone) {
                 behaviorTree.SendEvent(eventName.Value);
