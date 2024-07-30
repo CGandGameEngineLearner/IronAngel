@@ -42,7 +42,8 @@ public class GlobalController : NetworkBehaviour
             m_WeaponSystemCenter.FireWith(newWeapon, m_Player.GetPlayerRightHandPosition(), m_InputController.GetMousePositionInWorldSpace(m_CameraController.GetCamera()) - m_Player.GetPlayerPosition());
         });*/
     }
-
+    
+    [ServerCallback]
     public override void OnStartLocalPlayer()
     {
         GlobalSetting setting = GetComponent<GlobalSetting>();
