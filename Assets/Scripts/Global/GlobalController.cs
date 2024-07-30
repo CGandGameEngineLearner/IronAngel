@@ -8,7 +8,7 @@ public class GlobalController : NetworkBehaviour
 {
     public readonly static List<GlobalController> PlayerControllers = new List<GlobalController>();
     private CameraController m_CameraController;
-    private Player m_Player;
+    private Player m_Player = new Player();
     private InputController m_InputController;
     private WeaponSystemCenter m_WeaponSystemCenter;
 
@@ -53,7 +53,6 @@ public class GlobalController : NetworkBehaviour
         Instantiate(setting._VirtualCameraTarget);
         m_CameraController.Init(setting._Camera, setting._VirtualCamera, setting._VirtualCameraTarget, setting._CameraMinDistance, setting._CameraMaxDistance);
 
-        m_Player = new Player();
         PlayerSpec playerSpec = new PlayerSpec();
         playerSpec.m_Player = setting._Player;
         playerSpec.m_NormalSpeed = setting._MoveSpeed;
