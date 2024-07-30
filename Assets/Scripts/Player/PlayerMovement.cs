@@ -22,6 +22,7 @@ public class PlayerMovement
 //  public-----------------------------------------
     public void Init(PlayerMovementSpec spec)
     {
+        Debug.Log(GetType()+"Init()");
         m_Player = spec.m_Player;
         m_NormalSpeed = spec.m_NormalSpeed;
         m_Speed = spec.m_NormalSpeed;
@@ -47,8 +48,8 @@ public class PlayerMovement
     {
         dir = dir.normalized;
         float angle = Vector2.Angle(new Vector2(0, 1), dir);
-        // 最后的减去90°是不是知道啥问题
-        // 用鼠标转换出来的坐标计算会差90°
+        // 鏈�鍚庣殑鍑忓幓90掳鏄笉鏄煡閬撳暐闂
+        // 鐢ㄩ紶鏍囪浆鎹㈠嚭鏉ョ殑鍧愭爣璁＄畻浼氬樊90掳
         m_Rigidbody.rotation = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - 90.0f;
     }
 
