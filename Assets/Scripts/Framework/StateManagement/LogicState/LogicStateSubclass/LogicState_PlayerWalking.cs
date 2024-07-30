@@ -19,7 +19,7 @@ public class LogicState_PlayerWalking : LogicState
 
     public override void FixedUpdate()
     {
-        EventCenter.Broadcast<bool>(EventType.StateToGlobal_PlayerWalkState, true);
+        EventCenter.Broadcast(EventType.StateToGlobal_PlayerWalkState);
     }
 
     public override void OnStateOut()

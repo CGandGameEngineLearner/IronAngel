@@ -200,7 +200,7 @@ public class PlayerController : NetworkBehaviour
             }
         });
         // 玩家移动
-        EventCenter.AddListener<bool>(EventType.StateToGlobal_PlayerWalkState, (walking) =>
+        EventCenter.AddListener(EventType.StateToGlobal_PlayerWalkState, () =>
         {
             m_Player.Move(m_InputController.GetPlayerMoveInputVector2());
         });
