@@ -186,10 +186,10 @@ public class PlayerController : NetworkBehaviour
             m_Player.SetPlayerRightHandWeapon(nearestWeapon);
         });
         // 玩家攻击测试
-        m_InputController.AddActionWhilePlayerShootLeftInputPerformedAndStay(() =>
-        {
-            WeaponSystemCenter.Instance.FireWith(m_Player.GetPlayerLeftHandWeapon(), m_Player.GetPlayerLeftHandPosition(), m_InputController.GetMousePositionInWorldSpace(m_CameraController.GetCamera()) - m_Player.GetPlayerPosition());
-        });
+        // m_InputController.AddActionWhilePlayerShootLeftInputPerformedAndStay(() =>
+        // {
+        //     WeaponSystemCenter.Instance.FireWith(m_Player.GetPlayerLeftHandWeapon(), m_Player.GetPlayerLeftHandPosition(), m_InputController.GetMousePositionInWorldSpace(m_CameraController.GetCamera()) - m_Player.GetPlayerPosition());
+        // });
     }
     [ClientCallback]
     private void RegisterGameEvent()

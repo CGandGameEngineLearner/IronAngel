@@ -14,12 +14,12 @@ public class WeaponController : MonoBehaviour
 
     private void Start()
     {
-        List<KeyValuePair<WeaponType, WeaponConfig>> weaponConfigList = new ();
+        List<KeyValuePair<WeaponType, WeaponSystemConfig>> weaponConfigList = new ();
         List<KeyValuePair<AmmunitionType, AmmunitionConfig>> ammunitionConfigList = new();
 
         foreach (var weaponCat in m_WeaponCats)
         {
-            weaponConfigList.Add(new KeyValuePair<WeaponType, WeaponConfig>(weaponCat.weaponType, weaponCat.weaponConfig));
+            weaponConfigList.Add(new KeyValuePair<WeaponType, WeaponSystemConfig>(weaponCat.weaponType, weaponCat.weaponSystemConfig));
         }
 
         foreach (var ammunitionCat in m_AmmunitionCats)
