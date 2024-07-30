@@ -116,10 +116,7 @@ public class PlayerController : NetworkBehaviour
     {
             if(m_InputController.IsGamePadInput())
             {
-                if(m_InputController.GetGamePadViewInput() != Vector2.zero)
-                {
-                    m_Player.LookAt(m_InputController.GetGamePadViewInput());
-                }
+                m_Player.LookAt(m_InputController.GetGamePadViewInput());
             }
             else
             {
