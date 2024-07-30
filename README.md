@@ -2,6 +2,7 @@
 ## 快速启动项目
 ### 安装依赖
 - Unity 2022.3.2.9740
+- Git
 - Github Desktop
 - Visual Studio Code 并安装插件以下插件:
 ```
