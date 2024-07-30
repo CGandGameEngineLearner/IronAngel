@@ -140,7 +140,7 @@ public class GlobalController : NetworkBehaviour
     [ClientCallback]
     private void LateUpdate()
     {
-        if (m_CameraController == null)
+        if (m_CameraController.GetCamera() == null)
         {
             return;
         }
