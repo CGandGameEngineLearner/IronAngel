@@ -1118,12 +1118,10 @@ MonoBehaviour:
   character: {fileID: 0}
   m_WeaponCats:
   - weaponType: 0
-    weaponConfig: {fileID: 11400000, guid: 464a91e925d39464685d07751719c80b, type: 2}
+    weaponConfig: {fileID: 11400000, guid: 1466359d5658cb04e9354a90dd965ebb, type: 2}
   m_AmmunitionCats:
   - ammunitionType: 1
-    ammunitionConfig: {fileID: 11400000, guid: cc5d849529d30174fbf2bafe04a08c50, type: 2}
-  - ammunitionType: 0
-    ammunitionConfig: {fileID: 11400000, guid: b6c7b396238c72f49ad8437872311e00, type: 2}
+    ammunitionConfig: {fileID: 11400000, guid: c404fa5ec3e4a6a48a52cfc51d3a4210, type: 2}
 --- !u!4 &426512123
 Transform:
   m_ObjectHideFlags: 0

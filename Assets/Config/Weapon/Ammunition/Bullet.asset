@@ -9,12 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: a59e88c4a9d74b07b64319f8b37e8bad, type: 3}
   m_Name: Bullet
-  m_EditorClassIdentifier: Assembly-CSharp::AmmunitionConfig
+  m_EditorClassIdentifier: 
   m_Prefab: {fileID: 8422378306381297977, guid: 78a3ef50cb73ebd4d81bd5ef9aeab0aa, type: 3}
   m_MinPoolSize: 50
   m_MaxPoolSize: 100
-  m_Speed: 5
-  m_LifeDistance: 10
+  m_Speed: 10
+  m_LifeDistance: 20
   m_PostAmmunitionType: 2
