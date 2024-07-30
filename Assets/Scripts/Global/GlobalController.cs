@@ -15,6 +15,7 @@ public class GlobalController : NetworkBehaviour
     private InputController m_InputController = new InputController();
     private WeaponSystemCenter m_WeaponSystemCenter;
 
+    bool isInit = false;
     //  public------------------------------------------
     public WeaponSystemCenter WeaponSystemCenter
     {
@@ -78,6 +79,8 @@ public class GlobalController : NetworkBehaviour
 
         RegisterInputActionFunc();
         RegisterGameEvent();
+
+        isInit = true;
     }
 #endif
 
@@ -121,7 +124,8 @@ public class GlobalController : NetworkBehaviour
     [ClientCallback]
     private void Update()
     {
-        
+        if (!isInit)
+            return;
         
         UpdatePlayerMovement();
         m_Player.Update();
@@ -132,6 +136,8 @@ public class GlobalController : NetworkBehaviour
     [ClientCallback]
     private void FixedUpdate()
     {
+        if (!isInit)
+            return;
         m_Player.FixedUpdate();
         if(m_CameraController.GetCamera() != null)
         {
@@ -146,6 +152,8 @@ public class GlobalController : NetworkBehaviour
     [ClientCallback]
     private void LateUpdate()
     {
+        if (!isInit)
+            return;
         if (m_CameraController.GetCamera() == null)
         {
             return;
