@@ -8,7 +8,6 @@ public class Player
     private GameObject m_Player;
     private PlayerMovement m_PlayerMovement;
     private PlayerHand m_PlayerHand;
-    private PlayerProperties m_PlayerProperties;
 
     //  public--------------------------------------------------
     public void Init(PlayerSpec spec)
@@ -33,15 +32,6 @@ public class Player
         handSpec.m_DetectRange = spec.m_DetectRange;
         handSpec.m_WeaponLayer = spec.m_WeaponLayer;
         m_PlayerHand.Init(handSpec);
-
-        m_PlayerProperties = new PlayerProperties();
-        PlayerPropertiesSpec propertiesSpec = new PlayerPropertiesSpec();
-        propertiesSpec.m_Energy = spec.m_Energy;
-        propertiesSpec.m_EnergyThreshold = spec.m_EnergyThreshold;
-        propertiesSpec.m_EnergyLimition = spec.m_EnergyLimition;
-        propertiesSpec.m_BaseHP = spec.m_BaseHP;
-        propertiesSpec.m_Armor = spec.m_Armor;
-        m_PlayerProperties.Init(propertiesSpec);
     }
 
     public void SetPlayer(GameObject player)
@@ -124,91 +114,6 @@ public class Player
         return m_PlayerHand.GetPlayerRightHandWeapon();
     }
 
-    public void SetPlayerEnergy(int val)
-    {
-        m_PlayerProperties.SetEnergy(val);
-    }
-
-    public int GetPlayerEnergy()
-    {
-        return m_PlayerProperties.GetEnergy();
-    }
-
-    public void ChangePlayerEnergy(int val)
-    {
-        m_PlayerProperties.ChangeEnergy(val);
-    }
-
-    public void SetPlayerArmor(int val)
-    {
-        m_PlayerProperties.SetArmor(val);
-    }
-
-    public int GetPlayerArmor()
-    {
-        return m_PlayerProperties.GetArmor();
-    }
-
-    public void SetPlayerBaseHP(int val)
-    {
-        m_PlayerProperties.SetBaseHP(val);
-    }
-
-    public int GetPlayerBaseHP()
-    {
-        return m_PlayerProperties.GetBaseHP();
-    }
-
-    public int GetPlayerCurrentHP()
-    {
-        return m_PlayerProperties.GetCurrentHP();
-    }
-
-    public void SetPlayerCurrentHP(int val)
-    {
-        m_PlayerProperties.SetCurrentHP(val);
-    }
-
-    public void ChangePlayerCurrentHP(int val)
-    {
-        m_PlayerProperties.ChangeCurrentHP(val);
-    }
-
-    public void SetPlayerCurrentArmor(int val)
-    {
-        m_PlayerProperties.SetCurrentArmor(val);
-    }
-
-    public int GetPlayerCurrentArmor()
-    {
-        return m_PlayerProperties.GetCurrentArmor();
-    }
-
-    public void ChangePlayerCurrentArmor(int val)
-    {
-        m_PlayerProperties.ChangeCurrentArmor(val);
-    }
-
-    public void SetPlayerEnergyThreshold(int val)
-    {
-        m_PlayerProperties.SetEnergyThreshold(val);
-    }
-
-    public int GetPlayerEnergyThreshold()
-    {
-        return m_PlayerProperties.GetEnergyThreshold();
-    }
-
-    public void SetPlayerEnergyLimition(int val)
-    {
-        m_PlayerProperties.SetEnergyLimition(val);
-    }
-
-    public int GetPlayerEnergyLimition()
-    {
-        return m_PlayerProperties.GetEnergyLimition();
-    }
-
     public Vector3 GetPlayerLeftHandPosition()
     {
         return m_PlayerHand.GetPlayerLeftHandPosition();
@@ -253,11 +158,4 @@ public struct PlayerSpec
     public GameObject m_PlayerRightHand;
     public float m_DetectRange;
     public LayerMask m_WeaponLayer;
-
-    // Properties
-    public int m_Energy;
-    public int m_EnergyThreshold;
-    public int m_EnergyLimition;
-    public int m_BaseHP;
-    public int m_Armor;
 }
