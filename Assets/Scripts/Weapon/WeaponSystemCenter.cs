@@ -6,6 +6,9 @@ using Mirror;
 using UnityEngine;
 using UnityEngine.Serialization;
 
+/// <summary>
+/// 武器生成地点配置
+/// </summary>
 [Serializable]
 public class WeaponSpawnSetting
 {
@@ -14,6 +17,9 @@ public class WeaponSpawnSetting
     [FormerlySerializedAs("Transform")] [SerializeField] public Vector3 Position;
 }
 
+/// <summary>
+/// 武器配置
+/// </summary>
 [Serializable]
 public class WeaponConfigSetting
 {
@@ -22,6 +28,9 @@ public class WeaponConfigSetting
     [SerializeField]public WeaponConfig WeaponConfig ;
 }
 
+/// <summary>
+/// 子弹配置
+/// </summary>
 [Serializable]
 public class AmmunitionConfigSetting
 {
@@ -54,8 +63,13 @@ public class WeaponSystemCenter: NetworkBehaviour
 
     public bool StartGame = false;
     
-    
-    public void Fire(GameObject weapon, Vector3 startPoint, Vector3 dir)
+    /// <summary>
+    /// 通知服务器要在指定地点和方向发射子弹
+    /// </summary>
+    /// <param name="weapon"></param>
+    /// <param name="startPoint"></param>
+    /// <param name="dir"></param>
+    public void CmdFire(GameObject weapon, Vector3 startPoint, Vector3 dir)
     {
         Debug.Log(GetType()+"Command"+"Fire");
         var weaponConfig = m_WeaponToConfigDic[weapon];
@@ -93,7 +107,9 @@ public class WeaponSystemCenter: NetworkBehaviour
             (ammunitionType, ammunition) => { m_AmmunitionPool.ReleaseObject(ammunitionType, ammunition); });
     }
 
-    
+    /// <summary>
+    /// 通知服务器开始游戏
+    /// </summary>
     public void CmdStartGame()
     {
         
@@ -113,16 +129,7 @@ public class WeaponSystemCenter: NetworkBehaviour
         }
        
     }
-
-    public override void OnStartServer()
-    {
-        
-        
-    }
-
-    public override void OnStartClient()
-    {
-    }
+    
     private void Start()
     {
         Init();
