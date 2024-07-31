@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 
 using Mirror;
-
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -59,34 +59,44 @@ public class WeaponSystemCenter: NetworkBehaviour
     
     
     private ObjectPoolManager<AmmunitionType> m_AmmunitionPool = new();
-    private AmmunitionFactory m_AmmunitionFactory = new(); // 弹药工厂
-
+    private static AmmunitionFactory m_AmmunitionFactory = new(); // 弹药工厂
+    
+    /// <summary>
+    /// 获取AmmunitionFactory单例
+    /// </summary>
+    /// <returns></returns>
+    public static AmmunitionFactory GetAmmunitionFactory()
+    {
+        return m_AmmunitionFactory;
+    }
+    
     public bool StartGame = false;
     
     /// <summary>
     /// 通知服务器要在指定地点和方向发射子弹
     /// </summary>
+    /// <param name="character"></param> 开火的角色
     /// <param name="weapon"></param>
     /// <param name="startPoint"></param>
     /// <param name="dir"></param>
-    public void CmdFire(GameObject weapon, Vector3 startPoint, Vector3 dir)
+    public void CmdFire(GameObject character,GameObject weapon, Vector3 startPoint, Vector3 dir)
     {
         Debug.Log(GetType()+"Command"+"Fire");
         var weaponConfig = m_WeaponToConfigDic[weapon];
         var ammunitionType = m_WeaponToConfigDic[weapon].ammunitionType;
         var ammunitionConfig = m_AmmunitionConfigDic[ammunitionType];
         GameObject ammunition = GetAmmunitionFromPool(ammunitionType, startPoint, dir);
-        m_AmmunitionFactory.ShootAmmunition(ammunition,ammunitionType,ammunitionConfig,weaponConfig.atkType,startPoint,dir);
+        m_AmmunitionFactory.ShootAmmunition(character,ammunition,ammunitionType,ammunitionConfig,weaponConfig.atkType,startPoint,dir);
 
-        RPCFire(weaponConfig, ammunitionType, startPoint, dir);
+        RPCFire(character,weaponConfig, ammunitionType, startPoint, dir);
     }
 
     [ClientRpc]
-    public void RPCFire(WeaponConfig weaponConfig, AmmunitionType ammunitionType, Vector3 startPoint, Vector3 dir)
+    public void RPCFire(GameObject character,WeaponConfig weaponConfig, AmmunitionType ammunitionType, Vector3 startPoint, Vector3 dir)
     {
         var ammunitionConfig = m_AmmunitionConfigDic[ammunitionType];
         GameObject ammunition = GetAmmunitionFromPool(ammunitionType, startPoint, dir);
-        m_AmmunitionFactory.ShootAmmunition(ammunition,ammunitionType,ammunitionConfig,weaponConfig.atkType,startPoint,dir);
+        m_AmmunitionFactory.ShootAmmunition(character,ammunition,ammunitionType,ammunitionConfig,weaponConfig.atkType,startPoint,dir);
     }
 
 

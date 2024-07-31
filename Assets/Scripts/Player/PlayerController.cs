@@ -216,7 +216,7 @@ public class PlayerController : NetworkBehaviour
     [Command]
     private void CmdFire(GameObject weapon, Vector3 startPoint, Vector3 dir)
     {   
-        WeaponSystemCenter.Instance.CmdFire(weapon,startPoint,dir);
+        WeaponSystemCenter.Instance.CmdFire(gameObject,weapon,startPoint,dir);
     }
 
     [Command]

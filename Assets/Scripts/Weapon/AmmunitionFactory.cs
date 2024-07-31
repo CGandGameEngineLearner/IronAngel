@@ -6,6 +6,7 @@ public class AmmunitionHandle
 {
     public bool active;
     public GameObject ammunition;
+    public GameObject launcherCharacter;// 发射这个子弹的角色GameObject
     public Rigidbody2D rigidbody2D;
     public Vector2 startPoint;
     public Vector2 dir;
@@ -13,11 +14,11 @@ public class AmmunitionHandle
     public AmmunitionType ammunitionType;
     public AmmunitionConfig ammunitionConfig;
 
-    public void Init(GameObject ammunition, AmmunitionType ammunitionType, AmmunitionConfig ammunitionConfig, AtkType atkType,
+    public void Init(GameObject owner,GameObject ammunition, AmmunitionType ammunitionType, AmmunitionConfig ammunitionConfig, AtkType atkType,
         Vector2 startPoint, Vector2 dir)
     {
         active = true;
-        
+        this.launcherCharacter = owner;
         this.ammunitionType = ammunitionType;
         this.ammunition = ammunition;
         this.atkType = atkType;
@@ -89,9 +90,18 @@ public class AmmunitionFactory
 
         return m_AmmunitionConfigs[ammunitionType];
     }
-
+    
+    /// <summary>
+    /// 获取子弹对象的对应的Handle
+    /// </summary>
+    /// <param name="ammunition"></param>
+    /// <returns></returns>
     public AmmunitionHandle GetAmmunitionHandle(GameObject ammunition)
     {
+        if (!m_AmmunitionsDict.ContainsKey(ammunition))
+        {
+            return null;
+        }
         return m_AmmunitionsDict[ammunition];
     }
     
@@ -100,12 +110,12 @@ public class AmmunitionFactory
         return m_AmmunitionsDict[ammunition].active;
     }
 
-    private void RegisterAmmunition(GameObject ammunition, AmmunitionType ammunitionType, AmmunitionConfig ammunitionConfig, AtkType atkType,
+    private void RegisterAmmunition(GameObject owner,GameObject ammunition, AmmunitionType ammunitionType, AmmunitionConfig ammunitionConfig, AtkType atkType,
         Vector2 startPoint, Vector2 dir)
     {
         if (m_AmmunitionsDict.ContainsKey(ammunition)) return;
 
-        m_HandlesToAdd.Enqueue(InternalGetAmmunitionHandle(ammunition, ammunitionType, ammunitionConfig, atkType, startPoint, dir));
+        m_HandlesToAdd.Enqueue(InternalGetAmmunitionHandle(owner, ammunition, ammunitionType, ammunitionConfig, atkType, startPoint, dir));
     }
     
     /// <summary>
@@ -117,11 +127,11 @@ public class AmmunitionFactory
     /// <param name="atkType"></param>
     /// <param name="startPoint"></param>
     /// <param name="dir"></param>
-    public void ShootAmmunition(GameObject ammunition, AmmunitionType ammunitionType,
+    public void ShootAmmunition(GameObject owner,GameObject ammunition, AmmunitionType ammunitionType,
         AmmunitionConfig ammunitionConfig, AtkType atkType,
         Vector2 startPoint, Vector2 dir)
     {
-        RegisterAmmunition(ammunition, ammunitionType, ammunitionConfig, atkType, startPoint, dir);
+        RegisterAmmunition(owner,ammunition, ammunitionType, ammunitionConfig, atkType, startPoint, dir);
     }
     
     
@@ -189,11 +199,11 @@ public class AmmunitionFactory
     }
 
 
-    private AmmunitionHandle InternalGetAmmunitionHandle(GameObject ammunition, AmmunitionType ammunitionType, AmmunitionConfig ammunitionConfig, AtkType atkType,
+    private AmmunitionHandle InternalGetAmmunitionHandle(GameObject owner,GameObject ammunition, AmmunitionType ammunitionType, AmmunitionConfig ammunitionConfig, AtkType atkType,
         Vector2 startPoint, Vector2 dir)
     {
         AmmunitionHandle handle = m_UsableQueue.Count > 0 ? m_UsableQueue.Dequeue() : new AmmunitionHandle();
-        handle.Init(ammunition, ammunitionType, ammunitionConfig, atkType, startPoint, dir);
+        handle.Init(owner,ammunition, ammunitionType, ammunitionConfig, atkType, startPoint, dir);
 
         return handle;
     }
