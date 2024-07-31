@@ -6,7 +6,7 @@ using Mirror;
 public class BulletCollisionReceiver : NetworkBehaviour
 {
     /// <summary>
-    /// 应该只有服务端上的物体会接收碰撞
+    /// 搴旇鍙湁鏈嶅姟绔笂鐨勭墿浣撲細鎺ユ敹纰版挒
     /// </summary>
     /// <param name="collision"></param>
     [ServerCallback]
