@@ -64,13 +64,18 @@ public class AmmunitionFactory
 
     // recycle------------------------------
     private RecycleHandle onRecycle;
-
-    public void Init(List<KeyValuePair<AmmunitionType, AmmunitionConfig>> ammunitionConfigPairs,
+    
+    /// <summary>
+    /// 初始化
+    /// </summary>
+    /// <param name="AmmunitionConfigDic">子弹配置映射</param> 
+    /// <param name="recycleHandle">子弹回收处理委托</param> 
+    public void Init(Dictionary<AmmunitionType,AmmunitionConfig> AmmunitionConfigDic,
         RecycleHandle recycleHandle)
     {
         onRecycle = recycleHandle;
 
-        foreach (var ammunitionConfigPair in ammunitionConfigPairs)
+        foreach (var ammunitionConfigPair in AmmunitionConfigDic)
         {
             m_AmmunitionConfigs.Add(ammunitionConfigPair.Key, ammunitionConfigPair.Value);
         }
@@ -95,13 +100,32 @@ public class AmmunitionFactory
         return m_AmmunitionsDict[ammunition].active;
     }
 
-    public void RegisterAmmunition(GameObject ammunition, AmmunitionType ammunitionType, AmmunitionConfig ammunitionConfig, AtkType atkType,
+    private void RegisterAmmunition(GameObject ammunition, AmmunitionType ammunitionType, AmmunitionConfig ammunitionConfig, AtkType atkType,
         Vector2 startPoint, Vector2 dir)
     {
         if (m_AmmunitionsDict.ContainsKey(ammunition)) return;
 
         m_HandlesToAdd.Enqueue(InternalGetAmmunitionHandle(ammunition, ammunitionType, ammunitionConfig, atkType, startPoint, dir));
     }
+    
+    /// <summary>
+    /// 射子弹
+    /// </summary>
+    /// <param name="ammunition"></param>
+    /// <param name="ammunitionType"></param>
+    /// <param name="ammunitionConfig"></param>
+    /// <param name="atkType"></param>
+    /// <param name="startPoint"></param>
+    /// <param name="dir"></param>
+    public void ShootAmmunition(GameObject ammunition, AmmunitionType ammunitionType,
+        AmmunitionConfig ammunitionConfig, AtkType atkType,
+        Vector2 startPoint, Vector2 dir)
+    {
+        RegisterAmmunition(ammunition, ammunitionType, ammunitionConfig, atkType, startPoint, dir);
+    }
+    
+    
+
 
 
     public void UnRegisterAmmunition(GameObject ammunition)
@@ -111,7 +135,7 @@ public class AmmunitionFactory
         m_AmmunitionsDict[ammunition].active = false;
     }
 
-    public void Update()
+    public void FixedUpdate()
     {
         // 交换链
         var ammunitionQueueToUpdate = m_AmmunitionQueueSwapChain[m_ChainIdx];

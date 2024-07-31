@@ -5,6 +5,7 @@ using System.Collections.Generic;
 
 using UnityEngine;
 using Cinemachine;
+using UnityEditor;
 
 public class PlayerController : NetworkBehaviour
 {
@@ -42,12 +43,10 @@ public class PlayerController : NetworkBehaviour
         playerSpec = setting._PlayerSpec;
         playerSpec.m_Player = this.gameObject;
 
-        var (gameObject, weaponConfig) =  WeaponSystemCenter.Instance.GetWeapon(WeaponType.Glock);
-        WeaponSystemCenter.Instance.RegisterWeapon(gameObject, weaponConfig);
+        // var (gameObject, weaponConfig) =  WeaponSystemCenter.Instance.GetWeapon(WeaponType.Glock);
+        // WeaponSystemCenter.Instance.RegisterWeapon(gameObject, weaponConfig);
         
         m_Player.Init(playerSpec);
-
-        m_Player.SetPlayerLeftHandWeapon(gameObject);
     }
 
 
@@ -82,6 +81,16 @@ public class PlayerController : NetworkBehaviour
         
         m_Player.Update();
         m_InputController.UpdateInputDevice();
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            CmdStartGame();
+        }
+    }
+
+    [Command]
+    void CmdStartGame()
+    {
+        WeaponSystemCenter.Instance.CmdStartGame();
     }
 
     [ClientCallback]
@@ -142,7 +151,7 @@ public class PlayerController : NetworkBehaviour
             m_LogicStateManager.RemoveState(ELogicState.PlayerWalking);
         }
     }
-    [ClientCallback]
+    
     private void RegisterInputActionFunc()
     {
         // 视角拉远
@@ -188,9 +197,34 @@ public class PlayerController : NetworkBehaviour
         // 玩家攻击测试
         m_InputController.AddActionWhilePlayerShootLeftInputPerformedAndStay(() =>
         {
-            WeaponSystemCenter.Instance.FireWith(m_Player.GetPlayerLeftHandWeapon(), m_Player.GetPlayerLeftHandPosition(), m_InputController.GetMousePositionInWorldSpace(m_CameraController.GetCamera()) - m_Player.GetPlayerPosition());
+            if (isLocalPlayer)
+            {
+                var weapon = m_Player.GetPlayerLeftHandWeapon();
+                var pos = m_Player.GetPlayerLeftHandPosition();
+                if (weapon == null)
+                {
+                    Debug.Log("左手上没武器");
+                    return;
+                }
+                CmdFire(weapon,pos,m_InputController.GetMousePositionInWorldSpace(m_CameraController.GetCamera()) - m_Player.GetPlayerPosition());
+            }
+            
         });
+        
+        
+        
     }
+    
+    [Command]
+    private void CmdFire(GameObject weapon, Vector3 startPoint, Vector3 dir)
+    {   
+        WeaponSystemCenter.Instance.Fire(weapon,startPoint,dir);
+    }
+
+    
+    
+    
+    
     [ClientCallback]
     private void RegisterGameEvent()
     {

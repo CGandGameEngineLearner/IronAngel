@@ -143,7 +143,7 @@ public class LogicStateManager : MonoBehaviour
             if(state.GetActive())
             {
                 LogicStateSetting stateSetting = LogicStateConfig.GetLogicStateSetting(stateEnum);
-                state.Duration = stateSetting.Duration;
+                state.Duration = stateSetting.Duration; // ScriptAbleObject的问题，运行时得从这里动态更新，否则会是默认的无限长的持续时间
                 if(stateSetting.AutoStateOut&&!CheckState(stateSetting.included,stateSetting.excluded))
                 {
                     RemoveState(stateEnum);

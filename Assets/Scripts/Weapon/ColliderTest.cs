@@ -9,6 +9,6 @@ public class ColliderTest : MonoBehaviour
     //[Server]
     private void OnTriggerEnter2D(Collider2D other)
     {
-        WeaponSystemCenter.Instance.JudgeWithAmmunition(gameObject, other.gameObject);
+        //WeaponSystemCenter.Instance.JudgeWithAmmunition(gameObject, other.gameObject);
     }
 }

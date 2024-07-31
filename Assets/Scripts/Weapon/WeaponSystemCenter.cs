@@ -1,166 +1,174 @@
 using System;
 using System.Collections.Generic;
-using BehaviorDesigner.Runtime;
+
 using Mirror;
-using Unity.Mathematics;
+
 using UnityEngine;
 using UnityEngine.Serialization;
 
+[Serializable]
+public class WeaponSpawnSetting
+{
+    [SerializeField] public WeaponType WeaponType;
+
+    [FormerlySerializedAs("Transform")] [SerializeField] public Vector3 Position;
+}
+
+[Serializable]
+public class WeaponConfigSetting
+{
+    [SerializeField]public WeaponType WeaponType;
+    
+    [SerializeField]public WeaponConfig WeaponConfig ;
+}
+
+[Serializable]
+public class AmmunitionConfigSetting
+{
+    [SerializeField] public AmmunitionType AmmunitionType;
+    [SerializeField] public AmmunitionConfig AmmunitionConfig;
+}
+
 public class WeaponSystemCenter: NetworkBehaviour
 {
-    public static WeaponSystemCenter Instance { get; private set; }
+    public static WeaponSystemCenter Instance;
+
+    public List<WeaponSpawnSetting> WeaponSpawnSettings = new List<WeaponSpawnSetting>();
+    public List<WeaponConfigSetting> WeaponConfigSettings = new List<WeaponConfigSetting>();
+    public List<AmmunitionConfigSetting> AmmunitionConfigSettings = new List<AmmunitionConfigSetting>();
     
-    private ObjectPoolManager<WeaponType> m_WeaponPool = new();
+    private Dictionary<WeaponType, WeaponConfig> m_WeaponConfigDic = new Dictionary<WeaponType, WeaponConfig>();
+
+    private Dictionary<AmmunitionType, AmmunitionConfig> m_AmmunitionConfigDic =
+        new Dictionary<AmmunitionType, AmmunitionConfig>();
+    
+    /// <summary>
+    /// 武器GameObject到其配置的映射
+    /// </summary>
+    private Dictionary<GameObject, WeaponConfig> m_WeaponToConfigDic = new Dictionary<GameObject, WeaponConfig>();
+
+    
+    
     private ObjectPoolManager<AmmunitionType> m_AmmunitionPool = new();
-    private WeaponFactory m_WeaponFactory = new();
-    private AmmunitionFactory m_AmmunitionFactory = new();
+    private AmmunitionFactory m_AmmunitionFactory = new(); // 弹药工厂
+
+    public bool StartGame = false;
+    
+    
+    public void Fire(GameObject weapon, Vector3 startPoint, Vector3 dir)
+    {
+        Debug.Log(GetType()+"Command"+"Fire");
+        var weaponConfig = m_WeaponToConfigDic[weapon];
+        var ammunitionType = m_WeaponToConfigDic[weapon].ammunitionType;
+        var ammunitionConfig = m_AmmunitionConfigDic[ammunitionType];
+        GameObject ammunition = GetAmmunitionFromPool(ammunitionType, startPoint, dir);
+        m_AmmunitionFactory.ShootAmmunition(ammunition,ammunitionType,ammunitionConfig,weaponConfig.atkType,startPoint,dir);
+
+        RPCFire(weaponConfig, ammunitionType, startPoint, dir);
+    }
+
+    [ClientRpc]
+    public void RPCFire(WeaponConfig weaponConfig, AmmunitionType ammunitionType, Vector3 startPoint, Vector3 dir)
+    {
+        var ammunitionConfig = m_AmmunitionConfigDic[ammunitionType];
+        GameObject ammunition = GetAmmunitionFromPool(ammunitionType, startPoint, dir);
+        m_AmmunitionFactory.ShootAmmunition(ammunition,ammunitionType,ammunitionConfig,weaponConfig.atkType,startPoint,dir);
+    }
+
+
+    
 
     private void Awake()
     {
-        if (Instance != null && Instance != this)
+        foreach (var weaponConfigSetting in WeaponConfigSettings)
         {
-            Destroy(gameObject);
-        }
-        else
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-    }
-    
-    /// <summary>
-    /// 更新子弹
-    /// </summary>
-    public void Update()
-    {
-        m_AmmunitionFactory.Update();
-    }
-
-    public void Init(List<KeyValuePair<WeaponType, WeaponConfig>> weaponConfigList,
-        List<KeyValuePair<AmmunitionType, AmmunitionConfig>> ammunitionConfigList)
-    {
-        foreach (var weaponConfig in weaponConfigList)
-        {
-            m_WeaponPool.AddPool(weaponConfig.Key,
-                new ObjectCategory()
-                {
-                    prefab = weaponConfig.Value.prefab, defaultSize = weaponConfig.Value.minPoolSize,
-                    maxSize = weaponConfig.Value.minPoolSize
-                });
+            m_WeaponConfigDic.Add(weaponConfigSetting.WeaponType,weaponConfigSetting.WeaponConfig);
         }
 
-        foreach (var ammunitionConfig in ammunitionConfigList)
+        foreach (var ammunitionConfigSetting in AmmunitionConfigSettings)
         {
-            m_AmmunitionPool.AddPool(ammunitionConfig.Key,
-                new ObjectCategory()
-                {
-                    prefab = ammunitionConfig.Value.prefab, defaultSize = ammunitionConfig.Value.minPoolSize,
-                    maxSize = ammunitionConfig.Value.minPoolSize
-                });
+            m_AmmunitionConfigDic.Add(ammunitionConfigSetting.AmmunitionType,ammunitionConfigSetting.AmmunitionConfig);
         }
-
-        m_WeaponFactory.Init(weaponConfigList,
-            (weaponType, weapon) => { m_WeaponPool.ReleaseObject(weaponType, weapon); });
-
-        m_AmmunitionFactory.Init(ammunitionConfigList,
+        m_AmmunitionFactory.Init(m_AmmunitionConfigDic,
             (ammunitionType, ammunition) => { m_AmmunitionPool.ReleaseObject(ammunitionType, ammunition); });
     }
 
-    public (GameObject, WeaponConfig) GetWeapon(WeaponType weaponType)
+    
+    public void CmdStartGame()
     {
-        return (m_WeaponPool.GetObject(weaponType),
-            m_WeaponFactory.GetWeaponConfig(weaponType));
+        
+        if(!StartGame)
+        {
+            foreach (var weaponSpawnSetting in WeaponSpawnSettings)
+            {
+                var weaponConfig = m_WeaponConfigDic[weaponSpawnSetting.WeaponType];
+                var prefab = weaponConfig.prefab;
+           
+                GameObject weapon = Instantiate(prefab,weaponSpawnSetting.Position,UnityEngine.Quaternion.identity);
+                m_WeaponToConfigDic.Add(weapon,weaponConfig);
+                NetworkServer.Spawn(weapon);
+            }
+
+            StartGame = true;
+        }
+       
     }
 
+    public override void OnStartServer()
+    {
+        
+        
+    }
+
+    public override void OnStartClient()
+    {
+    }
+    private void Start()
+    {
+        Init();
+    }
     
     /// <summary>
-    /// 伤害判定流程
+    /// 初始化武器、弹药配置
     /// </summary>
-    //[ClientRpc]
-    public void JudgeWithAmmunition(GameObject unitToDamage, GameObject ammunition)
+    public void Init()
     {
-        // TODO: 结算流程
-        // InternalUnRegisterAmmunition(ammunition);
-
-
-        if (!m_AmmunitionFactory.GetAmmunitionHandleActive(ammunition)) return;
-
-        // GetConfig and Handle
-        var ammunitionHandle = m_AmmunitionFactory.GetAmmunitionHandle(ammunition);
-        var ammunitionConfig = ammunitionHandle.ammunitionConfig;
-
-        InternalUnRegisterAmmunition(ammunition);
-
-        // ProcessDamage 这里可以相应所有人的请求
-        DamagePlayer();
-
-        // PostProcess只允许相应一个人的需求
-
-        // PostProcess 生成后置物品，用默认的攻击类型，即放置在原地
-        var (postAmmunition, postAmmunitionConfig) = InternalGetAmmunition(ammunitionConfig.postAmmunitionType,
-            ammunitionHandle.rigidbody2D.transform.position,
-            Quaternion.identity);
-        InternalRegisterAmmunition(postAmmunition, postAmmunitionConfig.postAmmunitionType, postAmmunitionConfig,
-            AtkType.Default, ammunitionHandle.rigidbody2D.transform.position, Vector2.up);
+        Instance = this;
+        foreach (var ammunitionTypeToConfig in m_AmmunitionConfigDic)
+        {
+            m_AmmunitionPool.AddPool(ammunitionTypeToConfig.Key,
+                new ObjectCategory()
+                {
+                    prefab = ammunitionTypeToConfig.Value.prefab, defaultSize = ammunitionTypeToConfig.Value.minPoolSize,
+                    maxSize = ammunitionTypeToConfig.Value.minPoolSize
+                });
+        }
+        
     }
-
-    // [ClientRpc]
-    public void DamagePlayer()
-    {
-        Debug.Log("I'm damage");
-    }
-
-    public void FireWith(GameObject weapon, Vector2 startPoint, Vector2 dir)
-    {
-        if (!m_WeaponFactory.HasWeapon(weapon)) throw new Exception("This weapon is not in WeaponUpdater");
-
-        WeaponConfig weaponConfig = m_WeaponFactory.GetWeaponHandle(weapon).WeaponConfig;
-        AmmunitionType ammunitionType = weaponConfig.ammunitionType;
-        // 注册子弹
-        // TODO;修改方向
-        var (ammunition, ammunitionConfig) = InternalGetAmmunition(ammunitionType, startPoint, quaternion.identity);
-        InternalRegisterAmmunition(ammunition, weaponConfig.ammunitionType, ammunitionConfig, weaponConfig.atkType,
-            startPoint, dir);
-    }
-
-    public void RegisterWeapon(GameObject weapon, WeaponConfig weaponConfig)
-    {
-        m_WeaponFactory.RegisterWeapon(weapon, weaponConfig);
-    }
-
-    public void UnRegisterWeapon(GameObject weapon)
-    {
-        WeaponType weaponType = m_WeaponFactory.GetWeaponType(weapon);
-        m_WeaponFactory.UnRegisterWeapon(weapon);
-    }
-
-    private void InternalUnRegisterAmmunition(GameObject ammunition)
-    {
-        m_AmmunitionFactory.UnRegisterAmmunition(ammunition);
-    }
-
-    private void InternalRegisterAmmunition(GameObject ammunition, AmmunitionType ammunitionType,
-        AmmunitionConfig ammunitionConfig, AtkType atkType,
-        Vector2 startPoint, Vector2 dir)
-    {
-        m_AmmunitionFactory.RegisterAmmunition(ammunition, ammunitionType, ammunitionConfig, atkType, startPoint, dir);
-    }
-
-    private (GameObject, AmmunitionConfig) InternalGetAmmunition(AmmunitionType ammunitionType, Vector3 startPoint,
-        Quaternion quaternion)
-    {
-        return (m_AmmunitionPool.GetObject(ammunitionType, startPoint, quaternion),
-            m_AmmunitionFactory.GetAmmunitionConfig(ammunitionType));
-    }
+    
+    
 
     /// <summary>
-    /// 获取子弹的后处理是否已经被请求。
-    /// 此行为只会在一帧内被调用多次，不存在跨帧的行为
+    /// 更新子弹飞行
     /// </summary>
-    /// <returns></returns>
-    private bool InternalGetAmmunitionPostExisted(GameObject ammunRequester)
+    public void FixedUpdate()
     {
-        return (m_AmmunitionFactory.GetAmmunitionPostExisted(ammunRequester));
+        m_AmmunitionFactory.FixedUpdate();
+    }
+    
+    /// <summary>
+    /// 从子弹对象池取出子弹
+    /// </summary>
+    /// <param name="ammunitionType"></param>
+    /// <param name="startPoint"></param>
+    /// <param name="quaternion"></param>
+    /// <returns></returns>
+    private GameObject GetAmmunitionFromPool(AmmunitionType ammunitionType, Vector3 startPoint,
+        Vector3 dir)
+    {
+        dir = dir.normalized;
+        var quaternion = Quaternion.LookRotation(dir);
+        return m_AmmunitionPool.GetObject(ammunitionType, startPoint, quaternion);
     }
 }
 
