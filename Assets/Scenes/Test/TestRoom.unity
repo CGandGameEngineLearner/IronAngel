@@ -1256,7 +1256,6 @@ GameObject:
   m_Component:
   - component: {fileID: 426512123}
   - component: {fileID: 426512125}
-  - component: {fileID: 426512124}
   - component: {fileID: 426512122}
   m_Layer: 0
   m_Name: Weapon
@@ -1274,18 +1273,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 426512121}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43796da83fba45a3a9e7a6c185985982, type: 3}
+  m_Script: {fileID: 11500000, guid: 6a82880fa6c9487f9bc119247aacb263, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  character: {fileID: 0}
-  m_WeaponCats:
-  - weaponType: 0
-    weaponConfig: {fileID: 11400000, guid: 1466359d5658cb04e9354a90dd965ebb, type: 2}
-  m_AmmunitionCats:
-  - ammunitionType: 1
-    ammunitionConfig: {fileID: 11400000, guid: c404fa5ec3e4a6a48a52cfc51d3a4210, type: 2}
-  - ammunitionType: 0
-    ammunitionConfig: {fileID: 11400000, guid: 3792849cdd27c474ab892f5b3d9d220d, type: 2}
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
+  WeaponSpawnSettings:
+  - WeaponType: 0
+    Position: {x: 0, y: 0, z: 0}
+  WeaponConfigSettings:
+  - WeaponType: 0
+    WeaponConfig: {fileID: 11400000, guid: 1466359d5658cb04e9354a90dd965ebb, type: 2}
+  AmmunitionConfigSettings:
+  - AmmunitionType: 1
+    AmmunitionConfig: {fileID: 11400000, guid: c404fa5ec3e4a6a48a52cfc51d3a4210, type: 2}
+  StartGame: 0
 --- !u!4 &426512123
 Transform:
   m_ObjectHideFlags: 0
@@ -1301,25 +1304,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &426512124
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 426512121}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a82880fa6c9487f9bc119247aacb263, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  syncDirection: 0
-  syncMode: 0
-  syncInterval: 0
-  WeaponSpawnSettings: []
-  WeaponConfigSettings: []
-  AmmunitionConfigSettings: []
-  StartGame: 0
 --- !u!114 &426512125
 MonoBehaviour:
   m_ObjectHideFlags: 0
