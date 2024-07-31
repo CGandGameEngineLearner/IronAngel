@@ -27,6 +27,7 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
         
         Debug.Log("客户端的子弹打中了角色");
         Hit();
+        ammunitionFactory.UnRegisterAmmunition(collision.gameObject);
     }
     
     [ServerCallback]
