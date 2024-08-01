@@ -32,12 +32,18 @@ namespace AI.TokenPool
         public static void SetMaxTokensNum(int tokensNum)
         {
             m_MaxTokensNum = tokensNum;
+            
+            // 运行时 Token数量增大 则自动补足
+            if (AllTokensNum < tokensNum)
+            {
+                m_TokensNum += m_MaxTokensNum - AllTokensNum;
+            }
         }
         
         /// <summary>
         /// 申请Token 申请完后记得归还
         /// </summary>
-        /// <param name="weight"></param>
+        /// <param name="weight">抢到token的权重概率</param>
         /// <returns></returns>
         public static bool ApplyToken(float weight)
         {
