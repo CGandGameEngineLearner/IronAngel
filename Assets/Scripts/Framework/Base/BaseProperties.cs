@@ -50,4 +50,7 @@ public struct Properties
 
     [Tooltip("攻击范围")]
     public float m_AttackRange;
+
+    [Tooltip("AI抢攻击Token的优先权重"),Range(0,1)]
+    public float m_TokenWeight;
 }

@@ -8,4 +8,8 @@ public class GlobalSetting : MonoBehaviour
     [Tooltip("护甲减伤系数")]
     [Range(0f, 1f)]
     public float _DamageReductionCoefficient;
+    
+    [Header("AI")]
+    [Tooltip("同时间发动攻击的AI数量"),Range(0,100)]
+    public int AI_Attack_Tokens = 3;
 }
