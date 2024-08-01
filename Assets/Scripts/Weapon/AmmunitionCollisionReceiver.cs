@@ -62,21 +62,32 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
     {
         var prop = GetComponent<BaseProperties>();
         int damage = config.m_Damage;
+
         // 护甲大于0才进行减伤计算
+        // 下面两句的计算顺序不能对换
         prop.m_Properties.m_CurrentArmor -= damage;
         damage = prop.m_Properties.m_CurrentArmor + damage >= 0 ? (int)(damage * (1 - m_DamageReductionCoefficient)) : damage;
         
-        RPCBroadcastDamage(damage);
+        // 两边的武器血条还没有考虑
+        prop.m_Properties.m_CurrentHP -= damage;
+
+        RPCBroadcastDamage(prop.m_Properties);
     }
 
+
+    /// <summary>
+    /// RPC直接通知属性更改
+    /// </summary>
+    /// <param name="properties"></param> 受击者更新后的属性
     [ClientRpc]
-    public void RPCBroadcastDamage(int val)
+    public void RPCBroadcastDamage(Properties properties)
     {
         if(gameObject.TryGetComponent<BaseProperties>(out var prop))
         {
-            if(prop.ChangeCurentHP(-val))
+            prop.m_Properties = properties;
+            if(prop.m_Properties.m_CurrentHP <= 0)
             {
-                Debug.Log("角色 ：" + gameObject.name + "死亡");
+                Debug.Log("玩家 ：" + gameObject.name + "死亡");
             }
         }
     }
