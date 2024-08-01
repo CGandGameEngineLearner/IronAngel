@@ -4,16 +4,39 @@ using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
 
+
+[RequireComponent(typeof(BaseProperties))]
 public class AmmunitionCollisionReceiver : NetworkBehaviour
 {
+    [Tooltip("所有的护甲是否是一起计算")]
+    public bool m_IsOverallArmor = true;
+
+    public List<ShieldCollisionReceiver> m_Shields = new List<ShieldCollisionReceiver>();
     //护甲减伤系数
     private float m_DamageReductionCoefficient;
+    private BaseProperties m_Properties;
+
+
 
     private void Start()
     {
         var setting = GameObject.FindAnyObjectByType<GlobalSetting>().GetComponent<GlobalSetting>();
         m_DamageReductionCoefficient = setting._DamageReductionCoefficient;
+
+        m_Properties = GetComponent<BaseProperties>();
+
+        // 计算总体护甲值
+        // 数值为子物体的所有分块的护甲值总和
+        int armor = 0;
+        foreach (var shield in m_Shields)
+        {
+            armor += shield.m_SubArmor;
+        }
+        m_Properties.m_Properties.m_Armor = armor;
+        m_Properties.m_Properties.m_CurrentArmor = armor;
     }
+
+
 
     /// <summary>
     /// 应该只有服务端上的物体会接收碰撞
@@ -25,7 +48,9 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
         var ammunitionHandle = ammunitionFactory.GetAmmunitionHandle(collision.gameObject);
         if (ammunitionHandle==null)
         {
+#if UNITY_EDITOR
             Debug.Log("查询不到这个弹药的Handle,子弹对象为"+collision.gameObject);
+#endif
             return;
         }
 
@@ -36,10 +61,12 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
 
         if(TryGetComponent<BaseProperties>(out var prop) == false)
         {
+#if UNITY_EDITOR
             Debug.LogWarning("游戏物体 ：" + gameObject.name + "没有属性值");
+#endif
             return;
         }
-        Hit(ammunitionHandle.ammunitionConfig);
+        CalculateDamage(ammunitionHandle.ammunitionConfig);
         ammunitionFactory.UnRegisterAmmunition(collision.gameObject);
     }
 
@@ -58,20 +85,20 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
     ///  config: 子弹的配置表，用于计算伤害 
     ///
     [ServerCallback]
-    private void Hit(AmmunitionConfig config)
+    public void CalculateDamage(AmmunitionConfig config)
     {
-        var prop = GetComponent<BaseProperties>();
+        var m_Properties = GetComponent<BaseProperties>();
         int damage = config.m_Damage;
 
         // 护甲大于0才进行减伤计算
         // 下面两句的计算顺序不能对换
-        prop.m_Properties.m_CurrentArmor -= damage;
-        damage = prop.m_Properties.m_CurrentArmor + damage >= 0 ? (int)(damage * (1 - m_DamageReductionCoefficient)) : damage;
-        
-        // 两边的武器血条还没有考虑
-        prop.m_Properties.m_CurrentHP -= damage;
+        m_Properties.m_Properties.m_CurrentArmor -= damage;
+        damage = m_Properties.m_Properties.m_CurrentArmor + damage >= 0 ? (int)(damage * (1 - m_DamageReductionCoefficient)) : damage;
 
-        RPCBroadcastDamage(prop.m_Properties);
+        // 两边的武器血条还没有考虑
+        m_Properties.m_Properties.m_CurrentHP -= damage;
+
+        RPCBroadcastDamage(m_Properties.m_Properties);
     }
 
 
@@ -80,14 +107,26 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
     /// </summary>
     /// <param name="properties"></param> 受击者更新后的属性
     [ClientRpc]
-    public void RPCBroadcastDamage(Properties properties)
+    private void RPCBroadcastDamage(Properties properties)
     {
-        if(gameObject.TryGetComponent<BaseProperties>(out var prop))
+        m_Properties.m_Properties = properties;
+        // 玩家死亡
+        if(m_Properties.m_Properties.m_CurrentHP <= 0)
         {
-            prop.m_Properties = properties;
-            if(prop.m_Properties.m_CurrentHP <= 0)
+#if UNITY_EDITOR
+            Debug.Log("玩家 ：" + gameObject.name + "死亡");
+#endif
+            gameObject.SetActive(false);
+        }
+        // 玩家所有护甲损失
+        if(m_IsOverallArmor && m_Properties.m_Properties.m_CurrentArmor <= 0)
+        {
+#if UNITY_EDITOR
+            Debug.Log("玩家 ：" + gameObject.name + "损失所有护甲");
+#endif
+            foreach (var shield in m_Shields)
             {
-                Debug.Log("玩家 ：" + gameObject.name + "死亡");
+                shield.gameObject.SetActive(false);
             }
         }
     }
