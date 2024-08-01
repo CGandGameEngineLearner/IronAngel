@@ -12,4 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44f93e73612665d438a005079501c3d2, type: 3}
   m_Name: AILogicStateConfig
   m_EditorClassIdentifier: 
-  LogicStateSettings: []
+  LogicStateSettings:
+  - stateEnum: 5
+    Duration: 0
+    AutoStateOut: 1
+    included: 
+    excluded: 06000000

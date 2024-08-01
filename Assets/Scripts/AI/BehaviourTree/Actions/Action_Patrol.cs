@@ -17,7 +17,7 @@ namespace AI.BehaviourTree.Actions
 
         public override void OnStart()
         {
-            //Debug.Log(GetType()+"OnStart()");
+            Debug.Log(GetType()+"OnStart()");
             m_AIController.Patrol();
         }
 

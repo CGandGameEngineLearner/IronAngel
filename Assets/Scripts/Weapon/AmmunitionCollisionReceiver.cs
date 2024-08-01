@@ -49,7 +49,7 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
         if (ammunitionHandle==null)
         {
 #if UNITY_EDITOR
-            Debug.Log("查询不到这个弹药的Handle,子弹对象为"+collision.gameObject);
+            //Debug.Log("查询不到这个弹药的Handle,子弹对象为"+collision.gameObject);
 #endif
             return;
         }
@@ -62,7 +62,7 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
         if(TryGetComponent<BaseProperties>(out var prop) == false)
         {
 #if UNITY_EDITOR
-            Debug.LogWarning("游戏物体 ：" + gameObject.name + "没有属性值");
+            //Debug.LogWarning("游戏物体 ：" + gameObject.name + "没有属性值");
 #endif
             return;
         }
