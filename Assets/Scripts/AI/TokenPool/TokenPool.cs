@@ -43,7 +43,7 @@ namespace AI.TokenPool
         {
             if (weight > 1)
             {
-                throw NewExpression("概率权重不可大于100%");
+                throw new Exception("概率权重不可大于100%");
             }
             if (m_TokensNum <= 0)
             {
