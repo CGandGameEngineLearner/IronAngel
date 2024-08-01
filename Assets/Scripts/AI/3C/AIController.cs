@@ -10,6 +10,7 @@ public class AIController : NetworkBehaviour
     private AIMovement m_AIMovement;
     private IAISensor m_AISensor;
     private GameObject m_ChaseGO;
+    private BaseProperties m_BaseProperties;
 
     /// <summary>
     /// 训练路线
@@ -70,5 +71,19 @@ public class AIController : NetworkBehaviour
     public List<GameObject> GetPerceiveGameObjects()
     {
         return m_AISensor.GetPerceiveGameObjects();
+    }
+
+    [ServerCallback]
+    public List<GameObject> GetGameObjectsInAttackRange()
+    {
+        var result = GetPerceiveGameObjects();
+        
+        // 移除超出攻击范围的
+        result.RemoveAll(o =>
+            Vector3.Distance(o.transform.position, transform.position) > 
+            m_BaseProperties.m_Properties.m_AttackRange
+            );
+
+        return result;
     }
 }

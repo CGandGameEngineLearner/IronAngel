@@ -24,13 +24,30 @@ public class BaseProperties : NetworkBehaviour
 [Serializable]
 public struct Properties
 {
+    [Tooltip("能量")]
     public int m_Energy;
+    
+    [Tooltip("基础血量")]
     public int m_BaseHP;
+    
+    [Tooltip("左手武器血量")]
     public int m_LeftHandWeaponHP;
+    
+    [Tooltip("右手武器血量")]
     public int m_RightHandWeaponHP;
+    
+    [Tooltip("护甲")]
     public int m_Armor;
+    
+    [Tooltip("能量盾的次数")]
     public int m_EnergyShieldCount;
-
+    
+    [Tooltip("当前血量")]
     public int m_CurrentHP;
+    
+    [Tooltip("当前护甲")]
     public int m_CurrentArmor;
+
+    [Tooltip("攻击范围")]
+    public float m_AttackRange;
 }
