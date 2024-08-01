@@ -6,6 +6,15 @@ using Mirror;
 
 public class AmmunitionCollisionReceiver : NetworkBehaviour
 {
+    //护甲减伤系数
+    private float m_DamageReductionCoefficient;
+
+    private void Start()
+    {
+        var setting = GameObject.FindAnyObjectByType<GlobalSetting>().GetComponent<GlobalSetting>();
+        m_DamageReductionCoefficient = setting._DamageReductionCoefficient;
+    }
+
     /// <summary>
     /// 应该只有服务端上的物体会接收碰撞
     /// </summary>
@@ -24,15 +33,51 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
         {
             return;
         }
-        
-        Debug.Log("客户端的子弹打中了角色");
-        Hit();
+
+        if(TryGetComponent<BaseProperties>(out var prop) == false)
+        {
+            Debug.LogWarning("游戏物体 ：" + gameObject.name + "没有属性值");
+            return;
+        }
+        Hit(ammunitionHandle.ammunitionConfig);
         ammunitionFactory.UnRegisterAmmunition(collision.gameObject);
     }
-    
+
+    /// <summary>
+    /// 获取受击者身上的属性进行伤害计算
+    /// 计算优先级：
+    ///     先计算能量盾数量
+    ///     再计算具体护甲
+    ///     
+    ///     护甲减伤计算公式：
+    ///     {
+    ///         护甲值减去实际伤害数值
+    ///         内部受到伤害为（1 - 护甲减伤系数）* 实际伤害
+    ///     }
+    /// </summary>
+    ///  config: 子弹的配置表，用于计算伤害 
+    ///
     [ServerCallback]
-    private void Hit()
+    private void Hit(AmmunitionConfig config)
     {
-        Debug.Log("服务端子弹打中了角色");
+        var prop = GetComponent<BaseProperties>();
+        int damage = config.m_Damage;
+        // 护甲大于0才进行减伤计算
+        prop.m_Properties.m_CurrentArmor -= damage;
+        damage = prop.m_Properties.m_CurrentArmor + damage >= 0 ? (int)(damage * (1 - m_DamageReductionCoefficient)) : damage;
+        
+        RPCBroadcastDamage(damage);
+    }
+
+    [ClientRpc]
+    public void RPCBroadcastDamage(int val)
+    {
+        if(gameObject.TryGetComponent<BaseProperties>(out var prop))
+        {
+            if(prop.ChangeCurentHP(-val))
+            {
+                Debug.Log("角色 ：" + gameObject.name + "死亡");
+            }
+        }
     }
 }

@@ -11,8 +11,9 @@ public class AmmunitionConfig : ItemConfig
     public AmmunitionType postAmmunitionType => m_PostAmmunitionType;
 
     [Header("子弹属性配置")]
-    [SerializeField] private float m_Speed;
-    [SerializeField] private float m_LifeDistance;
-    [SerializeField] private AmmunitionType m_PostAmmunitionType;
+    public float m_Speed;
+    public float m_LifeDistance;
+    public int m_Damage;
+    public AmmunitionType m_PostAmmunitionType;
 
 }

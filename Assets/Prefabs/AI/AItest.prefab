@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 7061394662276560116}
   - component: {fileID: 4423088899709604179}
   - component: {fileID: 6156403838176766774}
+  - component: {fileID: 5312338358657863659}
   m_Layer: 7
   m_Name: AItest
   m_TagString: Untagged
@@ -341,6 +342,28 @@ MonoBehaviour:
   syncDirection: 0
   syncMode: 0
   syncInterval: 0
+--- !u!114 &5312338358657863659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2195872794582507982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13d361892a25f5f498d2f179b9c5b084, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
+  m_Properties:
+    m_Energy: 0
+    m_BaseHP: 100
+    m_Armor: 0
+    m_EnergyShieldCount: 0
+    m_CurrentHP: 100
+    m_CurrentArmor: 0
 --- !u!1 &5612599182857872691
 GameObject:
   m_ObjectHideFlags: 0
