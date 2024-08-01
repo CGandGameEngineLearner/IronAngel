@@ -32,7 +32,8 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
         {
             armor += shield.m_SubArmor;
         }
-
+        m_Properties.m_Properties.m_Armor = armor;
+        m_Properties.m_Properties.m_CurrentArmor = armor;
     }
 
 
@@ -108,14 +109,24 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
     [ClientRpc]
     private void RPCBroadcastDamage(Properties properties)
     {
-        if(gameObject.TryGetComponent<BaseProperties>(out var prop))
+        m_Properties.m_Properties = properties;
+        // 玩家死亡
+        if(m_Properties.m_Properties.m_CurrentHP <= 0)
         {
-            prop.m_Properties = properties;
-            if(prop.m_Properties.m_CurrentHP <= 0)
-            {
 #if UNITY_EDITOR
-                Debug.Log("玩家 ：" + gameObject.name + "死亡");
+            Debug.Log("玩家 ：" + gameObject.name + "死亡");
 #endif
+            gameObject.SetActive(false);
+        }
+        // 玩家所有护甲损失
+        if(m_IsOverallArmor && m_Properties.m_Properties.m_CurrentArmor <= 0)
+        {
+#if UNITY_EDITOR
+            Debug.Log("玩家 ：" + gameObject.name + "损失所有护甲");
+#endif
+            foreach (var shield in m_Shields)
+            {
+                shield.gameObject.SetActive(false);
             }
         }
     }

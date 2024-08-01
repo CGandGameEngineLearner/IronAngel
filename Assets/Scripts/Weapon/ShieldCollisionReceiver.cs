@@ -55,20 +55,30 @@ public class ShieldCollisionReceiver : NetworkBehaviour
     [ServerCallback]
     private void CalculateDamage(AmmunitionConfig config)
     {
-        if(m_IsOverallArmor)
+        m_AmmunitionCollisionReceiver.CalculateDamage(config);
+        if(m_IsOverallArmor == false)
         {
-            m_AmmunitionCollisionReceiver.CalculateDamage(config);
-        }
-        else
-        {
-
+            int damage = config.m_Damage;
+            RPCBroadcastDamage(damage);
         }
     }
 
-    [ClientRpc]
-    private void RPCBroadcastDamage(Properties properties)
-    {
 
+    /// <summary>
+    /// 这个是计算当前这块护甲的伤害
+    /// </summary>
+    /// <param name="damage"></param> 对当前护甲的伤害
+    [ClientRpc]
+    private void RPCBroadcastDamage(int damage)
+    {
+        m_SubArmor -= damage;
+        if(m_SubArmor <= 0)
+        {
+#if UNITY_EDITOR
+            Debug.Log("护甲 ：" + gameObject.name + "被摧毁");
+#endif
+            gameObject.SetActive(false);
+        }
     }
 }
 
