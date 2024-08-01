@@ -1,18 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Mirror;
 
-public class WeaponCollisionReceiver : MonoBehaviour
+public class WeaponCollisionReceiver : NetworkBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         
     }
 
-    // Update is called once per frame
-    void Update()
+    [ServerCallback]
+    public void CalculateDamage(AmmunitionConfig config)
     {
-        
+
+    }
+
+    // <summary>
+    /// RPC直接通知属性更改
+    /// </summary>
+    /// <param name="properties"></param> 受击者更新后的属性
+    [ClientRpc]
+    private void RPCBroadcastDamage(Properties properties)
+    {
+
     }
 }
