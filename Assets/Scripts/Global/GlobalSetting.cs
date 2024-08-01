@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class GlobalSetting : MonoBehaviour
 {
-    [Header("ÉËº¦¼ÆËã")]
-    [Tooltip("»¤¼×¼õÉËÏµÊı")]
+    [Header("ä¼¤å®³è®¡ç®—")]
+    [Tooltip("æŠ¤ç”²å‡ä¼¤ç³»æ•°")]
     [Range(0f, 1f)]
     public float _DamageReductionCoefficient;
 }

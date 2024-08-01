@@ -227,7 +227,7 @@ MonoBehaviour:
   VisualAngle: 45
   MaximumVisualDistance: 5
   RelativeSightDirection: {x: 1, y: 0, z: 0}
-  DrawSightLine: 0
+  DrawSightLine: 1
   AttentionalGameObjectsTags:
   - Player
 --- !u!114 &7642313622800344208
@@ -360,6 +360,8 @@ MonoBehaviour:
   m_Properties:
     m_Energy: 0
     m_BaseHP: 100
+    m_LeftHandWeaponHP: 0
+    m_RightHandWeaponHP: 0
     m_Armor: 0
     m_EnergyShieldCount: 0
     m_CurrentHP: 100

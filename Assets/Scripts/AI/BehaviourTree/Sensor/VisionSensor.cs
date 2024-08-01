@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-
+using LogicState;
 using UnityEngine;
 public class VisionSensor:MonoBehaviour,IAISensor
 {

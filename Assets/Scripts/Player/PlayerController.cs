@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
 using UnityEditor;
-
+using LogicState;
 public class PlayerController : NetworkBehaviour
 {
     public readonly static List<PlayerController> PlayerControllers = new List<PlayerController>();

@@ -1,19 +1,23 @@
 using UnityEngine;
 using BehaviorDesigner.Runtime.Tasks;
-
-
-public class Action_Chase : Action
+using LogicState;
+namespace AI.BehaviourTree.Actions
 {
-    private AIController m_AIController;
-    private LogicStateManager m_LogicStateManager;
-    public override void OnAwake()
+    public class Action_Chase : Action
     {
-        m_AIController = GetComponent<AIController>();
-        m_LogicStateManager = GetComponent<LogicStateManager>();
-    }
-    public override TaskStatus OnUpdate()
-    {
-        m_AIController.Chase();
-        return TaskStatus.Running;
+        private AIController m_AIController;
+        private LogicStateManager m_LogicStateManager;
+
+        public override void OnAwake()
+        {
+            m_AIController = GetComponent<AIController>();
+            m_LogicStateManager = GetComponent<LogicStateManager>();
+        }
+
+        public override TaskStatus OnUpdate()
+        {
+            m_AIController.Chase();
+            return TaskStatus.Running;
+        }
     }
 }
