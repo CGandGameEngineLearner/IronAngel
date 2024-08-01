@@ -47,9 +47,9 @@ namespace AI.TokenPool
         /// <returns></returns>
         public static bool ApplyToken(float weight)
         {
-            if (weight > 1)
+            if (weight > 1 || weight < 0)
             {
-                throw new Exception("概率权重不可大于100%");
+                throw new Exception("概率权重的取值范围应为[0,1],但是接受到的是:"+weight);
             }
             if (m_TokensNum <= 0)
             {
