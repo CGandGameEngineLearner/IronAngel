@@ -960,7 +960,7 @@ MonoBehaviour:
   disconnectInactiveConnections: 0
   disconnectInactiveTimeout: 60
   authenticator: {fileID: 0}
-  playerPrefab: {fileID: 3620136406740503570, guid: b319a1beeb967194bbc9b9fa245fb3d7, type: 3}
+  playerPrefab: {fileID: 6774923126565653122, guid: b319a1beeb967194bbc9b9fa245fb3d7, type: 3}
   autoCreatePlayer: 1
   playerSpawnMethod: 1
   spawnPrefabs:
@@ -1585,6 +1585,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _DamageReductionCoefficient: 0.904
+  AI_Attack_Tokens: 3
 --- !u!4 &696777467
 Transform:
   m_ObjectHideFlags: 0
