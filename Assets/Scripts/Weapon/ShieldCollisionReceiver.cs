@@ -5,14 +5,14 @@ using Mirror;
 
 public class ShieldCollisionReceiver : NetworkBehaviour
 {
-    [Tooltip("¶ÜµÄÀàĞÍ")]
+    [Tooltip("ç›¾çš„ç±»å‹")]
     public ShieldType m_ShieldType = ShieldType.Armor;
-    [Tooltip("Èç¹ûÕâ¸ö½ÇÉ«µÄ»¤¼×ÊÇ·Ö¿ª¼ÆËãµÄ£¬Õâ¸öÊôĞÔÊÇ·Ö¿ª¼ÆËãµÄµ¥¸ö»¤¼×Öµ")]
+    [Tooltip("å¦‚æœè¿™ä¸ªè§’è‰²çš„æŠ¤ç”²æ˜¯åˆ†å¼€è®¡ç®—çš„ï¼Œè¿™ä¸ªå±æ€§æ˜¯åˆ†å¼€è®¡ç®—çš„å•ä¸ªæŠ¤ç”²å€¼")]
     public int m_SubArmor = 100;
 
     private bool m_IsOverallArmor = true;
     private AmmunitionCollisionReceiver m_AmmunitionCollisionReceiver;
-    //»¤¼×¼õÉËÏµÊı
+    //æŠ¤ç”²å‡ä¼¤ç³»æ•°
     private float m_DamageReductionCoefficient;
 
     private void Awake()
@@ -24,7 +24,7 @@ public class ShieldCollisionReceiver : NetworkBehaviour
 #if UNITY_EDITOR
         if (m_AmmunitionCollisionReceiver == null)
         {
-            Debug.LogError("Õâ¸ö»¤¼××é¼şÎïÌåĞèÒªÊÇºËĞÄ½ÓÊÕÉËº¦Åö×²½Å±¾ÎïÌåµÄ×ÓÎïÌå");
+            Debug.LogError("è¿™ä¸ªæŠ¤ç”²ç»„ä»¶ç‰©ä½“éœ€è¦æ˜¯æ ¸å¿ƒæ¥æ”¶ä¼¤å®³ç¢°æ’è„šæœ¬ç‰©ä½“çš„å­ç‰©ä½“");
         }
 #endif
         m_IsOverallArmor = m_AmmunitionCollisionReceiver.m_IsOverallArmor;
@@ -39,7 +39,7 @@ public class ShieldCollisionReceiver : NetworkBehaviour
         if (ammunitionHandle == null)
         {
 #if UNITY_EDITOR
-            Debug.Log("²éÑ¯²»µ½Õâ¸öµ¯Ò©µÄHandle,×Óµ¯¶ÔÏóÎª" + collision.gameObject);
+            Debug.Log("æŸ¥è¯¢ä¸åˆ°è¿™ä¸ªå¼¹è¯çš„Handle,å­å¼¹å¯¹è±¡ä¸º" + collision.gameObject);
 #endif
             return;
         }
@@ -56,7 +56,7 @@ public class ShieldCollisionReceiver : NetworkBehaviour
     private void CalculateDamage(AmmunitionConfig config)
     {
         m_AmmunitionCollisionReceiver.CalculateDamage(config);
-        if(m_IsOverallArmor == false)
+        if(m_IsOverallArmor == false && m_ShieldType == ShieldType.Armor)
         {
             int damage = config.m_Damage;
             RPCBroadcastDamage(damage);
@@ -65,9 +65,9 @@ public class ShieldCollisionReceiver : NetworkBehaviour
 
 
     /// <summary>
-    /// Õâ¸öÊÇ¼ÆËãµ±Ç°Õâ¿é»¤¼×µÄÉËº¦
+    /// è¿™ä¸ªæ˜¯è®¡ç®—å½“å‰è¿™å—æŠ¤ç”²çš„ä¼¤å®³
     /// </summary>
-    /// <param name="damage"></param> ¶Ôµ±Ç°»¤¼×µÄÉËº¦
+    /// <param name="damage"></param> å¯¹å½“å‰æŠ¤ç”²çš„ä¼¤å®³
     [ClientRpc]
     private void RPCBroadcastDamage(int damage)
     {
@@ -75,7 +75,7 @@ public class ShieldCollisionReceiver : NetworkBehaviour
         if(m_SubArmor <= 0)
         {
 #if UNITY_EDITOR
-            Debug.Log("»¤¼× £º" + gameObject.name + "±»´İ»Ù");
+            Debug.Log("æŠ¤ç”² ï¼š" + gameObject.name + "è¢«æ‘§æ¯");
 #endif
             gameObject.SetActive(false);
         }

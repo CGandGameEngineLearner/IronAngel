@@ -88,6 +88,16 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
     public void CalculateDamage(AmmunitionConfig config)
     {
         var m_Properties = GetComponent<BaseProperties>();
+
+        // 有能量护盾
+        // 直接结算
+        if(m_Properties.m_Properties.m_EnergyShieldCount > 0)
+        {
+            m_Properties.m_Properties.m_EnergyShieldCount--;
+            RPCBroadcastDamage(m_Properties.m_Properties);
+            return;
+        }
+
         int damage = config.m_Damage;
 
         // 护甲大于0才进行减伤计算
@@ -126,7 +136,20 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
 #endif
             foreach (var shield in m_Shields)
             {
-                shield.gameObject.SetActive(false);
+                if(shield.m_ShieldType == ShieldType.Armor)
+                    shield.gameObject.SetActive(false);
+            }
+        }
+        // 玩家损失能量护盾
+        if (m_Properties.m_Properties.m_EnergyShieldCount <= 0)
+        {
+#if UNITY_EDITOR
+            Debug.Log("玩家 ：" + gameObject.name + "损失能量护盾");
+#endif
+            foreach (var shield in m_Shields)
+            {
+                if (shield.m_ShieldType == ShieldType.Energy)
+                    shield.gameObject.SetActive(false);
             }
         }
     }
