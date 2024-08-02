@@ -159,15 +159,34 @@ public class AIController : NetworkBehaviour
         {
             return false;
         }
-
+        
         m_LogicStateManager.AddState(ELogicState.AIAttacking);
-        m_LogicStateManager.SetStateDuration(ELogicState.AIAttacking, m_BaseProperties.m_Properties.m_LeftHandWeaponAttackingDuration);
-        var dir = enemy[0].transform.position - transform.position;
-        dir = ComputeAngleOfFire(dir);
         
-        Debug.DrawLine(transform.position,transform.position + 10*dir,Color.red,10);
+        // 随机使用左右手武器
+        int rand = Random.Range(0, 1);
         
-        WeaponSystemCenter.Instance.CmdFire(gameObject, m_LeftHandWeapon,transform.position,dir);
+        if (rand == 0)
+        {
+            m_LogicStateManager.AddState(ELogicState.AIAttacking);
+            m_LogicStateManager.SetStateDuration(ELogicState.AIAttacking, m_BaseProperties.m_Properties.m_LeftHandWeaponAttackingDuration);
+            var dir = enemy[0].transform.position - transform.position;
+            dir = ComputeAngleOfFire(dir);
+        
+            Debug.DrawLine(transform.position,transform.position + 10*dir,Color.red,10);
+            WeaponSystemCenter.Instance.CmdFire(gameObject, m_LeftHandWeapon,transform.position,dir);
+        }
+        else
+        {
+            m_LogicStateManager.SetStateDuration(ELogicState.AIAttacking, m_BaseProperties.m_Properties.m_RightHandWeaponAttackingDuration);
+            var dir = enemy[0].transform.position - transform.position;
+            dir = ComputeAngleOfFire(dir);
+        
+            Debug.DrawLine(transform.position,transform.position + 10*dir,Color.red,10);
+            WeaponSystemCenter.Instance.CmdFire(gameObject, m_RightHandWeapon,transform.position,dir);
+        }
+        
+        
+        
         return true;
     }
     
