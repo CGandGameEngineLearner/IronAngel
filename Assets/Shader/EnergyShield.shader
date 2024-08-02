@@ -4,7 +4,7 @@ Shader "Cus/EnergyShield"
     {
         _MainTex ("Texture", 2D) = "white" {}
         _NoiseTex("Noise Texture", 2D) = "white" {}
-        _Color("Color", Color) = (1.0, 1.0, 1.0, 1.0)
+        [HDR]_Color("Color", Color) = (1.0, 1.0, 1.0, 1.0)
         [IntRange]_Intensity("Intensity", range(1.0, 10.0)) = 1.0
     }
     SubShader
