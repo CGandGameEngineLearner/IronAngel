@@ -5,12 +5,12 @@ public struct WeaponConfigData
 {
     public AtkType atkType;
     public AmmunitionType ammunitionType;
-    public int weaponHp;
     public float interval;
     public int magSize;
     public int simShots;
     public float spreadAngle;
     public float shotSpreadAngle;
+    public int WeaponHP;
 
     // [SerializeField] [ConditionalHide("m_AtkType", (int)AtkType.ShotGun)]
     private float m_ShotSpreadAngle;
@@ -43,7 +43,7 @@ public class WeaponConfig : ItemConfig
         {
             atkType = this.m_AtkType,
             ammunitionType = this.m_ammunitionType,
-            weaponHp = this.m_WeaponHp,
+            WeaponHP = this.m_WeaponHp,
             interval = this.m_Interval,
             magSize = this.m_MagSize,
             simShots = this.m_SimShots,

@@ -5,7 +5,7 @@ public struct WeaponInstanceData
 {
     public int currentMag;
     public float lastFiredTime;
-    public int weaponHp;
+
 }
 
 public class WeaponInstance : NetworkBehaviour
@@ -18,7 +18,6 @@ public class WeaponInstance : NetworkBehaviour
     {
         m_WeaponConfig = weaponConfig;
         m_WeaponInstanceData.currentMag = weaponConfig.magSize;
-        m_WeaponInstanceData.weaponHp = weaponConfig.weaponHp;
     }
 
     /// <summary>

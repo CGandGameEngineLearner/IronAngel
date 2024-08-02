@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
 
+[RequireComponent(typeof(BoxCollider2D))]
 public class ShieldCollisionReceiver : NetworkBehaviour
 {
     [Tooltip("盾的类型")]
@@ -14,6 +15,7 @@ public class ShieldCollisionReceiver : NetworkBehaviour
 
     private bool m_IsOverallArmor = true;
     private AmmunitionCollisionReceiver m_AmmunitionCollisionReceiver;
+    private BoxCollider2D m_Collider;
     //护甲减伤系数
     private float m_DamageReductionCoefficient;
 
@@ -36,6 +38,8 @@ public class ShieldCollisionReceiver : NetworkBehaviour
         {
             m_AmmunitionCollisionReceiver.m_specialAtkTypes.Add(type);
         }
+
+        m_Collider = GetComponent<BoxCollider2D>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -53,16 +57,16 @@ public class ShieldCollisionReceiver : NetworkBehaviour
         {
             return;
         }
-        CalculateDamage(ammunitionHandle.ammunitionConfig);
+        CalculateDamage(ammunitionHandle.ammunitionConfig, collision.ClosestPoint(new Vector2(transform.position.x, transform.position.y) + m_Collider.offset));
         ammunitionFactory.UnRegisterAmmunition(collision.gameObject);
     }
 
 
     [ServerCallback]
-    private void CalculateDamage(AmmunitionConfig config)
+    private void CalculateDamage(AmmunitionConfig config, Vector2 Pos)
     {
         // 提交能量盾或者穿甲结算
-        m_AmmunitionCollisionReceiver.CalculateDamage(config, m_SubArmor);
+        m_AmmunitionCollisionReceiver.CalculateDamage(config, m_SubArmor, Pos);
         // 类内计算分块的护甲
         if(m_IsOverallArmor == false && m_ShieldType == ShieldType.Armor)
         {

@@ -188,6 +188,7 @@ GameObject:
   - component: {fileID: 8003055979873924788}
   - component: {fileID: 6382232755733876394}
   - component: {fileID: 5508215157506620468}
+  - component: {fileID: 2458197222483085952}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -472,9 +473,14 @@ MonoBehaviour:
     m_BaseHP: 100
     m_LeftHandWeaponHP: 0
     m_RightHandWeaponHP: 0
+    m_LeftHandWeapon: 0
+    m_RightHandWeapon: 0
+    m_LeftHandWeaponAttackingDuration: 0
+    m_RightHandWeaponAttackingDuration: 0
+    m_EngagementPosRatio: 0
     m_Armor: 0
     m_EnergyShieldCount: 0
-    m_CurrentHP: 5000
+    m_CurrentHP: 50000
     m_CurrentArmor: 0
     m_AttackRange: 0
     m_TokenWeight: 0
@@ -542,6 +548,24 @@ MonoBehaviour:
   m_IsOverallArmor: 1
   m_Shields: []
   m_specialAtkTypes: 
+  m_LeftWeapon: {fileID: 0}
+  m_RightWeapon: {fileID: 0}
+--- !u!114 &2458197222483085952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6774923126565653122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8afad5847d18a41478f430a913f30bc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
+  PatrolRoute: {fileID: 0}
 --- !u!1 &7582080857861271222
 GameObject:
   m_ObjectHideFlags: 0

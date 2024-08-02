@@ -6,6 +6,7 @@ using Mirror;
 
 
 [RequireComponent(typeof(BaseProperties))]
+[RequireComponent(typeof(BoxCollider2D))]
 public class AmmunitionCollisionReceiver : NetworkBehaviour
 {
     [Tooltip("所有的护甲是否是一起计算")]
@@ -14,14 +15,13 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
     public List<ShieldCollisionReceiver> m_Shields = new List<ShieldCollisionReceiver>();
     //护甲减伤系数
     private float m_DamageReductionCoefficient;
-    private BaseProperties m_Properties;
+    public BaseProperties m_Properties;
     // 能量盾的特殊Tag
     public List<SpecialAtkType> m_specialAtkTypes = new List<SpecialAtkType>();
+    private BoxCollider2D m_Collider;
 
     public WeaponCollisionReceiver m_LeftWeapon;
     public WeaponCollisionReceiver m_RightWeapon;
-
-
 
     private void Start()
     {
@@ -44,6 +44,11 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
             m_Properties.m_Properties.m_Armor = armor;
             m_Properties.m_Properties.m_CurrentArmor = armor;
         }
+
+        m_Properties.m_Properties.m_RightHandWeaponHP = WeaponSystemCenter.GetWeaponConfig(m_Properties.m_Properties.m_RightHandWeapon).weaponHp;
+        m_Properties.m_Properties.m_LeftHandWeaponHP = WeaponSystemCenter.GetWeaponConfig(m_Properties.m_Properties.m_LeftHandWeapon).weaponHp;
+
+        m_Collider = GetComponent<BoxCollider2D>();
     }
 
 
@@ -76,7 +81,7 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
 #endif
             return;
         }
-        CalculateDamage(ammunitionHandle.ammunitionConfig,m_Properties.m_Properties.m_CurrentArmor);
+        CalculateDamage(ammunitionHandle.ammunitionConfig, m_Properties.m_Properties.m_CurrentArmor, collision.ClosestPoint(new Vector2(transform.position.x, transform.position.y) + m_Collider.offset));
         ammunitionFactory.UnRegisterAmmunition(collision.gameObject);
     }
 
@@ -93,9 +98,10 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
     ///     }
     /// </summary>
     ///  config: 子弹的配置表，用于计算伤害 
-    ///
+    /// armor:受击部位的护甲值
+    /// Pos:受击位置
     [ServerCallback]
-    public void CalculateDamage(AmmunitionConfig config, int armor)
+    public void CalculateDamage(AmmunitionConfig config, int armor, Vector2 Pos)
     {
         var m_Properties = GetComponent<BaseProperties>();
 
@@ -136,6 +142,26 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
         damage = armor + damage >= 0 ? (int)(damage * (1 - m_DamageReductionCoefficient)) : damage;
 
         // 两边的武器血条还没有考虑
+        // 分别计算受击位置和两个手部碰撞体和核心碰撞体的距离
+        // 取最短的距离作为受击部位
+        float leftDis = Vector2.Distance(new Vector2(m_LeftWeapon.transform.position.x + m_LeftWeapon.m_Collider.offset.x, m_LeftWeapon.transform.position.y + m_LeftWeapon.m_Collider.offset.y), Pos);
+        float rightDis = Vector2.Distance(new Vector2(m_RightWeapon.transform.position.x + m_RightWeapon.m_Collider.offset.x, m_RightWeapon.transform.position.y + m_RightWeapon.m_Collider.offset.y), Pos);
+        float coreDis = Vector2.Distance(new Vector2(transform.position.x + m_Collider.offset.x, transform.position.y + m_Collider.offset.y), Pos);
+        // 击中左手
+        if(leftDis < rightDis && leftDis < coreDis && m_Properties.m_Properties.m_LeftHandWeaponHP > 0)
+        {
+            
+        }
+        // 击中右手
+        else if(rightDis < coreDis && rightDis < leftDis && m_Properties.m_Properties.m_RightHandWeaponHP > 0)
+        {
+
+        }
+        // 击中核心
+        else
+        {
+
+        }
         m_Properties.m_Properties.m_CurrentHP -= damage;
 
         RPCBroadcastDamage(m_Properties.m_Properties);

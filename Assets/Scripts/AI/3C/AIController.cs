@@ -20,7 +20,6 @@ public class AIController : NetworkBehaviour
     private GameObject m_LeftHandWeapon;
     private GameObject m_RightHandWeapon;
 
-   
 
     /// <summary>
     /// 训练路线
@@ -33,7 +32,8 @@ public class AIController : NetworkBehaviour
         m_LogicStateManager = GetComponent<LogicStateManager>();
         m_AIMovement = GetComponent<AIMovement>();
         m_AISensor = GetComponent<IAISensor>();
-        
+
+
         EventCenter.AddListener<LogicStateManager,ELogicState>(
             EventType.LogicState_AIAttacking_StateOut,
             OnAIAttackingStateOut

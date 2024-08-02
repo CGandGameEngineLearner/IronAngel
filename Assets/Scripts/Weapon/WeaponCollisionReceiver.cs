@@ -51,13 +51,27 @@ public class WeaponCollisionReceiver : NetworkBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        
+        var ammunitionFactory = WeaponSystemCenter.GetAmmunitionFactory();
+        var ammunitionHandle = ammunitionFactory.GetAmmunitionHandle(collision.gameObject);
+        if (ammunitionHandle == null)
+        {
+#if UNITY_EDITOR
+            Debug.Log("查询不到这个弹药的Handle,子弹对象为" + collision.gameObject);
+#endif
+            return;
+        }
+        if (ammunitionHandle.launcherCharacter == transform.parent.gameObject)
+        {
+            return;
+        }
+        CalculateDamage(ammunitionHandle.ammunitionConfig);
+        ammunitionFactory.UnRegisterAmmunition(collision.gameObject);
     }
 
     [ServerCallback]
     public void CalculateDamage(AmmunitionConfig config)
     {
-
+        m_AmmunitionCollisionReceiver.CalculateDamage(config, 0);
     }
 
     // <summary>
