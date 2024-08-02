@@ -42,9 +42,9 @@ public class WeaponSystemCenter : NetworkBehaviour
 {
     public static WeaponSystemCenter Instance;
 
-    public static List<WeaponSpawnSetting> WeaponSpawnSettings = new List<WeaponSpawnSetting>();
-    public static List<WeaponConfigSetting> WeaponConfigSettings = new List<WeaponConfigSetting>();
-    public static List<AmmunitionConfigSetting> AmmunitionConfigSettings = new List<AmmunitionConfigSetting>();
+    public List<WeaponSpawnSetting> WeaponSpawnSettings = new List<WeaponSpawnSetting>();
+    public List<WeaponConfigSetting> WeaponConfigSettings = new List<WeaponConfigSetting>();
+    public List<AmmunitionConfigSetting> AmmunitionConfigSettings = new List<AmmunitionConfigSetting>();
 
     private static Dictionary<WeaponType, WeaponConfig> m_WeaponConfigDic = new Dictionary<WeaponType, WeaponConfig>();
 

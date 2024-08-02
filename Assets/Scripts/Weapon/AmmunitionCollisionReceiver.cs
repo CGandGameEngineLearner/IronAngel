@@ -15,6 +15,8 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
     //护甲减伤系数
     private float m_DamageReductionCoefficient;
     private BaseProperties m_Properties;
+    // 能量盾的特殊Tag
+    private List<SpecialAtkType> m_specialAtkTypes = new List<SpecialAtkType>();
 
 
 
@@ -94,12 +96,16 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
         if(m_Properties.m_Properties.m_EnergyShieldCount > 0)
         {
             // 特殊子弹对能量盾的效果
-            // 等自子弹配置push之后补上
+            if(m_specialAtkTypes.Count > 0 && m_specialAtkTypes.Count == config.m_specialAtkTypes.Count)
+            {
 
-
-            // 下面的结算能量盾方式是普通的减一
-            m_Properties.m_Properties.m_EnergyShieldCount--;
-            RPCBroadcastDamage(m_Properties.m_Properties);
+            }
+            else
+            {
+                // 下面的结算能量盾方式是普通的减一
+                m_Properties.m_Properties.m_EnergyShieldCount--;
+                RPCBroadcastDamage(m_Properties.m_Properties);
+            }
             return;
         }
 

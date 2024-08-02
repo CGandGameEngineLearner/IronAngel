@@ -76,7 +76,7 @@ public class PlayerController : NetworkBehaviour
         
         m_Player.Update();
         m_InputController.UpdateInputDevice();
-        if (Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.P) && isServer)
         {
             CmdStartGame();
         }
