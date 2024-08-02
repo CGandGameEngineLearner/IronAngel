@@ -58,6 +58,8 @@ public class WeaponSystemCenter : NetworkBehaviour
     private static Dictionary<GameObject, WeaponConfig>
         m_WeaponToConfigDic = new Dictionary<GameObject, WeaponConfig>();
 
+    private static Dictionary<GameObject, WeaponType> m_WeaponToTypeDic = new Dictionary<GameObject, WeaponType>();
+
 
     private static ObjectPoolManager<AmmunitionType> m_AmmunitionPool = new();
     private static AmmunitionFactory m_AmmunitionFactory = new(); // 弹药工厂
@@ -83,6 +85,7 @@ public class WeaponSystemCenter : NetworkBehaviour
         
         NetworkServer.Spawn(weapon);
         m_WeaponToConfigDic[weapon] = weaponConfig;
+        m_WeaponToTypeDic[weapon] = weaponType;
         return weapon;
     }
     
@@ -183,12 +186,12 @@ public class WeaponSystemCenter : NetworkBehaviour
         // 散布
         dir = Utils.ApplyScatterY(dir, weaponConfig.spreadAngle);
         
-        Fire(character, weaponConfig.ToData(), ammunitionType, startPoint, dir);
+        Fire(character, m_WeaponToTypeDic[weapon], ammunitionType, startPoint, dir);
         
         // GameObject ammunition = GetAmmunitionFromPool(ammunitionType, startPoint, dir);
         // m_AmmunitionFactory.ShootAmmunition(character, ammunition, ammunitionType, ammunitionConfig,
         //     weaponConfig.atkType, startPoint, dir);
-        RPCFire(character, weaponConfig.ToData(), ammunitionType, startPoint, dir);
+        RPCFire(character, m_WeaponToTypeDic[weapon], ammunitionType, startPoint, dir);
     }
 
     public void CmdFireWithOutDispersion(GameObject character, GameObject weapon, Vector3 startPoint, Vector3 dir)
@@ -225,25 +228,27 @@ public class WeaponSystemCenter : NetworkBehaviour
             return;
         }
         
-        Fire(character, weaponConfig.ToData(), ammunitionType, startPoint, dir);
+        Fire(character, m_WeaponToTypeDic[weapon], ammunitionType, startPoint, dir);
 
-        RPCFire(character, weaponConfig.ToData(), ammunitionType, startPoint, dir);
+        RPCFire(character, m_WeaponToTypeDic[weapon], ammunitionType, startPoint, dir);
     }
 
     [ClientRpc]
-    public void RPCFire(GameObject character, WeaponConfigData weaponConfigData, AmmunitionType ammunitionType,
+    public void RPCFire(GameObject character, WeaponType weaponType, AmmunitionType ammunitionType,
         Vector3 startPoint, Vector3 dir)
     {
+        var weaponConfigData = m_WeaponConfigDic[weaponType].ToData();
         Debug.LogError(weaponConfigData.atkType);
-        Fire(character, weaponConfigData, ammunitionType, startPoint, dir);
+        Fire(character, weaponType, ammunitionType, startPoint, dir);
     }
 
     /// <summary>
     /// 统一提供给RPC和server使用
     /// </summary>
-    private void Fire(GameObject character, WeaponConfigData weaponConfigData, AmmunitionType ammunitionType,
+    private void Fire(GameObject character, WeaponType weaponType, AmmunitionType ammunitionType,
         Vector3 startPoint, Vector3 dir)
     {
+        var weaponConfigData = m_WeaponConfigDic[weaponType].ToData();
         Debug.LogWarning(weaponConfigData.atkType);
         switch (weaponConfigData.atkType)
         {
@@ -328,16 +333,7 @@ public class WeaponSystemCenter : NetworkBehaviour
         {
             foreach (var weaponSpawnSetting in WeaponSpawnSettings)
             {
-                var weaponConfig = m_WeaponConfigDic[weaponSpawnSetting.WeaponType];
-                var prefab = weaponConfig.prefab;
-
-                GameObject weapon = Instantiate(prefab, weaponSpawnSetting.Position, UnityEngine.Quaternion.identity);
-
-                // 测试武器挂载脚本
-                weapon.GetComponent<WeaponInstance>().Init(weaponConfig);
-
-                m_WeaponToConfigDic.Add(weapon, weaponConfig);
-                NetworkServer.Spawn(weapon);
+                SpawnWeapon(weaponSpawnSetting.WeaponType, weaponSpawnSetting.Position);
             }
 
             GiveAIWeapon();

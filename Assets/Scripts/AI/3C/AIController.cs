@@ -129,7 +129,7 @@ public class AIController : NetworkBehaviour
         if (result.Count <= 0)
         {
             return result;
-            Debug.Log("GetGameObjectsInAttackRange() result empty");
+            //Debug.Log("GetGameObjectsInAttackRange() result empty");
         }
         
         // 移除超出攻击范围的
