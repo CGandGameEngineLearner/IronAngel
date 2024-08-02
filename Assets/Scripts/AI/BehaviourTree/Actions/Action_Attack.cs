@@ -10,11 +10,16 @@ namespace AI.BehaviourTree.Actions
         public override void OnAwake()
         {
             m_AIController = GetComponent<AIController>();
-            m_LogicStateManager = GetComponent<LogicStateManager>();
+            m_LogicStateManager = GetComponent<LogicStateManager>(); 
         }
 
         public override TaskStatus OnUpdate()
         {
+            if (m_AIController.Attack() == false)
+            {
+                return TaskStatus.Inactive;
+            }
+            
             return TaskStatus.Running;
         }
     }

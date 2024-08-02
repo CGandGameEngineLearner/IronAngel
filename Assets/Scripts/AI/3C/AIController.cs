@@ -2,7 +2,10 @@
 using UnityEngine;
 using UnityEngine.Splines;
 using System.Collections.Generic;
+using AI.TokenPool;
 using Mirror;
+using Unity.VisualScripting;
+using Unity.VisualScripting.Antlr3.Runtime;
 
 
 public class AIController : NetworkBehaviour
@@ -86,4 +89,25 @@ public class AIController : NetworkBehaviour
 
         return result;
     }
+
+    [ServerCallback]
+    public bool Attack()
+    {
+        var enemy = GetGameObjectsInAttackRange();
+        if (enemy.Count <= 0)
+        {
+            return false;
+        }
+
+        if (TokenPool.ApplyToken(m_BaseProperties.m_Properties.m_TokenWeight) == false)
+        {
+            return false;
+        }
+
+        return true;
+    }
+
+    //private Computea
+
+    
 }

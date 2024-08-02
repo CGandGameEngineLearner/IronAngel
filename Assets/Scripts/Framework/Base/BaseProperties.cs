@@ -53,4 +53,7 @@ public struct Properties
 
     [Tooltip("AI抢攻击Token的优先权重"),Range(0,1)]
     public float m_TokenWeight;
+
+    [Tooltip("AI的射击角度误差范围"),Range(0,90)]
+    public float m_RangeOfAimingError;
 }
