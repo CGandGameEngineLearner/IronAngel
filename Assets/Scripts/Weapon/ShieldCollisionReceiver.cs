@@ -32,6 +32,10 @@ public class ShieldCollisionReceiver : NetworkBehaviour
         m_IsOverallArmor = m_AmmunitionCollisionReceiver.m_IsOverallArmor;
 
         m_AmmunitionCollisionReceiver.m_Shields.Add(this);
+        foreach(var type in m_specialAtkTypes)
+        {
+            m_AmmunitionCollisionReceiver.m_specialAtkTypes.Add(type);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
