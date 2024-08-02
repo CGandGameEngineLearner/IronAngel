@@ -71,7 +71,7 @@ public class WeaponCollisionReceiver : NetworkBehaviour
     [ServerCallback]
     public void CalculateDamage(AmmunitionConfig config)
     {
-       // m_AmmunitionCollisionReceiver.CalculateDamage(config, new Vector2(0,0));
+        m_AmmunitionCollisionReceiver.CalculateDamage(config, 0, m_Collider.offset + new Vector2(transform.position.x, transform.position.y));
     }
 
     // <summary>

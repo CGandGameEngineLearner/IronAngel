@@ -150,19 +150,19 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
         // 击中左手
         if(leftDis < rightDis && leftDis < coreDis && m_Properties.m_Properties.m_LeftHandWeaponHP > 0)
         {
-            
+            m_Properties.m_Properties.m_LeftHandWeaponHP -= damage;
         }
         // 击中右手
         else if(rightDis < coreDis && rightDis < leftDis && m_Properties.m_Properties.m_RightHandWeaponHP > 0)
         {
-
+            m_Properties.m_Properties.m_RightHandWeaponHP -= damage;
         }
         // 击中核心
         else
         {
-
+            m_Properties.m_Properties.m_CurrentHP -= damage;
         }
-        m_Properties.m_Properties.m_CurrentHP -= damage;
+        
 
         RPCBroadcastDamage(m_Properties.m_Properties);
     }
@@ -208,5 +208,6 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
                     shield.gameObject.SetActive(false);
             }
         }
+        // 玩家
     }
 }
