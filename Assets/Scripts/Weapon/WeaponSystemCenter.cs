@@ -42,22 +42,22 @@ public class WeaponSystemCenter : NetworkBehaviour
 {
     public static WeaponSystemCenter Instance;
 
-    public List<WeaponSpawnSetting> WeaponSpawnSettings = new List<WeaponSpawnSetting>();
-    public List<WeaponConfigSetting> WeaponConfigSettings = new List<WeaponConfigSetting>();
-    public List<AmmunitionConfigSetting> AmmunitionConfigSettings = new List<AmmunitionConfigSetting>();
+    public static List<WeaponSpawnSetting> WeaponSpawnSettings = new List<WeaponSpawnSetting>();
+    public static List<WeaponConfigSetting> WeaponConfigSettings = new List<WeaponConfigSetting>();
+    public static List<AmmunitionConfigSetting> AmmunitionConfigSettings = new List<AmmunitionConfigSetting>();
 
-    private Dictionary<WeaponType, WeaponConfig> m_WeaponConfigDic = new Dictionary<WeaponType, WeaponConfig>();
+    private static Dictionary<WeaponType, WeaponConfig> m_WeaponConfigDic = new Dictionary<WeaponType, WeaponConfig>();
 
-    private Dictionary<AmmunitionType, AmmunitionConfig> m_AmmunitionConfigDic =
+    private static Dictionary<AmmunitionType, AmmunitionConfig> m_AmmunitionConfigDic =
         new Dictionary<AmmunitionType, AmmunitionConfig>();
 
     /// <summary>
     /// 武器GameObject到其配置的映射
     /// </summary>
-    private Dictionary<GameObject, WeaponConfig> m_WeaponToConfigDic = new Dictionary<GameObject, WeaponConfig>();
+    private static Dictionary<GameObject, WeaponConfig> m_WeaponToConfigDic = new Dictionary<GameObject, WeaponConfig>();
 
 
-    private ObjectPoolManager<AmmunitionType> m_AmmunitionPool = new();
+    private static ObjectPoolManager<AmmunitionType> m_AmmunitionPool = new();
     private static AmmunitionFactory m_AmmunitionFactory = new(); // 弹药工厂
 
     /// <summary>
@@ -67,6 +67,17 @@ public class WeaponSystemCenter : NetworkBehaviour
     public static AmmunitionFactory GetAmmunitionFactory()
     {
         return m_AmmunitionFactory;
+    }
+
+
+    public static WeaponConfig GetWeaponConfig(WeaponType weaponType)
+    {
+        if (!m_WeaponConfigDic.ContainsKey(weaponType))
+        {
+            throw new Exception("查询不到武器配置，武器类型枚举为："+weaponType);
+        }
+
+        return m_WeaponConfigDic[weaponType];
     }
 
     public bool StartGame = false;
