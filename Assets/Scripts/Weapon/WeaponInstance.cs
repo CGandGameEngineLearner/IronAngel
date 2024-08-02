@@ -18,7 +18,6 @@ public class WeaponInstance : NetworkBehaviour
     public void Init(WeaponConfig weaponConfig)
     {
         m_WeaponConfig = weaponConfig;
-
         m_WeaponInstanceData.currentMag = weaponConfig.magSize;
         m_WeaponInstanceData.weaponHp = weaponConfig.weaponHp;
     }
