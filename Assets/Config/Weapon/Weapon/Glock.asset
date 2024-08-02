@@ -17,7 +17,7 @@ MonoBehaviour:
   m_MaxPoolSize: 20
   m_AtkType: 3
   m_ammunitionType: 1
-  m_WeaponHp: 0
+  m_WeaponHp: 100
   m_Interval: 0.02
   m_MagSize: 10000
   m_SimShots: 10
