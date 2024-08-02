@@ -15,10 +15,6 @@ namespace AI.BehaviourTree.Actions
 
         public override TaskStatus OnUpdate()
         {
-            if (m_AIController.Attack() == false)
-            {
-                return TaskStatus.Inactive;
-            }
 
             m_AIController.Attack();
             return TaskStatus.Running;

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using AI.TokenPool;
 using Mirror;
 using System;
+using System.Linq;
 using Random = UnityEngine.Random;
 using LogicState;
 
@@ -28,6 +29,7 @@ public class AIController : NetworkBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        m_BaseProperties = GetComponent<BaseProperties>();
         m_LogicStateManager = GetComponent<LogicStateManager>();
         m_AIMovement = GetComponent<AIMovement>();
         m_AISensor = GetComponent<IAISensor>();
@@ -95,7 +97,7 @@ public class AIController : NetworkBehaviour
         if (chaseGameObjects.Count > 0)
         {
             m_ChaseGO = chaseGameObjects[0];
-            Debug.Log("AI正在追逐"+chaseGameObjects[0]);
+            //Debug.Log("AI正在追逐"+chaseGameObjects[0]);
             m_AIMovement.Chase(chaseGameObjects[0]);
         }
         else
@@ -123,6 +125,12 @@ public class AIController : NetworkBehaviour
     public List<GameObject> GetGameObjectsInAttackRange()
     {
         var result = GetPerceiveGameObjects();
+
+        if (result.Count <= 0)
+        {
+            return result;
+            Debug.Log("GetGameObjectsInAttackRange() result empty");
+        }
         
         // 移除超出攻击范围的
         result.RemoveAll(o =>
@@ -156,6 +164,8 @@ public class AIController : NetworkBehaviour
         m_LogicStateManager.SetStateDuration(ELogicState.AIAttacking, m_BaseProperties.m_Properties.m_LeftHandWeaponAttackingDuration);
         var dir = enemy[0].transform.position - transform.position;
         dir = ComputeAngleOfFire(dir);
+        
+        
         WeaponSystemCenter.Instance.CmdFire(gameObject, m_LeftHandWeapon,transform.position,dir);
         return true;
     }

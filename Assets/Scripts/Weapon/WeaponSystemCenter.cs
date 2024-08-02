@@ -81,6 +81,7 @@ public class WeaponSystemCenter : NetworkBehaviour
         weapon.GetComponent<WeaponInstance>().Init(weaponConfig);
         
         NetworkServer.Spawn(weapon);
+        m_WeaponToConfigDic[weapon] = weaponConfig;
         return weapon;
     }
     
@@ -145,6 +146,7 @@ public class WeaponSystemCenter : NetworkBehaviour
     /// <param name="dir"></param>
     public void CmdFire(GameObject character, GameObject weapon, Vector3 startPoint, Vector3 dir)
     {
+        dir = dir.normalized;
         Debug.Log(GetType() + "Command" + "Fire");
         var weaponConfig = m_WeaponToConfigDic[weapon];
         var ammunitionType = m_WeaponToConfigDic[weapon].ammunitionType;

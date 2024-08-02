@@ -32,6 +32,7 @@ public class VisionSensor:MonoBehaviour,IAISensor
     public List<GameObject> GetPerceiveGameObjects()
     {
         List<GameObject> result = m_GameObjectsInSight.ToList();
+        //Debug.Log(result);
         return result;
     }
 

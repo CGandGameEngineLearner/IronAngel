@@ -141,7 +141,7 @@ namespace LogicState
         /// <returns></returns>
         public bool SetStateDuration(ELogicState eLogicState, float duration)
         {
-            if (!IncludeState(eLogicState))
+            if (!m_LogicStateDic.ContainsKey(eLogicState))
             {
                 return false;
             }
