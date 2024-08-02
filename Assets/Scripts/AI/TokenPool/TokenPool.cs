@@ -1,7 +1,5 @@
 using System;
-using System.Linq.Expressions;
-using UnityEngine.InputSystem.Controls;
-using static System.DateTime;
+
 
 
 namespace AI.TokenPool
@@ -15,7 +13,6 @@ namespace AI.TokenPool
         private static int m_TokensNum = 3;
         private static int m_MaxTokensNum = 3;
         private static int m_ReleaseTokens = 0;
-        private static Random rand = new Random( DateTime.Now.Millisecond);
         
         /// <summary>
         /// 当前全游戏的Token数量，即发出去的Token+池子中的Token
@@ -56,7 +53,7 @@ namespace AI.TokenPool
                 return false;
             }
 
-            float randFloat = (float)rand.NextDouble();
+            float randFloat = UnityEngine.Random.Range(0.0f,1.0f);
             
             if (randFloat > weight)
             {

@@ -14,6 +14,7 @@ namespace LogicState
         public int StateDictionaryCapacity = (int)ELogicState.Count;
         private Dictionary<ELogicState, LogicState> m_LogicStateDic;
         private Dictionary<ELogicState, LogicState> m_FutureStatesBuffer;
+        private Dictionary<ELogicState, bool> m_StateInit;
         
         
         public LogicStateConfig LogicStateConfig;
@@ -99,7 +100,12 @@ namespace LogicState
             return true;
         }
         
-
+        /// <summary>
+        /// 检查逻辑状态是否满足逻辑状态管理器中有included中的状态，且没有exclude中的状态的情况
+        /// </summary>
+        /// <param name="included"></param>
+        /// <param name="excluded"></param>
+        /// <returns></returns>
         public bool CheckState(List<ELogicState> included, List<ELogicState> excluded)
         {
             if (included != null)
@@ -127,9 +133,27 @@ namespace LogicState
             return true;
         }
         
+        /// <summary>
+        /// 设置状态的持续时间
+        /// </summary>
+        /// <param name="eLogicState"></param>
+        /// <param name="duration"></param>
+        /// <returns></returns>
+        public bool SetStateDuration(ELogicState eLogicState, float duration)
+        {
+            if (!IncludeState(eLogicState))
+            {
+                return false;
+            }
+
+            m_LogicStateDic[eLogicState].Duration = duration;
+            return true;
+        }
+        
         // Start is called before the first frame update
         void Start()
         {
+            m_StateInit = new Dictionary<ELogicState, bool>();
             m_LogicStateDic = new Dictionary<ELogicState, LogicState>(StateDictionaryCapacity);
             m_FutureStatesBuffer = new Dictionary<ELogicState, LogicState>(StateDictionaryCapacity);
         }
@@ -144,7 +168,14 @@ namespace LogicState
                 if(state.GetActive())
                 {
                     LogicStateSetting stateSetting = LogicStateConfig.GetLogicStateSetting(stateEnum);
-                    state.Duration = stateSetting.Duration; // ScriptAbleObject的问题，运行时得从这里动态更新，否则会是默认的无限长的持续时间
+                    
+                    // ScriptAbleObject的问题，运行时得从这里动态更新，否则会是默认的无限长的持续时间
+                    if (!m_StateInit.ContainsKey(stateEnum) || m_StateInit[stateEnum] == false)
+                    {
+                        state.Duration = stateSetting.Duration;
+                        m_StateInit[stateEnum] = true;
+                    }
+                     
                     if(stateSetting.AutoStateOut&&!CheckState(stateSetting.included,stateSetting.excluded))
                     {
                         RemoveState(stateEnum);
@@ -157,6 +188,8 @@ namespace LogicState
                 }
                 
             }
+            
+            
             foreach(var stateEnum in m_LogicStateDic.Keys)
             {
                 var state = m_LogicStateDic[stateEnum];

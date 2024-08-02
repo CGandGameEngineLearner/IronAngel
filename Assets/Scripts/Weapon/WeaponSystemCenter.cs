@@ -62,6 +62,59 @@ public class WeaponSystemCenter : NetworkBehaviour
     private static ObjectPoolManager<AmmunitionType> m_AmmunitionPool = new();
     private static AmmunitionFactory m_AmmunitionFactory = new(); // 弹药工厂
 
+
+    private static HashSet<AIController> m_RegisteredWeaponAI = new HashSet<AIController>();// 注册的，需要武器的AI，注册在这里的AI 开始游戏时会给他们发武器。 
+
+    public static void RegisterAIWeapon(AIController aiController)
+    {
+        m_RegisteredWeaponAI.Add(aiController);
+    }
+
+    public GameObject SpawnWeapon(WeaponType weaponType, Vector3 pos)
+    {
+        var weaponConfig = m_WeaponConfigDic[weaponType];
+        var prefab = weaponConfig.prefab;
+
+        GameObject weapon = Instantiate(prefab, pos,
+            UnityEngine.Quaternion.identity);
+
+        // 测试武器挂载脚本
+        weapon.GetComponent<WeaponInstance>().Init(weaponConfig);
+        
+        NetworkServer.Spawn(weapon);
+        return weapon;
+    }
+    
+    /// <summary>
+    /// 给AI装备武器
+    /// </summary>
+    private void GiveAIWeapon()
+    {
+        foreach (var element in m_RegisteredWeaponAI)
+        {
+            // 给左手装备武器
+            var weaponType = element.GetRightHandWeaponType();
+            var leftWeapon = SpawnWeapon(weaponType, element.gameObject.transform.position);
+            element.SetLeftHandWeapon(leftWeapon);
+            
+
+            // 给右手装备武器
+            weaponType = element.GetRightHandWeaponType();
+            var rightWeapon = SpawnWeapon(weaponType, element.gameObject.transform.position);
+            element.SetRightHandWeapon(rightWeapon);
+    
+            RpcGiveAIWeapon(element, leftWeapon, rightWeapon);
+        }
+    }
+    
+    [ClientRpc]
+    private void RpcGiveAIWeapon(AIController aiController,GameObject leftHandWeapon,GameObject rightHandWeapon)
+    {
+        aiController.SetLeftHandWeapon(leftHandWeapon);
+        aiController.SetRightHandWeapon(rightHandWeapon);
+    }
+    
+
     /// <summary>
     /// 获取AmmunitionFactory单例
     /// </summary>
@@ -284,6 +337,8 @@ public class WeaponSystemCenter : NetworkBehaviour
                 m_WeaponToConfigDic.Add(weapon, weaponConfig);
                 NetworkServer.Spawn(weapon);
             }
+
+            GiveAIWeapon();
 
             StartGame = true;
         }

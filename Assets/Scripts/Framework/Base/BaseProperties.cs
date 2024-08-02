@@ -36,6 +36,18 @@ public struct Properties
     [Tooltip("右手武器血量")]
     public int m_RightHandWeaponHP;
     
+    [Tooltip("左手武器种类")]
+    public WeaponType m_LeftHandWeapon;
+    
+    [Tooltip("右手武器种类")]
+    public WeaponType m_RightHandWeapon;
+    
+    [Tooltip("左手武器每次攻击的持续时长")]
+    public float m_LeftHandWeaponAttackingDuration;
+    
+    [Tooltip("右手武器每次攻击的持续时长")]
+    public float m_RightHandWeaponAttackingDuration;
+    
     [Tooltip("护甲")]
     public int m_Armor;
     

@@ -6,6 +6,7 @@ public enum EventType
     StateToGlobal_PlayerWalkState,
 
     LogicState_Example_StateIn,
+    LogicState_AIAttacking_StateOut,
 }
 
 public delegate void Callback();

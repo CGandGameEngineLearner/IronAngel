@@ -18,6 +18,7 @@ namespace LogicState
         AIPatroling,                        // AI巡逻中
         AIVisionPerceived,                  // AI视觉察觉到目标
         EnemyInRangeOfAttack,               // 敌人进入了攻击范围
+        AIAttacking,                        // AI攻击中
     
     
         Count //此枚举的值为ELogicState的枚举种类的计数 所有的新增枚举不要加在它后面
@@ -42,6 +43,7 @@ namespace LogicState
             new LogicState(ELogicState.AIVisionPerceived),
             new LogicState_PlayerShooting(ELogicState.PlayerShooting),
             new LogicState(ELogicState.EnemyInRangeOfAttack),
+            new LogicState_AIAttacking(ELogicState.AIAttacking),
         };
     }
 }
