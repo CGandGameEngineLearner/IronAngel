@@ -9,6 +9,8 @@ public class ShieldCollisionReceiver : NetworkBehaviour
     public ShieldType m_ShieldType = ShieldType.Armor;
     [Tooltip("如果这个角色的护甲是分开计算的，这个属性是分开计算的单个护甲值")]
     public int m_SubArmor = 100;
+    [Tooltip("这个是能量盾的特殊Tag，用于一击移除能量盾的,只有子弹和能量盾所有的Tag对上了才会一击移除")]
+    public List<SpecialAtkType> m_specialAtkTypes;
 
     private bool m_IsOverallArmor = true;
     private AmmunitionCollisionReceiver m_AmmunitionCollisionReceiver;

@@ -40,9 +40,6 @@ public class PlayerController : NetworkBehaviour
         PlayerSpec playerSpec = new PlayerSpec();
         playerSpec = setting._PlayerSpec;
         playerSpec.m_Player = this.gameObject;
-
-        // var (gameObject, weaponConfig) =  WeaponSystemCenter.Instance.GetWeapon(WeaponType.Glock);
-        // WeaponSystemCenter.Instance.RegisterWeapon(gameObject, weaponConfig);
         
         m_Player.Init(playerSpec);
     }
@@ -192,7 +189,8 @@ public class PlayerController : NetworkBehaviour
 
             m_Player.SetPlayerRightHandWeapon(nearestWeapon);
         });
-        // 玩家攻击测试
+        // 玩家攻击
+        // 左手
         m_InputController.AddActionWhilePlayerShootLeftInputPerformedAndStay(() =>
         {
             if (isLocalPlayer)
@@ -208,9 +206,21 @@ public class PlayerController : NetworkBehaviour
             }
             
         });
-        
-        
-        
+        // 右手
+        m_InputController.AddActionWhilePlayerShootRightInputPerformedAndStay(() =>
+        {
+            if(isLocalPlayer)
+            {
+                var weapon = m_Player.GetPlayerRightHandWeapon();
+                var pos = m_Player.GetPlayerRightHandPosition();
+                if (weapon == null)
+                {
+                    Debug.Log("右手上没武器");
+                    return;
+                }
+                CmdFire(weapon, pos, m_InputController.GetMousePositionInWorldSpace(m_CameraController.GetCamera()) - m_Player.GetPlayerPosition());
+            }
+        });
     }
     
     [Command]

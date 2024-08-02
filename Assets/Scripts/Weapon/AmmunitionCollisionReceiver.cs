@@ -93,6 +93,11 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
         // 直接结算
         if(m_Properties.m_Properties.m_EnergyShieldCount > 0)
         {
+            // 特殊子弹对能量盾的效果
+            // 等自子弹配置push之后补上
+
+
+            // 下面的结算能量盾方式是普通的减一
             m_Properties.m_Properties.m_EnergyShieldCount--;
             RPCBroadcastDamage(m_Properties.m_Properties);
             return;
