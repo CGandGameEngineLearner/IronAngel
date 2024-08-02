@@ -238,7 +238,7 @@ public class WeaponSystemCenter : NetworkBehaviour
         Vector3 startPoint, Vector3 dir)
     {
         var weaponConfigData = m_WeaponConfigDic[weaponType].ToData();
-        Debug.LogError(weaponConfigData.atkType);
+        
         Fire(character, weaponType, ammunitionType, startPoint, dir);
     }
 
