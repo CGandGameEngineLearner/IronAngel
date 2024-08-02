@@ -242,6 +242,8 @@ public class PlayerController : NetworkBehaviour
         // 必须先获取最近武器再使得玩家丢下武器
         // 否则会有碰撞体冲突的问题
         var nearestWeapon = m_Player.GetNearestWeapon();
+
+        RPCRightHandPickWeapon(nearestWeapon);
     }
 
     [ClientRpc]
