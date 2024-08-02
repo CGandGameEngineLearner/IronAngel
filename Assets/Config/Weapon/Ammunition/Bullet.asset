@@ -15,7 +15,7 @@ MonoBehaviour:
   m_Prefab: {fileID: 8422378306381297977, guid: 78a3ef50cb73ebd4d81bd5ef9aeab0aa, type: 3}
   m_MinPoolSize: 50
   m_MaxPoolSize: 100
-  m_Speed: 10
+  m_Speed: 20
   m_LifeDistance: 20
   m_Damage: 10
   m_PostAmmunitionType: 2

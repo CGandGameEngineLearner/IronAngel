@@ -11,10 +11,10 @@ public class WeaponConfig : ItemConfig
     public int weaponHp => m_WeaponHp;
     
     public float interval => m_Interval;
-    public float magSize => m_MagSize;
+    public int magSize => m_MagSize;
     public int simShots => m_SimShots;
 
-    public int spreadAngle => m_SpreadAngle;
+    public float spreadAngle => m_SpreadAngle;
     
     public AudioClip soundEffect => m_SoundEffect;
     public ParticleSystem effectPrefab => m_EffectPrefab;
@@ -24,9 +24,9 @@ public class WeaponConfig : ItemConfig
     [SerializeField] private AmmunitionType m_ammunitionType;
     [SerializeField] private int m_WeaponHp;
     [SerializeField] private float m_Interval;
-    [SerializeField] private float m_MagSize;
+    [SerializeField] private int m_MagSize;
     [SerializeField] private int m_SimShots;
-    [SerializeField] private int m_SpreadAngle;
+    [SerializeField] private float m_SpreadAngle;
     [SerializeField] private AudioClip m_SoundEffect;
     [SerializeField] private ParticleSystem m_EffectPrefab;
     

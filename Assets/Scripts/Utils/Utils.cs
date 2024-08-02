@@ -4,7 +4,7 @@ using UnityEngine;
 
 public static class Utils
 {
-    public static Vector3 ApplyScatterY(Vector3 originalDirection, int spreadAngle)
+    public static Vector3 ApplyScatterY(Vector3 originalDirection, float spreadAngle)
     {
         // return originalDirection.normalized;
         // 在 Y 轴上生成一个微小的随机扰动分量
