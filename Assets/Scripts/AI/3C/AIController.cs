@@ -129,7 +129,7 @@ public class AIController : NetworkBehaviour
         if (result.Count <= 0)
         {
             return result;
-            Debug.Log("GetGameObjectsInAttackRange() result empty");
+            //Debug.Log("GetGameObjectsInAttackRange() result empty");
         }
         
         // 移除超出攻击范围的
@@ -141,7 +141,7 @@ public class AIController : NetworkBehaviour
         return result;
     }
 
-    [ServerCallback]
+    
     public bool Attack()
     {
         var enemy = GetGameObjectsInAttackRange();
@@ -165,6 +165,7 @@ public class AIController : NetworkBehaviour
         var dir = enemy[0].transform.position - transform.position;
         dir = ComputeAngleOfFire(dir);
         
+        Debug.DrawLine(transform.position,transform.position + 10*dir,Color.red,10);
         
         WeaponSystemCenter.Instance.CmdFire(gameObject, m_LeftHandWeapon,transform.position,dir);
         return true;
@@ -181,7 +182,8 @@ public class AIController : NetworkBehaviour
         var result = originDir.normalized;
         Quaternion quaternion = Quaternion.LookRotation(result);
         Vector3 eulerAngles = quaternion.eulerAngles;
-        
+        eulerAngles.x = 0;
+        eulerAngles.y = 0;
         var rangeOfAimingError = m_BaseProperties.m_Properties.m_RangeOfAimingError;
         eulerAngles.z -= rangeOfAimingError/2;
         float randomValue = (float) Random.Range(0, rangeOfAimingError);
@@ -189,7 +191,8 @@ public class AIController : NetworkBehaviour
 
         quaternion = Quaternion.Euler(eulerAngles);
         result = quaternion * result;
-        
+        result.z = 0;
+        result = result.normalized;
         return result;
     }
 
