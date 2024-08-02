@@ -9,26 +9,27 @@ public class WeaponConfig : ItemConfig
     public AmmunitionType ammunitionType => m_ammunitionType;
 
     public int weaponHp => m_WeaponHp;
-    
+
     public float interval => m_Interval;
     public int magSize => m_MagSize;
     public int simShots => m_SimShots;
 
     public float spreadAngle => m_SpreadAngle;
-    
+
     public AudioClip soundEffect => m_SoundEffect;
     public ParticleSystem effectPrefab => m_EffectPrefab;
 
-    [Header("武器属性配置")] 
-    [SerializeField] private AtkType m_AtkType;
+    [Header("武器属性配置")] [SerializeField] private AtkType m_AtkType;
     [SerializeField] private AmmunitionType m_ammunitionType;
     [SerializeField] private int m_WeaponHp;
     [SerializeField] private float m_Interval;
     [SerializeField] private int m_MagSize;
     [SerializeField] private int m_SimShots;
     [SerializeField] private float m_SpreadAngle;
+
+    [SerializeField] [ConditionalHide("m_AtkType", (int)AtkType.ShotGun)]
+    private float m_ShotSpreadAngle;
+
     [SerializeField] private AudioClip m_SoundEffect;
     [SerializeField] private ParticleSystem m_EffectPrefab;
-    
 }
-

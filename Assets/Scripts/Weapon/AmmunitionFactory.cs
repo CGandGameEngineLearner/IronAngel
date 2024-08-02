@@ -175,7 +175,7 @@ public class AmmunitionFactory
                 {
                     case AtkType.Default:
                         break;
-                    case AtkType.ShotGun:
+                    case AtkType.Rifle:
                         InternalProcessShotGunAmmunition(ammunitionHandle);
                         break;
                     case AtkType.Laser:

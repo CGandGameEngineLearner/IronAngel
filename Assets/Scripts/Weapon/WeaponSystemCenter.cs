@@ -172,7 +172,7 @@ public class WeaponSystemCenter : NetworkBehaviour
 #endif
             return;
         }
-        
+
         // 散布
         dir = Utils.ApplyScatterY(dir, weaponConfig.spreadAngle);
 
@@ -189,32 +189,32 @@ public class WeaponSystemCenter : NetworkBehaviour
         var ammunitionType = m_WeaponToConfigDic[weapon].ammunitionType;
         var ammunitionConfig = m_AmmunitionConfigDic[ammunitionType];
 
-//         // 测试武器脚本
-//         if (!weapon.TryGetComponent<WeaponInstance>(out WeaponInstance weaponInstance))
-//         {
-// #if UNITY_EDITOR
-//             Debug.LogError("武器没有挂载WeaponInstance脚本");
-// #endif
-//             return;
-//         }
-//
-//         // 武器射击间隔
-//         if (!weaponInstance.TryFire())
-//         {
-// #if UNITY_EDITOR
-//             Debug.LogWarning("开火间隔过短");
-// #endif
-//             return;
-//         }
-//
-//         // 减少弹匣数量
-//         if (!weaponInstance.DecreaseMag())
-//         {
-// #if UNITY_EDITOR
-//             Debug.LogWarning("子弹数不足");
-// #endif
-//             return;
-//         }
+        // 测试武器脚本
+        if (!weapon.TryGetComponent<WeaponInstance>(out WeaponInstance weaponInstance))
+        {
+#if UNITY_EDITOR
+            Debug.LogError("武器没有挂载WeaponInstance脚本");
+#endif
+            return;
+        }
+
+        // 武器射击间隔
+        if (!weaponInstance.TryFire())
+        {
+#if UNITY_EDITOR
+            Debug.LogWarning("开火间隔过短");
+#endif
+            return;
+        }
+
+        // 减少弹匣数量
+        if (!weaponInstance.DecreaseMag())
+        {
+#if UNITY_EDITOR
+            Debug.LogWarning("子弹数不足");
+#endif
+            return;
+        }
 
 
         GameObject ammunition = GetAmmunitionFromPool(ammunitionType, startPoint, dir);
@@ -232,6 +232,28 @@ public class WeaponSystemCenter : NetworkBehaviour
         GameObject ammunition = GetAmmunitionFromPool(ammunitionType, startPoint, dir);
         m_AmmunitionFactory.ShootAmmunition(character, ammunition, ammunitionType, ammunitionConfig,
             weaponConfig.atkType, startPoint, dir);
+    }
+
+    /// <summary>
+    /// 统一提供给RPC和server使用
+    /// </summary>
+    private void Fire(GameObject character, WeaponConfig weaponConfig, AmmunitionType ammunitionType,
+        Vector3 startPoint, Vector3 dir)
+    {
+        switch (weaponConfig.atkType)
+        {
+            case AtkType.Laser:
+                break;
+            case AtkType.Rifle:
+                
+                break;
+            case AtkType.MissileLauncher:
+                break;
+            case AtkType.ShotGun:
+                break;
+            case AtkType.Default:
+                break;
+        }
     }
 
 
