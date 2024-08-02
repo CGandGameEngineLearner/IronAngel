@@ -62,7 +62,12 @@ public class WeaponSystemCenter : NetworkBehaviour
     private static AmmunitionFactory m_AmmunitionFactory = new(); // 弹药工厂
 
 
-    private static Dictionary<AIController, bool> m_RegisteredWeaponAI;// 注册的，需要武器的AI，注册在这里的AI 开始游戏时会给他们发武器。 
+    private static HashSet<AIController> m_RegisteredWeaponAI = new HashSet<AIController>();// 注册的，需要武器的AI，注册在这里的AI 开始游戏时会给他们发武器。 
+
+    public static void RegisterAIWeapon(AIController aiController)
+    {
+        m_RegisteredWeaponAI.Add(aiController);
+    }
 
     public GameObject SpawnWeapon(WeaponType weaponType, Vector3 pos)
     {
@@ -84,21 +89,20 @@ public class WeaponSystemCenter : NetworkBehaviour
     /// </summary>
     private void GiveAIWeapon()
     {
-        
         foreach (var element in m_RegisteredWeaponAI)
         {
             // 给左手装备武器
-            var weaponType = element.Key.GetRightHandWeaponType();
-            var leftWeapon = SpawnWeapon(weaponType, element.Key.gameObject.transform.position);
-            element.Key.SetLeftHandWeapon(leftWeapon);
+            var weaponType = element.GetRightHandWeaponType();
+            var leftWeapon = SpawnWeapon(weaponType, element.gameObject.transform.position);
+            element.SetLeftHandWeapon(leftWeapon);
             
 
             // 给右手装备武器
-            weaponType = element.Key.GetRightHandWeaponType();
-            var rightWeapon = SpawnWeapon(weaponType, element.Key.gameObject.transform.position);
-            element.Key.SetRightHandWeapon(rightWeapon);
-
-            RpcGiveAIWeapon(element.Key, leftWeapon, rightWeapon);
+            weaponType = element.GetRightHandWeaponType();
+            var rightWeapon = SpawnWeapon(weaponType, element.gameObject.transform.position);
+            element.SetRightHandWeapon(rightWeapon);
+    
+            RpcGiveAIWeapon(element, leftWeapon, rightWeapon);
         }
     }
     

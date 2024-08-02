@@ -36,6 +36,15 @@ public class AIController : NetworkBehaviour
             EventType.LogicState_AIAttacking_StateOut,
             OnAIAttackingStateOut
             );
+        
+        RegisterWeapon();
+       
+    }
+
+    [ServerCallback]
+    private void RegisterWeapon()
+    {
+        WeaponSystemCenter.RegisterAIWeapon(this);
     }
     
     

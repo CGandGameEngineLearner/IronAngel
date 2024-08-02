@@ -43,7 +43,7 @@ namespace LogicState
             new LogicState(ELogicState.AIVisionPerceived),
             new LogicState_PlayerShooting(ELogicState.PlayerShooting),
             new LogicState(ELogicState.EnemyInRangeOfAttack),
-            new LogicState(ELogicState.AIAttacking),
+            new LogicState_AIAttacking(ELogicState.AIAttacking),
         };
     }
 }

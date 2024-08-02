@@ -153,6 +153,7 @@ namespace LogicState
         // Start is called before the first frame update
         void Start()
         {
+            m_StateInit = new Dictionary<ELogicState, bool>();
             m_LogicStateDic = new Dictionary<ELogicState, LogicState>(StateDictionaryCapacity);
             m_FutureStatesBuffer = new Dictionary<ELogicState, LogicState>(StateDictionaryCapacity);
         }
@@ -169,7 +170,7 @@ namespace LogicState
                     LogicStateSetting stateSetting = LogicStateConfig.GetLogicStateSetting(stateEnum);
                     
                     // ScriptAbleObject的问题，运行时得从这里动态更新，否则会是默认的无限长的持续时间
-                    if (m_StateInit[stateEnum] == false)
+                    if (!m_StateInit.ContainsKey(stateEnum) || m_StateInit[stateEnum] == false)
                     {
                         state.Duration = stateSetting.Duration;
                         m_StateInit[stateEnum] = true;

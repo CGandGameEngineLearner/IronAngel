@@ -19,7 +19,8 @@ namespace AI.BehaviourTree.Actions
             {
                 return TaskStatus.Inactive;
             }
-            
+
+            m_AIController.Attack();
             return TaskStatus.Running;
         }
     }
