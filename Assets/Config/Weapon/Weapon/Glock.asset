@@ -21,7 +21,7 @@ MonoBehaviour:
   m_Interval: 0.02
   m_MagSize: 10000
   m_SimShots: 10
-  m_SpreadAngle: 2
+  m_SpreadAngle: 0
   m_ShotSpreadAngle: 60
   m_SoundEffect: {fileID: 0}
   m_EffectPrefab: {fileID: 0}
