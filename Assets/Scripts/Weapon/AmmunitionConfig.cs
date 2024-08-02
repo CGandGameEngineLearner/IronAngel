@@ -1,6 +1,7 @@
 // WeaponHandle: HP Sheild Mag Object
 // AmmuntionHandle: Start Dir Object
 
+using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/Weapon/AmmunitionConfig", order = 1)]
@@ -15,5 +16,6 @@ public class AmmunitionConfig : ItemConfig
     public float m_LifeDistance;
     public int m_Damage;
     public AmmunitionType m_PostAmmunitionType;
+    public List<SpecialAtkType> m_specialAtkTypes;
 
 }
