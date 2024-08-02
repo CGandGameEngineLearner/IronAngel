@@ -10,7 +10,6 @@ public struct WeaponInstanceData
 
 public class WeaponInstance : NetworkBehaviour
 {
-    [SyncVar]
     private WeaponInstanceData m_WeaponInstanceData;
     
     private WeaponConfig m_WeaponConfig;

@@ -4,6 +4,7 @@ using Mirror;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
+using Random = UnityEngine.Random;
 
 /// <summary>
 /// 武器生成地点配置
@@ -126,11 +127,13 @@ public class WeaponSystemCenter : NetworkBehaviour
 
         // 散布
         dir = Utils.ApplyScatterY(dir, weaponConfig.spreadAngle);
-
-        GameObject ammunition = GetAmmunitionFromPool(ammunitionType, startPoint, dir);
-        m_AmmunitionFactory.ShootAmmunition(character, ammunition, ammunitionType, ammunitionConfig,
-            weaponConfig.atkType, startPoint, dir);
-        RPCFire(character, weaponConfig, ammunitionType, startPoint, dir);
+        
+        Fire(character, weaponConfig.ToData(), ammunitionType, startPoint, dir);
+        
+        // GameObject ammunition = GetAmmunitionFromPool(ammunitionType, startPoint, dir);
+        // m_AmmunitionFactory.ShootAmmunition(character, ammunition, ammunitionType, ammunitionConfig,
+        //     weaponConfig.atkType, startPoint, dir);
+        RPCFire(character, weaponConfig.ToData(), ammunitionType, startPoint, dir);
     }
 
     public void CmdFireWithOutDispersion(GameObject character, GameObject weapon, Vector3 startPoint, Vector3 dir)
@@ -166,45 +169,81 @@ public class WeaponSystemCenter : NetworkBehaviour
 #endif
             return;
         }
+        
+        Fire(character, weaponConfig.ToData(), ammunitionType, startPoint, dir);
 
-
-        GameObject ammunition = GetAmmunitionFromPool(ammunitionType, startPoint, dir);
-        m_AmmunitionFactory.ShootAmmunition(character, ammunition, ammunitionType, ammunitionConfig,
-            weaponConfig.atkType, startPoint, dir);
-
-        RPCFire(character, weaponConfig, ammunitionType, startPoint, dir);
+        RPCFire(character, weaponConfig.ToData(), ammunitionType, startPoint, dir);
     }
 
     [ClientRpc]
-    public void RPCFire(GameObject character, WeaponConfig weaponConfig, AmmunitionType ammunitionType,
+    public void RPCFire(GameObject character, WeaponConfigData weaponConfigData, AmmunitionType ammunitionType,
         Vector3 startPoint, Vector3 dir)
     {
-        var ammunitionConfig = m_AmmunitionConfigDic[ammunitionType];
-        GameObject ammunition = GetAmmunitionFromPool(ammunitionType, startPoint, dir);
-        m_AmmunitionFactory.ShootAmmunition(character, ammunition, ammunitionType, ammunitionConfig,
-            weaponConfig.atkType, startPoint, dir);
+        Debug.LogError(weaponConfigData.atkType);
+        Fire(character, weaponConfigData, ammunitionType, startPoint, dir);
     }
 
     /// <summary>
     /// 统一提供给RPC和server使用
     /// </summary>
-    private void Fire(GameObject character, WeaponConfig weaponConfig, AmmunitionType ammunitionType,
+    private void Fire(GameObject character, WeaponConfigData weaponConfigData, AmmunitionType ammunitionType,
         Vector3 startPoint, Vector3 dir)
     {
-        switch (weaponConfig.atkType)
+        Debug.LogWarning(weaponConfigData.atkType);
+        switch (weaponConfigData.atkType)
         {
             case AtkType.Laser:
                 break;
             case AtkType.Rifle:
-                
+                // 普通间隔发射
+                SetAmmunition(character, weaponConfigData, ammunitionType, startPoint, dir);
                 break;
             case AtkType.MissileLauncher:
+                // 普通间隔发射
                 break;
             case AtkType.ShotGun:
+                // 扇形射出
+                FireShotgun(character, weaponConfigData, ammunitionType, startPoint, dir);
                 break;
             case AtkType.Default:
                 break;
         }
+    }
+
+    private void FireShotgun(GameObject character, WeaponConfigData weaponConfigData, AmmunitionType ammunitionType,
+        Vector3 startPoint, Vector3 dir)
+    {
+        int numberOfProjectiles = weaponConfigData.simShots;
+        float spreadAngle = weaponConfigData.shotSpreadAngle;
+        
+        float sigma = spreadAngle / 6; // 选择标准差，使得范围在 [-spreadAngle/2, spreadAngle/2] 内
+        
+        for (int i = 0; i < numberOfProjectiles; i++)
+        {
+            // 使用 Box-Muller 变换生成高斯分布角度
+            float u1 = Random.value;
+            float u2 = Random.value;
+            float z0 = Mathf.Sqrt(-2.0f * Mathf.Log(u1)) * Mathf.Cos(2.0f * Mathf.PI * u2);
+            float angle = z0 * sigma;
+        
+            // 限制角度在 [-spreadAngle/2, spreadAngle/2] 范围内
+            angle = Mathf.Clamp(angle, -spreadAngle / 2, spreadAngle / 2);
+        
+            Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.up); // 假设上方为旋转轴
+            Vector3 shotDirection = rotation * dir;
+        
+            // 发射子弹
+            SetAmmunition(character, weaponConfigData, ammunitionType, startPoint, shotDirection);
+        }
+    }
+    
+    private void SetAmmunition(GameObject character, WeaponConfigData weaponConfigData, AmmunitionType ammunitionType,
+        Vector3 startPoint, Vector3 dir)
+    {
+        var ammunitionConfig = m_AmmunitionConfigDic[ammunitionType];
+        GameObject ammunition = GetAmmunitionFromPool(ammunitionType, startPoint, dir);
+        m_AmmunitionFactory.ShootAmmunition(character, ammunition, ammunitionType, ammunitionConfig,
+            weaponConfigData.atkType, startPoint, dir);
     }
 
 
@@ -212,6 +251,7 @@ public class WeaponSystemCenter : NetworkBehaviour
     {
         foreach (var weaponConfigSetting in WeaponConfigSettings)
         {
+
             m_WeaponConfigDic.Add(weaponConfigSetting.WeaponType, weaponConfigSetting.WeaponConfig);
         }
 
