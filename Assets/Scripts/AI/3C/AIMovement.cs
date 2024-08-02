@@ -4,6 +4,7 @@ using UnityEngine.AI;
 using UnityEngine.Splines;
 using System.Collections;
 using LogicState;
+
 public class AIMovement : MonoBehaviour
 {
     
@@ -11,9 +12,11 @@ public class AIMovement : MonoBehaviour
     private LogicStateManager m_LogicStateManager;
     private Vector3 m_LastPos;
     private Vector3 m_MoveDirection = Vector3.zero;
+    private BaseProperties m_BaseProperties;
 
     private void Start()
     {
+        m_BaseProperties = GetComponent<BaseProperties>();
         agent = GetComponent<NavMeshAgent>();
         m_LogicStateManager = GetComponent<LogicStateManager>();
         m_LastPos = transform.position;
@@ -35,10 +38,19 @@ public class AIMovement : MonoBehaviour
         return agent.SetDestination(target);
     }
     
+    /// <summary>
+    /// AI会追到距离玩家一定位置的地方与玩家拉开距离开火，
+    /// m_BaseProperties.m_Properties.m_EngagementPosRatio：
+    /// 交战距离与攻击范围之比
+    /// </summary>
+    /// <param name="targetGameObject"></param>
     public virtual void Chase(GameObject targetGameObject)
     {
-        agent.SetDestination(targetGameObject.transform.position);
-    }
+        var offsetVec = (transform.position - targetGameObject.transform.position).normalized;
+        offsetVec += m_BaseProperties.m_Properties.m_AttackRange * m_BaseProperties.m_Properties.m_EngagementPosRatio * offsetVec;
+        var targetPos = targetGameObject.transform.position - offsetVec;
+        agent.SetDestination(targetPos);
+    }   
 
     protected IEnumerator ChaseCoroutine(GameObject target)
     {

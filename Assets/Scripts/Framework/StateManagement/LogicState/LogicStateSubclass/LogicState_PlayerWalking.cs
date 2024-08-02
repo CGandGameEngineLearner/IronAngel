@@ -10,7 +10,7 @@ namespace LogicState
         public override void OnStateIn()
         {
 #if UNITY_EDITOR
-            Debug.Log("enter" + GetType());
+            //Debug.Log("enter" + GetType());
 #endif
         }
 
@@ -27,7 +27,7 @@ namespace LogicState
         public override void OnStateOut()
         {
 #if UNITY_EDITOR
-            Debug.Log("exit" + GetType());
+            //Debug.Log("exit" + GetType());
 #endif
         }
     }

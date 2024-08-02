@@ -537,6 +537,7 @@ MonoBehaviour:
   syncInterval: 0
   m_IsOverallArmor: 0
   m_Shields: []
+  m_specialAtkTypes: 
 --- !u!114 &5312338358657863659
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -555,14 +556,19 @@ MonoBehaviour:
   m_Properties:
     m_Energy: 0
     m_BaseHP: 100
-    m_LeftHandWeaponHP: 0
-    m_RightHandWeaponHP: 0
+    m_LeftHandWeaponHP: 100
+    m_RightHandWeaponHP: 100
+    m_LeftHandWeapon: 0
+    m_RightHandWeapon: 0
+    m_LeftHandWeaponAttackingDuration: 0
+    m_RightHandWeaponAttackingDuration: 0
+    m_EngagementPosRatio: 0.1
     m_Armor: 0
     m_EnergyShieldCount: 20
     m_CurrentHP: 100
     m_CurrentArmor: 0
-    m_AttackRange: 0
-    m_TokenWeight: 0
+    m_AttackRange: 100
+    m_TokenWeight: 1
     m_RangeOfAimingError: 0
 --- !u!195 &3478913082591308681
 NavMeshAgent:

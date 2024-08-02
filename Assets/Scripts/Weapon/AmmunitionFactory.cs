@@ -180,6 +180,9 @@ public class AmmunitionFactory
                         break;
                     case AtkType.Laser:
                         break;
+                    case AtkType.ShotGun:
+                        InternalProcessShotGunAmmunition(ammunitionHandle);
+                        break;
                 }
 
                 ammunitionQueueToAddNextFrame.Enqueue(ammunitionHandle);

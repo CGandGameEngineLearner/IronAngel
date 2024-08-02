@@ -14,7 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LogicStateSettings:
   - stateEnum: 5
-    Duration: 0
+    Duration: Infinity
     AutoStateOut: 1
     included: 
     excluded: 06000000
+  - stateEnum: 8
+    Duration: Infinity
+    AutoStateOut: 0
+    included: 
+    excluded: 
