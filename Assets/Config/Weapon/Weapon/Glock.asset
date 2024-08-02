@@ -18,8 +18,8 @@ MonoBehaviour:
   m_AtkType: 0
   m_ammunitionType: 1
   m_WeaponHp: 0
-  m_Interval: 1
-  m_MagSize: 100
+  m_Interval: 0.02
+  m_MagSize: 10000
   m_SimShots: 10
   m_SpreadAngle: 1.2
   m_ShotSpreadAngle: 0
