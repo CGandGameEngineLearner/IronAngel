@@ -4,6 +4,7 @@ using UnityEngine.AI;
 using UnityEngine.Splines;
 using System.Collections;
 using LogicState;
+
 public class AIMovement : MonoBehaviour
 {
     
