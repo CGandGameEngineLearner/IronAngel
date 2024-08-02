@@ -103,12 +103,11 @@ public class AIController : NetworkBehaviour
         {
             return false;
         }
+
+        return true;
     }
 
+    //private Computea
 
-    [ClientRpc]
-    public bool RpcAttack(GameObject enemy)
-    {
-        
-    }
+    
 }
