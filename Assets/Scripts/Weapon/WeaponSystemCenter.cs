@@ -54,7 +54,8 @@ public class WeaponSystemCenter : NetworkBehaviour
     /// <summary>
     /// 武器GameObject到其配置的映射
     /// </summary>
-    private static Dictionary<GameObject, WeaponConfig> m_WeaponToConfigDic = new Dictionary<GameObject, WeaponConfig>();
+    private static Dictionary<GameObject, WeaponConfig>
+        m_WeaponToConfigDic = new Dictionary<GameObject, WeaponConfig>();
 
 
     private static ObjectPoolManager<AmmunitionType> m_AmmunitionPool = new();
@@ -74,7 +75,7 @@ public class WeaponSystemCenter : NetworkBehaviour
     {
         if (!m_WeaponConfigDic.ContainsKey(weaponType))
         {
-            throw new Exception("查询不到武器配置，武器类型枚举为："+weaponType);
+            throw new Exception("查询不到武器配置，武器类型枚举为：" + weaponType);
         }
 
         return m_WeaponConfigDic[weaponType];
@@ -90,6 +91,22 @@ public class WeaponSystemCenter : NetworkBehaviour
     /// <param name="startPoint"></param>
     /// <param name="dir"></param>
     public void CmdFire(GameObject character, GameObject weapon, Vector3 startPoint, Vector3 dir)
+    {
+        Debug.Log(GetType() + "Command" + "Fire");
+        var weaponConfig = m_WeaponToConfigDic[weapon];
+        var ammunitionType = m_WeaponToConfigDic[weapon].ammunitionType;
+        var ammunitionConfig = m_AmmunitionConfigDic[ammunitionType];
+
+        // 散布
+        dir = Utils.ApplyScatterY(dir, weaponConfig.spreadAngle);
+
+        GameObject ammunition = GetAmmunitionFromPool(ammunitionType, startPoint, dir);
+        m_AmmunitionFactory.ShootAmmunition(character, ammunition, ammunitionType, ammunitionConfig,
+            weaponConfig.atkType, startPoint, dir);
+        RPCFire(character, weaponConfig, ammunitionType, startPoint, dir);
+    }
+
+    public void CmdFireWithOutDispersion(GameObject character, GameObject weapon, Vector3 startPoint, Vector3 dir)
     {
         Debug.Log(GetType() + "Command" + "Fire");
         var weaponConfig = m_WeaponToConfigDic[weapon];

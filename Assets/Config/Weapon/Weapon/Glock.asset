@@ -17,9 +17,10 @@ MonoBehaviour:
   m_MaxPoolSize: 20
   m_AtkType: 0
   m_ammunitionType: 1
-  m_SpecialAtkTypes: 
+  m_WeaponHp: 0
   m_Interval: 0
   m_MagSize: 30
   m_SimShots: 30
+  m_SpreadAngle: 3
   m_SoundEffect: {fileID: 0}
   m_EffectPrefab: {fileID: 0}
