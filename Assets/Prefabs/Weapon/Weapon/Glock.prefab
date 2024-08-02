@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 595766882570590229}
   - component: {fileID: 1733409029268921107}
   - component: {fileID: 5086538974209316967}
+  - component: {fileID: 3924247000205647801}
   m_Layer: 6
   m_Name: Glock
   m_TagString: Weapon
@@ -148,3 +149,18 @@ MonoBehaviour:
   serverOnly: 0
   visibility: 0
   hasSpawned: 0
+--- !u!114 &3924247000205647801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8270290095630009083}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14dd5d5e5b27434ea03d30f60884bf3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0

@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-
 using Mirror;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -14,7 +13,8 @@ public class WeaponSpawnSetting
 {
     [SerializeField] public WeaponType WeaponType;
 
-    [FormerlySerializedAs("Transform")] [SerializeField] public Vector3 Position;
+    [FormerlySerializedAs("Transform")] [SerializeField]
+    public Vector3 Position;
 }
 
 /// <summary>
@@ -23,9 +23,9 @@ public class WeaponSpawnSetting
 [Serializable]
 public class WeaponConfigSetting
 {
-    [SerializeField]public WeaponType WeaponType;
-    
-    [SerializeField]public WeaponConfig WeaponConfig ;
+    [SerializeField] public WeaponType WeaponType;
+
+    [SerializeField] public WeaponConfig WeaponConfig;
 }
 
 /// <summary>
@@ -38,29 +38,28 @@ public class AmmunitionConfigSetting
     [SerializeField] public AmmunitionConfig AmmunitionConfig;
 }
 
-public class WeaponSystemCenter: NetworkBehaviour
+public class WeaponSystemCenter : NetworkBehaviour
 {
     public static WeaponSystemCenter Instance;
 
     public List<WeaponSpawnSetting> WeaponSpawnSettings = new List<WeaponSpawnSetting>();
     public List<WeaponConfigSetting> WeaponConfigSettings = new List<WeaponConfigSetting>();
     public List<AmmunitionConfigSetting> AmmunitionConfigSettings = new List<AmmunitionConfigSetting>();
-    
+
     private Dictionary<WeaponType, WeaponConfig> m_WeaponConfigDic = new Dictionary<WeaponType, WeaponConfig>();
 
     private Dictionary<AmmunitionType, AmmunitionConfig> m_AmmunitionConfigDic =
         new Dictionary<AmmunitionType, AmmunitionConfig>();
-    
+
     /// <summary>
     /// 武器GameObject到其配置的映射
     /// </summary>
     private Dictionary<GameObject, WeaponConfig> m_WeaponToConfigDic = new Dictionary<GameObject, WeaponConfig>();
 
-    
-    
+
     private ObjectPoolManager<AmmunitionType> m_AmmunitionPool = new();
     private static AmmunitionFactory m_AmmunitionFactory = new(); // 弹药工厂
-    
+
     /// <summary>
     /// 获取AmmunitionFactory单例
     /// </summary>
@@ -69,9 +68,9 @@ public class WeaponSystemCenter: NetworkBehaviour
     {
         return m_AmmunitionFactory;
     }
-    
+
     public bool StartGame = false;
-    
+
     /// <summary>
     /// 通知服务器要在指定地点和方向发射子弹
     /// </summary>
@@ -79,40 +78,71 @@ public class WeaponSystemCenter: NetworkBehaviour
     /// <param name="weapon"></param>
     /// <param name="startPoint"></param>
     /// <param name="dir"></param>
-    public void CmdFire(GameObject character,GameObject weapon, Vector3 startPoint, Vector3 dir)
+    public void CmdFire(GameObject character, GameObject weapon, Vector3 startPoint, Vector3 dir)
     {
-        Debug.Log(GetType()+"Command"+"Fire");
+        Debug.Log(GetType() + "Command" + "Fire");
         var weaponConfig = m_WeaponToConfigDic[weapon];
         var ammunitionType = m_WeaponToConfigDic[weapon].ammunitionType;
         var ammunitionConfig = m_AmmunitionConfigDic[ammunitionType];
-        GameObject ammunition = GetAmmunitionFromPool(ammunitionType, startPoint, dir);
-        m_AmmunitionFactory.ShootAmmunition(character,ammunition,ammunitionType,ammunitionConfig,weaponConfig.atkType,startPoint,dir);
 
-        RPCFire(character,weaponConfig, ammunitionType, startPoint, dir);
+        // 测试武器脚本
+        if (!weapon.TryGetComponent<WeaponInstance>(out WeaponInstance weaponInstance))
+        {
+#if UNITY_EDITOR
+            Debug.LogError("武器没有挂载WeaponInstance脚本");
+#endif
+            return;
+        }
+
+        // 武器射击间隔
+        if (!weaponInstance.TryFire())
+        {
+#if UNITY_EDITOR
+            Debug.LogWarning("开火间隔过短");
+#endif
+            return;
+        }
+
+        // 减少弹匣数量
+        if (!weaponInstance.DecreaseMag())
+        {
+#if UNITY_EDITOR
+            Debug.LogWarning("子弹数不足");
+#endif
+            return;
+        }
+
+
+        GameObject ammunition = GetAmmunitionFromPool(ammunitionType, startPoint, dir);
+        m_AmmunitionFactory.ShootAmmunition(character, ammunition, ammunitionType, ammunitionConfig,
+            weaponConfig.atkType, startPoint, dir);
+
+        RPCFire(character, weaponConfig, ammunitionType, startPoint, dir);
     }
 
     [ClientRpc]
-    public void RPCFire(GameObject character,WeaponConfig weaponConfig, AmmunitionType ammunitionType, Vector3 startPoint, Vector3 dir)
+    public void RPCFire(GameObject character, WeaponConfig weaponConfig, AmmunitionType ammunitionType,
+        Vector3 startPoint, Vector3 dir)
     {
         var ammunitionConfig = m_AmmunitionConfigDic[ammunitionType];
         GameObject ammunition = GetAmmunitionFromPool(ammunitionType, startPoint, dir);
-        m_AmmunitionFactory.ShootAmmunition(character,ammunition,ammunitionType,ammunitionConfig,weaponConfig.atkType,startPoint,dir);
+        m_AmmunitionFactory.ShootAmmunition(character, ammunition, ammunitionType, ammunitionConfig,
+            weaponConfig.atkType, startPoint, dir);
     }
 
-
-    
 
     private void Awake()
     {
         foreach (var weaponConfigSetting in WeaponConfigSettings)
         {
-            m_WeaponConfigDic.Add(weaponConfigSetting.WeaponType,weaponConfigSetting.WeaponConfig);
+            m_WeaponConfigDic.Add(weaponConfigSetting.WeaponType, weaponConfigSetting.WeaponConfig);
         }
 
         foreach (var ammunitionConfigSetting in AmmunitionConfigSettings)
         {
-            m_AmmunitionConfigDic.Add(ammunitionConfigSetting.AmmunitionType,ammunitionConfigSetting.AmmunitionConfig);
+            m_AmmunitionConfigDic.Add(ammunitionConfigSetting.AmmunitionType, ammunitionConfigSetting.AmmunitionConfig);
         }
+
         m_AmmunitionFactory.Init(m_AmmunitionConfigDic,
             (ammunitionType, ammunition) => { m_AmmunitionPool.ReleaseObject(ammunitionType, ammunition); });
     }
@@ -122,29 +152,31 @@ public class WeaponSystemCenter: NetworkBehaviour
     /// </summary>
     public void CmdStartGame()
     {
-        
-        if(!StartGame)
+        if (!StartGame)
         {
             foreach (var weaponSpawnSetting in WeaponSpawnSettings)
             {
                 var weaponConfig = m_WeaponConfigDic[weaponSpawnSetting.WeaponType];
                 var prefab = weaponConfig.prefab;
-           
-                GameObject weapon = Instantiate(prefab,weaponSpawnSetting.Position,UnityEngine.Quaternion.identity);
-                m_WeaponToConfigDic.Add(weapon,weaponConfig);
+
+                GameObject weapon = Instantiate(prefab, weaponSpawnSetting.Position, UnityEngine.Quaternion.identity);
+
+                // 测试武器挂载脚本
+                weapon.GetComponent<WeaponInstance>().Init(weaponConfig);
+
+                m_WeaponToConfigDic.Add(weapon, weaponConfig);
                 NetworkServer.Spawn(weapon);
             }
 
             StartGame = true;
         }
-       
     }
-    
+
     private void Start()
     {
         Init();
     }
-    
+
     /// <summary>
     /// 初始化武器、弹药配置
     /// </summary>
@@ -156,14 +188,13 @@ public class WeaponSystemCenter: NetworkBehaviour
             m_AmmunitionPool.AddPool(ammunitionTypeToConfig.Key,
                 new ObjectCategory()
                 {
-                    prefab = ammunitionTypeToConfig.Value.prefab, defaultSize = ammunitionTypeToConfig.Value.minPoolSize,
+                    prefab = ammunitionTypeToConfig.Value.prefab,
+                    defaultSize = ammunitionTypeToConfig.Value.minPoolSize,
                     maxSize = ammunitionTypeToConfig.Value.minPoolSize
                 });
         }
-        
     }
-    
-    
+
 
     /// <summary>
     /// 更新子弹飞行
@@ -172,7 +203,7 @@ public class WeaponSystemCenter: NetworkBehaviour
     {
         m_AmmunitionFactory.FixedUpdate();
     }
-    
+
     /// <summary>
     /// 从子弹对象池取出子弹
     /// </summary>
@@ -193,7 +224,9 @@ public class WeaponSystemCenter: NetworkBehaviour
 public struct WeaponCat
 {
     public WeaponType weaponType;
-    [FormerlySerializedAs("weaponSystemConfig")] public WeaponConfig weaponConfig;
+
+    [FormerlySerializedAs("weaponSystemConfig")]
+    public WeaponConfig weaponConfig;
 }
 
 [System.Serializable]

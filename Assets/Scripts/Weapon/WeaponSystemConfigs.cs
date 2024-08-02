@@ -11,8 +11,10 @@ public enum AtkType
 
 public enum AmmunitionType
 {
-    // PostProcess
+    // 产生爆炸效果的炸弹
     PostProcess_Expolde = 0,
+    
+    // 实际飞行的子弹/激光/导弹 
     Bullet,
     None,
 }
@@ -20,6 +22,12 @@ public enum AmmunitionType
 public enum WeaponType
 {
     Glock,
+    Missile,
+}
+
+public enum SpecialAtkType
+{
+    None,
 }
 
 
