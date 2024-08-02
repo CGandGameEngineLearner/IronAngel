@@ -171,23 +171,11 @@ public class PlayerController : NetworkBehaviour
         // 玩家拾取武器
         m_InputController.AddPerformedActionToPlayerThrowAndPickLeft(() =>
         {
-            // 这里的交互顺序不能换
-            // 必须先获取最近武器再使得玩家丢下武器
-            // 否则会有碰撞体冲突的问题
-            var nearestWeapon = m_Player.GetNearestWeapon();
-            var handWeapon = m_Player.DropPlayerLeftHandWeapon(m_Player.GetPlayerPosition());
-            
-            m_Player.SetPlayerLeftHandWeapon(nearestWeapon);
+            CmdLeftHandPickWeapon();
         });
         m_InputController.AddPerformedActionToPlayerThrowAndPickRight(() =>
         {
-            // 这里的交互顺序不能换
-            // 必须先获取最近武器再使得玩家丢下武器
-            // 否则会有碰撞体冲突的问题
-            var nearestWeapon = m_Player.GetNearestWeapon();
-            var handWeapon = m_Player.DropPlayerRightHandWeapon(m_Player.GetPlayerPosition());
-
-            m_Player.SetPlayerRightHandWeapon(nearestWeapon);
+            CmdRightHandPickWeapon();
         });
         // 玩家攻击
         // 左手
@@ -230,11 +218,41 @@ public class PlayerController : NetworkBehaviour
     }
 
     [Command]
-    private void CmdPickWeapon()
+    private void CmdLeftHandPickWeapon()
     {
-        
+        // 这里的交互顺序不能换
+        // 必须先获取最近武器再使得玩家丢下武器
+        // 否则会有碰撞体冲突的问题
+        var nearestWeapon = m_Player.GetNearestWeapon();
+
+        RPCLeftHandPickWeapon(nearestWeapon);
     }
-    
+
+    [ClientRpc]
+    private void RPCLeftHandPickWeapon(GameObject weapon)
+    {
+        var handWeapon = m_Player.DropPlayerLeftHandWeapon(m_Player.GetPlayerPosition());
+        m_Player.SetPlayerLeftHandWeapon(weapon);
+    }
+
+    [Command]
+    private void CmdRightHandPickWeapon()
+    {
+        // 这里的交互顺序不能换
+        // 必须先获取最近武器再使得玩家丢下武器
+        // 否则会有碰撞体冲突的问题
+        var nearestWeapon = m_Player.GetNearestWeapon();
+
+        RPCRightHandPickWeapon(nearestWeapon);
+    }
+
+    [ClientRpc]
+    private void RPCRightHandPickWeapon(GameObject weapon)
+    {
+        var handWeapon = m_Player.DropPlayerRightHandWeapon(m_Player.GetPlayerPosition());
+
+        m_Player.SetPlayerRightHandWeapon(weapon);
+    }
     
     
     
