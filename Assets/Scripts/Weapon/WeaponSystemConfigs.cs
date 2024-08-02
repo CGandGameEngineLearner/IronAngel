@@ -28,6 +28,7 @@ public enum WeaponType
 public enum SpecialAtkType
 {
     None,
+    Test,
 }
 
 

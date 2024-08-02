@@ -16,7 +16,7 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
     private float m_DamageReductionCoefficient;
     private BaseProperties m_Properties;
     // 能量盾的特殊Tag
-    private List<SpecialAtkType> m_specialAtkTypes = new List<SpecialAtkType>();
+    public List<SpecialAtkType> m_specialAtkTypes = new List<SpecialAtkType>();
 
 
 
@@ -96,16 +96,26 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
         if(m_Properties.m_Properties.m_EnergyShieldCount > 0)
         {
             // 特殊子弹对能量盾的效果
-            if(m_specialAtkTypes.Count > 0 && m_specialAtkTypes.Count == config.m_specialAtkTypes.Count)
+            foreach(var type in m_specialAtkTypes)
             {
-
+                // 如果有对不上的type就认为是没有特殊效果的子弹
+                // 只会有对能量盾减一的效果
+                if(config.m_specialAtkTypes.Contains(type) == false)
+                {
+                    m_Properties.m_Properties.m_EnergyShieldCount--;
+                    RPCBroadcastDamage(m_Properties.m_Properties);
+                    return;
+                }
             }
-            else
+            // 如果包含了能量盾所有的type(哪怕是子弹的Type种类数量比护盾的多)
+            // 都认为可以直接移除能量盾
+            if(m_specialAtkTypes.Count > 0)
             {
-                // 下面的结算能量盾方式是普通的减一
-                m_Properties.m_Properties.m_EnergyShieldCount--;
-                RPCBroadcastDamage(m_Properties.m_Properties);
+                m_Properties.m_Properties.m_EnergyShieldCount = 0;
             }
+            // 下面的结算能量盾方式是普通的减一
+            m_Properties.m_Properties.m_EnergyShieldCount--;
+            RPCBroadcastDamage(m_Properties.m_Properties);
             return;
         }
 
