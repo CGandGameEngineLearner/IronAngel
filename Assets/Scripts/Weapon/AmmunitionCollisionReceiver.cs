@@ -18,6 +18,9 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
     // 能量盾的特殊Tag
     public List<SpecialAtkType> m_specialAtkTypes = new List<SpecialAtkType>();
 
+    public WeaponCollisionReceiver m_LeftWeapon;
+    public WeaponCollisionReceiver m_RightWeapon;
+
 
 
     private void Start()
@@ -27,15 +30,20 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
 
         m_Properties = GetComponent<BaseProperties>();
 
+        m_Properties.m_Properties.m_CurrentArmor = 0;
+
         // 计算总体护甲值
         // 数值为子物体的所有分块的护甲值总和
-        int armor = 0;
-        foreach (var shield in m_Shields)
+        if (m_IsOverallArmor)
         {
-            armor += shield.m_SubArmor;
+            int armor = 0;
+            foreach (var shield in m_Shields)
+            {
+                armor += shield.m_SubArmor;
+            }
+            m_Properties.m_Properties.m_Armor = armor;
+            m_Properties.m_Properties.m_CurrentArmor = armor;
         }
-        m_Properties.m_Properties.m_Armor = armor;
-        m_Properties.m_Properties.m_CurrentArmor = armor;
     }
 
 
@@ -68,7 +76,7 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
 #endif
             return;
         }
-        CalculateDamage(ammunitionHandle.ammunitionConfig);
+        CalculateDamage(ammunitionHandle.ammunitionConfig,m_Properties.m_Properties.m_CurrentArmor);
         ammunitionFactory.UnRegisterAmmunition(collision.gameObject);
     }
 
@@ -87,7 +95,7 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
     ///  config: 子弹的配置表，用于计算伤害 
     ///
     [ServerCallback]
-    public void CalculateDamage(AmmunitionConfig config)
+    public void CalculateDamage(AmmunitionConfig config, int armor)
     {
         var m_Properties = GetComponent<BaseProperties>();
 
@@ -124,7 +132,8 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
         // 护甲大于0才进行减伤计算
         // 下面两句的计算顺序不能对换
         m_Properties.m_Properties.m_CurrentArmor -= damage;
-        damage = m_Properties.m_Properties.m_CurrentArmor + damage >= 0 ? (int)(damage * (1 - m_DamageReductionCoefficient)) : damage;
+        armor -= damage;
+        damage = armor + damage >= 0 ? (int)(damage * (1 - m_DamageReductionCoefficient)) : damage;
 
         // 两边的武器血条还没有考虑
         m_Properties.m_Properties.m_CurrentHP -= damage;

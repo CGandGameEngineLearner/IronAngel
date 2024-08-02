@@ -62,7 +62,7 @@ public class ShieldCollisionReceiver : NetworkBehaviour
     private void CalculateDamage(AmmunitionConfig config)
     {
         // 提交能量盾或者穿甲结算
-        m_AmmunitionCollisionReceiver.CalculateDamage(config);
+        m_AmmunitionCollisionReceiver.CalculateDamage(config, m_SubArmor);
         // 类内计算分块的护甲
         if(m_IsOverallArmor == false && m_ShieldType == ShieldType.Armor)
         {
