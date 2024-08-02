@@ -2037,7 +2037,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a60e4b72131b3647a70b7ea294fa781, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _DamageReductionCoefficient: 0.904
+  _DamageReductionCoefficient: 1
   AI_Attack_Tokens: 3
 --- !u!4 &696777467
 Transform:
