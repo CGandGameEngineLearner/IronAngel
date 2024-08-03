@@ -312,12 +312,12 @@ public class WeaponSystemCenter : NetworkBehaviour
         foreach (var weaponConfigSetting in WeaponConfigSettings)
         {
 
-            m_WeaponConfigDic.Add(weaponConfigSetting.WeaponType, weaponConfigSetting.WeaponConfig);
+            m_WeaponConfigDic[weaponConfigSetting.WeaponType] = weaponConfigSetting.WeaponConfig;
         }
 
         foreach (var ammunitionConfigSetting in AmmunitionConfigSettings)
         {
-            m_AmmunitionConfigDic.Add(ammunitionConfigSetting.AmmunitionType, ammunitionConfigSetting.AmmunitionConfig);
+            m_AmmunitionConfigDic[ammunitionConfigSetting.AmmunitionType] = ammunitionConfigSetting.AmmunitionConfig;
         }
 
         m_AmmunitionFactory.Init(m_AmmunitionConfigDic,

@@ -5,6 +5,8 @@ using UnityEngine;
 using Cinemachine;
 using UnityEditor;
 using LogicState;
+using UnityEngine.SceneManagement;
+
 public class PlayerController : NetworkBehaviour
 {
     public readonly static List<PlayerController> PlayerControllers = new List<PlayerController>();
@@ -40,7 +42,7 @@ public class PlayerController : NetworkBehaviour
         PlayerSpec playerSpec = new PlayerSpec();
         playerSpec = setting._PlayerSpec;
         playerSpec.m_Player = this.gameObject;
-        
+            
         m_Player.Init(playerSpec);
     }
 
@@ -79,6 +81,21 @@ public class PlayerController : NetworkBehaviour
         if (Input.GetKeyDown(KeyCode.P) && isServer)
         {
             CmdStartGame();
+        }
+
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            if (NetworkServer.active&&isServer)
+            {
+                GameObject.FindAnyObjectByType<NetworkManager>().StopHost();
+            }
+            else
+            {  
+                GameObject.FindAnyObjectByType<NetworkManager>().StopClient();
+            }
+            
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            PlayerSpec playerSpec = new PlayerSpec();
         }
     }
 
@@ -259,6 +276,7 @@ public class PlayerController : NetworkBehaviour
     [ClientCallback]
     private void RegisterGameEvent()
     {
+        
         // 玩家冲刺
         EventCenter.AddListener<bool>(EventType.StateToGlobal_PlayerDashState, (startDash) =>
         {

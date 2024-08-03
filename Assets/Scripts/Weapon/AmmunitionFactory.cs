@@ -78,7 +78,7 @@ public class AmmunitionFactory
 
         foreach (var ammunitionConfigPair in AmmunitionConfigDic)
         {
-            m_AmmunitionConfigs.Add(ammunitionConfigPair.Key, ammunitionConfigPair.Value);
+            m_AmmunitionConfigs[ammunitionConfigPair.Key] = ammunitionConfigPair.Value;
         }
     }
 

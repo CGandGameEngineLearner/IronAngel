@@ -36,6 +36,7 @@ public class PlayerMovement
 
     public void Move(Vector2 dir)
     {
+        m_Rigidbody = m_Player.GetComponent<Rigidbody2D>();
         var v2 = m_Rigidbody.position;
         dir = dir.normalized;
         v2.x += dir.x * m_Speed * Time.deltaTime;

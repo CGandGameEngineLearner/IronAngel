@@ -17,7 +17,7 @@ public class ObjectPoolManager<T>
     // 初始化所有对象池
     public void AddPool(T objType, ObjectCategory categoryToAdd)
     {
-        m_ObjectDictionary.Add(objType, new ObjectPool<GameObject>(
+        m_ObjectDictionary[objType] = new ObjectPool<GameObject>(
             createFunc: () => Object.Instantiate(categoryToAdd.prefab), // 创建新对象的方法
             actionOnGet: obj => obj.SetActive(true), // 从池中获取对象时的操作
             actionOnRelease: obj => obj.SetActive(false), // 释放回池中时的操作
@@ -25,7 +25,7 @@ public class ObjectPoolManager<T>
             collectionCheck: true, // 是否检查重复放回
             defaultCapacity: categoryToAdd.defaultSize, // 默认容量
             maxSize: categoryToAdd.maxSize // 最大容量
-        ));
+        );
     }
 
     /// <summary>
