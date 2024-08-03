@@ -193,7 +193,7 @@ public class WeaponSystemCenter : NetworkBehaviour
         }
 
         // 散布
-        dir = Utils.ApplyScatterY(dir, weaponConfig.spreadAngle);
+        dir = Utils.ApplyScatterZ(dir, weaponConfig.spreadAngle);
         
         Fire(character, m_WeaponToTypeDic[weapon], ammunitionType, startPoint, dir);
         
@@ -284,9 +284,9 @@ public class WeaponSystemCenter : NetworkBehaviour
     {
         int numberOfProjectiles = weaponConfigData.simShots;
         float spreadAngle = weaponConfigData.shotSpreadAngle;
-        
+    
         float sigma = spreadAngle / 6; // 选择标准差，使得范围在 [-spreadAngle/2, spreadAngle/2] 内
-        
+    
         for (int i = 0; i < numberOfProjectiles; i++)
         {
             // 使用 Box-Muller 变换生成高斯分布角度
@@ -294,13 +294,13 @@ public class WeaponSystemCenter : NetworkBehaviour
             float u2 = Random.value;
             float z0 = Mathf.Sqrt(-2.0f * Mathf.Log(u1)) * Mathf.Cos(2.0f * Mathf.PI * u2);
             float angle = z0 * sigma;
-        
-            // 限制角度在 [-spreadAngle/2, spreadAngle/2] 范围内
+    
+            // 限制角度在 [-spreadAngle/2, spreadAngle/2] 范围内是一个安全措施
             angle = Mathf.Clamp(angle, -spreadAngle / 2, spreadAngle / 2);
-        
-            Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.up); // 假设上方为旋转轴
+    
+            Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward); // 使用Z轴作为旋转轴
             Vector3 shotDirection = rotation * dir;
-        
+    
             // 发射子弹
             SetAmmunition(character, weaponConfigData, ammunitionType, startPoint, shotDirection);
         }
