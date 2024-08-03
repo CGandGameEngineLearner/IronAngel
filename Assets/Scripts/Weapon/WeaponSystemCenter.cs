@@ -42,6 +42,10 @@ public class AmmunitionConfigSetting
 public class WeaponSystemCenter : NetworkBehaviour
 {
     private static WeaponSystemCenter m_Instance;
+    
+    /// <summary>
+    /// 单例
+    /// </summary>
     public static WeaponSystemCenter Instance
     {
         private set {  m_Instance = value;}
@@ -351,6 +355,11 @@ public class WeaponSystemCenter : NetworkBehaviour
     private void Start()
     {
         Init();
+    }
+    
+    private void OnDestroy()
+    {
+        Instance = null;
     }
 
     /// <summary>
