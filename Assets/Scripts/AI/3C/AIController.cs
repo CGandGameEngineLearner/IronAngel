@@ -77,6 +77,7 @@ public class AIController : NetworkBehaviour
         
     }
     
+
     [ServerCallback]
     public virtual void Patrol()
     {

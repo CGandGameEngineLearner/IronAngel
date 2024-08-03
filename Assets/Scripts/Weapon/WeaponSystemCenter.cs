@@ -107,13 +107,13 @@ public class WeaponSystemCenter : NetworkBehaviour
         {
             // 给左手装备武器
             var weaponType = element.GetRightHandWeaponType();
-            var leftWeapon = SpawnWeapon(weaponType, element.gameObject.transform.position);
+            var leftWeapon = SpawnWeapon(weaponType, Vector3.zero);
             element.SetLeftHandWeapon(leftWeapon);
             
 
             // 给右手装备武器
             weaponType = element.GetRightHandWeaponType();
-            var rightWeapon = SpawnWeapon(weaponType, element.gameObject.transform.position);
+            var rightWeapon = SpawnWeapon(weaponType, Vector3.zero);
             element.SetRightHandWeapon(rightWeapon);
     
             RpcGiveAIWeapon(element, leftWeapon, rightWeapon);
