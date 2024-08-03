@@ -19,6 +19,11 @@ Bookmarks
 ### 启动！
 双击`open_unity.bat`
 
+### 新场景的相机设置
+- 在```Prefabs/Global```文件夹下有```CameraTarget,MainCamera,VirtualCamera```三个相机相关的预制体，将三个预制体拖入场景（需要确保场景中这三种预制体实例有且仅有一个, 尤其注意主相机只能由一个，不然会抢夺最终画面渲染权），然后将```CameraTarget```拖给```VirtualCamera```的```CinemachineVirtualCamera```组件下的```Follow```
+- 如果觉得相机的缓动移动太快的话，可以设置```VirtualCamera```的```CinemachineVirtualCamera```组件下的```Body```下的```X Damping```和```Y Damping```,这两个参数是XY轴的移动缓动系数，目前设置为0
+- 相机的画面大小设置在```VirtualCamera```的```CinemachineVirtualCamera```组件下```Lens```下的```Ortho Size```设置数值，目前数值为10
+
 
 ### 支持多重逻辑状态管理的LogicStateManager使用说明
 假设你需要新增一个状态，名为PlayerMoving,当玩家正在位移时就会添加这个状态，玩家禁止时移除这个状态。
