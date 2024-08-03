@@ -5,6 +5,7 @@ using UnityEngine;
 using Cinemachine;
 using UnityEditor;
 using LogicState;
+using Unity.VisualScripting;
 using UnityEngine.SceneManagement;
 
 public class PlayerController : NetworkBehaviour
@@ -66,6 +67,7 @@ public class PlayerController : NetworkBehaviour
 
     public void OnDestroy()
     {
+        UnRegisterGameEvent();
         PlayerControllers.Remove(this);
     }
     // private------------------------------------------
@@ -278,25 +280,37 @@ public class PlayerController : NetworkBehaviour
     {
         
         // 玩家冲刺
-        EventCenter.AddListener<bool>(EventType.StateToGlobal_PlayerDashState, (startDash) =>
-        {
-            if(startDash)
-            {
-                m_Player.ChangeDashCount(-1);
-                var v3 = m_InputController.GetMousePositionInWorldSpace(m_CameraController.GetCamera()) - m_Player.GetPlayerPosition();
-                var v2 = m_InputController.GetPlayerMoveInputVector2() == Vector2.zero ? new Vector2(v3.x, v3.y) : m_InputController.GetPlayerMoveInputVector2();
-                m_Player.SetDashDirection(v2);
-            }
-            else
-            {
-                m_Player.Dash();
-            }
-        });
+        EventCenter.AddListener<bool>(EventType.StateToGlobal_PlayerDashState, OnDashEvent);
         // 玩家移动
-        EventCenter.AddListener(EventType.StateToGlobal_PlayerWalkState, () =>
+        EventCenter.AddListener(EventType.StateToGlobal_PlayerWalkState, OnWalkEvent);
+    }
+
+
+    private void UnRegisterGameEvent()
+    {
+        EventCenter.RemoveListener<bool>(EventType.StateToGlobal_PlayerDashState, OnDashEvent);
+        EventCenter.RemoveListener(EventType.StateToGlobal_PlayerWalkState, OnWalkEvent);
+    }
+
+
+    private void OnDashEvent(bool startDash)
+    {
+        if(startDash)
         {
-            m_Player.Move(m_InputController.GetPlayerMoveInputVector2());
-        });
+            m_Player.ChangeDashCount(-1);
+            var v3 = m_InputController.GetMousePositionInWorldSpace(m_CameraController.GetCamera()) - m_Player.GetPlayerPosition();
+            var v2 = m_InputController.GetPlayerMoveInputVector2() == Vector2.zero ? new Vector2(v3.x, v3.y) : m_InputController.GetPlayerMoveInputVector2();
+            m_Player.SetDashDirection(v2);
+        }
+        else
+        {
+            m_Player.Dash();
+        }
+    }
+
+    private void OnWalkEvent()
+    {
+        m_Player.Move(m_InputController.GetPlayerMoveInputVector2());
     }
 }
 
