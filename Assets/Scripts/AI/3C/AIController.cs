@@ -44,9 +44,9 @@ public class AIController : NetworkBehaviour
     }
 
     [ServerCallback]
-    private void RegisterWeapon()
+    private void RegisterWeapon()   
     {
-        WeaponSystemCenter.RegisterAIWeapon(this);
+        WeaponSystemCenter.Instance.RegisterAIWeapon(this);
     }
     
     

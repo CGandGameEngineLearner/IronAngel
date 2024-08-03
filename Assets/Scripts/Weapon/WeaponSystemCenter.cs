@@ -41,7 +41,12 @@ public class AmmunitionConfigSetting
 
 public class WeaponSystemCenter : NetworkBehaviour
 {
-    public static WeaponSystemCenter Instance;
+    private static WeaponSystemCenter m_Instance;
+    public static WeaponSystemCenter Instance
+    {
+        private set {  m_Instance = value;}
+        get { return  m_Instance; }
+    }
 
     public List<WeaponSpawnSetting> WeaponSpawnSettings = new List<WeaponSpawnSetting>();
     public List<WeaponConfigSetting> WeaponConfigSettings = new List<WeaponConfigSetting>();
@@ -65,9 +70,9 @@ public class WeaponSystemCenter : NetworkBehaviour
     private static AmmunitionFactory m_AmmunitionFactory = new(); // 弹药工厂
 
 
-    private static HashSet<AIController> m_RegisteredWeaponAI = new HashSet<AIController>();// 注册的，需要武器的AI，注册在这里的AI 开始游戏时会给他们发武器。 
+    private HashSet<AIController> m_RegisteredWeaponAI = new HashSet<AIController>();// 注册的，需要武器的AI，注册在这里的AI 开始游戏时会给他们发武器。 
 
-    public static void RegisterAIWeapon(AIController aiController)
+    public void RegisterAIWeapon(AIController aiController)
     {
         m_RegisteredWeaponAI.Add(aiController);
     }
@@ -309,6 +314,7 @@ public class WeaponSystemCenter : NetworkBehaviour
 
     private void Awake()
     {
+        Instance = this;
         foreach (var weaponConfigSetting in WeaponConfigSettings)
         {
 
