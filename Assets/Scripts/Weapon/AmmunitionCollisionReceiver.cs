@@ -55,6 +55,7 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
 
     /// <summary>
     /// 应该只有服务端上的物体会接收碰撞
+    /// Comment:两边都会接受碰撞
     /// </summary>
     /// <param name="collision"></param>
     private void OnTriggerEnter2D(Collider2D collision)
@@ -81,10 +82,11 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
 #endif
             return;
         }
+        
         CalculateDamage(ammunitionHandle.ammunitionConfig, m_Properties.m_Properties.m_CurrentArmor, collision.ClosestPoint(new Vector2(transform.position.x, transform.position.y) + m_Collider.offset));
         ammunitionFactory.UnRegisterAmmunition(collision.gameObject);
     }
-
+    
     /// <summary>
     /// 获取受击者身上的属性进行伤害计算
     /// 计算优先级：

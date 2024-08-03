@@ -1,23 +1,27 @@
 using System;
 using System.Collections.Generic;
+using Mirror;
 using UnityEngine;
 
 public class AmmunitionHandle
 {
     public bool active;
     public GameObject ammunition;
-    public GameObject launcherCharacter;// 发射这个子弹的角色GameObject
+    public GameObject launcherCharacter; // 发射这个子弹的角色GameObject
     public Rigidbody2D rigidbody2D;
     public Vector2 startPoint;
     public Vector2 dir;
     public AtkType atkType;
     public AmmunitionType ammunitionType;
     public AmmunitionConfig ammunitionConfig;
+    public int liveFrameCount;
 
-    public void Init(GameObject owner,GameObject ammunition, AmmunitionType ammunitionType, AmmunitionConfig ammunitionConfig, AtkType atkType,
+    public void Init(GameObject owner, GameObject ammunition, AmmunitionType ammunitionType,
+        AmmunitionConfig ammunitionConfig, AtkType atkType,
         Vector2 startPoint, Vector2 dir)
     {
         active = true;
+        liveFrameCount = 0;
         this.launcherCharacter = owner;
         this.ammunitionType = ammunitionType;
         this.ammunition = ammunition;
@@ -27,7 +31,7 @@ public class AmmunitionHandle
         this.startPoint = startPoint;
         this.dir = dir;
     }
-
+    
     public void Clear()
     {
         active = false;
@@ -38,6 +42,7 @@ public class AmmunitionHandle
         startPoint = Vector2.zero;
         dir = Vector2.up;
         this.ammunitionType = AmmunitionType.Bullet;
+        liveFrameCount = 0;
     }
 }
 
@@ -49,6 +54,8 @@ public class AmmunitionFactory
 {
     public delegate void RecycleHandle(AmmunitionType ammunitionType, GameObject ammunition);
 
+    private ObjectPoolManager<AmmunitionType> m_AmmunitionPool;
+
     // Data table
     private readonly Dictionary<AmmunitionType, AmmunitionConfig> m_AmmunitionConfigs = new();
 
@@ -58,21 +65,22 @@ public class AmmunitionFactory
     // AmmunitionStore----------------------
     private Queue<AmmunitionHandle> m_HandlesToAdd = new();
     private Dictionary<GameObject, AmmunitionHandle> m_AmmunitionsDict = new();
-    private Queue<AmmunitionHandle>[] m_AmmunitionQueueSwapChain = new []{new Queue<AmmunitionHandle>(), new Queue<AmmunitionHandle>()};
+
+    private Queue<AmmunitionHandle>[] m_AmmunitionQueueSwapChain =
+        new[] { new Queue<AmmunitionHandle>(), new Queue<AmmunitionHandle>() };
+
     private int m_ChainIdx = 0;
-    // 已经被注册后处理的子弹集合
-    private HashSet<GameObject> m_AmmunitionPostSet = new();
 
     // recycle------------------------------
     private RecycleHandle onRecycle;
-    
+
     /// <summary>
     /// 初始化
     /// </summary>
     /// <param name="AmmunitionConfigDic">子弹配置映射</param> 
     /// <param name="recycleHandle">子弹回收处理委托</param> 
-    public void Init(Dictionary<AmmunitionType,AmmunitionConfig> AmmunitionConfigDic,
-        RecycleHandle recycleHandle)
+    public void Init(Dictionary<AmmunitionType, AmmunitionConfig> AmmunitionConfigDic,
+        RecycleHandle recycleHandle, ObjectPoolManager<AmmunitionType> ammunitionPool)
     {
         onRecycle = recycleHandle;
 
@@ -80,6 +88,8 @@ public class AmmunitionFactory
         {
             m_AmmunitionConfigs[ammunitionConfigPair.Key] = ammunitionConfigPair.Value;
         }
+
+        m_AmmunitionPool = ammunitionPool;
     }
 
 
@@ -90,7 +100,7 @@ public class AmmunitionFactory
 
         return m_AmmunitionConfigs[ammunitionType];
     }
-    
+
     /// <summary>
     /// 获取子弹对象的对应的Handle
     /// </summary>
@@ -102,22 +112,25 @@ public class AmmunitionFactory
         {
             return null;
         }
+
         return m_AmmunitionsDict[ammunition];
     }
-    
+
     public bool GetAmmunitionHandleActive(GameObject ammunition)
     {
         return m_AmmunitionsDict[ammunition].active;
     }
 
-    private void RegisterAmmunition(GameObject owner,GameObject ammunition, AmmunitionType ammunitionType, AmmunitionConfig ammunitionConfig, AtkType atkType,
+    private void RegisterAmmunition(GameObject owner, GameObject ammunition, AmmunitionType ammunitionType,
+        AmmunitionConfig ammunitionConfig, AtkType atkType,
         Vector2 startPoint, Vector2 dir)
     {
         if (m_AmmunitionsDict.ContainsKey(ammunition)) return;
 
-        m_HandlesToAdd.Enqueue(InternalGetAmmunitionHandle(owner, ammunition, ammunitionType, ammunitionConfig, atkType, startPoint, dir));
+        m_HandlesToAdd.Enqueue(InternalGetAmmunitionHandle(owner, ammunition, ammunitionType, ammunitionConfig, atkType,
+            startPoint, dir));
     }
-    
+
     /// <summary>
     /// 射子弹
     /// </summary>
@@ -127,22 +140,43 @@ public class AmmunitionFactory
     /// <param name="atkType"></param>
     /// <param name="startPoint"></param>
     /// <param name="dir"></param>
-    public void ShootAmmunition(GameObject owner,GameObject ammunition, AmmunitionType ammunitionType,
+    public void ShootAmmunition(GameObject owner, GameObject ammunition, AmmunitionType ammunitionType,
         AmmunitionConfig ammunitionConfig, AtkType atkType,
         Vector2 startPoint, Vector2 dir)
     {
-        RegisterAmmunition(owner,ammunition, ammunitionType, ammunitionConfig, atkType, startPoint, dir);
+        RegisterAmmunition(owner, ammunition, ammunitionType, ammunitionConfig, atkType, startPoint, dir);
     }
-    
-    
 
 
-
+    /// <summary>
+    /// 注销子弹，并处理子弹后处理效果的逻辑(爆炸等)
+    /// </summary>
+    /// <param name="ammunition"></param>
     public void UnRegisterAmmunition(GameObject ammunition)
     {
         if (!m_AmmunitionsDict.ContainsKey(ammunition)) return;
 
-        m_AmmunitionsDict[ammunition].active = false;
+        // 仅产生一次后处理效果
+        if (m_AmmunitionsDict[ammunition].active)
+        {
+            m_AmmunitionsDict[ammunition].active = false;
+            
+            var handle = GetAmmunitionHandle(ammunition);
+            var postType = handle.ammunitionConfig.postAmmunitionType;
+            if (postType != AmmunitionType.None)
+            {
+                ShootAmmunition(handle.launcherCharacter, m_AmmunitionPool.GetObject(postType), postType, m_AmmunitionConfigs[postType],
+                    AtkType.Default, handle.rigidbody2D.transform.position, Vector2.zero);
+            }
+        }
+    }
+
+    [ClientRpc]
+    private void RpcShootAmmunition(GameObject owner, GameObject ammunition, AmmunitionType ammunitionType,
+        AmmunitionConfig ammunitionConfig, AtkType atkType,
+        Vector2 startPoint, Vector2 dir)
+    {
+        ShootAmmunition(owner, ammunition, ammunitionType, ammunitionConfig, atkType, startPoint, dir);
     }
 
     public void FixedUpdate()
@@ -157,8 +191,8 @@ public class AmmunitionFactory
         while (m_HandlesToAdd.Count > 0)
         {
             AmmunitionHandle ammunitionHandle = m_HandlesToAdd.Dequeue();
-            if(m_AmmunitionsDict.ContainsKey(ammunitionHandle.ammunition)) continue;
-            
+            if (m_AmmunitionsDict.ContainsKey(ammunitionHandle.ammunition)) continue;
+
             m_AmmunitionsDict.Add(ammunitionHandle.ammunition, ammunitionHandle);
             ammunitionQueueToUpdate.Enqueue(ammunitionHandle);
         }
@@ -174,6 +208,7 @@ public class AmmunitionFactory
                 switch (ammunitionHandle.atkType)
                 {
                     case AtkType.Default:
+                        InternalProcessDefaultAmmunition(ammunitionHandle);
                         break;
                     case AtkType.Rifle:
                         InternalProcessShotGunAmmunition(ammunitionHandle);
@@ -202,11 +237,12 @@ public class AmmunitionFactory
     }
 
 
-    private AmmunitionHandle InternalGetAmmunitionHandle(GameObject owner,GameObject ammunition, AmmunitionType ammunitionType, AmmunitionConfig ammunitionConfig, AtkType atkType,
+    private AmmunitionHandle InternalGetAmmunitionHandle(GameObject owner, GameObject ammunition,
+        AmmunitionType ammunitionType, AmmunitionConfig ammunitionConfig, AtkType atkType,
         Vector2 startPoint, Vector2 dir)
     {
         AmmunitionHandle handle = m_UsableQueue.Count > 0 ? m_UsableQueue.Dequeue() : new AmmunitionHandle();
-        handle.Init(owner,ammunition, ammunitionType, ammunitionConfig, atkType, startPoint, dir);
+        handle.Init(owner, ammunition, ammunitionType, ammunitionConfig, atkType, startPoint, dir);
 
         return handle;
     }
@@ -220,6 +256,28 @@ public class AmmunitionFactory
         m_UsableQueue.Enqueue(ammunitionHandle);
     }
 
+    //
+    // Process Ammunition -----------------------------------------------------------------
+    //
+
+    /// <summary>
+    /// 专门用于处理后处理弹药(后续可能加入多帧判定)
+    /// </summary>
+    /// <param name="ammunitionHandle"></param>
+    private void InternalProcessDefaultAmmunition(AmmunitionHandle ammunitionHandle)
+    {
+        ammunitionHandle.rigidbody2D.position = new Vector3(1, 1, 1);
+        // 超出了存活帧就会删除
+        if (++ammunitionHandle.liveFrameCount > ammunitionHandle.ammunitionConfig.m_LeastLiveFixedFrameCount)
+        {
+            UnRegisterAmmunition(ammunitionHandle.ammunition);
+        }
+    }
+    
+    /// <summary>
+    /// 处理ShotGun、Rifle类型的子弹
+    /// </summary>
+    /// <param name="ammunitionHandle"></param>
     private void InternalProcessShotGunAmmunition(AmmunitionHandle ammunitionHandle)
     {
         // gameObject.GetComponent<Rigidbody2D>()
@@ -239,10 +297,5 @@ public class AmmunitionFactory
         {
             UnRegisterAmmunition(ammunition);
         }
-    }
-
-    public bool GetAmmunitionPostExisted(GameObject ammunitionRequester)
-    {
-        return true;
     }
 }

@@ -13,12 +13,12 @@ public enum AtkType
 
 public enum AmmunitionType
 {
+    // 默认没有类型
+    None,
     // 产生爆炸效果的炸弹
-    PostProcess_Expolde = 0,
-
+    PostProcess_Expolde,
     // 实际飞行的子弹/激光/导弹 
     Bullet,
-    None,
 }
 
 public enum WeaponType

@@ -17,5 +17,5 @@ public class AmmunitionConfig : ItemConfig
     public int m_Damage;
     public AmmunitionType m_PostAmmunitionType;
     public List<SpecialAtkType> m_specialAtkTypes;
-
+    [Tooltip("子弹最少存活的物理帧数，用于提供给后处理子弹使用，普通子弹忽视即可")]public int m_LeastLiveFixedFrameCount;
 }

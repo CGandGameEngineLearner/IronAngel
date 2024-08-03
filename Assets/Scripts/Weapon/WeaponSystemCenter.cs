@@ -42,14 +42,14 @@ public class AmmunitionConfigSetting
 public class WeaponSystemCenter : NetworkBehaviour
 {
     private static WeaponSystemCenter m_Instance;
-    
+
     /// <summary>
     /// 单例
     /// </summary>
     public static WeaponSystemCenter Instance
     {
-        private set {  m_Instance = value;}
-        get { return  m_Instance; }
+        private set { m_Instance = value; }
+        get { return m_Instance; }
     }
 
     public List<WeaponSpawnSetting> WeaponSpawnSettings = new List<WeaponSpawnSetting>();
@@ -74,7 +74,8 @@ public class WeaponSystemCenter : NetworkBehaviour
     private static AmmunitionFactory m_AmmunitionFactory = new(); // 弹药工厂
 
 
-    private HashSet<AIController> m_RegisteredWeaponAI = new HashSet<AIController>();// 注册的，需要武器的AI，注册在这里的AI 开始游戏时会给他们发武器。 
+    private HashSet<AIController>
+        m_RegisteredWeaponAI = new HashSet<AIController>(); // 注册的，需要武器的AI，注册在这里的AI 开始游戏时会给他们发武器。 
 
     public void RegisterAIWeapon(AIController aiController)
     {
@@ -91,13 +92,13 @@ public class WeaponSystemCenter : NetworkBehaviour
 
         // 测试武器挂载脚本
         weapon.GetComponent<WeaponInstance>().Init(weaponConfig);
-        
+
         NetworkServer.Spawn(weapon);
         m_WeaponToConfigDic[weapon] = weaponConfig;
         m_WeaponToTypeDic[weapon] = weaponType;
         return weapon;
     }
-    
+
     /// <summary>
     /// 给AI装备武器
     /// </summary>
@@ -109,24 +110,24 @@ public class WeaponSystemCenter : NetworkBehaviour
             var weaponType = element.GetRightHandWeaponType();
             var leftWeapon = SpawnWeapon(weaponType, Vector3.zero);
             element.SetLeftHandWeapon(leftWeapon);
-            
+
 
             // 给右手装备武器
             weaponType = element.GetRightHandWeaponType();
             var rightWeapon = SpawnWeapon(weaponType, Vector3.zero);
             element.SetRightHandWeapon(rightWeapon);
-    
+
             RpcGiveAIWeapon(element, leftWeapon, rightWeapon);
         }
     }
-    
+
     [ClientRpc]
-    private void RpcGiveAIWeapon(AIController aiController,GameObject leftHandWeapon,GameObject rightHandWeapon)
+    private void RpcGiveAIWeapon(AIController aiController, GameObject leftHandWeapon, GameObject rightHandWeapon)
     {
         aiController.SetLeftHandWeapon(leftHandWeapon);
         aiController.SetRightHandWeapon(rightHandWeapon);
     }
-    
+
 
     /// <summary>
     /// 获取AmmunitionFactory单例
@@ -160,7 +161,9 @@ public class WeaponSystemCenter : NetworkBehaviour
     public void CmdFire(GameObject character, GameObject weapon, Vector3 startPoint, Vector3 dir)
     {
         dir = dir.normalized;
+#if UNITY_EDITOR
         Debug.Log(GetType() + "Command" + "Fire");
+#endif
         var weaponConfig = m_WeaponToConfigDic[weapon];
         var ammunitionType = m_WeaponToConfigDic[weapon].ammunitionType;
         var ammunitionConfig = m_AmmunitionConfigDic[ammunitionType];
@@ -194,12 +197,10 @@ public class WeaponSystemCenter : NetworkBehaviour
 
         // 散布
         dir = Utils.ApplyScatterZ(dir, weaponConfig.spreadAngle);
-        
+
+        // 服务端
         Fire(character, m_WeaponToTypeDic[weapon], ammunitionType, startPoint, dir);
-        
-        // GameObject ammunition = GetAmmunitionFromPool(ammunitionType, startPoint, dir);
-        // m_AmmunitionFactory.ShootAmmunition(character, ammunition, ammunitionType, ammunitionConfig,
-        //     weaponConfig.atkType, startPoint, dir);
+        // Rpc调用客户端
         RPCFire(character, m_WeaponToTypeDic[weapon], ammunitionType, startPoint, dir);
     }
 
@@ -236,7 +237,7 @@ public class WeaponSystemCenter : NetworkBehaviour
 #endif
             return;
         }
-        
+
         Fire(character, m_WeaponToTypeDic[weapon], ammunitionType, startPoint, dir);
 
         RPCFire(character, m_WeaponToTypeDic[weapon], ammunitionType, startPoint, dir);
@@ -247,7 +248,7 @@ public class WeaponSystemCenter : NetworkBehaviour
         Vector3 startPoint, Vector3 dir)
     {
         var weaponConfigData = m_WeaponConfigDic[weaponType].ToData();
-        
+
         Fire(character, weaponType, ammunitionType, startPoint, dir);
     }
 
@@ -284,9 +285,9 @@ public class WeaponSystemCenter : NetworkBehaviour
     {
         int numberOfProjectiles = weaponConfigData.simShots;
         float spreadAngle = weaponConfigData.shotSpreadAngle;
-    
+
         float sigma = spreadAngle / 6; // 选择标准差，使得范围在 [-spreadAngle/2, spreadAngle/2] 内
-    
+
         for (int i = 0; i < numberOfProjectiles; i++)
         {
             // 使用 Box-Muller 变换生成高斯分布角度
@@ -294,18 +295,18 @@ public class WeaponSystemCenter : NetworkBehaviour
             float u2 = Random.value;
             float z0 = Mathf.Sqrt(-2.0f * Mathf.Log(u1)) * Mathf.Cos(2.0f * Mathf.PI * u2);
             float angle = z0 * sigma;
-    
+
             // 限制角度在 [-spreadAngle/2, spreadAngle/2] 范围内是一个安全措施
             angle = Mathf.Clamp(angle, -spreadAngle / 2, spreadAngle / 2);
-    
+
             Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward); // 使用Z轴作为旋转轴
             Vector3 shotDirection = rotation * dir;
-    
+
             // 发射子弹
             SetAmmunition(character, weaponConfigData, ammunitionType, startPoint, shotDirection);
         }
     }
-    
+
     private void SetAmmunition(GameObject character, WeaponConfigData weaponConfigData, AmmunitionType ammunitionType,
         Vector3 startPoint, Vector3 dir)
     {
@@ -321,7 +322,6 @@ public class WeaponSystemCenter : NetworkBehaviour
         Instance = this;
         foreach (var weaponConfigSetting in WeaponConfigSettings)
         {
-
             m_WeaponConfigDic[weaponConfigSetting.WeaponType] = weaponConfigSetting.WeaponConfig;
         }
 
@@ -331,7 +331,8 @@ public class WeaponSystemCenter : NetworkBehaviour
         }
 
         m_AmmunitionFactory.Init(m_AmmunitionConfigDic,
-            (ammunitionType, ammunition) => { m_AmmunitionPool.ReleaseObject(ammunitionType, ammunition); });
+            (ammunitionType, ammunition) => { m_AmmunitionPool.ReleaseObject(ammunitionType, ammunition); },
+            m_AmmunitionPool);
     }
 
     /// <summary>
@@ -356,7 +357,7 @@ public class WeaponSystemCenter : NetworkBehaviour
     {
         Init();
     }
-    
+
     private void OnDestroy()
     {
         Instance = null;
@@ -365,7 +366,7 @@ public class WeaponSystemCenter : NetworkBehaviour
     /// <summary>
     /// 初始化武器、弹药配置
     /// </summary>
-    public void Init()
+    private void Init()
     {
         Instance = this;
         foreach (var ammunitionTypeToConfig in m_AmmunitionConfigDic)
