@@ -67,6 +67,9 @@ public class WeaponCollisionReceiver : NetworkBehaviour
         }
         var launcherCamp = launcherCharacterProperties.m_Properties.m_Camp;
         if (m_AmmunitionCollisionReceiver.IsBulletFromOwnCamp(ammunitionHandle, launcherCamp))
+        {
+            return;
+        }
         CalculateDamage(ammunitionHandle.ammunitionConfig);
         ammunitionFactory.UnRegisterAmmunition(collision.gameObject);
     }
