@@ -19,8 +19,12 @@ namespace LogicState
         AIVisionPerceived,                  // AI视觉察觉到目标
         EnemyInRangeOfAttack,               // 敌人进入了攻击范围
         AIAttacking,                        // AI攻击中
-    
-    
+        // ---------------------------------- 以上为LogicState ---------------------------------- 
+        LogicStateBuffStateSplitter,        
+        // ---------------------------------- 以下为BuffState  ---------------------------------- 
+        SpeedModifier,                      // 修改移动速度
+        StunModifier,                       // 设置角色是否眩晕
+        // ---------------------------------- 以下为State计数  ----------------------------------
         Count //此枚举的值为ELogicState的枚举种类的计数 所有的新增枚举不要加在它后面
     }
 
