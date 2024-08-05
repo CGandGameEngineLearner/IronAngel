@@ -209,7 +209,7 @@ public class PlayerController : NetworkBehaviour
                     Debug.Log("左手上没武器");
                     return;
                 }
-                CmdFire(weapon,pos,m_InputController.GetMousePositionInWorldSpace(m_CameraController.GetCamera()) - m_Player.GetPlayerPosition());
+                CmdFire(weapon,pos,m_InputController.GetMousePositionInWorldSpace(m_CameraController.GetCamera()) - m_Player.GetPlayerLeftHandPosition());
             }
             
         });
@@ -225,7 +225,7 @@ public class PlayerController : NetworkBehaviour
                     Debug.Log("右手上没武器");
                     return;
                 }
-                CmdFire(weapon, pos, m_InputController.GetMousePositionInWorldSpace(m_CameraController.GetCamera()) - m_Player.GetPlayerPosition());
+                CmdFire(weapon, pos, m_InputController.GetMousePositionInWorldSpace(m_CameraController.GetCamera()) - m_Player.GetPlayerRightHandPosition());
             }
         });
     }

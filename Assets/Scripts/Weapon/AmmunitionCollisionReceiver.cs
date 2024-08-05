@@ -215,7 +215,7 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
         if(m_IsOverallArmor && m_Properties.m_Properties.m_CurrentArmor <= 0)
         {
 #if UNITY_EDITOR
-            Debug.Log("玩家 ：" + gameObject.name + "损失所有护甲");
+            //Debug.Log("玩家 ：" + gameObject.name + "损失所有护甲");
 #endif
             foreach (var shield in m_Shields)
             {
@@ -227,7 +227,7 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
         if (m_Properties.m_Properties.m_EnergyShieldCount <= 0)
         {
 #if UNITY_EDITOR
-            Debug.Log("玩家 ：" + gameObject.name + "损失能量护盾");
+            //Debug.Log("玩家 ：" + gameObject.name + "损失能量护盾");
 #endif
             foreach (var shield in m_Shields)
             {
@@ -298,7 +298,6 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
                         {
                             Debug.Log("Add ELogicState.SpeedModifier");
                             m_LogicStateManager.SetStateDuration(ELogicState.SpeedModifier, buff.m_Duration);
-                            //Debug.Log(gameObject.name + "减速还剩：" + m_LogicStateManager.GetStateDuration(ELogicState.SpeedModifier));
                             EventCenter.Broadcast<GameObject, float, bool>(EventType.Buff_Speed, gameObject, buff.m_Number, true);
                         }
                         break;

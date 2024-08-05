@@ -10,18 +10,17 @@ namespace LogicState
 
         public override void Init()
         {
-            Debug.Log(GetType()+"Init()");
+            //Debug.Log(GetType()+"Init()");
         }
 
         public override void OnStateIn()
         {
-            Debug.Log(GetType()+"OnStateIn()");
+            //Debug.Log(GetType()+"OnStateIn()");
         }
 
         public override void Update(float deltaTime)
         {
-           Debug.Log(GetType()+"Update");
-           Debug.Log(Time.time+" "+EndTime);
+           
         }
 
         public override void FixedUpdate()
@@ -31,7 +30,7 @@ namespace LogicState
 
         public override void OnStateOut()
         {
-            Debug.Log(GetType()+"OnStateOut()");
+            //Debug.Log(GetType()+"OnStateOut()");
             EventCenter.Broadcast<GameObject, float, bool>(EventType.Buff_Speed, GetOwner().gameObject, 0, false);
         }
 
