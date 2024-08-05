@@ -24,6 +24,17 @@ public class AmmunitionConfig : ItemConfig
     [Tooltip("子弹最少存活的物理帧数，用于提供给后处理子弹使用，普通子弹忽视即可")]
     public int m_LeastLiveFixedFrameCount;
     [Tooltip("子弹造成的buff效果")]
+    public List<BuffStruct> m_EffectBuff;
+}
+
+[System.Serializable]
+public struct BuffStruct
+{
+    [Tooltip("子弹造成的buff效果")]
     [EnumRange((int)ELogicState.LogicStateSplitter + 1, (int)ELogicState.BuffStateSplitter - 1)]
-    public List<ELogicState> m_EffectBuff;
+    public ELogicState m_EffectBuff;
+    [Tooltip("buff持续时间")]
+    public float m_Duration;
+    [Tooltip("造成的数值，可以填入正负值")]
+    public float m_Number;
 }

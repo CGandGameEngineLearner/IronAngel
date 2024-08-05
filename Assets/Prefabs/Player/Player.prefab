@@ -389,7 +389,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.25293314}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -400,7 +400,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1, y: 1.5060663}
   m_EdgeRadius: 0
 --- !u!114 &8332884781081308423
 MonoBehaviour:
@@ -551,6 +551,8 @@ MonoBehaviour:
     m_TokenWeight: 0
     m_RangeOfAimingError: 0
     m_Camp: 0
+    m_DropWeapon_WeaponDestroy: 0
+    m_DropWeapon_CharacterDied: 0
 --- !u!61 &6382232755733876394
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -583,7 +585,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.9742501}
+  m_Offset: {x: -0.0275594, y: 0.03542304}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -594,7 +596,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 6.0082755}
+  m_Size: {x: 2.705754, y: 3.2266908}
   m_EdgeRadius: 0
 --- !u!114 &5508215157506620468
 MonoBehaviour:
