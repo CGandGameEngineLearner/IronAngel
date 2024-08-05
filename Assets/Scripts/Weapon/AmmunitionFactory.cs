@@ -32,6 +32,7 @@ public class AmmunitionHandle
         this.dir = dir;
 
         ammunition.transform.position = startPoint;
+        rigidbody2D.position = startPoint;
     }
     
     public void Clear()
@@ -291,6 +292,7 @@ public class AmmunitionFactory
     private void InternalProcessShotGunAmmunition(AmmunitionHandle ammunitionHandle)
     {
         // gameObject.GetComponent<Rigidbody2D>()
+        ++ammunitionHandle.liveFrameCount;
         GameObject ammunition = ammunitionHandle.ammunition;
         Rigidbody2D rigidbody2D = ammunitionHandle.rigidbody2D;
         float speed = ammunitionHandle.ammunitionConfig.speed;
