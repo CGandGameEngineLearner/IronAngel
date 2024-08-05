@@ -18,6 +18,6 @@ MonoBehaviour:
   m_Speed: 20
   m_LifeDistance: 20
   m_Damage: 0
-  m_PostAmmunitionType: 0
+  m_PostAmmunitionType: 1
   m_specialAtkTypes: 01000000
   m_LeastLiveFixedFrameCount: 0

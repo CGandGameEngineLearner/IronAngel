@@ -89,14 +89,23 @@ public class WeaponSystemCenter : NetworkBehaviour
 
         GameObject weapon = Instantiate(prefab, pos,
             UnityEngine.Quaternion.identity);
-
-        // 测试武器挂载脚本
+        
         weapon.GetComponent<WeaponInstance>().Init(weaponConfig);
 
         NetworkServer.Spawn(weapon);
+        
         m_WeaponToConfigDic[weapon] = weaponConfig;
         m_WeaponToTypeDic[weapon] = weaponType;
+        
+        //RpcWeaponDicUpdate(weapon, weaponType, weaponConfig);
         return weapon;
+    }
+    
+    [ClientRpc]
+    private void RpcWeaponDicUpdate(GameObject weapon, WeaponType weaponType, WeaponConfig weaponConfig)
+    {
+        m_WeaponToConfigDic[weapon] = weaponConfig;
+        m_WeaponToTypeDic[weapon] = weaponType;
     }
 
     /// <summary>

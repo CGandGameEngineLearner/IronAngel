@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Mirror;
 using UnityEngine;
+using UnityEngine.Experimental.GlobalIllumination;
 using Range = DG.DemiLib.Range;
 
 public class BaseProperties : NetworkBehaviour
@@ -89,4 +90,8 @@ public struct Properties
 
     [Tooltip("阵营")]
     public ECamp m_Camp;
+
+    [Tooltip("武器被破坏后掉落武器")] public bool m_DropWeapon_WeaponDestroy;
+
+    [Tooltip("角色死亡后掉落武器")] public bool m_DropWeapon_CharacterDied;
 }

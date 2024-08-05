@@ -53,7 +53,13 @@ public class ShieldCollisionReceiver : NetworkBehaviour
 #endif
             return;
         }
-        if (ammunitionHandle.launcherCharacter == transform.parent.gameObject)
+        var launcherCharacterProperties = ammunitionHandle.launcherCharacter.GetComponent<BaseProperties>();
+        if (launcherCharacterProperties == null)
+        {
+            return;
+        }
+        var launcherCamp = launcherCharacterProperties.m_Properties.m_Camp;
+        if (m_AmmunitionCollisionReceiver.IsBulletFromOwnCamp(ammunitionHandle, launcherCamp))
         {
             return;
         }

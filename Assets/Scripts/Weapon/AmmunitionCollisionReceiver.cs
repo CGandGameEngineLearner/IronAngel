@@ -78,7 +78,7 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
 
         var launcherCamp = launcherCharacterProperties.m_Properties.m_Camp;
         
-        if (ammunitionHandle.launcherCharacter==gameObject||launcherCamp==m_Properties.m_Properties.m_Camp)
+        if (IsBulletFromOwnCamp(ammunitionHandle, launcherCamp))
         {
             return;
         }
@@ -194,6 +194,12 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
             Debug.Log("玩家 ：" + gameObject.name + "死亡");
 #endif
             gameObject.SetActive(false);
+
+            if (m_Properties.m_Properties.m_DropWeapon_CharacterDied)
+            {
+                WeaponSystemCenter.Instance.SpawnWeapon(m_Properties.m_Properties.m_LeftHandWeapon, transform.position);
+                WeaponSystemCenter.Instance.SpawnWeapon(m_Properties.m_Properties.m_RightHandWeapon, transform.position);
+            }
         }
         // 玩家所有护甲损失
         if(m_IsOverallArmor && m_Properties.m_Properties.m_CurrentArmor <= 0)
@@ -226,6 +232,11 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
             Debug.Log("玩家 ：" + gameObject.name + "丢失左手");
 #endif
             m_LeftWeapon.gameObject.SetActive(false);
+
+            if (m_Properties.m_Properties.m_DropWeapon_WeaponDestroy)
+            {
+                WeaponSystemCenter.Instance.SpawnWeapon(m_Properties.m_Properties.m_LeftHandWeapon, transform.position);
+            }
         }
         if(m_Properties.m_Properties.m_RightHandWeaponHP <= 0)
         {
@@ -233,6 +244,16 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
             Debug.Log("玩家 ：" + gameObject.name + "丢失右手");
 #endif
             m_RightWeapon.gameObject.SetActive(false);
+
+            if (m_Properties.m_Properties.m_DropWeapon_WeaponDestroy)
+            {
+                WeaponSystemCenter.Instance.SpawnWeapon(m_Properties.m_Properties.m_RightHandWeapon, transform.position);
+            }
         }
+    }
+
+    public bool IsBulletFromOwnCamp(AmmunitionHandle ammunitionHandle, ECamp launcherCamp)
+    {
+        return ammunitionHandle.launcherCharacter == gameObject || launcherCamp == m_Properties.m_Properties.m_Camp;
     }
 }
