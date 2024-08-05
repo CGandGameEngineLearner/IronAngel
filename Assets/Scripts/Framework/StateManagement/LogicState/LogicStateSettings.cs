@@ -50,6 +50,11 @@ namespace LogicState
             new LogicState_PlayerShooting(ELogicState.PlayerShooting),
             new LogicState(ELogicState.EnemyInRangeOfAttack),
             new LogicState_AIAttacking(ELogicState.AIAttacking),
+            // 以上是LogicState ---------------------
+            
+            // 以下是BuffState ----------------------
+            new BuffState_Speed(ELogicState.SpeedModifier),
+            new BuffState_Stun(ELogicState.StunModifier),
         };
     }
 }
