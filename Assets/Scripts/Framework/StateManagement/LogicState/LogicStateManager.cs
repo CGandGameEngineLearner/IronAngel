@@ -19,7 +19,7 @@ namespace LogicState
         
         public LogicStateConfig LogicStateConfig;
         
-
+    
         public bool AddState(ELogicState stateEnum)
         {
             LogicStateSetting stateSetting = LogicStateConfig.GetLogicStateSetting(stateEnum);

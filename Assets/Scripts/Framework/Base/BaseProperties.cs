@@ -21,6 +21,14 @@ public class BaseProperties : NetworkBehaviour
     }
 }
 
+/// <summary>
+/// 阵营
+/// </summary>
+public enum ECamp
+{
+    Player,
+    Enemy,
+}
 
 [Serializable]
 public struct Properties
@@ -78,4 +86,7 @@ public struct Properties
 
     [Tooltip("AI的射击角度误差范围"),Range(0,90)]
     public float m_RangeOfAimingError;
+
+    [Tooltip("阵营")]
+    public ECamp m_Camp;
 }

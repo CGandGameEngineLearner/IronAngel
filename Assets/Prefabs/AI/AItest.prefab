@@ -639,6 +639,7 @@ MonoBehaviour:
     m_AttackRange: 10
     m_TokenWeight: 1
     m_RangeOfAimingError: 1
+    m_Camp: 1
 --- !u!195 &3478913082591308681
 NavMeshAgent:
   m_ObjectHideFlags: 0

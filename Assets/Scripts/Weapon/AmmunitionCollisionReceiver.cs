@@ -70,10 +70,19 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
             return;
         }
 
-        if (ammunitionHandle.launcherCharacter==gameObject)
+        var launcherCharacterProperties = ammunitionHandle.launcherCharacter.GetComponent<BaseProperties>();
+        if (launcherCharacterProperties == null)
         {
             return;
         }
+
+        var launcherCamp = launcherCharacterProperties.m_Properties.m_Camp;
+        
+        if (ammunitionHandle.launcherCharacter==gameObject||launcherCamp==m_Properties.m_Properties.m_Camp)
+        {
+            return;
+        }
+        
 
         if(TryGetComponent<BaseProperties>(out var prop) == false)
         {
