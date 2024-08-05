@@ -3,9 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
+using LogicState;
 
 
 [RequireComponent(typeof(BaseProperties))]
+[RequireComponent (typeof(LogicStateManager))]
 [RequireComponent(typeof(BoxCollider2D))]
 public class AmmunitionCollisionReceiver : NetworkBehaviour
 {
@@ -19,6 +21,7 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
     // 能量盾的特殊Tag
     public List<SpecialAtkType> m_specialAtkTypes = new List<SpecialAtkType>();
     private BoxCollider2D m_Collider;
+    private LogicStateManager m_LogicStateManager;
 
     public WeaponCollisionReceiver m_LeftWeapon;
     public WeaponCollisionReceiver m_RightWeapon;
@@ -29,6 +32,7 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
         m_DamageReductionCoefficient = setting._DamageReductionCoefficient;
 
         m_Properties = GetComponent<BaseProperties>();
+        m_LogicStateManager = GetComponent<LogicStateManager>();
 
         m_Properties.m_Properties.m_CurrentArmor = 0;
 
@@ -117,9 +121,14 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
     {
         var m_Properties = GetComponent<BaseProperties>();
 
+        // 读取子弹上的Buff并且加入LogicStateManager
+        NoticeBuff(config.m_EffectBuff);
+
+        int damage = config.m_Damage;
+
         // 有能量护盾
         // 直接结算
-        if(m_Properties.m_Properties.m_EnergyShieldCount > 0)
+        if (m_Properties.m_Properties.m_EnergyShieldCount > 0)
         {
             // 特殊子弹对能量盾的效果
             foreach(var type in m_specialAtkTypes)
@@ -145,7 +154,7 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
             return;
         }
 
-        int damage = config.m_Damage;
+        
 
         // 护甲大于0才进行减伤计算
         // 下面两句的计算顺序不能对换
@@ -268,6 +277,38 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
         if (damageSensor != null)
         {
             damageSensor.PutPerceiveGameObject(attacker);
+        }
+    }
+
+    public void NoticeBuff(List<BuffStruct> buffs)
+    {
+        foreach(BuffStruct buff in buffs)
+        {
+            switch(buff.m_EffectBuff)
+            {
+                case ELogicState.SpeedModifier:
+                    {
+                        /*if(m_LogicStateManager.IncludeState(ELogicState.SpeedModifier))
+                        {
+                            Debug.Log("减速还剩：" + m_LogicStateManager.GetStateDuration(ELogicState.SpeedModifier));
+                        }*/
+                        
+                        // 如果本来没有减速并且能够挂上减速Buff
+                        if (m_LogicStateManager.IncludeState(ELogicState.SpeedModifier) == false && m_LogicStateManager.AddState(ELogicState.SpeedModifier))
+                        {
+                            Debug.Log("减速Buff的时间" + buff.m_Duration);
+                            Debug.Log(m_LogicStateManager.SetStateDuration(ELogicState.SpeedModifier, buff.m_Duration));
+                            Debug.Log(gameObject.name + "减速还剩：" + m_LogicStateManager.GetStateDuration(ELogicState.SpeedModifier));
+                            EventCenter.Broadcast<GameObject, float, bool>(EventType.Buff_Speed, gameObject, buff.m_Number, true);
+                        }
+                        break;
+                    }
+                case ELogicState.StunModifier:
+                    {
+                        m_LogicStateManager.AddState(ELogicState.StunModifier);
+                        break;
+                    }
+            }
         }
     }
 }

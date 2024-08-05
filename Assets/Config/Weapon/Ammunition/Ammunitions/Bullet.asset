@@ -17,7 +17,12 @@ MonoBehaviour:
   m_MaxPoolSize: 1000
   m_Speed: 20
   m_LifeDistance: 20
-  m_Damage: 0
-  m_PostAmmunitionType: 1
+  m_Damage: 10
+  m_PostAmmunitionType: 0
+  m_IsExplodeDamage: 0
   m_specialAtkTypes: 01000000
   m_LeastLiveFixedFrameCount: 0
+  m_EffectBuff:
+  - m_EffectBuff: 10
+    m_Duration: 3
+    m_Number: 2

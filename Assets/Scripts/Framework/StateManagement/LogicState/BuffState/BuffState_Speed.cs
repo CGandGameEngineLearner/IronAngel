@@ -1,3 +1,5 @@
+using UnityEngine;
+
 namespace LogicState
 {
     public class BuffState_Speed : LogicState
@@ -29,6 +31,7 @@ namespace LogicState
         public override void OnStateOut()
         {
             base.OnStateOut();
+            EventCenter.Broadcast<GameObject, float, bool>(EventType.Buff_Speed, GetOwner().gameObject, 0, false);
         }
 
         public override void UnInit()

@@ -14,12 +14,28 @@ public class AIMovement : MonoBehaviour
     private Vector3 m_MoveDirection = Vector3.zero;
     private BaseProperties m_BaseProperties;
 
+    private float m_NormalSpeed;
     private void Start()
     {
         m_BaseProperties = GetComponent<BaseProperties>();
         agent = GetComponent<NavMeshAgent>();
         m_LogicStateManager = GetComponent<LogicStateManager>();
         m_LastPos = transform.position;
+        m_NormalSpeed = agent.speed;
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="speed"></param> 这个参数是detla值
+    public void SetSpeed(float speed)
+    {
+        agent.speed = agent.speed + speed > 0 ? agent.speed + speed : 0;
+    }
+
+    public void ResetSpeed()
+    {
+        agent.speed = m_NormalSpeed;
     }
 
     private void Update()

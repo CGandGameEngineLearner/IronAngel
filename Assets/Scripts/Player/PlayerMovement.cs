@@ -36,6 +36,21 @@ public class PlayerMovement
         _dashCoolDownRemainTime = m_DashCoolDownTime;
     }
 
+    /// <summary>
+    /// 改变速度
+    /// </summary>
+    /// <param name="speed"></param> 这个是delta值
+    public void SetSpeed(float speed)
+    {
+        m_Speed += speed;
+        m_Speed = m_Speed > 0 ? m_Speed : 0;
+    }
+
+    public void ResetSpeed()
+    {
+        m_Speed = m_NormalSpeed;
+    }
+
     public void Move(Vector2 dir)
     {
         m_Rigidbody = m_Player.GetComponent<Rigidbody2D>();
