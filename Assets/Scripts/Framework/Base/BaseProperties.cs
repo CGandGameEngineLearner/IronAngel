@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Mirror;
 using UnityEngine;
+using Range = DG.DemiLib.Range;
 
 public class BaseProperties : NetworkBehaviour
 {
@@ -48,8 +49,14 @@ public struct Properties
     [Tooltip("右手武器每次攻击的持续时长")]
     public float m_RightHandWeaponAttackingDuration;
 
-    [Tooltip("AI与玩家交战的距离与其攻击距离之比"),Range(0,1)]
-    public float m_EngagementPosRatio;
+    [Tooltip("左手武器使用概率"),Range(0,1)]
+    public float m_ProbabilityOfLeftWeapon;
+
+    [Tooltip("右手武器使用概率"),Range(0,1)]
+    public float m_ProbabilityOfRightWeapon;
+
+    [Tooltip("AI与玩家交战的距离")]
+    public float m_EngagementDistance;
     
     [Tooltip("护甲")]
     public int m_Armor;

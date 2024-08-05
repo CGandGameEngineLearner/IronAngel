@@ -24,7 +24,7 @@ public class AIMovement : MonoBehaviour
 
     private void Update()
     {
-        m_MoveDirection = (transform.position - m_LastPos).normalized;
+        m_MoveDirection = (transform.position - m_LastPos).normalized;   
         m_LastPos = transform.position;
         if (m_MoveDirection.magnitude > 0)
         {
@@ -47,8 +47,8 @@ public class AIMovement : MonoBehaviour
     public virtual void Chase(GameObject targetGameObject)
     {
         var offsetVec = (transform.position - targetGameObject.transform.position).normalized;
-        offsetVec += m_BaseProperties.m_Properties.m_AttackRange * m_BaseProperties.m_Properties.m_EngagementPosRatio * offsetVec;
-        var targetPos = targetGameObject.transform.position - offsetVec;
+        offsetVec += m_BaseProperties.m_Properties.m_EngagementDistance * offsetVec;
+        var targetPos = targetGameObject.transform.position + offsetVec;
         agent.SetDestination(targetPos);
     }   
 
