@@ -70,6 +70,8 @@ public class WeaponCollisionReceiver : NetworkBehaviour
         {
             return;
         }
+        
+        m_AmmunitionCollisionReceiver.NoticeDamage(ammunitionHandle.launcherCharacter);
         CalculateDamage(ammunitionHandle.ammunitionConfig);
         ammunitionFactory.UnRegisterAmmunition(collision.gameObject);
     }

@@ -31,6 +31,10 @@ public class AIMovement : MonoBehaviour
             float angle = Vector2.Angle(new Vector2(0, 1), m_MoveDirection);
             transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(m_MoveDirection.y,m_MoveDirection.x) * Mathf.Rad2Deg );
         }
+        else
+        {
+            transform.rotation = Quaternion.Euler(0, 0, 0);
+        }
     }
 
     public virtual bool SetDestination(Vector3 target)

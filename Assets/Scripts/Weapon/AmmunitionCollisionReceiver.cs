@@ -91,13 +91,8 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
 #endif
             return;
         }
-
-        var damageSensor = GetComponent<DamageSensor>();
-        if (damageSensor != null)
-        {
-            damageSensor.PutPerceiveGameObject(ammunitionHandle.launcherCharacter);
-        }
         
+        NoticeDamage(ammunitionHandle.launcherCharacter);
         CalculateDamage(ammunitionHandle.ammunitionConfig, m_Properties.m_Properties.m_CurrentArmor, collision.ClosestPoint(new Vector2(transform.position.x, transform.position.y) + m_Collider.offset));
         ammunitionFactory.UnRegisterAmmunition(collision.gameObject);
     }
@@ -261,5 +256,18 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
     public bool IsBulletFromOwnCamp(AmmunitionHandle ammunitionHandle, ECamp launcherCamp)
     {
         return ammunitionHandle.launcherCharacter == gameObject || launcherCamp == m_Properties.m_Properties.m_Camp;
+    }
+
+    /// <summary>
+    /// 向DamageSensor通知受到攻击了
+    /// </summary>
+    /// <param name="attacker"></param>
+    public void NoticeDamage(GameObject attacker)
+    {
+        var damageSensor = GetComponent<DamageSensor>();
+        if (damageSensor != null)
+        {
+            damageSensor.PutPerceiveGameObject(attacker);
+        }
     }
 }

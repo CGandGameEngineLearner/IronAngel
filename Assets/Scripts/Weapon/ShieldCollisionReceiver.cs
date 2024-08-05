@@ -63,6 +63,8 @@ public class ShieldCollisionReceiver : NetworkBehaviour
         {
             return;
         }
+        
+        m_AmmunitionCollisionReceiver.NoticeDamage(ammunitionHandle.launcherCharacter);
         CalculateDamage(ammunitionHandle.ammunitionConfig, collision.ClosestPoint(new Vector2(transform.position.x, transform.position.y) + m_Collider.offset));
         ammunitionFactory.UnRegisterAmmunition(collision.gameObject);
     }
