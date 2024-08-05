@@ -36,6 +36,11 @@ public class VisionSensor:MonoBehaviour,IAISensor
         return result;
     }
 
+    public void PutPerceiveGameObject(GameObject go)
+    {
+        
+    }
+
     private void Start()
     {
         RelativeSightDirection.Normalize();

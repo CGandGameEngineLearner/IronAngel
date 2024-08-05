@@ -10,4 +10,6 @@ public interface IAISensor
     /// </summary>
     /// <returns></returns>
     public List<GameObject> GetPerceiveGameObjects();
+
+    public void PutPerceiveGameObject(GameObject go);
 }

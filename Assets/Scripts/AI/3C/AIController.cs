@@ -3,6 +3,7 @@ using System;
 using UnityEngine;
 using UnityEngine.Splines;
 using System.Collections.Generic;
+using System.Linq;
 using AI.TokenPool;
 using Mirror;
 using IronAngel;
@@ -13,7 +14,8 @@ using Unity.VisualScripting;
 public class AIController : NetworkBehaviour
 {
     private AIMovement m_AIMovement;
-    private IAISensor m_AISensor;
+    private DamageSensor m_DamageSensor;
+    private VisionSensor m_VisionSensor;
     private GameObject m_ChaseGO;
     private BaseProperties m_BaseProperties;
     private LogicStateManager m_LogicStateManager;
@@ -32,7 +34,8 @@ public class AIController : NetworkBehaviour
         m_BaseProperties = GetComponent<BaseProperties>();
         m_LogicStateManager = GetComponent<LogicStateManager>();
         m_AIMovement = GetComponent<AIMovement>();
-        m_AISensor = GetComponent<IAISensor>();
+        m_DamageSensor = GetComponent<DamageSensor>();
+        m_VisionSensor = GetComponent<VisionSensor>();
 
 
         EventCenter.AddListener<LogicStateManager,ELogicState>(
@@ -95,7 +98,7 @@ public class AIController : NetworkBehaviour
     [ServerCallback]
     public virtual void Chase()
     {
-        var chaseGameObjects = m_AISensor.GetPerceiveGameObjects();
+        var chaseGameObjects = GetPerceiveGameObjects();
         if (chaseGameObjects.Count > 0)
         {
             m_ChaseGO = chaseGameObjects[0];
@@ -120,7 +123,9 @@ public class AIController : NetworkBehaviour
     [ServerCallback]
     public List<GameObject> GetPerceiveGameObjects()
     {
-        return m_AISensor.GetPerceiveGameObjects();
+        List<GameObject> result =
+            (m_DamageSensor.GetPerceiveGameObjects().Concat(m_VisionSensor.GetPerceiveGameObjects())).ToList();
+        return result;
     }
 
     [ServerCallback]

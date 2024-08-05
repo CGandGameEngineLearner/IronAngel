@@ -91,6 +91,12 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
 #endif
             return;
         }
+
+        var damageSensor = GetComponent<DamageSensor>();
+        if (damageSensor != null)
+        {
+            damageSensor.PutPerceiveGameObject(ammunitionHandle.launcherCharacter);
+        }
         
         CalculateDamage(ammunitionHandle.ammunitionConfig, m_Properties.m_Properties.m_CurrentArmor, collision.ClosestPoint(new Vector2(transform.position.x, transform.position.y) + m_Collider.offset));
         ammunitionFactory.UnRegisterAmmunition(collision.gameObject);
