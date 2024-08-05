@@ -146,6 +146,7 @@ public class AmmunitionFactory
         AmmunitionConfig ammunitionConfig, AtkType atkType,
         Vector2 startPoint, Vector2 dir)
     {
+        ammunition.transform.rotation = Quaternion.identity;
         RegisterAmmunition(owner, ammunition, ammunitionType, ammunitionConfig, atkType, startPoint, dir);
     }
 
