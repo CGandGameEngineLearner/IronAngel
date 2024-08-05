@@ -8,12 +8,12 @@ namespace LogicState
     
         public override void Init()
         {
-            Debug.Log(GetType()+"Init()");
+            //Debug.Log(GetType()+"Init()");
             
         }
         public override void OnStateIn()
         {
-            Debug.Log(GetType()+"OnStateIn()");
+            //Debug.Log(GetType()+"OnStateIn()");
             
         }
     
