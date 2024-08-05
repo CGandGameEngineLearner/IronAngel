@@ -150,6 +150,22 @@ namespace LogicState
             return true;
         }
         
+        /// <summary>
+        /// 获取状态的持续时间
+        /// 如果没有这个状态则会返回0.0f
+        /// </summary>
+        /// <param name="eLogicState"></param>
+        /// <returns>float</returns>
+        public float GetStateDuration(ELogicState eLogicState)
+        {
+            if (!IncludeState(eLogicState))
+            {
+                return 0.0f;
+            }
+
+            return m_LogicStateDic[eLogicState].Duration;
+        }
+        
         // Start is called before the first frame update
         void Start()
         {
