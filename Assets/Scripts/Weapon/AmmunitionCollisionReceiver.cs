@@ -78,7 +78,7 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
 
         var launcherCamp = launcherCharacterProperties.m_Properties.m_Camp;
         
-        if (ammunitionHandle.launcherCharacter==gameObject||launcherCamp==m_Properties.m_Properties.m_Camp)
+        if (IsBulletFromOwnCamp(ammunitionHandle, launcherCamp))
         {
             return;
         }
@@ -234,5 +234,10 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
 #endif
             m_RightWeapon.gameObject.SetActive(false);
         }
+    }
+
+    public bool IsBulletFromOwnCamp(AmmunitionHandle ammunitionHandle, ECamp launcherCamp)
+    {
+        return ammunitionHandle.launcherCharacter == gameObject || launcherCamp == m_Properties.m_Properties.m_Camp;
     }
 }
