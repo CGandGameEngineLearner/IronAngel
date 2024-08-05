@@ -14,6 +14,8 @@ public class AIMovement : MonoBehaviour
     private Vector3 m_MoveDirection = Vector3.zero;
     private BaseProperties m_BaseProperties;
 
+    private GameObject m_ChaseTarget;
+
     private void Start()
     {
         m_BaseProperties = GetComponent<BaseProperties>();
@@ -26,14 +28,31 @@ public class AIMovement : MonoBehaviour
     {
         m_MoveDirection = (transform.position - m_LastPos).normalized;   
         m_LastPos = transform.position;
-        if (m_MoveDirection.magnitude > 0)
+        
+
+        if (m_LogicStateManager.IncludeState(ELogicState.AIPerceivedTarget)&&m_ChaseTarget!=null)
         {
-            float angle = Vector2.Angle(new Vector2(0, 1), m_MoveDirection);
-            transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(m_MoveDirection.y,m_MoveDirection.x) * Mathf.Rad2Deg );
+           
+            var targetDir = (m_ChaseTarget.transform.position - transform.position).normalized;
+
+            Quaternion targetRotation;
+            targetRotation = Quaternion.Euler(new Vector3(0, 0, Mathf.Atan2(targetDir.y, targetDir.x) * Mathf.Rad2Deg - 90.0f));
+            
+            var rotateTowards = Quaternion.RotateTowards(transform.rotation, targetRotation, agent.angularSpeed * Time.deltaTime);
+            
+            transform.rotation = rotateTowards;
         }
         else
-        {
-            transform.rotation = Quaternion.Euler(0, 0, 0);
+        {   
+            if (m_MoveDirection.magnitude > 0)
+            {
+                float angle = Vector2.Angle(new Vector2(0, 1), m_MoveDirection);
+                transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(m_MoveDirection.y,m_MoveDirection.x) * Mathf.Rad2Deg -90 );
+            }
+            else
+            {
+                transform.rotation = Quaternion.Euler(0, 0, 0);
+            }
         }
     }
 
@@ -41,7 +60,12 @@ public class AIMovement : MonoBehaviour
     {
         return agent.SetDestination(target);
     }
-    
+
+    public virtual void Dash(Vector3 dir)
+    {
+        
+    }
+
     /// <summary>
     /// AI会追到距离玩家一定位置的地方与玩家拉开距离开火，
     /// m_BaseProperties.m_Properties.m_EngagementPosRatio：
@@ -50,6 +74,7 @@ public class AIMovement : MonoBehaviour
     /// <param name="targetGameObject"></param>
     public virtual void Chase(GameObject targetGameObject)
     {
+        m_ChaseTarget = targetGameObject;
         var offsetVec = (transform.position - targetGameObject.transform.position).normalized;
         offsetVec += m_BaseProperties.m_Properties.m_EngagementDistance * offsetVec;
         var targetPos = targetGameObject.transform.position + offsetVec;

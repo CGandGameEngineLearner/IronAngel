@@ -16,7 +16,7 @@ namespace LogicState
         PlayerDashing,                      // 玩家冲刺中
         PlayerShooting,                     // 玩家开枪中
         AIPatroling,                        // AI巡逻中
-        AIVisionPerceived,                  // AI视觉察觉到目标
+        AIPerceivedTarget,                  // AI察觉到目标
         EnemyInRangeOfAttack,               // 敌人进入了攻击范围
         AIAttacking,                        // AI攻击中
         // ---------------------------------- 以上为LogicState ---------------------------------- 
@@ -46,7 +46,7 @@ namespace LogicState
             new LogicState_PlayerWalking(ELogicState.PlayerWalking),
             new LogicState_PlayerDashing(ELogicState.PlayerDashing),
             new LogicState(ELogicState.AIPatroling),
-            new LogicState(ELogicState.AIVisionPerceived),
+            new LogicState(ELogicState.AIPerceivedTarget),
             new LogicState_PlayerShooting(ELogicState.PlayerShooting),
             new LogicState(ELogicState.EnemyInRangeOfAttack),
             new LogicState_AIAttacking(ELogicState.AIAttacking),

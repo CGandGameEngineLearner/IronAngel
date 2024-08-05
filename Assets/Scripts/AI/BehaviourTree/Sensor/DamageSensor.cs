@@ -26,7 +26,7 @@ public class DamageSensor:MonoBehaviour,IAISensor
     public void PutPerceiveGameObject(GameObject go)
     {
         m_WhoDamaged.Add(go);
-        m_LogicStateManager.AddState(ELogicState.AIVisionPerceived);
+        m_LogicStateManager.AddState(ELogicState.AIPerceivedTarget);
     }
 
     

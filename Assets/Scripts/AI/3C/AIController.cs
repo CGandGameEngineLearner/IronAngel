@@ -208,7 +208,7 @@ public class AIController : NetworkBehaviour
         
         if (leftFire)
         {
-            var dir = enemy[0].transform.position - transform.position;
+            var dir = transform.rotation*Vector3.up;
             dir = ComputeAngleOfFire(dir);
         
             Debug.DrawLine(transform.position,transform.position + 10*dir,Color.red,10);
@@ -217,7 +217,7 @@ public class AIController : NetworkBehaviour
         
         if(rightFire)
         {
-            var dir = enemy[0].transform.position - transform.position;
+            var dir = transform.rotation*Vector3.up;
             dir = ComputeAngleOfFire(dir);
         
             Debug.DrawLine(transform.position,transform.position + 10*dir,Color.red,10);
