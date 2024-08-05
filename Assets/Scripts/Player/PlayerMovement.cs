@@ -15,6 +15,7 @@ public class PlayerMovement
     private int m_DashCount;
     private int m_MaxDashCount;
     private Rigidbody2D m_Rigidbody;
+    private LayerMask m_WallLayer;
 
 
     private float _dashCoolDownRemainTime = -1;
@@ -29,6 +30,7 @@ public class PlayerMovement
         m_DashCoolDownTime = spec.m_DashCoolDownTime;
         m_DashCount = spec.m_DashCount;
         m_MaxDashCount = spec.m_MaxDashCount;
+        m_WallLayer = spec.m_WallLayer;
 
         m_Rigidbody = m_Player.GetComponent<Rigidbody2D>();
         _dashCoolDownRemainTime = m_DashCoolDownTime;
@@ -58,6 +60,11 @@ public class PlayerMovement
         var v2 = m_Rigidbody.position;
         v2.x += _dashDir.x * m_DashSpeed * Time.fixedDeltaTime;
         v2.y += _dashDir.y * m_DashSpeed * Time.fixedDeltaTime;
+        var hit = Physics2D.Raycast(m_Rigidbody.position, _dashDir, Vector2.Distance(m_Rigidbody.position, v2) + 1, m_WallLayer);
+        if(hit && Vector2.Distance(m_Rigidbody.position, v2) >= Vector2.Distance(m_Rigidbody.position, hit.point))
+        {
+            v2 = hit.point - _dashDir * 0.1f;
+        }
         m_Rigidbody.MovePosition(v2);
     }
 
@@ -121,4 +128,5 @@ public struct PlayerMovementSpec
     public float m_DashCoolDownTime;
     public int m_DashCount;
     public int m_MaxDashCount;
+    public LayerMask m_WallLayer;
 }
