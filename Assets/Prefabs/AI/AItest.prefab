@@ -640,6 +640,8 @@ MonoBehaviour:
     m_TokenWeight: 1
     m_RangeOfAimingError: 1
     m_Camp: 1
+    m_DropWeapon_WeaponDestroy: 1
+    m_DropWeapon_CharacterDied: 1
 --- !u!195 &3478913082591308681
 NavMeshAgent:
   m_ObjectHideFlags: 0
