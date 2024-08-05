@@ -296,9 +296,9 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
                         // 如果本来没有减速并且能够挂上减速Buff
                         if (m_LogicStateManager.IncludeState(ELogicState.SpeedModifier) == false && m_LogicStateManager.AddState(ELogicState.SpeedModifier))
                         {
-                            Debug.Log("减速Buff的时间" + buff.m_Duration);
-                            Debug.Log(m_LogicStateManager.SetStateDuration(ELogicState.SpeedModifier, buff.m_Duration));
-                            Debug.Log(gameObject.name + "减速还剩：" + m_LogicStateManager.GetStateDuration(ELogicState.SpeedModifier));
+                            Debug.Log("Add ELogicState.SpeedModifier");
+                            m_LogicStateManager.SetStateDuration(ELogicState.SpeedModifier, buff.m_Duration);
+                            //Debug.Log(gameObject.name + "减速还剩：" + m_LogicStateManager.GetStateDuration(ELogicState.SpeedModifier));
                             EventCenter.Broadcast<GameObject, float, bool>(EventType.Buff_Speed, gameObject, buff.m_Number, true);
                         }
                         break;

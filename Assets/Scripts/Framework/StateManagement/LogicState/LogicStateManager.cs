@@ -141,12 +141,17 @@ namespace LogicState
         /// <returns></returns>
         public bool SetStateDuration(ELogicState eLogicState, float duration)
         {
-            if (!m_LogicStateDic.ContainsKey(eLogicState))
+            if (m_FutureStatesBuffer.ContainsKey(eLogicState))
             {
-                return false;
+                m_FutureStatesBuffer[eLogicState].Duration = duration;
+                return true;
             }
-
-            m_LogicStateDic[eLogicState].Duration = duration;
+            if(m_LogicStateDic.ContainsKey(eLogicState))
+            {
+                m_LogicStateDic[eLogicState].Duration = duration;
+                return true;
+            }
+            
             return true;
         }
         
@@ -158,12 +163,16 @@ namespace LogicState
         /// <returns>float</returns>
         public float GetStateDuration(ELogicState eLogicState)
         {
-            if (!IncludeState(eLogicState))
+            if (m_FutureStatesBuffer.ContainsKey(eLogicState))
             {
-                return 0.0f;
+                return m_FutureStatesBuffer[eLogicState].Duration;
             }
-
-            return m_LogicStateDic[eLogicState].Duration;
+            else if(m_LogicStateDic.ContainsKey(eLogicState))
+            {
+                return m_LogicStateDic[eLogicState].Duration;
+            }
+            
+            return 0.0f;
         }
         
         // Start is called before the first frame update

@@ -32,6 +32,7 @@ namespace LogicState
 
     public static class LogicStatesSettings
     {
+        private static Dictionary<ELogicState,LogicState> m_LogicStateTemplateDic;
         /// <summary>
         /// 新增状态模板对象实例
         /// </summary> <summary>
@@ -39,7 +40,7 @@ namespace LogicState
         /// </summary>
         /// <typeparam name="LogicState"></typeparam>
         /// <returns></returns>
-        public static List<LogicState> LogicStateTemplates = new List<LogicState>()
+        private static List<LogicState> LogicStateTemplates = new List<LogicState>()
         {
             new LogicState(ELogicState.Default),
             new LogicState_Example(ELogicState.Example),
@@ -56,5 +57,19 @@ namespace LogicState
             new BuffState_Speed(ELogicState.SpeedModifier),
             new BuffState_Stun(ELogicState.StunModifier),
         };
+
+        public static LogicState GetStateTemplate(ELogicState eLogicState)
+        {
+            if (m_LogicStateTemplateDic == null)
+            {
+                m_LogicStateTemplateDic = new Dictionary<ELogicState, LogicState>();
+                foreach (var state in LogicStateTemplates)
+                {
+                    m_LogicStateTemplateDic[state.LogicStateEnum] = state;
+                }
+            }
+
+            return m_LogicStateTemplateDic[eLogicState];
+        }
     }
 }
