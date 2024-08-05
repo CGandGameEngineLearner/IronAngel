@@ -64,7 +64,6 @@ public class PlayerMovement
     public void LookAt(Vector2 dir)
     {
         dir = dir.normalized;
-        float angle = Vector2.Angle(new Vector2(0, 1), dir);
         
         // 用鼠标转换出来的坐标计算会差90°
         m_Rigidbody.rotation = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - 90.0f;
