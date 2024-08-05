@@ -197,7 +197,7 @@ public class WeaponSystemCenter : NetworkBehaviour
         }
 
         // 散布
-        dir = Utils.ApplyScatterZ(dir, weaponConfig.spreadAngle);
+        dir = IronAngel.Utils.ApplyScatterZ(dir, weaponConfig.spreadAngle);
 
         // 服务端
         Fire(character, m_WeaponToTypeDic[weapon], ammunitionType, startPoint, dir);

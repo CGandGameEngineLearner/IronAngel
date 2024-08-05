@@ -1,13 +1,14 @@
 
+using System;
 using UnityEngine;
 using UnityEngine.Splines;
 using System.Collections.Generic;
 using AI.TokenPool;
 using Mirror;
-using System;
-using System.Linq;
+using IronAngel;
 using Random = UnityEngine.Random;
 using LogicState;
+using Unity.VisualScripting;
 
 public class AIController : NetworkBehaviour
 {
@@ -163,30 +164,60 @@ public class AIController : NetworkBehaviour
         
         m_LogicStateManager.AddState(ELogicState.AIAttacking);
         
-        // 随机使用左右手武器
-        int rand = Random.Range(0, 1);
-        
-        if (rand == 0)
+        if (!m_LogicStateManager.IncludeState(ELogicState.AIAttacking))
         {
-            m_LogicStateManager.AddState(ELogicState.AIAttacking);
-            m_LogicStateManager.SetStateDuration(ELogicState.AIAttacking, m_BaseProperties.m_Properties.m_LeftHandWeaponAttackingDuration);
+            return false;
+        }
+       
+
+        var leftFire = IronAngel.Utils.RandomBool(m_BaseProperties.m_Properties.m_ProbabilityOfLeftWeapon);
+        var rightFire = IronAngel.Utils.RandomBool(m_BaseProperties.m_Properties.m_ProbabilityOfRightWeapon);
+
+        if (leftFire == false && rightFire == false)
+        {
+            if (IronAngel.Utils.RandomBool(0.5f))
+            {
+                leftFire = true;
+            }
+            else
+            {
+                rightFire = true;
+            }
+        }
+
+        var leftDuration = m_BaseProperties.m_Properties.m_LeftHandWeaponAttackingDuration;
+        var rightDuration = m_BaseProperties.m_Properties.m_RightHandWeaponAttackingDuration;
+        
+        if (leftFire && rightFire)
+        {
+            m_LogicStateManager.SetStateDuration(ELogicState.AIAttacking, Math.Max(leftDuration, rightDuration));
+        }
+        else if (leftFire)
+        {
+            m_LogicStateManager.SetStateDuration(ELogicState.AIAttacking, leftDuration);
+        }
+        else if (rightFire)
+        {
+            m_LogicStateManager.SetStateDuration(ELogicState.AIAttacking, rightDuration);
+        }
+        
+        if (leftFire)
+        {
             var dir = enemy[0].transform.position - transform.position;
             dir = ComputeAngleOfFire(dir);
         
             Debug.DrawLine(transform.position,transform.position + 10*dir,Color.red,10);
             WeaponSystemCenter.Instance.CmdFire(gameObject, m_LeftHandWeapon,transform.position,dir);
         }
-        else
+        
+        if(rightFire)
         {
-            m_LogicStateManager.SetStateDuration(ELogicState.AIAttacking, m_BaseProperties.m_Properties.m_RightHandWeaponAttackingDuration);
             var dir = enemy[0].transform.position - transform.position;
             dir = ComputeAngleOfFire(dir);
         
             Debug.DrawLine(transform.position,transform.position + 10*dir,Color.red,10);
             WeaponSystemCenter.Instance.CmdFire(gameObject, m_RightHandWeapon,transform.position,dir);
         }
-        
-        
         
         return true;
     }
