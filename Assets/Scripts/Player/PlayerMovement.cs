@@ -63,7 +63,7 @@ public class PlayerMovement
         var hit = Physics2D.Raycast(m_Rigidbody.position, _dashDir, Vector2.Distance(m_Rigidbody.position, v2) + 1, m_WallLayer);
         if(hit && Vector2.Distance(m_Rigidbody.position, v2) >= Vector2.Distance(m_Rigidbody.position, hit.point))
         {
-            v2 = hit.point - _dashDir * 0.001f;
+            v2 = hit.point - _dashDir * 0.1f;
         }
         m_Rigidbody.MovePosition(v2);
     }
