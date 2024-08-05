@@ -342,8 +342,8 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0.2
+  m_Mass: 0.01
+  m_LinearDrag: 5
   m_AngularDrag: 0.2
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -353,7 +353,7 @@ Rigidbody2D:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
@@ -495,9 +495,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5b882c521fc1a346a1ef4c9ce24e16a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Camera: {fileID: 487800976973705117, guid: 69677af734c8e1748959e20b5597d2f2, type: 3}
-  _VirtualCamera: {fileID: 1380324233139244480, guid: 1736d91bd8315dd4fab24ac4cf362c84, type: 3}
-  _VirtualCameraTarget: {fileID: 2183100947221233307, guid: f60d361751150f54f854a59e3f71fbb1, type: 3}
   _CameraMinDistance: 0.021
   _CameraMaxDistance: 0.475
   _PlayerSpec:
@@ -513,6 +510,9 @@ MonoBehaviour:
     m_WeaponLayer:
       serializedVersion: 2
       m_Bits: 64
+    _WallLayer:
+      serializedVersion: 2
+      m_Bits: 512
   _AudioConfig: {fileID: 11400000, guid: 4acc25dfd8dc1264298860c5fd8abc67, type: 2}
   _WeaponCats: []
   _AmmunitionCats: []

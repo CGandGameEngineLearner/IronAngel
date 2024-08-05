@@ -22,6 +22,7 @@ public class Player
         moveSpec.m_DashCoolDownTime = spec.m_DashCoolDownTime;
         moveSpec.m_DashCount = spec.m_DashCount;
         moveSpec.m_MaxDashCount = spec.m_MaxDashCount;
+        moveSpec.m_WallLayer = spec._WallLayer;
         m_PlayerMovement.Init(moveSpec);
 
         m_PlayerHand = new PlayerHand();
@@ -158,4 +159,7 @@ public struct PlayerSpec
     public GameObject m_PlayerRightHand;
     public float m_DetectRange;
     public LayerMask m_WeaponLayer;
+
+    // wall layer
+    public LayerMask _WallLayer;
 }
