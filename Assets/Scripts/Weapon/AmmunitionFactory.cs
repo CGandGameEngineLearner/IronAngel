@@ -30,6 +30,8 @@ public class AmmunitionHandle
         this.ammunitionConfig = ammunitionConfig;
         this.startPoint = startPoint;
         this.dir = dir;
+
+        ammunition.transform.position = startPoint;
     }
     
     public void Clear()
@@ -144,6 +146,7 @@ public class AmmunitionFactory
         AmmunitionConfig ammunitionConfig, AtkType atkType,
         Vector2 startPoint, Vector2 dir)
     {
+        ammunition.transform.rotation = Quaternion.identity;
         RegisterAmmunition(owner, ammunition, ammunitionType, ammunitionConfig, atkType, startPoint, dir);
     }
 
@@ -165,6 +168,7 @@ public class AmmunitionFactory
             var postType = handle.ammunitionConfig.postAmmunitionType;
             if (postType != AmmunitionType.None)
             {
+                // m_AmmunitionPool.GetObject(postType, handle.rigidbody2D.transform.position, Quaternion.identity);
                 ShootAmmunition(handle.launcherCharacter, m_AmmunitionPool.GetObject(postType), postType, m_AmmunitionConfigs[postType],
                     AtkType.Default, handle.rigidbody2D.transform.position, Vector2.zero);
             }
@@ -220,7 +224,14 @@ public class AmmunitionFactory
                         break;
                 }
 
-                ammunitionQueueToAddNextFrame.Enqueue(ammunitionHandle);
+                if (ammunitionHandle.active == false)
+                {
+                    InternalRecycleAmmunitionHandle(ammunitionHandle);
+                }
+                else
+                {
+                    ammunitionQueueToAddNextFrame.Enqueue(ammunitionHandle);
+                }
             }
             else
             {
@@ -266,7 +277,6 @@ public class AmmunitionFactory
     /// <param name="ammunitionHandle"></param>
     private void InternalProcessDefaultAmmunition(AmmunitionHandle ammunitionHandle)
     {
-        ammunitionHandle.rigidbody2D.position = new Vector3(1, 1, 1);
         // 超出了存活帧就会删除
         if (++ammunitionHandle.liveFrameCount > ammunitionHandle.ammunitionConfig.m_LeastLiveFixedFrameCount)
         {
