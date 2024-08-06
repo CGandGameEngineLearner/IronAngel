@@ -49,10 +49,21 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
             m_Properties.m_Properties.m_CurrentArmor = armor;
         }
 
-        m_Properties.m_Properties.m_RightHandWeaponHP = WeaponSystemCenter.GetWeaponConfig(m_Properties.m_Properties.m_RightHandWeapon).weaponHp;
-        m_Properties.m_Properties.m_LeftHandWeaponHP = WeaponSystemCenter.GetWeaponConfig(m_Properties.m_Properties.m_LeftHandWeapon).weaponHp;
+        if(TryGetComponent<PlayerController>(out var controller))
+        {
+
+        }
+        else
+        {
+            m_Properties.m_Properties.m_RightHandWeaponHP = WeaponSystemCenter.GetWeaponConfig(m_Properties.m_Properties.m_RightHandWeapon).weaponHp;
+            m_Properties.m_Properties.m_LeftHandWeaponHP = WeaponSystemCenter.GetWeaponConfig(m_Properties.m_Properties.m_LeftHandWeapon).weaponHp;
+        }
+        
+
 
         m_Collider = GetComponent<BoxCollider2D>();
+
+        RPCBroadcastDamage(m_Properties.m_Properties);
     }
 
 
@@ -215,7 +226,7 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
         if(m_IsOverallArmor && m_Properties.m_Properties.m_CurrentArmor <= 0)
         {
 #if UNITY_EDITOR
-            //Debug.Log("玩家 ：" + gameObject.name + "损失所有护甲");
+            Debug.Log("玩家 ：" + gameObject.name + "损失所有护甲");
 #endif
             foreach (var shield in m_Shields)
             {
@@ -227,7 +238,7 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
         if (m_Properties.m_Properties.m_EnergyShieldCount <= 0)
         {
 #if UNITY_EDITOR
-            //Debug.Log("玩家 ：" + gameObject.name + "损失能量护盾");
+            Debug.Log("玩家 ：" + gameObject.name + "损失能量护盾");
 #endif
             foreach (var shield in m_Shields)
             {
@@ -247,6 +258,16 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
             {
                 WeaponSystemCenter.Instance.SpawnWeapon(m_Properties.m_Properties.m_LeftHandWeapon, transform.position);
             }
+
+            // 如果是玩家的话就丢失武器
+            if(TryGetComponent<PlayerController>(out var controller))
+            {
+                var weapon = controller.Player.DropPlayerLeftHandWeapon(transform.position);
+                if(weapon)
+                {
+                    NetworkServer.Destroy(weapon);
+                }
+            }
         }
         if(m_Properties.m_Properties.m_RightHandWeaponHP <= 0)
         {
@@ -258,6 +279,16 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
             if (m_Properties.m_Properties.m_DropWeapon_WeaponDestroy)
             {
                 WeaponSystemCenter.Instance.SpawnWeapon(m_Properties.m_Properties.m_RightHandWeapon, transform.position);
+            }
+
+            // 如果是玩家的话就丢失武器
+            if (TryGetComponent<PlayerController>(out var controller))
+            {
+                var weapon = controller.Player.DropPlayerRightHandWeapon(transform.position);
+                if (weapon)
+                {
+                    NetworkServer.Destroy(weapon);
+                }
             }
         }
     }
@@ -281,6 +312,10 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
         }
     }
 
+    /// <summary>
+    /// 根据子弹的Buff给受击对象
+    /// </summary>
+    /// <param name="buffs"></param>
     public void NoticeBuff(List<BuffStruct> buffs)
     {
         foreach(BuffStruct buff in buffs)
@@ -289,10 +324,6 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
             {
                 case ELogicState.SpeedModifier:
                     {
-                        /*if(m_LogicStateManager.IncludeState(ELogicState.SpeedModifier))
-                        {
-                            Debug.Log("减速还剩：" + m_LogicStateManager.GetStateDuration(ELogicState.SpeedModifier));
-                        }*/
                         
                         // 如果本来没有减速并且能够挂上减速Buff
                         if (m_LogicStateManager.IncludeState(ELogicState.SpeedModifier) == false && m_LogicStateManager.AddState(ELogicState.SpeedModifier))
@@ -305,6 +336,8 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
                     }
                 case ELogicState.StunModifier:
                     {
+                        // 如果本来没有眩晕并且能够挂上眩晕Buff
+                        
                         m_LogicStateManager.AddState(ELogicState.StunModifier);
                         break;
                     }

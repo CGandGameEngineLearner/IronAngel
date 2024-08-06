@@ -6,18 +6,7 @@ namespace IronAngel
 {
     public static class Utils
     {
-        public static Vector3 ApplyScatterY(Vector3 originalDirection, float spreadAngle)
-        {
-            // return originalDirection.normalized;
-            // 在 Y 轴上生成一个微小的随机扰动分量
-            float randomOffsetY = Random.Range(-spreadAngle, spreadAngle);
-
-            // 添加扰动到原始方向向量
-            Vector3 perturbedDirection = originalDirection + new Vector3(0, randomOffsetY, 0);
-
-            // 确保返回的方向向量保持归一化
-            return perturbedDirection.normalized;
-        }
+        // public static int 
     
         public static Vector3 ApplyScatterZ(Vector3 originalDirection, float spreadAngle)
         {
@@ -42,6 +31,18 @@ namespace IronAngel
         /// <returns></returns>
         public static bool RandomBool(float probability) {
             return Random.value < probability;
+        }
+        
+        public static IEnumerable<GameObject> GetAllChildren(Transform parent)
+        {
+            foreach (Transform child in parent)
+            {
+                yield return child.gameObject;
+                foreach (var grandChild in GetAllChildren(child))
+                {
+                    yield return grandChild;
+                }
+            }
         }
 
     }

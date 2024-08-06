@@ -392,8 +392,8 @@ MonoBehaviour:
         byteData: 
         byteDataArray: 
       Version: 1.7.9
-  gizmoViewMode: 2
-  showBehaviorDesignerGizmo: 1
+  gizmoViewMode: 0
+  showBehaviorDesignerGizmo: 0
 --- !u!114 &5384138960469735118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -603,7 +603,7 @@ MonoBehaviour:
   syncDirection: 0
   syncMode: 0
   syncInterval: 0
-  m_IsOverallArmor: 0
+  m_IsOverallArmor: 1
   m_Shields: []
   m_Properties: {fileID: 0}
   m_specialAtkTypes: 
@@ -1283,7 +1283,7 @@ Transform:
   m_GameObject: {fileID: 5612599182857872691}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.43, y: 0.2, z: 1}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6485104532671038429}
@@ -1330,7 +1330,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 299317258, guid: fd816da84d4e9c242bbf0e68d0b52abf, type: 3}
   m_Color: {r: 0.82414716, g: 0.990566, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
