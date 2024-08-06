@@ -348,24 +348,24 @@ public class AmmunitionFactory
             // 发射射线，检测碰撞
             Vector2 startPoint = ammunitionHandle.startPoint;
             Vector2 laserStartPoint = startPoint + 5 * ammunitionHandle.dir;
-            int ignoreLayer = ~(1 << LayerMask.GetMask("Bullet", "Ground"));
+            int ignoreLayer = ~(LayerMask.GetMask("Bullet") | LayerMask.GetMask("Ground"));
 
             RaycastHit2D hit = Physics2D.Raycast(laserStartPoint,
                 ammunitionHandle.dir, ammunitionHandle.ammunitionConfig.lifeDistance,
-                ~(1 << ignoreLayer));
+                ignoreLayer);
 
             Vector2 endPoint;
-            // if (hit.collider != null)
-            // {
-            //     // 如果碰撞到物体，使用碰撞点作为终点
-            //     endPoint = hit.point;
-            // }
-            // else
-            // {
-            //     //如果没有碰撞到物体，使用最大距离作为终点
+            if (hit.collider != null)
+            {
+                // 如果碰撞到物体，使用碰撞点作为终点
+                endPoint = hit.point;
+            }
+            else
+            {
+                //如果没有碰撞到物体，使用最大距离作为终点
                 endPoint = startPoint +
                            ammunitionHandle.dir.normalized * ammunitionHandle.ammunitionConfig.lifeDistance;
-            // }
+            }
 
 #if UNITY_EDITOR
             Debug.DrawLine(startPoint, endPoint, Color.green, 5);
