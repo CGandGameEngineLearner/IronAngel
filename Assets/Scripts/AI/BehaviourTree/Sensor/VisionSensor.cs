@@ -121,7 +121,7 @@ public class VisionSensor:MonoBehaviour,IAISensor
         {
             if (CheckInSight(go))
             {
-                Debug.Log("AI察觉到："+ go.name);
+                //Debug.Log("AI察觉到："+ go.name);
                 m_LogicStateManager.AddState(ELogicState.AIPerceivedTarget);
                 m_GameObjectsInSight.Add(go);
             }
