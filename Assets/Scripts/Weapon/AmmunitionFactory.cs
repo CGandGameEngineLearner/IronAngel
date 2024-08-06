@@ -345,27 +345,25 @@ public class AmmunitionFactory
     {
         if (ammunitionHandle.liveFrameCount++ <= 1)
         {
-            // 发射射线，检测碰撞
             Vector2 startPoint = ammunitionHandle.startPoint;
             Vector2 laserStartPoint = startPoint + 5 * ammunitionHandle.dir;
             int ignoreLayer = ~(LayerMask.GetMask("Bullet") | LayerMask.GetMask("Ground") | LayerMask.GetMask("Sensor"));
 
-            RaycastHit2D hit = Physics2D.Raycast(laserStartPoint,
-                ammunitionHandle.dir, ammunitionHandle.ammunitionConfig.lifeDistance,
-                ignoreLayer);
+            RaycastHit2D[] hits = Physics2D.RaycastAll(laserStartPoint, ammunitionHandle.dir, ammunitionHandle.ammunitionConfig.lifeDistance, ignoreLayer);
 
-            Vector2 endPoint;
-            if (hit.collider != null)
+            Vector2 endPoint = startPoint + ammunitionHandle.dir.normalized * ammunitionHandle.ammunitionConfig.lifeDistance;
+
+            foreach (var hit in hits)
             {
-                // 如果碰撞到物体，使用碰撞点作为终点
-                endPoint = hit.point;
+                if (hit.collider != null && !hit.collider.isTrigger)
+                {
+                    // 如果碰撞到非触发器物体，使用碰撞点作为终点
+                    endPoint = hit.point;
+                    break; // 找到第一个非触发器碰撞后停止
+                }
             }
-            else
-            {
-                //如果没有碰撞到物体，使用最大距离作为终点
-                endPoint = startPoint +
-                           ammunitionHandle.dir.normalized * ammunitionHandle.ammunitionConfig.lifeDistance;
-            }
+
+// 现在 `endPoint` 是射线的终点，可以用来绘制激光或其他处理
 
 #if UNITY_EDITOR
             Debug.DrawLine(startPoint, endPoint, Color.green, 5);
