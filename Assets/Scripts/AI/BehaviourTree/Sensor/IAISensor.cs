@@ -12,4 +12,9 @@ public interface IAISensor
     public List<GameObject> GetPerceiveGameObjects();
 
     public void PutPerceiveGameObject(GameObject go);
+
+    public delegate void NotifyPerceivedDelegate();
+
+    public void SetNotifyPerceivedDelegate(NotifyPerceivedDelegate notifyPerceived);
+
 }

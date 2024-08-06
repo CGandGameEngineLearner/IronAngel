@@ -5,8 +5,8 @@ public enum EventType
     StateToGlobal_PlayerDashState,
     StateToGlobal_PlayerWalkState,
 
-    LogicState_Example_StateIn,
-    LogicState_AIAttacking_StateOut,
+    LogicState_Example_StateIn,                             // LogicState发送状态进入事件通知外部模块的样例
+    LogicState_AIAttacking_StateOut,                        // AI攻击状态结束
 
 
     // buff

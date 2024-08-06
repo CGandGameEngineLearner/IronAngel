@@ -724,8 +724,8 @@ MonoBehaviour:
   m_Properties:
     m_Energy: 0
     m_BaseHP: 100
-    m_LeftHandWeaponHP: 10000
-    m_RightHandWeaponHP: 10000
+    m_LeftHandWeaponHP: 0
+    m_RightHandWeaponHP: 0
     m_LeftHandWeapon: 0
     m_RightHandWeapon: 0
     m_LeftHandWeaponAttackingDuration: 0
