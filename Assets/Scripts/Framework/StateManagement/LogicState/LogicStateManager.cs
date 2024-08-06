@@ -193,9 +193,10 @@ namespace LogicState
         // Start is called before the first frame update
         void Start()
         {
+            m_FutureStatesBuffer = new Dictionary<ELogicState, LogicState>(StateDictionaryCapacity);
             m_StateInit = new Dictionary<ELogicState, bool>();
             m_LogicStateDic = new Dictionary<ELogicState, LogicState>(StateDictionaryCapacity);
-            m_FutureStatesBuffer = new Dictionary<ELogicState, LogicState>(StateDictionaryCapacity);
+            
             m_ResetedDurationStates = new HashSet<ELogicState>();
         }
 
