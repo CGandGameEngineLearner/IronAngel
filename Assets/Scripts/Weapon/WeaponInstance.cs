@@ -47,8 +47,8 @@ public class WeaponInstance : NetworkBehaviour
         return m_WeaponInstanceData.currentMag > 0;
     }
 
-    public WeaponConfig GetConfig()
+    public int GetWeaponHP()
     {
-        return m_WeaponConfig;
+        return m_WeaponConfig.weaponHp;
     }
 }
