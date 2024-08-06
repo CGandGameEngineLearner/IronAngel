@@ -300,6 +300,10 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
         }
     }
 
+    /// <summary>
+    /// 根据子弹的Buff给受击对象
+    /// </summary>
+    /// <param name="buffs"></param>
     public void NoticeBuff(List<BuffStruct> buffs)
     {
         foreach(BuffStruct buff in buffs)
@@ -320,6 +324,8 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
                     }
                 case ELogicState.StunModifier:
                     {
+                        // 如果本来没有眩晕并且能够挂上眩晕Buff
+                        
                         m_LogicStateManager.AddState(ELogicState.StunModifier);
                         break;
                     }
