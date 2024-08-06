@@ -141,6 +141,10 @@ public static class EventCenter
 
     private static void AfterListenerRemoved(EventType eventType)
     {
+        if (!m_EventListeners.ContainsKey(eventType))
+        {
+            return;
+        }
         if (m_EventListeners[eventType] == null)
             m_EventListeners.Remove(eventType);
     }

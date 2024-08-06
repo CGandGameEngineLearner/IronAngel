@@ -34,7 +34,7 @@ namespace LogicState
         
         public LogicState GetLogicStateTemplate(ELogicState stateEnum)
         {
-            return LogicStatesSettings.LogicStateTemplates[(int)stateEnum];
+            return LogicStatesSettings.GetStateTemplate(stateEnum);
         }
 
         public LogicStateConfig()

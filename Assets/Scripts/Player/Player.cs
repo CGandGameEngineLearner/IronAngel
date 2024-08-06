@@ -51,6 +51,16 @@ public class Player
         return m_Player.transform.rotation;
     }
 
+    public void SetSpeed(float speed)
+    {
+        m_PlayerMovement.SetSpeed(speed);
+    }
+
+    public void ResetSpeed()
+    {
+        m_PlayerMovement.ResetSpeed();
+    }
+
     public void Move(Vector2 dir)
     {
         m_PlayerMovement.Move(dir);

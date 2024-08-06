@@ -36,6 +36,21 @@ public class PlayerMovement
         _dashCoolDownRemainTime = m_DashCoolDownTime;
     }
 
+    /// <summary>
+    /// 改变速度
+    /// </summary>
+    /// <param name="speed"></param> 这个是delta值
+    public void SetSpeed(float speed)
+    {
+        m_Speed += speed;
+        m_Speed = m_Speed > 0 ? m_Speed : 0;
+    }
+
+    public void ResetSpeed()
+    {
+        m_Speed = m_NormalSpeed;
+    }
+
     public void Move(Vector2 dir)
     {
         m_Rigidbody = m_Player.GetComponent<Rigidbody2D>();
@@ -49,7 +64,6 @@ public class PlayerMovement
     public void LookAt(Vector2 dir)
     {
         dir = dir.normalized;
-        float angle = Vector2.Angle(new Vector2(0, 1), dir);
         
         // 用鼠标转换出来的坐标计算会差90°
         m_Rigidbody.rotation = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - 90.0f;

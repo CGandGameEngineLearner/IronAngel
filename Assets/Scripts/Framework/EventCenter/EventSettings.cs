@@ -7,6 +7,13 @@ public enum EventType
 
     LogicState_Example_StateIn,
     LogicState_AIAttacking_StateOut,
+
+
+    // buff
+    // 减速效果
+    Buff_Speed,
+    // 眩晕效果
+    Buff_Stun,
 }
 
 public delegate void Callback();

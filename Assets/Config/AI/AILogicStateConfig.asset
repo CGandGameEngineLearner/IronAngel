@@ -23,3 +23,8 @@ MonoBehaviour:
     AutoStateOut: 0
     included: 
     excluded: 
+  - stateEnum: 10
+    Duration: Infinity
+    AutoStateOut: 0
+    included: 
+    excluded: 

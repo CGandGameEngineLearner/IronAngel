@@ -23,7 +23,7 @@ namespace AI.BehaviourTree.Actions
 
         public override TaskStatus OnUpdate()
         {
-            if (m_LogicStateManager.IncludeState(ELogicState.AIVisionPerceived))
+            if (m_LogicStateManager.IncludeState(ELogicState.AIPerceivedTarget))
             {
                 return TaskStatus.Success;
             }
