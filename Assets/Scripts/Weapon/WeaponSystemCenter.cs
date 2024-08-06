@@ -4,6 +4,7 @@ using Mirror;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
+using static UnityEditor.PlayerSettings;
 using Random = UnityEngine.Random;
 
 /// <summary>
@@ -83,30 +84,33 @@ public class WeaponSystemCenter : NetworkBehaviour
     }
     
     [ClientCallback]
-    public GameObject SpawnWeapon(WeaponType weaponType, Vector3 pos)
+    public SpawnWeapon(WeaponType weaponType, Vector3 pos)
+    {
+        CmdSpawnWeapon(weaponType, pos);
+    }
+
+    [Command]
+    private void CmdSpawnWeapon(WeaponType weaponType, Vector3 pos)
     {
         var weaponConfig = m_WeaponConfigDic[weaponType];
         var prefab = weaponConfig.prefab;
 
         GameObject weapon = Instantiate(prefab, pos,
             UnityEngine.Quaternion.identity);
-        
+
         weapon.GetComponent<WeaponInstance>().Init(weaponConfig);
         m_WeaponToConfigDic[weapon] = weaponConfig;
         m_WeaponToTypeDic[weapon] = weaponType;
-        
-        CmdWeaponDicUpdate(weapon, weaponType, weaponConfig);
-        return weapon;
+        NetworkServer.Spawn(weapon);
+        RpcWeaponDicUpdate(weapon,weaponType);
     }
 
-    
-    
-    
-    [Command]
-    private void CmdWeaponDicUpdate(GameObject weapon, WeaponType weaponType, WeaponConfig weaponConfig)
+
+
+    [ClientRpc]
+    private void RpcWeaponDicUpdate(GameObject weapon, WeaponType weaponType)
     {
-        NetworkServer.Spawn(weapon);
-        m_WeaponToConfigDic[weapon] = weaponConfig;
+        m_WeaponToConfigDic[weapon] = m_WeaponConfigDic[weaponType];
         m_WeaponToTypeDic[weapon] = weaponType;
     }
 
