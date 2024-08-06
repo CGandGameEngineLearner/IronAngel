@@ -21,8 +21,7 @@ public enum AmmunitionType
     PostProcess_Laser,
     // 实际飞行的子弹/激光/导弹 
     Bullet,
-    ThinLaser,
-    ThickLaser,
+    Laser,
 }
 
 public enum WeaponType

@@ -15,7 +15,6 @@ public class AmmunitionHandle
     public AmmunitionType ammunitionType;
     public AmmunitionConfig ammunitionConfig;
     public Vector3 scale;
-    public List<GameObject> subObject = new List<GameObject>();
     public int liveFrameCount;
 
     public void Init(GameObject owner, GameObject ammunition, AmmunitionType ammunitionType,
@@ -31,11 +30,13 @@ public class AmmunitionHandle
         this.rigidbody2D = ammunition.GetComponent<Rigidbody2D>();
         this.ammunitionConfig = ammunitionConfig;
         this.startPoint = startPoint;
-        this.dir = dir;
+        this.dir = dir.normalized;
 
         ammunition.transform.position = startPoint;
         rigidbody2D.position = startPoint;
-    
+
+        scale = ammunition.transform.localScale;
+
         // 将方向转换为三维向量
         Vector3 direction = new Vector3(dir.x, dir.y, 0);
 
@@ -48,12 +49,16 @@ public class AmmunitionHandle
 
     public void IsChild(GameObject gameObject)
     {
-        
     }
-    
+
     public void Clear()
     {
         active = false;
+
+        // 恢复transfrom
+        ammunition.transform.position = Vector3.zero;
+        ammunition.transform.localScale = scale;
+        ammunition.transform.rotation = Quaternion.identity;
 
         ammunition = null;
         rigidbody2D = null;
@@ -62,7 +67,6 @@ public class AmmunitionHandle
         dir = Vector2.up;
         this.ammunitionType = AmmunitionType.Bullet;
         liveFrameCount = 0;
-        subObject.Clear();
     }
 }
 
@@ -342,39 +346,56 @@ public class AmmunitionFactory
         if (ammunitionHandle.liveFrameCount++ <= 1)
         {
             // 发射射线，检测碰撞
-            RaycastHit2D hit = Physics2D.Raycast(ammunitionHandle.startPoint + 10 * ammunitionHandle.dir, ammunitionHandle.dir, 999, ~(1 << LayerMask.GetMask("Bullet")));
+            Vector2 startPoint = ammunitionHandle.startPoint;
+            Vector2 laserStartPoint = startPoint + 5 * ammunitionHandle.dir;
+            int ignoreLayer = ~(1 << LayerMask.GetMask("Bullet", "Ground"));
+
+            RaycastHit2D hit = Physics2D.Raycast(laserStartPoint,
+                ammunitionHandle.dir, ammunitionHandle.ammunitionConfig.lifeDistance,
+                ~(1 << ignoreLayer));
 
             Vector2 endPoint;
-            if (hit.collider != null)
-            {
-                // 如果碰撞到物体，使用碰撞点作为终点
-                endPoint = hit.point;
-            }
-            else
-            {
-                // 如果没有碰撞到物体，使用最大距离作为终点
-                endPoint = ammunitionHandle.startPoint + ammunitionHandle.dir.normalized * 999;
-            }
-            Debug.DrawLine(ammunitionHandle.startPoint, endPoint, Color.green, 5);
+            // if (hit.collider != null)
+            // {
+            //     // 如果碰撞到物体，使用碰撞点作为终点
+            //     endPoint = hit.point;
+            // }
+            // else
+            // {
+            //     //如果没有碰撞到物体，使用最大距离作为终点
+                endPoint = startPoint +
+                           ammunitionHandle.dir.normalized * ammunitionHandle.ammunitionConfig.lifeDistance;
+            // }
+
+#if UNITY_EDITOR
+            Debug.DrawLine(startPoint, endPoint, Color.green, 5);
+#endif
+
             // 计算起点和终点之间的中点
-            Vector2 midPoint = (ammunitionHandle.startPoint + endPoint) / 2;
-            ammunitionHandle.ammunition.transform.localScale = Vector3.zero;
+            Vector2 midPoint = (startPoint + endPoint) / 2;
 
             // 计算距离
-            float distance = Vector2.Distance(ammunitionHandle.startPoint, endPoint);
+            float distance = Vector2.Distance(startPoint, endPoint);
 
-            // 设置激光面片位置和方向
+#if UNITY_EDITOR
+            Debug.DrawLine(startPoint, midPoint, Color.blue, 5);
+#endif
+
+            // 设置激光面片位置和方向 
             Transform laserTransform = ammunitionHandle.ammunition.transform;
-            laserTransform.position = midPoint; // 设置位置为中点
-            laserTransform.right = new Vector3(0, 1, 0); // 设置方向
 
             // 获取激光面片的初始比例
             Vector3 scale = laserTransform.localScale;
-            scale.x = distance; // 设置长度为两点之间的距离
-            scale.y = 1; // 保持宽度为1
+
+            scale.y = distance; // 设置长度为两点之间的距离
+            scale.x = ammunitionHandle.ammunitionConfig.m_LaserWidth; // 保持宽度为1
 
             // 应用新的缩放比例
             laserTransform.localScale = scale;
+
+            laserTransform.up = ammunitionHandle.dir; // 设置方向
+
+            laserTransform.position = midPoint; // 设置位置为中点
         }
         else
         {
