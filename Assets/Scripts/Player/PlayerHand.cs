@@ -93,6 +93,7 @@ public class PlayerHand
         }
         var g = m_ObjectInLeftHand;
         m_ObjectInLeftHand = null;
+        m_PlayerLeftHand.SetActive(false);
         return g;
     }
 
@@ -114,6 +115,7 @@ public class PlayerHand
         }
         var g = m_ObjectInRightHand;
         m_ObjectInRightHand = null;
+        m_PlayerRightHand.SetActive(false);
         return g;
     }
 
