@@ -60,6 +60,10 @@ public class WeaponCollisionReceiver : NetworkBehaviour
 #endif
             return;
         }
+        if (ammunitionHandle.launcherCharacter == null)
+        {
+            return;
+        }
         var launcherCharacterProperties = ammunitionHandle.launcherCharacter.GetComponent<BaseProperties>();
         if (launcherCharacterProperties == null)
         {
