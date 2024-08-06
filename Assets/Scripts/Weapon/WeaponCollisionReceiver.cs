@@ -81,16 +81,6 @@ public class WeaponCollisionReceiver : NetworkBehaviour
     {
         m_AmmunitionCollisionReceiver.CalculateDamage(config, 0, m_Collider.offset + new Vector2(transform.position.x, transform.position.y));
     }
-
-    // <summary>
-    /// RPC直接通知属性更改
-    /// </summary>
-    /// <param name="properties"></param> 受击者更新后的属性
-    [ClientRpc]
-    private void RPCBroadcastDamage(Properties properties)
-    {
-
-    }
 }
 
 
