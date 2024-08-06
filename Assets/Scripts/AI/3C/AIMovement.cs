@@ -141,7 +141,11 @@ public class AIMovement : MonoBehaviour
         var offsetVec = (transform.position - targetGameObject.transform.position).normalized;
         offsetVec += m_BaseProperties.m_Properties.m_EngagementDistance * offsetVec;
         var targetPos = targetGameObject.transform.position + offsetVec;
-        agent.SetDestination(targetPos);
+        if (agent.isOnNavMesh)
+        {
+            agent.SetDestination(targetPos);
+        }
+       
     }   
 
     protected IEnumerator ChaseCoroutine(GameObject target)
@@ -182,8 +186,12 @@ public class AIMovement : MonoBehaviour
     }
 
     protected IEnumerator MoveToDestinationCoroutine(Vector3 target)
-    { 
-        SetDestination(target);
+    {
+        if (agent.isOnNavMesh)
+        {
+            SetDestination(target);
+        }
+        
         yield return new WaitUntil(() => agent.remainingDistance == 0);
     }
        

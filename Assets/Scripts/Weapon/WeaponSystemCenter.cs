@@ -172,7 +172,7 @@ public class WeaponSystemCenter : NetworkBehaviour
     {
         dir = dir.normalized;
 #if UNITY_EDITOR
-        Debug.Log(GetType() + "Command" + "Fire");
+        //Debug.Log(GetType() + "Command" + "Fire");
 #endif
         var weaponConfig = m_WeaponToConfigDic[weapon];
         var ammunitionType = m_WeaponToConfigDic[weapon].ammunitionType;

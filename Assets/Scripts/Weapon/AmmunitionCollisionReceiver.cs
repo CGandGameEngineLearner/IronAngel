@@ -226,7 +226,7 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
         if(m_IsOverallArmor && m_Properties.m_Properties.m_CurrentArmor <= 0)
         {
 #if UNITY_EDITOR
-            Debug.Log("玩家 ：" + gameObject.name + "损失所有护甲");
+            //Debug.Log("玩家 ：" + gameObject.name + "损失所有护甲");
 #endif
             foreach (var shield in m_Shields)
             {
