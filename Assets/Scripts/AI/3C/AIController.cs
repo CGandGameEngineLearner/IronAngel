@@ -266,7 +266,7 @@ public class AIController : NetworkBehaviour
         return true;
     }
 
-
+    [ServerCallback]
     private void LeftHandFire()
     {
         var leftDuration = m_BaseProperties.m_Properties.m_LeftHandWeaponAttackingDuration;
@@ -274,13 +274,14 @@ public class AIController : NetworkBehaviour
         StartCoroutine(LeftHandFireCoroutine());
     }
 
+    [ServerCallback]
     private void RightHandFire()
     {
         var rightDuration = m_BaseProperties.m_Properties.m_RightHandWeaponAttackingDuration;
         m_LogicStateManager.SetStateDuration(ELogicState.AIAttacking, rightDuration);
         StartCoroutine(RightHandFireCoroutine());
     }
-
+    
     private IEnumerator LeftHandFireCoroutine()
     {
         while (m_LogicStateManager.IncludeState(ELogicState.AIAttacking))
