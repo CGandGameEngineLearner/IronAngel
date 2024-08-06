@@ -43,7 +43,7 @@ public class PlayerHand
     {
         m_ObjectInLeftHand = obj;
 #if UNITY_EDITOR
-        Debug.Log("Left hand get" + obj);
+        //Debug.Log("Left hand get" + obj);
 #endif
         if (m_ObjectInLeftHand != null)
         {
@@ -61,7 +61,7 @@ public class PlayerHand
     {
         m_ObjectInRightHand = obj;
 #if UNITY_EDITOR
-        Debug.Log("Right hand get" +  obj);
+        //Debug.Log("Right hand get" +  obj);
 #endif
         if( m_ObjectInRightHand != null)
         {
