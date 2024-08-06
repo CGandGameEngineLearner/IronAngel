@@ -62,16 +62,8 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
 
 
         m_Collider = GetComponent<BoxCollider2D>();
-        DamageData data = new DamageData();
-        data.m_CurrentHP = m_Properties.m_Properties.m_CurrentHP;
-        data.m_CurrentArmor = m_Properties.m_Properties.m_CurrentArmor;
-        data.m_EnergyShieldCount = m_Properties.m_Properties.m_EnergyShieldCount;
-        data.m_LeftHandWeaponHP = m_Properties.m_Properties.m_LeftHandWeaponHP;
-        data.m_RightHandWeaponHP = m_Properties.m_Properties.m_RightHandWeaponHP;
-        SetProp(data);
+        
     }
-
-
 
     /// <summary>
     /// 应该只有服务端上的物体会接收碰撞
