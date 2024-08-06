@@ -20,6 +20,12 @@ public class GlobalSetting : MonoBehaviour
         EventCenter.AddListener<GameObject, bool>(EventType.Buff_Stun, OnBuffStunModifier);
     }
 
+    private void OnDestroy()
+    {
+        EventCenter.RemoveListener<GameObject, float, bool>(EventType.Buff_Speed, OnBuffSpeedModifier);
+        EventCenter.RemoveListener<GameObject, bool>(EventType.Buff_Stun, OnBuffStunModifier);
+    }
+
 
     /// <summary>
     /// 有关移速的Buff
