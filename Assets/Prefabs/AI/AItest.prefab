@@ -320,6 +320,7 @@ GameObject:
   - component: {fileID: 3478913082591308681}
   - component: {fileID: 8024465685505109704}
   - component: {fileID: 6854736833197721151}
+  - component: {fileID: 85230040884797571}
   m_Layer: 7
   m_Name: AItest
   m_TagString: Untagged
@@ -645,6 +646,14 @@ MonoBehaviour:
     m_Camp: 1
     m_DropWeapon_WeaponDestroy: 1
     m_DropWeapon_CharacterDied: 1
+    m_AutoAvoid: 1
+    m_AutoAvoid_Probability: 1
+    m_AutoAvoid_RestTimes: 700
+    m_DashSpeed: 10
+    m_DashDuration: 1
+    m_WallLayer:
+      serializedVersion: 2
+      m_Bits: 4294967295
 --- !u!195 &3478913082591308681
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -691,6 +700,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e1dbd649c214d4fbc488d69dabf3fc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!50 &85230040884797571
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2195872794582507982}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 0.01
+  m_LinearDrag: 5
+  m_AngularDrag: 0.2
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 1
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!1 &3342869003483958290
 GameObject:
   m_ObjectHideFlags: 0

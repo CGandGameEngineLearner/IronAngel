@@ -268,9 +268,10 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
     }
 
     /// <summary>
-    /// 向DamageSensor通知受到攻击了
+    /// 向AI的DamageSensor通知受到攻击了
     /// </summary>
     /// <param name="attacker"></param>
+    [ServerCallback]
     public void NoticeDamage(GameObject attacker)
     {
         var damageSensor = GetComponent<DamageSensor>();
