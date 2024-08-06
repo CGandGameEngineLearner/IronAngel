@@ -320,7 +320,7 @@ GameObject:
   - component: {fileID: 3478913082591308681}
   - component: {fileID: 8024465685505109704}
   - component: {fileID: 6854736833197721151}
-  m_Layer: 7
+  m_Layer: 11
   m_Name: AItest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -391,8 +391,8 @@ MonoBehaviour:
         byteData: 
         byteDataArray: 
       Version: 1.7.9
-  gizmoViewMode: 2
-  showBehaviorDesignerGizmo: 1
+  gizmoViewMode: 0
+  showBehaviorDesignerGizmo: 0
 --- !u!114 &5384138960469735118
 MonoBehaviour:
   m_ObjectHideFlags: 0
