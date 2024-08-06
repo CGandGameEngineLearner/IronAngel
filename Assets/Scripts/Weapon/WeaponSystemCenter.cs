@@ -82,6 +82,7 @@ public class WeaponSystemCenter : NetworkBehaviour
         m_RegisteredWeaponAI.Add(aiController);
     }
     
+    [ClientCallback]
     public GameObject SpawnWeapon(WeaponType weaponType, Vector3 pos)
     {
         var weaponConfig = m_WeaponConfigDic[weaponType];
@@ -91,24 +92,16 @@ public class WeaponSystemCenter : NetworkBehaviour
             UnityEngine.Quaternion.identity);
         
         weapon.GetComponent<WeaponInstance>().Init(weaponConfig);
-
-        ServerSpawnWeapon(weapon);
-        
         m_WeaponToConfigDic[weapon] = weaponConfig;
         m_WeaponToTypeDic[weapon] = weaponType;
-        
-        //RpcWeaponDicUpdate(weapon, weaponType, weaponConfig);
+        NetworkServer.Spawn(weapon);
+        CmdWeaponDicUpdate(weapon, weaponType, weaponConfig);
         return weapon;
     }
     
-    [ServerCallback]
-    private void ServerSpawnWeapon(GameObject weapon)
-    {
-        NetworkServer.Spawn(weapon);
-    }
     
-    [ClientRpc]
-    private void RpcWeaponDicUpdate(GameObject weapon, WeaponType weaponType, WeaponConfig weaponConfig)
+    [Command]
+    private void CmdWeaponDicUpdate(GameObject weapon, WeaponType weaponType, WeaponConfig weaponConfig)
     {
         m_WeaponToConfigDic[weapon] = weaponConfig;
         m_WeaponToTypeDic[weapon] = weaponType;
