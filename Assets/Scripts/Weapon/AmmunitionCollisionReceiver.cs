@@ -48,16 +48,6 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
             m_Properties.m_Properties.m_Armor = armor;
             m_Properties.m_Properties.m_CurrentArmor = armor;
         }
-
-        if(TryGetComponent<PlayerController>(out var controller))
-        {
-
-        }
-        else
-        {
-            m_Properties.m_Properties.m_RightHandWeaponHP = WeaponSystemCenter.GetWeaponConfig(m_Properties.m_Properties.m_RightHandWeapon).weaponHp;
-            m_Properties.m_Properties.m_LeftHandWeaponHP = WeaponSystemCenter.GetWeaponConfig(m_Properties.m_Properties.m_LeftHandWeapon).weaponHp;
-        }
         
 
 
