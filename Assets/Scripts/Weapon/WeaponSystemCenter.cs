@@ -4,7 +4,6 @@ using Mirror;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
-using static UnityEditor.PlayerSettings;
 using Random = UnityEngine.Random;
 
 /// <summary>
@@ -83,13 +82,13 @@ public class WeaponSystemCenter : NetworkBehaviour
         m_RegisteredWeaponAI.Add(aiController);
     }
     
-    [ClientCallback]
+    
     public void SpawnWeapon(WeaponType weaponType, Vector3 pos)
     {
         CmdSpawnWeapon(weaponType, pos);
     }
 
-    [Command]
+    [Server]
     private void CmdSpawnWeapon(WeaponType weaponType, Vector3 pos)
     {
         var weaponConfig = m_WeaponConfigDic[weaponType];
