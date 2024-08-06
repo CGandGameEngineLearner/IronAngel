@@ -12,6 +12,8 @@ public class AmmunitionConfig : ItemConfig
     public float speed => m_Speed;
     public float lifeDistance => m_LifeDistance;
     public AmmunitionType postAmmunitionType => m_PostAmmunitionType;
+    [Tooltip("是否为全自动")]
+    public bool isAuto; 
 
     [Header("子弹通用属性配置")]
     public float m_Speed;

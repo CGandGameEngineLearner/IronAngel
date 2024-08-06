@@ -348,7 +348,7 @@ public class AmmunitionFactory
             // 发射射线，检测碰撞
             Vector2 startPoint = ammunitionHandle.startPoint;
             Vector2 laserStartPoint = startPoint + 5 * ammunitionHandle.dir;
-            int ignoreLayer = ~(LayerMask.GetMask("Bullet") | LayerMask.GetMask("Ground"));
+            int ignoreLayer = ~(LayerMask.GetMask("Bullet") | LayerMask.GetMask("Ground") | LayerMask.GetMask("Sensor"));
 
             RaycastHit2D hit = Physics2D.Raycast(laserStartPoint,
                 ammunitionHandle.dir, ammunitionHandle.ammunitionConfig.lifeDistance,
