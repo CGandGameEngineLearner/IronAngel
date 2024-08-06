@@ -112,7 +112,4 @@ public struct Properties
     [Tooltip("冲刺时长"),Range(0,float.PositiveInfinity)]
     public float m_DashDuration;
     
-    [Tooltip("墙体图层")]
-    public LayerMask m_WallLayer;
-
 }

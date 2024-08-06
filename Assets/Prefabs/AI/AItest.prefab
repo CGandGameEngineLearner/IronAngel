@@ -436,6 +436,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcf4b16528a0a0d41ba817e306246775, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_WallLayer:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!58 &7549400497388090286
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -626,7 +629,7 @@ MonoBehaviour:
   syncInterval: 0
   m_Properties:
     m_Energy: 0
-    m_BaseHP: 1000
+    m_BaseHP: 500
     m_LeftHandWeaponHP: 500
     m_RightHandWeaponHP: 500
     m_LeftHandWeapon: 0
@@ -651,9 +654,6 @@ MonoBehaviour:
     m_AutoAvoid_RestTimes: 700
     m_DashSpeed: 10
     m_DashDuration: 0.5
-    m_WallLayer:
-      serializedVersion: 2
-      m_Bits: 512
 --- !u!195 &3478913082591308681
 NavMeshAgent:
   m_ObjectHideFlags: 0

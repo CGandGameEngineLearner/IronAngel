@@ -21,6 +21,9 @@ public class AIMovement : MonoBehaviour
     private float m_NormalSpeed;
     private GameObject m_ChaseTarget;
     private Vector2 m_dashDir;
+    
+    [Tooltip("墙体图层")]
+    public LayerMask m_WallLayer;
 
     private void Start()
     {
@@ -44,7 +47,7 @@ public class AIMovement : MonoBehaviour
             v2.x += m_dashDir.x * dashSpeed * Time.fixedDeltaTime;
             v2.y += m_dashDir.y * dashSpeed * Time.fixedDeltaTime;
             var hit = Physics2D.Raycast(m_Rigidbody.position, m_dashDir, Vector2.Distance(m_Rigidbody.position, v2) + 3,
-                m_BaseProperties.m_Properties.m_WallLayer);
+                m_WallLayer);
             
             // 如果会穿墙
             if (hit && Vector2.Distance(m_Rigidbody.position, v2) >= Vector2.Distance(m_Rigidbody.position, hit.point))
