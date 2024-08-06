@@ -743,6 +743,14 @@ MonoBehaviour:
     m_Camp: 0
     m_DropWeapon_WeaponDestroy: 0
     m_DropWeapon_CharacterDied: 0
+    m_AutoAvoid: 0
+    m_AutoAvoid_Probability: 0
+    m_AutoAvoid_RestTimes: 0
+    m_DashSpeed: 0
+    m_DashDuration: 0
+    m_WallLayer:
+      serializedVersion: 2
+      m_Bits: 0
 --- !u!61 &6382232755733876394
 BoxCollider2D:
   m_ObjectHideFlags: 0
