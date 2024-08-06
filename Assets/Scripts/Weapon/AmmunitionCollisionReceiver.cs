@@ -238,7 +238,7 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
         if (m_Properties.m_Properties.m_EnergyShieldCount <= 0)
         {
 #if UNITY_EDITOR
-            Debug.Log("玩家 ：" + gameObject.name + "损失能量护盾");
+            //Debug.Log("玩家 ：" + gameObject.name + "损失能量护盾");
 #endif
             foreach (var shield in m_Shields)
             {
