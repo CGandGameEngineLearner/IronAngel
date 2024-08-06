@@ -14,12 +14,6 @@ public class PlayerSetting : MonoBehaviour
     [Header("Player Spec")]
     public PlayerSpec _PlayerSpec;
 
-
-
-    [Header("AudioUtils")]
-    public AudioConfig _AudioConfig;
-
-    [Header("WeaponConfig")]
-    public List<WeaponCat> _WeaponCats = new List<WeaponCat>();
-    public List<AmmunitionCat> _AmmunitionCats = new();
+    [Header("Fire Distance")]
+    public float _FireDistance;
 }

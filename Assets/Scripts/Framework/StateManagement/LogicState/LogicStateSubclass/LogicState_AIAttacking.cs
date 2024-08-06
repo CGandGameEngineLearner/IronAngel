@@ -29,7 +29,7 @@ namespace LogicState
     
         public override void OnStateOut()
         {
-            Debug.Log(GetType()+"OnStateOut()");
+            //Debug.Log(GetType()+"OnStateOut()");
             
             // 通知攻击状态结束
             EventCenter.Broadcast<LogicStateManager,ELogicState>(
@@ -41,7 +41,7 @@ namespace LogicState
     
         public override void UnInit()
         {
-            Debug.Log(GetType()+"UnInit()");
+            //Debug.Log(GetType()+"UnInit()");
         }
         
     }

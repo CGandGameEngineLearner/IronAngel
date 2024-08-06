@@ -15,6 +15,7 @@ namespace LogicState
         private Dictionary<ELogicState, LogicState> m_LogicStateDic;
         private Dictionary<ELogicState, LogicState> m_FutureStatesBuffer;
         private Dictionary<ELogicState, bool> m_StateInit;
+        private HashSet<ELogicState> m_ResetedDurationStates; // 重设过持续时间的状态
         
         
         public LogicStateConfig LogicStateConfig;
@@ -136,18 +137,27 @@ namespace LogicState
         /// <summary>
         /// 设置状态的持续时间
         /// </summary>
-        /// <param name="eLogicState"></param>
+        /// <param name="stateEnum"></param>
         /// <param name="duration"></param>
         /// <returns></returns>
-        public bool SetStateDuration(ELogicState eLogicState, float duration)
+        public bool SetStateDuration(ELogicState stateEnum, float duration)
         {
-            if (!m_LogicStateDic.ContainsKey(eLogicState))
+            if (m_FutureStatesBuffer.ContainsKey(stateEnum))
             {
-                return false;
+                m_FutureStatesBuffer[stateEnum].Duration = duration;
+                m_ResetedDurationStates.Add(stateEnum);
+                m_StateInit[stateEnum] = true;
+                return true;
             }
-
-            m_LogicStateDic[eLogicState].Duration = duration;
-            return true;
+            if(m_LogicStateDic.ContainsKey(stateEnum))
+            {
+                m_LogicStateDic[stateEnum].Duration = duration;
+                m_ResetedDurationStates.Add(stateEnum);
+                m_StateInit[stateEnum] = true;
+                return true;
+            }
+            
+            return false;
         }
         
         /// <summary>
@@ -158,12 +168,16 @@ namespace LogicState
         /// <returns>float</returns>
         public float GetStateDuration(ELogicState eLogicState)
         {
-            if (!IncludeState(eLogicState))
+            if (m_FutureStatesBuffer.ContainsKey(eLogicState))
             {
-                return 0.0f;
+                return m_FutureStatesBuffer[eLogicState].Duration;
             }
-
-            return m_LogicStateDic[eLogicState].Duration;
+            else if(m_LogicStateDic.ContainsKey(eLogicState))
+            {
+                return m_LogicStateDic[eLogicState].Duration;
+            }
+            
+            return 0.0f;
         }
         
         // Start is called before the first frame update
@@ -172,6 +186,7 @@ namespace LogicState
             m_StateInit = new Dictionary<ELogicState, bool>();
             m_LogicStateDic = new Dictionary<ELogicState, LogicState>(StateDictionaryCapacity);
             m_FutureStatesBuffer = new Dictionary<ELogicState, LogicState>(StateDictionaryCapacity);
+            m_ResetedDurationStates = new HashSet<ELogicState>();
         }
 
         // Update is called once per frame
@@ -184,13 +199,17 @@ namespace LogicState
                 if(state.GetActive())
                 {
                     LogicStateSetting stateSetting = LogicStateConfig.GetLogicStateSetting(stateEnum);
-                    
-                    // ScriptAbleObject的问题，运行时得从这里动态更新，否则会是默认的无限长的持续时间
-                    if (!m_StateInit.ContainsKey(stateEnum) || m_StateInit[stateEnum] == false)
+
+                    if (!m_ResetedDurationStates.Contains(stateEnum))
                     {
-                        state.Duration = stateSetting.Duration;
-                        m_StateInit[stateEnum] = true;
+                        // ScriptAbleObject的问题，运行时得从这里动态更新，否则会是默认的无限长的持续时间
+                        if (!m_StateInit.ContainsKey(stateEnum) || m_StateInit[stateEnum] == false)
+                        {
+                            state.Duration = stateSetting.Duration;
+                            m_StateInit[stateEnum] = true;
+                        }
                     }
+                    
                      
                     if(stateSetting.AutoStateOut&&!CheckState(stateSetting.included,stateSetting.excluded))
                     {

@@ -25,6 +25,14 @@ namespace LogicState
         {
             get { return StartTime+Duration; }
         }
+
+        private ELogicState m_LogicStateEnum;
+
+        public ELogicState LogicStateEnum
+        {
+            get { return m_LogicStateEnum;}
+            private set { m_LogicStateEnum = value; }
+        }
         public LogicState()
         {
             
@@ -32,14 +40,18 @@ namespace LogicState
         
         public LogicState(ELogicState stateEnum)
         {
+            LogicStateEnum = stateEnum;
             m_HashCode = (int)stateEnum;
         }
+        
 
         public LogicState(ELogicState stateEnum,LogicStateManager parent)
         {
             m_Owner = parent == null ? null : parent;
+            LogicStateEnum = stateEnum;
             m_HashCode = (int)stateEnum;
         }
+        
         
         /// <summary>
         /// 每个状态进入时先调用Init初始化成员变量，再调用OnStateIn,

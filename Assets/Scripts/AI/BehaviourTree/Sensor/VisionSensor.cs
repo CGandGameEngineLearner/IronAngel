@@ -15,10 +15,11 @@ public class VisionSensor:MonoBehaviour,IAISensor
     private float m_HalfVisualAngle
     {
         get { return VisualAngle / 2; }
-    }
+    }   
     public float MaximumVisualDistance = 5;
-    public Vector3 RelativeSightDirection = Vector3.right;//(1,0,0)
+    public Vector3 RelativeSightDirection = Vector3.up;//(0,1,0)
     public bool DrawSightLine = false;
+    public bool AutoRemoveGamoObjectExitSight = false;//自动移除超出视线的GameObject
     
     /// <summary>
     /// 只注意察觉的GameObject的Tag
@@ -50,7 +51,7 @@ public class VisionSensor:MonoBehaviour,IAISensor
 
     private void Update()
     {
-        m_AbsoluteSightDirection = transform.TransformDirection(RelativeSightDirection);
+        m_AbsoluteSightDirection = transform.rotation*RelativeSightDirection;
         
         UpdateObjectsInSight();
         DrawSight();
@@ -70,9 +71,9 @@ public class VisionSensor:MonoBehaviour,IAISensor
     {
         m_GameObjectsInTrigger.Remove(other.gameObject);
         UpdateObjectsInSight();
-        if (m_GameObjectsInSight.Count <= 0)
+        if (AutoRemoveGamoObjectExitSight&&m_GameObjectsInSight.Count <= 0)
         {
-            m_LogicStateManager.RemoveState(ELogicState.AIVisionPerceived);
+            m_LogicStateManager.RemoveState(ELogicState.AIPerceivedTarget);
         }
     }
 
@@ -80,12 +81,12 @@ public class VisionSensor:MonoBehaviour,IAISensor
     {
         if (DrawSightLine)
         {
-            Quaternion leftRotation = Quaternion.Euler(0, 0, m_HalfVisualAngle);
+            Quaternion leftRotation = Quaternion.Euler(0, 0, 90 + m_HalfVisualAngle);
             Vector3 leftSightEdge = leftRotation * RelativeSightDirection;
             leftSightEdge = transform.TransformDirection(leftSightEdge);
             
             
-            Quaternion rightRotation = Quaternion.Euler(0, 0, -m_HalfVisualAngle);
+            Quaternion rightRotation = Quaternion.Euler(0, 0,90 - m_HalfVisualAngle);
             Vector3 rightSightEdge = rightRotation * RelativeSightDirection;
             rightSightEdge = transform.TransformDirection(rightSightEdge);
             
@@ -101,7 +102,7 @@ public class VisionSensor:MonoBehaviour,IAISensor
             
         var distance = toVisitedGameObject.magnitude;
         var angle = Vector3.Angle(m_AbsoluteSightDirection, toVisitedGameObject);
-        
+        Debug.DrawLine(transform.position,transform.position+(m_AbsoluteSightDirection*MaximumVisualDistance),Color.magenta);
         // 如果超出视线范围，或超过夹角，则移除
         if ( distance > MaximumVisualDistance || angle > m_HalfVisualAngle)
         {
@@ -119,7 +120,7 @@ public class VisionSensor:MonoBehaviour,IAISensor
             if (CheckInSight(go))
             {
                 Debug.Log("AI察觉到："+ go.name);
-                m_LogicStateManager.AddState(ELogicState.AIVisionPerceived);
+                m_LogicStateManager.AddState(ELogicState.AIPerceivedTarget);
                 m_GameObjectsInSight.Add(go);
             }
         }

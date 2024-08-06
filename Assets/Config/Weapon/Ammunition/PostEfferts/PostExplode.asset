@@ -19,5 +19,7 @@ MonoBehaviour:
   m_LifeDistance: 0
   m_Damage: 40
   m_PostAmmunitionType: 0
+  m_IsExplodeDamage: 1
   m_specialAtkTypes: 
-  m_LeastLiveFixedFrameCount: 3
+  m_LeastLiveFixedFrameCount: 0
+  m_EffectBuff: []

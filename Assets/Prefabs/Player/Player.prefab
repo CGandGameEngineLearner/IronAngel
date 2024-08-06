@@ -599,9 +599,7 @@ MonoBehaviour:
     _WallLayer:
       serializedVersion: 2
       m_Bits: 512
-  _AudioConfig: {fileID: 11400000, guid: 4acc25dfd8dc1264298860c5fd8abc67, type: 2}
-  _WeaponCats: []
-  _AmmunitionCats: []
+  _FireDistance: 2.5
 --- !u!114 &8003055979873924788
 MonoBehaviour:
   m_ObjectHideFlags: 0

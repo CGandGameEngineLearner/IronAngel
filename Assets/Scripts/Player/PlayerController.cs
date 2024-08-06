@@ -18,6 +18,7 @@ public class PlayerController : NetworkBehaviour
     private LogicStateManager m_LogicStateManager;
 
     bool m_AfterStartLocalPlayer = false;
+    float m_FireDistance;
     //  public------------------------------------------
     public WeaponSystemCenter WeaponSystemCenter
     {
@@ -52,6 +53,8 @@ public class PlayerController : NetworkBehaviour
     public override void OnStartLocalPlayer()
     {
         PlayerSetting setting = GetComponent<PlayerSetting>();
+
+        m_FireDistance = setting._FireDistance;
         
         m_CameraController.Init(Camera.main, GameObject.FindAnyObjectByType<CinemachineVirtualCamera>().GetComponent<CinemachineVirtualCamera>(), GameObject.FindWithTag("CameraTarget").transform, setting._CameraMinDistance, setting._CameraMaxDistance);
         m_InputController.Init();
@@ -97,7 +100,6 @@ public class PlayerController : NetworkBehaviour
             }
             
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-            PlayerSpec playerSpec = new PlayerSpec();
         }
     }
 
@@ -142,15 +144,15 @@ public class PlayerController : NetworkBehaviour
     [ClientCallback]
     private void UpdatePlayerRotation()
     {
-            if(m_InputController.IsGamePadInput())
-            {
-                m_Player.LookAt(m_InputController.GetGamePadViewInput());
-            }
-            else
-            {
-                Vector3 v3 = m_InputController.GetMousePositionInWorldSpace(m_CameraController.GetCamera()) - m_Player.GetPlayerPosition();
-                m_Player.LookAt(new Vector2(v3.x, v3.y));
-            }
+        if(m_InputController.IsGamePadInput())
+        {
+            m_Player.LookAt(m_InputController.GetGamePadViewInput());
+        }
+        else
+        {
+            Vector3 v3 = m_InputController.GetMousePositionInWorldSpace(m_CameraController.GetCamera()) - m_Player.GetPlayerPosition();
+            m_Player.LookAt(new Vector2(v3.x, v3.y));
+        }
     }
 
     [ClientCallback]
@@ -209,7 +211,15 @@ public class PlayerController : NetworkBehaviour
                     Debug.Log("左手上没武器");
                     return;
                 }
-                CmdFire(weapon,pos,m_InputController.GetMousePositionInWorldSpace(m_CameraController.GetCamera()) - m_Player.GetPlayerPosition());
+                Vector3 dir = m_InputController.GetMousePositionInWorldSpace(m_CameraController.GetCamera()) - m_Player.GetPlayerLeftHandPosition();
+                if (Vector2.Distance(m_InputController.GetMousePositionInWorldSpace(m_CameraController.GetCamera()), m_Player.GetPlayerLeftHandPosition()) <= m_FireDistance)
+                {
+                    var v3 = (m_InputController.GetMousePositionInWorldSpace(m_CameraController.GetCamera()) - m_Player.GetPlayerPosition()).normalized;
+                    v3.z = 0;
+                    v3 = v3.normalized;
+                    dir = v3 * m_FireDistance + m_Player.GetPlayerPosition() - m_Player.GetPlayerLeftHandPosition();
+                }
+                CmdFire(weapon,pos, dir);
             }
             
         });
@@ -225,7 +235,15 @@ public class PlayerController : NetworkBehaviour
                     Debug.Log("右手上没武器");
                     return;
                 }
-                CmdFire(weapon, pos, m_InputController.GetMousePositionInWorldSpace(m_CameraController.GetCamera()) - m_Player.GetPlayerPosition());
+                Vector3 dir = m_InputController.GetMousePositionInWorldSpace(m_CameraController.GetCamera()) - m_Player.GetPlayerRightHandPosition();
+                if (Vector2.Distance(m_InputController.GetMousePositionInWorldSpace(m_CameraController.GetCamera()), m_Player.GetPlayerRightHandPosition()) <= m_FireDistance)
+                {
+                    var v3 = (m_InputController.GetMousePositionInWorldSpace(m_CameraController.GetCamera()) - m_Player.GetPlayerPosition()).normalized;
+                    v3.z = 0;
+                    v3 = v3.normalized;
+                    dir = v3 * m_FireDistance + m_Player.GetPlayerPosition() - m_Player.GetPlayerRightHandPosition();
+                }
+                CmdFire(weapon, pos, dir);
             }
         });
     }

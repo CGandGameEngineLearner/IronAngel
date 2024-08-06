@@ -14,6 +14,7 @@ public class AmmunitionHandle
     public AtkType atkType;
     public AmmunitionType ammunitionType;
     public AmmunitionConfig ammunitionConfig;
+    public Vector3 scale;
     public int liveFrameCount;
 
     public void Init(GameObject owner, GameObject ammunition, AmmunitionType ammunitionType,
@@ -29,15 +30,35 @@ public class AmmunitionHandle
         this.rigidbody2D = ammunition.GetComponent<Rigidbody2D>();
         this.ammunitionConfig = ammunitionConfig;
         this.startPoint = startPoint;
-        this.dir = dir;
+        this.dir = dir.normalized;
 
         ammunition.transform.position = startPoint;
         rigidbody2D.position = startPoint;
+
+        scale = ammunition.transform.localScale;
+
+        // 将方向转换为三维向量
+        Vector3 direction = new Vector3(dir.x, dir.y, 0);
+
+        // 设置子弹的旋转，使其朝向指定的方向
+        if (direction != Vector3.zero)
+        {
+            ammunition.transform.rotation = Quaternion.LookRotation(Vector3.forward, direction);
+        }
     }
-    
+
+    public void IsChild(GameObject gameObject)
+    {
+    }
+
     public void Clear()
     {
         active = false;
+
+        // 恢复transfrom
+        ammunition.transform.position = Vector3.zero;
+        ammunition.transform.localScale = scale;
+        ammunition.transform.rotation = Quaternion.identity;
 
         ammunition = null;
         rigidbody2D = null;
@@ -147,7 +168,15 @@ public class AmmunitionFactory
         AmmunitionConfig ammunitionConfig, AtkType atkType,
         Vector2 startPoint, Vector2 dir)
     {
-        ammunition.transform.rotation = Quaternion.identity;
+        // 将方向转换为三维向量
+        Vector3 direction = new Vector3(dir.x, dir.y, 0);
+
+        // 设置子弹的旋转，使其朝向指定的方向
+        if (direction != Vector3.zero)
+        {
+            ammunition.transform.rotation = Quaternion.LookRotation(Vector3.forward, direction);
+        }
+
         RegisterAmmunition(owner, ammunition, ammunitionType, ammunitionConfig, atkType, startPoint, dir);
     }
 
@@ -164,13 +193,13 @@ public class AmmunitionFactory
         if (m_AmmunitionsDict[ammunition].active)
         {
             m_AmmunitionsDict[ammunition].active = false;
-            
+
             var handle = GetAmmunitionHandle(ammunition);
             var postType = handle.ammunitionConfig.postAmmunitionType;
             if (postType != AmmunitionType.None)
             {
-                // m_AmmunitionPool.GetObject(postType, handle.rigidbody2D.transform.position, Quaternion.identity);
-                ShootAmmunition(handle.launcherCharacter, m_AmmunitionPool.GetObject(postType), postType, m_AmmunitionConfigs[postType],
+                ShootAmmunition(handle.launcherCharacter, m_AmmunitionPool.GetObject(postType), postType,
+                    m_AmmunitionConfigs[postType],
                     AtkType.Default, handle.rigidbody2D.transform.position, Vector2.zero);
             }
         }
@@ -219,6 +248,7 @@ public class AmmunitionFactory
                         InternalProcessShotGunAmmunition(ammunitionHandle);
                         break;
                     case AtkType.Laser:
+                        InternalProcessLaserAmmunition(ammunitionHandle);
                         break;
                     case AtkType.ShotGun:
                         InternalProcessShotGunAmmunition(ammunitionHandle);
@@ -284,7 +314,7 @@ public class AmmunitionFactory
             UnRegisterAmmunition(ammunitionHandle.ammunition);
         }
     }
-    
+
     /// <summary>
     /// 处理ShotGun、Rifle类型的子弹
     /// </summary>
@@ -308,6 +338,66 @@ public class AmmunitionFactory
         if ((position - startPoint).magnitude > lifeDis)
         {
             UnRegisterAmmunition(ammunition);
+        }
+    }
+
+    private void InternalProcessLaserAmmunition(AmmunitionHandle ammunitionHandle)
+    {
+        if (ammunitionHandle.liveFrameCount++ <= 1)
+        {
+            Vector2 startPoint = ammunitionHandle.startPoint;
+            Vector2 laserStartPoint = startPoint + 5 * ammunitionHandle.dir;
+            int ignoreLayer = ~(LayerMask.GetMask("Bullet") | LayerMask.GetMask("Ground") | LayerMask.GetMask("Sensor"));
+
+            RaycastHit2D[] hits = Physics2D.RaycastAll(laserStartPoint, ammunitionHandle.dir, ammunitionHandle.ammunitionConfig.lifeDistance, ignoreLayer);
+
+            Vector2 endPoint = startPoint + ammunitionHandle.dir.normalized * ammunitionHandle.ammunitionConfig.lifeDistance;
+
+            foreach (var hit in hits)
+            {
+                if (hit.collider != null && !hit.collider.isTrigger)
+                {
+                    // 如果碰撞到非触发器物体，使用碰撞点作为终点
+                    endPoint = hit.point;
+                    break; // 找到第一个非触发器碰撞后停止
+                }
+            }
+
+// 现在 `endPoint` 是射线的终点，可以用来绘制激光或其他处理
+
+#if UNITY_EDITOR
+            Debug.DrawLine(startPoint, endPoint, Color.green, 5);
+#endif
+
+            // 计算起点和终点之间的中点
+            Vector2 midPoint = (startPoint + endPoint) / 2;
+
+            // 计算距离
+            float distance = Vector2.Distance(startPoint, endPoint);
+
+#if UNITY_EDITOR
+            Debug.DrawLine(startPoint, midPoint, Color.blue, 5);
+#endif
+
+            // 设置激光面片位置和方向 
+            Transform laserTransform = ammunitionHandle.ammunition.transform;
+
+            // 获取激光面片的初始比例
+            Vector3 scale = laserTransform.localScale;
+
+            scale.y = distance; // 设置长度为两点之间的距离
+            scale.x = ammunitionHandle.ammunitionConfig.m_LaserWidth; // 保持宽度为1
+
+            // 应用新的缩放比例
+            laserTransform.localScale = scale;
+
+            laserTransform.up = ammunitionHandle.dir; // 设置方向
+
+            laserTransform.position = midPoint; // 设置位置为中点
+        }
+        else
+        {
+            UnRegisterAmmunition(ammunitionHandle.ammunition);
         }
     }
 }
