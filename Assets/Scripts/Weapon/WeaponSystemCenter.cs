@@ -85,11 +85,11 @@ public class WeaponSystemCenter : NetworkBehaviour
     
     public void SpawnWeapon(WeaponType weaponType, Vector3 pos)
     {
-        CmdSpawnWeapon(weaponType, pos);
+        ServeSpawnWeapon(weaponType, pos);
     }
 
     [Server]
-    private void CmdSpawnWeapon(WeaponType weaponType, Vector3 pos)
+    private void ServeSpawnWeapon(WeaponType weaponType, Vector3 pos)
     {
         var weaponConfig = m_WeaponConfigDic[weaponType];
         var prefab = weaponConfig.prefab;
