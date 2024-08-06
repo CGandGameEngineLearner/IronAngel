@@ -119,20 +119,12 @@ public class PlayerController : NetworkBehaviour
 
             
         }
-        if(Input.GetKeyDown(KeyCode.I))
-        {
-            //测试
-            ResetPlayerStun();
-        }
     }
 
     [Command]
     void CmdStartGame()
     {
         WeaponSystemCenter.Instance.CmdStartGame();
-
-        // 测试
-        SetPlayerStun();
     }
 
     [ClientCallback]
