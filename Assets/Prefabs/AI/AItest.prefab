@@ -649,9 +649,9 @@ MonoBehaviour:
     m_DropWeapon_WeaponDestroy: 0
     m_DropWeapon_CharacterDied: 1
     m_AutoAvoid: 1
-    m_AutoAvoid_Probability: 0.5
-    m_AutoAvoid_RestTimes: 3
-    m_DashSpeed: 10
+    m_AutoAvoid_Probability: 0.3
+    m_AutoAvoid_RestTimes: 2
+    m_DashSpeed: 5
     m_DashDuration: 2
 --- !u!195 &3478913082591308681
 NavMeshAgent:
