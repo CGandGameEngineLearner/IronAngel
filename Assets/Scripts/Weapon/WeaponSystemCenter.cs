@@ -167,7 +167,7 @@ public class WeaponSystemCenter : NetworkBehaviour
     /// <param name="weapon"></param>
     /// <param name="startPoint"></param>
     /// <param name="dir"></param>
-    [ServerCallback]
+    [Server]
     public void CmdFire(GameObject character, GameObject weapon, Vector3 startPoint, Vector3 dir)
     {
         dir = dir.normalized;
