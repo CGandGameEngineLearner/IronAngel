@@ -11,12 +11,15 @@ public struct WeaponInstanceData
 public class WeaponInstance : NetworkBehaviour
 {
     private WeaponInstanceData m_WeaponInstanceData;
+
+    [SyncVar] private int m_WeaponHP;
     
     private WeaponConfig m_WeaponConfig;
 
     public void Init(WeaponConfig weaponConfig)
     {
         m_WeaponConfig = weaponConfig;
+        m_WeaponHP = weaponConfig.weaponHp;
         m_WeaponInstanceData.currentMag = weaponConfig.magSize;
     }
 
@@ -49,6 +52,6 @@ public class WeaponInstance : NetworkBehaviour
 
     public int GetWeaponHP()
     {
-        return m_WeaponConfig.weaponHp;
+        return m_WeaponHP;
     }
 }
