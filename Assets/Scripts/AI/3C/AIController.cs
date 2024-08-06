@@ -10,6 +10,7 @@ using IronAngel;
 using Random = UnityEngine.Random;
 using LogicState;
 using Unity.VisualScripting;
+using Utils = IronAngel.Utils;
 
 public class AIController : NetworkBehaviour
 {
@@ -32,10 +33,15 @@ public class AIController : NetworkBehaviour
     void Start()
     {
         m_BaseProperties = GetComponent<BaseProperties>();
+        
         m_LogicStateManager = GetComponent<LogicStateManager>();
+        
         m_AIMovement = GetComponent<AIMovement>();
-        m_DamageSensor = GetComponent<DamageSensor>();
+        
         m_VisionSensor = GetComponent<VisionSensor>();
+        
+        m_DamageSensor = GetComponent<DamageSensor>();
+        m_DamageSensor.SetNotifyPerceivedDelegate(BeDamaged);
 
 
         EventCenter.AddListener<LogicStateManager,ELogicState>(
@@ -44,7 +50,54 @@ public class AIController : NetworkBehaviour
             );
         
         RegisterWeapon();
-       
+    }
+
+    [ServerCallback]
+    public void BeDamaged()
+    {
+        if (m_BaseProperties.m_Properties.m_AutoAvoid)
+        {
+            Avoid();
+        }
+    }
+
+    /// <summary>
+    /// 受到伤害时概率触发躲避
+    /// </summary>
+    /// <param name="attacker"></param>
+    [ServerCallback]
+    public void Avoid()
+    {
+        if(!Utils.RandomBool(m_BaseProperties.m_Properties.m_AutoAvoid_Probability))
+        {
+            return;
+        }
+
+        if (m_LogicStateManager.IncludeState(ELogicState.PlayerDashing))
+        {
+            return;
+        }
+        
+        // 一半的概率向左冲刺，一半的概率向右冲刺
+        if (Utils.RandomBool(0.5f))
+        {
+            Dash(transform.rotation*Vector3.left);
+        }
+        else
+        {
+            Dash(transform.rotation*Vector3.right);
+        }
+        
+        
+        m_BaseProperties.m_Properties.m_AutoAvoid_RestTimes -= 1;
+    }
+    
+    
+
+    [ServerCallback]
+    private void Dash(Vector2 dashDir)
+    {
+        m_AIMovement.Dash(dashDir);
     }
 
     [ServerCallback]

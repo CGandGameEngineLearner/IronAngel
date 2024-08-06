@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 
 namespace LogicState
@@ -19,6 +20,7 @@ namespace LogicState
         AIPerceivedTarget,                  // AI察觉到目标
         EnemyInRangeOfAttack,               // 敌人进入了攻击范围
         AIAttacking,                        // AI攻击中
+        AIDashing,                          // AI冲刺中
         // ---------------------------------- 以上为LogicState ---------------------------------- 
         LogicStateSplitter,        
         // ---------------------------------- 以下为BuffState  ---------------------------------- 
@@ -51,6 +53,8 @@ namespace LogicState
             new LogicState_PlayerShooting(ELogicState.PlayerShooting),
             new LogicState(ELogicState.EnemyInRangeOfAttack),
             new LogicState_AIAttacking(ELogicState.AIAttacking),
+            new LogicState(ELogicState.AIAttacking),
+            new LogicState(ELogicState.AIDashing),
             // 以上是LogicState ---------------------
             
             // 以下是BuffState ----------------------
@@ -67,6 +71,11 @@ namespace LogicState
                 {
                     m_LogicStateTemplateDic[state.LogicStateEnum] = state;
                 }
+            }
+
+            if (!m_LogicStateTemplateDic.ContainsKey(eLogicState))
+            {
+                throw new Exception("未在LogicStateTemplates创建state模板对象");
             }
 
             return m_LogicStateTemplateDic[eLogicState];

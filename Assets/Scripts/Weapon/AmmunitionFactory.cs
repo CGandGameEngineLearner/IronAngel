@@ -48,12 +48,12 @@ public class AmmunitionHandle
         }
         
         // 获取角色子物体信息，用于忽略碰撞体
-        foreach (var child in IronAngel.Utils.GetAllChildren(ammunition.transform))
+        foreach (var child in IronAngel.Utils.GetAllChildren(launcherCharacter.transform))
         {
             ignoredObjects.Add(child);
         }
         
-        ignoredObjects.Add(ammunition);
+        ignoredObjects.Add(launcherCharacter);
     }
     
     public void Clear()

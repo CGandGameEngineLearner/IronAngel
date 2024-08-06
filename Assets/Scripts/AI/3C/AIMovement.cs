@@ -13,6 +13,7 @@ public class AIMovement : MonoBehaviour
     private Vector3 m_LastPos;
     private Vector3 m_MoveDirection = Vector3.zero;
     private BaseProperties m_BaseProperties;
+    private Rigidbody2D m_Rigidbody;
 
     private float m_NormalSpeed;
     private GameObject m_ChaseTarget;
@@ -22,6 +23,7 @@ public class AIMovement : MonoBehaviour
         m_BaseProperties = GetComponent<BaseProperties>();
         agent = GetComponent<NavMeshAgent>();
         m_LogicStateManager = GetComponent<LogicStateManager>();
+        m_Rigidbody = GetComponent<Rigidbody2D>();
         m_LastPos = transform.position;
         m_NormalSpeed = agent.speed;
     }
@@ -76,10 +78,56 @@ public class AIMovement : MonoBehaviour
     {
         return agent.SetDestination(target);
     }
-
-    public virtual void Dash(Vector3 dir)
+    
+    /// <summary>
+    /// 冲刺
+    /// </summary>
+    /// <param name="_dashDir"></param>
+    public virtual void Dash(Vector3 _dashDir)
     {
         
+        if (!m_LogicStateManager.IncludeState(ELogicState.AIDashing))
+        {
+            var success = m_LogicStateManager.AddState(ELogicState.AIDashing);
+            m_LogicStateManager.SetStateDuration(ELogicState.AIDashing, m_BaseProperties.m_Properties.m_DashDuration);
+            
+            StartCoroutine(DashCoroutine(_dashDir));
+            
+        }
+        
+    }
+    
+    /// <summary>
+    /// 冲刺协程
+    /// </summary>
+    /// <param name="_dashDir"></param>
+    /// <returns></returns>
+    protected IEnumerator DashCoroutine(Vector2 _dashDir)
+    {
+        
+        var m_WallLayer = m_BaseProperties.m_Properties.m_WallLayer;
+        agent.enabled = false;
+        
+        //当冲刺状态的持续时间结束时停止
+        while (m_LogicStateManager.IncludeState(ELogicState.AIDashing))
+        {
+            _dashDir = _dashDir.normalized;
+            var dashSpeed = m_BaseProperties.m_Properties.m_DashSpeed;
+            var v2 = m_Rigidbody.position;
+            v2.x += _dashDir.x * dashSpeed * Time.fixedDeltaTime;
+            v2.y += _dashDir.y * dashSpeed * Time.fixedDeltaTime;
+            var hit = Physics2D.Raycast(m_Rigidbody.position, _dashDir, Vector2.Distance(m_Rigidbody.position, v2) + 1,
+                m_WallLayer);
+            if (hit && Vector2.Distance(m_Rigidbody.position, v2) >= Vector2.Distance(m_Rigidbody.position, hit.point))
+            {
+                v2 = hit.point - _dashDir * 0.1f;
+            }
+
+            m_Rigidbody.MovePosition(v2);
+            yield return null;
+        }
+
+        agent.enabled = true;
     }
 
     /// <summary>
@@ -101,7 +149,7 @@ public class AIMovement : MonoBehaviour
     {
         StartCoroutine(MoveToDestinationCoroutine(target.transform.position));
         yield break;
-    }
+    }   
 
     public virtual void PatrolWithFixedRoute(SplineContainer patrolRoute)
     {
@@ -135,7 +183,7 @@ public class AIMovement : MonoBehaviour
     }
 
     protected IEnumerator MoveToDestinationCoroutine(Vector3 target)
-    {
+    { 
         SetDestination(target);
         yield return new WaitUntil(() => agent.remainingDistance == 0);
     }

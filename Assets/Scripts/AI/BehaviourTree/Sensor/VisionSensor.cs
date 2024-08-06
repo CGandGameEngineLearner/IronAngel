@@ -6,6 +6,8 @@ using UnityEngine;
 public class VisionSensor:MonoBehaviour,IAISensor
 {
     public Collider Sight;
+
+    private IAISensor.NotifyPerceivedDelegate m_NotifyPerceivedDelegate;
     
     /// <summary>
     /// 视线左边缘到右边缘的夹角
@@ -124,5 +126,10 @@ public class VisionSensor:MonoBehaviour,IAISensor
                 m_GameObjectsInSight.Add(go);
             }
         }
+    }
+    
+    public void SetNotifyPerceivedDelegate(IAISensor.NotifyPerceivedDelegate notifyPerceived)
+    {
+        m_NotifyPerceivedDelegate = notifyPerceived;
     }
 }

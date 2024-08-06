@@ -7,6 +7,7 @@ using Unity.VisualScripting;
 public class DamageSensor:MonoBehaviour,IAISensor
 {
     private LogicStateManager m_LogicStateManager;
+    private IAISensor.NotifyPerceivedDelegate m_NotifyPerceivedDelegate;
     
     private void Start()
     {
@@ -27,6 +28,17 @@ public class DamageSensor:MonoBehaviour,IAISensor
     {
         m_WhoDamaged.Add(go);
         m_LogicStateManager.AddState(ELogicState.AIPerceivedTarget);
+
+        if (m_NotifyPerceivedDelegate != null)
+        {
+            m_NotifyPerceivedDelegate();// 调用委托
+        }
+       
+    }
+
+    public void SetNotifyPerceivedDelegate(IAISensor.NotifyPerceivedDelegate notifyPerceived)
+    {
+        m_NotifyPerceivedDelegate = notifyPerceived;
     }
 
     

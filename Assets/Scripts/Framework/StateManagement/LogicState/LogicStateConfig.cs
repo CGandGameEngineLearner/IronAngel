@@ -24,7 +24,7 @@ namespace LogicState
             if (!m_LogicStateEnumDic.ContainsKey(stateEnum))
             {
                 #if UNITY_EDITOR
-                //Debug.Log(stateEnum.ToString()+"使用了默认设置" );
+                Debug.Log(stateEnum.ToString()+"使用了默认设置" );
                 #endif
                 return DefaultLogicStateSetting;
             }

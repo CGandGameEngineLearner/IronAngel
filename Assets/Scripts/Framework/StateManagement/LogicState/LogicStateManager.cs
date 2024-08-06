@@ -33,7 +33,16 @@ namespace LogicState
                     state.StartTime = Time.time;
                     state.Init();
                     state.OnStateIn();
+                    state.SetActive(true);
                     m_FutureStatesBuffer[stateEnum] = state;
+                }
+                else if (m_FutureStatesBuffer.ContainsKey(stateEnum))
+                {
+                    var state = m_FutureStatesBuffer[stateEnum];
+                    state.StartTime = Time.time;
+                    state.Init();
+                    state.OnStateIn();
+                    state.SetActive(true);
                 }
                 else
                 {
@@ -45,6 +54,7 @@ namespace LogicState
                     newState.StartTime = Time.time;
                     newState.Init();
                     newState.OnStateIn();
+                    newState.SetActive(true);
                     m_FutureStatesBuffer[stateEnum] = newState;
                 }
                 return true;
