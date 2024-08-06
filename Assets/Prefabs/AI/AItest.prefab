@@ -406,7 +406,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95fd45bb06b1d9947bc00dca79c32884, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StateDictionaryCapacity: 5
   LogicStateConfig: {fileID: 11400000, guid: d861588762146f145a5ec14342c402e1, type: 2}
 --- !u!114 &3113793352235342954
 MonoBehaviour:
@@ -645,7 +644,7 @@ MonoBehaviour:
     m_CurrentArmor: 0
     m_AttackRange: 10
     m_TokenWeight: 0.3
-    m_RangeOfAimingError: 1
+    m_RangeOfAimingError: 30
     m_Camp: 1
     m_DropWeapon_WeaponDestroy: 0
     m_DropWeapon_CharacterDied: 1

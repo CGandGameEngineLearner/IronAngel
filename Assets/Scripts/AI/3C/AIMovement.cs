@@ -27,9 +27,10 @@ public class AIMovement : MonoBehaviour
 
     private void Start()
     {
+        m_LogicStateManager = GetComponent<LogicStateManager>();
         m_BaseProperties = GetComponent<BaseProperties>();
         agent = GetComponent<NavMeshAgent>();
-        m_LogicStateManager = GetComponent<LogicStateManager>();
+        
         m_Rigidbody = GetComponent<Rigidbody2D>();
         m_LastPos = transform.position;
         m_NormalSpeed = agent.speed;

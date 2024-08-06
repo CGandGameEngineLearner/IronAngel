@@ -248,8 +248,8 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
 
             if (m_Properties.m_Properties.m_DropWeapon_CharacterDied)
             {
-                WeaponSystemCenter.Instance.CmdSpawnWeapon(m_Properties.m_Properties.m_LeftHandWeapon, transform.position);
-                WeaponSystemCenter.Instance.CmdSpawnWeapon(m_Properties.m_Properties.m_RightHandWeapon, transform.position);
+                WeaponSystemCenter.Instance.SpawnWeapon(m_Properties.m_Properties.m_LeftHandWeapon, transform.position);
+                WeaponSystemCenter.Instance.SpawnWeapon(m_Properties.m_Properties.m_RightHandWeapon, transform.position);
             }
         }
         // 玩家所有护甲损失
@@ -286,7 +286,7 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
 
             if (m_Properties.m_Properties.m_DropWeapon_WeaponDestroy)
             {
-                WeaponSystemCenter.Instance.CmdSpawnWeapon(m_Properties.m_Properties.m_LeftHandWeapon, transform.position);
+                WeaponSystemCenter.Instance.SpawnWeapon(m_Properties.m_Properties.m_LeftHandWeapon, transform.position);
             }
 
             // 如果是玩家的话就丢失武器
@@ -308,7 +308,7 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
 
             if (m_Properties.m_Properties.m_DropWeapon_WeaponDestroy)
             {
-                WeaponSystemCenter.Instance.CmdSpawnWeapon(m_Properties.m_Properties.m_RightHandWeapon, transform.position);
+                WeaponSystemCenter.Instance.SpawnWeapon(m_Properties.m_Properties.m_RightHandWeapon, transform.position);
             }
 
             // 如果是玩家的话就丢失武器

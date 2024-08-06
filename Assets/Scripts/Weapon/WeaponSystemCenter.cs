@@ -82,8 +82,8 @@ public class WeaponSystemCenter : NetworkBehaviour
         m_RegisteredWeaponAI.Add(aiController);
     }
     
-    [Command]
-    public GameObject CmdSpawnWeapon(WeaponType weaponType, Vector3 pos)
+    [ClientCallback]
+    public GameObject SpawnWeapon(WeaponType weaponType, Vector3 pos)
     {
         var weaponConfig = m_WeaponConfigDic[weaponType];
         var prefab = weaponConfig.prefab;
@@ -95,13 +95,13 @@ public class WeaponSystemCenter : NetworkBehaviour
         m_WeaponToConfigDic[weapon] = weaponConfig;
         m_WeaponToTypeDic[weapon] = weaponType;
         NetworkServer.Spawn(weapon);
-        RpcWeaponDicUpdate(weapon, weaponType, weaponConfig);
+        CmdWeaponDicUpdate(weapon, weaponType, weaponConfig);
         return weapon;
     }
     
     
-    [ClientRpc]
-    private void RpcWeaponDicUpdate(GameObject weapon, WeaponType weaponType, WeaponConfig weaponConfig)
+    [Command]
+    private void CmdWeaponDicUpdate(GameObject weapon, WeaponType weaponType, WeaponConfig weaponConfig)
     {
         m_WeaponToConfigDic[weapon] = weaponConfig;
         m_WeaponToTypeDic[weapon] = weaponType;
@@ -116,13 +116,13 @@ public class WeaponSystemCenter : NetworkBehaviour
         {
             // 给左手装备武器
             var weaponType = element.GetRightHandWeaponType();
-            var leftWeapon = CmdSpawnWeapon(weaponType, Vector3.zero);
+            var leftWeapon = SpawnWeapon(weaponType, Vector3.zero);
             element.SetLeftHandWeapon(leftWeapon);
 
 
             // 给右手装备武器
             weaponType = element.GetRightHandWeaponType();
-            var rightWeapon = CmdSpawnWeapon(weaponType, Vector3.zero);
+            var rightWeapon = SpawnWeapon(weaponType, Vector3.zero);
             element.SetRightHandWeapon(rightWeapon);
 
             RpcGiveAIWeapon(element, leftWeapon, rightWeapon);
@@ -354,7 +354,7 @@ public class WeaponSystemCenter : NetworkBehaviour
         {
             foreach (var weaponSpawnSetting in WeaponSpawnSettings)
             {
-                CmdSpawnWeapon(weaponSpawnSetting.WeaponType, weaponSpawnSetting.Position);
+                SpawnWeapon(weaponSpawnSetting.WeaponType, weaponSpawnSetting.Position);
             }
 
             GiveAIWeapon();
