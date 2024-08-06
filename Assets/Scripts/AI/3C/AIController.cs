@@ -202,7 +202,7 @@ public class AIController : NetworkBehaviour
         return result;
     }
 
-    
+    [ServerCallback]
     public bool Attack()
     {
         if (m_LogicStateManager.IncludeState(ELogicState.AIAttacking))
