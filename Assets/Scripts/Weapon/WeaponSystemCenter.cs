@@ -81,8 +81,7 @@ public class WeaponSystemCenter : NetworkBehaviour
     {
         m_RegisteredWeaponAI.Add(aiController);
     }
-
-    [ServerCallback]
+    
     public GameObject SpawnWeapon(WeaponType weaponType, Vector3 pos)
     {
         var weaponConfig = m_WeaponConfigDic[weaponType];
@@ -93,13 +92,19 @@ public class WeaponSystemCenter : NetworkBehaviour
         
         weapon.GetComponent<WeaponInstance>().Init(weaponConfig);
 
-        NetworkServer.Spawn(weapon);
+        ServerSpawnWeapon(weapon);
         
         m_WeaponToConfigDic[weapon] = weaponConfig;
         m_WeaponToTypeDic[weapon] = weaponType;
         
         //RpcWeaponDicUpdate(weapon, weaponType, weaponConfig);
         return weapon;
+    }
+    
+    [ServerCallback]
+    private void ServerSpawnWeapon(GameObject weapon)
+    {
+        NetworkServer.Spawn(weapon);
     }
     
     [ClientRpc]
@@ -168,7 +173,7 @@ public class WeaponSystemCenter : NetworkBehaviour
     /// <param name="weapon"></param>
     /// <param name="startPoint"></param>
     /// <param name="dir"></param>
-    [Server]
+    [ServerCallback]
     public void CmdFire(GameObject character, GameObject weapon, Vector3 startPoint, Vector3 dir)
     {
         dir = dir.normalized;
