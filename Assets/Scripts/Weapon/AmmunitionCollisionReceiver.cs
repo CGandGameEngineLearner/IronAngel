@@ -381,6 +381,7 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
 }
 
 
+[Serializable]
 public struct DamageData
 {
     public int m_CurrentHP;
