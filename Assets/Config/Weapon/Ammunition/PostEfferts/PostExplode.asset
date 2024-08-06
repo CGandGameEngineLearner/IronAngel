@@ -15,11 +15,13 @@ MonoBehaviour:
   m_Prefab: {fileID: 8422378306381297977, guid: e16edb34232657e41b74275bd97f6b41, type: 3}
   m_MinPoolSize: 50
   m_MaxPoolSize: 100
+  isAuto: 0
   m_Speed: 0
   m_LifeDistance: 0
-  m_Damage: 40
+  m_Damage: 1000
   m_PostAmmunitionType: 0
   m_IsExplodeDamage: 1
+  m_LaserWidth: 0
+  m_LeastLiveFixedFrameCount: 2
   m_specialAtkTypes: 
-  m_LeastLiveFixedFrameCount: 0
   m_EffectBuff: []
