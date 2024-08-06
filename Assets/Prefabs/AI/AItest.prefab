@@ -631,8 +631,8 @@ MonoBehaviour:
     m_RightHandWeaponHP: 500
     m_LeftHandWeapon: 0
     m_RightHandWeapon: 0
-    m_LeftHandWeaponAttackingDuration: 0.5
-    m_RightHandWeaponAttackingDuration: 0.3
+    m_LeftHandWeaponAttackingDuration: 1
+    m_RightHandWeaponAttackingDuration: 1
     m_ProbabilityOfLeftWeapon: 0.5
     m_ProbabilityOfRightWeapon: 0.5
     m_EngagementDistance: 3
@@ -641,10 +641,10 @@ MonoBehaviour:
     m_CurrentHP: 100
     m_CurrentArmor: 0
     m_AttackRange: 10
-    m_TokenWeight: 1
+    m_TokenWeight: 0.4
     m_RangeOfAimingError: 1
     m_Camp: 1
-    m_DropWeapon_WeaponDestroy: 1
+    m_DropWeapon_WeaponDestroy: 0
     m_DropWeapon_CharacterDied: 1
     m_AutoAvoid: 1
     m_AutoAvoid_Probability: 1
