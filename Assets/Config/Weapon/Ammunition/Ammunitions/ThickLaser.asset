@@ -15,6 +15,7 @@ MonoBehaviour:
   m_Prefab: {fileID: 8422378306381297977, guid: 776382461d237bf44b7832ba1824b5b6, type: 3}
   m_MinPoolSize: 50
   m_MaxPoolSize: 100
+  isAuto: 0
   m_Speed: 0
   m_LifeDistance: 100
   m_Damage: 10
