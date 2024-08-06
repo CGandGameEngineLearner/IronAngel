@@ -84,7 +84,7 @@ public class WeaponSystemCenter : NetworkBehaviour
     }
     
     [ClientCallback]
-    public SpawnWeapon(WeaponType weaponType, Vector3 pos)
+    public void SpawnWeapon(WeaponType weaponType, Vector3 pos)
     {
         CmdSpawnWeapon(weaponType, pos);
     }
@@ -114,22 +114,40 @@ public class WeaponSystemCenter : NetworkBehaviour
         m_WeaponToTypeDic[weapon] = weaponType;
     }
 
+    [ServerCallback]
+    private GameObject AISpawnWeapon(WeaponType weaponType, Vector3 pos)
+    {
+        var weaponConfig = m_WeaponConfigDic[weaponType];
+        var prefab = weaponConfig.prefab;
+
+        GameObject weapon = Instantiate(prefab, pos,
+            UnityEngine.Quaternion.identity);
+
+        weapon.GetComponent<WeaponInstance>().Init(weaponConfig);
+        m_WeaponToConfigDic[weapon] = weaponConfig;
+        m_WeaponToTypeDic[weapon] = weaponType;
+        NetworkServer.Spawn(weapon);
+        RpcWeaponDicUpdate(weapon, weaponType);
+        return weapon;
+    }
+
     /// <summary>
     /// 给AI装备武器
     /// </summary>
+    [ServerCallback]
     private void GiveAIWeapon()
     {
         foreach (var element in m_RegisteredWeaponAI)
         {
             // 给左手装备武器
             var weaponType = element.GetRightHandWeaponType();
-            var leftWeapon = SpawnWeapon(weaponType, Vector3.zero);
+            var leftWeapon = AISpawnWeapon(weaponType, Vector3.zero);
             element.SetLeftHandWeapon(leftWeapon);
 
 
             // 给右手装备武器
             weaponType = element.GetRightHandWeaponType();
-            var rightWeapon = SpawnWeapon(weaponType, Vector3.zero);
+            var rightWeapon = AISpawnWeapon(weaponType, Vector3.zero);
             element.SetRightHandWeapon(rightWeapon);
 
             RpcGiveAIWeapon(element, leftWeapon, rightWeapon);
