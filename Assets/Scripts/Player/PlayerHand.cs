@@ -53,7 +53,7 @@ public class PlayerHand
             }
             obj.SetActive(false);
             m_PlayerLeftHand.SetActive(true);
-            m_BaseProperties.m_Properties.m_LeftHandWeaponHP = obj.GetComponent<WeaponInstance>().GetConfig().weaponHp;
+            m_Player.GetComponent<BaseProperties>().m_Properties.m_LeftHandWeaponHP = obj.GetComponent<WeaponInstance>().GetConfig().weaponHp;
         }
     }
 
@@ -71,7 +71,7 @@ public class PlayerHand
             }
             obj.SetActive(false);
             m_PlayerRightHand.SetActive(true);
-            m_BaseProperties.m_Properties.m_RightHandWeaponHP = obj.GetComponent <WeaponInstance>().GetConfig().weaponHp;
+            m_Player.GetComponent<BaseProperties>().m_Properties.m_RightHandWeaponHP = obj.GetComponent <WeaponInstance>().GetConfig().weaponHp;
         }
     }
 
