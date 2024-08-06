@@ -212,7 +212,7 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
         if(m_Properties.m_Properties.m_CurrentHP <= 0)
         {
 #if UNITY_EDITOR
-            Debug.Log("玩家 ：" + gameObject.name + "死亡");
+            //Debug.Log("玩家 ：" + gameObject.name + "死亡");
 #endif
             gameObject.SetActive(false);
 
@@ -250,7 +250,7 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
         if(m_Properties.m_Properties.m_LeftHandWeaponHP <= 0)
         {
 #if UNITY_EDITOR
-            Debug.Log("玩家 ：" + gameObject.name + "丢失左手");
+            //Debug.Log("玩家 ：" + gameObject.name + "丢失左手");
 #endif
             m_LeftWeapon.gameObject.SetActive(false);
 
@@ -272,7 +272,7 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
         if(m_Properties.m_Properties.m_RightHandWeaponHP <= 0)
         {
 #if UNITY_EDITOR
-            Debug.Log("玩家 ：" + gameObject.name + "丢失右手");
+            //Debug.Log("玩家 ：" + gameObject.name + "丢失右手");
 #endif
             m_RightWeapon.gameObject.SetActive(false);
 
