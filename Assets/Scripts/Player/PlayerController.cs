@@ -18,6 +18,7 @@ public class PlayerController : NetworkBehaviour
     private LogicStateManager m_LogicStateManager;
 
     bool m_AfterStartLocalPlayer = false;
+    float m_FireDistance;
     //  public------------------------------------------
     public WeaponSystemCenter WeaponSystemCenter
     {
@@ -52,6 +53,8 @@ public class PlayerController : NetworkBehaviour
     public override void OnStartLocalPlayer()
     {
         PlayerSetting setting = GetComponent<PlayerSetting>();
+
+        m_FireDistance = setting._FireDistance;
         
         m_CameraController.Init(Camera.main, GameObject.FindAnyObjectByType<CinemachineVirtualCamera>().GetComponent<CinemachineVirtualCamera>(), GameObject.FindWithTag("CameraTarget").transform, setting._CameraMinDistance, setting._CameraMaxDistance);
         m_InputController.Init();
@@ -209,7 +212,15 @@ public class PlayerController : NetworkBehaviour
                     Debug.Log("左手上没武器");
                     return;
                 }
-                CmdFire(weapon,pos,m_InputController.GetMousePositionInWorldSpace(m_CameraController.GetCamera()) - m_Player.GetPlayerLeftHandPosition());
+                Vector3 dir = m_InputController.GetMousePositionInWorldSpace(m_CameraController.GetCamera()) - m_Player.GetPlayerLeftHandPosition();
+                if (Vector2.Distance(m_InputController.GetMousePositionInWorldSpace(m_CameraController.GetCamera()), m_Player.GetPlayerLeftHandPosition()) <= m_FireDistance)
+                {
+                    var v3 = (m_InputController.GetMousePositionInWorldSpace(m_CameraController.GetCamera()) - m_Player.GetPlayerPosition()).normalized;
+                    v3.z = 0;
+                    v3 = v3.normalized;
+                    dir = v3 * m_FireDistance + m_Player.GetPlayerPosition() - m_Player.GetPlayerLeftHandPosition();
+                }
+                CmdFire(weapon,pos, dir);
             }
             
         });
@@ -225,7 +236,15 @@ public class PlayerController : NetworkBehaviour
                     Debug.Log("右手上没武器");
                     return;
                 }
-                CmdFire(weapon, pos, m_InputController.GetMousePositionInWorldSpace(m_CameraController.GetCamera()) - m_Player.GetPlayerRightHandPosition());
+                Vector3 dir = m_InputController.GetMousePositionInWorldSpace(m_CameraController.GetCamera()) - m_Player.GetPlayerRightHandPosition();
+                if (Vector2.Distance(m_InputController.GetMousePositionInWorldSpace(m_CameraController.GetCamera()), m_Player.GetPlayerRightHandPosition()) <= m_FireDistance)
+                {
+                    var v3 = (m_InputController.GetMousePositionInWorldSpace(m_CameraController.GetCamera()) - m_Player.GetPlayerPosition()).normalized;
+                    v3.z = 0;
+                    v3 = v3.normalized;
+                    dir = v3 * m_FireDistance + m_Player.GetPlayerPosition() - m_Player.GetPlayerRightHandPosition();
+                }
+                CmdFire(weapon, pos, dir);
             }
         });
     }
