@@ -187,12 +187,23 @@ public class AIMovement : MonoBehaviour
 
     protected IEnumerator MoveToDestinationCoroutine(Vector3 target)
     {
-        if (agent.isOnNavMesh)
+        if (!agent.isOnNavMesh)
         {
-            SetDestination(target);
+            yield return null;
         }
-        
-        yield return new WaitUntil(() => agent.remainingDistance == 0);
+
+
+        SetDestination(target);
+        yield return new WaitUntil(() =>
+            {
+                if (!agent.isOnNavMesh)
+                {
+                    return true;
+                }
+                return agent.remainingDistance == 0;
+            }
+        );
+
     }
        
 }
