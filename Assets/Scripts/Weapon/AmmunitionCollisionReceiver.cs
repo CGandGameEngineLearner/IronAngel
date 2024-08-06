@@ -295,7 +295,7 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
                 var weapon = controller.Player.DropPlayerLeftHandWeapon(transform.position);
                 if(weapon)
                 {
-                    NetworkServer.Destroy(weapon);
+                    DestroyWeapon(weapon);
                 }
             }
         }
@@ -317,7 +317,7 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
                 var weapon = controller.Player.DropPlayerRightHandWeapon(transform.position);
                 if (weapon)
                 {
-                    NetworkServer.Destroy(weapon);
+                    DestroyWeapon(weapon);
                 }
             }
         }
@@ -373,6 +373,12 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
                     }
             }
         }
+    }
+
+    [ServerCallback]
+    public void DestroyWeapon(GameObject weapon)
+    {
+        NetworkServer.Destroy(weapon);
     }
 }
 
