@@ -22221,10 +22221,12 @@ MonoBehaviour:
   - WeaponType: 0
     WeaponConfig: {fileID: 11400000, guid: 1466359d5658cb04e9354a90dd965ebb, type: 2}
   AmmunitionConfigSettings:
-  - AmmunitionType: 2
+  - AmmunitionType: 3
     AmmunitionConfig: {fileID: 11400000, guid: c404fa5ec3e4a6a48a52cfc51d3a4210, type: 2}
   - AmmunitionType: 1
     AmmunitionConfig: {fileID: 11400000, guid: a17ef4a8bfbbce841be18458ccfa425e, type: 2}
+  - AmmunitionType: 5
+    AmmunitionConfig: {fileID: 11400000, guid: 773de7e271d9f7a4bbcc382439f6730e, type: 2}
   StartGame: 0
 --- !u!114 &2031368173
 MonoBehaviour:

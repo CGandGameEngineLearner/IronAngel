@@ -273,6 +273,7 @@ public class WeaponSystemCenter : NetworkBehaviour
         switch (weaponConfigData.atkType)
         {
             case AtkType.Laser:
+                SetAmmunition(character, weaponConfigData, ammunitionType, startPoint, dir);
                 break;
             case AtkType.Rifle:
                 // 普通间隔发射

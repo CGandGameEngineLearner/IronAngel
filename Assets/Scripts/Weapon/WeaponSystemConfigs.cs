@@ -17,8 +17,12 @@ public enum AmmunitionType
     None,
     // 产生爆炸效果的炸弹
     PostProcess_Expolde,
+    // 产生激光判定的实体
+    PostProcess_Laser,
     // 实际飞行的子弹/激光/导弹 
     Bullet,
+    ThinLaser,
+    ThickLaser,
 }
 
 public enum WeaponType
