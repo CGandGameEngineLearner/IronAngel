@@ -32,6 +32,18 @@ namespace IronAngel
         public static bool RandomBool(float probability) {
             return Random.value < probability;
         }
+        
+        public static IEnumerable<GameObject> GetAllChildren(Transform parent)
+        {
+            foreach (Transform child in parent)
+            {
+                yield return child.gameObject;
+                foreach (var grandChild in GetAllChildren(child))
+                {
+                    yield return grandChild;
+                }
+            }
+        }
 
     }
 }
