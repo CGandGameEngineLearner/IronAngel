@@ -49,10 +49,21 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
             m_Properties.m_Properties.m_CurrentArmor = armor;
         }
 
-        m_Properties.m_Properties.m_RightHandWeaponHP = WeaponSystemCenter.GetWeaponConfig(m_Properties.m_Properties.m_RightHandWeapon).weaponHp;
-        m_Properties.m_Properties.m_LeftHandWeaponHP = WeaponSystemCenter.GetWeaponConfig(m_Properties.m_Properties.m_LeftHandWeapon).weaponHp;
+        if(TryGetComponent<PlayerController>(out var controller))
+        {
+
+        }
+        else
+        {
+            m_Properties.m_Properties.m_RightHandWeaponHP = WeaponSystemCenter.GetWeaponConfig(m_Properties.m_Properties.m_RightHandWeapon).weaponHp;
+            m_Properties.m_Properties.m_LeftHandWeaponHP = WeaponSystemCenter.GetWeaponConfig(m_Properties.m_Properties.m_LeftHandWeapon).weaponHp;
+        }
+        
+
 
         m_Collider = GetComponent<BoxCollider2D>();
+
+        RPCBroadcastDamage(m_Properties.m_Properties);
     }
 
 

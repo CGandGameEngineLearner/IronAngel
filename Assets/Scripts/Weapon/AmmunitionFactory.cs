@@ -16,6 +16,7 @@ public class AmmunitionHandle
     public AmmunitionConfig ammunitionConfig;
     public Vector3 scale;
     public int liveFrameCount;
+    public HashSet<GameObject> ignoredObjects = new HashSet<GameObject>();
 
     public void Init(GameObject owner, GameObject ammunition, AmmunitionType ammunitionType,
         AmmunitionConfig ammunitionConfig, AtkType atkType,
@@ -45,12 +46,16 @@ public class AmmunitionHandle
         {
             ammunition.transform.rotation = Quaternion.LookRotation(Vector3.forward, direction);
         }
+        
+        // 获取角色子物体信息，用于忽略碰撞体
+        foreach (var child in IronAngel.Utils.GetAllChildren(ammunition.transform))
+        {
+            ignoredObjects.Add(child);
+        }
+        
+        ignoredObjects.Add(ammunition);
     }
-
-    public void IsChild(GameObject gameObject)
-    {
-    }
-
+    
     public void Clear()
     {
         active = false;
@@ -67,6 +72,7 @@ public class AmmunitionHandle
         dir = Vector2.up;
         this.ammunitionType = AmmunitionType.Bullet;
         liveFrameCount = 0;
+        ignoredObjects.Clear();
     }
 }
 
@@ -343,27 +349,25 @@ public class AmmunitionFactory
 
     private void InternalProcessLaserAmmunition(AmmunitionHandle ammunitionHandle)
     {
-        if (ammunitionHandle.liveFrameCount++ <= 1)
+        if (ammunitionHandle.liveFrameCount++ == 0)
         {
             Vector2 startPoint = ammunitionHandle.startPoint;
-            Vector2 laserStartPoint = startPoint + 5 * ammunitionHandle.dir;
+            Vector2 laserStartPoint = startPoint + 0 * ammunitionHandle.dir;
             int ignoreLayer = ~(LayerMask.GetMask("Bullet") | LayerMask.GetMask("Ground") | LayerMask.GetMask("Sensor"));
-
+            
             RaycastHit2D[] hits = Physics2D.RaycastAll(laserStartPoint, ammunitionHandle.dir, ammunitionHandle.ammunitionConfig.lifeDistance, ignoreLayer);
 
             Vector2 endPoint = startPoint + ammunitionHandle.dir.normalized * ammunitionHandle.ammunitionConfig.lifeDistance;
 
             foreach (var hit in hits)
             {
-                if (hit.collider != null && !hit.collider.isTrigger)
+                if (hit.collider != null && !hit.collider.isTrigger && !ammunitionHandle.ignoredObjects.Contains(hit.collider.gameObject))
                 {
-                    // 如果碰撞到非触发器物体，使用碰撞点作为终点
+                    // 如果碰撞到非触发器且不在忽略列表中的物体，使用碰撞点作为终点
                     endPoint = hit.point;
                     break; // 找到第一个非触发器碰撞后停止
                 }
             }
-
-// 现在 `endPoint` 是射线的终点，可以用来绘制激光或其他处理
 
 #if UNITY_EDITOR
             Debug.DrawLine(startPoint, endPoint, Color.green, 5);
@@ -395,7 +399,7 @@ public class AmmunitionFactory
 
             laserTransform.position = midPoint; // 设置位置为中点
         }
-        else
+        else if(ammunitionHandle.liveFrameCount > ammunitionHandle.ammunitionConfig.m_LeastLiveFixedFrameCount)
         {
             UnRegisterAmmunition(ammunitionHandle.ammunition);
         }

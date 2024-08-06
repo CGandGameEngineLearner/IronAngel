@@ -1,3 +1,4 @@
+using BehaviorDesigner.Runtime.Tasks.Unity.UnityGameObject;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,6 +15,8 @@ public class PlayerHand
     private GameObject m_ObjectInLeftHand;
     private GameObject m_ObjectInRightHand;
 
+    private BaseProperties m_BaseProperties;
+
 //  public------------------------------------------------
     public void Init(PlayerHandSpec spec)
     {
@@ -22,6 +25,8 @@ public class PlayerHand
         m_PlayerRightHand = spec.m_PlayerRightHand;
         m_DetectRange = spec.m_DetectRange;
         m_WeaponLayer = spec.m_WeaponLayer;
+
+        m_BaseProperties = m_Player.GetComponent<BaseProperties>();
     }
 
     public Vector3 GetPlayerLeftHandPosition()
@@ -47,6 +52,8 @@ public class PlayerHand
                 collider.enabled = false;
             }
             obj.SetActive(false);
+            m_PlayerLeftHand.SetActive(true);
+            m_BaseProperties.m_Properties.m_LeftHandWeaponHP = obj.GetComponent<WeaponInstance>().GetConfig().weaponHp;
         }
     }
 
@@ -63,6 +70,8 @@ public class PlayerHand
                 collider.enabled = false;
             }
             obj.SetActive(false);
+            m_PlayerRightHand.SetActive(true);
+            m_BaseProperties.m_Properties.m_RightHandWeaponHP = obj.GetComponent <WeaponInstance>().GetConfig().weaponHp;
         }
     }
 
