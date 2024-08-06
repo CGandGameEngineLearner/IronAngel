@@ -8,6 +8,8 @@ using LogicState;
 using Unity.VisualScripting;
 using UnityEngine.SceneManagement;
 
+
+[RequireComponent(typeof(BaseProperties))]
 public class PlayerController : NetworkBehaviour
 {
     public readonly static List<PlayerController> PlayerControllers = new List<PlayerController>();
@@ -73,6 +75,20 @@ public class PlayerController : NetworkBehaviour
         UnRegisterGameEvent();
         PlayerControllers.Remove(this);
     }
+
+
+    // 玩家眩晕
+    public void SetPlayerStun()
+    {
+        m_InputController.DisablePlayerInput();
+    }
+
+    // 恢复玩家眩晕
+    public void ResetPlayerStun()
+    {
+        m_InputController.EnablePlayerInput();
+    }
+
     // private------------------------------------------
     [ClientCallback]
     private void Update()
@@ -100,6 +116,13 @@ public class PlayerController : NetworkBehaviour
             }
             
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+            
+        }
+        if(Input.GetKeyDown(KeyCode.I))
+        {
+            //测试
+            ResetPlayerStun();
         }
     }
 
@@ -107,6 +130,9 @@ public class PlayerController : NetworkBehaviour
     void CmdStartGame()
     {
         WeaponSystemCenter.Instance.CmdStartGame();
+
+        // 测试
+        SetPlayerStun();
     }
 
     [ClientCallback]
