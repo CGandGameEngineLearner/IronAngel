@@ -94,15 +94,18 @@ public class WeaponSystemCenter : NetworkBehaviour
         weapon.GetComponent<WeaponInstance>().Init(weaponConfig);
         m_WeaponToConfigDic[weapon] = weaponConfig;
         m_WeaponToTypeDic[weapon] = weaponType;
-        NetworkServer.Spawn(weapon);
+        
         CmdWeaponDicUpdate(weapon, weaponType, weaponConfig);
         return weapon;
     }
+
+    
     
     
     [Command]
     private void CmdWeaponDicUpdate(GameObject weapon, WeaponType weaponType, WeaponConfig weaponConfig)
     {
+        NetworkServer.Spawn(weapon);
         m_WeaponToConfigDic[weapon] = weaponConfig;
         m_WeaponToTypeDic[weapon] = weaponType;
     }
