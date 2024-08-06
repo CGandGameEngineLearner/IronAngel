@@ -82,6 +82,7 @@ public class WeaponSystemCenter : NetworkBehaviour
         m_RegisteredWeaponAI.Add(aiController);
     }
 
+    [ServerCallback]
     public GameObject SpawnWeapon(WeaponType weaponType, Vector3 pos)
     {
         var weaponConfig = m_WeaponConfigDic[weaponType];
