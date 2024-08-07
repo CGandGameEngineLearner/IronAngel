@@ -19,7 +19,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5766486335978873223
 Transform:
   m_ObjectHideFlags: 0
@@ -119,7 +119,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.09505361, y: 0.070039555}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0.5}
@@ -130,7 +130,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.42967826, y: 0.79988706}
   m_EdgeRadius: 0
 --- !u!114 &2140402947500618200
 MonoBehaviour:
@@ -709,8 +709,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5b882c521fc1a346a1ef4c9ce24e16a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _CameraMinDistance: 0.021
-  _CameraMaxDistance: 0.475
+  _CameraMinDistance: 0.32
+  _CameraMaxDistance: 0.32
   _PlayerSpec:
     m_Player: {fileID: 0}
     m_NormalSpeed: 5
@@ -747,7 +747,9 @@ MonoBehaviour:
     m_Energy: 0
     m_BaseHP: 50000
     m_LeftHandWeaponHP: 0
+    m_LeftHandWeaponCurrentHP: 0
     m_RightHandWeaponHP: 0
+    m_RightHandWeaponCurrentHP: 0
     m_LeftHandWeapon: 0
     m_RightHandWeapon: 0
     m_LeftHandWeaponAttackingDuration: 0
@@ -870,7 +872,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &9026808096670510101
 Transform:
   m_ObjectHideFlags: 0
@@ -970,7 +972,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.11506489, y: 0.035019808}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0.5}
@@ -981,7 +983,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.3763147, y: 0.5697571}
   m_EdgeRadius: 0
 --- !u!114 &6859064458056751447
 MonoBehaviour:

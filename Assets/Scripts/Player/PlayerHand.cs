@@ -90,6 +90,7 @@ public class PlayerHand
         var g = m_ObjectInLeftHand;
         m_ObjectInLeftHand = null;
         m_PlayerLeftHand.SetActive(false);
+        m_BaseProperties.m_Properties.m_LeftHandWeaponCurrentHP = 0;
         return g;
     }
 
@@ -112,6 +113,7 @@ public class PlayerHand
         var g = m_ObjectInRightHand;
         m_ObjectInRightHand = null;
         m_PlayerRightHand.SetActive(false);
+        m_BaseProperties.m_Properties.m_RightHandWeaponCurrentHP = 0;
         return g;
     }
 

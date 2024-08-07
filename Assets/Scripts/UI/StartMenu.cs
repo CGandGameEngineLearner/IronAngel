@@ -10,6 +10,8 @@ public class StartMenu : MonoBehaviour
     private NetworkManager m_Manager;
     private GameObject m_StartMenu;
     [SerializeField]
+    private GameObject m_PropertiesUI;
+    [SerializeField]
     private PauseMenu m_PauseMenu;
     [SerializeField]
     private NetworkStatus m_NetworkStatus;
@@ -107,6 +109,7 @@ public class StartMenu : MonoBehaviour
             isSingle = false;
             m_MultiplayerPanel.SetActive(false);
             m_StartMenu.SetActive(false);
+            m_PropertiesUI.SetActive(true);
         }
         if(isSingle == false && !NetworkClient.isConnected && !NetworkServer.active)
         {
@@ -121,6 +124,7 @@ public class StartMenu : MonoBehaviour
             m_NetworkStatus.gameObject.SetActive(false);
             m_MultiplayerPanel.SetActive(false);
             m_StartMenu.SetActive(false);
+            m_PropertiesUI.SetActive(true);
         }
     }
 }

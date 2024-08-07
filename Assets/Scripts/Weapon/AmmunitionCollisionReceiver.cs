@@ -188,12 +188,12 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
         // 击中左手
         if(leftDis < rightDis && leftDis < coreDis && m_Properties.m_Properties.m_LeftHandWeaponHP > 0)
         {
-            m_Properties.m_Properties.m_LeftHandWeaponHP -= damage;
+            m_Properties.m_Properties.m_LeftHandWeaponCurrentHP -= damage;
         }
         // 击中右手
         else if(rightDis < coreDis && rightDis < leftDis && m_Properties.m_Properties.m_RightHandWeaponHP > 0)
         {
-            m_Properties.m_Properties.m_RightHandWeaponHP -= damage;
+            m_Properties.m_Properties.m_RightHandWeaponCurrentHP -= damage;
         }
         // 击中核心
         else
@@ -207,8 +207,8 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
         data.m_CurrentHP = m_Properties.m_Properties.m_CurrentHP;
         data.m_CurrentArmor = m_Properties.m_Properties.m_CurrentArmor;
         data.m_EnergyShieldCount = m_Properties.m_Properties.m_EnergyShieldCount;
-        data.m_LeftHandWeaponHP = m_Properties.m_Properties.m_LeftHandWeaponHP;
-        data.m_RightHandWeaponHP = m_Properties.m_Properties.m_RightHandWeaponHP;
+        data.m_LeftHandWeaponHP = m_Properties.m_Properties.m_LeftHandWeaponCurrentHP;
+        data.m_RightHandWeaponHP = m_Properties.m_Properties.m_RightHandWeaponCurrentHP;
         RPCBroadcastDamage(data);
     }
 
