@@ -83,6 +83,6 @@ public class WeaponConfig : ItemConfig
 
     [SerializeField]
     private bool m_Anticipation;
-
+    [Tooltip("镭射提示多久消失/敌人会蹲多久")]
     [SerializeField] private float m_AnticipationDuration;
 }

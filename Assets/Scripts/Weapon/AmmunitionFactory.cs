@@ -16,7 +16,7 @@ public class AmmunitionHandle
     public AmmunitionConfig ammunitionConfig;
     public Vector3 scale;
     public int liveFrameCount;
-    public HashSet<GameObject> ignoredObjects = new HashSet<GameObject>();
+    public HashSet<GameObject> ignoredObjects;
 
     public void Init(GameObject owner, GameObject ammunition, AmmunitionType ammunitionType,
         AmmunitionConfig ammunitionConfig, AtkType atkType,
@@ -48,12 +48,13 @@ public class AmmunitionHandle
         }
         
         // 获取角色子物体信息，用于忽略碰撞体
-        foreach (var child in IronAngel.Utils.GetAllChildren(launcherCharacter.transform))
-        {
-            ignoredObjects.Add(child);
-        }
-        
-        ignoredObjects.Add(launcherCharacter);
+        // foreach (var child in IronAngel.Utils.GetAllChildren(launcherCharacter.transform))
+        // {
+        //     ignoredObjects.Add(child);
+        // }
+        //
+        // ignoredObjects.Add(launcherCharacter);
+        ignoredObjects = owner.GetComponent<AutoGetChild>().ignoredObjects;
     }
     
     public void Clear()

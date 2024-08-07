@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using Mirror;
 using Unity.VisualScripting;
@@ -284,6 +285,20 @@ public class WeaponSystemCenter : NetworkBehaviour
 
         lineRenderer.SetPosition(0, startPoint);
         lineRenderer.SetPosition(1, endPoint);
+
+        StartCoroutine(DisableLineRenderer(m_WeaponToConfigDic[weaponGo].anticipationDuration, lineRenderer));
+    }
+
+    private IEnumerator DisableLineRenderer(float seconds, LineRenderer lineRenderer)
+    {
+        float counter = 0;
+        while (counter < seconds)
+        {
+            counter += Time.deltaTime;
+            yield return null;
+        }
+
+        lineRenderer.positionCount = 0;
     }
 
     /// <summary>
