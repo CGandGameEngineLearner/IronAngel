@@ -1025,7 +1025,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 487800976973705117, guid: 69677af734c8e1748959e20b5597d2f2, type: 3}
       propertyPath: orthographic size
-      value: 5
+      value: 10.5
       objectReference: {fileID: 0}
     - target: {fileID: 487800976973705117, guid: 69677af734c8e1748959e20b5597d2f2, type: 3}
       propertyPath: m_CullingMask.m_Bits
@@ -12213,7 +12213,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 11.200012, y: 128.2}
+  m_AnchoredPosition: {x: 11.200012, y: 128.20001}
   m_SizeDelta: {x: -640, y: -420}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &975540731
@@ -27195,6 +27195,10 @@ PrefabInstance:
       propertyPath: m_Follow
       value: 
       objectReference: {fileID: 479608160}
+    - target: {fileID: 1380324233139244480, guid: 1736d91bd8315dd4fab24ac4cf362c84, type: 3}
+      propertyPath: m_Lens.OrthographicSize
+      value: 10.5
+      objectReference: {fileID: 0}
     - target: {fileID: 3568278015593421937, guid: 1736d91bd8315dd4fab24ac4cf362c84, type: 3}
       propertyPath: m_RootOrder
       value: 12
