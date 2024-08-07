@@ -207,8 +207,8 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
         data.m_CurrentHP = m_Properties.m_Properties.m_CurrentHP;
         data.m_CurrentArmor = m_Properties.m_Properties.m_CurrentArmor;
         data.m_EnergyShieldCount = m_Properties.m_Properties.m_EnergyShieldCount;
-        data.m_LeftHandWeaponHP = m_Properties.m_Properties.m_LeftHandWeaponHP;
-        data.m_RightHandWeaponHP = m_Properties.m_Properties.m_RightHandWeaponHP;
+        data.m_LeftHandWeaponHP = m_Properties.m_Properties.m_LeftHandWeaponCurrentHP;
+        data.m_RightHandWeaponHP = m_Properties.m_Properties.m_RightHandWeaponCurrentHP;
         RPCBroadcastDamage(data);
     }
 
