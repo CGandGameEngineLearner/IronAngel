@@ -22,8 +22,12 @@ public class AmmunitionConfig : ItemConfig
     public AmmunitionType m_PostAmmunitionType;
     
     [Header("子弹特殊属性配置")]
-    [Tooltip("子弹是否有爆炸衰减，计算方式为平方衰减，普通实弹武器不需要勾选")]
+    [Tooltip("子弹是否有爆炸衰减，普通实弹武器不需要勾选")]
     public bool m_IsExplodeDamage;
+    [Tooltip("子弹是否有爆炸衰减，普通实弹武器不需要勾选")]
+    public float sigma;
+    [Tooltip("子弹是否有爆炸衰减，普通实弹武器不需要勾选")]
+    public float fallout;
     [Tooltip("只有激光子弹会用到，其他子弹忽视即可")]
     public float m_LaserWidth;
     [Tooltip("子弹最少存活的物理帧数，用于提供给后处理子弹使用，普通子弹忽视即可")]

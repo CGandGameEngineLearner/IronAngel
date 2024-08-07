@@ -16,7 +16,7 @@ public class AmmunitionHandle
     public AmmunitionConfig ammunitionConfig;
     public Vector3 scale;
     public int liveFrameCount;
-    public HashSet<GameObject> ignoredObjects = new HashSet<GameObject>();
+    public HashSet<GameObject> ignoredObjects;
 
     public void Init(GameObject owner, GameObject ammunition, AmmunitionType ammunitionType,
         AmmunitionConfig ammunitionConfig, AtkType atkType,
@@ -48,12 +48,13 @@ public class AmmunitionHandle
         }
         
         // 获取角色子物体信息，用于忽略碰撞体
-        foreach (var child in IronAngel.Utils.GetAllChildren(launcherCharacter.transform))
-        {
-            ignoredObjects.Add(child);
-        }
-        
-        ignoredObjects.Add(launcherCharacter);
+        // foreach (var child in IronAngel.Utils.GetAllChildren(launcherCharacter.transform))
+        // {
+        //     ignoredObjects.Add(child);
+        // }
+        //
+        // ignoredObjects.Add(launcherCharacter);
+        ignoredObjects = owner.GetComponent<AutoGetChild>().ignoredObjects;
     }
     
     public void Clear()
@@ -72,7 +73,6 @@ public class AmmunitionHandle
         dir = Vector2.up;
         this.ammunitionType = AmmunitionType.Bullet;
         liveFrameCount = 0;
-        ignoredObjects.Clear();
     }
 }
 
@@ -390,7 +390,7 @@ public class AmmunitionFactory
             Vector3 scale = laserTransform.localScale;
 
             scale.y = distance; // 设置长度为两点之间的距离
-            scale.x = ammunitionHandle.ammunitionConfig.m_LaserWidth; // 保持宽度为1
+            scale.x = ammunitionHandle.ammunitionConfig.m_LaserWidth; 
 
             // 应用新的缩放比例
             laserTransform.localScale = scale;

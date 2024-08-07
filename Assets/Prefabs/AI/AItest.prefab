@@ -343,6 +343,7 @@ GameObject:
   - component: {fileID: 8024465685505109704}
   - component: {fileID: 6854736833197721151}
   - component: {fileID: 85230040884797571}
+  - component: {fileID: 6355942658252182156}
   m_Layer: 7
   m_Name: AItest
   m_TagString: Untagged
@@ -748,6 +749,21 @@ Rigidbody2D:
   m_SleepingMode: 0
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!114 &6355942658252182156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2195872794582507982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5dd68d94fb114bad9b5835ef88e4d56a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
 --- !u!1 &3342869003483958290
 GameObject:
   m_ObjectHideFlags: 0

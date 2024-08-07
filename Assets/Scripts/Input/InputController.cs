@@ -35,6 +35,11 @@ public class InputController
         m_PlayerInputConfig.Disable();
     }
 
+    public void DisposeAllInput()
+    {
+        m_PlayerInputConfig?.Dispose();
+    }
+
     public void EnableAllInput()
     {
         m_PlayerInputConfig.Enable();
@@ -348,6 +353,22 @@ public class InputController
     public void RemovePerformedActionToPlayerInteract(Action func)
     {
         m_PlayerInputConfig.Player.Interact.performed -= ctx =>
+        {
+            func?.Invoke();
+        };
+    }
+
+    public void AddPerformedActionToMenuBack(Action func)
+    {
+        m_PlayerInputConfig.Menu.Back.performed += ctx =>
+        {
+            func?.Invoke();
+        };
+    }
+
+    public void RemovePerformedActionToMenuBack(Action func)
+    {
+        m_PlayerInputConfig.Menu.Back.performed -= ctx =>
         {
             func?.Invoke();
         };
