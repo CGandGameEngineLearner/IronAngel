@@ -237,11 +237,11 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
             playerController.Player.GetPlayerLeftHandWeapon()?.GetComponent<WeaponInstance>().SetWeaponCurrentHP(data.m_LeftHandWeaponHP);
             playerController.Player.GetPlayerRightHandWeapon()?.GetComponent<WeaponInstance>().SetWeaponCurrentHP(data.m_RightHandWeaponHP);
         }
-        // 玩家死亡
+        // 角色死亡
         if(m_Properties.m_Properties.m_CurrentHP <= 0)
         {
             gameObject.SetActive(false);
-
+            EventCenter.Broadcast<GameObject>(EventType.CharacterDied,gameObject);
             if (m_Properties.m_Properties.m_DropWeapon_CharacterDied)
             {
                 WeaponSystemCenter.Instance.SpawnWeapon(m_Properties.m_Properties.m_LeftHandWeapon, transform.position);
@@ -266,7 +266,7 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
                     shield.gameObject.SetActive(false);
             }
         }
-        // 玩家左右手部位损失
+        // 角色左右手部位损失
         if(m_Properties.m_Properties.m_LeftHandWeaponCurrentHP <= 0)
         {
             m_LeftWeapon.gameObject.SetActive(false);
