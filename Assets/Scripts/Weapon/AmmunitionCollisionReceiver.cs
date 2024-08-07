@@ -231,7 +231,7 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
         // 角色死亡
         if(m_Properties.m_Properties.m_CurrentHP <= 0)
         {
-            EventCenter.Broadcast(EventType.CharacterDied);
+            EventCenter.Broadcast<GameObject>(EventType.CharacterDied,gameObject);
 #if UNITY_EDITOR
             //Debug.Log("角色 ：" + gameObject.name + "死亡");
 #endif
