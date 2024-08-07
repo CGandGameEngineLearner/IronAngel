@@ -406,7 +406,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95fd45bb06b1d9947bc00dca79c32884, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StateDictionaryCapacity: 5
   LogicStateConfig: {fileID: 11400000, guid: d861588762146f145a5ec14342c402e1, type: 2}
 --- !u!114 &3113793352235342954
 MonoBehaviour:
@@ -436,6 +435,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcf4b16528a0a0d41ba817e306246775, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_WallLayer:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!58 &7549400497388090286
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -626,13 +628,13 @@ MonoBehaviour:
   syncInterval: 0
   m_Properties:
     m_Energy: 0
-    m_BaseHP: 1000
-    m_LeftHandWeaponHP: 500
-    m_RightHandWeaponHP: 500
+    m_BaseHP: 500
+    m_LeftHandWeaponHP: 200
+    m_RightHandWeaponHP: 200
     m_LeftHandWeapon: 0
     m_RightHandWeapon: 0
-    m_LeftHandWeaponAttackingDuration: 0.5
-    m_RightHandWeaponAttackingDuration: 0.3
+    m_LeftHandWeaponAttackingDuration: 1
+    m_RightHandWeaponAttackingDuration: 1
     m_ProbabilityOfLeftWeapon: 0.5
     m_ProbabilityOfRightWeapon: 0.5
     m_EngagementDistance: 3
@@ -641,19 +643,16 @@ MonoBehaviour:
     m_CurrentHP: 100
     m_CurrentArmor: 0
     m_AttackRange: 10
-    m_TokenWeight: 1
-    m_RangeOfAimingError: 1
+    m_TokenWeight: 0.3
+    m_RangeOfAimingError: 30
     m_Camp: 1
-    m_DropWeapon_WeaponDestroy: 1
+    m_DropWeapon_WeaponDestroy: 0
     m_DropWeapon_CharacterDied: 1
     m_AutoAvoid: 1
-    m_AutoAvoid_Probability: 1
-    m_AutoAvoid_RestTimes: 700
-    m_DashSpeed: 10
-    m_DashDuration: 0.5
-    m_WallLayer:
-      serializedVersion: 2
-      m_Bits: 512
+    m_AutoAvoid_Probability: 0.3
+    m_AutoAvoid_RestTimes: 2
+    m_DashSpeed: 5
+    m_DashDuration: 2
 --- !u!195 &3478913082591308681
 NavMeshAgent:
   m_ObjectHideFlags: 0

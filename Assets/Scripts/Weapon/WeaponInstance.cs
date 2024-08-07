@@ -11,6 +11,8 @@ public struct WeaponInstanceData
 public class WeaponInstance : NetworkBehaviour
 {
     private WeaponInstanceData m_WeaponInstanceData;
+
+    [SyncVar] private int m_WeaponHP;
     
     private WeaponConfig m_WeaponConfig;
 
@@ -19,6 +21,7 @@ public class WeaponInstance : NetworkBehaviour
     public void Init(WeaponConfig weaponConfig)
     {
         m_WeaponConfig = weaponConfig;
+        m_WeaponHP = weaponConfig.weaponHp;
         m_WeaponInstanceData.currentMag = weaponConfig.magSize;
         m_LineRenderer = GetComponent<LineRenderer>();
     }
@@ -52,8 +55,8 @@ public class WeaponInstance : NetworkBehaviour
         return m_WeaponInstanceData.currentMag > 0;
     }
 
-    public WeaponConfig GetConfig()
+    public int GetWeaponHP()
     {
-        return m_WeaponConfig;
+        return m_WeaponHP;
     }
 }

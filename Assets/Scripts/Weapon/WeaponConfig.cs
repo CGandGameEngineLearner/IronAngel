@@ -1,7 +1,9 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 
+[Serializable]
 public struct WeaponConfigData
 {
     public AtkType atkType;
@@ -12,6 +14,8 @@ public struct WeaponConfigData
     public float spreadAngle;
     public float shotSpreadAngle;
     public int WeaponHP;
+    public bool anticipation;
+    public float anticipationDuration;
 
     // [SerializeField] [ConditionalHide("m_AtkType", (int)AtkType.ShotGun)]
     private float m_ShotSpreadAngle;
@@ -21,6 +25,7 @@ public struct WeaponConfigData
 }
 
 [CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/Weapon/WeaponConfig", order = 1)]
+[Serializable]
 public class WeaponConfig : ItemConfig
 {
     // 武器类型
@@ -40,6 +45,10 @@ public class WeaponConfig : ItemConfig
     public AudioClip soundEffect => m_SoundEffect;
     public ParticleSystem effectPrefab => m_EffectPrefab;
 
+    public bool anticipation => m_Anticipation; // 前摇
+
+    public float anticipationDuration => m_AnticipationDuration;
+
     public WeaponConfigData ToData()
     {
         return new WeaponConfigData
@@ -52,6 +61,8 @@ public class WeaponConfig : ItemConfig
             simShots = this.m_SimShots,
             spreadAngle = this.m_SpreadAngle,
             shotSpreadAngle = this.m_ShotSpreadAngle,
+            anticipation    = this.m_Anticipation,
+            anticipationDuration  = this.m_AnticipationDuration,
         };
     }
 
@@ -69,4 +80,9 @@ public class WeaponConfig : ItemConfig
     [SerializeField] private float laserPointerWidth;
     [SerializeField] private AudioClip m_SoundEffect;
     [SerializeField] private ParticleSystem m_EffectPrefab;
+
+    [SerializeField]
+    private bool m_Anticipation;
+
+    [SerializeField] private float m_AnticipationDuration;
 }

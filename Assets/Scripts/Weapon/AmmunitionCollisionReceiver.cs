@@ -48,25 +48,12 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
             m_Properties.m_Properties.m_Armor = armor;
             m_Properties.m_Properties.m_CurrentArmor = armor;
         }
-
-        if(TryGetComponent<PlayerController>(out var controller))
-        {
-
-        }
-        else
-        {
-            m_Properties.m_Properties.m_RightHandWeaponHP = WeaponSystemCenter.GetWeaponConfig(m_Properties.m_Properties.m_RightHandWeapon).weaponHp;
-            m_Properties.m_Properties.m_LeftHandWeaponHP = WeaponSystemCenter.GetWeaponConfig(m_Properties.m_Properties.m_LeftHandWeapon).weaponHp;
-        }
         
 
 
         m_Collider = GetComponent<BoxCollider2D>();
-
-        RPCBroadcastDamage(m_Properties.m_Properties);
+        
     }
-
-
 
     /// <summary>
     /// 应该只有服务端上的物体会接收碰撞
@@ -84,7 +71,11 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
 #endif
             return;
         }
-
+        if (ammunitionHandle.launcherCharacter == null)
+        {
+            return;
+        }
+        
         var launcherCharacterProperties = ammunitionHandle.launcherCharacter.GetComponent<BaseProperties>();
         if (launcherCharacterProperties == null)
         {
@@ -130,6 +121,8 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
     [ServerCallback]
     public void CalculateDamage(AmmunitionConfig config, int armor, Vector2 Pos)
     {
+
+        DamageData data = new DamageData();
         var m_Properties = GetComponent<BaseProperties>();
 
         // 读取子弹上的Buff并且加入LogicStateManager
@@ -149,7 +142,12 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
                 if(config.m_specialAtkTypes.Contains(type) == false)
                 {
                     m_Properties.m_Properties.m_EnergyShieldCount--;
-                    RPCBroadcastDamage(m_Properties.m_Properties);
+                    data.m_CurrentHP = m_Properties.m_Properties.m_CurrentHP;
+                    data.m_CurrentArmor = m_Properties.m_Properties.m_CurrentArmor;
+                    data.m_EnergyShieldCount = m_Properties.m_Properties.m_EnergyShieldCount;
+                    data.m_LeftHandWeaponHP = m_Properties.m_Properties.m_LeftHandWeaponHP;
+                    data.m_RightHandWeaponHP = m_Properties.m_Properties.m_RightHandWeaponHP;
+                    RPCBroadcastDamage(data);
                     return;
                 }
             }
@@ -161,7 +159,12 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
             }
             // 下面的结算能量盾方式是普通的减一
             m_Properties.m_Properties.m_EnergyShieldCount--;
-            RPCBroadcastDamage(m_Properties.m_Properties);
+            data.m_CurrentHP = m_Properties.m_Properties.m_CurrentHP;
+            data.m_CurrentArmor = m_Properties.m_Properties.m_CurrentArmor;
+            data.m_EnergyShieldCount = m_Properties.m_Properties.m_EnergyShieldCount;
+            data.m_LeftHandWeaponHP = m_Properties.m_Properties.m_LeftHandWeaponHP;
+            data.m_RightHandWeaponHP = m_Properties.m_Properties.m_RightHandWeaponHP;
+            RPCBroadcastDamage(data);
             return;
         }
 
@@ -196,18 +199,35 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
         }
         
 
-        RPCBroadcastDamage(m_Properties.m_Properties);
+
+        
+        data.m_CurrentHP = m_Properties.m_Properties.m_CurrentHP;
+        data.m_CurrentArmor = m_Properties.m_Properties.m_CurrentArmor;
+        data.m_EnergyShieldCount = m_Properties.m_Properties.m_EnergyShieldCount;
+        data.m_LeftHandWeaponHP = m_Properties.m_Properties.m_LeftHandWeaponHP;
+        data.m_RightHandWeaponHP = m_Properties.m_Properties.m_RightHandWeaponHP;
+        RPCBroadcastDamage(data);
     }
 
+
+    [ServerCallback]
+    private void SetProp(DamageData data)
+    {
+        RPCBroadcastDamage(data);
+    }
 
     /// <summary>
     /// RPC直接通知属性更改
     /// </summary>
     /// <param name="properties"></param> 受击者更新后的属性
     [ClientRpc]
-    private void RPCBroadcastDamage(Properties properties)
+    private void RPCBroadcastDamage(DamageData data)
     {
-        m_Properties.m_Properties = properties;
+        m_Properties.m_Properties.m_CurrentHP = data.m_CurrentHP;
+        m_Properties.m_Properties.m_CurrentArmor = data.m_CurrentArmor;
+        m_Properties.m_Properties.m_EnergyShieldCount = data.m_EnergyShieldCount;
+        m_Properties.m_Properties.m_LeftHandWeaponHP = data.m_LeftHandWeaponHP;
+        m_Properties.m_Properties.m_RightHandWeaponHP = data.m_RightHandWeaponHP;
         // 玩家死亡
         if(m_Properties.m_Properties.m_CurrentHP <= 0)
         {
@@ -265,7 +285,7 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
                 var weapon = controller.Player.DropPlayerLeftHandWeapon(transform.position);
                 if(weapon)
                 {
-                    NetworkServer.Destroy(weapon);
+                    DestroyWeapon(weapon);
                 }
             }
         }
@@ -287,7 +307,7 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
                 var weapon = controller.Player.DropPlayerRightHandWeapon(transform.position);
                 if (weapon)
                 {
-                    NetworkServer.Destroy(weapon);
+                    DestroyWeapon(weapon);
                 }
             }
         }
@@ -344,4 +364,21 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
             }
         }
     }
+
+    [ServerCallback]
+    public void DestroyWeapon(GameObject weapon)
+    {
+        NetworkServer.Destroy(weapon);
+    }
+}
+
+
+[Serializable]
+public struct DamageData
+{
+    public int m_CurrentHP;
+    public int m_CurrentArmor;
+    public int m_EnergyShieldCount;
+    public int m_LeftHandWeaponHP;
+    public int m_RightHandWeaponHP;
 }

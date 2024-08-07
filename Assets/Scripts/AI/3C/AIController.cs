@@ -1,5 +1,5 @@
 
-using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Splines;
 using System.Collections.Generic;
@@ -9,7 +9,8 @@ using Mirror;
 using IronAngel;
 using Random = UnityEngine.Random;
 using LogicState;
-using Unity.VisualScripting;
+using System;
+
 using Utils = IronAngel.Utils;
 
 public class AIController : NetworkBehaviour
@@ -201,24 +202,32 @@ public class AIController : NetworkBehaviour
         return result;
     }
 
-    
+    [ServerCallback]
     public bool Attack()
     {
+        if (m_LogicStateManager.IncludeState(ELogicState.AIAttacking))
+        {
+            return false;
+        }
+        
         var enemy = GetGameObjectsInAttackRange();
         if (enemy.Count <= 0)
         {
             return false;
         }
         
+        
         if (m_LeftHandWeapon == null && m_RightHandWeapon == null)
         {
             return false;
         }
         
+        
         if (!TokenPool.ApplyToken(m_BaseProperties.m_Properties.m_TokenWeight) == false)
         {
             return false;
         }
+
         
         m_LogicStateManager.AddState(ELogicState.AIAttacking);
         
@@ -242,43 +251,59 @@ public class AIController : NetworkBehaviour
                 rightFire = true;
             }
         }
-
-        var leftDuration = m_BaseProperties.m_Properties.m_LeftHandWeaponAttackingDuration;
-        var rightDuration = m_BaseProperties.m_Properties.m_RightHandWeaponAttackingDuration;
-        
-        if (leftFire && rightFire)
-        {
-            m_LogicStateManager.SetStateDuration(ELogicState.AIAttacking, Math.Max(leftDuration, rightDuration));
-        }
-        else if (leftFire)
-        {
-            m_LogicStateManager.SetStateDuration(ELogicState.AIAttacking, leftDuration);
-        }
-        else if (rightFire)
-        {
-            m_LogicStateManager.SetStateDuration(ELogicState.AIAttacking, rightDuration);
-        }
+       
         
         if (leftFire)
         {
-            var dir = transform.rotation*Vector3.up;
-            dir = ComputeAngleOfFire(dir);
-        
-            Debug.DrawLine(transform.position,transform.position + 10*dir,Color.red,10);
-            WeaponSystemCenter.Instance.CmdFire(gameObject, m_LeftHandWeapon,transform.position,dir);
+            LeftHandFire();
         }
         
         if(rightFire)
         {
-            var dir = transform.rotation*Vector3.up;
-            dir = ComputeAngleOfFire(dir);
-        
-            Debug.DrawLine(transform.position,transform.position + 10*dir,Color.red,10);
-            WeaponSystemCenter.Instance.CmdFire(gameObject, m_RightHandWeapon,transform.position,dir);
+            RightHandFire();
         }
         
         return true;
     }
+
+    [ServerCallback]
+    private void LeftHandFire()
+    {
+        var leftDuration = m_BaseProperties.m_Properties.m_LeftHandWeaponAttackingDuration;
+        m_LogicStateManager.SetStateDuration(ELogicState.AIAttacking, leftDuration);
+        StartCoroutine(LeftHandFireCoroutine());
+    }
+
+    [ServerCallback]
+    private void RightHandFire()
+    {
+        var rightDuration = m_BaseProperties.m_Properties.m_RightHandWeaponAttackingDuration;
+        m_LogicStateManager.SetStateDuration(ELogicState.AIAttacking, rightDuration);
+        StartCoroutine(RightHandFireCoroutine());
+    }
+    
+    private IEnumerator LeftHandFireCoroutine()
+    {
+        while (m_LogicStateManager.IncludeState(ELogicState.AIAttacking))
+        {
+            var dir = transform.rotation*Vector3.up;
+            dir = ComputeAngleOfFire(dir);
+            WeaponSystemCenter.Instance.CmdFire(gameObject, m_LeftHandWeapon,transform.position,dir);
+            yield return null;
+        }
+    }
+    
+    private IEnumerator RightHandFireCoroutine()
+    {
+        while (m_LogicStateManager.IncludeState(ELogicState.AIAttacking))
+        {
+            var dir = transform.rotation*Vector3.up;
+            dir = ComputeAngleOfFire(dir);
+            WeaponSystemCenter.Instance.CmdFire(gameObject, m_RightHandWeapon,transform.position,dir);
+            yield return null;
+        }
+    }
+    
     
     /// <summary>
     /// 以m_BaseProperties.m_Properties.m_RangeOfAimingError

@@ -60,6 +60,10 @@ public class WeaponCollisionReceiver : NetworkBehaviour
 #endif
             return;
         }
+        if (ammunitionHandle.launcherCharacter == null)
+        {
+            return;
+        }
         var launcherCharacterProperties = ammunitionHandle.launcherCharacter.GetComponent<BaseProperties>();
         if (launcherCharacterProperties == null)
         {
@@ -80,16 +84,6 @@ public class WeaponCollisionReceiver : NetworkBehaviour
     public void CalculateDamage(AmmunitionConfig config)
     {
         m_AmmunitionCollisionReceiver.CalculateDamage(config, 0, m_Collider.offset + new Vector2(transform.position.x, transform.position.y));
-    }
-
-    // <summary>
-    /// RPC直接通知属性更改
-    /// </summary>
-    /// <param name="properties"></param> 受击者更新后的属性
-    [ClientRpc]
-    private void RPCBroadcastDamage(Properties properties)
-    {
-
     }
 }
 
