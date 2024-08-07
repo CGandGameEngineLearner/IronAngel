@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using Mirror;
 using Unity.VisualScripting;
@@ -81,8 +82,8 @@ public class WeaponSystemCenter : NetworkBehaviour
     {
         m_RegisteredWeaponAI.Add(aiController);
     }
-    
-    
+
+
     public void SpawnWeapon(WeaponType weaponType, Vector3 pos)
     {
         ServeSpawnWeapon(weaponType, pos);
@@ -101,9 +102,8 @@ public class WeaponSystemCenter : NetworkBehaviour
         m_WeaponToConfigDic[weapon] = weaponConfig;
         m_WeaponToTypeDic[weapon] = weaponType;
         NetworkServer.Spawn(weapon);
-        RpcWeaponDicUpdate(weapon,weaponType);
+        RpcWeaponDicUpdate(weapon, weaponType);
     }
-
 
 
     [ClientRpc]
@@ -237,45 +237,6 @@ public class WeaponSystemCenter : NetworkBehaviour
         RPCFire(character, m_WeaponToTypeDic[weapon], ammunitionType, startPoint, dir);
     }
 
-    public void CmdFireWithOutDispersion(GameObject character, GameObject weapon, Vector3 startPoint, Vector3 dir)
-    {
-        Debug.Log(GetType() + "Command" + "Fire");
-        var weaponConfig = m_WeaponToConfigDic[weapon];
-        var ammunitionType = m_WeaponToConfigDic[weapon].ammunitionType;
-        var ammunitionConfig = m_AmmunitionConfigDic[ammunitionType];
-
-        // 测试武器脚本
-        if (!weapon.TryGetComponent<WeaponInstance>(out WeaponInstance weaponInstance))
-        {
-#if UNITY_EDITOR
-            Debug.LogError("武器没有挂载WeaponInstance脚本");
-#endif
-            return;
-        }
-
-        // 武器射击间隔
-        if (!weaponInstance.TryFire())
-        {
-#if UNITY_EDITOR
-            Debug.LogWarning("开火间隔过短");
-#endif
-            return;
-        }
-
-        // 减少弹匣数量
-        if (!weaponInstance.DecreaseMag())
-        {
-#if UNITY_EDITOR
-            Debug.LogWarning("子弹数不足");
-#endif
-            return;
-        }
-
-        Fire(character, m_WeaponToTypeDic[weapon], ammunitionType, startPoint, dir);
-
-        RPCFire(character, m_WeaponToTypeDic[weapon], ammunitionType, startPoint, dir);
-    }
-
     [ClientRpc]
     public void RPCFire(GameObject character, WeaponType weaponType, AmmunitionType ammunitionType,
         Vector3 startPoint, Vector3 dir)
@@ -283,6 +244,60 @@ public class WeaponSystemCenter : NetworkBehaviour
         var weaponConfigData = m_WeaponConfigDic[weaponType].ToData();
 
         Fire(character, weaponType, ammunitionType, startPoint, dir);
+    }
+
+    /// <summary>
+    /// 只有客户端才会调用的表现层
+    /// </summary>
+    [ClientCallback]
+    public void RpcStartLaserPointer(GameObject launchCharacter, GameObject weaponGo, Vector2 startPoint, Vector2 dir)
+    {
+        WeaponInstance weapon = weaponGo.GetComponent<WeaponInstance>();
+        LineRenderer lineRenderer = weapon.lineRenderer;
+        HashSet<GameObject> ignoredObjects = launchCharacter.GetComponent<AutoGetChild>().ignoredObjects;
+
+        // 设置镭射属性
+        lineRenderer.startWidth = weapon.GetConfig().LaserPointerWidth;
+        lineRenderer.endWidth = weapon.GetConfig().LaserPointerWidth;
+        lineRenderer.startColor = Color.red;
+        lineRenderer.endColor = Color.red;
+        lineRenderer.positionCount = 2;
+        
+        // 最大射线距离为子弹最远距离
+        AmmunitionType ammunitionType = weapon.GetConfig().ammunitionType;
+        AmmunitionConfig ammunitionConfig = m_AmmunitionFactory.GetAmmunitionConfig(ammunitionType);
+        int ignoreLayer = ~(LayerMask.GetMask("Bullet") | LayerMask.GetMask("Ground") | LayerMask.GetMask("Sensor"));
+            
+        RaycastHit2D[] hits = Physics2D.RaycastAll(startPoint, dir, ammunitionConfig.lifeDistance, ignoreLayer);
+
+        Vector2 endPoint = startPoint + dir.normalized * ammunitionConfig.lifeDistance;
+
+        foreach (var hit in hits)
+        {
+            if (hit.collider != null && !hit.collider.isTrigger && !ignoredObjects.Contains(hit.collider.gameObject))
+            {
+                // 如果碰撞到非触发器且不在忽略列表中的物体，使用碰撞点作为终点
+                endPoint = hit.point;
+                break; // 找到第一个非触发器碰撞后停止
+            }
+        }
+
+        lineRenderer.SetPosition(0, startPoint);
+        lineRenderer.SetPosition(1, endPoint);
+
+        StartCoroutine(DisableLineRenderer(m_WeaponToConfigDic[weaponGo].anticipationDuration, lineRenderer));
+    }
+
+    private IEnumerator DisableLineRenderer(float seconds, LineRenderer lineRenderer)
+    {
+        float counter = 0;
+        while (counter < seconds)
+        {
+            counter += Time.deltaTime;
+            yield return null;
+        }
+
+        lineRenderer.positionCount = 0;
     }
 
     /// <summary>
