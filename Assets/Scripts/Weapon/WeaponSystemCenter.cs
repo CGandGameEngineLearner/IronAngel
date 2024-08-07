@@ -89,7 +89,7 @@ public class WeaponSystemCenter : NetworkBehaviour
         ServeSpawnWeapon(weaponType, pos);
     }
 
-    [Server]
+    [ServerCallback] ///改成ServerCallback看看
     private void ServeSpawnWeapon(WeaponType weaponType, Vector3 pos)
     {
         var weaponConfig = m_WeaponConfigDic[weaponType];
