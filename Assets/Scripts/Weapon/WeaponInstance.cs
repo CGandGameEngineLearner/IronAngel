@@ -45,6 +45,9 @@ public class WeaponInstance : NetworkBehaviour
         return canFire;
     }
 
+    [ClientCallback]
+    public WeaponConfig GetConfig() => m_WeaponConfig;
+    
     /// <summary>
     /// 消耗子弹数量，当子弹小于等于0时会返回false
     /// </summary>

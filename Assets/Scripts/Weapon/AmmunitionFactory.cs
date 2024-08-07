@@ -390,7 +390,7 @@ public class AmmunitionFactory
             Vector3 scale = laserTransform.localScale;
 
             scale.y = distance; // 设置长度为两点之间的距离
-            scale.x = ammunitionHandle.ammunitionConfig.m_LaserWidth; // 保持宽度为1
+            scale.x = ammunitionHandle.ammunitionConfig.m_LaserWidth; 
 
             // 应用新的缩放比例
             laserTransform.localScale = scale;

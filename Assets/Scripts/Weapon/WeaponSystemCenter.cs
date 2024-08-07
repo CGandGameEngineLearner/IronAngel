@@ -81,8 +81,8 @@ public class WeaponSystemCenter : NetworkBehaviour
     {
         m_RegisteredWeaponAI.Add(aiController);
     }
-    
-    
+
+
     public void SpawnWeapon(WeaponType weaponType, Vector3 pos)
     {
         ServeSpawnWeapon(weaponType, pos);
@@ -101,9 +101,8 @@ public class WeaponSystemCenter : NetworkBehaviour
         m_WeaponToConfigDic[weapon] = weaponConfig;
         m_WeaponToTypeDic[weapon] = weaponType;
         NetworkServer.Spawn(weapon);
-        RpcWeaponDicUpdate(weapon,weaponType);
+        RpcWeaponDicUpdate(weapon, weaponType);
     }
-
 
 
     [ClientRpc]
@@ -235,48 +234,7 @@ public class WeaponSystemCenter : NetworkBehaviour
         Fire(character, m_WeaponToTypeDic[weapon], ammunitionType, startPoint, dir);
         // Rpc调用客户端
         RPCFire(character, m_WeaponToTypeDic[weapon], ammunitionType, startPoint, dir);
-    }
-
-    public void CmdFireWithOutDispersion(GameObject character, GameObject weapon, Vector3 startPoint, Vector3 dir)
-    {
-        Debug.Log(GetType() + "Command" + "Fire");
-        var weaponConfig = m_WeaponToConfigDic[weapon];
-        var ammunitionType = m_WeaponToConfigDic[weapon].ammunitionType;
-        var ammunitionConfig = m_AmmunitionConfigDic[ammunitionType];
-
-        // 测试武器脚本
-        if (!weapon.TryGetComponent<WeaponInstance>(out WeaponInstance weaponInstance))
-        {
-#if UNITY_EDITOR
-            Debug.LogError("武器没有挂载WeaponInstance脚本");
-#endif
-            return;
-        }
-
-        // 武器射击间隔
-        if (!weaponInstance.TryFire())
-        {
-#if UNITY_EDITOR
-            Debug.LogWarning("开火间隔过短");
-#endif
-            return;
-        }
-
-        // 减少弹匣数量
-        if (!weaponInstance.DecreaseMag())
-        {
-#if UNITY_EDITOR
-            Debug.LogWarning("子弹数不足");
-#endif
-            return;
-        }
-
-        Fire(character, m_WeaponToTypeDic[weapon], ammunitionType, startPoint, dir);
-
-        RPCFire(character, m_WeaponToTypeDic[weapon], ammunitionType, startPoint, dir);
-        
-        // 测试镭射
-        ClientStartLaserPointer(weapon.GetComponent<WeaponInstance>(), dir);
+        RpcStartLaserPointer(character, weapon, startPoint, dir);
     }
 
     [ClientRpc]
@@ -291,39 +249,43 @@ public class WeaponSystemCenter : NetworkBehaviour
     /// <summary>
     /// 只有客户端才会调用的表现层
     /// </summary>
-    [ClientCallback]
-    public void ClientStartLaserPointer(WeaponInstance weapon, Vector2 dir)
+    [ClientRpc]
+    public void RpcStartLaserPointer(GameObject launchCharacter, GameObject weaponGo, Vector2 startPoint, Vector2 dir)
     {
+        WeaponInstance weapon = weaponGo.GetComponent<WeaponInstance>();
         LineRenderer lineRenderer = weapon.lineRenderer;
-        if (lineRenderer == null) return;
+        HashSet<GameObject> ignoredObjects = launchCharacter.GetComponent<AutoGetChild>().ignoredObjects;
 
         // 设置镭射属性
         lineRenderer.startWidth = weapon.GetConfig().LaserPointerWidth;
         lineRenderer.endWidth = weapon.GetConfig().LaserPointerWidth;
-        lineRenderer.positionCount = 2; 
+        lineRenderer.startColor = Color.red;
+        lineRenderer.endColor = Color.red;
+        lineRenderer.positionCount = 2;
         
-        Vector3 startPoint = weapon.transform.position;
-        Vector3 direction = new Vector3(dir.x, dir.y, 0);
-        
-        RaycastHit hit;
-        Vector3 endPoint;
-
         // 最大射线距离为子弹最远距离
         AmmunitionType ammunitionType = weapon.GetConfig().ammunitionType;
         AmmunitionConfig ammunitionConfig = m_AmmunitionFactory.GetAmmunitionConfig(ammunitionType);
-        if (Physics.Raycast(startPoint, direction, out hit, ammunitionConfig.lifeDistance))
+        int ignoreLayer = ~(LayerMask.GetMask("Bullet") | LayerMask.GetMask("Ground") | LayerMask.GetMask("Sensor"));
+            
+        RaycastHit2D[] hits = Physics2D.RaycastAll(startPoint, dir, ammunitionConfig.lifeDistance, ignoreLayer);
+
+        Vector2 endPoint = startPoint + dir.normalized * ammunitionConfig.lifeDistance;
+
+        foreach (var hit in hits)
         {
-            endPoint = hit.point;
+            if (hit.collider != null && !hit.collider.isTrigger && !ignoredObjects.Contains(hit.collider.gameObject))
+            {
+                // 如果碰撞到非触发器且不在忽略列表中的物体，使用碰撞点作为终点
+                endPoint = hit.point;
+                break; // 找到第一个非触发器碰撞后停止
+            }
         }
-        else
-        {
-            endPoint = startPoint + direction * ammunitionConfig.lifeDistance;
-        }
-        
+
         lineRenderer.SetPosition(0, startPoint);
         lineRenderer.SetPosition(1, endPoint);
     }
-    
+
     /// <summary>
     /// 统一提供给RPC和server使用
     /// </summary>
