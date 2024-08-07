@@ -235,7 +235,6 @@ public class WeaponSystemCenter : NetworkBehaviour
         Fire(character, m_WeaponToTypeDic[weapon], ammunitionType, startPoint, dir);
         // Rpc调用客户端
         RPCFire(character, m_WeaponToTypeDic[weapon], ammunitionType, startPoint, dir);
-        RpcStartLaserPointer(character, weapon, startPoint, dir);
     }
 
     [ClientRpc]
@@ -250,7 +249,7 @@ public class WeaponSystemCenter : NetworkBehaviour
     /// <summary>
     /// 只有客户端才会调用的表现层
     /// </summary>
-    [ClientRpc]
+    [ClientCallback]
     public void RpcStartLaserPointer(GameObject launchCharacter, GameObject weaponGo, Vector2 startPoint, Vector2 dir)
     {
         WeaponInstance weapon = weaponGo.GetComponent<WeaponInstance>();
