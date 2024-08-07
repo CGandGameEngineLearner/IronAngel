@@ -73,7 +73,6 @@ public class AmmunitionHandle
         dir = Vector2.up;
         this.ammunitionType = AmmunitionType.Bullet;
         liveFrameCount = 0;
-        ignoredObjects.Clear();
     }
 }
 
