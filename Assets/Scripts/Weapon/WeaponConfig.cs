@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [Serializable]
 public struct WeaponConfigData
@@ -39,6 +40,8 @@ public class WeaponConfig : ItemConfig
     public float ShotSpreadAngle => m_ShotSpreadAngle;
     public float spreadAngle => m_SpreadAngle;
 
+    public float LaserPointerWidth => laserPointerWidth;
+
     public AudioClip soundEffect => m_SoundEffect;
     public ParticleSystem effectPrefab => m_EffectPrefab;
 
@@ -63,7 +66,7 @@ public class WeaponConfig : ItemConfig
         };
     }
 
-    [Header("武器属性配置")] [SerializeField] private AtkType m_AtkType;
+    [Header("武器基础属性配置")] [SerializeField] private AtkType m_AtkType;
     [SerializeField] private AmmunitionType m_ammunitionType;
     [SerializeField] private int m_WeaponHp;
     [SerializeField] private float m_Interval;
@@ -71,14 +74,15 @@ public class WeaponConfig : ItemConfig
     [SerializeField] private int m_SimShots;
     [SerializeField] private float m_SpreadAngle;
 
+    [Header("特殊属性配置")]
     [SerializeField] [ConditionalHide("m_AtkType", (int)AtkType.ShotGun)]
     private float m_ShotSpreadAngle;
-
+    [SerializeField] private float laserPointerWidth;
     [SerializeField] private AudioClip m_SoundEffect;
     [SerializeField] private ParticleSystem m_EffectPrefab;
 
     [SerializeField]
     private bool m_Anticipation;
-
+    [Tooltip("镭射提示多久消失/敌人会蹲多久")]
     [SerializeField] private float m_AnticipationDuration;
 }

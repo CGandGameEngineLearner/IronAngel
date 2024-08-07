@@ -491,6 +491,34 @@ public partial class @PlayerInputConfig: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Menu"",
+            ""id"": ""21336fa8-cc79-45dc-b788-7f58e844001a"",
+            ""actions"": [
+                {
+                    ""name"": ""Back"",
+                    ""type"": ""Button"",
+                    ""id"": ""ae771dd0-2d9f-4b40-a394-cb7a746e2752"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""10bd744c-d860-4be1-96c3-076864fa4777"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Back"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -509,6 +537,9 @@ public partial class @PlayerInputConfig: IInputActionCollection2, IDisposable
         m_Camera = asset.FindActionMap("Camera", throwIfNotFound: true);
         m_Camera_ViewTypeSwitch = m_Camera.FindAction("ViewTypeSwitch", throwIfNotFound: true);
         m_Camera_View = m_Camera.FindAction("View", throwIfNotFound: true);
+        // Menu
+        m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
+        m_Menu_Back = m_Menu.FindAction("Back", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -722,6 +753,52 @@ public partial class @PlayerInputConfig: IInputActionCollection2, IDisposable
         }
     }
     public CameraActions @Camera => new CameraActions(this);
+
+    // Menu
+    private readonly InputActionMap m_Menu;
+    private List<IMenuActions> m_MenuActionsCallbackInterfaces = new List<IMenuActions>();
+    private readonly InputAction m_Menu_Back;
+    public struct MenuActions
+    {
+        private @PlayerInputConfig m_Wrapper;
+        public MenuActions(@PlayerInputConfig wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Back => m_Wrapper.m_Menu_Back;
+        public InputActionMap Get() { return m_Wrapper.m_Menu; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(MenuActions set) { return set.Get(); }
+        public void AddCallbacks(IMenuActions instance)
+        {
+            if (instance == null || m_Wrapper.m_MenuActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_MenuActionsCallbackInterfaces.Add(instance);
+            @Back.started += instance.OnBack;
+            @Back.performed += instance.OnBack;
+            @Back.canceled += instance.OnBack;
+        }
+
+        private void UnregisterCallbacks(IMenuActions instance)
+        {
+            @Back.started -= instance.OnBack;
+            @Back.performed -= instance.OnBack;
+            @Back.canceled -= instance.OnBack;
+        }
+
+        public void RemoveCallbacks(IMenuActions instance)
+        {
+            if (m_Wrapper.m_MenuActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IMenuActions instance)
+        {
+            foreach (var item in m_Wrapper.m_MenuActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_MenuActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public MenuActions @Menu => new MenuActions(this);
     public interface IPlayerActions
     {
         void OnMove(InputAction.CallbackContext context);
@@ -737,5 +814,9 @@ public partial class @PlayerInputConfig: IInputActionCollection2, IDisposable
     {
         void OnViewTypeSwitch(InputAction.CallbackContext context);
         void OnView(InputAction.CallbackContext context);
+    }
+    public interface IMenuActions
+    {
+        void OnBack(InputAction.CallbackContext context);
     }
 }

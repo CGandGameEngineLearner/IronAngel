@@ -7,6 +7,7 @@ using UnityEditor;
 using LogicState;
 using Unity.VisualScripting;
 using UnityEngine.SceneManagement;
+using System.Security.Cryptography;
 
 
 [RequireComponent(typeof(BaseProperties))]
@@ -16,16 +17,11 @@ public class PlayerController : NetworkBehaviour
     private CameraController m_CameraController = new CameraController();
     private Player m_Player = new Player();
     private InputController m_InputController = new InputController();
-    private WeaponSystemCenter m_WeaponSystemCenter;
     private LogicStateManager m_LogicStateManager;
 
     bool m_AfterStartLocalPlayer = false;
     float m_FireDistance;
     //  public------------------------------------------
-    public WeaponSystemCenter WeaponSystemCenter
-    {
-        get { return WeaponSystemCenter.Instance; }
-    }
     public Player Player
     {
         get { return m_Player; }
@@ -74,6 +70,7 @@ public class PlayerController : NetworkBehaviour
     {
         UnRegisterGameEvent();
         PlayerControllers.Remove(this);
+        m_InputController.DisposeAllInput();
     }
 
 
@@ -99,30 +96,24 @@ public class PlayerController : NetworkBehaviour
         
         m_Player.Update();
         m_InputController.UpdateInputDevice();
-        if (Input.GetKeyDown(KeyCode.P) && isServer)
+    }
+
+    public void EndGame()
+    {
+        if (NetworkServer.active && isServer)
         {
-            CmdStartGame();
+            GameObject.FindAnyObjectByType<NetworkManager>().StopHost();
+        }
+        else
+        {
+            GameObject.FindAnyObjectByType<NetworkManager>().StopClient();
         }
 
-        if (Input.GetKeyDown(KeyCode.O))
-        {
-            if (NetworkServer.active&&isServer)
-            {
-                GameObject.FindAnyObjectByType<NetworkManager>().StopHost();
-            }
-            else
-            {  
-                GameObject.FindAnyObjectByType<NetworkManager>().StopClient();
-            }
-            
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-
-            
-        }
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     [Command]
-    void CmdStartGame()
+    public void CmdStartGame()
     {
         WeaponSystemCenter.Instance.CmdStartGame();
     }
@@ -188,6 +179,11 @@ public class PlayerController : NetworkBehaviour
     
     private void RegisterInputActionFunc()
     {
+        // 暂停菜单
+        m_InputController.AddPerformedActionToMenuBack(() =>
+        {
+            EventCenter.Broadcast(EventType.PauseMenu);
+        });
         // 视角拉远
         m_InputController.AddStartedActionToCameraViewTypeSwitch(() =>
         {
@@ -319,6 +315,8 @@ public class PlayerController : NetworkBehaviour
         EventCenter.AddListener<bool>(EventType.StateToGlobal_PlayerDashState, OnDashEvent);
         // 玩家移动
         EventCenter.AddListener(EventType.StateToGlobal_PlayerWalkState, OnWalkEvent);
+        // 暂停界面
+        EventCenter.AddListener(EventType.PauseMenu, OnPauseMenuEvent);
     }
 
 
@@ -326,6 +324,7 @@ public class PlayerController : NetworkBehaviour
     {
         EventCenter.RemoveListener<bool>(EventType.StateToGlobal_PlayerDashState, OnDashEvent);
         EventCenter.RemoveListener(EventType.StateToGlobal_PlayerWalkState, OnWalkEvent);
+        EventCenter.RemoveListener(EventType.PauseMenu, OnPauseMenuEvent);
     }
 
 
@@ -347,6 +346,11 @@ public class PlayerController : NetworkBehaviour
     private void OnWalkEvent()
     {
         m_Player.Move(m_InputController.GetPlayerMoveInputVector2());
+    }
+
+    private void OnPauseMenuEvent()
+    {
+        UICanvas.Instance.PauseMenu.gameObject.SetActive(!UICanvas.Instance.PauseMenu.gameObject.active);
     }
 }
 

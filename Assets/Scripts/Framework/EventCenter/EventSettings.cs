@@ -14,6 +14,10 @@ public enum EventType
     Buff_Speed,
     // 眩晕效果
     Buff_Stun,
+
+
+    // UI 
+    PauseMenu,
 }
 
 public delegate void Callback();
