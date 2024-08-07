@@ -248,7 +248,7 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
                 WeaponSystemCenter.Instance.SpawnWeapon(m_Properties.m_Properties.m_RightHandWeapon, transform.position);
             }
         }
-        // 玩家所有护甲损失
+        // 角色所有护甲损失
         if(m_IsOverallArmor && m_Properties.m_Properties.m_CurrentArmor <= 0)
         {
             foreach (var shield in m_Shields)
@@ -257,7 +257,7 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
                     shield.gameObject.SetActive(false);
             }
         }
-        // 玩家损失能量护盾
+        // 角色损失能量护盾
         if (m_Properties.m_Properties.m_EnergyShieldCount <= 0)
         {
             foreach (var shield in m_Shields)
@@ -276,7 +276,7 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
                 WeaponSystemCenter.Instance.SpawnWeapon(m_Properties.m_Properties.m_LeftHandWeapon, transform.position);
             }
 
-            // 如果是玩家的话就丢失武器
+            // 如果是角色的话就丢失武器
             if(TryGetComponent<PlayerController>(out var controller))
             {
                 var weapon = controller.Player.DropPlayerLeftHandWeapon(transform.position);
@@ -295,7 +295,7 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
                 WeaponSystemCenter.Instance.SpawnWeapon(m_Properties.m_Properties.m_RightHandWeapon, transform.position);
             }
 
-            // 如果是玩家的话就丢失武器
+            // 如果是角色的话就丢失武器
             if (TryGetComponent<PlayerController>(out var controller))
             {
                 var weapon = controller.Player.DropPlayerRightHandWeapon(transform.position);
