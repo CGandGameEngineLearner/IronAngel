@@ -15,7 +15,7 @@ public struct WeaponConfigData
     public float shotSpreadAngle;
     public int WeaponHP;
     public bool anticipation;
-    public float anticipationDuration;
+    [FormerlySerializedAs("anticipationDuration")] public float attackPreCastDelay;
 
     // [SerializeField] [ConditionalHide("m_AtkType", (int)AtkType.ShotGun)]
     private float m_ShotSpreadAngle;
@@ -44,10 +44,8 @@ public class WeaponConfig : ItemConfig
 
     public AudioClip soundEffect => m_SoundEffect;
     public ParticleSystem effectPrefab => m_EffectPrefab;
-
-    public bool anticipation => m_Anticipation; // 前摇
-
-    public float anticipationDuration => m_AnticipationDuration;
+    
+    public float attackPreCastDelay => m_AttackPreCastDelay; // 攻击前摇时长
 
     public WeaponConfigData ToData()
     {
@@ -61,8 +59,7 @@ public class WeaponConfig : ItemConfig
             simShots = this.m_SimShots,
             spreadAngle = this.m_SpreadAngle,
             shotSpreadAngle = this.m_ShotSpreadAngle,
-            anticipation    = this.m_Anticipation,
-            anticipationDuration  = this.m_AnticipationDuration,
+            attackPreCastDelay  = this.m_AttackPreCastDelay,
         };
     }
 
@@ -81,8 +78,8 @@ public class WeaponConfig : ItemConfig
     [SerializeField] private AudioClip m_SoundEffect;
     [SerializeField] private ParticleSystem m_EffectPrefab;
 
-    [SerializeField]
-    private bool m_Anticipation;
-    [Tooltip("镭射提示多久消失/敌人会蹲多久")]
-    [SerializeField] private float m_AnticipationDuration;
+
+    [FormerlySerializedAs("m_AnticipationDuration")]
+    [Tooltip("攻击前摇时长/镭射提示多久消失/敌人会蹲多久")]
+    [SerializeField] private float m_AttackPreCastDelay;
 }

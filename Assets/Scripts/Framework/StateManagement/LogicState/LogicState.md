@@ -14,7 +14,7 @@ package 逻辑状态管理器
     class LogicState
 }
 
-note top of 外部模块:通过调用LogicManager增删查改状态,根据LogicState广播的事件做出反应
+note top of 外部模块:通过调用LogicManager增删查改状态,根据LogicState广播的事件做出反应,可以Set和Get状态的持续时长
 外部模块 ..> 逻辑状态管理器
 外部模块 <.. 逻辑状态管理器
 LogicStateManager --> LogicState:维护状态
