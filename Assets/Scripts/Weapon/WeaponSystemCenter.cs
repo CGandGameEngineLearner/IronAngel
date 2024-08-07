@@ -251,6 +251,9 @@ public class WeaponSystemCenter : NetworkBehaviour
         Fire(character, m_WeaponToTypeDic[weapon], ammunitionType, startPoint, dir);
 
         RPCFire(character, m_WeaponToTypeDic[weapon], ammunitionType, startPoint, dir);
+        
+        // 测试镭射
+        ClientStartLaserPointer(weapon.GetComponent<WeaponInstance>(), dir);
     }
 
     [ClientRpc]
@@ -262,6 +265,42 @@ public class WeaponSystemCenter : NetworkBehaviour
         Fire(character, weaponType, ammunitionType, startPoint, dir);
     }
 
+    /// <summary>
+    /// 只有客户端才会调用的表现层
+    /// </summary>
+    [ClientCallback]
+    public void ClientStartLaserPointer(WeaponInstance weapon, Vector2 dir)
+    {
+        LineRenderer lineRenderer = weapon.lineRenderer;
+        if (lineRenderer == null) return;
+
+        // 设置镭射属性
+        lineRenderer.startWidth = weapon.GetConfig().LaserPointerWidth;
+        lineRenderer.endWidth = weapon.GetConfig().LaserPointerWidth;
+        lineRenderer.positionCount = 2; 
+        
+        Vector3 startPoint = weapon.transform.position;
+        Vector3 direction = new Vector3(dir.x, dir.y, 0);
+        
+        RaycastHit hit;
+        Vector3 endPoint;
+
+        // 最大射线距离为子弹最远距离
+        AmmunitionType ammunitionType = weapon.GetConfig().ammunitionType;
+        AmmunitionConfig ammunitionConfig = m_AmmunitionFactory.GetAmmunitionConfig(ammunitionType);
+        if (Physics.Raycast(startPoint, direction, out hit, ammunitionConfig.lifeDistance))
+        {
+            endPoint = hit.point;
+        }
+        else
+        {
+            endPoint = startPoint + direction * ammunitionConfig.lifeDistance;
+        }
+        
+        lineRenderer.SetPosition(0, startPoint);
+        lineRenderer.SetPosition(1, endPoint);
+    }
+    
     /// <summary>
     /// 统一提供给RPC和server使用
     /// </summary>

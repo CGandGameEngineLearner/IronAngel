@@ -14,11 +14,16 @@ public class WeaponInstance : NetworkBehaviour
     
     private WeaponConfig m_WeaponConfig;
 
+    private LineRenderer m_LineRenderer;
+
     public void Init(WeaponConfig weaponConfig)
     {
         m_WeaponConfig = weaponConfig;
         m_WeaponInstanceData.currentMag = weaponConfig.magSize;
+        m_LineRenderer = GetComponent<LineRenderer>();
     }
+
+    public LineRenderer lineRenderer => m_LineRenderer;
 
     /// <summary>
     /// 尝试开火，如果距离上一次开火时间大于武器设置开火间隔，则可以开火，将会重新设置时间并返回true
