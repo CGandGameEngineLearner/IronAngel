@@ -26,8 +26,13 @@ public enum AmmunitionType
 
 public enum WeaponType
 {
-    Glock,
-    Missile,
+    // 普通武器 ------------------------------
+    
+    // 突击炮
+    AssaultGun,
+    // 散弹枪
+    ShotGun,
+    
 }
 
 public enum SpecialAtkType
