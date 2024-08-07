@@ -89,7 +89,7 @@ public class WeaponSystemCenter : NetworkBehaviour
         ServeSpawnWeapon(weaponType, pos);
     }
 
-    [Server]
+    [ServerCallback] ///改成ServerCallback看看
     private void ServeSpawnWeapon(WeaponType weaponType, Vector3 pos)
     {
         var weaponConfig = m_WeaponConfigDic[weaponType];
@@ -170,9 +170,38 @@ public class WeaponSystemCenter : NetworkBehaviour
         return m_AmmunitionFactory;
     }
 
-
+    /// <summary>
+    /// 获取武器配置
+    /// </summary>
+    /// <param name="weaponType"></param>
+    /// <returns></returns>
+    /// <exception cref="Exception"></exception>
     public static WeaponConfig GetWeaponConfig(WeaponType weaponType)
     {
+        if (!m_WeaponConfigDic.ContainsKey(weaponType))
+        {
+            throw new Exception("查询不到武器配置，武器类型枚举为：" + weaponType);
+        }
+
+        return m_WeaponConfigDic[weaponType];
+    }
+    
+    
+    /// <summary>
+    /// 获取武器配置
+    /// </summary>
+    /// <param name="weaponType"></param>
+    /// <returns></returns>
+    /// <exception cref="Exception"></exception>
+    public static WeaponConfig GetWeaponConfig(GameObject weapon)
+    {
+        if (!m_WeaponToTypeDic.ContainsKey(weapon))
+        {
+            throw new Exception("查询不到武器配置，武器为：" + weapon);
+        }
+
+        var weaponType = m_WeaponToTypeDic[weapon];
+        
         if (!m_WeaponConfigDic.ContainsKey(weaponType))
         {
             throw new Exception("查询不到武器配置，武器类型枚举为：" + weaponType);
@@ -250,7 +279,7 @@ public class WeaponSystemCenter : NetworkBehaviour
     /// 只有客户端才会调用的表现层
     /// </summary>
     [ClientCallback]
-    public void RpcStartLaserPointer(GameObject launchCharacter, GameObject weaponGo, Vector2 startPoint, Vector2 dir)
+    public void StartLaserPointer(GameObject launchCharacter, GameObject weaponGo, Vector2 startPoint, Vector2 dir)
     {
         WeaponInstance weapon = weaponGo.GetComponent<WeaponInstance>();
         LineRenderer lineRenderer = weapon.lineRenderer;
@@ -285,7 +314,7 @@ public class WeaponSystemCenter : NetworkBehaviour
         lineRenderer.SetPosition(0, startPoint);
         lineRenderer.SetPosition(1, endPoint);
 
-        StartCoroutine(DisableLineRenderer(m_WeaponToConfigDic[weaponGo].anticipationDuration, lineRenderer));
+        StartCoroutine(DisableLineRenderer(m_WeaponToConfigDic[weaponGo].attackPreCastDelay, lineRenderer));
     }
 
     private IEnumerator DisableLineRenderer(float seconds, LineRenderer lineRenderer)

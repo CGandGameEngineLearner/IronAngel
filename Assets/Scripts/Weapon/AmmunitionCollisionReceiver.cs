@@ -52,7 +52,10 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
 
 
         m_Collider = GetComponent<BoxCollider2D>();
-        
+        m_Properties.m_Properties.m_LeftHandWeaponCurrentHP = m_Properties.m_Properties.m_LeftHandWeaponHP;
+        m_Properties.m_Properties.m_RightHandWeaponCurrentHP = m_Properties.m_Properties.m_RightHandWeaponHP;
+        m_Properties.m_Properties.m_CurrentHP = m_Properties.m_Properties.m_BaseHP;
+
     }
 
     /// <summary>
@@ -185,12 +188,12 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
         // 击中左手
         if(leftDis < rightDis && leftDis < coreDis && m_Properties.m_Properties.m_LeftHandWeaponHP > 0)
         {
-            m_Properties.m_Properties.m_LeftHandWeaponHP -= damage;
+            m_Properties.m_Properties.m_LeftHandWeaponCurrentHP -= damage;
         }
         // 击中右手
         else if(rightDis < coreDis && rightDis < leftDis && m_Properties.m_Properties.m_RightHandWeaponHP > 0)
         {
-            m_Properties.m_Properties.m_RightHandWeaponHP -= damage;
+            m_Properties.m_Properties.m_RightHandWeaponCurrentHP -= damage;
         }
         // 击中核心
         else
@@ -204,8 +207,8 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
         data.m_CurrentHP = m_Properties.m_Properties.m_CurrentHP;
         data.m_CurrentArmor = m_Properties.m_Properties.m_CurrentArmor;
         data.m_EnergyShieldCount = m_Properties.m_Properties.m_EnergyShieldCount;
-        data.m_LeftHandWeaponHP = m_Properties.m_Properties.m_LeftHandWeaponHP;
-        data.m_RightHandWeaponHP = m_Properties.m_Properties.m_RightHandWeaponHP;
+        data.m_LeftHandWeaponHP = m_Properties.m_Properties.m_LeftHandWeaponCurrentHP;
+        data.m_RightHandWeaponHP = m_Properties.m_Properties.m_RightHandWeaponCurrentHP;
         RPCBroadcastDamage(data);
     }
 
@@ -226,52 +229,50 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
         m_Properties.m_Properties.m_CurrentHP = data.m_CurrentHP;
         m_Properties.m_Properties.m_CurrentArmor = data.m_CurrentArmor;
         m_Properties.m_Properties.m_EnergyShieldCount = data.m_EnergyShieldCount;
-        m_Properties.m_Properties.m_LeftHandWeaponHP = data.m_LeftHandWeaponHP;
-        m_Properties.m_Properties.m_RightHandWeaponHP = data.m_RightHandWeaponHP;
-        // 玩家死亡
+        m_Properties.m_Properties.m_LeftHandWeaponCurrentHP = data.m_LeftHandWeaponHP;
+        m_Properties.m_Properties.m_RightHandWeaponCurrentHP = data.m_RightHandWeaponHP;
+        // 被记录在WeaponInstance里的当前武器血量只有在玩家手上才会更改
+        if(TryGetComponent<PlayerController>(out var playerController))
+        {
+            playerController.Player.GetPlayerLeftHandWeapon()?.GetComponent<WeaponInstance>().SetWeaponCurrentHP(data.m_LeftHandWeaponHP);
+            playerController.Player.GetPlayerRightHandWeapon()?.GetComponent<WeaponInstance>().SetWeaponCurrentHP(data.m_RightHandWeaponHP);
+        }
+        // 角色死亡
         if(m_Properties.m_Properties.m_CurrentHP <= 0)
         {
-#if UNITY_EDITOR
-            //Debug.Log("玩家 ：" + gameObject.name + "死亡");
-#endif
             gameObject.SetActive(false);
-
+            EventCenter.Broadcast<GameObject>(EventType.CharacterDied,gameObject);
             if (m_Properties.m_Properties.m_DropWeapon_CharacterDied)
             {
                 WeaponSystemCenter.Instance.SpawnWeapon(m_Properties.m_Properties.m_LeftHandWeapon, transform.position);
                 WeaponSystemCenter.Instance.SpawnWeapon(m_Properties.m_Properties.m_RightHandWeapon, transform.position);
             }
+            if(TryGetComponent<PlayerController>(out var controller))
+            {
+                EventCenter.Broadcast(EventType.PlayerDied);
+            }
         }
-        // 玩家所有护甲损失
+        // 角色所有护甲损失
         if(m_IsOverallArmor && m_Properties.m_Properties.m_CurrentArmor <= 0)
         {
-#if UNITY_EDITOR
-            //Debug.Log("玩家 ：" + gameObject.name + "损失所有护甲");
-#endif
             foreach (var shield in m_Shields)
             {
                 if(shield.m_ShieldType == ShieldType.Armor)
                     shield.gameObject.SetActive(false);
             }
         }
-        // 玩家损失能量护盾
+        // 角色损失能量护盾
         if (m_Properties.m_Properties.m_EnergyShieldCount <= 0)
         {
-#if UNITY_EDITOR
-            //Debug.Log("玩家 ：" + gameObject.name + "损失能量护盾");
-#endif
             foreach (var shield in m_Shields)
             {
                 if (shield.m_ShieldType == ShieldType.Energy)
                     shield.gameObject.SetActive(false);
             }
         }
-        // 玩家左右手部位损失
-        if(m_Properties.m_Properties.m_LeftHandWeaponHP <= 0)
+        // 角色左右手部位损失
+        if(m_Properties.m_Properties.m_LeftHandWeaponCurrentHP <= 0)
         {
-#if UNITY_EDITOR
-            //Debug.Log("玩家 ：" + gameObject.name + "丢失左手");
-#endif
             m_LeftWeapon.gameObject.SetActive(false);
 
             if (m_Properties.m_Properties.m_DropWeapon_WeaponDestroy)
@@ -279,7 +280,7 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
                 WeaponSystemCenter.Instance.SpawnWeapon(m_Properties.m_Properties.m_LeftHandWeapon, transform.position);
             }
 
-            // 如果是玩家的话就丢失武器
+            // 如果是角色的话就丢失武器
             if(TryGetComponent<PlayerController>(out var controller))
             {
                 var weapon = controller.Player.DropPlayerLeftHandWeapon(transform.position);
@@ -289,11 +290,8 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
                 }
             }
         }
-        if(m_Properties.m_Properties.m_RightHandWeaponHP <= 0)
+        if(m_Properties.m_Properties.m_RightHandWeaponCurrentHP <= 0)
         {
-#if UNITY_EDITOR
-            //Debug.Log("玩家 ：" + gameObject.name + "丢失右手");
-#endif
             m_RightWeapon.gameObject.SetActive(false);
 
             if (m_Properties.m_Properties.m_DropWeapon_WeaponDestroy)
@@ -301,7 +299,7 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
                 WeaponSystemCenter.Instance.SpawnWeapon(m_Properties.m_Properties.m_RightHandWeapon, transform.position);
             }
 
-            // 如果是玩家的话就丢失武器
+            // 如果是角色的话就丢失武器
             if (TryGetComponent<PlayerController>(out var controller))
             {
                 var weapon = controller.Player.DropPlayerRightHandWeapon(transform.position);

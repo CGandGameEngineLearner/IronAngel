@@ -13,6 +13,7 @@ public class WeaponInstance : NetworkBehaviour
     private WeaponInstanceData m_WeaponInstanceData;
 
     [SyncVar] private int m_WeaponHP;
+    [SyncVar] private int m_WeaponCurrentHP;
     
     private WeaponConfig m_WeaponConfig;
 
@@ -22,6 +23,7 @@ public class WeaponInstance : NetworkBehaviour
     {
         m_WeaponConfig = weaponConfig;
         m_WeaponHP = weaponConfig.weaponHp;
+        m_WeaponCurrentHP = m_WeaponHP;
         m_WeaponInstanceData.currentMag = weaponConfig.magSize;
         m_LineRenderer = GetComponent<LineRenderer>();
     }
@@ -61,5 +63,15 @@ public class WeaponInstance : NetworkBehaviour
     public int GetWeaponHP()
     {
         return m_WeaponHP;
+    }
+
+    public int GetWeaponCurrentHP()
+    {
+        return m_WeaponCurrentHP;
+    }
+
+    public void SetWeaponCurrentHP(int val)
+    {
+        m_WeaponCurrentHP = val >= 0 ? val : 0;
     }
 }

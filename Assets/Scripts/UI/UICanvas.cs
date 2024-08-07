@@ -14,18 +14,30 @@ public class UICanvas : MonoBehaviour
     private PauseMenu m_PauseMenu;
     public PauseMenu PauseMenu { get { return m_PauseMenu; } }
 
+    [SerializeField]
+    private DiePanel m_DiePanel;
+
+    public DiePanel DiePanel { get { return m_DiePanel; } }
+
+    [SerializeField]
+    private PropertiesUI m_PropertiesUI;
+    public PropertiesUI PropertiesUI { get { return m_PropertiesUI; } }
+
+
     private void Start()
     {
         m_Instance = this;
+        EventCenter.AddListener(EventType.PlayerDied, ShowDirPanel);
+    }
+    private void ShowDirPanel()
+    {
+        m_DiePanel.gameObject.SetActive(true);
+        m_PropertiesUI.gameObject.SetActive(false);
+        m_PauseMenu.gameObject.SetActive(false);
     }
 
-    public bool IsPauseMenuActive()
+    private void OnDestroy()
     {
-        return m_PauseMenu.gameObject.active;
-    }
-
-    public void SetPauseMenuActive(bool val)
-    {
-        m_PauseMenu.gameObject.SetActive(val);
+        EventCenter.RemoveListener(EventType.PlayerDied, ShowDirPanel);
     }
 }
