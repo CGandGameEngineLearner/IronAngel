@@ -23,6 +23,7 @@ public class WeaponInstance : NetworkBehaviour
     {
         m_WeaponConfig = weaponConfig;
         m_WeaponHP = weaponConfig.weaponHp;
+        m_WeaponCurrentHP = m_WeaponHP;
         m_WeaponInstanceData.currentMag = weaponConfig.magSize;
         m_LineRenderer = GetComponent<LineRenderer>();
     }
