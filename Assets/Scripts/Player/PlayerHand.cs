@@ -43,7 +43,7 @@ public class PlayerHand
     {
         m_ObjectInLeftHand = obj;
 #if UNITY_EDITOR
-        Debug.Log("Left hand get" + obj);
+        //Debug.Log("Left hand get" + obj);
 #endif
         if (m_ObjectInLeftHand != null)
         {
@@ -53,7 +53,7 @@ public class PlayerHand
             }
             obj.SetActive(false);
             m_PlayerLeftHand.SetActive(true);
-            m_BaseProperties.m_Properties.m_LeftHandWeaponHP = obj.GetComponent<WeaponInstance>().GetConfig().weaponHp;
+            m_BaseProperties.m_Properties.m_LeftHandWeaponHP = obj.GetComponent<WeaponInstance>().GetWeaponHP();
         }
     }
 
@@ -61,7 +61,7 @@ public class PlayerHand
     {
         m_ObjectInRightHand = obj;
 #if UNITY_EDITOR
-        Debug.Log("Right hand get" +  obj);
+        //Debug.Log("Right hand get" +  obj);
 #endif
         if( m_ObjectInRightHand != null)
         {
@@ -71,7 +71,7 @@ public class PlayerHand
             }
             obj.SetActive(false);
             m_PlayerRightHand.SetActive(true);
-            m_BaseProperties.m_Properties.m_RightHandWeaponHP = obj.GetComponent <WeaponInstance>().GetConfig().weaponHp;
+            m_BaseProperties.m_Properties.m_RightHandWeaponHP = obj.GetComponent<WeaponInstance>().GetWeaponHP();
         }
     }
 
@@ -93,6 +93,7 @@ public class PlayerHand
         }
         var g = m_ObjectInLeftHand;
         m_ObjectInLeftHand = null;
+        m_PlayerLeftHand.SetActive(false);
         return g;
     }
 
@@ -114,6 +115,7 @@ public class PlayerHand
         }
         var g = m_ObjectInRightHand;
         m_ObjectInRightHand = null;
+        m_PlayerRightHand.SetActive(false);
         return g;
     }
 

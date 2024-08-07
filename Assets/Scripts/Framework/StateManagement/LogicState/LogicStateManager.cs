@@ -11,11 +11,15 @@ namespace LogicState
         /// <summary>
         /// 状态字典的哈希桶初始容量
         /// </summary>
-        public int StateDictionaryCapacity = (int)ELogicState.Count;
-        private Dictionary<ELogicState, LogicState> m_LogicStateDic;
-        private Dictionary<ELogicState, LogicState> m_FutureStatesBuffer;
-        private Dictionary<ELogicState, bool> m_StateInit;
-        private HashSet<ELogicState> m_ResetedDurationStates; // 重设过持续时间的状态
+        public static int StateDictionaryCapacity = (int)ELogicState.Count;
+        private Dictionary<ELogicState, LogicState> m_LogicStateDic = new Dictionary<ELogicState, LogicState>(StateDictionaryCapacity);
+        private Dictionary<ELogicState, LogicState> m_FutureStatesBuffer = new Dictionary<ELogicState, LogicState>(StateDictionaryCapacity);
+        private Dictionary<ELogicState, bool>  m_StateInit = new Dictionary<ELogicState, bool>(StateDictionaryCapacity);
+        private HashSet<ELogicState> m_ResetedDurationStates = new HashSet<ELogicState>(StateDictionaryCapacity); // 重设过持续时间的状态
+        
+       
+        
+        
         
         
         public LogicStateConfig LogicStateConfig;
@@ -92,6 +96,10 @@ namespace LogicState
 
         public bool IncludeState(ELogicState stateEnum)
         {
+            if (m_FutureStatesBuffer == null || m_LogicStateDic == null)
+            {
+                return false;
+            }
             if (m_FutureStatesBuffer.ContainsKey(stateEnum))
             {
                 return true;
@@ -193,10 +201,7 @@ namespace LogicState
         // Start is called before the first frame update
         void Start()
         {
-            m_StateInit = new Dictionary<ELogicState, bool>();
-            m_LogicStateDic = new Dictionary<ELogicState, LogicState>(StateDictionaryCapacity);
-            m_FutureStatesBuffer = new Dictionary<ELogicState, LogicState>(StateDictionaryCapacity);
-            m_ResetedDurationStates = new HashSet<ELogicState>();
+           
         }
 
         // Update is called once per frame

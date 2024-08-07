@@ -10,7 +10,7 @@ namespace AI.BehaviourTree.Actions
 
         public override void OnAwake()
         {
-            Debug.Log(GetType() + "OnEnable()");
+            //Debug.Log(GetType() + "OnEnable()");
             m_AIController = GetComponent<AIController>();
             m_LogicStateManager = GetComponent<LogicStateManager>();
         }

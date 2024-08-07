@@ -49,10 +49,16 @@ public class ShieldCollisionReceiver : NetworkBehaviour
         if (ammunitionHandle == null)
         {
 #if UNITY_EDITOR
-            Debug.Log("查询不到这个弹药的Handle,子弹对象为" + collision.gameObject);
+            //Debug.Log("查询不到这个弹药的Handle,子弹对象为" + collision.gameObject);
 #endif
             return;
         }
+
+        if (ammunitionHandle.launcherCharacter == null)
+        {
+            return;
+        }
+        
         var launcherCharacterProperties = ammunitionHandle.launcherCharacter.GetComponent<BaseProperties>();
         if (launcherCharacterProperties == null)
         {

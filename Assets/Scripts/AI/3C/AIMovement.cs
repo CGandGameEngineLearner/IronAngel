@@ -1,9 +1,12 @@
 
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Splines;
 using System.Collections;
 using LogicState;
+using UnityEditor;
+using Vector2 = UnityEngine.Vector2;
 
 public class AIMovement : MonoBehaviour
 {
@@ -17,15 +20,48 @@ public class AIMovement : MonoBehaviour
 
     private float m_NormalSpeed;
     private GameObject m_ChaseTarget;
+    private Vector2 m_dashDir;
+    
+    [Tooltip("墙体图层")]
+    public LayerMask m_WallLayer;
 
     private void Start()
     {
+        m_LogicStateManager = GetComponent<LogicStateManager>();
         m_BaseProperties = GetComponent<BaseProperties>();
         agent = GetComponent<NavMeshAgent>();
-        m_LogicStateManager = GetComponent<LogicStateManager>();
+        
         m_Rigidbody = GetComponent<Rigidbody2D>();
         m_LastPos = transform.position;
         m_NormalSpeed = agent.speed;
+    }
+
+    private void FixedUpdate()
+    {
+
+        if (m_LogicStateManager.IncludeState(ELogicState.AIDashing))
+        {
+            agent.enabled = false; // 冲刺时要关闭AI导航
+            m_dashDir = m_dashDir.normalized;
+            var dashSpeed = m_BaseProperties.m_Properties.m_DashSpeed;
+            var v2 = m_Rigidbody.position;
+            v2.x += m_dashDir.x * dashSpeed * Time.fixedDeltaTime;
+            v2.y += m_dashDir.y * dashSpeed * Time.fixedDeltaTime;
+            var hit = Physics2D.Raycast(m_Rigidbody.position, m_dashDir, Vector2.Distance(m_Rigidbody.position, v2) + 3,
+                m_WallLayer);
+            
+            // 如果会穿墙
+            if (hit && Vector2.Distance(m_Rigidbody.position, v2) >= Vector2.Distance(m_Rigidbody.position, hit.point))
+            {
+                v2 = hit.point - m_dashDir * 0.1f;
+            }
+
+            m_Rigidbody.MovePosition(v2);
+        }
+        else
+        {
+            agent.enabled = true;
+        }
     }
 
     /// <summary>
@@ -83,52 +119,19 @@ public class AIMovement : MonoBehaviour
     /// 冲刺
     /// </summary>
     /// <param name="_dashDir"></param>
-    public virtual void Dash(Vector3 _dashDir)
+    public virtual void Dash(Vector2 _dashDir)
     {
         
         if (!m_LogicStateManager.IncludeState(ELogicState.AIDashing))
         {
             var success = m_LogicStateManager.AddState(ELogicState.AIDashing);
             m_LogicStateManager.SetStateDuration(ELogicState.AIDashing, m_BaseProperties.m_Properties.m_DashDuration);
-            
-            StartCoroutine(DashCoroutine(_dashDir));
-            
+            m_dashDir = _dashDir;
         }
         
     }
     
-    /// <summary>
-    /// 冲刺协程
-    /// </summary>
-    /// <param name="_dashDir"></param>
-    /// <returns></returns>
-    protected IEnumerator DashCoroutine(Vector2 _dashDir)
-    {
-        
-        var m_WallLayer = m_BaseProperties.m_Properties.m_WallLayer;
-        agent.enabled = false;
-        
-        //当冲刺状态的持续时间结束时停止
-        while (m_LogicStateManager.IncludeState(ELogicState.AIDashing))
-        {
-            _dashDir = _dashDir.normalized;
-            var dashSpeed = m_BaseProperties.m_Properties.m_DashSpeed;
-            var v2 = m_Rigidbody.position;
-            v2.x += _dashDir.x * dashSpeed * Time.fixedDeltaTime;
-            v2.y += _dashDir.y * dashSpeed * Time.fixedDeltaTime;
-            var hit = Physics2D.Raycast(m_Rigidbody.position, _dashDir, Vector2.Distance(m_Rigidbody.position, v2) + 1,
-                m_WallLayer);
-            if (hit && Vector2.Distance(m_Rigidbody.position, v2) >= Vector2.Distance(m_Rigidbody.position, hit.point))
-            {
-                v2 = hit.point - _dashDir * 0.1f;
-            }
-
-            m_Rigidbody.MovePosition(v2);
-            yield return null;
-        }
-
-        agent.enabled = true;
-    }
+   
 
     /// <summary>
     /// AI会追到距离玩家一定位置的地方与玩家拉开距离开火，
@@ -142,7 +145,11 @@ public class AIMovement : MonoBehaviour
         var offsetVec = (transform.position - targetGameObject.transform.position).normalized;
         offsetVec += m_BaseProperties.m_Properties.m_EngagementDistance * offsetVec;
         var targetPos = targetGameObject.transform.position + offsetVec;
-        agent.SetDestination(targetPos);
+        if (agent.isOnNavMesh)
+        {
+            agent.SetDestination(targetPos);
+        }
+       
     }   
 
     protected IEnumerator ChaseCoroutine(GameObject target)
@@ -183,9 +190,24 @@ public class AIMovement : MonoBehaviour
     }
 
     protected IEnumerator MoveToDestinationCoroutine(Vector3 target)
-    { 
+    {
+        if (!agent.isOnNavMesh)
+        {
+            yield return null;
+        }
+
+
         SetDestination(target);
-        yield return new WaitUntil(() => agent.remainingDistance == 0);
+        yield return new WaitUntil(() =>
+            {
+                if (!agent.isOnNavMesh)
+                {
+                    return true;
+                }
+                return agent.remainingDistance == 0;
+            }
+        );
+
     }
        
 }

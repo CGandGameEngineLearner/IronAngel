@@ -1,6 +1,8 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
+[Serializable]
 public struct WeaponConfigData
 {
     public AtkType atkType;
@@ -20,6 +22,7 @@ public struct WeaponConfigData
 }
 
 [CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/Weapon/WeaponConfig", order = 1)]
+[Serializable]
 public class WeaponConfig : ItemConfig
 {
     // 武器类型

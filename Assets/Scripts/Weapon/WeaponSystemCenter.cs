@@ -81,49 +81,72 @@ public class WeaponSystemCenter : NetworkBehaviour
     {
         m_RegisteredWeaponAI.Add(aiController);
     }
+    
+    
+    public void SpawnWeapon(WeaponType weaponType, Vector3 pos)
+    {
+        ServeSpawnWeapon(weaponType, pos);
+    }
 
-    public GameObject SpawnWeapon(WeaponType weaponType, Vector3 pos)
+    [Server]
+    private void ServeSpawnWeapon(WeaponType weaponType, Vector3 pos)
     {
         var weaponConfig = m_WeaponConfigDic[weaponType];
         var prefab = weaponConfig.prefab;
 
         GameObject weapon = Instantiate(prefab, pos,
             UnityEngine.Quaternion.identity);
-        
-        weapon.GetComponent<WeaponInstance>().Init(weaponConfig);
 
+        weapon.GetComponent<WeaponInstance>().Init(weaponConfig);
+        m_WeaponToConfigDic[weapon] = weaponConfig;
+        m_WeaponToTypeDic[weapon] = weaponType;
         NetworkServer.Spawn(weapon);
-        
-        m_WeaponToConfigDic[weapon] = weaponConfig;
-        m_WeaponToTypeDic[weapon] = weaponType;
-        
-        //RpcWeaponDicUpdate(weapon, weaponType, weaponConfig);
-        return weapon;
+        RpcWeaponDicUpdate(weapon,weaponType);
     }
-    
+
+
+
     [ClientRpc]
-    private void RpcWeaponDicUpdate(GameObject weapon, WeaponType weaponType, WeaponConfig weaponConfig)
+    private void RpcWeaponDicUpdate(GameObject weapon, WeaponType weaponType)
     {
+        m_WeaponToConfigDic[weapon] = m_WeaponConfigDic[weaponType];
+        m_WeaponToTypeDic[weapon] = weaponType;
+    }
+
+    [ServerCallback]
+    private GameObject AISpawnWeapon(WeaponType weaponType, Vector3 pos)
+    {
+        var weaponConfig = m_WeaponConfigDic[weaponType];
+        var prefab = weaponConfig.prefab;
+
+        GameObject weapon = Instantiate(prefab, pos,
+            UnityEngine.Quaternion.identity);
+
+        weapon.GetComponent<WeaponInstance>().Init(weaponConfig);
         m_WeaponToConfigDic[weapon] = weaponConfig;
         m_WeaponToTypeDic[weapon] = weaponType;
+        NetworkServer.Spawn(weapon);
+        RpcWeaponDicUpdate(weapon, weaponType);
+        return weapon;
     }
 
     /// <summary>
     /// 给AI装备武器
     /// </summary>
+    [ServerCallback]
     private void GiveAIWeapon()
     {
         foreach (var element in m_RegisteredWeaponAI)
         {
             // 给左手装备武器
             var weaponType = element.GetRightHandWeaponType();
-            var leftWeapon = SpawnWeapon(weaponType, Vector3.zero);
+            var leftWeapon = AISpawnWeapon(weaponType, Vector3.zero);
             element.SetLeftHandWeapon(leftWeapon);
 
 
             // 给右手装备武器
             weaponType = element.GetRightHandWeaponType();
-            var rightWeapon = SpawnWeapon(weaponType, Vector3.zero);
+            var rightWeapon = AISpawnWeapon(weaponType, Vector3.zero);
             element.SetRightHandWeapon(rightWeapon);
 
             RpcGiveAIWeapon(element, leftWeapon, rightWeapon);
@@ -172,7 +195,7 @@ public class WeaponSystemCenter : NetworkBehaviour
     {
         dir = dir.normalized;
 #if UNITY_EDITOR
-        Debug.Log(GetType() + "Command" + "Fire");
+        //Debug.Log(GetType() + "Command" + "Fire");
 #endif
         var weaponConfig = m_WeaponToConfigDic[weapon];
         var ammunitionType = m_WeaponToConfigDic[weapon].ammunitionType;
@@ -182,7 +205,7 @@ public class WeaponSystemCenter : NetworkBehaviour
         if (!weapon.TryGetComponent<WeaponInstance>(out WeaponInstance weaponInstance))
         {
 #if UNITY_EDITOR
-            Debug.LogError("武器没有挂载WeaponInstance脚本");
+            //Debug.LogError("武器没有挂载WeaponInstance脚本");
 #endif
             return;
         }
@@ -191,7 +214,7 @@ public class WeaponSystemCenter : NetworkBehaviour
         if (!weaponInstance.TryFire())
         {
 #if UNITY_EDITOR
-            Debug.LogWarning("开火间隔过短");
+            //Debug.LogWarning("开火间隔过短");
 #endif
             return;
         }
@@ -200,7 +223,7 @@ public class WeaponSystemCenter : NetworkBehaviour
         if (!weaponInstance.DecreaseMag())
         {
 #if UNITY_EDITOR
-            Debug.LogWarning("子弹数不足");
+            //Debug.LogWarning("子弹数不足");
 #endif
             return;
         }
@@ -269,7 +292,7 @@ public class WeaponSystemCenter : NetworkBehaviour
         Vector3 startPoint, Vector3 dir)
     {
         var weaponConfigData = m_WeaponConfigDic[weaponType].ToData();
-        Debug.LogWarning(weaponConfigData.atkType);
+        //Debug.LogWarning(weaponConfigData.atkType);
         switch (weaponConfigData.atkType)
         {
             case AtkType.Laser:

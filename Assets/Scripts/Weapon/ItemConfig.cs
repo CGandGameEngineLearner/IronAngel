@@ -1,5 +1,7 @@
+using System;
 using UnityEngine;
 
+[Serializable]
 public class ItemConfig : ScriptableObject
 {
     public GameObject prefab => m_Prefab;
