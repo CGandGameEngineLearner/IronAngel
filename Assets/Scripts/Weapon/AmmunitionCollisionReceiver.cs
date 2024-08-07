@@ -54,7 +54,7 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
         m_Collider = GetComponent<BoxCollider2D>();
         m_Properties.m_Properties.m_LeftHandWeaponCurrentHP = m_Properties.m_Properties.m_LeftHandWeaponHP;
         m_Properties.m_Properties.m_RightHandWeaponCurrentHP = m_Properties.m_Properties.m_RightHandWeaponHP;
-
+        m_Properties.m_Properties.m_CurrentHP = m_Properties.m_Properties.m_BaseHP;
 
     }
 
@@ -246,6 +246,10 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
             {
                 WeaponSystemCenter.Instance.SpawnWeapon(m_Properties.m_Properties.m_LeftHandWeapon, transform.position);
                 WeaponSystemCenter.Instance.SpawnWeapon(m_Properties.m_Properties.m_RightHandWeapon, transform.position);
+            }
+            if(TryGetComponent<PlayerController>(out var controller))
+            {
+                EventCenter.Broadcast(EventType.PlayerDied);
             }
         }
         // 角色所有护甲损失

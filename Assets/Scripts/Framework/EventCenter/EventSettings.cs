@@ -8,6 +8,7 @@ public enum EventType
     LogicState_Example_StateIn,                             // LogicState发送状态进入事件通知外部模块的样例
     LogicState_AIAttacking_StateOut,                        // AI攻击状态结束
     CharacterDied,                                          // 角色死亡
+    PlayerDied,                                             // 玩家死亡
 
     // buff
     // 减速效果
