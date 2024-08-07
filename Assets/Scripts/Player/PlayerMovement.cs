@@ -87,6 +87,11 @@ public class PlayerMovement
         _dashDir = dir.normalized;
     }
 
+    public int GetDashCount()
+    {
+        return m_DashCount;
+    }
+
     public bool StartDash()
     {
         return m_DashCount > 0;

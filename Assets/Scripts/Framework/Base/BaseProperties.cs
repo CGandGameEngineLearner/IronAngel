@@ -42,9 +42,15 @@ public struct Properties
     
     [Tooltip("左手武器血量")]
     public int m_LeftHandWeaponHP;
+
+    [Tooltip("左手武器当前血量")]
+    public int m_LeftHandWeaponCurrentHP;
     
     [Tooltip("右手武器血量")]
     public int m_RightHandWeaponHP;
+
+    [Tooltip("右手武器当前血量")]
+    public int m_RightHandWeaponCurrentHP;
     
     [Tooltip("左手武器种类")]
     public WeaponType m_LeftHandWeapon;

@@ -41,6 +41,11 @@ public class Player
 
     }
 
+    public int GetDashCount()
+    {
+        return m_PlayerMovement.GetDashCount();
+    }
+
     public Vector3 GetPlayerPosition()
     {
         return m_Player.transform.position;

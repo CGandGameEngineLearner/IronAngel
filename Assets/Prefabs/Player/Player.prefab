@@ -19,7 +19,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5766486335978873223
 Transform:
   m_ObjectHideFlags: 0
@@ -745,7 +745,7 @@ MonoBehaviour:
   syncInterval: 0
   m_Properties:
     m_Energy: 0
-    m_BaseHP: 100
+    m_BaseHP: 50000
     m_LeftHandWeaponHP: 0
     m_RightHandWeaponHP: 0
     m_LeftHandWeapon: 0
@@ -870,7 +870,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &9026808096670510101
 Transform:
   m_ObjectHideFlags: 0
