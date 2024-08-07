@@ -1,3 +1,4 @@
+using Mirror;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -31,9 +32,13 @@ public class UICanvas : MonoBehaviour
     }
     private void ShowDirPanel()
     {
-        m_DiePanel.gameObject.SetActive(true);
-        m_PropertiesUI.gameObject.SetActive(false);
-        m_PauseMenu.gameObject.SetActive(false);
+        if(NetworkClient.localPlayer != null && NetworkClient.localPlayer.GetComponent<PlayerController>().isDie)
+        {
+            m_DiePanel.gameObject.SetActive(true);
+            m_PropertiesUI.gameObject.SetActive(false);
+            m_PauseMenu.gameObject.SetActive(false);
+        }
+        
     }
 
     private void OnDestroy()

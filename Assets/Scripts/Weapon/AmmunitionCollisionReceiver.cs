@@ -249,6 +249,7 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
             }
             if(TryGetComponent<PlayerController>(out var controller))
             {
+                controller.isDie = true;
                 EventCenter.Broadcast(EventType.PlayerDied);
             }
         }
