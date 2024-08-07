@@ -312,7 +312,7 @@ public class AIController : NetworkBehaviour
         
         while (m_LogicStateManager.IncludeState(ELogicState.AIAttacking))
         {
-            
+            dir = transform.rotation*Vector3.up;
             dir = ComputeAngleOfFire(dir);
             WeaponSystemCenter.Instance.CmdFire(gameObject, m_LeftHandWeapon,transform.position,dir);
             yield return null;
@@ -339,7 +339,7 @@ public class AIController : NetworkBehaviour
         
         while (m_LogicStateManager.IncludeState(ELogicState.AIAttacking))
         {
-            
+            dir = transform.rotation*Vector3.up;
             dir = ComputeAngleOfFire(dir);
             WeaponSystemCenter.Instance.CmdFire(gameObject, m_RightHandWeapon,transform.position,dir);
             yield return null;
