@@ -45,6 +45,38 @@ namespace IronAngel
             }
         }
 
+       /// <summary>
+       /// 爆炸衰减伤害计算
+       /// </summary>
+       /// <param name="maxDamage"></param>
+       /// <param name="minDamage"></param>
+       /// <param name="sigma"></param>
+       /// <param name="fallout"></param>
+       /// <param name="explodePoint"></param>
+       /// <param name="characterPoint"></param>
+       /// <returns></returns>
+        public static int CalculateQuadraticDecayDamage(int maxDamage, int minDamage, float sigma, float fallout, Vector2 explodePoint, Vector2 characterPoint)
+        {
+            // 计算爆炸点和角色点之间的距离
+            float distance = Vector2.Distance(explodePoint, characterPoint);
+        
+            // 如果距离为零，返回最大伤害
+            if (distance == 0)
+            {
+                return maxDamage;
+            }
+        
+            // 计算衰减比例
+            float inverseSquareDistance = 1 / Mathf.Pow(distance, 2);
+        
+            // 计算实际伤害
+            int damage = Mathf.RoundToInt(maxDamage * inverseSquareDistance);
+        
+            // 将伤害值限制在最小和最大伤害值之间
+            damage = Mathf.Clamp(damage, minDamage, maxDamage);
+        
+            return damage;
+        }
     }
 }
 
