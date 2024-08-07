@@ -10,7 +10,7 @@ using IronAngel;
 using Random = UnityEngine.Random;
 using LogicState;
 using System;
-
+using Unity.VisualScripting;
 using Utils = IronAngel.Utils;
 
 public class AIController : NetworkBehaviour
@@ -265,11 +265,17 @@ public class AIController : NetworkBehaviour
         
         return true;
     }
+    
 
     [ServerCallback]
     private void LeftHandFire()
     {
         var leftDuration = m_BaseProperties.m_Properties.m_LeftHandWeaponAttackingDuration;
+        var LeftHandAttackPreCastDelay = WeaponSystemCenter.GetWeaponConfig(m_LeftHandWeapon).attackPreCastDelay;
+        if (leftDuration <= LeftHandAttackPreCastDelay)
+        {
+            Debug.LogError("攻击时长包含前摇时长，所以前摇时长不能大于攻击时长");
+        }
         m_LogicStateManager.SetStateDuration(ELogicState.AIAttacking, leftDuration);
         StartCoroutine(LeftHandFireCoroutine());
     }
@@ -278,15 +284,35 @@ public class AIController : NetworkBehaviour
     private void RightHandFire()
     {
         var rightDuration = m_BaseProperties.m_Properties.m_RightHandWeaponAttackingDuration;
+        var RightHandAttackPreCastDelay = WeaponSystemCenter.GetWeaponConfig(m_RightHandWeapon).attackPreCastDelay;
+        if (rightDuration <= RightHandAttackPreCastDelay)
+        {
+            Debug.LogError("攻击时长包含前摇时长，所以前摇时长不能大于攻击时长");
+        }
         m_LogicStateManager.SetStateDuration(ELogicState.AIAttacking, rightDuration);
         StartCoroutine(RightHandFireCoroutine());
     }
     
     private IEnumerator LeftHandFireCoroutine()
     {
+        m_LogicStateManager.AddState(ELogicState.AIAttackPreCastDelay);
+        var LeftHandAttackPreCastDelay = WeaponSystemCenter.GetWeaponConfig(m_LeftHandWeapon).attackPreCastDelay;
+        m_LogicStateManager.SetStateDuration(ELogicState.AIAttackPreCastDelay, LeftHandAttackPreCastDelay);
+        
+        var dir = transform.rotation*Vector3.up;
+        WeaponSystemCenter.Instance.StartLaserPointer(gameObject,m_LeftHandWeapon,transform.position, dir);
+        
+        while (m_LogicStateManager.IncludeState(ELogicState.AIAttackPreCastDelay))
+        {
+            m_AIMovement.SetMoveEnabled(false);
+            yield return null;
+        }
+
+        m_AIMovement.SetMoveEnabled(true);
+        
         while (m_LogicStateManager.IncludeState(ELogicState.AIAttacking))
         {
-            var dir = transform.rotation*Vector3.up;
+            
             dir = ComputeAngleOfFire(dir);
             WeaponSystemCenter.Instance.CmdFire(gameObject, m_LeftHandWeapon,transform.position,dir);
             yield return null;
@@ -295,9 +321,25 @@ public class AIController : NetworkBehaviour
     
     private IEnumerator RightHandFireCoroutine()
     {
+        
+        m_LogicStateManager.AddState(ELogicState.AIAttackPreCastDelay);
+        var RightHandAttackPreCastDelay = WeaponSystemCenter.GetWeaponConfig(m_RightHandWeapon).attackPreCastDelay;
+        m_LogicStateManager.SetStateDuration(ELogicState.AIAttackPreCastDelay, RightHandAttackPreCastDelay);
+        
+        var dir = transform.rotation*Vector3.up;
+        WeaponSystemCenter.Instance.StartLaserPointer(gameObject,m_LeftHandWeapon,transform.position, dir);
+        
+        while (m_LogicStateManager.IncludeState(ELogicState.AIAttackPreCastDelay))
+        {
+            m_AIMovement.SetMoveEnabled(false);
+            yield return null;
+        }
+        
+        m_AIMovement.SetMoveEnabled(true);
+        
         while (m_LogicStateManager.IncludeState(ELogicState.AIAttacking))
         {
-            var dir = transform.rotation*Vector3.up;
+            
             dir = ComputeAngleOfFire(dir);
             WeaponSystemCenter.Instance.CmdFire(gameObject, m_RightHandWeapon,transform.position,dir);
             yield return null;

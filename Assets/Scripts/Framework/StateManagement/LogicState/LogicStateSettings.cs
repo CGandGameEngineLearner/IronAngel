@@ -21,6 +21,7 @@ namespace LogicState
         EnemyInRangeOfAttack,               // 敌人进入了攻击范围
         AIAttacking,                        // AI攻击中
         AIDashing,                          // AI冲刺中
+        AIAttackPreCastDelay,               // AI攻击前摇状态
         // ---------------------------------- 以上为LogicState ---------------------------------- 
         LogicStateSplitter,        
         // ---------------------------------- 以下为BuffState  ---------------------------------- 
@@ -55,6 +56,7 @@ namespace LogicState
             new LogicState_AIAttacking(ELogicState.AIAttacking),
             new LogicState(ELogicState.AIAttacking),
             new LogicState(ELogicState.AIDashing),
+            new LogicState(ELogicState.AIAttackPreCastDelay),
             // 以上是LogicState ---------------------
             
             // 以下是BuffState ----------------------

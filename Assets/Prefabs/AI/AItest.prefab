@@ -415,8 +415,8 @@ MonoBehaviour:
         byteData: 
         byteDataArray: 
       Version: 1.7.9
-  gizmoViewMode: 0
-  showBehaviorDesignerGizmo: 0
+  gizmoViewMode: 2
+  showBehaviorDesignerGizmo: 1
 --- !u!114 &5384138960469735118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -653,11 +653,13 @@ MonoBehaviour:
     m_Energy: 0
     m_BaseHP: 500
     m_LeftHandWeaponHP: 200
+    m_LeftHandWeaponCurrentHP: 0
     m_RightHandWeaponHP: 200
+    m_RightHandWeaponCurrentHP: 0
     m_LeftHandWeapon: 0
     m_RightHandWeapon: 0
-    m_LeftHandWeaponAttackingDuration: 1
-    m_RightHandWeaponAttackingDuration: 1
+    m_LeftHandWeaponAttackingDuration: 5
+    m_RightHandWeaponAttackingDuration: 5
     m_ProbabilityOfLeftWeapon: 0.5
     m_ProbabilityOfRightWeapon: 0.5
     m_EngagementDistance: 3
@@ -666,8 +668,8 @@ MonoBehaviour:
     m_CurrentHP: 100
     m_CurrentArmor: 0
     m_AttackRange: 10
-    m_TokenWeight: 0.3
-    m_RangeOfAimingError: 30
+    m_TokenWeight: 1
+    m_RangeOfAimingError: 0
     m_Camp: 1
     m_DropWeapon_WeaponDestroy: 0
     m_DropWeapon_CharacterDied: 1

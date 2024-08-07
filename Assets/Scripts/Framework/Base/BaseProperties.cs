@@ -58,12 +58,12 @@ public struct Properties
     [Tooltip("右手武器种类")]
     public WeaponType m_RightHandWeapon;
     
-    [Tooltip("左手武器每次攻击的持续时长")]
+    [Tooltip("左手武器每次攻击的持续时长(一定要大于前摇时长，因为攻击时长包含了前摇时长)")]
     public float m_LeftHandWeaponAttackingDuration;
     
-    [Tooltip("右手武器每次攻击的持续时长")]
+    [Tooltip("右手武器每次攻击的持续时长(一定要大于前摇时长，因为攻击时长包含了前摇时长)")]
     public float m_RightHandWeaponAttackingDuration;
-
+    
     [Tooltip("左手武器使用概率"),Range(0,1)]
     public float m_ProbabilityOfLeftWeapon;
 

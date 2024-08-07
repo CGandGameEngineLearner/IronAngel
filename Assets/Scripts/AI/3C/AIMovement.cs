@@ -21,6 +21,8 @@ public class AIMovement : MonoBehaviour
     private float m_NormalSpeed;
     private GameObject m_ChaseTarget;
     private Vector2 m_dashDir;
+
+    private bool m_MoveEnabled = true;
     
     [Tooltip("墙体图层")]
     public LayerMask m_WallLayer;
@@ -38,6 +40,10 @@ public class AIMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (!m_MoveEnabled)
+        {
+            return;
+        }
 
         if (m_LogicStateManager.IncludeState(ELogicState.AIDashing))
         {
@@ -63,6 +69,13 @@ public class AIMovement : MonoBehaviour
             agent.enabled = true;
         }
     }
+    
+    public void SetMoveEnabled(bool enabled)
+    {
+        agent.enabled = enabled;
+        m_MoveEnabled = enabled;
+    }
+    
 
     /// <summary>
     /// 
@@ -110,7 +123,7 @@ public class AIMovement : MonoBehaviour
         }
     }
 
-    public virtual bool SetDestination(Vector3 target)
+    public bool SetDestination(Vector3 target)
     {
         return agent.SetDestination(target);
     }
@@ -119,7 +132,7 @@ public class AIMovement : MonoBehaviour
     /// 冲刺
     /// </summary>
     /// <param name="_dashDir"></param>
-    public virtual void Dash(Vector2 _dashDir)
+    public void Dash(Vector2 _dashDir)
     {
         
         if (!m_LogicStateManager.IncludeState(ELogicState.AIDashing))
@@ -139,7 +152,7 @@ public class AIMovement : MonoBehaviour
     /// 交战距离与攻击范围之比
     /// </summary>
     /// <param name="targetGameObject"></param>
-    public virtual void Chase(GameObject targetGameObject)
+    public void Chase(GameObject targetGameObject)
     {
         m_ChaseTarget = targetGameObject;
         var offsetVec = (transform.position - targetGameObject.transform.position).normalized;
@@ -158,7 +171,7 @@ public class AIMovement : MonoBehaviour
         yield break;
     }   
 
-    public virtual void PatrolWithFixedRoute(SplineContainer patrolRoute)
+    public void PatrolWithFixedRoute(SplineContainer patrolRoute)
     {
         if (patrolRoute == null)
         {
@@ -209,5 +222,4 @@ public class AIMovement : MonoBehaviour
         );
 
     }
-       
 }
