@@ -3,6 +3,9 @@ using UnityEngine;
 
 namespace LogicState
 {
+    /// <summary>
+    /// 眩晕buff
+    /// </summary>
     public class BuffState_Stun : LogicState
     {
         public BuffState_Stun(ELogicState stateEnum) : base(stateEnum)
