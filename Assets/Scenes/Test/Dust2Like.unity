@@ -1074,7 +1074,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a096b3a6de577d428410bfa55c937c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_PropertiesUI: {fileID: 0}
+  m_PropertiesUI: {fileID: 2108055921}
   m_PauseMenu: {fileID: 362311481}
   m_NetworkStatus: {fileID: 1595934316}
   m_MultiPlayerReadyPanel: {fileID: 1650773684}
@@ -10791,8 +10791,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_PauseMenu: {fileID: 362311481}
-  m_DiePanel: {fileID: 0}
-  m_PropertiesUI: {fileID: 0}
+  m_DiePanel: {fileID: 1302218259}
+  m_PropertiesUI: {fileID: 2108055923}
 --- !u!4 &631320713 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7198915252375826511, guid: 74cff03b30d715741a2afa4c6e60a51b, type: 3}

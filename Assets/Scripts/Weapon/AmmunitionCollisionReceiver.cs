@@ -186,12 +186,12 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
         float rightDis = Vector2.Distance(new Vector2(m_RightWeapon.transform.position.x + m_RightWeapon.m_Collider.offset.x, m_RightWeapon.transform.position.y + m_RightWeapon.m_Collider.offset.y), Pos);
         float coreDis = Vector2.Distance(new Vector2(transform.position.x + m_Collider.offset.x, transform.position.y + m_Collider.offset.y), Pos);
         // 击中左手
-        if(leftDis < rightDis && leftDis < coreDis && m_Properties.m_Properties.m_LeftHandWeaponHP > 0)
+        if(leftDis < rightDis && leftDis < coreDis && m_Properties.m_Properties.m_LeftHandWeaponCurrentHP > 0)
         {
             m_Properties.m_Properties.m_LeftHandWeaponCurrentHP -= damage;
         }
         // 击中右手
-        else if(rightDis < coreDis && rightDis < leftDis && m_Properties.m_Properties.m_RightHandWeaponHP > 0)
+        else if(rightDis < coreDis && rightDis < leftDis && m_Properties.m_Properties.m_RightHandWeaponCurrentHP > 0)
         {
             m_Properties.m_Properties.m_RightHandWeaponCurrentHP -= damage;
         }
