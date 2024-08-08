@@ -65,17 +65,11 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
     /// <param name="collision"></param>
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(m_LogicStateManager.IncludeState(ELogicState.PlayerDashing))
-        {
-            return;
-        }
+        
         var ammunitionFactory = WeaponSystemCenter.GetAmmunitionFactory();
         var ammunitionHandle = ammunitionFactory.GetAmmunitionHandle(collision.gameObject);
         if (ammunitionHandle==null)
         {
-#if UNITY_EDITOR
-            //Debug.Log("查询不到这个弹药的Handle,子弹对象为"+collision.gameObject);
-#endif
             return;
         }
         if (ammunitionHandle.launcherCharacter == null)
@@ -99,9 +93,6 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
 
         if(TryGetComponent<BaseProperties>(out var prop) == false)
         {
-#if UNITY_EDITOR
-            //Debug.LogWarning("游戏物体 ：" + gameObject.name + "没有属性值");
-#endif
             return;
         }
         
@@ -128,7 +119,10 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
     [ServerCallback]
     public void CalculateDamage(AmmunitionConfig config, int armor, Vector2 Pos)
     {
-
+        if (m_LogicStateManager.IncludeState(ELogicState.PlayerDashing))
+        {
+            return;
+        }
         DamageData data = new DamageData();
         var m_Properties = GetComponent<BaseProperties>();
 
