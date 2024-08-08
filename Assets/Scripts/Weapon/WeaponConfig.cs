@@ -15,13 +15,9 @@ public struct WeaponConfigData
     public float shotSpreadAngle;
     public int WeaponHP;
     public bool anticipation;
-    [FormerlySerializedAs("anticipationDuration")] public float attackPreCastDelay;
+    public float attackPreCastDelay;
 
-    // [SerializeField] [ConditionalHide("m_AtkType", (int)AtkType.ShotGun)]
-    private float m_ShotSpreadAngle;
-
-    // [SerializeField] private AudioClip m_SoundEffect;
-    // [SerializeField] private ParticleSystem m_EffectPrefab;
+    public float m_ShotSpreadAngle;
 }
 
 [CreateAssetMenu(fileName = "Data", menuName = "ScriptableObjects/Weapon/WeaponConfig", order = 1)]
@@ -30,6 +26,7 @@ public class WeaponConfig : ItemConfig
 {
     // 武器类型
     public AtkType atkType => m_AtkType;
+
     public AmmunitionType ammunitionType => m_ammunitionType;
 
     public int weaponHp => m_WeaponHp;
@@ -44,7 +41,7 @@ public class WeaponConfig : ItemConfig
 
     public AudioClip soundEffect => m_SoundEffect;
     public ParticleSystem effectPrefab => m_EffectPrefab;
-    
+
     public float attackPreCastDelay => m_AttackPreCastDelay; // 攻击前摇时长
 
     public WeaponConfigData ToData()
@@ -59,27 +56,29 @@ public class WeaponConfig : ItemConfig
             simShots = this.m_SimShots,
             spreadAngle = this.m_SpreadAngle,
             shotSpreadAngle = this.m_ShotSpreadAngle,
-            attackPreCastDelay  = this.m_AttackPreCastDelay,
+            attackPreCastDelay = this.m_AttackPreCastDelay,
         };
     }
 
     [Header("武器基础属性配置")] [SerializeField] private AtkType m_AtkType;
-    [SerializeField] private AmmunitionType m_ammunitionType;
+
+    [SerializeField] [EnumRange((int)AmmunitionType.Start + 1, (int)AmmunitionType.PostExplodeSplitter - 1)]
+    private AmmunitionType m_ammunitionType;
+
     [SerializeField] private int m_WeaponHp;
     [SerializeField] private float m_Interval;
     [SerializeField] private int m_MagSize;
     [SerializeField] private int m_SimShots;
     [SerializeField] private float m_SpreadAngle;
 
-    [Header("特殊属性配置")]
-    [SerializeField] [ConditionalHide("m_AtkType", (int)AtkType.ShotGun)]
+    [Header("特殊属性配置")] [SerializeField]
     private float m_ShotSpreadAngle;
+
     [SerializeField] private float laserPointerWidth;
     [SerializeField] private AudioClip m_SoundEffect;
     [SerializeField] private ParticleSystem m_EffectPrefab;
 
 
-    [FormerlySerializedAs("m_AnticipationDuration")]
-    [Tooltip("攻击前摇时长/镭射提示多久消失/敌人会蹲多久")]
-    [SerializeField] private float m_AttackPreCastDelay;
+    [FormerlySerializedAs("m_AnticipationDuration")] [Tooltip("攻击前摇时长/镭射提示多久消失/敌人会蹲多久")] [SerializeField]
+    private float m_AttackPreCastDelay;
 }

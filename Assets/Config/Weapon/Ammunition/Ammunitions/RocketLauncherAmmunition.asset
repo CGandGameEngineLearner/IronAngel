@@ -10,20 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a59e88c4a9d74b07b64319f8b37e8bad, type: 3}
-  m_Name: PostExplode
+  m_Name: RocketLauncherAmmunition
   m_EditorClassIdentifier: 
-  m_Prefab: {fileID: 8422378306381297977, guid: e16edb34232657e41b74275bd97f6b41, type: 3}
+  m_Prefab: {fileID: 8422378306381297977, guid: cc314427b6e021046b4c90443f328c9a, type: 3}
   m_MinPoolSize: 50
   m_MaxPoolSize: 100
   isAuto: 0
-  m_Speed: 0
-  m_LifeDistance: 0
-  m_Damage: 40
-  m_PostAmmunitionType: 0
-  m_IsExplodeDamage: 1
+  m_Speed: 10
+  m_LifeDistance: 20
+  m_Damage: 0
+  m_PostAmmunitionType: 13
+  m_IsExplodeDamage: 0
   sigma: 0
   fallout: 0
   m_LaserWidth: 0
-  m_LeastLiveFixedFrameCount: 4
+  m_LeastLiveFixedFrameCount: 0
   m_specialAtkTypes: 
   m_EffectBuff: []

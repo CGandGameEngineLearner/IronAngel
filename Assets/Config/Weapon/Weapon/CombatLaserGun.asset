@@ -10,20 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 832d582905de4b3aaebabbb4346a6e4d, type: 3}
-  m_Name: Glock
+  m_Name: CombatLaserGun
   m_EditorClassIdentifier: 
-  m_Prefab: {fileID: 8270290095630009083, guid: 17e3fdf0100b0ce49baf705ea79b9cc8, type: 3}
-  m_MinPoolSize: 10
-  m_MaxPoolSize: 20
-  m_AtkType: 0
-  m_ammunitionType: 3
-  m_WeaponHp: 600
-  m_Interval: 0.2
-  m_MagSize: 10000
-  m_SimShots: 10
+  m_Prefab: {fileID: 0}
+  m_MinPoolSize: 0
+  m_MaxPoolSize: 0
+  m_AtkType: 1
+  m_ammunitionType: 6
+  m_WeaponHp: 0
+  m_Interval: 0
+  m_MagSize: 0
+  m_SimShots: 0
   m_SpreadAngle: 0
-  m_ShotSpreadAngle: 60
-  laserPointerWidth: 0.05
+  m_ShotSpreadAngle: 0
+  laserPointerWidth: 0
   m_SoundEffect: {fileID: 0}
   m_EffectPrefab: {fileID: 0}
-  m_AttackPreCastDelay: 3
+  m_AttackPreCastDelay: 0

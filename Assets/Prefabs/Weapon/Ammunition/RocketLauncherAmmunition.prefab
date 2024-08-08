@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8024972819584976100}
   - component: {fileID: 572511977228357632}
   m_Layer: 8
-  m_Name: Explode
+  m_Name: RocketLauncherAmmunition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,8 +27,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8422378306381297977}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.7176, y: 2.1591, z: 0.1942}
-  m_LocalScale: {x: 4.4680023, y: 4.406994, z: 2.9424}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.036399998, y: 0.088964045, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
