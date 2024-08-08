@@ -120,6 +120,23 @@ namespace LogicState
         }
         
         /// <summary>
+        /// 拥有这些状态中的任意一个就会返回true 都没有才会返回false
+        /// </summary>
+        /// <param name="stateEnums"></param>
+        /// <returns></returns>
+        public bool IncludeAnyState(List<ELogicState> stateEnums)
+        {
+            foreach (var stateEnum in stateEnums)
+            {
+                if (!IncludeState(stateEnum))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+        
+        /// <summary>
         /// 检查逻辑状态是否满足逻辑状态管理器中有included中的状态，且没有exclude中的状态的情况
         /// </summary>
         /// <param name="included"></param>
