@@ -31,7 +31,7 @@ public class TankBaseController : MonoBehaviour
         {
             m_MoveDirection = m_MoveDirection.normalized;
             var targetRotate = Quaternion.LookRotation(m_MoveDirection);
-            targetRotate = Quaternion.Euler(0, 0, targetRotate.eulerAngles.x+90);
+            targetRotate = Quaternion.Euler(0, 0, targetRotate.eulerAngles.x+90); // 有90度的偏移
             Debug.Log(targetRotate.eulerAngles);
             var m_Rotate = Quaternion.RotateTowards(m_BaseRotate, targetRotate, AngularSpeed * Time.deltaTime);
             m_BaseRotate = m_Rotate;
