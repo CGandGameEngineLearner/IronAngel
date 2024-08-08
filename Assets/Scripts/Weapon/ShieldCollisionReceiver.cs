@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
 
-[RequireComponent(typeof(BoxCollider2D))]
 public class ShieldCollisionReceiver : NetworkBehaviour
 {
     [Tooltip("盾的类型")]
@@ -15,7 +14,8 @@ public class ShieldCollisionReceiver : NetworkBehaviour
 
     private bool m_IsOverallArmor = true;
     private AmmunitionCollisionReceiver m_AmmunitionCollisionReceiver;
-    private BoxCollider2D m_Collider;
+    private BoxCollider2D m_BoxCollider;
+    private CircleCollider2D m_CircleCollider;
     //护甲减伤系数
     private float m_DamageReductionCoefficient;
 
@@ -39,7 +39,8 @@ public class ShieldCollisionReceiver : NetworkBehaviour
             m_AmmunitionCollisionReceiver.m_specialAtkTypes.Add(type);
         }
 
-        m_Collider = GetComponent<BoxCollider2D>();
+        m_BoxCollider = GetComponent<BoxCollider2D>();
+        m_CircleCollider = GetComponent<CircleCollider2D>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -71,7 +72,14 @@ public class ShieldCollisionReceiver : NetworkBehaviour
         }
         
         m_AmmunitionCollisionReceiver.NoticeDamage(ammunitionHandle.launcherCharacter);
-        CalculateDamage(ammunitionHandle.ammunitionConfig, collision.ClosestPoint(new Vector2(transform.position.x, transform.position.y) + m_Collider.offset));
+        if(m_ShieldType == ShieldType.Armor)
+        {
+            CalculateDamage(ammunitionHandle.ammunitionConfig, collision.ClosestPoint(new Vector2(transform.position.x, transform.position.y) + m_BoxCollider.offset));
+        }
+        else
+        {
+            CalculateDamage(ammunitionHandle.ammunitionConfig, collision.ClosestPoint(new Vector2(transform.position.x, transform.position.y) + m_CircleCollider.offset));
+        }
         ammunitionFactory.UnRegisterAmmunition(collision.gameObject);
     }
 

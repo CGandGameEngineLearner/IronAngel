@@ -439,6 +439,8 @@ public class WeaponSystemCenter : NetworkBehaviour
     private void OnDestroy()
     {
         Instance = null;
+
+        m_AmmunitionFactory.Clear();
     }
 
     /// <summary>
@@ -482,6 +484,8 @@ public class WeaponSystemCenter : NetworkBehaviour
         var quaternion = Quaternion.LookRotation(dir);
         return m_AmmunitionPool.GetObject(ammunitionType, startPoint, quaternion);
     }
+
+    
 }
 
 [System.Serializable]

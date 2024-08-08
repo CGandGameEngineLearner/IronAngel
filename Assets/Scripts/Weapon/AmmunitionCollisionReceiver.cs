@@ -65,6 +65,10 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
     /// <param name="collision"></param>
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if(m_LogicStateManager.IncludeState(ELogicState.PlayerDashing))
+        {
+            return;
+        }
         var ammunitionFactory = WeaponSystemCenter.GetAmmunitionFactory();
         var ammunitionHandle = ammunitionFactory.GetAmmunitionHandle(collision.gameObject);
         if (ammunitionHandle==null)
