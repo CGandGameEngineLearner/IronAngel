@@ -1,15 +1,15 @@
+using Mirror;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class DiePanel : MonoBehaviour
 {
-    public void OnExit()
+    public void OnBackToStartMenu()
     {
-#if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-#else
-        Application.Quit();
-#endif
+        if (NetworkClient.localPlayer != null)
+        {
+            NetworkClient.localPlayer.GetComponent<PlayerController>().EndGame();
+        }
     }
 }
