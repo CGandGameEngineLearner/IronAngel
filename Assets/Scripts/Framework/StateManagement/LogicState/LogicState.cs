@@ -5,6 +5,12 @@ namespace LogicState
 {
     public class LogicState
     {
+        private GameObject m_GameObject;
+        public GameObject gameObject
+        {
+            get {return m_GameObject;}
+            private set {m_GameObject=value;}
+        }
 
         /// <summary>
         /// 默认的状态持续时长是无限
@@ -47,6 +53,7 @@ namespace LogicState
 
         public LogicState(ELogicState stateEnum,LogicStateManager parent)
         {
+            gameObject = parent.gameObject;
             m_Owner = parent == null ? null : parent;
             LogicStateEnum = stateEnum;
             m_HashCode = (int)stateEnum;
