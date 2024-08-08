@@ -65,10 +65,7 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
     /// <param name="collision"></param>
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(m_LogicStateManager.IncludeState(ELogicState.PlayerDashing))
-        {
-            return;
-        }
+        
         var ammunitionFactory = WeaponSystemCenter.GetAmmunitionFactory();
         var ammunitionHandle = ammunitionFactory.GetAmmunitionHandle(collision.gameObject);
         if (ammunitionHandle==null)
@@ -128,7 +125,10 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
     [ServerCallback]
     public void CalculateDamage(AmmunitionConfig config, int armor, Vector2 Pos)
     {
-
+        if (m_LogicStateManager.IncludeState(ELogicState.PlayerDashing))
+        {
+            return;
+        }
         DamageData data = new DamageData();
         var m_Properties = GetComponent<BaseProperties>();
 
