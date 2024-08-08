@@ -17,7 +17,7 @@ public class TankBaseController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        m_BaseRotate = transform.rotation;
     }
 
     // Update is called once per frame
@@ -31,7 +31,8 @@ public class TankBaseController : MonoBehaviour
         {
             m_MoveDirection = m_MoveDirection.normalized;
             var targetRotate = Quaternion.LookRotation(m_MoveDirection);
-            targetRotate = Quaternion.Euler(0, 0, targetRotate.eulerAngles.z);
+            targetRotate = Quaternion.Euler(0, 0, targetRotate.eulerAngles.x+90);
+            Debug.Log(targetRotate.eulerAngles);
             var m_Rotate = Quaternion.RotateTowards(m_BaseRotate, targetRotate, AngularSpeed * Time.deltaTime);
             m_BaseRotate = m_Rotate;
             TankBase.rotation = m_BaseRotate;

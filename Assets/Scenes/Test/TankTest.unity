@@ -11400,6 +11400,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1747948638059816728, guid: a510a544ff5692b4e8c3196c3a7c63b1, type: 3}
+      propertyPath: AngularSpeed
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 2195872794582507982, guid: a510a544ff5692b4e8c3196c3a7c63b1, type: 3}
       propertyPath: m_Name
       value: Tank
@@ -27608,7 +27612,9 @@ MonoBehaviour:
   m_RateName: _Rate
   m_HP: {fileID: 1458730776}
   m_LeftHP: {fileID: 1545905173}
+  m_LeftMag: {fileID: 0}
   m_RightHP: {fileID: 1605197451}
+  m_RightMag: {fileID: 0}
 --- !u!114 &2108055924
 MonoBehaviour:
   m_ObjectHideFlags: 0
