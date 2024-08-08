@@ -40,7 +40,7 @@ public class AIMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!m_MoveEnabled)
+        if (!m_MoveEnabled||m_LogicStateManager.IncludeState(ELogicState.StunModifier))
         {
             return;
         }
@@ -95,7 +95,12 @@ public class AIMovement : MonoBehaviour
     {
         m_MoveDirection = (transform.position - m_LastPos).normalized;   
         m_LastPos = transform.position;
-        
+    
+        //眩晕状态不能旋转
+        if (m_LogicStateManager.IncludeState(ELogicState.StunModifier))
+        {
+            return;
+        }
 
         if (m_LogicStateManager.IncludeState(ELogicState.AIPerceivedTarget)&&m_ChaseTarget!=null)
         {

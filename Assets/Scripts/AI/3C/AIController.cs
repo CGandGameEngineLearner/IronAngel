@@ -205,10 +205,17 @@ public class AIController : NetworkBehaviour
     [ServerCallback]
     public bool Attack()
     {
+        //眩晕状态不能攻击
+        if (m_LogicStateManager.IncludeState(ELogicState.StunModifier))
+        {
+            return false;
+        }
+        
         if (m_LogicStateManager.IncludeState(ELogicState.AIAttacking))
         {
             return false;
         }
+        
         
         var enemy = GetGameObjectsInAttackRange();
         if (enemy.Count <= 0)
@@ -382,6 +389,5 @@ public class AIController : NetworkBehaviour
         TokenPool.ReturnToken();
         
     }
-
     
 }
