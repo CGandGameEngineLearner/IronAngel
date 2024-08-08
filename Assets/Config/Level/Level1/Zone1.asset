@@ -9,13 +9,31 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3987681210af4169a60d9a22cea314b9, type: 3}
+  m_Script: {fileID: 11500000, guid: 329a42aa4eff495f87cc0fc5196876c6, type: 3}
   m_Name: Zone1
   m_EditorClassIdentifier: 
-  enemyList:
-  - enemyPrefab: {fileID: 2195872794582507982, guid: c25acdb10ed116c4cabc400ac9038732, type: 3}
-    spawnPosition: {x: 2.001119, y: 0.00054997206, z: 0}
-  vector3: {x: 1.0002481, y: 0.0018394997, z: 0}
-  fieldEnemyCount: 0
-  delayTime: 0
-  pushTime: 0
+  waveConfigs:
+  - enemyListConfigs:
+    - enemyPrefab: {fileID: 2195872794582507982, guid: c25acdb10ed116c4cabc400ac9038732, type: 3}
+      spawnPosition: {x: 35.0807, y: 13.131198, z: 0}
+    - enemyPrefab: {fileID: 2195872794582507982, guid: c25acdb10ed116c4cabc400ac9038732, type: 3}
+      spawnPosition: {x: 37.24013, y: 13.0455065, z: 0}
+    - enemyPrefab: {fileID: 2195872794582507982, guid: c25acdb10ed116c4cabc400ac9038732, type: 3}
+      spawnPosition: {x: 39.22818, y: 13.131198, z: 0}
+    - enemyPrefab: {fileID: 2195872794582507982, guid: c25acdb10ed116c4cabc400ac9038732, type: 3}
+      spawnPosition: {x: 41.07912, y: 13.114059, z: 0}
+    onFieldEnemyCount: 3
+    timeOut: 0
+    waveDelay: 10
+  - enemyListConfigs:
+    - enemyPrefab: {fileID: 2195872794582507982, guid: c25acdb10ed116c4cabc400ac9038732, type: 3}
+      spawnPosition: {x: 35.0807, y: 13.131198, z: 0}
+    - enemyPrefab: {fileID: 2195872794582507982, guid: c25acdb10ed116c4cabc400ac9038732, type: 3}
+      spawnPosition: {x: 37.24013, y: 13.0455065, z: 0}
+    - enemyPrefab: {fileID: 2195872794582507982, guid: c25acdb10ed116c4cabc400ac9038732, type: 3}
+      spawnPosition: {x: 39.22818, y: 13.131198, z: 0}
+    - enemyPrefab: {fileID: 2195872794582507982, guid: c25acdb10ed116c4cabc400ac9038732, type: 3}
+      spawnPosition: {x: 41.07912, y: 13.114059, z: 0}
+    onFieldEnemyCount: 3
+    timeOut: 0
+    waveDelay: 10
