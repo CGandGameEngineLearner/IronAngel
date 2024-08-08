@@ -39,7 +39,8 @@ public class WaveInstance
         while (m_EnemyToSpawn.Count > 0 && CurrentEnemyCount < waveListItem.onFieldEnemyCount)
         {
             EnemyListItemConfig enemyConfig = m_EnemyToSpawn.Dequeue();
-            GameObject enemy = GameObject.Instantiate(enemyConfig.enemyPrefab, enemyConfig.spawnPosition, Quaternion.identity);
+            GameObject enemy =
+                GameObject.Instantiate(enemyConfig.enemyPrefab, enemyConfig.spawnPosition, Quaternion.identity);
             NetworkServer.Spawn(enemy);
             enemySet.Add(enemy);
         }
@@ -48,7 +49,7 @@ public class WaveInstance
     private void OnEnemyDeath(GameObject gameObject)
     {
         if (!enemySet.Contains(gameObject)) return;
-        
+
         enemySet.Remove(gameObject);
         Debug.LogError($"Enemy Death,Remain{enemySet.Count}, ${m_EnemyToSpawn.Count}");
         if (CurrentEnemyCount < waveListItem.onFieldEnemyCount && m_EnemyToSpawn.Count > 0)
@@ -79,7 +80,7 @@ public class BattleZoneWaveHandle
     public BattleZoneWaveHandle(WaveConfig waveConfig, Action<WaveInstance> onWaveFinished)
     {
         waveQueue = new Queue<WaveInstance>();
-        
+
         for (int i = 0; i < waveConfig.waveConfigs.Count; i++)
         {
             waveQueue.Enqueue(new WaveInstance(onWaveFinished, i, waveConfig.waveConfigs[i]));
@@ -117,7 +118,7 @@ public class LevelManager : NetworkBehaviour
     private void Update()
     {
         if (!m_IsRunning) return;
-        
+
         foreach (var waveInstance in m_WaveInstancesToUpdate)
         {
             waveInstance.currentTime += Time.deltaTime;
@@ -149,14 +150,18 @@ public class LevelManager : NetworkBehaviour
 
     private void OnWaveFinished(WaveInstance waveInstance)
     {
+#if UNITY_EDITOR
         Debug.LogError("小波次结束");
+#endif
         m_WaveInstancesToUpdate.Remove(waveInstance);
 
         if (m_BattleZoneWaveHandle.Finished)
         {
             m_IsRunning = false;
             // TODO: 解锁关卡空气墙
+#if UNITY_EDITOR
             Debug.LogError("波次结束了！！！！");
+#endif
         }
         else
         {
