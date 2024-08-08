@@ -99,8 +99,14 @@ public class AIMovement : MonoBehaviour
         //眩晕状态不能旋转
         if (m_LogicStateManager.IncludeState(ELogicState.StunModifier))
         {
+            SetMoveEnabled(false);
             return;
         }
+        else
+        {
+            SetMoveEnabled(true);
+        }
+        
 
         if (m_LogicStateManager.IncludeState(ELogicState.AIPerceivedTarget)&&m_ChaseTarget!=null)
         {
