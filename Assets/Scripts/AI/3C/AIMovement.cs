@@ -11,7 +11,7 @@ using Vector2 = UnityEngine.Vector2;
 public class AIMovement : MonoBehaviour
 {
     
-    private NavMeshAgent agent;
+    protected NavMeshAgent agent;
     private LogicStateManager m_LogicStateManager;
     private Vector3 m_LastPos;
     private Vector3 m_MoveDirection = Vector3.zero;
@@ -152,7 +152,7 @@ public class AIMovement : MonoBehaviour
     /// 交战距离与攻击范围之比
     /// </summary>
     /// <param name="targetGameObject"></param>
-    public void Chase(GameObject targetGameObject)
+    public virtual void Chase(GameObject targetGameObject)
     {
         m_ChaseTarget = targetGameObject;
         var offsetVec = (transform.position - targetGameObject.transform.position).normalized;
@@ -202,7 +202,7 @@ public class AIMovement : MonoBehaviour
         }
     }
 
-    protected IEnumerator MoveToDestinationCoroutine(Vector3 target)
+    protected virtual IEnumerator MoveToDestinationCoroutine(Vector3 target)
     {
         if (!agent.isOnNavMesh)
         {
