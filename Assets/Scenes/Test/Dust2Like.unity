@@ -505,7 +505,7 @@ GameObject:
   - component: {fileID: 95064869}
   - component: {fileID: 95064868}
   m_Layer: 5
-  m_Name: Exit
+  m_Name: BackToStartMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -578,7 +578,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1302218259}
         m_TargetAssemblyTypeName: DiePanel, Assembly-CSharp
-        m_MethodName: OnExit
+        m_MethodName: OnBackToStartMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -16248,7 +16248,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -32.499985, y: 24.400002}
+  m_AnchoredPosition: {x: -32.5, y: 24.400002}
   m_SizeDelta: {x: -264.00006, y: -68.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1545905173
@@ -17387,7 +17387,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Exit
+  m_text: Back To Start Menu
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -27338,7 +27338,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -349.4, y: 195.2}
+  m_AnchoredPosition: {x: -349.40002, y: 195.2}
   m_SizeDelta: {x: -190, y: -8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1773090141
