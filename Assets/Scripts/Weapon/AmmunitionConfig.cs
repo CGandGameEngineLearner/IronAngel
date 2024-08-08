@@ -19,6 +19,7 @@ public class AmmunitionConfig : ItemConfig
     public float m_Speed;
     public float m_LifeDistance;
     public int m_Damage;
+    [EnumRange((int)AmmunitionType.PostExplodeSplitter + 1, (int)AmmunitionType.Count - 1)]
     public AmmunitionType m_PostAmmunitionType;
     
     [Header("子弹特殊属性配置")]

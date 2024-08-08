@@ -3,36 +3,103 @@ using UnityEngine.Serialization;
 
 public enum AtkType
 {
-    Rifle = 0,
-    Laser = 1,
-    MissileLauncher = 2,
-    ShotGun = 3,
+    [Tooltip("步枪，全自动，半自动等等普通弹道武器")] Rifle = 0,
+
+    [Tooltip("激光类武器")] Laser = 1,
+
+    [Tooltip("追踪类武器(还是饼)")] MissileLauncher = 2,
+
+    [Tooltip("霰弹枪")] ShotGun = 3,
 
     Default,
 }
 
 public enum AmmunitionType
 {
-    // 默认没有类型
+    Start,
+    // 实际飞行的子弹/激光/导弹 -----------------------
+    // 突击炮子弹
+    AssaultGunAmmunition,
+
+    // 霰弹炮子弹
+    ShotGunAmmunition,
+
+    // 狙击炮子弹
+    SniperCannonAmmunition,
+
+    // 火神炮子弹
+    VulcanCannonAmmunition,
+
+    // 105电磁炮子弹
+    _105RailGunAmmunition,
+
+    // 战斗激光枪子弹
+    CombatLaserGunAmmunition,
+
+    // 重型激光枪子弹
+    HeavyLaserCannonAmmunition,
+
+    // 火箭筒子弹
+    RocketLauncherAmmunition,
+
+    // 导弹发射器子弹
+    MissileLauncherAmmunition,
+
+    // 重型榴弹炮子弹
+    HeavyHowitzerAmmunition,
+    
+    // 分隔符  --------------- 
+    PostExplodeSplitter,
+    // 产生爆炸效果的炸弹 ------------------
     None,
-    // 产生爆炸效果的炸弹
-    PostProcess_Expolde,
-    // 产生激光判定的实体
-    PostProcess_Laser,
-    // 实际飞行的子弹/激光/导弹 
-    Bullet,
-    Laser,
+    // 火箭筒子弹产生的爆炸
+    RocketLauncherPostExplode,
+    
+    // 导弹发射器子弹产生的爆炸
+    MissileLauncherPostExplode,
+
+    // 重型榴弹炮子弹产生的爆炸
+    HeavyHowitzerPostExplode,
+    
+    Count,
 }
 
 public enum WeaponType
 {
     // 普通武器 ------------------------------
-    
+    // 
     // 突击炮
     AssaultGun,
+
     // 散弹枪
     ShotGun,
+
+    // 狙击炮
+    SniperCannon,
+
+    // 火神炮
+    VulcanCannon,
+
+    // 105电磁炮
+    _105RailGun,
+
+    // 战斗激光枪
+    CombatLaserGun,
+
+    // 重型激光枪
+    HeavyLaserCannon,
+
+    // 火箭筒
+    RocketLauncher,
+
+    // 导弹发射器
+    MissileLauncher,
+
+    // 重型榴弹炮
+    HeavyHowitzer,
     
+    // 选择没有武器
+    None,
 }
 
 public enum SpecialAtkType

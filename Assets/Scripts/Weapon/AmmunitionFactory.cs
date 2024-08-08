@@ -71,7 +71,7 @@ public class AmmunitionHandle
         ammunitionConfig = null;
         startPoint = Vector2.zero;
         dir = Vector2.up;
-        this.ammunitionType = AmmunitionType.Bullet;
+        this.ammunitionType = AmmunitionType.None;
         liveFrameCount = 0;
     }
 }
@@ -255,6 +255,8 @@ public class AmmunitionFactory
                         break;
                     case AtkType.Laser:
                         InternalProcessLaserAmmunition(ammunitionHandle);
+                        break;
+                    case AtkType.MissileLauncher:
                         break;
                     case AtkType.ShotGun:
                         InternalProcessShotGunAmmunition(ammunitionHandle);
