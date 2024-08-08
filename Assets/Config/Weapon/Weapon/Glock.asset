@@ -26,5 +26,4 @@ MonoBehaviour:
   laserPointerWidth: 0.05
   m_SoundEffect: {fileID: 0}
   m_EffectPrefab: {fileID: 0}
-  m_Anticipation: 0
-  m_AnticipationDuration: 1
+  m_AttackPreCastDelay: 3
