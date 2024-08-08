@@ -16,12 +16,15 @@ public class WaveInstance
     private HashSet<GameObject> enemySet = new HashSet<GameObject>();
     public WaveListItem waveListItem;
     private Queue<EnemyListItemConfig> m_EnemyToSpawn = new Queue<EnemyListItemConfig>();
+    private bool isServer;
 
-    public WaveInstance(Action<WaveInstance> onWaveFinished, int waveIdx, WaveListItem waveListItem)
+    public WaveInstance(Action<WaveInstance> onWaveFinished, int waveIdx, WaveListItem waveListItem, bool isServer)
     {
         this.onWaveFinished = onWaveFinished;
         this.waveIdx = waveIdx;
         this.waveListItem = waveListItem;
+
+        this.isServer = isServer;
 
         foreach (var enemy in waveListItem.enemyListConfigs)
         {
@@ -39,9 +42,15 @@ public class WaveInstance
         while (m_EnemyToSpawn.Count > 0 && CurrentEnemyCount < waveListItem.onFieldEnemyCount)
         {
             EnemyListItemConfig enemyConfig = m_EnemyToSpawn.Dequeue();
+
             GameObject enemy =
                 GameObject.Instantiate(enemyConfig.enemyPrefab, enemyConfig.spawnPosition, Quaternion.identity);
-            NetworkServer.Spawn(enemy);
+            // 只有服务端调用
+            if (isServer)
+            {
+                NetworkServer.Spawn(enemy);
+            }
+
             enemySet.Add(enemy);
         }
     }
@@ -51,7 +60,9 @@ public class WaveInstance
         if (!enemySet.Contains(gameObject)) return;
 
         enemySet.Remove(gameObject);
+#if UNITY_EDITOR
         Debug.LogError($"Enemy Death,Remain{enemySet.Count}, ${m_EnemyToSpawn.Count}");
+#endif
         if (CurrentEnemyCount < waveListItem.onFieldEnemyCount && m_EnemyToSpawn.Count > 0)
         {
             GenerateEnemies();
@@ -77,13 +88,13 @@ public class BattleZoneWaveHandle
     private Queue<WaveInstance> waveQueue;
     private int m_CurrentWaveIdx = -1;
 
-    public BattleZoneWaveHandle(WaveConfig waveConfig, Action<WaveInstance> onWaveFinished)
+    public BattleZoneWaveHandle(WaveConfig waveConfig, Action<WaveInstance> onWaveFinished, bool isServer)
     {
         waveQueue = new Queue<WaveInstance>();
 
         for (int i = 0; i < waveConfig.waveConfigs.Count; i++)
         {
-            waveQueue.Enqueue(new WaveInstance(onWaveFinished, i, waveConfig.waveConfigs[i]));
+            waveQueue.Enqueue(new WaveInstance(onWaveFinished, i, waveConfig.waveConfigs[i], isServer));
         }
     }
 
@@ -106,7 +117,7 @@ public class LevelManager : NetworkBehaviour
     public void StartBattleZoneWave(WaveConfig enemyWaveConfig)
     {
         Debug.LogError("StartWave");
-        m_BattleZoneWaveHandle = new BattleZoneWaveHandle(enemyWaveConfig, OnWaveFinished);
+        m_BattleZoneWaveHandle = new BattleZoneWaveHandle(enemyWaveConfig, OnWaveFinished, isServer);
 
         m_IsRunning = true;
         m_WaveInstancesToAdd.Clear();
