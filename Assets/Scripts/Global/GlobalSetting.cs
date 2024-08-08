@@ -57,8 +57,6 @@ public class GlobalSetting : MonoBehaviour
                 movement.ResetSpeed();
             }
         }
-
-        Debug.LogWarning(receiver.name + " 更改速度" + speed);
     }
 
     /// <summary>
@@ -72,22 +70,14 @@ public class GlobalSetting : MonoBehaviour
         {
             if (receiver.TryGetComponent<PlayerController>(out var controller))
             {
-                controller.Player.SetSpeed(-1000);
-            }
-            if (receiver.TryGetComponent<AIMovement>(out var movement))
-            {
-                movement.SetSpeed(-1000);
+                controller.SetPlayerStun();
             }
         }
         else
         {
             if (receiver.TryGetComponent<PlayerController>(out var controller))
             {
-                controller.Player.ResetSpeed();
-            }
-            if (receiver.TryGetComponent<AIMovement>(out var movement))
-            {
-                movement.ResetSpeed();
+                controller.ResetPlayerStun();
             }
         }
     }

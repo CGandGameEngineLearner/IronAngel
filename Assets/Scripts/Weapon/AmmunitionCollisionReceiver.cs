@@ -347,7 +347,6 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
                         // 如果本来没有减速并且能够挂上减速Buff
                         if (m_LogicStateManager.IncludeState(ELogicState.SpeedModifier) == false && m_LogicStateManager.AddState(ELogicState.SpeedModifier))
                         {
-                            Debug.Log("Add ELogicState.SpeedModifier");
                             m_LogicStateManager.SetStateDuration(ELogicState.SpeedModifier, buff.m_Duration);
                             EventCenter.Broadcast<GameObject, float, bool>(EventType.Buff_Speed, gameObject, buff.m_Number, true);
                         }
@@ -356,8 +355,11 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
                 case ELogicState.StunModifier:
                     {
                         // 如果本来没有眩晕并且能够挂上眩晕Buff
-                        
-                        m_LogicStateManager.AddState(ELogicState.StunModifier);
+                        if(m_LogicStateManager.IncludeState(ELogicState.StunModifier) == false && m_LogicStateManager.AddState(ELogicState.StunModifier))
+                        {
+                            m_LogicStateManager.SetStateDuration(ELogicState.StunModifier, buff.m_Duration);
+                            EventCenter.Broadcast<GameObject, bool>(EventType.Buff_Stun, gameObject, true);
+                        }
                         break;
                     }
             }

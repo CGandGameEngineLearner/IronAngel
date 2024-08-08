@@ -154,6 +154,10 @@ public class PlayerController : NetworkBehaviour
     [ClientCallback]
     private void UpdatePlayerRotation()
     {
+        if(m_LogicStateManager.IncludeState(ELogicState.StunModifier))
+        {
+            return;
+        }
         if(m_InputController.IsGamePadInput())
         {
             m_Player.LookAt(m_InputController.GetGamePadViewInput());
@@ -201,7 +205,7 @@ public class PlayerController : NetworkBehaviour
         {
             if(m_Player.StartDash())
             {
-                m_Player.GetPlayer().GetComponent<LogicStateManager>().AddState(ELogicState.PlayerDashing);
+                m_LogicStateManager.AddState(ELogicState.PlayerDashing);
             }
         });
         // 玩家拾取武器
