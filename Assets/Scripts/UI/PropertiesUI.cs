@@ -1,6 +1,7 @@
 using Mirror;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,9 +16,15 @@ public class PropertiesUI : MonoBehaviour
     [Tooltip("◊Û ÷Œ‰∆˜—™¡ø")]
     [SerializeField]
     private Image m_LeftHP;
+    [Tooltip("◊Û ÷Œ‰∆˜ £”‡◊”µØ")]
+    [SerializeField]
+    private TextMeshProUGUI m_LeftMag;
     [Tooltip("”“ ÷Œ‰∆˜—™¡ø")]
     [SerializeField]
     private Image m_RightHP;
+    [Tooltip("”“ ÷Œ‰∆˜ £”‡◊”µØ")]
+    [SerializeField]
+    private TextMeshProUGUI m_RightMag;
     [Tooltip("≥Â¥Ã¥Œ ˝")]
     private GameObject m_DashCount;
 
@@ -31,6 +38,25 @@ public class PropertiesUI : MonoBehaviour
             m_HP.material.SetFloat(m_RateName, 1.0f * propertity.m_Properties.m_CurrentHP / propertity.m_Properties.m_BaseHP);
             m_LeftHP.material.SetFloat(m_RateName, 1.0f * propertity.m_Properties.m_LeftHandWeaponCurrentHP / propertity.m_Properties.m_LeftHandWeaponHP);
             m_RightHP.material.SetFloat(m_RateName, 1.0f * propertity.m_Properties.m_RightHandWeaponCurrentHP / propertity.m_Properties.m_RightHandWeaponHP);
+
+            var leftWeapon = controller.Player.GetPlayerLeftHandWeapon();
+            var rightWeapon = controller.Player.GetPlayerRightHandWeapon();
+            if(leftWeapon)
+            {
+                m_LeftMag.text = leftWeapon.GetComponent<WeaponInstance>().GetCurrentMag().ToString();
+            }
+            else
+            {
+                m_LeftMag.text = "0";
+            }
+            if(rightWeapon)
+            {
+                m_RightMag.text = rightWeapon.GetComponent<WeaponInstance>().GetCurrentMag().ToString();
+            }
+            else
+            {
+                m_RightMag.text = "0";
+            }
         }
     }
 }

@@ -1,4 +1,5 @@
 using LogicState;
+using UnityEngine;
 
 namespace LogicState
 {
@@ -31,7 +32,7 @@ namespace LogicState
 
         public override void OnStateOut()
         {
-            
+            EventCenter.Broadcast<GameObject, bool>(EventType.Buff_Stun, GetOwner().gameObject, false);
         }
 
         public override void UnInit()
