@@ -406,4 +406,14 @@ public class AmmunitionFactory
             UnRegisterAmmunition(ammunitionHandle.ammunition);
         }
     }
+
+    public void Clear()
+    {
+        m_AmmunitionConfigs.Clear();
+        m_UsableQueue.Clear();
+        m_HandlesToAdd.Clear();
+        m_AmmunitionsDict.Clear();
+        m_AmmunitionQueueSwapChain[0].Clear();
+        m_AmmunitionQueueSwapChain[1].Clear();
+    }
 }
