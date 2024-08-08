@@ -102,10 +102,9 @@ public class AIMovement : MonoBehaviour
             SetMoveEnabled(false);
             return;
         }
-        else
-        {
-            SetMoveEnabled(true);
-        }
+        
+        SetMoveEnabled(true);
+        
         
 
         if (m_LogicStateManager.IncludeState(ELogicState.AIPerceivedTarget)&&m_ChaseTarget!=null)
