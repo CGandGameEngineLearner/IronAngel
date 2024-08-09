@@ -52,7 +52,7 @@ public class WeaponSystemCenter : NetworkBehaviour
         private set { m_Instance = value; }
         get { return m_Instance; }
     }
-
+    
     public List<WeaponSpawnSetting> WeaponSpawnSettings = new List<WeaponSpawnSetting>();
     public List<WeaponConfigSetting> WeaponConfigSettings = new List<WeaponConfigSetting>();
     public List<AmmunitionConfigSetting> AmmunitionConfigSettings = new List<AmmunitionConfigSetting>();

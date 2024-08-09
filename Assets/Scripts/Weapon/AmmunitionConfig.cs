@@ -38,6 +38,11 @@ public class AmmunitionConfig : ItemConfig
     public List<SpecialAtkType> m_specialAtkTypes;
     [Tooltip("子弹造成的buff效果")]
     public List<BuffStruct> m_EffectBuff;
+
+    [Header("特效和音效配置")]
+    public VfxType hitVfxType;
+    public SfxType hitSfxType;
+    
 }
 
 [System.Serializable]

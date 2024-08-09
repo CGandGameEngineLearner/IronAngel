@@ -17,6 +17,7 @@ public enum AtkType
 public enum AmmunitionType
 {
     Start,
+
     // 实际飞行的子弹/激光/导弹 -----------------------
     // 突击炮子弹
     AssaultGunAmmunition,
@@ -47,20 +48,22 @@ public enum AmmunitionType
 
     // 重型榴弹炮子弹
     HeavyHowitzerAmmunition,
-    
+
     // 分隔符  --------------- 
     PostExplodeSplitter,
+
     // 产生爆炸效果的炸弹 ------------------
     None,
+
     // 火箭筒子弹产生的爆炸
     RocketLauncherPostExplode,
-    
+
     // 导弹发射器子弹产生的爆炸
     MissileLauncherPostExplode,
 
     // 重型榴弹炮子弹产生的爆炸
     HeavyHowitzerPostExplode,
-    
+
     Count,
 }
 
@@ -97,7 +100,7 @@ public enum WeaponType
 
     // 重型榴弹炮
     HeavyHowitzer,
-    
+
     // 选择没有武器
     None,
 }
@@ -106,4 +109,58 @@ public enum SpecialAtkType
 {
     None,
     Test,
+}
+
+public enum VfxType
+{
+    // 射击视觉特效类型 ----------------------
+    None,
+    AssaultGunFireVfx,
+    ShotGunFireVfx,
+    SniperCannonFireVfx,
+    VulcanCannonFireVfx,
+    _105RailGunFireVfx,
+    CombatLaserGunFireVfx,
+    HeavyLaserCannonFireVfx,
+    RocketLauncherFireVfx,
+    MissileLauncherFireVfx,
+    HeavyHowitzerFireVfx,
+    //
+    AssaultAmmunitionHitVfx,
+    ShotGunAmmunitionHitVfx,
+    SniperCannonAmmunitionHitVfx,
+    VulcanCannonAmmunitionHitVfx,
+    _105RailGunAmmunitionHitVfx,
+    CombatLaserGunAmmunitionHitVfx,
+    HeavyLaserCannonAmmunitionHitVfx,
+    RocketLauncherAmmunitionHitVfx,
+    MissileLauncherAmmunitionHitVfx,
+    HeavyHowitzerAmmunitionHitVfx,
+}
+
+public enum SfxType
+{
+    // 射击音效类型 --------------------------
+    None,
+    AssaultGunFireSfx,
+    ShotGunFireSfx,
+    SniperCannonFireSfx,
+    VulcanCannonFireSfx,
+    _105RailGunFireSfx,
+    CombatLaserGunFireSfx,
+    HeavyLaserCannonFireSfx,
+    RocketLauncherFireSfx,
+    MissileLauncherFireSfx,
+    HeavyHowitzerFireSfx,
+    // 
+    AssaultAmmunitionHitSfx,
+    ShotGunAmmunitionHitSfx,
+    SniperCannonAmmunitionHitSfx,
+    VulcanCannonAmmunitionHitSfx,
+    _105RailGunAmmunitionHitSfx,
+    CombatLaserGunAmmunitionHitSfx,
+    HeavyLaserCannonAmmunitionHitSfx,
+    RocketLauncherAmmunitionHitSfx,
+    MissileLauncherAmmunitionHitSfx,
+    HeavyHowitzerAmmunitionHitSfx,
 }
