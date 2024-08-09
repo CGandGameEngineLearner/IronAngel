@@ -27,6 +27,20 @@ public class PropertiesUI : MonoBehaviour
     private TextMeshProUGUI m_RightMag;
     [Tooltip("冲刺次数")]
     private GameObject m_DashCount;
+    [Tooltip("能量")]
+    [SerializeField]
+    private Image m_Energy;
+    [Tooltip("最大能量")]
+    private int m_MaxEnergy = 100;
+    [Tooltip("冲刺数量面板")]
+    [SerializeField]
+    private Image m_DashPanel;
+    [Tooltip("冲刺数量UI,按顺序拖进来")]
+    [SerializeField]
+    private List<Image> m_DashCountImages = new List<Image>();
+    [Tooltip("冲刺UI偏移")]
+    [SerializeField]
+    private Vector2 m_DashUIOffset;
 
     private void Update()
     {
@@ -38,7 +52,7 @@ public class PropertiesUI : MonoBehaviour
             m_HP.material.SetFloat(m_RateName, 1.0f * propertity.m_Properties.m_CurrentHP / propertity.m_Properties.m_BaseHP);
             m_LeftHP.material.SetFloat(m_RateName, propertity.m_Properties.m_LeftHandWeaponHP > 0 ? 1.0f * propertity.m_Properties.m_LeftHandWeaponCurrentHP / propertity.m_Properties.m_LeftHandWeaponHP : 0);
             m_RightHP.material.SetFloat(m_RateName, propertity.m_Properties.m_RightHandWeaponHP > 0 ? 1.0f * propertity.m_Properties.m_RightHandWeaponCurrentHP / propertity.m_Properties.m_RightHandWeaponHP : 0);
-
+            m_Energy.material.SetFloat(m_RateName, propertity.m_Properties.m_Energy * 1.0f / m_MaxEnergy);
             var leftWeapon = controller.Player.GetPlayerLeftHandWeapon();
             var rightWeapon = controller.Player.GetPlayerRightHandWeapon();
             if(leftWeapon)
@@ -57,6 +71,11 @@ public class PropertiesUI : MonoBehaviour
             {
                 m_RightMag.text = "0";
             }
+
+            var playerPosOnScreen = Camera.main.WorldToScreenPoint(controller.Player.GetPlayerPosition());
+            Vector2 dashCountUI = Vector2.zero;
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(GetComponent<RectTransform>(), playerPosOnScreen, transform.parent.GetComponent<Canvas>().worldCamera,out dashCountUI);
+            m_DashPanel.rectTransform.localPosition = dashCountUI + m_DashUIOffset;
         }
     }
 }
