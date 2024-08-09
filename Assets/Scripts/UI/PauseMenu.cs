@@ -11,14 +11,14 @@ public class PauseMenu : MonoBehaviour
 
     public void OnContinue()
     {
-        gameObject.SetActive(false);
+        UICanvas.Instance.ShowPauseMenu(false);
     }
 
     public void OnBackToStartMenu()
     {
         if(NetworkClient.localPlayer != null)
         {
-            NetworkClient.localPlayer.GetComponent<PlayerController>().EndGame();
+            UICanvas.Instance.BackToStartMenu();
         }
     }
 }

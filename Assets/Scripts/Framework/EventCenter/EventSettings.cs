@@ -9,6 +9,7 @@ public enum EventType
     LogicState_AIAttacking_StateOut,                        // AI攻击状态结束
     CharacterDied,                                          // 角色死亡
     PlayerDied,                                             // 玩家死亡
+    MultiPlayerGameStart,                                   // 多人游戏开始
 
     // buff
     // 减速效果

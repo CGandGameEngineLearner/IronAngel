@@ -2,6 +2,7 @@ using Mirror;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DiePanel : MonoBehaviour
 {
@@ -9,7 +10,8 @@ public class DiePanel : MonoBehaviour
     {
         if (NetworkClient.localPlayer != null)
         {
-            NetworkClient.localPlayer.GetComponent<PlayerController>().EndGame();
+
+            UICanvas.Instance.BackToStartMenu();
         }
     }
 }

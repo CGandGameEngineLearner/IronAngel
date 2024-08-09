@@ -195,6 +195,8 @@ public class AmmunitionFactory
     {
         if (!m_AmmunitionsDict.ContainsKey(ammunition)) return;
 
+        AmmunitionConfig ammunitionConfig = m_AmmunitionsDict[ammunition].ammunitionConfig;
+        
         // 仅产生一次后处理效果
         if (m_AmmunitionsDict[ammunition].active)
         {

@@ -21,7 +21,6 @@ public class PlayerController : NetworkBehaviour
 
     bool m_AfterStartLocalPlayer = false;
     float m_FireDistance;
-    public bool isDie = false;
     //  public------------------------------------------
     public Player Player
     {
@@ -98,8 +97,13 @@ public class PlayerController : NetworkBehaviour
         m_Player.Update();
         m_InputController.UpdateInputDevice();
     }
+    
+    
 
-    public void EndGame()
+    /// <summary>
+    /// 公用切换场景的方法
+    /// </summary>
+    public void LoadScene(string sceneName)
     {
         if (NetworkServer.active && isServer)
         {
@@ -110,7 +114,7 @@ public class PlayerController : NetworkBehaviour
             GameObject.FindAnyObjectByType<NetworkManager>().StopClient();
         }
 
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene(sceneName);
     }
 
     [Command]
@@ -124,7 +128,25 @@ public class PlayerController : NetworkBehaviour
     {
         if (!m_AfterStartLocalPlayer)
             return;
-        m_Player.FixedUpdate();
+
+
+        Vector3 dir_left = m_InputController.GetMousePositionInWorldSpace(m_CameraController.GetCamera()) - m_Player.GetPlayerLeftHandPosition();
+        Vector3 dir_right = m_InputController.GetMousePositionInWorldSpace(m_CameraController.GetCamera()) - m_Player.GetPlayerRightHandPosition();
+        if (Vector2.Distance(m_InputController.GetMousePositionInWorldSpace(m_CameraController.GetCamera()), m_Player.GetPlayerLeftHandPosition()) <= m_FireDistance)
+        {
+            var v3 = (m_InputController.GetMousePositionInWorldSpace(m_CameraController.GetCamera()) - m_Player.GetPlayerPosition()).normalized;
+            v3.z = 0;
+            v3 = v3.normalized;
+            dir_left = v3 * m_FireDistance + m_Player.GetPlayerPosition() - m_Player.GetPlayerLeftHandPosition();
+        }
+        if (Vector2.Distance(m_InputController.GetMousePositionInWorldSpace(m_CameraController.GetCamera()), m_Player.GetPlayerRightHandPosition()) <= m_FireDistance)
+        {
+            var v3 = (m_InputController.GetMousePositionInWorldSpace(m_CameraController.GetCamera()) - m_Player.GetPlayerPosition()).normalized;
+            v3.z = 0;
+            v3 = v3.normalized;
+            dir_left = v3 * m_FireDistance + m_Player.GetPlayerPosition() - m_Player.GetPlayerRightHandPosition();
+        }
+        m_Player.FixedUpdate(dir_left, dir_right);
         UpdatePlayerRotation();
         UpdatePlayerMovement();
         m_InputController.ExcuteActionWhilePlayerMoveInputPerformedAndStay();
@@ -184,11 +206,6 @@ public class PlayerController : NetworkBehaviour
     
     private void RegisterInputActionFunc()
     {
-        // 暂停菜单
-        m_InputController.AddPerformedActionToMenuBack(() =>
-        {
-            EventCenter.Broadcast(EventType.PauseMenu);
-        });
         // 视角拉远
         m_InputController.AddStartedActionToCameraViewTypeSwitch(() =>
         {
@@ -227,7 +244,6 @@ public class PlayerController : NetworkBehaviour
                 var pos = m_Player.GetPlayerLeftHandPosition();
                 if (weapon == null)
                 {
-                    Debug.Log("左手上没武器");
                     return;
                 }
                 Vector3 dir = m_InputController.GetMousePositionInWorldSpace(m_CameraController.GetCamera()) - m_Player.GetPlayerLeftHandPosition();
@@ -251,7 +267,6 @@ public class PlayerController : NetworkBehaviour
                 var pos = m_Player.GetPlayerRightHandPosition();
                 if (weapon == null)
                 {
-                    Debug.Log("右手上没武器");
                     return;
                 }
                 Vector3 dir = m_InputController.GetMousePositionInWorldSpace(m_CameraController.GetCamera()) - m_Player.GetPlayerRightHandPosition();
@@ -320,8 +335,7 @@ public class PlayerController : NetworkBehaviour
         EventCenter.AddListener<bool>(EventType.StateToGlobal_PlayerDashState, OnDashEvent);
         // 玩家移动
         EventCenter.AddListener(EventType.StateToGlobal_PlayerWalkState, OnWalkEvent);
-        // 暂停界面
-        EventCenter.AddListener(EventType.PauseMenu, OnPauseMenuEvent);
+        
     }
 
 
@@ -329,7 +343,7 @@ public class PlayerController : NetworkBehaviour
     {
         EventCenter.RemoveListener<bool>(EventType.StateToGlobal_PlayerDashState, OnDashEvent);
         EventCenter.RemoveListener(EventType.StateToGlobal_PlayerWalkState, OnWalkEvent);
-        EventCenter.RemoveListener(EventType.PauseMenu, OnPauseMenuEvent);
+        
     }
 
 
@@ -353,10 +367,7 @@ public class PlayerController : NetworkBehaviour
         m_Player.Move(m_InputController.GetPlayerMoveInputVector2());
     }
 
-    private void OnPauseMenuEvent()
-    {
-        UICanvas.Instance.PauseMenu.gameObject.SetActive(!UICanvas.Instance.PauseMenu.gameObject.active);
-    }
+    
 }
 
 

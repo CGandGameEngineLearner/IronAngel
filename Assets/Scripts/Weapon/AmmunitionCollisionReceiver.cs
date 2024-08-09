@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
 using LogicState;
+using Mirror.BouncyCastle.Asn1.Mozilla;
 
 
 [RequireComponent(typeof(BaseProperties))]
@@ -25,6 +26,8 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
 
     public WeaponCollisionReceiver m_LeftWeapon;
     public WeaponCollisionReceiver m_RightWeapon;
+
+    private GameObject m_Launcher;
 
     private void Start()
     {
@@ -56,6 +59,7 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
         m_Properties.m_Properties.m_RightHandWeaponCurrentHP = m_Properties.m_Properties.m_RightHandWeaponHP;
         m_Properties.m_Properties.m_CurrentHP = m_Properties.m_Properties.m_BaseHP;
 
+
     }
 
     /// <summary>
@@ -76,13 +80,13 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
         {
             return;
         }
-        
+        m_Launcher = ammunitionHandle.launcherCharacter;
         var launcherCharacterProperties = ammunitionHandle.launcherCharacter.GetComponent<BaseProperties>();
         if (launcherCharacterProperties == null)
         {
             return;
         }
-
+        
         var launcherCamp = launcherCharacterProperties.m_Properties.m_Camp;
         
         if (IsBulletFromOwnCamp(ammunitionHandle, launcherCamp))
@@ -177,6 +181,12 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
         armor -= damage;
         damage = armor + damage >= 0 ? (int)(damage * (1 - m_DamageReductionCoefficient)) : damage;
 
+        data.m_CurrentHP = m_Properties.m_Properties.m_CurrentHP;
+        data.m_CurrentArmor = m_Properties.m_Properties.m_CurrentArmor;
+        data.m_EnergyShieldCount = m_Properties.m_Properties.m_EnergyShieldCount;
+        data.m_LeftHandWeaponHP = m_Properties.m_Properties.m_LeftHandWeaponCurrentHP;
+        data.m_RightHandWeaponHP = m_Properties.m_Properties.m_RightHandWeaponCurrentHP;
+
         // 两边的武器血条还没有考虑
         // 分别计算受击位置和两个手部碰撞体和核心碰撞体的距离
         // 取最短的距离作为受击部位
@@ -186,27 +196,25 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
         // 击中左手
         if(leftDis < rightDis && leftDis < coreDis && m_Properties.m_Properties.m_LeftHandWeaponCurrentHP > 0)
         {
-            m_Properties.m_Properties.m_LeftHandWeaponCurrentHP -= damage;
+            data.m_LeftHandWeaponHP -= damage;
         }
         // 击中右手
         else if(rightDis < coreDis && rightDis < leftDis && m_Properties.m_Properties.m_RightHandWeaponCurrentHP > 0)
         {
-            m_Properties.m_Properties.m_RightHandWeaponCurrentHP -= damage;
+
+            data.m_RightHandWeaponHP -= damage;
         }
         // 击中核心
         else
         {
-            m_Properties.m_Properties.m_CurrentHP -= damage;
+            data.m_CurrentHP -= damage;
         }
         
 
 
         
-        data.m_CurrentHP = m_Properties.m_Properties.m_CurrentHP;
-        data.m_CurrentArmor = m_Properties.m_Properties.m_CurrentArmor;
-        data.m_EnergyShieldCount = m_Properties.m_Properties.m_EnergyShieldCount;
-        data.m_LeftHandWeaponHP = m_Properties.m_Properties.m_LeftHandWeaponCurrentHP;
-        data.m_RightHandWeaponHP = m_Properties.m_Properties.m_RightHandWeaponCurrentHP;
+        
+        Debug.Log(data.m_LeftHandWeaponHP + " " + data.m_RightHandWeaponHP);
         RPCBroadcastDamage(data);
     }
 
@@ -238,6 +246,11 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
         // 角色死亡
         if(m_Properties.m_Properties.m_CurrentHP <= 0)
         {
+            if(gameObject.active)
+            {
+                m_Launcher.GetComponent<BaseProperties>().m_Properties.m_Energy += m_Properties.m_Properties.m_Energy;
+            }
+            
             gameObject.SetActive(false);
             EventCenter.Broadcast<GameObject>(EventType.CharacterDied,gameObject);
             if (m_Properties.m_Properties.m_DropWeapon_CharacterDied)
@@ -247,8 +260,7 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
             }
             if(TryGetComponent<PlayerController>(out var controller))
             {
-                controller.isDie = true;
-                EventCenter.Broadcast(EventType.PlayerDied);
+                EventCenter.Broadcast< GameObject>(EventType.PlayerDied,gameObject);
             }
         }
         // 角色所有护甲损失

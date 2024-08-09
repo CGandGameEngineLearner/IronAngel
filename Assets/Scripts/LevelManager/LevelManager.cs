@@ -109,11 +109,18 @@ public class BattleZoneWaveHandle
 
 public class LevelManager : NetworkBehaviour
 {
+    public static LevelManager Instance { get; private set; }
+    
     private bool m_IsRunning = false;
     private BattleZoneWaveHandle m_BattleZoneWaveHandle;
     private HashSet<WaveInstance> m_WaveInstancesToUpdate = new HashSet<WaveInstance>();
     private Queue<WaveInstance> m_WaveInstancesToAdd = new Queue<WaveInstance>();
 
+    public void Awake()
+    {
+        Instance = this;
+    }
+    
     public void StartBattleZoneWave(WaveConfig enemyWaveConfig)
     {
         Debug.LogError("StartWave");
