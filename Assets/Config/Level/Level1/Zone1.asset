@@ -15,13 +15,15 @@ MonoBehaviour:
   waveConfigs:
   - enemyListConfigs:
     - enemyPrefab: {fileID: 2195872794582507982, guid: c25acdb10ed116c4cabc400ac9038732, type: 3}
-      spawnPosition: {x: 35.0807, y: 13.131198, z: 0}
+      spawnPosition: {x: -10.802049, y: 28.44816, z: 0}
     - enemyPrefab: {fileID: 2195872794582507982, guid: c25acdb10ed116c4cabc400ac9038732, type: 3}
-      spawnPosition: {x: 37.24013, y: 13.0455065, z: 0}
+      spawnPosition: {x: -2.4546778, y: 34.94056, z: 0}
     - enemyPrefab: {fileID: 2195872794582507982, guid: c25acdb10ed116c4cabc400ac9038732, type: 3}
-      spawnPosition: {x: 39.22818, y: 13.131198, z: 0}
+      spawnPosition: {x: 11.364857, y: 28.262663, z: 0}
     - enemyPrefab: {fileID: 2195872794582507982, guid: c25acdb10ed116c4cabc400ac9038732, type: 3}
-      spawnPosition: {x: 41.07912, y: 13.114059, z: 0}
+      spawnPosition: {x: 8.211404, y: 43.65892, z: 0}
+    - enemyPrefab: {fileID: 2195872794582507982, guid: c25acdb10ed116c4cabc400ac9038732, type: 3}
+      spawnPosition: {x: -12.564272, y: 41.80395, z: 0}
     onFieldEnemyCount: 3
     timeOut: 0
     waveDelay: 10

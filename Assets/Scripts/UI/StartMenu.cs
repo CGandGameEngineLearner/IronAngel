@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class StartMenu : MonoBehaviour
 {
@@ -39,11 +40,13 @@ public class StartMenu : MonoBehaviour
 
     public void OnSinglePlayerStart()
     {
-        if(NetworkClient.active == false)
-        {
-            m_Manager.StartHost();
-        }
-        isSingle = true;
+        SceneManager.LoadScene("Level1_Area1_Highway");
+        // if(NetworkClient.active == false)
+        // {
+        //     // m_Manager.StartHost();
+        //     SceneManager.LoadScene("Level1_Area1_Highway");
+        // }
+        // isSingle = true;
     }
 
     public void OnMultiPlayerPanelEnter()
