@@ -98,19 +98,7 @@ public class PlayerController : NetworkBehaviour
         m_InputController.UpdateInputDevice();
     }
     
-    public void EndGame()
-    {
-        if (NetworkServer.active && isServer)
-        {
-            GameObject.FindAnyObjectByType<NetworkManager>().StopHost();
-        }
-        else
-        {
-            GameObject.FindAnyObjectByType<NetworkManager>().StopClient();
-        }
-
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    }
+    
 
     /// <summary>
     /// 公用切换场景的方法
@@ -200,11 +188,6 @@ public class PlayerController : NetworkBehaviour
     
     private void RegisterInputActionFunc()
     {
-        // 暂停菜单
-        m_InputController.AddPerformedActionToMenuBack(() =>
-        {
-            EventCenter.Broadcast(EventType.PauseMenu);
-        });
         // 视角拉远
         m_InputController.AddStartedActionToCameraViewTypeSwitch(() =>
         {
@@ -336,8 +319,7 @@ public class PlayerController : NetworkBehaviour
         EventCenter.AddListener<bool>(EventType.StateToGlobal_PlayerDashState, OnDashEvent);
         // 玩家移动
         EventCenter.AddListener(EventType.StateToGlobal_PlayerWalkState, OnWalkEvent);
-        // 暂停界面
-        EventCenter.AddListener(EventType.PauseMenu, OnPauseMenuEvent);
+        
     }
 
 
@@ -345,7 +327,7 @@ public class PlayerController : NetworkBehaviour
     {
         EventCenter.RemoveListener<bool>(EventType.StateToGlobal_PlayerDashState, OnDashEvent);
         EventCenter.RemoveListener(EventType.StateToGlobal_PlayerWalkState, OnWalkEvent);
-        EventCenter.RemoveListener(EventType.PauseMenu, OnPauseMenuEvent);
+        
     }
 
 
@@ -369,10 +351,7 @@ public class PlayerController : NetworkBehaviour
         m_Player.Move(m_InputController.GetPlayerMoveInputVector2());
     }
 
-    private void OnPauseMenuEvent()
-    {
-        UICanvas.Instance?.PauseMenu.gameObject.SetActive(!UICanvas.Instance.PauseMenu.gameObject.active);
-    }
+    
 }
 
 

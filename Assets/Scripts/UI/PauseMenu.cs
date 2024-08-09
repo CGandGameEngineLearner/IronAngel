@@ -18,7 +18,7 @@ public class PauseMenu : MonoBehaviour
     {
         if(NetworkClient.localPlayer != null)
         {
-            NetworkClient.localPlayer.GetComponent<PlayerController>().EndGame();
+            UICanvas.Instance.BackToStartMenu();
         }
     }
 }

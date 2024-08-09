@@ -1,7 +1,9 @@
 using Mirror;
 using System.Collections;
 using System.Collections.Generic;
+using TreeEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UICanvas : MonoBehaviour
 {
@@ -24,13 +26,26 @@ public class UICanvas : MonoBehaviour
     private PropertiesUI m_PropertiesUI;
     public PropertiesUI PropertiesUI { get { return m_PropertiesUI; } }
 
+    [SerializeField]
+    private StartMenu m_StartMenu;
+    public StartMenu StartMenu {  get { return m_StartMenu; } }
+
     public bool isSingle = true;
+    bool isPause = false;
 
 
     private void Start()
     {
-        m_Instance = this;
+        if(m_Instance == null)
+        {
+            Instance = this;
+        }
+        else if(m_Instance != this)
+        {
+            Destroy(gameObject);
+        }
         EventCenter.AddListener<GameObject>(EventType.PlayerDied, ShowDirPanel);
+        DontDestroyOnLoad(gameObject);
     }
     private void ShowDirPanel(GameObject player)
     {
@@ -41,6 +56,50 @@ public class UICanvas : MonoBehaviour
             m_PauseMenu.gameObject.SetActive(false);
         }
         
+    }
+
+    public void BackToStartMenu()
+    {
+        SceneManager.LoadScene("Dust2Like");
+
+        m_StartMenu.OnBackToStartMenu();
+        m_StartMenu.MultiplayerPanel.SetActive(false);
+        m_DiePanel.gameObject.SetActive(false);
+        m_PropertiesUI.gameObject.SetActive(false);
+        m_PauseMenu.gameObject.SetActive(false);
+        m_StartMenu.gameObject.SetActive(true);
+    }
+
+    public void ShowPauseMenu(bool val)
+    {
+        if(val)
+        {
+            m_PropertiesUI.gameObject.SetActive(false);
+            m_PauseMenu.gameObject.SetActive(true);
+        }
+        else
+        {
+            m_PropertiesUI.gameObject.SetActive(true);
+            m_PauseMenu.gameObject.SetActive(false);
+        }
+    }
+
+    public void OnPauseMenuEvent()
+    {
+        ShowPauseMenu(IsPauseMenuActive());
+    }
+
+    public bool IsPauseMenuActive()
+    {
+        return m_PauseMenu.gameObject.active;
+    }
+
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            ShowPauseMenu(!isPause);
+        }
     }
 
     private void OnDestroy()
