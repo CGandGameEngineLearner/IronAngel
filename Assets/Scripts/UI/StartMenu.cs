@@ -25,6 +25,11 @@ public class StartMenu : MonoBehaviour
     [SerializeField]
     private TMP_InputField m_PortInput;
 
+    public GameObject MultiplayerPanel
+    {
+        get { return m_MultiplayerPanel;  }
+    }
+
     bool isSingle = false;
     bool isServer = false;
     private void Awake()
@@ -46,7 +51,7 @@ public class StartMenu : MonoBehaviour
         //     // m_Manager.StartHost();
         //     SceneManager.LoadScene("Level1_Area1_Highway");
         // }
-        // isSingle = true;
+         isSingle = true;
     }
 
     public void OnMultiPlayerPanelEnter()
@@ -57,8 +62,10 @@ public class StartMenu : MonoBehaviour
     public void OnBackToStartMenu()
     {
         m_MultiplayerPanel.SetActive(false);
+        m_MultiPlayerReadyPanel.SetActive(false);
         if (NetworkServer.active || NetworkClient.isConnected)
         {    
+            m_Manager = GameObject.FindAnyObjectByType<NetworkManager>();
             m_Manager.StopClient();
             m_Manager.StopHost();
             m_Manager.StopServer();
@@ -69,6 +76,7 @@ public class StartMenu : MonoBehaviour
     {
         if (NetworkClient.active == false)
         {
+            m_Manager = GameObject.FindAnyObjectByType<NetworkManager>();
             m_Manager.StartHost();
         }
         isSingle = false;
@@ -78,8 +86,10 @@ public class StartMenu : MonoBehaviour
 
     public void OnMultiPlayerJoin()
     {
+        m_Manager = GameObject.FindAnyObjectByType<NetworkManager>();
         if (NetworkClient.active == false)
         {
+            
             m_Manager.StartClient();
         }
         m_Manager.networkAddress = m_IpInput.text;
@@ -107,8 +117,8 @@ public class StartMenu : MonoBehaviour
     {
         if(isSingle && NetworkClient.isConnected && NetworkClient.ready && NetworkClient.localPlayer != null)
         {
-            PlayerController.PlayerControllers[0].CmdStartGame();
-            isSingle = false;
+            //PlayerController.PlayerControllers[0].CmdStartGame();
+            // isSingle = false;
             m_MultiplayerPanel.SetActive(false);
             m_StartMenu.SetActive(false);
             m_PropertiesUI.SetActive(true);

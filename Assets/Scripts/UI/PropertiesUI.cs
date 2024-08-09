@@ -74,8 +74,20 @@ public class PropertiesUI : MonoBehaviour
 
             var playerPosOnScreen = Camera.main.WorldToScreenPoint(controller.Player.GetPlayerPosition());
             Vector2 dashCountUI = Vector2.zero;
-            RectTransformUtility.ScreenPointToLocalPointInRectangle(GetComponent<RectTransform>(), playerPosOnScreen, transform.parent.GetComponent<Canvas>().worldCamera,out dashCountUI);
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(GetComponent<RectTransform>(), playerPosOnScreen, null,out dashCountUI);
             m_DashPanel.rectTransform.localPosition = dashCountUI + m_DashUIOffset;
+            for (int i = 0; i< m_DashCountImages.Count; i++)
+            {
+                if(controller.Player.GetDashCount() >= i + 1)
+                {
+                    m_DashCountImages[i].gameObject.SetActive(true);
+                }
+                else
+                {
+                    m_DashCountImages[i].gameObject.SetActive(false);
+                }
+
+            }
         }
     }
 }
