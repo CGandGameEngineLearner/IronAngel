@@ -2,20 +2,23 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public struct VfxPair
-{
-    public VfxType vfxType;
-    public ObjectCategory vfxCategory;
-}
 
 /// <summary>
 /// 只有客户端才会用到
 /// </summary>
 public class VfxPool : MonoBehaviour
 {
-    public VfxPool Instance { get; private set; }
+    [Serializable]
+    public struct VfxPair
+    {
+        public VfxType vfxType;
+        public ObjectCategory vfxCategory;
+    }
 
-    [SerializeField] private List<VfxPair> m_VfxPairs = new();
+    
+    public static VfxPool Instance { get; private set; }
+
+    [SerializeField]private List<VfxPair> m_VfxPairs = new();
     private ObjectPoolManager<VfxType> m_VfxObjectPoolManager = new ObjectPoolManager<VfxType>();
 
     public void Awake()
@@ -34,8 +37,8 @@ public class VfxPool : MonoBehaviour
         m_VfxObjectPoolManager.ReleaseObject(vfxType, vfx);
     }
 
-    public GameObject GetVfx(VfxType vfxType)
+    public GameObject GetVfx(VfxType vfxType, Vector2 position, Quaternion quaternion)
     {
-        return m_VfxObjectPoolManager.GetObject(vfxType);
+        return m_VfxObjectPoolManager.GetObject(vfxType, position, quaternion);
     }
 }

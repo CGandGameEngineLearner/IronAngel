@@ -41,6 +41,8 @@ public class WeaponConfig : ItemConfig
     
     public float attackPreCastDelay => m_AttackPreCastDelay; // 攻击前摇时长
 
+    public VfxType fireVfxType => m_FireVfxType;
+
     public WeaponConfigData ToData()
     {
         return new WeaponConfigData
