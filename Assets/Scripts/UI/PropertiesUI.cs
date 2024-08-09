@@ -38,6 +38,9 @@ public class PropertiesUI : MonoBehaviour
     [Tooltip("³å´ÌÊýÁ¿UI,°´Ë³ÐòÍÏ½øÀ´")]
     [SerializeField]
     private List<Image> m_DashCountImages = new List<Image>();
+    [Tooltip("³å´ÌUIÆ«ÒÆ")]
+    [SerializeField]
+    private Vector2 m_DashUIOffset;
 
     private void Update()
     {
@@ -70,9 +73,9 @@ public class PropertiesUI : MonoBehaviour
             }
 
             var playerPosOnScreen = Camera.main.WorldToScreenPoint(controller.Player.GetPlayerPosition());
-            Vector2 output = Vector2.zero;
-            RectTransformUtility.ScreenPointToLocalPointInRectangle(GetComponent<RectTransform>(), playerPosOnScreen, transform.parent.GetComponent<Canvas>().worldCamera,out output);
-            m_DashPanel.rectTransform.localPosition = output;
+            Vector2 dashCountUI = Vector2.zero;
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(GetComponent<RectTransform>(), playerPosOnScreen, transform.parent.GetComponent<Canvas>().worldCamera,out dashCountUI);
+            m_DashPanel.rectTransform.localPosition = dashCountUI + m_DashUIOffset;
         }
     }
 }
