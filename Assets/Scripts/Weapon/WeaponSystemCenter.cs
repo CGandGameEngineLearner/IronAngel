@@ -270,9 +270,12 @@ public class WeaponSystemCenter : NetworkBehaviour
     public void RPCFire(GameObject character, WeaponType weaponType, AmmunitionType ammunitionType,
         Vector3 startPoint, Vector3 dir)
     {
-        var weaponConfigData = m_WeaponConfigDic[weaponType].ToData();
+        WeaponConfig weaponConfig = m_WeaponConfigDic[weaponType];
 
         Fire(character, weaponType, ammunitionType, startPoint, dir);
+        
+        // 调用开火特效
+        VfxPool.Instance.GetVfx(weaponConfig.fireVfxType, startPoint, Quaternion.identity);
     }
 
     /// <summary>
@@ -384,8 +387,8 @@ public class WeaponSystemCenter : NetworkBehaviour
             SetAmmunition(character, weaponConfigData, ammunitionType, startPoint, shotDirection);
         }
     }
-
     private void SetAmmunition(GameObject character, WeaponConfigData weaponConfigData, AmmunitionType ammunitionType,
+
         Vector3 startPoint, Vector3 dir)
     {
         var ammunitionConfig = m_AmmunitionConfigDic[ammunitionType];

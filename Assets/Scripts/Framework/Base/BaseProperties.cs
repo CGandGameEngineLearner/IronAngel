@@ -29,6 +29,17 @@ public enum ECamp
 {
     Player,
     Enemy,
+    Team1,
+    Team2,
+    Team3,
+    Team4,
+    Team5,
+    Team6,
+    Team7,
+    Team8,
+    Team9,
+    
+    Count,           // 用于记录枚举数量
 }
 
 [Serializable]

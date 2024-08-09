@@ -15,5 +15,6 @@ public class MultiPlayerReady : MonoBehaviour
     {
         PlayerController.PlayerControllers[0].CmdStartGame();
         m_MultiPlayerReadyPanel.SetActive(false);
+        EventCenter.Broadcast(EventType.MultiPlayerGameStart);
     }
 }
