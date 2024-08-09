@@ -17,10 +17,13 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Test/TestRoom.unity
     guid: 7ff83ccc898f37b4a8a426d9b8d2845a
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Test/Test_Level1/Level1_Area1_Highway.unity
     guid: b90cd6a151cb9db4cb1babc8444afe2e
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Test/Dust2Like.unity
     guid: 5bcd72c22b1f7e34e884aa029950ea27
+  - enabled: 1
+    path: Assets/Scenes/MultiplayerLevel/PvPLevel.unity
+    guid: 94e7aa96d64429f4f8bd40205bdcb628
   m_configObjects: {}
