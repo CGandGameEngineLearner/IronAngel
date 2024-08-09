@@ -32,6 +32,12 @@ public class PropertiesUI : MonoBehaviour
     private Image m_Energy;
     [Tooltip("最大能量")]
     private int m_MaxEnergy = 100;
+    [Tooltip("冲刺数量面板")]
+    [SerializeField]
+    private Image m_DashPanel;
+    [Tooltip("冲刺数量UI,按顺序拖进来")]
+    [SerializeField]
+    private List<Image> m_DashCountImages = new List<Image>();
 
     private void Update()
     {
@@ -62,6 +68,11 @@ public class PropertiesUI : MonoBehaviour
             {
                 m_RightMag.text = "0";
             }
+
+            var playerPosOnScreen = Camera.main.WorldToScreenPoint(controller.Player.GetPlayerPosition());
+            Vector2 output = Vector2.zero;
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(GetComponent<RectTransform>(), playerPosOnScreen, transform.parent.GetComponent<Canvas>().worldCamera,out output);
+            m_DashPanel.rectTransform.localPosition = output;
         }
     }
 }
