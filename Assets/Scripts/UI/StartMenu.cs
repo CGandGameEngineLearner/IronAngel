@@ -86,8 +86,10 @@ public class StartMenu : MonoBehaviour
 
     public void OnMultiPlayerJoin()
     {
+        m_Manager = GameObject.FindAnyObjectByType<NetworkManager>();
         if (NetworkClient.active == false)
         {
+            
             m_Manager.StartClient();
         }
         m_Manager.networkAddress = m_IpInput.text;
