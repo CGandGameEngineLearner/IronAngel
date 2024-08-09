@@ -11040,6 +11040,7 @@ MonoBehaviour:
   m_PauseMenu: {fileID: 362311481}
   m_DiePanel: {fileID: 1302218259}
   m_PropertiesUI: {fileID: 2108055923}
+  isSingle: 1
 --- !u!4 &631320713 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7198915252375826511, guid: 74cff03b30d715741a2afa4c6e60a51b, type: 3}
@@ -27778,7 +27779,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -349.4, y: 195.20001}
+  m_AnchoredPosition: {x: -349.40002, y: 195.20001}
   m_SizeDelta: {x: -190, y: -8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1773090141
@@ -28736,7 +28737,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -233.92502, y: -135.46497}
+  m_AnchoredPosition: {x: -233.92505, y: -135.46497}
   m_SizeDelta: {x: -467.84998, y: -270.93002}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2108055923

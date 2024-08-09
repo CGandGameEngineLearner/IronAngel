@@ -24,6 +24,8 @@ public class UICanvas : MonoBehaviour
     private PropertiesUI m_PropertiesUI;
     public PropertiesUI PropertiesUI { get { return m_PropertiesUI; } }
 
+    public bool isSingle = true;
+
 
     private void Start()
     {

@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-8928485392223480828
+--- !u!114 &-4968949412404339182
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20,8 +20,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ProgressBar_RightHP
-  m_Shader: {fileID: -6465566751694194690, guid: 2f2d4f00077e3544fa0cbad0dbdfa36d, type: 3}
+  m_Name: BulletWhiff
+  m_Shader: {fileID: -6465566751694194690, guid: 605b3f97d9c5f404b9f741ccee9482cd, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -54,7 +54,15 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Rate: 0
+    - _Length: 0.552
+    - _NoiseScale: 35
+    - _QueueControl: 0
+    - _QueueOffset: 0
     m_Colors:
-    - _Color: {r: 1, g: 0, b: 0, a: 1}
+    - _ColorOffset: {r: 0.31, g: 0, b: 0, a: 0}
+    - _Color_01: {r: 170.89003, g: 79.66774, b: 0, a: 1}
+    - _Color_02: {r: 42.722507, g: 0, b: 0, a: 1}
+    - _NoiseSpeed: {r: 1, g: 0, b: 0, a: 0}
+    - _Scale: {r: 0.5, g: 1, b: 0, a: 0}
+    - _Speed: {r: 1, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []

@@ -44,7 +44,6 @@ public class StartMenu : MonoBehaviour
             m_Manager.StartHost();
         }
         isSingle = true;
-        
     }
 
     public void OnMultiPlayerPanelEnter()

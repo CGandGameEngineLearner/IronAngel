@@ -36,8 +36,8 @@ public class PropertiesUI : MonoBehaviour
             var controller = player.GetComponent<PlayerController>();
             var propertity = player.GetComponent<BaseProperties>();
             m_HP.material.SetFloat(m_RateName, 1.0f * propertity.m_Properties.m_CurrentHP / propertity.m_Properties.m_BaseHP);
-            m_LeftHP.material.SetFloat(m_RateName, 1.0f * propertity.m_Properties.m_LeftHandWeaponCurrentHP / propertity.m_Properties.m_LeftHandWeaponHP);
-            m_RightHP.material.SetFloat(m_RateName, 1.0f * propertity.m_Properties.m_RightHandWeaponCurrentHP / propertity.m_Properties.m_RightHandWeaponHP);
+            m_LeftHP.material.SetFloat(m_RateName, propertity.m_Properties.m_LeftHandWeaponHP > 0 ? 1.0f * propertity.m_Properties.m_LeftHandWeaponCurrentHP / propertity.m_Properties.m_LeftHandWeaponHP : 0);
+            m_RightHP.material.SetFloat(m_RateName, propertity.m_Properties.m_RightHandWeaponHP > 0 ? 1.0f * propertity.m_Properties.m_RightHandWeaponCurrentHP / propertity.m_Properties.m_RightHandWeaponHP : 0);
 
             var leftWeapon = controller.Player.GetPlayerLeftHandWeapon();
             var rightWeapon = controller.Player.GetPlayerRightHandWeapon();
