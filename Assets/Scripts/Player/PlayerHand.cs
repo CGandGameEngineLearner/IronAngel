@@ -48,10 +48,13 @@ public class PlayerHand
             {
                 collider.enabled = false;
             }
-            obj.SetActive(false);
+            //obj.SetActive(false);
             m_PlayerLeftHand.SetActive(true);
             m_BaseProperties.m_Properties.m_LeftHandWeaponHP = obj.GetComponent<WeaponInstance>().GetWeaponHP();
             m_BaseProperties.m_Properties.m_LeftHandWeaponCurrentHP = obj.GetComponent<WeaponInstance>().GetWeaponCurrentHP();
+            obj.transform.SetParent(m_PlayerLeftHand.transform);
+            obj.transform.localPosition = Vector3.zero;
+            obj.transform.localRotation = Quaternion.identity;
         }
     }
 
@@ -64,10 +67,13 @@ public class PlayerHand
             {
                 collider.enabled = false;
             }
-            obj.SetActive(false);
+            //obj.SetActive(false);
             m_PlayerRightHand.SetActive(true);
             m_BaseProperties.m_Properties.m_RightHandWeaponHP = obj.GetComponent<WeaponInstance>().GetWeaponHP();
             m_BaseProperties.m_Properties.m_RightHandWeaponCurrentHP = obj.GetComponent<WeaponInstance>().GetWeaponCurrentHP();
+            obj.transform.SetParent (m_PlayerRightHand.transform);
+            obj.transform.localPosition = Vector3.zero;
+            obj.transform.localRotation = Quaternion.identity;
         }
     }
 
@@ -91,6 +97,8 @@ public class PlayerHand
         m_ObjectInLeftHand = null;
         m_PlayerLeftHand.SetActive(false);
         m_BaseProperties.m_Properties.m_LeftHandWeaponCurrentHP = 0;
+        if(g != null)
+            g.transform.parent = null;
         return g;
     }
 
@@ -114,6 +122,8 @@ public class PlayerHand
         m_ObjectInRightHand = null;
         m_PlayerRightHand.SetActive(false);
         m_BaseProperties.m_Properties.m_RightHandWeaponCurrentHP = 0;
+        if (g != null)
+            g.transform.parent = null;
         return g;
     }
 
@@ -141,6 +151,21 @@ public class PlayerHand
             return nearestCollider.gameObject;
         }
         return null;
+    }
+
+    public void FixedUpdate(Vector2 dir_left, Vector2 dir_right)
+    {
+        UpdateWeaponRotation(dir_left, dir_right);
+    }
+
+    public void UpdateWeaponRotation(Vector2 dir_left, Vector2 dir_right)
+    {
+        dir_left = dir_left.normalized;
+        dir_right = dir_right.normalized;
+        if (m_ObjectInLeftHand)
+            m_ObjectInLeftHand.transform.rotation = Quaternion.Euler(new Vector3(0,0,Mathf.Atan2(dir_left.y, dir_left.x) * Mathf.Rad2Deg - 90.0f));
+        if(m_ObjectInRightHand)
+            m_ObjectInRightHand.transform.rotation = Quaternion.Euler(new Vector3(0, 0, Mathf.Atan2(dir_right.y, dir_right.x) * Mathf.Rad2Deg - 90.0f));
     }
 }
 

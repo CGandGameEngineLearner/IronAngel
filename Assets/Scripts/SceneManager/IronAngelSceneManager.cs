@@ -12,7 +12,10 @@ public class IronAngelSceneManager : MonoBehaviour
     {
         Instance = this;
         m_Manager = GameObject.FindAnyObjectByType<NetworkManager>();
+    }
 
+    private void Start()
+    {
         m_Manager.StartHost();
     }
 
@@ -23,7 +26,6 @@ public class IronAngelSceneManager : MonoBehaviour
 
     public void Update()
     {
-            
         if ( NetworkClient.isConnected && NetworkClient.ready && NetworkClient.localPlayer != null)
         {
             PlayerController.PlayerControllers[0].CmdStartGame();
@@ -33,10 +35,11 @@ public class IronAngelSceneManager : MonoBehaviour
     public void OnDestroy()
     {
         if (NetworkServer.active || NetworkClient.isConnected)
-        {    
-            m_Manager.StopClient();
-            m_Manager.StopHost();
-            m_Manager.StopServer();
+        {
+                m_Manager.StopClient();
+                m_Manager.StopHost();
+                m_Manager.StopServer();
+            
         }
     }
 }

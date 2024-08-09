@@ -56,6 +56,7 @@ public class StartMenu : MonoBehaviour
 
     public void OnMultiPlayerPanelEnter()
     {
+        SceneManager.LoadScene("Dust2Like");
         m_MultiplayerPanel.SetActive(true);
     }
 
@@ -137,6 +138,7 @@ public class StartMenu : MonoBehaviour
             m_MultiplayerPanel.SetActive(false);
             m_StartMenu.SetActive(false);
             m_PropertiesUI.SetActive(true);
+            isServer = false;
         }
     }
 }
