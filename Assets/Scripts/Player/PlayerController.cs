@@ -97,7 +97,7 @@ public class PlayerController : NetworkBehaviour
         m_Player.Update();
         m_InputController.UpdateInputDevice();
     }
-
+    
     public void EndGame()
     {
         if (NetworkServer.active && isServer)
@@ -110,6 +110,23 @@ public class PlayerController : NetworkBehaviour
         }
 
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    /// <summary>
+    /// 公用切换场景的方法
+    /// </summary>
+    public void LoadScene(string sceneName)
+    {
+        if (NetworkServer.active && isServer)
+        {
+            GameObject.FindAnyObjectByType<NetworkManager>().StopHost();
+        }
+        else
+        {
+            GameObject.FindAnyObjectByType<NetworkManager>().StopClient();
+        }
+
+        SceneManager.LoadScene(sceneName);
     }
 
     [Command]
