@@ -30,11 +30,11 @@ public class UICanvas : MonoBehaviour
     private void Start()
     {
         m_Instance = this;
-        EventCenter.AddListener(EventType.PlayerDied, ShowDirPanel);
+        EventCenter.AddListener<GameObject>(EventType.PlayerDied, ShowDirPanel);
     }
-    private void ShowDirPanel()
+    private void ShowDirPanel(GameObject player)
     {
-        if(NetworkClient.localPlayer != null && NetworkClient.localPlayer.GetComponent<PlayerController>().isDie)
+        if(NetworkClient.localPlayer.gameObject == player)
         {
             m_DiePanel.gameObject.SetActive(true);
             m_PropertiesUI.gameObject.SetActive(false);
@@ -45,6 +45,6 @@ public class UICanvas : MonoBehaviour
 
     private void OnDestroy()
     {
-        EventCenter.RemoveListener(EventType.PlayerDied, ShowDirPanel);
+        EventCenter.RemoveListener< GameObject>(EventType.PlayerDied, ShowDirPanel);
     }
 }

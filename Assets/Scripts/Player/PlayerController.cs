@@ -21,7 +21,6 @@ public class PlayerController : NetworkBehaviour
 
     bool m_AfterStartLocalPlayer = false;
     float m_FireDistance;
-    public bool isDie = false;
     //  public------------------------------------------
     public Player Player
     {

@@ -1,3 +1,4 @@
+using Mirror.Examples.Common.Controllers.Player;
 using UnityEngine;
 
 namespace Mirror.Examples.Basic
