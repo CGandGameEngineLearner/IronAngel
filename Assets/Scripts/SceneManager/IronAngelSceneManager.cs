@@ -3,7 +3,7 @@ using UnityEngine;
 using Mirror;
 using UnityEngine.SceneManagement;
 
-public class IronAngelSceneManager : NetworkBehaviour
+public class IronAngelSceneManager : MonoBehaviour
 {
     public static IronAngelSceneManager Instance { get; private set; }
     private NetworkManager m_Manager;
@@ -11,10 +11,9 @@ public class IronAngelSceneManager : NetworkBehaviour
     private void Awake()
     {
         Instance = this;
-        
         m_Manager = GameObject.FindAnyObjectByType<NetworkManager>();
-        
-        
+
+        m_Manager.StartHost();
     }
 
     public void LoadScene(string sceneName)
@@ -24,8 +23,7 @@ public class IronAngelSceneManager : NetworkBehaviour
 
     public void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Y))
-            m_Manager.StartHost();
+            
         if ( NetworkClient.isConnected && NetworkClient.ready && NetworkClient.localPlayer != null)
         {
             PlayerController.PlayerControllers[0].CmdStartGame();

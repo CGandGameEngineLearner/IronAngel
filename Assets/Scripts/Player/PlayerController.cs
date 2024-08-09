@@ -371,7 +371,7 @@ public class PlayerController : NetworkBehaviour
 
     private void OnPauseMenuEvent()
     {
-        UICanvas.Instance.PauseMenu.gameObject.SetActive(!UICanvas.Instance.PauseMenu.gameObject.active);
+        UICanvas.Instance?.PauseMenu.gameObject.SetActive(!UICanvas.Instance.PauseMenu.gameObject.active);
     }
 }
 
