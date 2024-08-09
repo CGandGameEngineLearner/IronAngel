@@ -38,10 +38,7 @@ public class WeaponConfig : ItemConfig
     public float spreadAngle => m_SpreadAngle;
 
     public float LaserPointerWidth => laserPointerWidth;
-
-    public AudioClip soundEffect => m_SoundEffect;
-    public ParticleSystem effectPrefab => m_EffectPrefab;
-
+    
     public float attackPreCastDelay => m_AttackPreCastDelay; // 攻击前摇时长
 
     public WeaponConfigData ToData()
@@ -71,14 +68,14 @@ public class WeaponConfig : ItemConfig
     [SerializeField] private int m_SimShots;
     [SerializeField] private float m_SpreadAngle;
 
-    [Header("特殊属性配置")] [SerializeField]
-    private float m_ShotSpreadAngle;
-
+    [Header("特殊属性配置")] 
+    [SerializeField] private float m_ShotSpreadAngle;
     [SerializeField] private float laserPointerWidth;
-    [SerializeField] private AudioClip m_SoundEffect;
-    [SerializeField] private ParticleSystem m_EffectPrefab;
 
 
     [FormerlySerializedAs("m_AnticipationDuration")] [Tooltip("攻击前摇时长/镭射提示多久消失/敌人会蹲多久")] [SerializeField]
     private float m_AttackPreCastDelay;
+
+    [Header("音效和特效配置")] [SerializeField] private VfxType m_FireVfxType;
+    [SerializeField] private SfxType m_FireSfxType;
 }
