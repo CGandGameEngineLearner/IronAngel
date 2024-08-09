@@ -128,7 +128,25 @@ public class PlayerController : NetworkBehaviour
     {
         if (!m_AfterStartLocalPlayer)
             return;
-        m_Player.FixedUpdate();
+
+
+        Vector3 dir_left = m_InputController.GetMousePositionInWorldSpace(m_CameraController.GetCamera()) - m_Player.GetPlayerLeftHandPosition();
+        Vector3 dir_right = m_InputController.GetMousePositionInWorldSpace(m_CameraController.GetCamera()) - m_Player.GetPlayerRightHandPosition();
+        if (Vector2.Distance(m_InputController.GetMousePositionInWorldSpace(m_CameraController.GetCamera()), m_Player.GetPlayerLeftHandPosition()) <= m_FireDistance)
+        {
+            var v3 = (m_InputController.GetMousePositionInWorldSpace(m_CameraController.GetCamera()) - m_Player.GetPlayerPosition()).normalized;
+            v3.z = 0;
+            v3 = v3.normalized;
+            dir_left = v3 * m_FireDistance + m_Player.GetPlayerPosition() - m_Player.GetPlayerLeftHandPosition();
+        }
+        if (Vector2.Distance(m_InputController.GetMousePositionInWorldSpace(m_CameraController.GetCamera()), m_Player.GetPlayerRightHandPosition()) <= m_FireDistance)
+        {
+            var v3 = (m_InputController.GetMousePositionInWorldSpace(m_CameraController.GetCamera()) - m_Player.GetPlayerPosition()).normalized;
+            v3.z = 0;
+            v3 = v3.normalized;
+            dir_left = v3 * m_FireDistance + m_Player.GetPlayerPosition() - m_Player.GetPlayerRightHandPosition();
+        }
+        m_Player.FixedUpdate(dir_left, dir_right);
         UpdatePlayerRotation();
         UpdatePlayerMovement();
         m_InputController.ExcuteActionWhilePlayerMoveInputPerformedAndStay();
@@ -226,7 +244,6 @@ public class PlayerController : NetworkBehaviour
                 var pos = m_Player.GetPlayerLeftHandPosition();
                 if (weapon == null)
                 {
-                    Debug.Log("左手上没武器");
                     return;
                 }
                 Vector3 dir = m_InputController.GetMousePositionInWorldSpace(m_CameraController.GetCamera()) - m_Player.GetPlayerLeftHandPosition();
@@ -250,7 +267,6 @@ public class PlayerController : NetworkBehaviour
                 var pos = m_Player.GetPlayerRightHandPosition();
                 if (weapon == null)
                 {
-                    Debug.Log("右手上没武器");
                     return;
                 }
                 Vector3 dir = m_InputController.GetMousePositionInWorldSpace(m_CameraController.GetCamera()) - m_Player.GetPlayerRightHandPosition();

@@ -1,7 +1,6 @@
 using Mirror;
 using System.Collections;
 using System.Collections.Generic;
-using TreeEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -60,7 +59,7 @@ public class UICanvas : MonoBehaviour
 
     public void BackToStartMenu()
     {
-        SceneManager.LoadScene("Dust2Like");
+        SceneManager.LoadScene("StartMenu");
 
         m_StartMenu.OnBackToStartMenu();
         m_StartMenu.MultiplayerPanel.SetActive(false);
@@ -74,7 +73,7 @@ public class UICanvas : MonoBehaviour
     {
         if(val)
         {
-            m_PropertiesUI.gameObject.SetActive(false);
+            //m_PropertiesUI.gameObject.SetActive(false);
             m_PauseMenu.gameObject.SetActive(true);
         }
         else
@@ -99,6 +98,7 @@ public class UICanvas : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Escape))
         {
             ShowPauseMenu(!isPause);
+            isPause = !isPause;
         }
     }
 

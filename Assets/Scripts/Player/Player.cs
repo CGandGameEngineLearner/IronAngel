@@ -95,9 +95,10 @@ public class Player
         m_PlayerMovement.Update();
     }
 
-    public void FixedUpdate()
+    public void FixedUpdate(Vector2 dir_left, Vector2 dir_right)
     {
         m_PlayerMovement.FixedUpdate();
+        m_PlayerHand.FixedUpdate(dir_left, dir_right);
     }
 
     public bool StartDash()
