@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ProgressBar_Blood
-  m_Shader: {fileID: -6465566751694194690, guid: 2f2d4f00077e3544fa0cbad0dbdfa36d, type: 3}
+  m_Name: ProgressBar_X_Energy
+  m_Shader: {fileID: -6465566751694194690, guid: e994bf1c9b3b8a64ab3e3be912e01adb, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -41,11 +41,11 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Rate: 0.44
+    - _Rate: 0.6
     m_Colors:
     - _Color: {r: 1, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []
---- !u!114 &7705963821313820106
+--- !u!114 &6796597818345950491
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
