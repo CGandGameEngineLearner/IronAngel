@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d1a98b32468b49deb8b33d8fea108d82, type: 3}
-  m_Name: Data
+  m_Name: LevelSwitchConifg
   m_EditorClassIdentifier: 
-  levelName:
-  - levelName: 
-    sectionName: []
-  - levelName: 
-    sectionName: []
+  basementName: Null
+  levelStruct:
+  - levelName: Highway
+    sectionName:
+    - Level1_Area1_Highway

@@ -8,9 +8,9 @@ public class GameSaveFile
     public WeaponType rightWeaponType;
     
     // 当前关卡
-    public string currentLevel;
+    public int currentLevel;
     // 当前的关卡小节
-    public string currentSection;
+    public int currentSection;
     
     // 训练场解锁进度
     public int currentProgress;

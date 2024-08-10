@@ -50,7 +50,7 @@ public class WaveInstance
             {
                 NetworkServer.Spawn(enemy);
             }
-            
+
             WeaponSystemCenter.Instance.GiveAIWeapon(enemy);
             enemySet.Add(enemy);
         }
@@ -110,8 +110,9 @@ public class BattleZoneWaveHandle
 
 public class LevelManager : NetworkBehaviour
 {
+    public LevelSwitchConfig levelSwitchConfig;
     public static LevelManager Instance { get; private set; }
-    
+
     private bool m_IsRunning = false;
     private BattleZoneWaveHandle m_BattleZoneWaveHandle;
     private HashSet<WaveInstance> m_WaveInstancesToUpdate = new HashSet<WaveInstance>();
@@ -121,7 +122,7 @@ public class LevelManager : NetworkBehaviour
     {
         Instance = this;
     }
-    
+
     public void StartBattleZoneWave(WaveConfig enemyWaveConfig)
     {
         Debug.LogError("StartWave");
@@ -192,6 +193,8 @@ public class LevelManager : NetworkBehaviour
     {
         yield return new WaitForSeconds(waveInstance.waveListItem.waveDelay);
         AddWaveInstance(m_BattleZoneWaveHandle.GetNextWave());
+#if UNITY_EDITOR
         Debug.LogError("New Wave Incoming");
+#endif
     }
 }

@@ -6,7 +6,9 @@ public static class SaveLoadManager
 {
     private static string saveFilePath = Path.Combine(Application.persistentDataPath, "gamesave.json");
 
-    // 保存游戏
+    public static GameSaveFile GlobalSaveFile;
+
+// 保存游戏
     public static void SaveGame(GameSaveFile saveFile)
     {
         try
@@ -27,7 +29,7 @@ public static class SaveLoadManager
     }
 
     // 加载游戏
-    public static GameSaveFile LoadGame()
+    public static void LoadGame()
     {
         if (File.Exists(saveFilePath))
         {
@@ -37,10 +39,10 @@ public static class SaveLoadManager
                 GameSaveFile saveFile = JsonUtility.FromJson<GameSaveFile>(json);
 
 #if UNITY_EDITOR
-                Debug.Log("Game loaded successfully.");
+                Debug.Log("Game loaded successfully." + saveFilePath);
 #endif
 
-                return saveFile;
+                GlobalSaveFile = saveFile;
             }
             catch (Exception ex)
             {
@@ -54,9 +56,15 @@ public static class SaveLoadManager
 #if UNITY_EDITOR
             Debug.LogWarning("Save file not found.");
 #endif
+            // 创建新文件
+            GameSaveFile gameSaveFile = new GameSaveFile();
+            gameSaveFile.currentLevel = 0;
+            gameSaveFile.currentSection = 0;
+            gameSaveFile.leftWeaponType = WeaponType.None;
+            gameSaveFile.rightWeaponType = WeaponType.None;
+            
+            SaveGame(gameSaveFile);
         }
-
-        return null;
     }
 
     // 检查是否存在存档文件

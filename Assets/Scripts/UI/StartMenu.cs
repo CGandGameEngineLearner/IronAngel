@@ -2,6 +2,7 @@ using Mirror;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using BehaviorDesigner.Runtime.Tasks.Unity.UnityPlayerPrefs;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -45,7 +46,17 @@ public class StartMenu : MonoBehaviour
 
     public void OnSinglePlayerStart()
     {
-        SceneManager.LoadScene("Level1_Area1_Highway");
+        // Load Player Save file,Then Get Config to find load which level
+        SaveLoadManager.LoadGame();
+        LevelSwitchConfig levelSwitchConfig = LevelManager.Instance.levelSwitchConfig;
+        // 大关卡
+        int level = SaveLoadManager.GlobalSaveFile.currentLevel;
+        int section = SaveLoadManager.GlobalSaveFile.currentSection;
+
+        string sectionName = section == -1 ? levelSwitchConfig.basementName : levelSwitchConfig.levelStruct[level].sectionName[section];
+        
+        SceneManager.LoadScene(sectionName);
+        
         // if(NetworkClient.active == false)
         // {
         //     // m_Manager.StartHost();
