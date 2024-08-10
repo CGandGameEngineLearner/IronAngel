@@ -46,7 +46,6 @@ public class ShieldCollisionReceiver : NetworkBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
-        Debug.Log(gameObject.name + m_ShieldType);
         var ammunitionFactory = WeaponSystemCenter.GetAmmunitionFactory();
         var ammunitionHandle = ammunitionFactory.GetAmmunitionHandle(collision.gameObject);
         if (ammunitionHandle == null)
@@ -75,7 +74,6 @@ public class ShieldCollisionReceiver : NetworkBehaviour
         if(m_ShieldType == ShieldType.Armor)
         {
             CalculateDamage(ammunitionHandle.ammunitionConfig, collision.ClosestPoint(new Vector2(transform.position.x, transform.position.y) + m_BoxCollider.offset));
-            Debug.Log("护甲受到伤害");
             if(TryGetComponent<EnemyUI>(out var ui))
             {
                 ui.ArmorFlash();
