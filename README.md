@@ -19,6 +19,9 @@ Bookmarks
 ### 启动！
 双击`open_unity.bat`
 
+### 武器预制体
+- 武器预制体要把碰撞体的callback layer设置成nothing，不然会无法触发玩家护盾和护甲的碰撞
+
 ### 新场景的相机设置
 - 在```Prefabs/Global```文件夹下有```CameraTarget,MainCamera,VirtualCamera```三个相机相关的预制体，将三个预制体拖入场景（需要确保场景中这三种预制体实例有且仅有一个, 尤其注意主相机只能由一个，不然会抢夺最终画面渲染权），然后将```CameraTarget```拖给```VirtualCamera```的```CinemachineVirtualCamera```组件下的```Follow```
 - 如果觉得相机的缓动移动太快的话，可以设置```VirtualCamera```的```CinemachineVirtualCamera```组件下的```Body```下的```X Damping```和```Y Damping```,这两个参数是XY轴的移动缓动系数，目前设置为0

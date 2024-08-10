@@ -74,7 +74,6 @@ public class WeaponConfig : ItemConfig
     [SerializeField] private float m_ShotSpreadAngle;
     [SerializeField] private float laserPointerWidth;
 
-
     [FormerlySerializedAs("m_AnticipationDuration")] [Tooltip("攻击前摇时长/镭射提示多久消失/敌人会蹲多久")] [SerializeField]
     private float m_AttackPreCastDelay;
 

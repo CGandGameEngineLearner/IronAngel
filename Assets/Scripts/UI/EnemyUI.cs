@@ -38,7 +38,7 @@ public class EnemyUI : MonoBehaviour
             var c = m_SpriteRender.color;
             c.a = m_CurrentAlpha;
             m_SpriteRender.color = c;
-            Debug.Log(m_SpriteRender.color);
+            //Debug.Log(m_SpriteRender.color);
             if(m_CurrentAlpha > 0)
             {
                 m_CurrentAlpha -= Time.deltaTime * m_FadeSpeed;
@@ -49,6 +49,7 @@ public class EnemyUI : MonoBehaviour
     public void ArmorFlash()
     {
         m_CurrentAlpha = m_SpriteAlphaFlash;
+        Debug.Log(m_CurrentAlpha);
     }
 }
 

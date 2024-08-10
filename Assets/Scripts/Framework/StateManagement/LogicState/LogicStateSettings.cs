@@ -60,8 +60,8 @@ namespace LogicState
             // 以上是LogicState ---------------------
             
             // 以下是BuffState ----------------------
-            new BuffState_Speed(ELogicState.SpeedModifier),
-            new BuffState_Stun(ELogicState.StunModifier),
+            new Buff_Speed(ELogicState.SpeedModifier),
+            new Buff_Stun(ELogicState.StunModifier),
         };
 
         public static LogicState GetStateTemplate(ELogicState eLogicState)
