@@ -29,6 +29,8 @@ public class AmmunitionConfig : ItemConfig
     public float sigma;
     [Tooltip("子弹是否有爆炸衰减，普通实弹武器不需要勾选")]
     public float fallout;
+    [Tooltip("最小伤害")]
+    public int minDamage;
     [Tooltip("只有激光子弹会用到，其他子弹忽视即可")]
     public float m_LaserWidth;
     [Tooltip("子弹最少存活的物理帧数，用于提供给后处理子弹使用，普通子弹忽视即可")]
