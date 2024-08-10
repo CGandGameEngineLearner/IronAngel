@@ -267,6 +267,14 @@ public class InputController
         }
     }
 
+    public void AddCanceledActionToPlayerShootLeft(Action func)
+    {
+        m_PlayerInputConfig.Player.Shoot_Left.canceled += ctx =>
+        {
+            func?.Invoke();
+        };
+    }
+
     public void AddActionWhilePlayerShootLeftInputPerformedAndStay(Action func)
     {
         m_PlayerLeftHandShooting += func;
@@ -299,6 +307,15 @@ public class InputController
         {
             m_PlayerRightHandShooting?.Invoke();
         }
+    }
+
+    public void AddCanceledActionToPlayerShootRight(Action func)
+    {
+        m_PlayerInputConfig.Player.Shoot_Right.canceled += ctx =>
+        {
+            func?.Invoke();
+        };
+
     }
 
     public void AddActionWhilePlayerShootRightInputPerformedAndStay(Action func)
