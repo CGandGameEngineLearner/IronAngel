@@ -6,9 +6,9 @@ namespace LogicState
     /// <summary>
     /// 眩晕buff
     /// </summary>
-    public class BuffState_Stun : LogicState
+    public class Buff_Stun : Buff
     {
-        public BuffState_Stun(ELogicState stateEnum) : base(stateEnum)
+        public Buff_Stun(ELogicState stateEnum) : base(stateEnum)
         {
         }
 

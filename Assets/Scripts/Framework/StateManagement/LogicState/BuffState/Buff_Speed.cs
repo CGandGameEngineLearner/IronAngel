@@ -2,9 +2,9 @@ using UnityEngine;
 
 namespace LogicState
 {
-    public class BuffState_Speed : LogicState
+    public class Buff_Speed : Buff
     {
-        public BuffState_Speed(ELogicState stateEnum) : base(stateEnum)
+        public Buff_Speed(ELogicState stateEnum) : base(stateEnum)
         {
         }
 
