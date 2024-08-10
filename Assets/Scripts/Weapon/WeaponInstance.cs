@@ -134,10 +134,6 @@ public class WeaponInstance : NetworkBehaviour
                 lineRenderer.SetPosition(1, endPoint);
             }
         }
-        else
-        {
-            Debug.LogError("Laser!");
-        }
 
         if (m_Animator)
         {
