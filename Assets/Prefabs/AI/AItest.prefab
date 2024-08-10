@@ -390,8 +390,6 @@ Transform:
   - {fileID: 6081974759311742569}
   - {fileID: 8444586566961838204}
   - {fileID: 4098832905231847860}
-  - {fileID: 7227227799340452163}
-  - {fileID: 264190309738203063}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -464,6 +462,8 @@ MonoBehaviour:
   syncDirection: 0
   syncMode: 0
   syncInterval: 0
+  LeftHand: {fileID: 587068453855920466}
+  RightHand: {fileID: 4495865224673025813}
   PatrolRoute: {fileID: 0}
 --- !u!114 &8337392909154346315
 MonoBehaviour:

@@ -117,11 +117,13 @@ public class AIController : NetworkBehaviour
     public void SetLeftHandWeapon(GameObject weapon)
     {
         m_LeftHandWeapon = weapon;
+        weapon.transform.SetParent(LeftHand.transform);
     }
 
     public void SetRightHandWeapon(GameObject weapon)
     {
         m_RightHandWeapon = weapon;
+        weapon.transform.SetParent(RightHand.transform);
     }
 
     public WeaponType GetLeftHandWeaponType()
@@ -290,7 +292,7 @@ public class AIController : NetworkBehaviour
             Debug.LogError("攻击时长包含前摇时长，所以前摇时长不能大于攻击时长");
         }
         m_LogicStateManager.SetStateDuration(ELogicState.AIAttacking, leftDuration);
-        StartCoroutine(LeftHandFireCoroutine());
+        StartCoroutine(FireCoroutine(m_LeftHandWeapon));
     }
 
     [ServerCallback]
@@ -303,42 +305,18 @@ public class AIController : NetworkBehaviour
             Debug.LogError("攻击时长包含前摇时长，所以前摇时长不能大于攻击时长");
         }
         m_LogicStateManager.SetStateDuration(ELogicState.AIAttacking, rightDuration);
-        StartCoroutine(RightHandFireCoroutine());
+        StartCoroutine(FireCoroutine(m_RightHandWeapon));
     }
     
-    private IEnumerator LeftHandFireCoroutine()
-    {
-        m_LogicStateManager.AddState(ELogicState.AIAttackPreCastDelay);
-        var LeftHandAttackPreCastDelay = WeaponSystemCenter.GetWeaponConfig(m_LeftHandWeapon).attackPreCastDelay;
-        m_LogicStateManager.SetStateDuration(ELogicState.AIAttackPreCastDelay, LeftHandAttackPreCastDelay);
-        
-        var dir = transform.rotation*Vector3.up;
-        WeaponSystemCenter.Instance.StartLaserPointer(gameObject,m_LeftHandWeapon,transform.position, dir);
-        
-        while (m_LogicStateManager.IncludeState(ELogicState.AIAttackPreCastDelay))
-        {
-            m_AIMovement.SetMoveEnabled(false);
-            yield return null;
-        }
-
-        m_AIMovement.SetMoveEnabled(true);
-        
-        while (m_LogicStateManager.IncludeState(ELogicState.AIAttacking))
-        {
-            dir = transform.rotation*Vector3.up;
-            dir = ComputeAngleOfFire(dir);
-            WeaponSystemCenter.Instance.CmdFire(gameObject, m_LeftHandWeapon,transform.position,dir);
-            yield return null;
-        }
-    }
-    
-    private IEnumerator RightHandFireCoroutine()
+    [ServerCallback]
+    private IEnumerator FireCoroutine(GameObject weapon)
     {
         
         m_LogicStateManager.AddState(ELogicState.AIAttackPreCastDelay);
-        var RightHandAttackPreCastDelay = WeaponSystemCenter.GetWeaponConfig(m_RightHandWeapon).attackPreCastDelay;
-        m_LogicStateManager.SetStateDuration(ELogicState.AIAttackPreCastDelay, RightHandAttackPreCastDelay);
-        
+        var AttackPreCastDelay = WeaponSystemCenter.GetWeaponConfig(weapon).attackPreCastDelay;
+        m_LogicStateManager.SetStateDuration(ELogicState.AIAttackPreCastDelay, AttackPreCastDelay);
+        var weaponInstance = weapon.GetComponent<WeaponInstance>();
+        var firePoint = weaponInstance.firePoint.position;
         var dir = transform.rotation*Vector3.up;
         WeaponSystemCenter.Instance.StartLaserPointer(gameObject,m_LeftHandWeapon,transform.position, dir);
         
@@ -354,9 +332,11 @@ public class AIController : NetworkBehaviour
         {
             dir = transform.rotation*Vector3.up;
             dir = ComputeAngleOfFire(dir);
-            WeaponSystemCenter.Instance.CmdFire(gameObject, m_RightHandWeapon,transform.position,dir);
+            WeaponSystemCenter.Instance.CmdFire(gameObject, m_RightHandWeapon,firePoint,dir);
             yield return null;
         }
+        
+        WeaponSystemCenter.Instance.RpcUnFire(weapon);
     }
     
     
