@@ -117,7 +117,7 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
     ///         内部受到伤害为（1 - 护甲减伤系数）* 实际伤害
     ///     }
     /// </summary>
-    ///  config: 子弹的配置表，用于计算伤害 
+    /// config: 子弹的配置表，用于计算伤害 
     /// armor:受击部位的护甲值
     /// Pos:受击位置
     [ServerCallback]
@@ -128,12 +128,16 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
             return;
         }
         DamageData data = new DamageData();
-        var m_Properties = GetComponent<BaseProperties>();
+        m_Properties = GetComponent<BaseProperties>();
 
         // 读取子弹上的Buff并且加入LogicStateManager
         NoticeBuff(config.m_EffectBuff);
 
+
+        
+
         int damage = config.m_Damage;
+
 
         // 有能量护盾
         // 直接结算
@@ -179,7 +183,7 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
         // 下面两句的计算顺序不能对换
         m_Properties.m_Properties.m_CurrentArmor -= damage;
         armor -= damage;
-        damage = armor + damage >= 0 ? (int)(damage * (1 - m_DamageReductionCoefficient)) : damage;
+        damage = armor + damage > 0 ? (int)(damage * (1 - m_DamageReductionCoefficient)) : damage;
 
         data.m_CurrentHP = m_Properties.m_Properties.m_CurrentHP;
         data.m_CurrentArmor = m_Properties.m_Properties.m_CurrentArmor;
@@ -209,7 +213,6 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
         {
             data.m_CurrentHP -= damage;
         }
-       
         RPCBroadcastDamage(data);
     }
 
@@ -244,15 +247,16 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
             if(gameObject.active)
             {
                 m_Launcher.GetComponent<BaseProperties>().m_Properties.m_Energy += m_Properties.m_Properties.m_Energy;
+                if (m_Properties.m_Properties.m_DropWeapon_CharacterDied)
+                {
+                    WeaponSystemCenter.Instance.SpawnWeapon(m_Properties.m_Properties.m_LeftHandWeapon, transform.position);
+                    WeaponSystemCenter.Instance.SpawnWeapon(m_Properties.m_Properties.m_RightHandWeapon, transform.position);
+                }
             }
             
             gameObject.SetActive(false);
             EventCenter.Broadcast<GameObject>(EventType.CharacterDied,gameObject);
-            if (m_Properties.m_Properties.m_DropWeapon_CharacterDied)
-            {
-                WeaponSystemCenter.Instance.SpawnWeapon(m_Properties.m_Properties.m_LeftHandWeapon, transform.position);
-                WeaponSystemCenter.Instance.SpawnWeapon(m_Properties.m_Properties.m_RightHandWeapon, transform.position);
-            }
+            
             if(TryGetComponent<PlayerController>(out var controller))
             {
                 EventCenter.Broadcast< GameObject>(EventType.PlayerDied,gameObject);

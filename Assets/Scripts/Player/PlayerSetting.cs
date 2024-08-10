@@ -16,4 +16,7 @@ public class PlayerSetting : MonoBehaviour
 
     [Header("Fire Distance")]
     public float _FireDistance;
+
+    [Header("Power")]
+    public List<int> _PowerLimit;
 }

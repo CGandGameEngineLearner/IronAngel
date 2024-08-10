@@ -87,7 +87,7 @@ public class AIMovement : MonoBehaviour
     
 
     /// <summary>
-    /// 
+    /// 设置行走速度
     /// </summary>
     /// <param name="speed"></param> 这个参数是detla值
     public void SetSpeed(float speed)
