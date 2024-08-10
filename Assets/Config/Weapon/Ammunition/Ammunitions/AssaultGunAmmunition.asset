@@ -18,7 +18,7 @@ MonoBehaviour:
   isAuto: 0
   m_Speed: 20
   m_LifeDistance: 40
-  m_Damage: 100
+  m_Damage: 10
   m_PostAmmunitionType: 12
   m_IsExplodeDamage: 0
   sigma: 0
@@ -30,3 +30,5 @@ MonoBehaviour:
   - m_EffectBuff: 12
     m_Duration: 0.2
     m_Number: -10
+  hitVfxType: 0
+  hitSfxType: 0
