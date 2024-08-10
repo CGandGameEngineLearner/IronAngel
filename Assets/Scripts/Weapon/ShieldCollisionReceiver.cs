@@ -75,6 +75,10 @@ public class ShieldCollisionReceiver : NetworkBehaviour
         if(m_ShieldType == ShieldType.Armor)
         {
             CalculateDamage(ammunitionHandle.ammunitionConfig, collision.ClosestPoint(new Vector2(transform.position.x, transform.position.y) + m_BoxCollider.offset));
+            if(TryGetComponent<EnemyUI>(out var ui))
+            {
+                ui.ArmorFlash();
+            }
         }
         else
         {
