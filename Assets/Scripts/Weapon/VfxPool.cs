@@ -4,6 +4,7 @@ using UnityEngine;
 
 
 /// <summary>
+/// 特效对象池
 /// 只有客户端才会用到
 /// </summary>
 public class VfxPool : MonoBehaviour
