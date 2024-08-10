@@ -144,7 +144,7 @@ public class PlayerController : NetworkBehaviour
             var v3 = (m_InputController.GetMousePositionInWorldSpace(m_CameraController.GetCamera()) - m_Player.GetPlayerPosition()).normalized;
             v3.z = 0;
             v3 = v3.normalized;
-            dir_left = v3 * m_FireDistance + m_Player.GetPlayerPosition() - m_Player.GetPlayerRightHandPosition();
+            dir_right = v3 * m_FireDistance + m_Player.GetPlayerPosition() - m_Player.GetPlayerRightHandPosition();
         }
         m_Player.FixedUpdate(dir_left, dir_right);
         UpdatePlayerRotation();
