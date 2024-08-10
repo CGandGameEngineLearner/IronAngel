@@ -182,6 +182,7 @@ GameObject:
   - component: {fileID: 549673983408715754}
   - component: {fileID: 1971086258971725667}
   - component: {fileID: 4788707432746406319}
+  - component: {fileID: 7972958413880742384}
   m_Layer: 7
   m_Name: ShieldTop
   m_TagString: Untagged
@@ -319,6 +320,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &7972958413880742384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 599153167453624138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91207fa212bd99c47b1018b5bf3048ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Type: 1
+  m_Offset: {x: 0, y: 0, z: 0}
+  m_SpriteAlphaFlash: 1
+  m_FadeSpeed: 1
 --- !u!1 &2195872794582507982
 GameObject:
   m_ObjectHideFlags: 0
@@ -373,6 +390,8 @@ Transform:
   - {fileID: 6081974759311742569}
   - {fileID: 8444586566961838204}
   - {fileID: 4098832905231847860}
+  - {fileID: 7227227799340452163}
+  - {fileID: 264190309738203063}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -778,6 +797,7 @@ GameObject:
   - component: {fileID: 3261299902932618397}
   - component: {fileID: 1098056815340472533}
   - component: {fileID: 4779021538546674247}
+  - component: {fileID: 6642371294915037173}
   m_Layer: 7
   m_Name: ShieldRight
   m_TagString: Untagged
@@ -915,6 +935,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &6642371294915037173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3342869003483958290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91207fa212bd99c47b1018b5bf3048ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Type: 1
+  m_Offset: {x: 0, y: 0, z: 0}
+  m_SpriteAlphaFlash: 1
+  m_FadeSpeed: 1
 --- !u!1 &4108648583654741571
 GameObject:
   m_ObjectHideFlags: 0
@@ -1217,8 +1253,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4526419129806610789}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.04, y: 0.011, z: 0}
-  m_LocalScale: {x: 0.18, y: 0.18, z: 0.18}
+  m_LocalPosition: {x: 0.04, y: 1.505, z: 0}
+  m_LocalScale: {x: 0.09, y: 0.09, z: 0.09}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 6485104532671038429}
@@ -1289,6 +1325,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Type: 0
+  m_Offset: {x: 0, y: 1.5, z: 0}
+  m_SpriteAlphaFlash: 0.65
+  m_FadeSpeed: 1
 --- !u!1 &5005174867674349316
 GameObject:
   m_ObjectHideFlags: 0
@@ -1301,6 +1340,7 @@ GameObject:
   - component: {fileID: 9158393100758134776}
   - component: {fileID: 6235689839332449883}
   - component: {fileID: 8819393010746239652}
+  - component: {fileID: 2019286357369526223}
   m_Layer: 7
   m_Name: ShieldLeft
   m_TagString: Untagged
@@ -1438,6 +1478,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &2019286357369526223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5005174867674349316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91207fa212bd99c47b1018b5bf3048ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Type: 1
+  m_Offset: {x: 0, y: 0, z: 0}
+  m_SpriteAlphaFlash: 1
+  m_FadeSpeed: 1
 --- !u!1 &5612599182857872691
 GameObject:
   m_ObjectHideFlags: 0
@@ -1696,6 +1752,7 @@ GameObject:
   - component: {fileID: 2345194578131556847}
   - component: {fileID: 7251011507050464581}
   - component: {fileID: 3929051370594886967}
+  - component: {fileID: 5277961241441952865}
   m_Layer: 7
   m_Name: ShieldButtom
   m_TagString: Untagged
@@ -1833,6 +1890,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &5277961241441952865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7466956782151199271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91207fa212bd99c47b1018b5bf3048ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Type: 1
+  m_Offset: {x: 0, y: 0, z: 0}
+  m_SpriteAlphaFlash: 1
+  m_FadeSpeed: 1
 --- !u!1 &8491935298018838878
 GameObject:
   m_ObjectHideFlags: 0

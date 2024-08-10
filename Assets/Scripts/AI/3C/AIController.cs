@@ -25,6 +25,12 @@ public class AIController : NetworkBehaviour
     private GameObject m_LeftHandWeapon;
     private GameObject m_RightHandWeapon;
 
+    [Tooltip("左手位置的标记GameObject")]
+    public GameObject LeftHand;
+    
+    [Tooltip("右手位置的标记GameObject")]
+    public GameObject RightHand;
+
 
     /// <summary>
     /// 训练路线
