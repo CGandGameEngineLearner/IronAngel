@@ -117,7 +117,7 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
     ///         内部受到伤害为（1 - 护甲减伤系数）* 实际伤害
     ///     }
     /// </summary>
-    ///  config: 子弹的配置表，用于计算伤害 
+    /// config: 子弹的配置表，用于计算伤害 
     /// armor:受击部位的护甲值
     /// Pos:受击位置
     [ServerCallback]
