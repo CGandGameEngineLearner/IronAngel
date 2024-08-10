@@ -23,7 +23,7 @@ MonoBehaviour:
   m_SimShots: 10
   m_SpreadAngle: 0
   m_ShotSpreadAngle: 60
-  laserPointerWidth: 0.05
+  laserPointerWidth: 10
   m_AttackPreCastDelay: 1
   m_FireVfxType: 1
   m_FireSfxType: 0
