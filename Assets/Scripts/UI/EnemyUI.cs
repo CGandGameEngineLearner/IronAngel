@@ -12,7 +12,7 @@ public class EnemyUI : MonoBehaviour
     [SerializeField]
     private Vector3 m_Offset;
     [SerializeField]
-    private float m_SpriteAlphaFlash = 0.65f;
+    private float m_SpriteAlphaFlash = 1.0f;
     [SerializeField]
     private float m_FadeSpeed = 1.0f;
 

@@ -335,7 +335,7 @@ MonoBehaviour:
   m_Type: 1
   m_Offset: {x: 0, y: 0, z: 0}
   m_SpriteAlphaFlash: 1
-  m_FadeSpeed: 0.5
+  m_FadeSpeed: 1
 --- !u!1 &2195872794582507982
 GameObject:
   m_ObjectHideFlags: 0
@@ -948,7 +948,7 @@ MonoBehaviour:
   m_Type: 1
   m_Offset: {x: 0, y: 0, z: 0}
   m_SpriteAlphaFlash: 1
-  m_FadeSpeed: 0.5
+  m_FadeSpeed: 1
 --- !u!1 &4108648583654741571
 GameObject:
   m_ObjectHideFlags: 0
@@ -1491,7 +1491,7 @@ MonoBehaviour:
   m_Type: 1
   m_Offset: {x: 0, y: 0, z: 0}
   m_SpriteAlphaFlash: 1
-  m_FadeSpeed: 0.5
+  m_FadeSpeed: 1
 --- !u!1 &5612599182857872691
 GameObject:
   m_ObjectHideFlags: 0
@@ -1903,7 +1903,7 @@ MonoBehaviour:
   m_Type: 1
   m_Offset: {x: 0, y: 0, z: 0}
   m_SpriteAlphaFlash: 1
-  m_FadeSpeed: 0.5
+  m_FadeSpeed: 1
 --- !u!1 &8491935298018838878
 GameObject:
   m_ObjectHideFlags: 0
