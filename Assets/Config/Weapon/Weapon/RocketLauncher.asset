@@ -24,6 +24,6 @@ MonoBehaviour:
   m_SpreadAngle: 0
   m_ShotSpreadAngle: 0
   laserPointerWidth: 0
-  m_SoundEffect: {fileID: 0}
-  m_EffectPrefab: {fileID: 0}
   m_AttackPreCastDelay: 0
+  m_FireVfxType: 1
+  m_FireSfxType: 0

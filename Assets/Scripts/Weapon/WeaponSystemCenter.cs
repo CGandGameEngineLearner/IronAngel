@@ -413,7 +413,7 @@ public class WeaponSystemCenter : NetworkBehaviour
 
         m_AmmunitionFactory.Init(m_AmmunitionConfigDic,
             (ammunitionType, ammunition) => { m_AmmunitionPool.ReleaseObject(ammunitionType, ammunition); },
-            m_AmmunitionPool);
+            m_AmmunitionPool, isClient);
     }
 
     /// <summary>
