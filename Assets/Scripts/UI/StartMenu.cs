@@ -56,7 +56,7 @@ public class StartMenu : MonoBehaviour
 
     public void OnMultiPlayerPanelEnter()
     {
-        SceneManager.LoadScene("Dust2Like");
+        SceneManager.LoadScene("PVPLevel");
         m_MultiplayerPanel.SetActive(true);
     }
 
