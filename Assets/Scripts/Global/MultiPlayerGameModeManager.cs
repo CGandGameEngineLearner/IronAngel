@@ -14,7 +14,7 @@ public enum EPlayersGameMode
 	PVE,
 }
 
-public class PlayersGameModeManager : NetworkBehaviour
+public class MultiPlayerGameModeManager : NetworkBehaviour
 {
 	private GameObject[] Players;
 
