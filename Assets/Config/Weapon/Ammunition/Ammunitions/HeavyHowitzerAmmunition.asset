@@ -16,7 +16,7 @@ MonoBehaviour:
   m_MinPoolSize: 50
   m_MaxPoolSize: 100
   isAuto: 0
-  m_Speed: 0
+  m_Speed: 20
   m_LifeDistance: 30
   m_Damage: 250
   m_PostAmmunitionType: 15
