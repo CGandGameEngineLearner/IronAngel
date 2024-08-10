@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7915769600404466762}
   - component: {fileID: 6295283052506457838}
   - component: {fileID: 1966774554764921500}
+  - component: {fileID: 8642028225414930582}
   m_Layer: 7
   m_Name: LeftWeapon
   m_TagString: Untagged
@@ -170,6 +171,33 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!50 &8642028225414930582
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 587068453855920466}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &599153167453624138
 GameObject:
   m_ObjectHideFlags: 0
@@ -183,6 +211,7 @@ GameObject:
   - component: {fileID: 1971086258971725667}
   - component: {fileID: 4788707432746406319}
   - component: {fileID: 7972958413880742384}
+  - component: {fileID: 5617622902005052232}
   m_Layer: 7
   m_Name: ShieldTop
   m_TagString: Untagged
@@ -336,6 +365,33 @@ MonoBehaviour:
   m_Offset: {x: 0, y: 0, z: 0}
   m_SpriteAlphaFlash: 1
   m_FadeSpeed: 1
+--- !u!50 &5617622902005052232
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 599153167453624138}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &1511069729385333637
 GameObject:
   m_ObjectHideFlags: 0
@@ -831,6 +887,7 @@ GameObject:
   - component: {fileID: 1098056815340472533}
   - component: {fileID: 4779021538546674247}
   - component: {fileID: 6642371294915037173}
+  - component: {fileID: 6583600718445546615}
   m_Layer: 7
   m_Name: ShieldRight
   m_TagString: Untagged
@@ -984,6 +1041,33 @@ MonoBehaviour:
   m_Offset: {x: 0, y: 0, z: 0}
   m_SpriteAlphaFlash: 1
   m_FadeSpeed: 1
+--- !u!50 &6583600718445546615
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3342869003483958290}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &3985092614300666292
 GameObject:
   m_ObjectHideFlags: 0
@@ -1028,6 +1112,7 @@ GameObject:
   - component: {fileID: 1545036413649910913}
   - component: {fileID: 699120794273678250}
   - component: {fileID: 2867646086070515702}
+  - component: {fileID: 4038252384681780258}
   m_Layer: 7
   m_Name: RightWeapon
   m_TagString: Untagged
@@ -1185,6 +1270,33 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!50 &4038252384681780258
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4495865224673025813}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &4526419129806610789
 GameObject:
   m_ObjectHideFlags: 0
@@ -1299,6 +1411,7 @@ GameObject:
   - component: {fileID: 6235689839332449883}
   - component: {fileID: 8819393010746239652}
   - component: {fileID: 2019286357369526223}
+  - component: {fileID: 5453542187586766582}
   m_Layer: 7
   m_Name: ShieldLeft
   m_TagString: Untagged
@@ -1452,6 +1565,33 @@ MonoBehaviour:
   m_Offset: {x: 0, y: 0, z: 0}
   m_SpriteAlphaFlash: 1
   m_FadeSpeed: 1
+--- !u!50 &5453542187586766582
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5005174867674349316}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &5612599182857872691
 GameObject:
   m_ObjectHideFlags: 0
@@ -1570,6 +1710,7 @@ GameObject:
   - component: {fileID: 7481786882252102525}
   - component: {fileID: 7727895622171990506}
   - component: {fileID: 8622158118511835508}
+  - component: {fileID: 5991965220856129856}
   m_Layer: 7
   m_Name: EnergyShield
   m_TagString: Untagged
@@ -1697,6 +1838,33 @@ MonoBehaviour:
   m_ShieldType: 1
   m_SubArmor: 100
   m_specialAtkTypes: 
+--- !u!50 &5991965220856129856
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6733269468853973691}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &7466956782151199271
 GameObject:
   m_ObjectHideFlags: 0
@@ -1710,6 +1878,7 @@ GameObject:
   - component: {fileID: 7251011507050464581}
   - component: {fileID: 3929051370594886967}
   - component: {fileID: 5277961241441952865}
+  - component: {fileID: 4847696827395324748}
   m_Layer: 7
   m_Name: ShieldButtom
   m_TagString: Untagged
@@ -1863,6 +2032,33 @@ MonoBehaviour:
   m_Offset: {x: 0, y: 0, z: 0}
   m_SpriteAlphaFlash: 1
   m_FadeSpeed: 1
+--- !u!50 &4847696827395324748
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7466956782151199271}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &8491935298018838878
 GameObject:
   m_ObjectHideFlags: 0

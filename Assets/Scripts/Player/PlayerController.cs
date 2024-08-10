@@ -18,9 +18,11 @@ public class PlayerController : NetworkBehaviour
     private Player m_Player = new Player();
     private InputController m_InputController = new InputController();
     private LogicStateManager m_LogicStateManager;
+    private BaseProperties m_BaseProperties;
 
     bool m_AfterStartLocalPlayer = false;
     float m_FireDistance;
+    List<int> m_Power;
     //  public------------------------------------------
     public Player Player
     {
@@ -38,6 +40,7 @@ public class PlayerController : NetworkBehaviour
     private void Start()
     {
         m_LogicStateManager = GetComponent<LogicStateManager>();
+        m_BaseProperties = GetComponent<BaseProperties>();
         PlayerSetting setting = GetComponent<PlayerSetting>();
         PlayerSpec playerSpec = new PlayerSpec();
         playerSpec = setting._PlayerSpec;
@@ -282,7 +285,7 @@ public class PlayerController : NetworkBehaviour
                 CmdFire(weapon, pos, dir);
             }
         });
-        // 左右手取消攻击
+        // 左右手结束攻击
         m_InputController.AddCanceledActionToPlayerShootLeft(() =>
         {
             if(isLocalPlayer)
@@ -299,6 +302,35 @@ public class PlayerController : NetworkBehaviour
                 var weapon = m_Player.GetPlayerRightHandWeapon();
                 if (weapon == null) { return; }
                 UnFire(weapon);
+            }
+        });
+        // 玩家能量奖励
+        m_InputController.AddPerformedActionToPower_1(() =>
+        {
+            if(m_Power.Count > 0 && m_BaseProperties.m_Properties.m_Energy >= m_Power[0])
+            {
+                m_BaseProperties.m_Properties.m_Energy -= m_Power[0];
+            }
+        });
+        m_InputController.AddPerformedActionToPower_2(() =>
+        {
+            if (m_Power.Count > 1 && m_BaseProperties.m_Properties.m_Energy >= m_Power[1])
+            {
+                m_BaseProperties.m_Properties.m_Energy -= m_Power[1];
+            }
+        });
+        m_InputController.AddPerformedActionToPower_3(() =>
+        {
+            if (m_Power.Count > 2 && m_BaseProperties.m_Properties.m_Energy >= m_Power[2])
+            {
+                m_BaseProperties.m_Properties.m_Energy -= m_Power[2];
+            }
+        });
+        m_InputController.AddPerformedActionToPower_4(() =>
+        {
+            if (m_Power.Count > 3 && m_BaseProperties.m_Properties.m_Energy >= m_Power[2])
+            {
+                m_BaseProperties.m_Properties.m_Energy -= m_Power[3];
             }
         });
     }
