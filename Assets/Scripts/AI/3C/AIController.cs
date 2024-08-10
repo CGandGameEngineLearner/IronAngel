@@ -147,12 +147,16 @@ public class AIController : NetworkBehaviour
     {
         m_LeftHandWeapon = weapon;
         weapon.transform.SetParent(LeftHand.transform);
+        weapon.transform.localPosition = Vector3.zero;
+        weapon.transform.localRotation = Quaternion.identity;
     }
 
     public void SetRightHandWeapon(GameObject weapon)
     {
         m_RightHandWeapon = weapon;
         weapon.transform.SetParent(RightHand.transform);
+        weapon.transform.localPosition = Vector3.zero;
+        weapon.transform.localRotation = Quaternion.identity;
     }
 
     public WeaponType GetLeftHandWeaponType()
