@@ -246,6 +246,7 @@ public class PlayerController : NetworkBehaviour
                 {
                     return;
                 }
+                pos = weapon.GetComponent<WeaponInstance>().firePoint.position;
                 Vector3 dir = m_InputController.GetMousePositionInWorldSpace(m_CameraController.GetCamera()) - m_Player.GetPlayerLeftHandPosition();
                 if (Vector2.Distance(m_InputController.GetMousePositionInWorldSpace(m_CameraController.GetCamera()), m_Player.GetPlayerLeftHandPosition()) <= m_FireDistance)
                 {
@@ -269,6 +270,7 @@ public class PlayerController : NetworkBehaviour
                 {
                     return;
                 }
+                pos = weapon.GetComponent<WeaponInstance>().firePoint.position;
                 Vector3 dir = m_InputController.GetMousePositionInWorldSpace(m_CameraController.GetCamera()) - m_Player.GetPlayerRightHandPosition();
                 if (Vector2.Distance(m_InputController.GetMousePositionInWorldSpace(m_CameraController.GetCamera()), m_Player.GetPlayerRightHandPosition()) <= m_FireDistance)
                 {
@@ -280,6 +282,30 @@ public class PlayerController : NetworkBehaviour
                 CmdFire(weapon, pos, dir);
             }
         });
+        // 左右手取消攻击
+        m_InputController.AddCanceledActionToPlayerShootLeft(() =>
+        {
+            if(isLocalPlayer)
+            {
+                var weapon = m_Player.GetPlayerLeftHandWeapon();
+                if(weapon == null) { return; }
+                UnFire(weapon);
+            }
+        });
+        m_InputController.AddCanceledActionToPlayerShootRight(() =>
+        {
+            if(isLocalPlayer)
+            {
+                var weapon = m_Player.GetPlayerRightHandWeapon();
+                if (weapon == null) { return; }
+                UnFire(weapon);
+            }
+        });
+    }
+    [Command]
+    private void UnFire(GameObject weapon)
+    {
+        WeaponSystemCenter.Instance.RpcUnFire(weapon);
     }
     
     [Command]
