@@ -209,12 +209,7 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
         {
             data.m_CurrentHP -= damage;
         }
-        
-
-
-        
-        
-        Debug.Log(data.m_LeftHandWeaponHP + " " + data.m_RightHandWeaponHP);
+       
         RPCBroadcastDamage(data);
     }
 

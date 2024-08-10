@@ -1,10 +1,7 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using Mirror;
 using UnityEngine;
-using UnityEngine.Experimental.GlobalIllumination;
-using Range = DG.DemiLib.Range;
+
 
 public class BaseProperties : NetworkBehaviour
 {
@@ -69,21 +66,6 @@ public struct Properties
     [Tooltip("右手武器种类")]
     public WeaponType m_RightHandWeapon;
     
-    [Tooltip("左手武器每次攻击的持续时长(一定要大于前摇时长，因为攻击时长包含了前摇时长)")]
-    public float m_LeftHandWeaponAttackingDuration;
-    
-    [Tooltip("右手武器每次攻击的持续时长(一定要大于前摇时长，因为攻击时长包含了前摇时长)")]
-    public float m_RightHandWeaponAttackingDuration;
-    
-    [Tooltip("左手武器使用概率"),Range(0,1)]
-    public float m_ProbabilityOfLeftWeapon;
-
-    [Tooltip("右手武器使用概率"),Range(0,1)]
-    public float m_ProbabilityOfRightWeapon;
-
-    [Tooltip("AI与玩家交战的距离")]
-    public float m_EngagementDistance;
-    
     [Tooltip("护甲")]
     public int m_Armor;
     
@@ -98,13 +80,7 @@ public struct Properties
 
     [Tooltip("攻击范围")]
     public float m_AttackRange;
-
-    [Tooltip("AI抢攻击Token的优先权重"),Range(0,1)]
-    public float m_TokenWeight;
-
-    [Tooltip("AI的射击角度误差范围"),Range(0,90)]
-    public float m_RangeOfAimingError;
-
+    
     [Tooltip("阵营")]
     public ECamp m_Camp;
 
@@ -113,20 +89,5 @@ public struct Properties
 
     [Tooltip("角色死亡后掉落武器")]
     public bool m_DropWeapon_CharacterDied;
-
-    [Tooltip("AI是否可以在受到伤害时自动躲闪以下")]
-    public bool m_AutoAvoid;
-
-    [Tooltip("AI躲避的概率"),Range(0,1)]
-    public float m_AutoAvoid_Probability;
-
-    [Tooltip("允许AI躲避的剩余次数")]
-    public float m_AutoAvoid_RestTimes;
-
-    [Tooltip("冲刺速度"),Range(0,float.PositiveInfinity)]
-    public float m_DashSpeed;
-    
-    [Tooltip("冲刺时长"),Range(0,float.PositiveInfinity)]
-    public float m_DashDuration;
     
 }

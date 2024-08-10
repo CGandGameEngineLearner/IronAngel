@@ -25,6 +25,41 @@ public class AIController : NetworkBehaviour
     private GameObject m_LeftHandWeapon;
     private GameObject m_RightHandWeapon;
 
+    [Tooltip("左手位置的标记GameObject")]
+    public GameObject LeftHand;
+    
+    [Tooltip("右手位置的标记GameObject")]
+    public GameObject RightHand;
+    
+
+    [Tooltip("AI是否可以在受到伤害时自动躲闪以下")]
+    public bool m_AutoAvoid;
+
+    [Tooltip("AI躲避的概率"),Range(0,1)]
+    public float m_AutoAvoid_Probability;
+
+    [Tooltip("允许AI躲避的剩余次数")]
+    public float m_AutoAvoid_RestTimes;
+
+    [Tooltip("AI抢攻击Token的优先权重"),Range(0,1)]
+    public float m_TokenWeight;
+
+    [Tooltip("AI的射击角度误差范围"),Range(0,90)]
+    public float m_RangeOfAimingError;
+    
+    
+    [Tooltip("左手武器每次攻击的持续时长(一定要大于前摇时长，因为攻击时长包含了前摇时长)")]
+    public float m_LeftHandWeaponAttackingDuration;
+    
+    [Tooltip("右手武器每次攻击的持续时长(一定要大于前摇时长，因为攻击时长包含了前摇时长)")]
+    public float m_RightHandWeaponAttackingDuration;
+    
+    [Tooltip("左手武器使用概率"),Range(0,1)]
+    public float m_ProbabilityOfLeftWeapon;
+
+    [Tooltip("右手武器使用概率"),Range(0,1)]
+    public float m_ProbabilityOfRightWeapon;
+    
 
     /// <summary>
     /// 训练路线
@@ -56,7 +91,7 @@ public class AIController : NetworkBehaviour
     [ServerCallback]
     public void BeDamaged()
     {
-        if (m_BaseProperties.m_Properties.m_AutoAvoid)
+        if (m_AutoAvoid)
         {
             Avoid();
         }
@@ -69,7 +104,7 @@ public class AIController : NetworkBehaviour
     [ServerCallback]
     public void Avoid()
     {
-        if(!Utils.RandomBool(m_BaseProperties.m_Properties.m_AutoAvoid_Probability))
+        if(!Utils.RandomBool(m_AutoAvoid_Probability))
         {
             return;
         }
@@ -90,7 +125,7 @@ public class AIController : NetworkBehaviour
         }
         
         
-        m_BaseProperties.m_Properties.m_AutoAvoid_RestTimes -= 1;
+        m_AutoAvoid_RestTimes -= 1;
     }
     
     
@@ -111,11 +146,17 @@ public class AIController : NetworkBehaviour
     public void SetLeftHandWeapon(GameObject weapon)
     {
         m_LeftHandWeapon = weapon;
+        weapon.transform.SetParent(LeftHand.transform);
+        weapon.transform.localPosition = Vector3.zero;
+        weapon.transform.localRotation = Quaternion.identity;
     }
 
     public void SetRightHandWeapon(GameObject weapon)
     {
         m_RightHandWeapon = weapon;
+        weapon.transform.SetParent(RightHand.transform);
+        weapon.transform.localPosition = Vector3.zero;
+        weapon.transform.localRotation = Quaternion.identity;
     }
 
     public WeaponType GetLeftHandWeaponType()
@@ -230,7 +271,7 @@ public class AIController : NetworkBehaviour
         }
         
         
-        if (!TokenPool.ApplyToken(m_BaseProperties.m_Properties.m_TokenWeight) == false)
+        if (!TokenPool.ApplyToken(m_TokenWeight) == false)
         {
             return false;
         }
@@ -244,8 +285,8 @@ public class AIController : NetworkBehaviour
         }
        
 
-        var leftFire = IronAngel.Utils.RandomBool(m_BaseProperties.m_Properties.m_ProbabilityOfLeftWeapon);
-        var rightFire = IronAngel.Utils.RandomBool(m_BaseProperties.m_Properties.m_ProbabilityOfRightWeapon);
+        var leftFire = IronAngel.Utils.RandomBool(m_ProbabilityOfLeftWeapon);
+        var rightFire = IronAngel.Utils.RandomBool(m_ProbabilityOfRightWeapon);
 
         if (leftFire == false && rightFire == false)
         {
@@ -277,62 +318,38 @@ public class AIController : NetworkBehaviour
     [ServerCallback]
     private void LeftHandFire()
     {
-        var leftDuration = m_BaseProperties.m_Properties.m_LeftHandWeaponAttackingDuration;
+        var leftDuration = m_LeftHandWeaponAttackingDuration;
         var LeftHandAttackPreCastDelay = WeaponSystemCenter.GetWeaponConfig(m_LeftHandWeapon).attackPreCastDelay;
         if (leftDuration <= LeftHandAttackPreCastDelay)
         {
             Debug.LogError("攻击时长包含前摇时长，所以前摇时长不能大于攻击时长");
         }
         m_LogicStateManager.SetStateDuration(ELogicState.AIAttacking, leftDuration);
-        StartCoroutine(LeftHandFireCoroutine());
+        StartCoroutine(FireCoroutine(m_LeftHandWeapon));
     }
 
     [ServerCallback]
     private void RightHandFire()
     {
-        var rightDuration = m_BaseProperties.m_Properties.m_RightHandWeaponAttackingDuration;
+        var rightDuration = m_RightHandWeaponAttackingDuration;
         var RightHandAttackPreCastDelay = WeaponSystemCenter.GetWeaponConfig(m_RightHandWeapon).attackPreCastDelay;
         if (rightDuration <= RightHandAttackPreCastDelay)
         {
             Debug.LogError("攻击时长包含前摇时长，所以前摇时长不能大于攻击时长");
         }
         m_LogicStateManager.SetStateDuration(ELogicState.AIAttacking, rightDuration);
-        StartCoroutine(RightHandFireCoroutine());
+        StartCoroutine(FireCoroutine(m_RightHandWeapon));
     }
     
-    private IEnumerator LeftHandFireCoroutine()
-    {
-        m_LogicStateManager.AddState(ELogicState.AIAttackPreCastDelay);
-        var LeftHandAttackPreCastDelay = WeaponSystemCenter.GetWeaponConfig(m_LeftHandWeapon).attackPreCastDelay;
-        m_LogicStateManager.SetStateDuration(ELogicState.AIAttackPreCastDelay, LeftHandAttackPreCastDelay);
-        
-        var dir = transform.rotation*Vector3.up;
-        WeaponSystemCenter.Instance.StartLaserPointer(gameObject,m_LeftHandWeapon,transform.position, dir);
-        
-        while (m_LogicStateManager.IncludeState(ELogicState.AIAttackPreCastDelay))
-        {
-            m_AIMovement.SetMoveEnabled(false);
-            yield return null;
-        }
-
-        m_AIMovement.SetMoveEnabled(true);
-        
-        while (m_LogicStateManager.IncludeState(ELogicState.AIAttacking))
-        {
-            dir = transform.rotation*Vector3.up;
-            dir = ComputeAngleOfFire(dir);
-            WeaponSystemCenter.Instance.CmdFire(gameObject, m_LeftHandWeapon,transform.position,dir);
-            yield return null;
-        }
-    }
-    
-    private IEnumerator RightHandFireCoroutine()
+    [ServerCallback]
+    private IEnumerator FireCoroutine(GameObject weapon)
     {
         
         m_LogicStateManager.AddState(ELogicState.AIAttackPreCastDelay);
-        var RightHandAttackPreCastDelay = WeaponSystemCenter.GetWeaponConfig(m_RightHandWeapon).attackPreCastDelay;
-        m_LogicStateManager.SetStateDuration(ELogicState.AIAttackPreCastDelay, RightHandAttackPreCastDelay);
-        
+        var AttackPreCastDelay = WeaponSystemCenter.GetWeaponConfig(weapon).attackPreCastDelay;
+        m_LogicStateManager.SetStateDuration(ELogicState.AIAttackPreCastDelay, AttackPreCastDelay);
+        var weaponInstance = weapon.GetComponent<WeaponInstance>();
+        var firePoint = weaponInstance.firePoint.position;
         var dir = transform.rotation*Vector3.up;
         WeaponSystemCenter.Instance.StartLaserPointer(gameObject,m_LeftHandWeapon,transform.position, dir);
         
@@ -348,9 +365,11 @@ public class AIController : NetworkBehaviour
         {
             dir = transform.rotation*Vector3.up;
             dir = ComputeAngleOfFire(dir);
-            WeaponSystemCenter.Instance.CmdFire(gameObject, m_RightHandWeapon,transform.position,dir);
+            WeaponSystemCenter.Instance.CmdFire(gameObject, m_RightHandWeapon,firePoint,dir);
             yield return null;
         }
+        
+        WeaponSystemCenter.Instance.RpcUnFire(weapon);
     }
     
     
@@ -367,7 +386,7 @@ public class AIController : NetworkBehaviour
         Vector3 eulerAngles = quaternion.eulerAngles;
         eulerAngles.x = 0;
         eulerAngles.y = 0;
-        var rangeOfAimingError = m_BaseProperties.m_Properties.m_RangeOfAimingError;
+        var rangeOfAimingError = m_RangeOfAimingError;
         eulerAngles.z -= rangeOfAimingError/2;
         float randomValue = (float) Random.Range(0, rangeOfAimingError);
         eulerAngles.z += randomValue;
