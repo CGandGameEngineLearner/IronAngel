@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -67,6 +68,7 @@ public enum AmmunitionType
     Count,
 }
 
+[Flags]
 public enum WeaponType
 {
     // 普通武器 ------------------------------

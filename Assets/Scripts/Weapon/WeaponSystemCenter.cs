@@ -52,7 +52,7 @@ public class WeaponSystemCenter : NetworkBehaviour
         private set { m_Instance = value; }
         get { return m_Instance; }
     }
-    
+
     public List<WeaponSpawnSetting> WeaponSpawnSettings = new List<WeaponSpawnSetting>();
     public List<WeaponConfigSetting> WeaponConfigSettings = new List<WeaponConfigSetting>();
     public List<AmmunitionConfigSetting> AmmunitionConfigSettings = new List<AmmunitionConfigSetting>();
@@ -185,8 +185,8 @@ public class WeaponSystemCenter : NetworkBehaviour
 
         return m_WeaponConfigDic[weaponType];
     }
-    
-    
+
+
     /// <summary>
     /// 获取武器配置
     /// </summary>
@@ -201,7 +201,7 @@ public class WeaponSystemCenter : NetworkBehaviour
         }
 
         var weaponType = m_WeaponToTypeDic[weapon];
-        
+
         if (!m_WeaponConfigDic.ContainsKey(weaponType))
         {
             throw new Exception("查询不到武器配置，武器类型枚举为：" + weaponType);
@@ -263,19 +263,38 @@ public class WeaponSystemCenter : NetworkBehaviour
         // 服务端
         Fire(character, m_WeaponToTypeDic[weapon], ammunitionType, startPoint, dir);
         // Rpc调用客户端
-        RPCFire(character, m_WeaponToTypeDic[weapon], ammunitionType, startPoint, dir);
+        RPCFire(character, weapon, startPoint, dir);
     }
 
+    /// <summary>
+    /// 客户端开火，要同步特效和动画
+    /// </summary>
+    /// <param name="character">开火者</param>
+    /// <param name="weapon">开火武器</param>
+    /// <param name="startPoint">起始点</param>
+    /// <param name="dir">方向</param>
     [ClientRpc]
-    public void RPCFire(GameObject character, WeaponType weaponType, AmmunitionType ammunitionType,
-        Vector3 startPoint, Vector3 dir)
+    public void RPCFire(GameObject character, GameObject weapon, Vector3 startPoint, Vector3 dir)
     {
+        WeaponType weaponType = m_WeaponToTypeDic[weapon];
         WeaponConfig weaponConfig = m_WeaponConfigDic[weaponType];
 
-        Fire(character, weaponType, ammunitionType, startPoint, dir);
-        
-        // 调用开火特效
-        VfxPool.Instance.GetVfx(weaponConfig.fireVfxType, startPoint, Quaternion.identity);
+        Fire(character, weaponType, weaponConfig.ammunitionType, startPoint, dir);
+
+        // 调用客户端的开火特效
+        if (!weapon.TryGetComponent<WeaponInstance>(out WeaponInstance weaponInstance)) return;
+        weaponInstance.FireVfxAndAnimation(weaponType, weaponConfig, startPoint, Quaternion.identity);
+    }
+
+
+    /// <summary>
+    /// 取消开火时通知客户端，用于关闭特效、关闭动画
+    /// </summary>
+    [ClientRpc]
+    public void RpcUnFire(GameObject weapon)
+    {
+        if (!weapon.TryGetComponent<WeaponInstance>(out WeaponInstance weaponInstance)) return;
+        weaponInstance.UnFireVfxAndAnimation();
     }
 
     /// <summary>
@@ -287,19 +306,20 @@ public class WeaponSystemCenter : NetworkBehaviour
         WeaponInstance weapon = weaponGo.GetComponent<WeaponInstance>();
         LineRenderer lineRenderer = weapon.lineRenderer;
         HashSet<GameObject> ignoredObjects = launchCharacter.GetComponent<AutoGetChild>().ignoredObjects;
+        WeaponConfig weaponConfig = m_WeaponToConfigDic[weaponGo];
 
         // 设置镭射属性
-        lineRenderer.startWidth = weapon.GetConfig().LaserPointerWidth;
-        lineRenderer.endWidth = weapon.GetConfig().LaserPointerWidth;
+        lineRenderer.startWidth = weaponConfig.LaserPointerWidth;
+        lineRenderer.endWidth = weaponConfig.LaserPointerWidth;
         lineRenderer.startColor = Color.red;
         lineRenderer.endColor = Color.red;
         lineRenderer.positionCount = 2;
-        
+
         // 最大射线距离为子弹最远距离
-        AmmunitionType ammunitionType = weapon.GetConfig().ammunitionType;
+        AmmunitionType ammunitionType = weaponConfig.ammunitionType;
         AmmunitionConfig ammunitionConfig = m_AmmunitionFactory.GetAmmunitionConfig(ammunitionType);
         int ignoreLayer = ~(LayerMask.GetMask("Bullet") | LayerMask.GetMask("Ground") | LayerMask.GetMask("Sensor"));
-            
+
         RaycastHit2D[] hits = Physics2D.RaycastAll(startPoint, dir, ammunitionConfig.lifeDistance, ignoreLayer);
 
         Vector2 endPoint = startPoint + dir.normalized * ammunitionConfig.lifeDistance;
@@ -387,8 +407,8 @@ public class WeaponSystemCenter : NetworkBehaviour
             SetAmmunition(character, weaponConfigData, ammunitionType, startPoint, shotDirection);
         }
     }
-    private void SetAmmunition(GameObject character, WeaponConfigData weaponConfigData, AmmunitionType ammunitionType,
 
+    private void SetAmmunition(GameObject character, WeaponConfigData weaponConfigData, AmmunitionType ammunitionType,
         Vector3 startPoint, Vector3 dir)
     {
         var ammunitionConfig = m_AmmunitionConfigDic[ammunitionType];
@@ -487,8 +507,6 @@ public class WeaponSystemCenter : NetworkBehaviour
         var quaternion = Quaternion.LookRotation(dir);
         return m_AmmunitionPool.GetObject(ammunitionType, startPoint, quaternion);
     }
-
-    
 }
 
 [System.Serializable]
