@@ -68,7 +68,6 @@ public enum AmmunitionType
     Count,
 }
 
-[Flags]
 public enum WeaponType
 {
     // 普通武器 ------------------------------
