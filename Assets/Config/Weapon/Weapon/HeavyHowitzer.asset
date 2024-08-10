@@ -12,18 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 832d582905de4b3aaebabbb4346a6e4d, type: 3}
   m_Name: HeavyHowitzer
   m_EditorClassIdentifier: 
-  m_Prefab: {fileID: 0}
+  m_Prefab: {fileID: 5021276108613369794, guid: 0f4508d3e46a4364eba0795a2a03e552, type: 3}
   m_MinPoolSize: 0
   m_MaxPoolSize: 0
   m_AtkType: 0
   m_ammunitionType: 10
-  m_WeaponHp: 0
-  m_Interval: 0
-  m_MagSize: 0
+  m_WeaponHp: 1600
+  m_Interval: 2.9
+  m_MagSize: 3
   m_SimShots: 0
   m_SpreadAngle: 0
   m_ShotSpreadAngle: 0
   laserPointerWidth: 0
-  m_SoundEffect: {fileID: 0}
-  m_EffectPrefab: {fileID: 0}
   m_AttackPreCastDelay: 0
+  m_FireVfxType: 0
+  m_FireSfxType: 0

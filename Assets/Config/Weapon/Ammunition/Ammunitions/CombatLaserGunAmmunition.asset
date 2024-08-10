@@ -12,19 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a59e88c4a9d74b07b64319f8b37e8bad, type: 3}
   m_Name: CombatLaserGunAmmunition
   m_EditorClassIdentifier: 
-  m_Prefab: {fileID: 0}
-  m_MinPoolSize: 0
-  m_MaxPoolSize: 0
+  m_Prefab: {fileID: 8422378306381297977, guid: f0a50aff73a133745bc7a7ba09650d00, type: 3}
+  m_MinPoolSize: 50
+  m_MaxPoolSize: 100
   isAuto: 0
   m_Speed: 0
   m_LifeDistance: 0
-  m_Damage: 10
+  m_Damage: 20
   m_PostAmmunitionType: 12
   m_IsExplodeDamage: 0
   sigma: 0
   fallout: 0
-  m_LaserWidth: 0
-  m_LeastLiveFixedFrameCount: 0
+  minDamage: 0
+  m_LaserWidth: 0.6
+  m_LeastLiveFixedFrameCount: 4
   m_specialAtkTypes: 
   m_EffectBuff: []
   hitVfxType: 0

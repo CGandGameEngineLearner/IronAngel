@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a59e88c4a9d74b07b64319f8b37e8bad, type: 3}
   m_Name: MissileLauncherAmmunition
   m_EditorClassIdentifier: 
-  m_Prefab: {fileID: 8422378306381297977, guid: cc314427b6e021046b4c90443f328c9a, type: 3}
-  m_MinPoolSize: 0
-  m_MaxPoolSize: 0
+  m_Prefab: {fileID: 8422378306381297977, guid: be1dcf7d30b94da4bbcdc7ab671e6814, type: 3}
+  m_MinPoolSize: 50
+  m_MaxPoolSize: 100
   isAuto: 0
   m_Speed: 10
   m_LifeDistance: 20
