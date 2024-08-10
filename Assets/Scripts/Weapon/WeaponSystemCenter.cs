@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using BehaviorDesigner.Runtime.Tasks.Unity.Math;
 using Mirror;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -96,7 +97,7 @@ public class WeaponSystemCenter : NetworkBehaviour
         var prefab = weaponConfig.prefab;
 
         GameObject weapon = Instantiate(prefab, pos,
-            UnityEngine.Quaternion.identity);
+            UnityEngine.Quaternion.Euler(0,0,Random.Range(0,360))); // 朝向随机
 
         weapon.GetComponent<WeaponInstance>().Init(weaponConfig);
         m_WeaponToConfigDic[weapon] = weaponConfig;
