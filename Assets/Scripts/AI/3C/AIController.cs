@@ -117,11 +117,13 @@ public class AIController : NetworkBehaviour
     public void SetLeftHandWeapon(GameObject weapon)
     {
         m_LeftHandWeapon = weapon;
+        weapon.transform.SetParent(LeftHand.transform);
     }
 
     public void SetRightHandWeapon(GameObject weapon)
     {
         m_RightHandWeapon = weapon;
+        weapon.transform.SetParent(RightHand.transform);
     }
 
     public WeaponType GetLeftHandWeaponType()
