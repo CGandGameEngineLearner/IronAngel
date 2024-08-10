@@ -406,7 +406,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneId: 0
-  _assetId: 478379851
+  _assetId: 1569968714
   serverOnly: 0
   visibility: 0
   hasSpawned: 0
@@ -1137,7 +1137,7 @@ Animator:
   m_GameObject: {fileID: 5612599182857872691}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 53fb54fbef6e62140bf81ccad07738ce, type: 2}
+  m_Controller: {fileID: 9100000, guid: e5935b20634d2de4d849dcbfeb8e39fb, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
