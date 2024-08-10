@@ -46,7 +46,7 @@ public class AmmunitionHandle
         {
             ammunition.transform.rotation = Quaternion.LookRotation(Vector3.forward, direction);
         }
-        
+
         // 获取角色子物体信息，用于忽略碰撞体
         // foreach (var child in IronAngel.Utils.GetAllChildren(launcherCharacter.transform))
         // {
@@ -56,7 +56,7 @@ public class AmmunitionHandle
         // ignoredObjects.Add(launcherCharacter);
         ignoredObjects = owner.GetComponent<AutoGetChild>().ignoredObjects;
     }
-    
+
     public void Clear()
     {
         active = false;
@@ -85,6 +85,7 @@ public class AmmunitionFactory
     public delegate void RecycleHandle(AmmunitionType ammunitionType, GameObject ammunition);
 
     private ObjectPoolManager<AmmunitionType> m_AmmunitionPool;
+    private bool m_IsClient;
 
     // Data table
     private readonly Dictionary<AmmunitionType, AmmunitionConfig> m_AmmunitionConfigs = new();
@@ -104,13 +105,14 @@ public class AmmunitionFactory
     // recycle------------------------------
     private RecycleHandle onRecycle;
 
+
     /// <summary>
     /// 初始化
     /// </summary>
     /// <param name="AmmunitionConfigDic">子弹配置映射</param> 
     /// <param name="recycleHandle">子弹回收处理委托</param> 
     public void Init(Dictionary<AmmunitionType, AmmunitionConfig> AmmunitionConfigDic,
-        RecycleHandle recycleHandle, ObjectPoolManager<AmmunitionType> ammunitionPool)
+        RecycleHandle recycleHandle, ObjectPoolManager<AmmunitionType> ammunitionPool, bool isClient)
     {
         onRecycle = recycleHandle;
 
@@ -120,6 +122,7 @@ public class AmmunitionFactory
         }
 
         m_AmmunitionPool = ammunitionPool;
+        this.m_IsClient = isClient;
     }
 
 
@@ -195,28 +198,48 @@ public class AmmunitionFactory
     {
         if (!m_AmmunitionsDict.ContainsKey(ammunition)) return;
 
-        // 仅产生一次后处理效果
-        if (m_AmmunitionsDict[ammunition].active)
-        {
-            m_AmmunitionsDict[ammunition].active = false;
+        // Debug.LogError("Unregister Enter");
+        AmmunitionHandle ammunitionHandle = m_AmmunitionsDict[ammunition];
+        AmmunitionConfig ammunitionConfig = ammunitionHandle.ammunitionConfig;
 
-            var handle = GetAmmunitionHandle(ammunition);
-            var postType = handle.ammunitionConfig.postAmmunitionType;
-            if (postType != AmmunitionType.None)
+        // 爆炸类的只会产生一次特效
+        // 而普通子弹会产生多次击中特效
+        // if (m_IsClient)
+        {
+            if (ammunitionHandle.ammunitionType < AmmunitionType.PostExplodeSplitter)
             {
-                ShootAmmunition(handle.launcherCharacter, m_AmmunitionPool.GetObject(postType), postType,
-                    m_AmmunitionConfigs[postType],
-                    AtkType.Default, handle.rigidbody2D.transform.position, Vector2.zero);
+                VfxPool.Instance.GetVfx(ammunitionConfig.hitVfxType, ammunition.transform.position,
+                    Quaternion.identity);
             }
         }
-    }
 
-    [ClientRpc]
-    private void RpcShootAmmunition(GameObject owner, GameObject ammunition, AmmunitionType ammunitionType,
-        AmmunitionConfig ammunitionConfig, AtkType atkType,
-        Vector2 startPoint, Vector2 dir)
-    {
-        ShootAmmunition(owner, ammunition, ammunitionType, ammunitionConfig, atkType, startPoint, dir);
+
+        // 仅产生一次后处理效果
+        if (ammunitionHandle.active)
+        {
+            // Debug.LogError("Unregister At Once");
+            ammunitionHandle.active = false;
+
+            var postType = ammunitionHandle.ammunitionConfig.postAmmunitionType;
+            if (postType != AmmunitionType.None)
+            {
+                ShootAmmunition(ammunitionHandle.launcherCharacter, m_AmmunitionPool.GetObject(postType), postType,
+                    m_AmmunitionConfigs[postType],
+                    AtkType.Default, ammunitionHandle.rigidbody2D.transform.position, Vector2.zero);
+            }
+
+            // 仅客户端会调用vfx，爆炸也只会产生一次
+            // if (m_IsClient)
+            {
+                // Debug.LogError($"m_IsClient = {m_IsClient}");
+                if (ammunitionHandle.ammunitionType > AmmunitionType.PostExplodeSplitter)
+                {
+                    // Debug.LogError("Boom");
+                    VfxPool.Instance.GetVfx(ammunitionConfig.hitVfxType, ammunition.transform.position,
+                        Quaternion.identity);
+                }
+            }
+        }
     }
 
     public void FixedUpdate()
@@ -355,15 +378,19 @@ public class AmmunitionFactory
         {
             Vector2 startPoint = ammunitionHandle.startPoint;
             Vector2 laserStartPoint = startPoint + 0 * ammunitionHandle.dir;
-            int ignoreLayer = ~(LayerMask.GetMask("Bullet") | LayerMask.GetMask("Ground") | LayerMask.GetMask("Sensor"));
-            
-            RaycastHit2D[] hits = Physics2D.RaycastAll(laserStartPoint, ammunitionHandle.dir, ammunitionHandle.ammunitionConfig.lifeDistance, ignoreLayer);
+            int ignoreLayer =
+                ~(LayerMask.GetMask("Bullet") | LayerMask.GetMask("Ground") | LayerMask.GetMask("Sensor") | LayerMask.GetMask("BattleZoneTrigger"));
 
-            Vector2 endPoint = startPoint + ammunitionHandle.dir.normalized * ammunitionHandle.ammunitionConfig.lifeDistance;
+            RaycastHit2D[] hits = Physics2D.RaycastAll(laserStartPoint, ammunitionHandle.dir,
+                ammunitionHandle.ammunitionConfig.lifeDistance, ignoreLayer);
+
+            Vector2 endPoint = startPoint +
+                               ammunitionHandle.dir.normalized * ammunitionHandle.ammunitionConfig.lifeDistance;
 
             foreach (var hit in hits)
             {
-                if (hit.collider != null && !hit.collider.isTrigger && !ammunitionHandle.ignoredObjects.Contains(hit.collider.gameObject))
+                if (hit.collider != null && !hit.collider.isTrigger &&
+                    !ammunitionHandle.ignoredObjects.Contains(hit.collider.gameObject))
                 {
                     // 如果碰撞到非触发器且不在忽略列表中的物体，使用碰撞点作为终点
                     endPoint = hit.point;
@@ -392,7 +419,7 @@ public class AmmunitionFactory
             Vector3 scale = laserTransform.localScale;
 
             scale.y = distance; // 设置长度为两点之间的距离
-            scale.x = ammunitionHandle.ammunitionConfig.m_LaserWidth; 
+            scale.x = ammunitionHandle.ammunitionConfig.m_LaserWidth;
 
             // 应用新的缩放比例
             laserTransform.localScale = scale;
@@ -401,7 +428,7 @@ public class AmmunitionFactory
 
             laserTransform.position = midPoint; // 设置位置为中点
         }
-        else if(ammunitionHandle.liveFrameCount > ammunitionHandle.ammunitionConfig.m_LeastLiveFixedFrameCount)
+        else if (ammunitionHandle.liveFrameCount > ammunitionHandle.ammunitionConfig.m_LeastLiveFixedFrameCount)
         {
             UnRegisterAmmunition(ammunitionHandle.ammunition);
         }
