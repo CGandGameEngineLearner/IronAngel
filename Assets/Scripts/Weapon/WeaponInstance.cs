@@ -10,6 +10,8 @@ public struct WeaponInstanceData
 
 public class WeaponInstance : NetworkBehaviour
 {
+    public Transform firePoint;
+    
     private WeaponInstanceData m_WeaponInstanceData;
     private Animator m_Animator;
     private int fireHash = Animator.StringToHash("fire");
