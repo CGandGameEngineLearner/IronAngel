@@ -1,10 +1,7 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using Mirror;
 using UnityEngine;
-using UnityEngine.Experimental.GlobalIllumination;
-using Range = DG.DemiLib.Range;
+
 
 public class BaseProperties : NetworkBehaviour
 {
