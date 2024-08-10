@@ -133,7 +133,11 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
         // 读取子弹上的Buff并且加入LogicStateManager
         NoticeBuff(config.m_EffectBuff);
 
+
+        
+
         int damage = config.m_Damage;
+
 
         // 有能量护盾
         // 直接结算
