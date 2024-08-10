@@ -49,6 +49,7 @@ public class EnemyUI : MonoBehaviour
     public void ArmorFlash()
     {
         m_CurrentAlpha = m_SpriteAlphaFlash;
+        Debug.Log(m_CurrentAlpha);
     }
 }
 

@@ -45,13 +45,12 @@ public class ShieldCollisionReceiver : NetworkBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+
+        Debug.Log(gameObject.name + m_ShieldType);
         var ammunitionFactory = WeaponSystemCenter.GetAmmunitionFactory();
         var ammunitionHandle = ammunitionFactory.GetAmmunitionHandle(collision.gameObject);
         if (ammunitionHandle == null)
         {
-#if UNITY_EDITOR
-            //Debug.Log("查询不到这个弹药的Handle,子弹对象为" + collision.gameObject);
-#endif
             return;
         }
 
@@ -72,9 +71,11 @@ public class ShieldCollisionReceiver : NetworkBehaviour
         }
         
         m_AmmunitionCollisionReceiver.NoticeDamage(ammunitionHandle.launcherCharacter);
+        
         if(m_ShieldType == ShieldType.Armor)
         {
             CalculateDamage(ammunitionHandle.ammunitionConfig, collision.ClosestPoint(new Vector2(transform.position.x, transform.position.y) + m_BoxCollider.offset));
+            Debug.Log("护甲受到伤害");
             if(TryGetComponent<EnemyUI>(out var ui))
             {
                 ui.ArmorFlash();
