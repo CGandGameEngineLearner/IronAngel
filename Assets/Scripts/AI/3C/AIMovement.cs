@@ -26,6 +26,15 @@ public class AIMovement : MonoBehaviour
     
     [Tooltip("墙体图层")]
     public LayerMask m_WallLayer;
+    
+    [Tooltip("冲刺速度"),Range(0,float.PositiveInfinity)]
+    public float m_DashSpeed;
+    
+    [Tooltip("冲刺时长"),Range(0,float.PositiveInfinity)]
+    public float m_DashDuration;
+    
+    [Tooltip("AI与玩家交战的距离")]
+    public float m_EngagementDistance;
 
     private void Start()
     {
@@ -49,7 +58,7 @@ public class AIMovement : MonoBehaviour
         {
             agent.enabled = false; // 冲刺时要关闭AI导航
             m_dashDir = m_dashDir.normalized;
-            var dashSpeed = m_BaseProperties.m_Properties.m_DashSpeed;
+            var dashSpeed = m_DashSpeed;
             var v2 = m_Rigidbody.position;
             v2.x += m_dashDir.x * dashSpeed * Time.fixedDeltaTime;
             v2.y += m_dashDir.y * dashSpeed * Time.fixedDeltaTime;
@@ -148,7 +157,7 @@ public class AIMovement : MonoBehaviour
         if (!m_LogicStateManager.IncludeState(ELogicState.AIDashing))
         {
             var success = m_LogicStateManager.AddState(ELogicState.AIDashing);
-            m_LogicStateManager.SetStateDuration(ELogicState.AIDashing, m_BaseProperties.m_Properties.m_DashDuration);
+            m_LogicStateManager.SetStateDuration(ELogicState.AIDashing, m_DashDuration);
             m_dashDir = _dashDir;
         }
         
@@ -166,7 +175,7 @@ public class AIMovement : MonoBehaviour
     {
         m_ChaseTarget = targetGameObject;
         var offsetVec = (transform.position - targetGameObject.transform.position).normalized;
-        offsetVec += m_BaseProperties.m_Properties.m_EngagementDistance * offsetVec;
+        offsetVec += m_EngagementDistance * offsetVec;
         var targetPos = targetGameObject.transform.position + offsetVec;
         if (agent.isOnNavMesh)
         {
