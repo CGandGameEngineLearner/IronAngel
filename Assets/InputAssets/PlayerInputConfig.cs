@@ -98,6 +98,42 @@ public partial class @PlayerInputConfig: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Power_1"",
+                    ""type"": ""Button"",
+                    ""id"": ""c82d17a9-3b51-49d8-a062-87ccc886780a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Power_2"",
+                    ""type"": ""Button"",
+                    ""id"": ""453b5e27-7883-4397-b884-8628f39f20a0"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Power_3"",
+                    ""type"": ""Button"",
+                    ""id"": ""1a4587ff-4eb1-4097-9721-bf12540b5895"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Power_4"",
+                    ""type"": ""Button"",
+                    ""id"": ""a10e3ab8-7552-4c29-a150-c583bb88313b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -408,6 +444,94 @@ public partial class @PlayerInputConfig: IInputActionCollection2, IDisposable
                     ""action"": ""Melee"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b900a9f0-388d-4fdd-865b-95a07b99a989"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Power_1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1f0e0b23-4692-4345-8c46-74e207e1e347"",
+                    ""path"": ""<Keyboard>/numpad1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Power_1"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cd31ad17-64c5-430b-aaf8-a8a9dc1f0c0d"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Power_2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""40768c52-5a8e-4ef9-87d5-60397ce2025d"",
+                    ""path"": ""<Keyboard>/numpad2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Power_2"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4e92eb47-6b04-431d-b588-f7cb6d42e2e6"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Power_3"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9c17f980-9f84-4177-a3cd-037567f7b8fb"",
+                    ""path"": ""<Keyboard>/numpad3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Power_3"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""780b8c84-1df0-4cfe-bb3d-fc3e9f0d5f5c"",
+                    ""path"": ""<Keyboard>/4"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Power_4"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""aa461875-2bf0-420c-be62-2130f1805d5c"",
+                    ""path"": ""<Keyboard>/numpad4"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Power_4"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -533,6 +657,10 @@ public partial class @PlayerInputConfig: IInputActionCollection2, IDisposable
         m_Player_ThrowAndPick_Right = m_Player.FindAction("ThrowAndPick_Right", throwIfNotFound: true);
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
         m_Player_Melee = m_Player.FindAction("Melee", throwIfNotFound: true);
+        m_Player_Power_1 = m_Player.FindAction("Power_1", throwIfNotFound: true);
+        m_Player_Power_2 = m_Player.FindAction("Power_2", throwIfNotFound: true);
+        m_Player_Power_3 = m_Player.FindAction("Power_3", throwIfNotFound: true);
+        m_Player_Power_4 = m_Player.FindAction("Power_4", throwIfNotFound: true);
         // Camera
         m_Camera = asset.FindActionMap("Camera", throwIfNotFound: true);
         m_Camera_ViewTypeSwitch = m_Camera.FindAction("ViewTypeSwitch", throwIfNotFound: true);
@@ -609,6 +737,10 @@ public partial class @PlayerInputConfig: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_ThrowAndPick_Right;
     private readonly InputAction m_Player_Interact;
     private readonly InputAction m_Player_Melee;
+    private readonly InputAction m_Player_Power_1;
+    private readonly InputAction m_Player_Power_2;
+    private readonly InputAction m_Player_Power_3;
+    private readonly InputAction m_Player_Power_4;
     public struct PlayerActions
     {
         private @PlayerInputConfig m_Wrapper;
@@ -621,6 +753,10 @@ public partial class @PlayerInputConfig: IInputActionCollection2, IDisposable
         public InputAction @ThrowAndPick_Right => m_Wrapper.m_Player_ThrowAndPick_Right;
         public InputAction @Interact => m_Wrapper.m_Player_Interact;
         public InputAction @Melee => m_Wrapper.m_Player_Melee;
+        public InputAction @Power_1 => m_Wrapper.m_Player_Power_1;
+        public InputAction @Power_2 => m_Wrapper.m_Player_Power_2;
+        public InputAction @Power_3 => m_Wrapper.m_Player_Power_3;
+        public InputAction @Power_4 => m_Wrapper.m_Player_Power_4;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -654,6 +790,18 @@ public partial class @PlayerInputConfig: IInputActionCollection2, IDisposable
             @Melee.started += instance.OnMelee;
             @Melee.performed += instance.OnMelee;
             @Melee.canceled += instance.OnMelee;
+            @Power_1.started += instance.OnPower_1;
+            @Power_1.performed += instance.OnPower_1;
+            @Power_1.canceled += instance.OnPower_1;
+            @Power_2.started += instance.OnPower_2;
+            @Power_2.performed += instance.OnPower_2;
+            @Power_2.canceled += instance.OnPower_2;
+            @Power_3.started += instance.OnPower_3;
+            @Power_3.performed += instance.OnPower_3;
+            @Power_3.canceled += instance.OnPower_3;
+            @Power_4.started += instance.OnPower_4;
+            @Power_4.performed += instance.OnPower_4;
+            @Power_4.canceled += instance.OnPower_4;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -682,6 +830,18 @@ public partial class @PlayerInputConfig: IInputActionCollection2, IDisposable
             @Melee.started -= instance.OnMelee;
             @Melee.performed -= instance.OnMelee;
             @Melee.canceled -= instance.OnMelee;
+            @Power_1.started -= instance.OnPower_1;
+            @Power_1.performed -= instance.OnPower_1;
+            @Power_1.canceled -= instance.OnPower_1;
+            @Power_2.started -= instance.OnPower_2;
+            @Power_2.performed -= instance.OnPower_2;
+            @Power_2.canceled -= instance.OnPower_2;
+            @Power_3.started -= instance.OnPower_3;
+            @Power_3.performed -= instance.OnPower_3;
+            @Power_3.canceled -= instance.OnPower_3;
+            @Power_4.started -= instance.OnPower_4;
+            @Power_4.performed -= instance.OnPower_4;
+            @Power_4.canceled -= instance.OnPower_4;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -809,6 +969,10 @@ public partial class @PlayerInputConfig: IInputActionCollection2, IDisposable
         void OnThrowAndPick_Right(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
         void OnMelee(InputAction.CallbackContext context);
+        void OnPower_1(InputAction.CallbackContext context);
+        void OnPower_2(InputAction.CallbackContext context);
+        void OnPower_3(InputAction.CallbackContext context);
+        void OnPower_4(InputAction.CallbackContext context);
     }
     public interface ICameraActions
     {

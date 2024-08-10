@@ -181,6 +181,7 @@ GameObject:
   - component: {fileID: 8931253014384036010}
   - component: {fileID: 6450648114312692643}
   - component: {fileID: 5286917748941394496}
+  - component: {fileID: 8710434799311030283}
   m_Layer: 7
   m_Name: LeftHand
   m_TagString: Untagged
@@ -287,7 +288,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.016805708}
+  m_Offset: {x: -0.067644045, y: 0.012940347}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0.5}
@@ -298,7 +299,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.30578858, y: 0.6043736}
+  m_Size: {x: 0.39855757, y: 0.8324305}
   m_EdgeRadius: 0
 --- !u!114 &6450648114312692643
 MonoBehaviour:
@@ -338,6 +339,33 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!50 &8710434799311030283
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4961928461761321569}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &7710356894065780079
 GameObject:
   m_ObjectHideFlags: 0
@@ -435,6 +463,7 @@ GameObject:
   - component: {fileID: 1566733559474792205}
   - component: {fileID: 2882492102589455176}
   - component: {fileID: 3005077827938548557}
+  - component: {fileID: 7892392732166556496}
   m_Layer: 7
   m_Name: RightHand
   m_TagString: Untagged
@@ -541,7 +570,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.02921249}
+  m_Offset: {x: 0.01836051, y: -0.029734433}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0.5}
@@ -552,7 +581,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.32985604, y: 0.5581424}
+  m_Size: {x: 0.36657706, y: 0.8151897}
   m_EdgeRadius: 0
 --- !u!114 &2882492102589455176
 MonoBehaviour:
@@ -592,6 +621,33 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!50 &7892392732166556496
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8662534556823747682}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &8729131620737107672
 GameObject:
   m_ObjectHideFlags: 0
@@ -899,26 +955,14 @@ MonoBehaviour:
     m_RightHandWeaponCurrentHP: 0
     m_LeftHandWeapon: 0
     m_RightHandWeapon: 0
-    m_LeftHandWeaponAttackingDuration: 0
-    m_RightHandWeaponAttackingDuration: 0
-    m_ProbabilityOfLeftWeapon: 0
-    m_ProbabilityOfRightWeapon: 0
-    m_EngagementDistance: 0
     m_Armor: 0
     m_EnergyShieldCount: 0
     m_CurrentHP: 0
     m_CurrentArmor: 0
     m_AttackRange: 0
-    m_TokenWeight: 0
-    m_RangeOfAimingError: 0
     m_Camp: 0
     m_DropWeapon_WeaponDestroy: 0
     m_DropWeapon_CharacterDied: 0
-    m_AutoAvoid: 0
-    m_AutoAvoid_Probability: 0
-    m_AutoAvoid_RestTimes: 0
-    m_DashSpeed: 0
-    m_DashDuration: 0
 --- !u!61 &6819414774916528228
 BoxCollider2D:
   m_ObjectHideFlags: 0

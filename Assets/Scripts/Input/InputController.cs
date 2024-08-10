@@ -390,4 +390,36 @@ public class InputController
             func?.Invoke();
         };
     }
+
+    public void AddPerformedActionToPower_1(Action func)
+    {
+        m_PlayerInputConfig.Player.Power_1.performed += ctx =>
+        {
+            func?.Invoke();
+        };
+    }
+
+    public void AddPerformedActionToPower_2(Action func)
+    {
+        m_PlayerInputConfig.Player.Power_2.performed += ctx =>
+        {
+            func?.Invoke();
+        };
+    }
+
+    public void AddPerformedActionToPower_3(Action func)
+    {
+        m_PlayerInputConfig.Player.Power_3.performed += ctx =>
+        {
+            func?.Invoke();
+        };
+    }
+
+    public void AddPerformedActionToPower_4(Action func)
+    {
+        m_PlayerInputConfig.Player.Power_4.performed += ctx =>
+        {
+            func?.Invoke();
+        };
+    }
 }
