@@ -521,8 +521,8 @@ MonoBehaviour:
         byteData: 
         byteDataArray: 
       Version: 1.7.9
-  gizmoViewMode: 2
-  showBehaviorDesignerGizmo: 1
+  gizmoViewMode: 0
+  showBehaviorDesignerGizmo: 0
 --- !u!114 &5384138960469735118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -776,8 +776,8 @@ MonoBehaviour:
     m_LeftHandWeaponCurrentHP: 0
     m_RightHandWeaponHP: 200
     m_RightHandWeaponCurrentHP: 0
-    m_LeftHandWeapon: 7
-    m_RightHandWeapon: 7
+    m_LeftHandWeapon: 0
+    m_RightHandWeapon: 0
     m_Armor: 0
     m_EnergyShieldCount: 30
     m_CurrentHP: 100

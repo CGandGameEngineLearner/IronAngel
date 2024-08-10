@@ -50,7 +50,8 @@ public class WaveInstance
             {
                 NetworkServer.Spawn(enemy);
             }
-
+            
+            WeaponSystemCenter.Instance.GiveAIWeapon(enemy);
             enemySet.Add(enemy);
         }
     }

@@ -66,7 +66,7 @@ public class AIController : NetworkBehaviour
     /// </summary>
     public SplineContainer PatrolRoute;
     // Start is called before the first frame update
-    void Start()
+    void OnEnable()
     {
         m_BaseProperties = GetComponent<BaseProperties>();
         
@@ -145,6 +145,8 @@ public class AIController : NetworkBehaviour
     
     public void SetLeftHandWeapon(GameObject weapon)
     {
+        if (!weapon) return;
+        
         m_LeftHandWeapon = weapon;
         weapon.transform.SetParent(LeftHand.transform);
         weapon.transform.localPosition = Vector3.zero;
@@ -153,6 +155,8 @@ public class AIController : NetworkBehaviour
 
     public void SetRightHandWeapon(GameObject weapon)
     {
+        if (!weapon) return;
+        
         m_RightHandWeapon = weapon;
         weapon.transform.SetParent(RightHand.transform);
         weapon.transform.localPosition = Vector3.zero;

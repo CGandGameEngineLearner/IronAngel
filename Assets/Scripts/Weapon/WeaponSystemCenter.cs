@@ -117,11 +117,12 @@ public class WeaponSystemCenter : NetworkBehaviour
     [ServerCallback]
     private GameObject AISpawnWeapon(WeaponType weaponType, Vector3 pos)
     {
+        if (weaponType == WeaponType.None) return null;
+        
         var weaponConfig = m_WeaponConfigDic[weaponType];
         var prefab = weaponConfig.prefab;
 
-        GameObject weapon = Instantiate(prefab, pos,
-            UnityEngine.Quaternion.identity);
+        GameObject weapon = Instantiate(prefab, pos, Quaternion.identity);
 
         weapon.GetComponent<WeaponInstance>().Init(weaponConfig);
         m_WeaponToConfigDic[weapon] = weaponConfig;
@@ -131,6 +132,8 @@ public class WeaponSystemCenter : NetworkBehaviour
         return weapon;
     }
 
+    
+    
     /// <summary>
     /// 给AI装备武器
     /// </summary>
@@ -154,11 +157,30 @@ public class WeaponSystemCenter : NetworkBehaviour
         }
     }
 
+    [ServerCallback]
+    public void GiveAIWeapon(GameObject enemy)
+    {
+        AIController aiController = enemy.GetComponent<AIController>();
+        
+        // 给左手装备武器
+        var weaponType = aiController.GetRightHandWeaponType();
+        var leftWeapon = AISpawnWeapon(weaponType, Vector3.zero);
+        aiController.SetLeftHandWeapon(leftWeapon);
+        
+        // 给右手装备武器
+        weaponType = aiController.GetRightHandWeaponType();
+        var rightWeapon = AISpawnWeapon(weaponType, Vector3.zero);
+        aiController.SetRightHandWeapon(rightWeapon);
+
+        RpcGiveAIWeapon(aiController, leftWeapon, rightWeapon);
+    }
+
     [ClientRpc]
     private void RpcGiveAIWeapon(AIController aiController, GameObject leftHandWeapon, GameObject rightHandWeapon)
     {
         aiController.SetLeftHandWeapon(leftHandWeapon);
         aiController.SetRightHandWeapon(rightHandWeapon);
+        Debug.LogWarning("Give Weapon");
     }
 
 
