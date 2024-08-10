@@ -432,8 +432,8 @@ MonoBehaviour:
         byteData: 
         byteDataArray: 
       Version: 1.7.9
-  gizmoViewMode: 0
-  showBehaviorDesignerGizmo: 0
+  gizmoViewMode: 2
+  showBehaviorDesignerGizmo: 1
 --- !u!114 &5384138960469735118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -464,6 +464,15 @@ MonoBehaviour:
   syncInterval: 0
   LeftHand: {fileID: 587068453855920466}
   RightHand: {fileID: 4495865224673025813}
+  m_AutoAvoid: 1
+  m_AutoAvoid_Probability: 0.5
+  m_AutoAvoid_RestTimes: 0
+  m_TokenWeight: 1
+  m_RangeOfAimingError: 2
+  m_LeftHandWeaponAttackingDuration: 2
+  m_RightHandWeaponAttackingDuration: 2
+  m_ProbabilityOfLeftWeapon: 0.3
+  m_ProbabilityOfRightWeapon: 0.5
   PatrolRoute: {fileID: 0}
 --- !u!114 &8337392909154346315
 MonoBehaviour:
@@ -480,6 +489,9 @@ MonoBehaviour:
   m_WallLayer:
     serializedVersion: 2
     m_Bits: 512
+  m_DashSpeed: 0
+  m_DashDuration: 0
+  m_EngagementDistance: 0
 --- !u!58 &7549400497388090286
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -677,26 +689,14 @@ MonoBehaviour:
     m_RightHandWeaponCurrentHP: 0
     m_LeftHandWeapon: 7
     m_RightHandWeapon: 7
-    m_LeftHandWeaponAttackingDuration: 5
-    m_RightHandWeaponAttackingDuration: 5
-    m_ProbabilityOfLeftWeapon: 0.5
-    m_ProbabilityOfRightWeapon: 0.5
-    m_EngagementDistance: 3
     m_Armor: 0
     m_EnergyShieldCount: 30
     m_CurrentHP: 100
     m_CurrentArmor: 0
     m_AttackRange: 10
-    m_TokenWeight: 1
-    m_RangeOfAimingError: 0
     m_Camp: 1
     m_DropWeapon_WeaponDestroy: 0
     m_DropWeapon_CharacterDied: 1
-    m_AutoAvoid: 1
-    m_AutoAvoid_Probability: 0.3
-    m_AutoAvoid_RestTimes: 2
-    m_DashSpeed: 5
-    m_DashDuration: 2
 --- !u!195 &3478913082591308681
 NavMeshAgent:
   m_ObjectHideFlags: 0
