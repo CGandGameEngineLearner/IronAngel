@@ -14,11 +14,11 @@ public class VfxPool : MonoBehaviour
         public VfxType vfxType;
         public ObjectCategory vfxCategory;
     }
-
     
     public static VfxPool Instance { get; private set; }
 
-    [SerializeField]private List<VfxPair> m_VfxPairs = new();
+    [SerializeField]
+    private List<VfxPair> m_VfxPairs = new();
     private ObjectPoolManager<VfxType> m_VfxObjectPoolManager = new ObjectPoolManager<VfxType>();
 
     public void Awake()
