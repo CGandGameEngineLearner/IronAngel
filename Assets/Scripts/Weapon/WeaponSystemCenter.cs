@@ -283,7 +283,7 @@ public class WeaponSystemCenter : NetworkBehaviour
 
         // 调用客户端的开火特效
         if (!weapon.TryGetComponent<WeaponInstance>(out WeaponInstance weaponInstance)) return;
-        weaponInstance.FireVfxAndAnimation(weaponConfig, startPoint, Quaternion.identity);
+        weaponInstance.FireVfxAndAnimation(weaponType, weaponConfig, startPoint, Quaternion.identity);
     }
 
 
