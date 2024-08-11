@@ -19,6 +19,7 @@ public static class SaveLoadManager
 #if UNITY_EDITOR
             Debug.Log("Game saved successfully.");
 #endif
+            GlobalSaveFile = saveFile;
         }
         catch (Exception ex)
         {
