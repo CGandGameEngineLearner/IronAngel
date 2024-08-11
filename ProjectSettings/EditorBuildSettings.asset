@@ -30,6 +30,12 @@ EditorBuildSettings:
     path: Assets/Scenes/BattleLevels/Level1/Level1_Area2_ ParkingLot.unity
     guid: 74d21da6f47747045bfc8eb79858cc74
   - enabled: 1
+    path: Assets/Scenes/BattleLevels/Level1/Level1_Area3_ FuelStation.unity
+    guid: fe3c9843bc31f9248b862a9429b09e58
+  - enabled: 1
+    path: Assets/Scenes/BattleLevels/Level2/Level2_Area1_Camp.unity
+    guid: 1b3d8b15bf5beff45a6c74e590210063
+  - enabled: 1
     path: Assets/Scenes/MultiplayerLevel/PvPLevel.unity
     guid: 94e7aa96d64429f4f8bd40205bdcb628
   m_configObjects: {}

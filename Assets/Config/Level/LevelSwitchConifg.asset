@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   basementName: Basement
   levelStruct:
-  - levelName: Highway
+  - levelName: LEVEL1 Wagamama Highway
     sectionName:
     - Level1_Area1_Highway
     - Level1_Area2_ ParkingLot
-  - levelName: Highway2
+    - Level1_Area3_ FuelStation
+  - levelName: LEVEL2 DesertStorm
     sectionName:
-    - Level1_Area1_Highway
-    - Level1_Area2_ ParkingLot
+    - Level2_Area1_Camp

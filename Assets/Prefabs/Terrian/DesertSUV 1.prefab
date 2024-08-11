@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 7483235809225013682}
   - component: {fileID: 3549377824661021588}
   - component: {fileID: 4176467771182711017}
+  - component: {fileID: 7510790911493919789}
+  - component: {fileID: 96627599115099737}
   m_Layer: 0
   m_Name: DesertSUV 1
   m_TagString: Untagged
@@ -158,3 +160,35 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.925621, y: 1.7462044}
   m_EdgeRadius: 0
+--- !u!114 &7510790911493919789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5578450524018859832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneId: 0
+  _assetId: 2359026685
+  serverOnly: 0
+  visibility: 0
+  hasSpawned: 0
+--- !u!114 &96627599115099737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5578450524018859832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4acde9c6da7423e4493060aaf220e9c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0

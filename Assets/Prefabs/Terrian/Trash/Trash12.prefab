@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 6858421377382795396}
   - component: {fileID: 1523079683696761687}
   - component: {fileID: 4606903538091113764}
+  - component: {fileID: -5155903258431595459}
+  - component: {fileID: -4457145382193811817}
   m_Layer: 0
   m_Name: Trash12
   m_TagString: Untagged
@@ -158,3 +160,35 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.5091, y: 4.5809593}
   m_EdgeRadius: 0
+--- !u!114 &-5155903258431595459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4345826320830902741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4acde9c6da7423e4493060aaf220e9c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncDirection: 0
+  syncMode: 0
+  syncInterval: 0
+--- !u!114 &-4457145382193811817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4345826320830902741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneId: 0
+  _assetId: 3119765801
+  serverOnly: 0
+  visibility: 0
+  hasSpawned: 0
