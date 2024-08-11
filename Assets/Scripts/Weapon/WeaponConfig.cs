@@ -24,6 +24,7 @@ public struct WeaponConfigData
 [Serializable]
 public class WeaponConfig : ItemConfig
 {
+    public string weaponName;
     // 武器类型
     public AtkType atkType => m_AtkType;
 
