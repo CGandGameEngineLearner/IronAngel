@@ -683,7 +683,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a60e4b72131b3647a70b7ea294fa781, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _DamageReductionCoefficient: 0.504
+  _DamageReductionCoefficient: 1
   AI_Attack_Tokens: 3
 --- !u!4 &163912376
 Transform:
@@ -1174,6 +1174,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 487800976973705117, guid: 69677af734c8e1748959e20b5597d2f2, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 4087
+      objectReference: {fileID: 0}
     - target: {fileID: 504466172422989906, guid: 69677af734c8e1748959e20b5597d2f2, type: 3}
       propertyPath: m_Cameras.Array.size
       value: 0
@@ -3022,9 +3026,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1707460726574380805, guid: c25acdb10ed116c4cabc400ac9038732, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2195872794582507982, guid: c25acdb10ed116c4cabc400ac9038732, type: 3}
       propertyPath: m_Name
       value: AItest (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5981209834974173356, guid: c25acdb10ed116c4cabc400ac9038732, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5981209834974173356, guid: c25acdb10ed116c4cabc400ac9038732, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6485104532671038429, guid: c25acdb10ed116c4cabc400ac9038732, type: 3}
       propertyPath: m_RootOrder
@@ -3073,6 +3089,22 @@ PrefabInstance:
     - target: {fileID: 7061394662276560116, guid: c25acdb10ed116c4cabc400ac9038732, type: 3}
       propertyPath: sceneId
       value: 1700067272
+      objectReference: {fileID: 0}
+    - target: {fileID: 7441258559057624508, guid: c25acdb10ed116c4cabc400ac9038732, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7441258559057624508, guid: c25acdb10ed116c4cabc400ac9038732, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7621705253185721979, guid: c25acdb10ed116c4cabc400ac9038732, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8207730412740010490, guid: c25acdb10ed116c4cabc400ac9038732, type: 3}
+      propertyPath: m_FillAmount
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
