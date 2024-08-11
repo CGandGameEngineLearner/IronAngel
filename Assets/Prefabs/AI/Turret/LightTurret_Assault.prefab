@@ -449,11 +449,11 @@ MonoBehaviour:
   m_AutoAvoid: 0
   m_AutoAvoid_Probability: 0
   m_AutoAvoid_RestTimes: 0
-  m_TokenWeight: 0
-  m_RangeOfAimingError: 0
-  m_LeftHandWeaponAttackingDuration: 0
+  m_TokenWeight: 0.6
+  m_RangeOfAimingError: 1
+  m_LeftHandWeaponAttackingDuration: 5
   m_RightHandWeaponAttackingDuration: 0
-  m_ProbabilityOfLeftWeapon: 0
+  m_ProbabilityOfLeftWeapon: 0.812
   m_ProbabilityOfRightWeapon: 0
   PatrolRoute: {fileID: 0}
 --- !u!114 &8337392909154346315
@@ -665,7 +665,7 @@ MonoBehaviour:
   syncInterval: 0
   m_Properties:
     m_Energy: 0
-    m_BaseHP: 500
+    m_BaseHP: 450
     m_LeftHandWeaponHP: 200
     m_LeftHandWeaponCurrentHP: 0
     m_RightHandWeaponHP: 200
@@ -675,7 +675,7 @@ MonoBehaviour:
     m_LeftWeaponGO: {fileID: 0}
     m_RightWeaponGO: {fileID: 0}
     m_Armor: 0
-    m_EnergyShieldCount: 20
+    m_EnergyShieldCount: 5
     m_CurrentHP: 100
     m_CurrentArmor: 0
     m_AttackRange: 10
@@ -693,7 +693,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 0
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 90

@@ -34,6 +34,11 @@ public class UICanvas : MonoBehaviour
 
     public PlotPanel PlotPanel { get { return m_PlotPanel; } }
 
+    [SerializeField]
+    private Texture2D m_Aim_1;
+    [SerializeField]
+    private Texture2D m_Aim_2;
+
     public bool isSingle = true;
     bool isPause = false;
 
@@ -117,6 +122,14 @@ public class UICanvas : MonoBehaviour
         {
             ShowPauseMenu(!isPause);
             isPause = !isPause;
+        }
+        if(Input.GetMouseButton(0))
+        {
+            Cursor.SetCursor(m_Aim_2, Vector2.zero, CursorMode.Auto);
+        }
+        else
+        {
+            Cursor.SetCursor(m_Aim_1, Vector2.zero, CursorMode.Auto);
         }
     }
 

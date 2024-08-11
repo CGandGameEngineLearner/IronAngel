@@ -16,6 +16,8 @@ public class EnemyUI : MonoBehaviour
     private float m_SpriteAlphaFlash = 1.0f;
     [SerializeField]
     private float m_FadeSpeed = 1.0f;
+    [SerializeField]
+    private float m_BloodScale = 4.5f;
 
     private float m_CurrentAlpha = 0;
     private void Start()
@@ -48,7 +50,7 @@ public class EnemyUI : MonoBehaviour
         }
         if(m_Type == EnemyUIType.Blood)
         {
-            m_SpriteRender.gameObject.transform.localScale = new Vector3(m_Properties.m_Properties.m_CurrentHP * 1.0f / m_Properties.m_Properties.m_BaseHP * 2, 1, 1);
+            m_SpriteRender.gameObject.transform.localScale = new Vector3(m_Properties.m_Properties.m_CurrentHP * 1.0f / m_Properties.m_Properties.m_BaseHP * m_BloodScale, m_SpriteRender.gameObject.transform.localScale.y, m_SpriteRender.gameObject.transform.localScale.z);
             transform.rotation = Quaternion.identity;
             transform.position = transform.parent.transform.position + m_Offset;
         }
