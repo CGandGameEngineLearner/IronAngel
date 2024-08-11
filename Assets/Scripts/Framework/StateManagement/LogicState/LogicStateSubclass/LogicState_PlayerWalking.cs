@@ -7,6 +7,7 @@ namespace LogicState
     public class LogicState_PlayerWalking : LogicState
     {
         public LogicState_PlayerWalking(ELogicState stateEnum) : base(stateEnum) { }
+        public LogicState_PlayerWalking(ELogicState stateEnum, LogicStateManager parent) : base(stateEnum, parent){}
         public override void OnStateIn()
         {
 #if UNITY_EDITOR

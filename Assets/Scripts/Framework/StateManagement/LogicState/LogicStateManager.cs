@@ -52,7 +52,7 @@ namespace LogicState
                 {
                     LogicState stateTemplate = LogicStateConfig.GetLogicStateTemplate(stateEnum);
                     Type stateType = stateTemplate.GetType();
-                    LogicState newState = (LogicState)(Activator.CreateInstance(stateType,stateEnum));
+                    LogicState newState = (LogicState)(Activator.CreateInstance(stateType,stateEnum,this));
                     newState.SetOwner(this);
                     newState.Duration = stateTemplate.Duration;
                     newState.StartTime = Time.time;
@@ -108,6 +108,18 @@ namespace LogicState
         }
 
         public bool IncludeState(List<ELogicState> stateEnums)
+        {
+            foreach (var stateEnum in stateEnums)
+            {
+                if (!IncludeState(stateEnum))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        public bool IncludeState(ELogicState[] stateEnums)
         {
             foreach (var stateEnum in stateEnums)
             {
