@@ -123,7 +123,6 @@ public class LevelManager : NetworkBehaviour
 
     public void Awake()
     {
-        Debug.LogError("Start");
         Instance = this;
     }
 
