@@ -29,6 +29,11 @@ public class UICanvas : MonoBehaviour
     private StartMenu m_StartMenu;
     public StartMenu StartMenu {  get { return m_StartMenu; } }
 
+    [SerializeField]
+    private PlotPanel m_PlotPanel;
+
+    public PlotPanel PlotPanel { get { return m_PlotPanel; } }
+
     public bool isSingle = true;
     bool isPause = false;
 
@@ -86,6 +91,19 @@ public class UICanvas : MonoBehaviour
     public void OnPauseMenuEvent()
     {
         ShowPauseMenu(IsPauseMenuActive());
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="text"></param> 目标文字
+    /// <param name="time"></param> 用多久出现
+    /// <param name="duration"></param> 持续多久
+    /// <param name="isEnd"></param> 是否是最后一句，是的话这句结束后文字面板会隐藏
+    public void SetPlotText(string text, float time, float duration, bool isEnd = false)
+    {
+        m_PlotPanel.gameObject.SetActive(true);
+        m_PlotPanel.SetText(text, time, duration, isEnd);
     }
 
     public bool IsPauseMenuActive()
