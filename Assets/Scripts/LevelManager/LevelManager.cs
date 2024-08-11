@@ -51,6 +51,8 @@ public class WaveInstance
                 NetworkServer.Spawn(enemy);
             }
 
+            // 设置仇恨
+            enemy.GetComponent<DamageSensor>().PutPerceiveGameObject(PlayerController.PlayerControllers[0].gameObject);
             WeaponSystemCenter.Instance.GiveAIWeapon(enemy);
             enemySet.Add(enemy);
         }
