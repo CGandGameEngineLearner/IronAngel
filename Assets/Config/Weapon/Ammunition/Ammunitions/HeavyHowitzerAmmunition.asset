@@ -27,6 +27,9 @@ MonoBehaviour:
   m_LaserWidth: 0
   m_LeastLiveFixedFrameCount: 0
   m_specialAtkTypes: 
-  m_EffectBuff: []
+  m_EffectBuff:
+  - m_EffectBuff: 13
+    m_Duration: 2
+    m_Number: 0
   hitVfxType: 0
   hitSfxType: 0

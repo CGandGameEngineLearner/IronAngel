@@ -17,8 +17,8 @@ MonoBehaviour:
   m_MaxPoolSize: 100
   isAuto: 0
   m_Speed: 0
-  m_LifeDistance: 40
-  m_Damage: 20
+  m_LifeDistance: 30
+  m_Damage: 10
   m_PostAmmunitionType: 12
   m_IsExplodeDamage: 0
   sigma: 0
