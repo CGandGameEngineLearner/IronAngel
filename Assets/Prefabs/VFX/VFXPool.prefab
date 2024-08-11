@@ -30,7 +30,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 29
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &324756221992265582
 MonoBehaviour:
@@ -51,6 +51,16 @@ MonoBehaviour:
       defaultSize: 50
       maxSize: 100
   - vfxType: 18
+    vfxCategory:
+      prefab: {fileID: 1875443689672974235, guid: bf1f0eca9828c2749b65f10aaf912fd8, type: 3}
+      defaultSize: 50
+      maxSize: 100
+  - vfxType: 2
+    vfxCategory:
+      prefab: {fileID: 1875443689672974235, guid: bf1f0eca9828c2749b65f10aaf912fd8, type: 3}
+      defaultSize: 50
+      maxSize: 100
+  - vfxType: 2
     vfxCategory:
       prefab: {fileID: 1875443689672974235, guid: bf1f0eca9828c2749b65f10aaf912fd8, type: 3}
       defaultSize: 50
