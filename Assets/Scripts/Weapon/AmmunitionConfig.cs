@@ -43,7 +43,8 @@ public class AmmunitionConfig : ItemConfig
 
     [Header("特效和音效配置")]
     public VfxType hitVfxType;
-    public SfxType hitSfxType;
+    public VfxType holeType;
+    public VfxType scrapType;
     
 }
 
