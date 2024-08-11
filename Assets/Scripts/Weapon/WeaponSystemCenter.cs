@@ -149,6 +149,41 @@ public class WeaponSystemCenter : NetworkBehaviour
         RpcWeaponDicUpdate(weapon, weaponType);
         return weapon;
     }
+
+    /// <summary>
+    /// 给玩家左右手武器加载使用
+    /// </summary>
+    /// <param name="leftWeaponType"></param>
+    /// <param name="rightWeaponType"></param>
+    [ServerCallback]
+    public void GivePlayerWeapon(WeaponType leftWeaponType, WeaponType rightWeaponType)
+    {
+        if (leftWeaponType != WeaponType.None)
+        {
+            GameObject leftWeapon = GetWeapon(leftWeaponType);
+            PlayerController.PlayerControllers[0].Player.SetPlayerLeftHandWeapon(leftWeapon);
+            RpcGivePlayerLeftWeapon(leftWeapon);
+        }
+        
+        if (rightWeaponType != WeaponType.None)
+        {
+            GameObject rightWeapon = GetWeapon(rightWeaponType);
+            PlayerController.PlayerControllers[0].Player.SetPlayerRightHandWeapon(rightWeapon);
+            RpcGivePlayerRightWeapon(rightWeapon);
+        }
+    }
+
+    [ClientRpc]
+    private void RpcGivePlayerLeftWeapon(GameObject weapon)
+    {
+        PlayerController.PlayerControllers[0].Player.SetPlayerLeftHandWeapon(weapon);
+    }
+
+    [ClientRpc]
+    private void RpcGivePlayerRightWeapon(GameObject weapon)
+    {
+        PlayerController.PlayerControllers[0].Player.SetPlayerRightHandWeapon(weapon);
+    }
     
     /// <summary>
     /// 给AI装备武器
