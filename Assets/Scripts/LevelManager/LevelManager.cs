@@ -62,7 +62,7 @@ public class WaveInstance
 
         enemySet.Remove(gameObject);
 #if UNITY_EDITOR
-        Debug.Log($"Enemy Death,Remain{enemySet.Count}, ${m_EnemyToSpawn.Count}");
+        Debug.LogWarning($"Enemy Death,Remain{enemySet.Count}, ${m_EnemyToSpawn.Count}");
 #endif
         if (CurrentEnemyCount < waveListItem.onFieldEnemyCount && m_EnemyToSpawn.Count > 0)
         {
@@ -125,7 +125,9 @@ public class LevelManager : NetworkBehaviour
 
     public void StartBattleZoneWave(WaveConfig enemyWaveConfig)
     {
-        Debug.LogError("StartWave");
+#if UNITY_EDITOR
+        Debug.LogWarning("StartWave");
+#endif
         m_BattleZoneWaveHandle = new BattleZoneWaveHandle(enemyWaveConfig, OnWaveFinished, isServer);
 
         m_IsRunning = true;
@@ -171,7 +173,7 @@ public class LevelManager : NetworkBehaviour
     private void OnWaveFinished(WaveInstance waveInstance)
     {
 #if UNITY_EDITOR
-        Debug.LogError("小波次结束");
+        Debug.LogWarning("小波次结束");
 #endif
         m_WaveInstancesToUpdate.Remove(waveInstance);
 
@@ -180,7 +182,7 @@ public class LevelManager : NetworkBehaviour
             m_IsRunning = false;
             // TODO: 解锁关卡空气墙
 #if UNITY_EDITOR
-            Debug.LogError("波次结束了！！！！");
+            Debug.LogWarning("波次结束了！！！！");
 #endif
         }
         else
@@ -194,7 +196,7 @@ public class LevelManager : NetworkBehaviour
         yield return new WaitForSeconds(waveInstance.waveListItem.waveDelay);
         AddWaveInstance(m_BattleZoneWaveHandle.GetNextWave());
 #if UNITY_EDITOR
-        Debug.LogError("New Wave Incoming");
+        Debug.LogWarning("New Wave Incoming");
 #endif
     }
 }
