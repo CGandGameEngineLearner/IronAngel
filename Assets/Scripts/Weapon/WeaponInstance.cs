@@ -99,8 +99,14 @@ public class WeaponInstance : NetworkBehaviour
         {
             Debug.LogError(weaponType+"武器预制体未挂载音效组件");
         }
+
+        if (audioSource.clip != null)
+        {
+            audioSource.Play();
+            Debug.LogError("Playing" + $"{audioSource.clip.name}");
+        }
         
-        audioSource.Play();
+        
         
         // 普通武器开火动画，激光需要特殊处理
         if (weaponType != WeaponType.CombatLaserGun && weaponType != WeaponType.HeavyLaserCannon)
