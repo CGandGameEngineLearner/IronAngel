@@ -6582,6 +6582,14 @@ PrefabInstance:
       propertyPath: sceneId
       value: 3794390269
       objectReference: {fileID: 0}
+    - target: {fileID: 1018315098804306658, guid: b319a1beeb967194bbc9b9fa245fb3d7, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3630192085394695501, guid: b319a1beeb967194bbc9b9fa245fb3d7, type: 3}
+      propertyPath: sceneId
+      value: 609685421
+      objectReference: {fileID: 0}
     - target: {fileID: 4273633363849184490, guid: b319a1beeb967194bbc9b9fa245fb3d7, type: 3}
       propertyPath: sceneId
       value: 2432943547
