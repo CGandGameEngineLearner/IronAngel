@@ -36,6 +36,9 @@ public class AIMovement : MonoBehaviour
     [Tooltip("AI与玩家交战的距离")]
     public float m_EngagementDistance;
 
+    [Tooltip("避障探路距离")]
+    public float m_ObstacleAvoidanceDistance = 3f;
+
     private void OnEnable()
     {
         m_LogicStateManager = GetComponent<LogicStateManager>();
@@ -151,18 +154,19 @@ public class AIMovement : MonoBehaviour
         
         // 如果目标点有刚体占着位置 则把目标点设置到1个单位附近
         var dir = (target - transform.position).normalized;
-        RaycastHit hit;
-        if (Physics.Raycast(target, dir, out hit, 1f))
+        var hit = Physics2D.Raycast(target, -dir, m_ObstacleAvoidanceDistance);
+        Debug.DrawLine(target,m_ObstacleAvoidanceDistance*dir,Color.green,10);
+        if (hit.collider != null)
         {
-            if (hit.collider != null)
+            Debug.Log("发现障碍");
+            Rigidbody2D rb = hit.collider.gameObject.GetComponent<Rigidbody2D>();
+            if (rb != null)
             {
-                Rigidbody rb = hit.collider.GetComponent<Rigidbody>();
-                if (rb == null)
-                {
-                    target = target - 1 * dir;
-                }
+                Debug.Log("避障");
+                target = target - m_ObstacleAvoidanceDistance * dir;
             }
         }
+        
         return agent.SetDestination(target);
     }
     
@@ -198,7 +202,7 @@ public class AIMovement : MonoBehaviour
         var targetPos = targetGameObject.transform.position + offsetVec;
         if (agent.isOnNavMesh)
         {
-            agent.SetDestination(targetPos);
+            SetDestination(targetPos);
         }
        
     }   
