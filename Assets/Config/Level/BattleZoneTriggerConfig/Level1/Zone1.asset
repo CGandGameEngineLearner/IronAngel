@@ -21,9 +21,9 @@ MonoBehaviour:
     - enemyPrefab: {fileID: 2195872794582507982, guid: 039fd3fee3677004c9040c4e3660fc9a, type: 3}
       spawnPosition: {x: 6.5311737, y: 14.5942135, z: 0}
     - enemyPrefab: {fileID: 2195872794582507982, guid: 039fd3fee3677004c9040c4e3660fc9a, type: 3}
-      spawnPosition: {x: 13.366528, y: 14.274805, z: 0}
+      spawnPosition: {x: 11.789249, y: -4.318841, z: 0}
     - enemyPrefab: {fileID: 2195872794582507982, guid: 039fd3fee3677004c9040c4e3660fc9a, type: 3}
-      spawnPosition: {x: 9.405855, y: 12.486114, z: 0}
+      spawnPosition: {x: 11.716909, y: 12.46372, z: 0}
     onFieldEnemyCount: 3
     timeOut: 0
     waveDelay: 10

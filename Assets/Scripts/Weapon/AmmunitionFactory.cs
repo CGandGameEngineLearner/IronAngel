@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Mirror;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class AmmunitionHandle
 {
@@ -208,6 +209,7 @@ public class AmmunitionFactory
         {
             if (ammunitionHandle.ammunitionType < AmmunitionType.PostExplodeSplitter)
             {
+                
                 VfxPool.Instance.GetVfx(ammunitionConfig.hitVfxType, ammunition.transform.position,
                     Quaternion.identity);
             }
@@ -234,7 +236,13 @@ public class AmmunitionFactory
                 // Debug.LogError($"m_IsClient = {m_IsClient}");
                 if (ammunitionHandle.ammunitionType > AmmunitionType.PostExplodeSplitter)
                 {
-                    // Debug.LogError("Boom");
+                    // 弹坑
+                    VfxPool.Instance.GetVfx(ammunitionConfig.holeType, ammunition.transform.position, Quaternion.identity);
+                    float randomAngle = Random.Range(0f, 360f);
+                    Quaternion randomRotation = Quaternion.AngleAxis(randomAngle, Vector3.forward);
+                    // 碎屑
+                    VfxPool.Instance.GetVfx(ammunitionConfig.scrapType, ammunition.transform.position, randomRotation);
+                    // 爆炸
                     VfxPool.Instance.GetVfx(ammunitionConfig.hitVfxType, ammunition.transform.position,
                         Quaternion.identity);
                 }

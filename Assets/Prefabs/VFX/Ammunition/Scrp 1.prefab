@@ -10,10 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 184475564177973939}
   - component: {fileID: 7075509089992316594}
-  - component: {fileID: 4665946850316610417}
   - component: {fileID: -1998743043140916663}
   m_Layer: 0
-  m_Name: BOOM
+  m_Name: Scrp 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,8 +26,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1875443689672974235}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.743, y: -3.204, z: -1}
-  m_LocalScale: {x: 4, y: 4, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 6, y: 6, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -74,8 +73,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 510
-  m_Sprite: {fileID: 874801656, guid: 9ad2d731c40cd17418b8937386a1d95f, type: 3}
+  m_SortingOrder: 489
+  m_Sprite: {fileID: 606593376, guid: 24fbab14afa96874a9a6c3e764eb95bb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -86,27 +85,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &4665946850316610417
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1875443689672974235}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 5c9702e1a7908f64d8d8d6268a9a971b, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &-1998743043140916663
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -119,6 +97,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 473752e01c4346048a994fba29145def, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selfVfxType: 18
-  autoDestroyTime: 0.567
+  selfVfxType: 24
+  autoDestroyTime: 2
   needRelease: 1
