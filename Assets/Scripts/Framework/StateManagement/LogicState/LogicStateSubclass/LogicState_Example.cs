@@ -6,7 +6,7 @@ namespace LogicState
     public class LogicState_Example:LogicState
     {
         public LogicState_Example(ELogicState stateEnum):base(stateEnum){}
-    
+        public LogicState_Example(ELogicState stateEnum, LogicStateManager parent) : base(stateEnum, parent){}
         public override void Init()
         {
             Debug.Log(GetType()+"Init()");

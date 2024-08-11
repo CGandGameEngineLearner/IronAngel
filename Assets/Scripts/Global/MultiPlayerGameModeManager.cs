@@ -73,5 +73,10 @@ public class MultiPlayerGameModeManager : NetworkBehaviour
 		    }
 	    }
     }
-   
+
+
+    private void OnDestroy()
+    {
+        EventCenter.RemoveListener(EventType.MultiPlayerGameStart, OnMultiPlayerGameStart);
+    }
 }

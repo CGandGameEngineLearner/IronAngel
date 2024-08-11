@@ -22,6 +22,9 @@ namespace LogicState
         AIAttacking,                        // AI攻击中
         AIDashing,                          // AI冲刺中
         AIAttackPreCastDelay,               // AI攻击前摇状态
+        CoreDamaged,                        // 核心受到了伤害 (用于受伤特效)
+        LeftHandDamaged,                    // 左手受到了伤害 (用于受伤特效)
+        RightHandDamaged,                   // 右手受到了伤害 (用于受伤特效)
         // ---------------------------------- 以上为LogicState ---------------------------------- 
         LogicStateSplitter,        
         // ---------------------------------- 以下为BuffState  ---------------------------------- 
@@ -57,6 +60,9 @@ namespace LogicState
             new LogicState(ELogicState.AIAttacking),
             new LogicState(ELogicState.AIDashing),
             new LogicState(ELogicState.AIAttackPreCastDelay),
+            new LogicState_Damaged(ELogicState.CoreDamaged),
+            new LogicState_Damaged(ELogicState.LeftHandDamaged),
+            new LogicState_Damaged(ELogicState.RightHandDamaged),
             // 以上是LogicState ---------------------
             
             // 以下是BuffState ----------------------

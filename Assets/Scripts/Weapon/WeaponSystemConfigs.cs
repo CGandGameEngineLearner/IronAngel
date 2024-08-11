@@ -64,7 +64,7 @@ public enum AmmunitionType
 
     // 重型榴弹炮子弹产生的爆炸
     HeavyHowitzerPostExplode,
-
+    
     Count,
 }
 
@@ -138,6 +138,13 @@ public enum VfxType
     RocketLauncherAmmunitionHitVfx,
     MissileLauncherAmmunitionHitVfx,
     HeavyHowitzerAmmunitionHitVfx,
+    //
+    Hole1,
+    Hole2,
+    Hole3,
+    Scrap1,
+    Scrap2,
+    Scrap3,
 }
 
 public enum SfxType

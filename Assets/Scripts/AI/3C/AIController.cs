@@ -22,8 +22,7 @@ public class AIController : NetworkBehaviour
     private BaseProperties m_BaseProperties;
     private LogicStateManager m_LogicStateManager;
     
-    private GameObject m_LeftHandWeapon;
-    private GameObject m_RightHandWeapon;
+    
 
     [Tooltip("左手位置的标记GameObject")]
     public GameObject LeftHand;
@@ -52,7 +51,7 @@ public class AIController : NetworkBehaviour
     public float m_LeftHandWeaponAttackingDuration;
     
     [Tooltip("右手武器每次攻击的持续时长(一定要大于前摇时长，因为攻击时长包含了前摇时长)")]
-    public float m_RightHandWeaponAttackingDuration;
+    public float  m_RightHandWeaponAttackingDuration;
     
     [Tooltip("左手武器使用概率"),Range(0,1)]
     public float m_ProbabilityOfLeftWeapon;
@@ -152,7 +151,7 @@ public class AIController : NetworkBehaviour
     {
         if (!weapon) return;
         
-        m_LeftHandWeapon = weapon;
+        m_BaseProperties.m_Properties.m_LeftWeaponGO = weapon;
         weapon.transform.SetParent(LeftHand.transform);
         weapon.transform.localPosition = Vector3.zero;
         weapon.transform.localRotation = Quaternion.identity;
@@ -162,7 +161,7 @@ public class AIController : NetworkBehaviour
     {
         if (!weapon) return;
         
-        m_RightHandWeapon = weapon;
+        m_BaseProperties.m_Properties.m_RightWeaponGO = weapon;
         weapon.transform.SetParent(RightHand.transform);
         weapon.transform.localPosition = Vector3.zero;
         weapon.transform.localRotation = Quaternion.identity;
@@ -274,7 +273,7 @@ public class AIController : NetworkBehaviour
         }
         
         
-        if (m_LeftHandWeapon == null && m_RightHandWeapon == null)
+        if (m_BaseProperties.m_Properties.m_LeftWeaponGO == null &&  m_BaseProperties.m_Properties.m_RightWeaponGO == null)
         {
             return false;
         }
@@ -328,26 +327,26 @@ public class AIController : NetworkBehaviour
     private void LeftHandFire()
     {
         var leftDuration = m_LeftHandWeaponAttackingDuration;
-        var LeftHandAttackPreCastDelay = WeaponSystemCenter.GetWeaponConfig(m_LeftHandWeapon).attackPreCastDelay;
+        var LeftHandAttackPreCastDelay = WeaponSystemCenter.GetWeaponConfig(m_BaseProperties.m_Properties.m_LeftWeaponGO).attackPreCastDelay;
         if (leftDuration <= LeftHandAttackPreCastDelay)
         {
             Debug.LogError("攻击时长包含前摇时长，所以前摇时长不能大于攻击时长");
         }
         m_LogicStateManager.SetStateDuration(ELogicState.AIAttacking, leftDuration);
-        StartCoroutine(FireCoroutine(m_LeftHandWeapon));
+        StartCoroutine(FireCoroutine(m_BaseProperties.m_Properties.m_LeftWeaponGO));
     }
 
     [ServerCallback]
     private void RightHandFire()
     {
         var rightDuration = m_RightHandWeaponAttackingDuration;
-        var RightHandAttackPreCastDelay = WeaponSystemCenter.GetWeaponConfig(m_RightHandWeapon).attackPreCastDelay;
+        var RightHandAttackPreCastDelay = WeaponSystemCenter.GetWeaponConfig( m_BaseProperties.m_Properties.m_RightWeaponGO).attackPreCastDelay;
         if (rightDuration <= RightHandAttackPreCastDelay)
         {
             Debug.LogError("攻击时长包含前摇时长，所以前摇时长不能大于攻击时长");
         }
         m_LogicStateManager.SetStateDuration(ELogicState.AIAttacking, rightDuration);
-        StartCoroutine(FireCoroutine(m_RightHandWeapon));
+        StartCoroutine(FireCoroutine( m_BaseProperties.m_Properties.m_RightWeaponGO));
     }
     
     [ServerCallback]

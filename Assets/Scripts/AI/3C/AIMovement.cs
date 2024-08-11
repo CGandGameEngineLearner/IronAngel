@@ -1,11 +1,8 @@
-
-using System;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Splines;
 using System.Collections;
 using LogicState;
-using UnityEditor;
 using Vector2 = UnityEngine.Vector2;
 
 public class AIMovement : MonoBehaviour

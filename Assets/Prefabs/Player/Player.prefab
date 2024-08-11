@@ -594,6 +594,8 @@ MonoBehaviour:
     m_RightHandWeaponCurrentHP: 0
     m_LeftHandWeapon: 0
     m_RightHandWeapon: 0
+    m_LeftWeaponGO: {fileID: 0}
+    m_RightWeaponGO: {fileID: 0}
     m_Armor: 0
     m_EnergyShieldCount: 0
     m_CurrentHP: 0
@@ -602,6 +604,7 @@ MonoBehaviour:
     m_Camp: 0
     m_DropWeapon_WeaponDestroy: 0
     m_DropWeapon_CharacterDied: 0
+    m_CoreSprite: {fileID: 292660507534508643}
 --- !u!61 &3606632189049154889
 BoxCollider2D:
   m_ObjectHideFlags: 0

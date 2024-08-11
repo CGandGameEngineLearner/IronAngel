@@ -3,6 +3,9 @@ using Mirror;
 using UnityEngine;
 
 
+/// <summary>
+/// 所有的角色都会挂载此基础属性组件
+/// </summary>
 public class BaseProperties : NetworkBehaviour
 {
     public Properties m_Properties;
@@ -39,6 +42,9 @@ public enum ECamp
     Count,           // 用于记录枚举数量
 }
 
+/// <summary>
+/// 所有角色都有的属性
+/// </summary>
 [Serializable]
 public struct Properties
 {
@@ -65,6 +71,12 @@ public struct Properties
     
     [Tooltip("右手武器种类")]
     public WeaponType m_RightHandWeapon;
+
+    [Tooltip("左手武器GameObject")]
+    public GameObject m_LeftWeaponGO;
+    
+    [Tooltip("右手武器GameObject")]
+    public GameObject m_RightWeaponGO;
     
     [Tooltip("护甲")]
     public int m_Armor;
@@ -90,4 +102,6 @@ public struct Properties
     [Tooltip("角色死亡后掉落武器")]
     public bool m_DropWeapon_CharacterDied;
     
+    [Tooltip("核心的SpriteRenderer，受伤时会让它变红")]
+    public SpriteRenderer m_CoreSprite;
 }
