@@ -6,6 +6,7 @@ using BehaviorDesigner.Runtime.Tasks.Unity.UnityPlayerPrefs;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
 public class StartMenu : MonoBehaviour
 {
@@ -25,6 +26,9 @@ public class StartMenu : MonoBehaviour
     private TMP_InputField m_IpInput;
     [SerializeField]
     private TMP_InputField m_PortInput;
+    
+    // 打包有bug，必须得在这拉个shi
+    [SerializeField] private LevelSwitchConfig m_LevelSwitchConfig;
 
     public GameObject MultiplayerPanel
     {
@@ -48,7 +52,7 @@ public class StartMenu : MonoBehaviour
     {
         // Load Player Save file,Then Get Config to find load which level
         SaveLoadManager.LoadGame();
-        LevelSwitchConfig levelSwitchConfig = LevelManager.Instance.levelSwitchConfig;
+        LevelSwitchConfig levelSwitchConfig = m_LevelSwitchConfig;
         // 大关卡
         int level = SaveLoadManager.GlobalSaveFile.currentLevel;
         int section = SaveLoadManager.GlobalSaveFile.currentSection;
