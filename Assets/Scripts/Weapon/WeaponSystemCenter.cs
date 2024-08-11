@@ -350,7 +350,7 @@ public class WeaponSystemCenter : NetworkBehaviour
         // 服务端
         Fire(character, m_WeaponToTypeDic[weapon], ammunitionType, startPoint, dir);
         // Rpc调用客户端
-        RPCFire(character, weapon, startPoint, dir);
+        RPCFire(character, weapon, startPoint, dir, isPlayer);
     }
 
     /// <summary>
@@ -361,7 +361,7 @@ public class WeaponSystemCenter : NetworkBehaviour
     /// <param name="startPoint">起始点</param>
     /// <param name="dir">方向</param>
     [ClientRpc]
-    public void RPCFire(GameObject character, GameObject weapon, Vector3 startPoint, Vector3 dir)
+    public void RPCFire(GameObject character, GameObject weapon, Vector3 startPoint, Vector3 dir, bool isPlayer)
     {
         if(m_WeaponToTypeDic.ContainsKey(weapon) == false)
         {
@@ -375,6 +375,9 @@ public class WeaponSystemCenter : NetworkBehaviour
         // 调用客户端的开火特效
         if (!weapon.TryGetComponent<WeaponInstance>(out WeaponInstance weaponInstance)) return;
         weaponInstance.FireVfxAndAnimation(character, weaponType, weaponConfig, startPoint, dir);
+        
+        // 鏡頭晃动，可能出现多个客户端开火只有一个晃动的问题
+        // PlayerController.PlayerControllers[0].CameraController.ShakeCameraPosition(0.3f, new Vector3(3, 3, 0));
     }
 
 
