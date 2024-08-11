@@ -9,7 +9,7 @@ public class DamageSensor:MonoBehaviour,IAISensor
     private LogicStateManager m_LogicStateManager;
     private IAISensor.NotifyPerceivedDelegate m_NotifyPerceivedDelegate;
     
-    private void Start()
+    private void OnEnable()
     {
         m_LogicStateManager = GetComponent<LogicStateManager>();
     }

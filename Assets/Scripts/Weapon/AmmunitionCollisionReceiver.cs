@@ -246,7 +246,9 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
         {
             if(gameObject.active)
             {
-                m_Launcher.GetComponent<BaseProperties>().m_Properties.m_Energy += m_Properties.m_Properties.m_Energy;
+                BaseProperties prop = m_Launcher?.GetComponent<BaseProperties>();
+                if(prop)
+                    prop.m_Properties.m_Energy += m_Properties.m_Properties.m_Energy;
                 if (m_Properties.m_Properties.m_DropWeapon_CharacterDied)
                 {
                     WeaponSystemCenter.Instance.SpawnWeapon(m_Properties.m_Properties.m_LeftHandWeapon, transform.position);

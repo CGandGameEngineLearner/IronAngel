@@ -36,7 +36,7 @@ public class AIMovement : MonoBehaviour
     [Tooltip("AI与玩家交战的距离")]
     public float m_EngagementDistance;
 
-    private void Start()
+    private void OnEnable()
     {
         m_LogicStateManager = GetComponent<LogicStateManager>();
         m_BaseProperties = GetComponent<BaseProperties>();
@@ -144,6 +144,25 @@ public class AIMovement : MonoBehaviour
 
     public bool SetDestination(Vector3 target)
     {
+        if (!agent.isOnNavMesh)
+        {
+            return false;
+        }
+        
+        // 如果目标点有刚体占着位置 则把目标点设置到1个单位附近
+        var dir = (target - transform.position).normalized;
+        RaycastHit hit;
+        if (Physics.Raycast(target, dir, out hit, 1f))
+        {
+            if (hit.collider != null)
+            {
+                Rigidbody rb = hit.collider.GetComponent<Rigidbody>();
+                if (rb == null)
+                {
+                    target = target - 1 * dir;
+                }
+            }
+        }
         return agent.SetDestination(target);
     }
     

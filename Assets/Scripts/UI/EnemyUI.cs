@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
 public class EnemyUI : MonoBehaviour
 {
     public EnemyUIType m_Type;
@@ -21,6 +22,8 @@ public class EnemyUI : MonoBehaviour
     {
         m_Properties = transform.parent.GetComponent<BaseProperties>();
         m_SpriteRender = GetComponent<SpriteRenderer>();
+        if (m_Type == EnemyUIType.Blood)
+            m_SpriteRender = transform.GetChild(0).GetComponent<SpriteRenderer>();
     }
     private void Update()
     {
@@ -43,6 +46,12 @@ public class EnemyUI : MonoBehaviour
                 m_CurrentAlpha -= Time.deltaTime * m_FadeSpeed;
             }
         }
+        if(m_Type == EnemyUIType.Blood)
+        {
+            m_SpriteRender.gameObject.transform.localScale = new Vector3(m_Properties.m_Properties.m_CurrentHP * 1.0f / m_Properties.m_Properties.m_BaseHP * 2, 1, 1);
+            transform.rotation = Quaternion.identity;
+            transform.position = transform.parent.transform.position + m_Offset;
+        }
     }
 
     public void ArmorFlash()
@@ -54,6 +63,8 @@ public class EnemyUI : MonoBehaviour
 [Serializable]
 public enum EnemyUIType
 {
-    ArmorPic,
+    Canvas,
+    ArmorPic,  
     ArmorMaterial,
+    Blood,
 }
