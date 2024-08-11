@@ -273,7 +273,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0
   m_ShieldType: 0
-  m_SubArmor: 100
+  m_SubArmor: 50
   m_specialAtkTypes: 
 --- !u!61 &4788707432746406319
 BoxCollider2D:
@@ -491,6 +491,7 @@ MonoBehaviour:
   m_DashSpeed: 0
   m_DashDuration: 0
   m_EngagementDistance: 0
+  m_ObstacleAvoidanceDistance: 3
 --- !u!58 &7549400497388090286
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -681,18 +682,18 @@ MonoBehaviour:
   syncInterval: 0
   m_Properties:
     m_Energy: 10
-    m_BaseHP: 100
-    m_LeftHandWeaponHP: 200
+    m_BaseHP: 400
+    m_LeftHandWeaponHP: 300
     m_LeftHandWeaponCurrentHP: 0
-    m_RightHandWeaponHP: 200
+    m_RightHandWeaponHP: 300
     m_RightHandWeaponCurrentHP: 0
     m_LeftHandWeapon: 7
     m_RightHandWeapon: 7
     m_Armor: 0
-    m_EnergyShieldCount: 30
+    m_EnergyShieldCount: 25
     m_CurrentHP: 100
     m_CurrentArmor: 0
-    m_AttackRange: 10
+    m_AttackRange: 15
     m_Camp: 1
     m_DropWeapon_WeaponDestroy: 0
     m_DropWeapon_CharacterDied: 1
@@ -706,7 +707,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 2.5
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 90
@@ -887,7 +888,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0
   m_ShieldType: 0
-  m_SubArmor: 100
+  m_SubArmor: 50
   m_specialAtkTypes: 
 --- !u!61 &4779021538546674247
 BoxCollider2D:
@@ -1324,7 +1325,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0
   m_ShieldType: 0
-  m_SubArmor: 100
+  m_SubArmor: 50
   m_specialAtkTypes: 
 --- !u!61 &8819393010746239652
 BoxCollider2D:
@@ -1596,7 +1597,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0
   m_ShieldType: 0
-  m_SubArmor: 100
+  m_SubArmor: 50
   m_specialAtkTypes: 
 --- !u!61 &3929051370594886967
 BoxCollider2D:
