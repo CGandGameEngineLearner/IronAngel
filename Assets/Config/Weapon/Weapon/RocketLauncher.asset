@@ -15,6 +15,7 @@ MonoBehaviour:
   m_Prefab: {fileID: 8270290095630009083, guid: d5366d609530f2e4ba9595f1bf8097f7, type: 3}
   m_MinPoolSize: 10
   m_MaxPoolSize: 0
+  weaponName: 
   m_AtkType: 0
   m_ammunitionType: 8
   m_WeaponHp: 600
@@ -25,5 +26,5 @@ MonoBehaviour:
   m_ShotSpreadAngle: 0
   laserPointerWidth: 0
   m_AttackPreCastDelay: 0
-  m_FireVfxType: 1
+  m_FireVfxType: 8
   m_FireSfxType: 0
