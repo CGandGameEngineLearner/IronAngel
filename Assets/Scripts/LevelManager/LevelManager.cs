@@ -128,9 +128,7 @@ public class LevelManager : NetworkBehaviour
 
     public void StartBattleZoneWave(WaveConfig enemyWaveConfig, List<GameObject> invisibleWall)
     {
-#if UNITY_EDITOR
-        Debug.LogWarning("StartWave");
-#endif
+        // UICanvas.Instance.SetPlotText("Someone is coming, be careful.", 0, 2f);
         m_BattleZoneWaveHandle = new BattleZoneWaveHandle(enemyWaveConfig, OnWaveFinished, isServer);
 
         m_IsRunning = true;
@@ -161,33 +159,25 @@ public class LevelManager : NetworkBehaviour
                 m_WaveInstancesToUpdate.Add(instance);
             }
         }
-
-        // if (m_BattleZoneWaveHandle.Finished && m_WaveInstancesToUpdate.Count == 0)
-        // {
-        //     m_IsRunning = false;
-        //     // TODO: 解锁关卡空气墙
-        // }
     }
 
     private void AddWaveInstance(WaveInstance waveInstance)
     {
         if (waveInstance == null) return;
         m_WaveInstancesToAdd.Enqueue(waveInstance);
+        StartCoroutine(ShowDialogText(waveInstance.waveListItem));
     }
 
     private void OnWaveFinished(WaveInstance waveInstance)
     {
-#if UNITY_EDITOR
-        Debug.LogWarning("小波次结束");
-#endif
         m_WaveInstancesToUpdate.Remove(waveInstance);
 
         if (m_BattleZoneWaveHandle.Finished)
         {
             m_IsRunning = false;
-#if UNITY_EDITOR
-            Debug.LogWarning("波次结束了！！！！");
-#endif
+
+            // UICanvas.Instance.SetPlotText("They all gone, well done.", 0, 2f);
+            
             // TODO: 解锁关卡空气墙
             foreach (var invisibleWall in m_WaveInvisibleWall)
             {
@@ -204,8 +194,24 @@ public class LevelManager : NetworkBehaviour
     {
         yield return new WaitForSeconds(waveInstance.waveListItem.waveDelay);
         AddWaveInstance(m_BattleZoneWaveHandle.GetNextWave());
-#if UNITY_EDITOR
-        Debug.LogWarning("New Wave Incoming");
-#endif
+
+        // UICanvas.Instance.SetPlotText("New enemy is coming, finish them.", 0, 2f);
+    }
+
+    private IEnumerator ShowDialogText(WaveListItem waveListItem)
+    {
+        List<DialogStruct> dialogStructs = waveListItem.dialogStructs;
+        for (int i = 0; i < dialogStructs.Count; i++)
+        {
+            if (i < dialogStructs.Count - 1)
+            {
+                UICanvas.Instance.SetPlotText(dialogStructs[i].stringToSays, dialogStructs[i].delayTime, dialogStructs[i].time);
+                yield return new WaitForSeconds(dialogStructs[i].time);
+            }
+            else
+            {
+                UICanvas.Instance.SetPlotText(dialogStructs[i].stringToSays, dialogStructs[i].delayTime, dialogStructs[i].time, true);
+            }
+        }
     }
 }
