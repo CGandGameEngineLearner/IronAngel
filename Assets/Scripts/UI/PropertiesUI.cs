@@ -57,7 +57,7 @@ public class PropertiesUI : MonoBehaviour
             var rightWeapon = controller.Player.GetPlayerRightHandWeapon();
             if(leftWeapon)
             {
-                m_LeftMag.text = leftWeapon.GetComponent<WeaponInstance>().GetCurrentMag().ToString();
+                m_LeftMag.text = leftWeapon.GetComponent<WeaponInstance>().GetCurrentMag() >= 0 ? leftWeapon.GetComponent<WeaponInstance>().GetCurrentMag().ToString() : "0";
             }
             else
             {
@@ -65,7 +65,7 @@ public class PropertiesUI : MonoBehaviour
             }
             if(rightWeapon)
             {
-                m_RightMag.text = rightWeapon.GetComponent<WeaponInstance>().GetCurrentMag().ToString();
+                m_RightMag.text = rightWeapon.GetComponent<WeaponInstance>().GetCurrentMag() >= 0 ? rightWeapon.GetComponent<WeaponInstance>().GetCurrentMag().ToString() : "0";
             }
             else
             {

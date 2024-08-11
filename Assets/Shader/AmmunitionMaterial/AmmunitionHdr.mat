@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-8575343433949963
+--- !u!114 &-6344531190870098295
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20,8 +20,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ProgressBar_LeftHP
-  m_Shader: {fileID: -6465566751694194690, guid: 2f2d4f00077e3544fa0cbad0dbdfa36d, type: 3}
+  m_Name: AmmunitionHdr
+  m_Shader: {fileID: -6465566751694194690, guid: e523363da87f3a74aa0a4d5e04a7a4aa, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -53,8 +53,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
-    m_Floats:
-    - _Rate: 0.5
+    m_Floats: []
     m_Colors:
-    - _Color: {r: 1, g: 0, b: 0.028217316, a: 1}
+    - _Color: {r: 119.42822, g: 119.42822, b: 119.42822, a: 1}
   m_BuildTextureStacks: []
