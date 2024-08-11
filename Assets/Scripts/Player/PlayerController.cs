@@ -221,11 +221,7 @@ public class PlayerController : NetworkBehaviour
         // 视角拉远
         m_InputController.AddStartedActionToCameraViewTypeSwitch(() =>
         {
-            m_CameraController.SetCameraDistanceToMax();
-        });
-        m_InputController.AddCanceledActionToCameraViewTypeSwitch(() =>
-        {
-            m_CameraController.SetCmaeraDistanceToMin();
+            m_CameraController.SwitchCameraDis();
         });
         // 鼠标状态
         m_InputController.SetCursorLockState(CursorLockMode.Confined);
