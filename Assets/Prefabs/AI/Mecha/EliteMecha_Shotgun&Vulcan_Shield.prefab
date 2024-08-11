@@ -273,7 +273,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0
   m_ShieldType: 0
-  m_SubArmor: 100
+  m_SubArmor: 120
   m_specialAtkTypes: 
 --- !u!61 &4788707432746406319
 BoxCollider2D:
@@ -465,13 +465,13 @@ MonoBehaviour:
   LeftHand: {fileID: 587068453855920466}
   RightHand: {fileID: 4495865224673025813}
   m_AutoAvoid: 1
-  m_AutoAvoid_Probability: 0.5
-  m_AutoAvoid_RestTimes: 0
+  m_AutoAvoid_Probability: 0.651
+  m_AutoAvoid_RestTimes: 8
   m_TokenWeight: 1
-  m_RangeOfAimingError: 2
-  m_LeftHandWeaponAttackingDuration: 2
-  m_RightHandWeaponAttackingDuration: 2
-  m_ProbabilityOfLeftWeapon: 0.3
+  m_RangeOfAimingError: 3
+  m_LeftHandWeaponAttackingDuration: 2.6
+  m_RightHandWeaponAttackingDuration: 2.5
+  m_ProbabilityOfLeftWeapon: 0.505
   m_ProbabilityOfRightWeapon: 0.5
   PatrolRoute: {fileID: 0}
 --- !u!114 &8337392909154346315
@@ -492,6 +492,7 @@ MonoBehaviour:
   m_DashSpeed: 0
   m_DashDuration: 0
   m_EngagementDistance: 0
+  m_ObstacleAvoidanceDistance: 3
 --- !u!58 &7549400497388090286
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -681,14 +682,14 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0
   m_Properties:
-    m_Energy: 10
-    m_BaseHP: 100
-    m_LeftHandWeaponHP: 200
+    m_Energy: 80
+    m_BaseHP: 400
+    m_LeftHandWeaponHP: 400
     m_LeftHandWeaponCurrentHP: 0
-    m_RightHandWeaponHP: 200
+    m_RightHandWeaponHP: 450
     m_RightHandWeaponCurrentHP: 0
-    m_LeftHandWeapon: 7
-    m_RightHandWeapon: 7
+    m_LeftHandWeapon: 1
+    m_RightHandWeapon: 3
     m_Armor: 0
     m_EnergyShieldCount: 30
     m_CurrentHP: 100
@@ -707,10 +708,10 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 3.8
   m_Acceleration: 8
   avoidancePriority: 50
-  m_AngularSpeed: 90
+  m_AngularSpeed: 100
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
@@ -888,7 +889,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0
   m_ShieldType: 0
-  m_SubArmor: 100
+  m_SubArmor: 120
   m_specialAtkTypes: 
 --- !u!61 &4779021538546674247
 BoxCollider2D:
@@ -1325,7 +1326,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0
   m_ShieldType: 0
-  m_SubArmor: 100
+  m_SubArmor: 120
   m_specialAtkTypes: 
 --- !u!61 &8819393010746239652
 BoxCollider2D:

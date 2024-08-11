@@ -109,7 +109,8 @@ public enum WeaponType
 public enum SpecialAtkType
 {
     None,
-    Test,
+    Armor,
+    EnergyShield
 }
 
 public enum VfxType
