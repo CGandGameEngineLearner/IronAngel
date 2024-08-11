@@ -18,7 +18,7 @@ MonoBehaviour:
   isAuto: 0
   m_Speed: 0
   m_LifeDistance: 20
-  m_Damage: 20
+  m_Damage: 10
   m_PostAmmunitionType: 12
   m_IsExplodeDamage: 0
   sigma: 0
@@ -28,5 +28,5 @@ MonoBehaviour:
   m_LeastLiveFixedFrameCount: 4
   m_specialAtkTypes: 
   m_EffectBuff: []
-  hitVfxType: 0
+  hitVfxType: 16
   hitSfxType: 0

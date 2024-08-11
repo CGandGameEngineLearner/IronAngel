@@ -158,11 +158,9 @@ public class AIMovement : MonoBehaviour
         Debug.DrawLine(target,m_ObstacleAvoidanceDistance*dir,Color.green,10);
         if (hit.collider != null)
         {
-            Debug.Log("发现障碍");
             Rigidbody2D rb = hit.collider.gameObject.GetComponent<Rigidbody2D>();
             if (rb != null)
             {
-                Debug.Log("避障");
                 target = target - m_ObstacleAvoidanceDistance * dir;
             }
         }

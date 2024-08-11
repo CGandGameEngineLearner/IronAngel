@@ -41,6 +41,12 @@ public class PropertiesUI : MonoBehaviour
     [Tooltip("³å´ÌUIÆ«ÒÆ")]
     [SerializeField]
     private Vector2 m_DashUIOffset;
+    [Tooltip("×óÎäÆ÷Ãû×Ö")]
+    [SerializeField]
+    private TextMeshProUGUI m_LeftWeaponName;
+    [Tooltip("ÓÒÎäÆ÷Ãû×Ö")]
+    [SerializeField]
+    private TextMeshProUGUI m_RightWeaponName;
 
     private void Update()
     {
@@ -58,18 +64,22 @@ public class PropertiesUI : MonoBehaviour
             if(leftWeapon)
             {
                 m_LeftMag.text = leftWeapon.GetComponent<WeaponInstance>().GetCurrentMag() >= 0 ? leftWeapon.GetComponent<WeaponInstance>().GetCurrentMag().ToString() : "0";
+                m_LeftWeaponName.text = leftWeapon.GetComponent<WeaponInstance>().GetWeaponName();
             }
             else
             {
                 m_LeftMag.text = "0";
+                m_LeftWeaponName.text = "";
             }
             if(rightWeapon)
             {
                 m_RightMag.text = rightWeapon.GetComponent<WeaponInstance>().GetCurrentMag() >= 0 ? rightWeapon.GetComponent<WeaponInstance>().GetCurrentMag().ToString() : "0";
+                m_RightWeaponName.text = rightWeapon.GetComponent<WeaponInstance>().GetWeaponName();
             }
             else
             {
                 m_RightMag.text = "0";
+                m_RightWeaponName.text = "";
             }
 
             var playerPosOnScreen = Camera.main.WorldToScreenPoint(controller.Player.GetPlayerPosition());

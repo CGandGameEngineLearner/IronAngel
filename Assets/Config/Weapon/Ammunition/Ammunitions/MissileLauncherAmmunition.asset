@@ -16,7 +16,7 @@ MonoBehaviour:
   m_MinPoolSize: 50
   m_MaxPoolSize: 100
   isAuto: 0
-  m_Speed: 10
+  m_Speed: 17
   m_LifeDistance: 20
   m_Damage: 0
   m_PostAmmunitionType: 14
@@ -27,6 +27,9 @@ MonoBehaviour:
   m_LaserWidth: 0
   m_LeastLiveFixedFrameCount: 0
   m_specialAtkTypes: 
-  m_EffectBuff: []
-  hitVfxType: 0
+  m_EffectBuff:
+  - m_EffectBuff: 13
+    m_Duration: 1.5
+    m_Number: 0
+  hitVfxType: 19
   hitSfxType: 0
