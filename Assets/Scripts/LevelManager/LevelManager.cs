@@ -62,7 +62,7 @@ public class WaveInstance
 
         enemySet.Remove(gameObject);
 #if UNITY_EDITOR
-        Debug.LogError($"Enemy Death,Remain{enemySet.Count}, ${m_EnemyToSpawn.Count}");
+        Debug.Log($"Enemy Death,Remain{enemySet.Count}, ${m_EnemyToSpawn.Count}");
 #endif
         if (CurrentEnemyCount < waveListItem.onFieldEnemyCount && m_EnemyToSpawn.Count > 0)
         {

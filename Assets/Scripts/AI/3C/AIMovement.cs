@@ -144,6 +144,10 @@ public class AIMovement : MonoBehaviour
 
     public bool SetDestination(Vector3 target)
     {
+        if (!agent.isOnNavMesh)
+        {
+            return false;
+        }
         return agent.SetDestination(target);
     }
     

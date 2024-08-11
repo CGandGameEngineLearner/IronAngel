@@ -245,6 +245,10 @@ public class WeaponSystemCenter : NetworkBehaviour
     [ServerCallback]
     public void CmdFire(GameObject character, GameObject weapon, Vector3 startPoint, Vector3 dir)
     {
+        if (weapon == null)
+        {
+            return;
+        }
         dir = dir.normalized;
 #if UNITY_EDITOR
         //Debug.Log(GetType() + "Command" + "Fire");
