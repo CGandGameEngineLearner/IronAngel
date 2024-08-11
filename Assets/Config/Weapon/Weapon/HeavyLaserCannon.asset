@@ -15,10 +15,11 @@ MonoBehaviour:
   m_Prefab: {fileID: 6906689690000143614, guid: e72717d94b31ac848916650508ad2b6a, type: 3}
   m_MinPoolSize: 0
   m_MaxPoolSize: 0
+  weaponName: 
   m_AtkType: 1
   m_ammunitionType: 7
   m_WeaponHp: 1000
-  m_Interval: 0.1
+  m_Interval: 0.05
   m_MagSize: 1000
   m_SimShots: 0
   m_SpreadAngle: 0
