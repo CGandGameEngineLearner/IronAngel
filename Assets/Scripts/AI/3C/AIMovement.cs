@@ -36,7 +36,7 @@ public class AIMovement : MonoBehaviour
     [Tooltip("AI与玩家交战的距离")]
     public float m_EngagementDistance;
 
-    private void Start()
+    private void OnEnable()
     {
         m_LogicStateManager = GetComponent<LogicStateManager>();
         m_BaseProperties = GetComponent<BaseProperties>();
