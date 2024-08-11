@@ -104,6 +104,11 @@ public class AIController : NetworkBehaviour
     [ServerCallback]
     public void Avoid()
     {
+        if (m_AutoAvoid_RestTimes <= 0)
+        {
+            return;
+        }
+        
         if(!Utils.RandomBool(m_AutoAvoid_Probability))
         {
             return;

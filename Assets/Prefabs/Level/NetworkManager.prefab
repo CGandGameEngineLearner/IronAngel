@@ -32,7 +32,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &9016208483079955381
 MonoBehaviour:
@@ -84,6 +84,13 @@ MonoBehaviour:
   - {fileID: 6906689690000143614, guid: e72717d94b31ac848916650508ad2b6a, type: 3}
   - {fileID: 8270290095630009083, guid: d5366d609530f2e4ba9595f1bf8097f7, type: 3}
   - {fileID: 5021276108613369794, guid: c20a8d6359cb6674f847b890151bdced, type: 3}
+  - {fileID: 5021276108613369794, guid: 8ef668efa7ffed24ea883a972ab1bdc3, type: 3}
+  - {fileID: 5021276108613369794, guid: e4345b4257b174046aa3b566afa295dd, type: 3}
+  - {fileID: 8270290095630009083, guid: d5366d609530f2e4ba9595f1bf8097f7, type: 3}
+  - {fileID: 6906689690000143614, guid: e72717d94b31ac848916650508ad2b6a, type: 3}
+  - {fileID: 5021276108613369794, guid: 0f4508d3e46a4364eba0795a2a03e552, type: 3}
+  - {fileID: 5021276108613369794, guid: 67c726af5513ea04d863131a4eb36327, type: 3}
+  - {fileID: 5021276108613369794, guid: 0e694ad1bc3411444a6e6089f486119e, type: 3}
   exceptionsDisconnect: 1
   snapshotSettings:
     bufferTimeMultiplier: 2
