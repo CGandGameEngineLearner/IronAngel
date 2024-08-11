@@ -581,7 +581,8 @@ MonoBehaviour:
     m_Bits: 512
   m_DashSpeed: 5
   m_DashDuration: 1
-  m_EngagementDistance: 3
+  m_EngagementDistance: 4
+  m_ObstacleAvoidanceDistance: 2
 --- !u!58 &7549400497388090286
 CircleCollider2D:
   m_ObjectHideFlags: 0
