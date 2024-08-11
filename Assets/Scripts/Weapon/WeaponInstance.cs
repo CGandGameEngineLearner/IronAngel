@@ -97,7 +97,7 @@ public class WeaponInstance : NetworkBehaviour
 
         if (audioSource == null)
         {
-            Debug.LogError(WeaponType+"武器预制体未挂载音效组件");
+            Debug.LogError(weaponType+"武器预制体未挂载音效组件");
         }
         
         audioSource.Play();
@@ -105,7 +105,9 @@ public class WeaponInstance : NetworkBehaviour
         // 普通武器开火动画，激光需要特殊处理
         if (weaponType != WeaponType.CombatLaserGun && weaponType != WeaponType.HeavyLaserCannon)
         {
-            VfxPool.Instance.GetVfx(weaponConfig.fireVfxType, startPoint, Quaternion.LookRotation(dir));
+            float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+            Quaternion rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward); // -90 to adjust from (0, 1) to (1, 0)
+            VfxPool.Instance.GetVfx(weaponConfig.fireVfxType, startPoint, rotation);
         }
         else
         {
