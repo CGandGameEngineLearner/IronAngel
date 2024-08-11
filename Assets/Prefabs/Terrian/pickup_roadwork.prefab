@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2609109769149197701}
   - component: {fileID: 1121710278175226908}
   - component: {fileID: 5260807770392821334}
+  - component: {fileID: 3536838667560780180}
   m_Layer: 9
   m_Name: pickup_roadwork
   m_TagString: Untagged
@@ -145,16 +146,32 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.049344182}
+  m_Offset: {x: -0.028520584, y: 0.00026381016}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 8, y: 4}
+    oldSize: {x: 4, y: 2}
     newSize: {x: 8, y: 4}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 8, y: 3.2684267}
+  m_Size: {x: 3.9665666, y: 1.4247751}
   m_EdgeRadius: 0
+--- !u!114 &3536838667560780180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6733490016207563518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff

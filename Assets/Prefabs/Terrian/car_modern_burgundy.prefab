@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7573655353449088594}
   - component: {fileID: 1953583133795876468}
   - component: {fileID: 6518603180448546280}
+  - component: {fileID: -2187637248342322594}
   m_Layer: 0
   m_Name: car_modern_burgundy
   m_TagString: Untagged
@@ -158,3 +159,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 5.916013, y: 2.3855548}
   m_EdgeRadius: 0
+--- !u!114 &-2187637248342322594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6582325253624292268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
