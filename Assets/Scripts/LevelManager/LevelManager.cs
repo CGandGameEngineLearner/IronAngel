@@ -119,13 +119,14 @@ public class LevelManager : NetworkBehaviour
     private BattleZoneWaveHandle m_BattleZoneWaveHandle;
     private HashSet<WaveInstance> m_WaveInstancesToUpdate = new HashSet<WaveInstance>();
     private Queue<WaveInstance> m_WaveInstancesToAdd = new Queue<WaveInstance>();
+    private List<GameObject> m_WaveInvisibleWall;
 
     public void Awake()
     {
         Instance = this;
     }
 
-    public void StartBattleZoneWave(WaveConfig enemyWaveConfig)
+    public void StartBattleZoneWave(WaveConfig enemyWaveConfig, List<GameObject> invisibleWall)
     {
 #if UNITY_EDITOR
         Debug.LogWarning("StartWave");
@@ -137,6 +138,8 @@ public class LevelManager : NetworkBehaviour
         m_WaveInstancesToUpdate.Clear();
 
         AddWaveInstance(m_BattleZoneWaveHandle.GetNextWave());
+
+        m_WaveInvisibleWall = invisibleWall;
     }
 
     private void Update()
@@ -182,10 +185,14 @@ public class LevelManager : NetworkBehaviour
         if (m_BattleZoneWaveHandle.Finished)
         {
             m_IsRunning = false;
-            // TODO: 解锁关卡空气墙
 #if UNITY_EDITOR
             Debug.LogWarning("波次结束了！！！！");
 #endif
+            // TODO: 解锁关卡空气墙
+            foreach (var invisibleWall in m_WaveInvisibleWall)
+            {
+                invisibleWall.SetActive(false);
+            }
         }
         else
         {
