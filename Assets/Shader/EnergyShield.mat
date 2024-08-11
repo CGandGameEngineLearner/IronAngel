@@ -28,13 +28,13 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NoiseTex:
-        m_Texture: {fileID: 2800000, guid: 1d05f8485741f4d4ca94e613ba38db65, type: 3}
+        m_Texture: {fileID: 2800000, guid: 6e295204e727c60479a81463132d93a5, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
     - _Intensity: 4
-    - _RotateSpeed: 4.36
+    - _RotateSpeed: 1
     m_Colors:
     - _Color: {r: 0, g: 0.77215713, b: 3.031433, a: 1}
   m_BuildTextureStacks: []
