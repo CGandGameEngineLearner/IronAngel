@@ -252,6 +252,7 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
         {
             playerController.Player.GetPlayerLeftHandWeapon()?.GetComponent<WeaponInstance>().SetWeaponCurrentHP(data.m_LeftHandWeaponHP);
             playerController.Player.GetPlayerRightHandWeapon()?.GetComponent<WeaponInstance>().SetWeaponCurrentHP(data.m_RightHandWeaponHP);
+            m_Properties.m_Properties.m_Energy += UnityEngine.Random.Range(0, 2);
         }
         // 角色死亡
         if(m_Properties.m_Properties.m_CurrentHP <= 0)
