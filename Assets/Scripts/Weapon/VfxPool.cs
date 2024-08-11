@@ -21,11 +21,11 @@ public class VfxPool : MonoBehaviour
     [SerializeField]
     private List<VfxPair> m_VfxPairs = new();
     private ObjectPoolManager<VfxType> m_VfxObjectPoolManager = new ObjectPoolManager<VfxType>();
-
+    
     public void Awake()
     {
         Instance = this;
-        
+            
         // 添加对象池
         foreach (var fireVfxPair in m_VfxPairs)
         {

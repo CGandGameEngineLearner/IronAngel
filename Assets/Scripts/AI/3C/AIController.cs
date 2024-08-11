@@ -104,6 +104,11 @@ public class AIController : NetworkBehaviour
     [ServerCallback]
     public void Avoid()
     {
+        if (m_AutoAvoid_RestTimes <= 0)
+        {
+            return;
+        }
+        
         if(!Utils.RandomBool(m_AutoAvoid_Probability))
         {
             return;
@@ -370,7 +375,7 @@ public class AIController : NetworkBehaviour
             var firePoint = weaponInstance.firePoint.position;
             dir = transform.rotation*Vector3.up;
             dir = ComputeAngleOfFire(dir);
-            WeaponSystemCenter.Instance.CmdFire(gameObject, weapon,firePoint,dir);
+            WeaponSystemCenter.Instance.CmdFire(gameObject, weapon,firePoint,dir, false);
             yield return null;
         }
         
