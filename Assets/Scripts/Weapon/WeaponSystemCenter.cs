@@ -163,7 +163,7 @@ public class WeaponSystemCenter : NetworkBehaviour
         AIController aiController = enemy.GetComponent<AIController>();
         
         // 给左手装备武器
-        var weaponType = aiController.GetRightHandWeaponType();
+        var weaponType = aiController.GetLeftHandWeaponType();
         var leftWeapon = AISpawnWeapon(weaponType, Vector3.zero);
         aiController.SetLeftHandWeapon(leftWeapon);
         
