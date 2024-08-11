@@ -2082,6 +2082,8 @@ MonoBehaviour:
   m_PropertiesUI: {fileID: 2108055923}
   m_StartMenu: {fileID: 240951640}
   m_PlotPanel: {fileID: 20367563}
+  m_Aim_1: {fileID: 2800000, guid: 8ac3078263015924084f4213faa99ad9, type: 3}
+  m_Aim_2: {fileID: 2800000, guid: 6284321be28b0d24ca1c720c891e8297, type: 3}
   isSingle: 1
 --- !u!1 &731027530
 GameObject:
