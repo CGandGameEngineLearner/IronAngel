@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 587068453855920466}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.6, y: -0.05, z: 0}
+  m_LocalPosition: {x: -0.113, y: 0.226, z: 0}
   m_LocalScale: {x: 0.8, y: 1.2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: -870655419, guid: 7fe68c28256f27d44970d06535e377e5, type: 3}
-  m_Color: {r: 0.90196085, g: 0.90196085, b: 0.90196085, a: 1}
+  m_Color: {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -448,9 +448,9 @@ MonoBehaviour:
   m_AutoAvoid: 0
   m_AutoAvoid_Probability: 0
   m_AutoAvoid_RestTimes: 0
-  m_TokenWeight: 0
-  m_RangeOfAimingError: 0
-  m_LeftHandWeaponAttackingDuration: 0
+  m_TokenWeight: 0.3
+  m_RangeOfAimingError: 1
+  m_LeftHandWeaponAttackingDuration: 1.5
   m_RightHandWeaponAttackingDuration: 0
   m_ProbabilityOfLeftWeapon: 0
   m_ProbabilityOfRightWeapon: 0
@@ -473,6 +473,7 @@ MonoBehaviour:
   m_DashSpeed: 0
   m_DashDuration: 0
   m_EngagementDistance: 0
+  m_ObstacleAvoidanceDistance: 3
 --- !u!58 &7549400497388090286
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -662,7 +663,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0
   m_Properties:
-    m_Energy: 0
+    m_Energy: 10
     m_BaseHP: 500
     m_LeftHandWeaponHP: 200
     m_LeftHandWeaponCurrentHP: 0
@@ -688,7 +689,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 1.8
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 90
