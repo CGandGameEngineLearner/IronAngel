@@ -125,7 +125,9 @@ public class LevelManager : NetworkBehaviour
 
     public void StartBattleZoneWave(WaveConfig enemyWaveConfig)
     {
-        Debug.LogError("StartWave");
+#if UNITY_EDITOR
+        Debug.LogWarning("StartWave");
+#endif
         m_BattleZoneWaveHandle = new BattleZoneWaveHandle(enemyWaveConfig, OnWaveFinished, isServer);
 
         m_IsRunning = true;
