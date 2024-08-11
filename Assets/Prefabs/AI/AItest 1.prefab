@@ -365,6 +365,7 @@ MonoBehaviour:
   m_Offset: {x: 0, y: 0, z: 0}
   m_SpriteAlphaFlash: 1
   m_FadeSpeed: 1
+  m_BloodScale: 4.5
 --- !u!50 &5617622902005052232
 Rigidbody2D:
   serializedVersion: 4
@@ -781,7 +782,7 @@ MonoBehaviour:
     m_LeftHandWeapon: 1
     m_RightHandWeapon: 3
     m_Armor: 0
-    m_EnergyShieldCount: 100999
+    m_EnergyShieldCount: 10
     m_CurrentHP: 0
     m_CurrentArmor: 0
     m_AttackRange: 10
@@ -1043,6 +1044,7 @@ MonoBehaviour:
   m_Offset: {x: 0, y: 0, z: 0}
   m_SpriteAlphaFlash: 1
   m_FadeSpeed: 1
+  m_BloodScale: 4.5
 --- !u!50 &6583600718445546615
 Rigidbody2D:
   serializedVersion: 4
@@ -1400,6 +1402,7 @@ MonoBehaviour:
   m_Offset: {x: 0, y: 1.5, z: 0}
   m_SpriteAlphaFlash: 0.65
   m_FadeSpeed: 1
+  m_BloodScale: 4.5
 --- !u!1 &5005174867674349316
 GameObject:
   m_ObjectHideFlags: 0
@@ -1567,6 +1570,7 @@ MonoBehaviour:
   m_Offset: {x: 0, y: 0, z: 0}
   m_SpriteAlphaFlash: 1
   m_FadeSpeed: 1
+  m_BloodScale: 4.5
 --- !u!50 &5453542187586766582
 Rigidbody2D:
   serializedVersion: 4
@@ -2118,6 +2122,7 @@ MonoBehaviour:
   m_Offset: {x: 0, y: 0, z: 0}
   m_SpriteAlphaFlash: 1
   m_FadeSpeed: 1
+  m_BloodScale: 4.5
 --- !u!50 &4847696827395324748
 Rigidbody2D:
   serializedVersion: 4
@@ -2352,3 +2357,4 @@ MonoBehaviour:
   m_Offset: {x: 0, y: 1.2, z: 0}
   m_SpriteAlphaFlash: 1
   m_FadeSpeed: 1
+  m_BloodScale: 4.5
