@@ -3,6 +3,9 @@ using Mirror;
 using UnityEngine;
 
 
+/// <summary>
+/// 所有的角色都会挂载此基础属性组件
+/// </summary>
 public class BaseProperties : NetworkBehaviour
 {
     public Properties m_Properties;
@@ -39,6 +42,9 @@ public enum ECamp
     Count,           // 用于记录枚举数量
 }
 
+/// <summary>
+/// 所有角色都有的属性
+/// </summary>
 [Serializable]
 public struct Properties
 {

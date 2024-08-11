@@ -79,5 +79,4 @@ public class WeaponConfig : ItemConfig
     private float m_AttackPreCastDelay;
 
     [Header("音效和特效配置")] [SerializeField] private VfxType m_FireVfxType;
-    [SerializeField] private SfxType m_FireSfxType;
 }
