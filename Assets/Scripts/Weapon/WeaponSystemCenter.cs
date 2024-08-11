@@ -180,7 +180,6 @@ public class WeaponSystemCenter : NetworkBehaviour
     {
         aiController.SetLeftHandWeapon(leftHandWeapon);
         aiController.SetRightHandWeapon(rightHandWeapon);
-        Debug.LogWarning("Give Weapon");
     }
 
 
