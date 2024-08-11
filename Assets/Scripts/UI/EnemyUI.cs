@@ -23,7 +23,7 @@ public class EnemyUI : MonoBehaviour
         m_Properties = transform.parent.GetComponent<BaseProperties>();
         m_SpriteRender = GetComponent<SpriteRenderer>();
         if (m_Type == EnemyUIType.Blood)
-            m_SpriteRender = GetComponentInChildren<SpriteRenderer>();
+            m_SpriteRender = transform.GetChild(0).GetComponent<SpriteRenderer>();
     }
     private void Update()
     {
@@ -48,7 +48,7 @@ public class EnemyUI : MonoBehaviour
         }
         if(m_Type == EnemyUIType.Blood)
         {
-            m_SpriteRender.transform.localScale = new Vector3(m_Properties.m_Properties.m_CurrentHP * 1.0f / m_Properties.m_Properties.m_BaseHP + 1, 0, 0);
+            m_SpriteRender.gameObject.transform.localScale = new Vector3(m_Properties.m_Properties.m_CurrentHP * 1.0f / m_Properties.m_Properties.m_BaseHP * 2, 1, 1);
             transform.rotation = Quaternion.identity;
             transform.position = transform.parent.transform.position + m_Offset;
         }
