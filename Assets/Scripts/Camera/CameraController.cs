@@ -49,6 +49,18 @@ public class CameraController
         return m_VirtualCameraTarget.rotation;
     }
 
+    public void SwitchCameraDis()
+    {
+        if(m_CameraDistance == m_MinDistance)
+        {
+            m_CameraDistance = m_MaxDistance;
+        }
+        else
+        {
+            m_CameraDistance = m_MinDistance;
+        }
+    }
+
     public float GetMaxDistance()
     {
         return m_MaxDistance;
