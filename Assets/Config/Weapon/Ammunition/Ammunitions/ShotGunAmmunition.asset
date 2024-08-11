@@ -16,7 +16,7 @@ MonoBehaviour:
   m_MinPoolSize: 50
   m_MaxPoolSize: 100
   isAuto: 0
-  m_Speed: 25
+  m_Speed: 30
   m_LifeDistance: 15
   m_Damage: 20
   m_PostAmmunitionType: 12
@@ -31,5 +31,5 @@ MonoBehaviour:
   - m_EffectBuff: 12
     m_Duration: 0.5
     m_Number: -0.5
-  hitVfxType: 0
+  hitVfxType: 12
   hitSfxType: 0
