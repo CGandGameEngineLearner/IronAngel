@@ -33,6 +33,7 @@ public class IronAngelSceneManager : MonoBehaviour
             
             // 给玩家双手添加武器
             // GivePlayerWeapon(gameSaveFile.leftWeaponType, gameSaveFile.rightWeaponType);
+            PlayerController.PlayerControllers[0].Player.GivePlayerWeapon(gameSaveFile.leftWeaponType, gameSaveFile.rightWeaponType);
             gameObject.SetActive(false);
         }
     }

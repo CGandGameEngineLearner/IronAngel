@@ -134,6 +134,17 @@ public class PlayerController : NetworkBehaviour
     {
         WeaponSystemCenter.Instance.CmdStartGame();
     }
+    
+    /// <summary>
+    /// 用来给训练场生成枪械
+    /// </summary>
+    /// <param name="weaponType"></param>
+    /// <param name="pos"></param>
+    [Command]
+    public void CmdSpawnWeapon(WeaponType weaponType, Vector3 pos)
+    {
+        WeaponSystemCenter.Instance.SpawnWeapon(weaponType, pos);
+    }
 
     [ClientCallback]
     private void FixedUpdate()
@@ -429,8 +440,6 @@ public class PlayerController : NetworkBehaviour
     {
         m_Player.Move(m_InputController.GetPlayerMoveInputVector2());
     }
-
-    
 }
 
 

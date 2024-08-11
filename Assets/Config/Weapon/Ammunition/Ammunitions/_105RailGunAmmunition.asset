@@ -28,8 +28,9 @@ MonoBehaviour:
   m_LeastLiveFixedFrameCount: 0
   m_specialAtkTypes: 0200000001000000
   m_EffectBuff:
-  - m_EffectBuff: 13
+  - m_EffectBuff: 15
     m_Duration: 3
     m_Number: 0
   hitVfxType: 15
-  hitSfxType: 0
+  holeType: 0
+  scrapType: 0

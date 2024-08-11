@@ -65,7 +65,7 @@ public class SectionChangeTrigger : NetworkBehaviour
         }
         
         GameObject rightWeapon = PlayerController.PlayerControllers[0].Player
-            .GetPlayerLeftHandWeapon();
+            .GetPlayerRightHandWeapon();
         if (rightWeapon)
         {
             SaveLoadManager.GlobalSaveFile.rightWeaponType = WeaponSystemCenter.GetWeaponType(rightWeapon);
