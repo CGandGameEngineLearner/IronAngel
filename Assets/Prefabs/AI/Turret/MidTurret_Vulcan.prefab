@@ -474,6 +474,7 @@ MonoBehaviour:
   m_DashSpeed: 0
   m_DashDuration: 0
   m_EngagementDistance: 0
+  m_ObstacleAvoidanceDistance: 3
 --- !u!58 &7549400497388090286
 CircleCollider2D:
   m_ObjectHideFlags: 0
