@@ -449,7 +449,7 @@ GameObject:
   - component: {fileID: 85230040884797571}
   - component: {fileID: 6355942658252182156}
   m_Layer: 7
-  m_Name: AItest
+  m_Name: AItest 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -560,7 +560,7 @@ MonoBehaviour:
   m_TokenWeight: 1
   m_RangeOfAimingError: 2
   m_LeftHandWeaponAttackingDuration: 2
-  m_RightHandWeaponAttackingDuration: 2
+  m_RightHandWeaponAttackingDuration: 1.6
   m_ProbabilityOfLeftWeapon: 0.491
   m_ProbabilityOfRightWeapon: 0.5
   PatrolRoute: {fileID: 0}
@@ -686,7 +686,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneId: 0
-  _assetId: 3965287523
+  _assetId: 2808829030
   serverOnly: 0
   visibility: 0
   hasSpawned: 0
@@ -773,13 +773,13 @@ MonoBehaviour:
   syncInterval: 0
   m_Properties:
     m_Energy: 10
-    m_BaseHP: 200
-    m_LeftHandWeaponHP: 200
+    m_BaseHP: 300
+    m_LeftHandWeaponHP: 250
     m_LeftHandWeaponCurrentHP: 0
-    m_RightHandWeaponHP: 200
+    m_RightHandWeaponHP: 350
     m_RightHandWeaponCurrentHP: 0
     m_LeftHandWeapon: 0
-    m_RightHandWeapon: 0
+    m_RightHandWeapon: 1
     m_Armor: 0
     m_EnergyShieldCount: 10
     m_CurrentHP: 0
