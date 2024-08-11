@@ -302,6 +302,10 @@ public class WeaponSystemCenter : NetworkBehaviour
     [ClientRpc]
     public void RPCFire(GameObject character, GameObject weapon, Vector3 startPoint, Vector3 dir)
     {
+        if(m_WeaponToTypeDic.ContainsKey(weapon) == false)
+        {
+            return;
+        }
         WeaponType weaponType = m_WeaponToTypeDic[weapon];
         WeaponConfig weaponConfig = m_WeaponConfigDic[weaponType];
 
