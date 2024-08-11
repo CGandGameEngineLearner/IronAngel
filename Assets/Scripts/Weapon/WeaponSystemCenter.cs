@@ -84,7 +84,25 @@ public class WeaponSystemCenter : NetworkBehaviour
         m_RegisteredWeaponAI.Add(aiController);
     }
 
+    [ServerCallback]
+    public GameObject GetWeapon(WeaponType weaponType)
+    {
+        if (weaponType == WeaponType.None) return null;
+        
+        var weaponConfig = m_WeaponConfigDic[weaponType];
+        var prefab = weaponConfig.prefab;
 
+        GameObject weapon = Instantiate(prefab, Vector2.zero,
+            UnityEngine.Quaternion.Euler(0,0,Random.Range(0,360))); // 朝向随机
+
+        weapon.GetComponent<WeaponInstance>().Init(weaponConfig);
+        m_WeaponToConfigDic[weapon] = weaponConfig;
+        m_WeaponToTypeDic[weapon] = weaponType;
+        NetworkServer.Spawn(weapon);
+        RpcWeaponDicUpdate(weapon, weaponType);
+        return weapon;
+    }
+    
     public void SpawnWeapon(WeaponType weaponType, Vector3 pos)
     {
         ServeSpawnWeapon(weaponType, pos);
@@ -131,8 +149,6 @@ public class WeaponSystemCenter : NetworkBehaviour
         RpcWeaponDicUpdate(weapon, weaponType);
         return weapon;
     }
-
-    
     
     /// <summary>
     /// 给AI装备武器
@@ -232,6 +248,16 @@ public class WeaponSystemCenter : NetworkBehaviour
         return m_WeaponConfigDic[weaponType];
     }
 
+    public static WeaponType GetWeaponType(GameObject weapon)
+    {
+        if (!m_WeaponToTypeDic.ContainsKey(weapon))
+        {
+            throw new Exception("查询不到武器配置，武器为：" + weapon);
+        }
+
+        return m_WeaponToTypeDic[weapon];
+    }
+    
     public bool StartGame = false;
 
     /// <summary>
