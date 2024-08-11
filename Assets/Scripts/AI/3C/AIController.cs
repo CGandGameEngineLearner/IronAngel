@@ -353,9 +353,9 @@ public class AIController : NetworkBehaviour
         var AttackPreCastDelay = WeaponSystemCenter.GetWeaponConfig(weapon).attackPreCastDelay;
         m_LogicStateManager.SetStateDuration(ELogicState.AIAttackPreCastDelay, AttackPreCastDelay);
         var weaponInstance = weapon.GetComponent<WeaponInstance>();
-        var firePoint = weaponInstance.firePoint.position;
+        
         var dir = transform.rotation*Vector3.up;
-        WeaponSystemCenter.Instance.StartLaserPointer(gameObject,m_LeftHandWeapon,transform.position, dir);
+        WeaponSystemCenter.Instance.StartLaserPointer(gameObject,weapon,transform.position, dir);
         
         while (m_LogicStateManager.IncludeState(ELogicState.AIAttackPreCastDelay))
         {
@@ -367,9 +367,10 @@ public class AIController : NetworkBehaviour
         
         while (m_LogicStateManager.IncludeState(ELogicState.AIAttacking))
         {
+            var firePoint = weaponInstance.firePoint.position;
             dir = transform.rotation*Vector3.up;
             dir = ComputeAngleOfFire(dir);
-            WeaponSystemCenter.Instance.CmdFire(gameObject, m_RightHandWeapon,firePoint,dir);
+            WeaponSystemCenter.Instance.CmdFire(gameObject, weapon,firePoint,dir);
             yield return null;
         }
         
