@@ -7,6 +7,7 @@ namespace LogicState
     public class LogicState_PlayerDashing : LogicState
     {
         public LogicState_PlayerDashing(ELogicState stateEnum) : base(stateEnum) { }
+        public LogicState_PlayerDashing(ELogicState stateEnum, LogicStateManager parent) : base(stateEnum, parent){}
         public override void OnStateIn()
         {
 #if UNITY_EDITOR

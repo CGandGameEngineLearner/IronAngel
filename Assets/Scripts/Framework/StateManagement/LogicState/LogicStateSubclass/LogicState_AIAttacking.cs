@@ -5,6 +5,7 @@ namespace LogicState
     public class LogicState_AIAttacking:LogicState
     {
         public LogicState_AIAttacking(ELogicState stateEnum):base(stateEnum){}
+        public LogicState_AIAttacking(ELogicState stateEnum, LogicStateManager parent) : base(stateEnum, parent){}
     
         public override void Init()
         {

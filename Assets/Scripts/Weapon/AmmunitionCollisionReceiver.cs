@@ -1,11 +1,9 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
 using LogicState;
-using Mirror.BouncyCastle.Asn1.Mozilla;
-
+using System.Collections;
 
 [RequireComponent(typeof(BaseProperties))]
 [RequireComponent (typeof(LogicStateManager))]
@@ -201,20 +199,34 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
         if(leftDis < rightDis && leftDis < coreDis && m_Properties.m_Properties.m_LeftHandWeaponCurrentHP > 0)
         {
             data.m_LeftHandWeaponHP -= damage;
+            m_LogicStateManager.AddState(ELogicState.LeftHandDamaged);
+            RpcPlayDamageVFX(ELogicState.LeftHandDamaged);
         }
         // 击中右手
         else if(rightDis < coreDis && rightDis < leftDis && m_Properties.m_Properties.m_RightHandWeaponCurrentHP > 0)
         {
 
             data.m_RightHandWeaponHP -= damage;
+            m_LogicStateManager.AddState(ELogicState.RightHandDamaged);
+            RpcPlayDamageVFX(ELogicState.RightHandDamaged);
         }
         // 击中核心
         else
         {
             data.m_CurrentHP -= damage;
+            m_LogicStateManager.AddState(ELogicState.CoreDamaged);
+            RpcPlayDamageVFX(ELogicState.CoreDamaged);
         }
         RPCBroadcastDamage(data);
     }
+
+    [ClientRpc]
+    private void RpcPlayDamageVFX(ELogicState stateEnum)
+    {
+        m_LogicStateManager.AddState(stateEnum);
+    }
+
+    
 
 
     [ServerCallback]

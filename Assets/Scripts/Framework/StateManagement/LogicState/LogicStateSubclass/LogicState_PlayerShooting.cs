@@ -7,6 +7,7 @@ namespace LogicState
     public class LogicState_PlayerShooting : LogicState
     {
         public LogicState_PlayerShooting(ELogicState stateEnum) : base(stateEnum) { }
+        public LogicState_PlayerShooting(ELogicState stateEnum, LogicStateManager parent) : base(stateEnum, parent){}
         public override void OnStateIn()
         {
 #if UNITY_EDITOR

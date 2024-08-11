@@ -20,6 +20,7 @@ public class WeaponInstance : NetworkBehaviour
     [SyncVar] private int m_WeaponHP;
     [SyncVar] private int m_WeaponCurrentHP;
     [SyncVar] private int m_CurrentMag;
+    [SyncVar] private string m_Name;
 
     private WeaponConfig m_WeaponConfig;
 
@@ -38,6 +39,7 @@ public class WeaponInstance : NetworkBehaviour
         m_WeaponInstanceData.currentMag = weaponConfig.magSize;
         m_CurrentMag = m_WeaponInstanceData.currentMag;
         m_LineRenderer = GetComponent<LineRenderer>();
+        m_Name = weaponConfig.weaponName;
     }
 
     public LineRenderer lineRenderer => m_LineRenderer;
@@ -88,6 +90,11 @@ public class WeaponInstance : NetworkBehaviour
     public int GetCurrentMag()
     {
         return m_CurrentMag;
+    }
+
+    public string GetWeaponName()
+    {
+        return m_Name;
     }
 
     public void FireVfxAndAnimation(GameObject character, WeaponType weaponType, WeaponConfig weaponConfig, Vector3 startPoint,
