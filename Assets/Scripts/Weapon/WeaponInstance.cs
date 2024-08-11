@@ -96,7 +96,7 @@ public class WeaponInstance : NetworkBehaviour
         // 普通武器开火动画，激光需要特殊处理
         if (weaponType != WeaponType.CombatLaserGun && weaponType != WeaponType.HeavyLaserCannon)
         {
-            VfxPool.Instance.GetVfx(weaponConfig.fireVfxType, startPoint, Quaternion.identity);
+            VfxPool.Instance.GetVfx(weaponConfig.fireVfxType, startPoint, Quaternion.LookRotation(dir));
         }
         else
         {
