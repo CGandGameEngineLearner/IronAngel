@@ -97,13 +97,13 @@ public class WeaponInstance : NetworkBehaviour
 
         if (audioSource == null)
         {
-            Debug.LogError(weaponType+"武器预制体未挂载音效组件");
+            //Debug.LogError(weaponType+"武器预制体未挂载音效组件");
         }
 
         if (audioSource.clip != null)
         {
             audioSource.Play();
-            Debug.LogError("Playing" + $"{audioSource.clip.name}");
+            //Debug.LogError("Playing" + $"{audioSource.clip.name}");
         }
         
         
