@@ -148,6 +148,21 @@ public class AIMovement : MonoBehaviour
         {
             return false;
         }
+        
+        // 如果目标点有刚体占着位置 则把目标点设置到旁边
+        var dir = (target - transform.position).normalized;
+        RaycastHit hit;
+        if (Physics.Raycast(target, dir, out hit, 1f))
+        {
+            if (hit.collider != null)
+            {
+                Rigidbody rb = hit.collider.GetComponent<Rigidbody>();
+                if (rb == null)
+                {
+                    target = target - 1 * dir;
+                }
+            }
+        }
         return agent.SetDestination(target);
     }
     
