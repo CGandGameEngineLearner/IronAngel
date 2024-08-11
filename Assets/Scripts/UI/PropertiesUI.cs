@@ -10,43 +10,57 @@ public class PropertiesUI : MonoBehaviour
     [Tooltip("进度条Shader属性名字")]
     [SerializeField]
     private string m_RateName = "_Rate";
+    
     [Tooltip("血量")]
     [SerializeField]
     private Image m_HP;
+    
     [Tooltip("左手武器血量")]
     [SerializeField]
     private Image m_LeftHP;
+    
     [Tooltip("左手武器剩余子弹")]
     [SerializeField]
     private TextMeshProUGUI m_LeftMag;
+    
     [Tooltip("右手武器血量")]
     [SerializeField]
     private Image m_RightHP;
+    
     [Tooltip("右手武器剩余子弹")]
     [SerializeField]
     private TextMeshProUGUI m_RightMag;
+    
     [Tooltip("冲刺次数")]
     private GameObject m_DashCount;
+    
     [Tooltip("能量")]
     [SerializeField]
     private Image m_Energy;
+    
     [Tooltip("最大能量")]
     private int m_MaxEnergy = 100;
+    
     [Tooltip("冲刺数量面板")]
     [SerializeField]
     private Image m_DashPanel;
+    
     [Tooltip("冲刺数量UI,按顺序拖进来")]
     [SerializeField]
     private List<Image> m_DashCountImages = new List<Image>();
+    
     [Tooltip("冲刺UI偏移")]
     [SerializeField]
     private Vector2 m_DashUIOffset;
+    
     [Tooltip("左武器名字")]
     [SerializeField]
     private TextMeshProUGUI m_LeftWeaponName;
+    
     [Tooltip("右武器名字")]
     [SerializeField]
     private TextMeshProUGUI m_RightWeaponName;
+    
 
     private void Update()
     {
