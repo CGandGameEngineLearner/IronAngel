@@ -1,4 +1,5 @@
 using Cinemachine;
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -71,5 +72,15 @@ public class CameraController
     public float GetCameraDistance()
     {
         return m_CameraDistance;
+    }
+
+    public void ShakeCameraPosition(float duration, Vector3 strength)
+    {
+        m_Camera.DOShakePosition(duration, strength);
+    }
+
+    public void ShakeCameraRotation(float duration, float zAxis)
+    {
+        m_Camera.DOShakeRotation(duration, new Vector3(0, 0, zAxis));
     }
 }

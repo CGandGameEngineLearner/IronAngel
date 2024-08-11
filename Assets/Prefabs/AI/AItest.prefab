@@ -440,11 +440,11 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5624187325333055347}
-  - {fileID: 8825717700428286572}
   - {fileID: 6535439772034872880}
   - {fileID: 2593936316104325338}
   - {fileID: 6115189748081125040}
   - {fileID: 6664624308786766049}
+  - {fileID: 8825717700428286572}
   - {fileID: 6497410393387060317}
   - {fileID: 6081974759311742569}
   - {fileID: 8444586566961838204}
@@ -494,8 +494,8 @@ MonoBehaviour:
         byteData: 
         byteDataArray: 
       Version: 1.7.9
-  gizmoViewMode: 0
-  showBehaviorDesignerGizmo: 0
+  gizmoViewMode: 2
+  showBehaviorDesignerGizmo: 1
 --- !u!114 &5384138960469735118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -527,13 +527,13 @@ MonoBehaviour:
   LeftHand: {fileID: 1511069729385333637}
   RightHand: {fileID: 3985092614300666292}
   m_AutoAvoid: 1
-  m_AutoAvoid_Probability: 0.5
+  m_AutoAvoid_Probability: 1
   m_AutoAvoid_RestTimes: 5
   m_TokenWeight: 1
   m_RangeOfAimingError: 2
   m_LeftHandWeaponAttackingDuration: 2
   m_RightHandWeaponAttackingDuration: 2
-  m_ProbabilityOfLeftWeapon: 0.491
+  m_ProbabilityOfLeftWeapon: 0.3
   m_ProbabilityOfRightWeapon: 0.5
   PatrolRoute: {fileID: 0}
 --- !u!114 &8337392909154346315
@@ -553,8 +553,8 @@ MonoBehaviour:
     m_Bits: 512
   m_DashSpeed: 5
   m_DashDuration: 1
-  m_EngagementDistance: 4
-  m_ObstacleAvoidanceDistance: 2
+  m_EngagementDistance: 3
+  m_ObstacleAvoidanceDistance: 3
 --- !u!58 &7549400497388090286
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1436,7 +1436,7 @@ Transform:
   m_GameObject: {fileID: 4526419129806610789}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.04, y: 1.505, z: 0}
-  m_LocalScale: {x: 0.09, y: 0.09, z: 0.09}
+  m_LocalScale: {x: 0.12, y: 0.12, z: 0.12}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 6485104532671038429}
@@ -1483,12 +1483,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 500
-  m_Sprite: {fileID: 21300000, guid: ddd4aaefcbf36c9428368d886cbaf5e2, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.30588236}
+  m_Sprite: {fileID: 21300000, guid: d316da4ee6a3f354cba1a0098d170538, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.79607844}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 3.21, y: 3.59}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

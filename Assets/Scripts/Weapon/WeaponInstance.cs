@@ -93,10 +93,21 @@ public class WeaponInstance : NetworkBehaviour
     public void FireVfxAndAnimation(GameObject character, WeaponType weaponType, WeaponConfig weaponConfig, Vector3 startPoint,
         Vector3 dir)
     {
+        var audioSource = gameObject.GetComponent<AudioSource>();
+
+        if (audioSource == null)
+        {
+            Debug.LogError(weaponType+"武器预制体未挂载音效组件");
+        }
+        
+        audioSource.Play();
+        
         // 普通武器开火动画，激光需要特殊处理
         if (weaponType != WeaponType.CombatLaserGun && weaponType != WeaponType.HeavyLaserCannon)
         {
-            VfxPool.Instance.GetVfx(weaponConfig.fireVfxType, startPoint, Quaternion.LookRotation(dir));
+            float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+            Quaternion rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward); // -90 to adjust from (0, 1) to (1, 0)
+            VfxPool.Instance.GetVfx(weaponConfig.fireVfxType, startPoint, rotation);
         }
         else
         {

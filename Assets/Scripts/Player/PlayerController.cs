@@ -99,6 +99,15 @@ public class PlayerController : NetworkBehaviour
         
         m_Player.Update();
         m_InputController.UpdateInputDevice();
+
+        if(Input.GetKeyDown(KeyCode.B))
+        {
+            m_CameraController.ShakeCameraPosition(1.0f, new Vector3(3, 3, 0));
+        }
+        if(Input.GetKeyDown(KeyCode.C))
+        {
+            m_CameraController.ShakeCameraRotation(1.0f, 180);
+        }
     }
     
     
