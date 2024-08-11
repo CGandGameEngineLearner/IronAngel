@@ -51,11 +51,11 @@ namespace LogicState
             }
             else if (LogicStateEnum == ELogicState.LeftHandDamaged)
             {
-                m_SpriteRenderer = m_LeftWeapon.GetComponent<SpriteRenderer>();
+                m_SpriteRenderer = m_LeftWeapon?.GetComponent<SpriteRenderer>();
             }
             else if (LogicStateEnum == ELogicState.RightHandDamaged)
             {
-                m_SpriteRenderer = m_RightWeapon.GetComponent<SpriteRenderer>();
+                m_SpriteRenderer = m_RightWeapon?.GetComponent<SpriteRenderer>();
             }
             else
             {

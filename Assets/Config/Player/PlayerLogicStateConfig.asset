@@ -28,3 +28,18 @@ MonoBehaviour:
     AutoStateOut: 0
     included: 
     excluded: 03000000
+  - stateEnum: 11
+    Duration: 0.3
+    AutoStateOut: 0
+    included: 
+    excluded: 03000000
+  - stateEnum: 12
+    Duration: 0.3
+    AutoStateOut: 0
+    included: 
+    excluded: 03000000
+  - stateEnum: 13
+    Duration: 0.3
+    AutoStateOut: 0
+    included: 
+    excluded: 03000000
