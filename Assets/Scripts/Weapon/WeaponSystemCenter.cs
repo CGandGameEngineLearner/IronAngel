@@ -242,7 +242,7 @@ public class WeaponSystemCenter : NetworkBehaviour
     /// <param name="startPoint"></param>
     /// <param name="dir"></param>
     [ServerCallback]
-    public void CmdFire(GameObject character, GameObject weapon, Vector3 startPoint, Vector3 dir)
+    public void CmdFire(GameObject character, GameObject weapon, Vector3 startPoint, Vector3 dir, bool isPlayer = true)
     {
         if (weapon == null)
         {
@@ -275,7 +275,7 @@ public class WeaponSystemCenter : NetworkBehaviour
         }
 
         // 减少弹匣数量
-        if (!weaponInstance.DecreaseMag())
+        if (!weaponInstance.DecreaseMag() && isPlayer)
         {
 #if UNITY_EDITOR
             //Debug.LogWarning("子弹数不足");

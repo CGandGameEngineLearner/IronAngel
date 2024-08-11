@@ -375,7 +375,7 @@ public class AIController : NetworkBehaviour
             var firePoint = weaponInstance.firePoint.position;
             dir = transform.rotation*Vector3.up;
             dir = ComputeAngleOfFire(dir);
-            WeaponSystemCenter.Instance.CmdFire(gameObject, weapon,firePoint,dir);
+            WeaponSystemCenter.Instance.CmdFire(gameObject, weapon,firePoint,dir, false);
             yield return null;
         }
         
