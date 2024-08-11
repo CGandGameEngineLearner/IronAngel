@@ -60,7 +60,7 @@ public static class SaveLoadManager
             // 创建新文件
             GameSaveFile gameSaveFile = new GameSaveFile();
             gameSaveFile.currentLevel = 0;
-            gameSaveFile.currentSection = 0;
+            gameSaveFile.currentSection = -1;
             gameSaveFile.leftWeaponType = WeaponType.None;
             gameSaveFile.rightWeaponType = WeaponType.None;
             
