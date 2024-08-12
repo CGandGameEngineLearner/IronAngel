@@ -119,6 +119,9 @@ public enum WeaponType
     
     // -- 特殊武器
     SPExplosiveLuncher,
+    KnightPilumLuncher,
+    EMPLuncher,
+    RocketPodLuncher,
 
     // 选择没有武器
     None,
