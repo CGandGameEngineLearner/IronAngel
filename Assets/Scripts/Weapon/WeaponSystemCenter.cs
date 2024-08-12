@@ -128,6 +128,7 @@ public class WeaponSystemCenter : NetworkBehaviour
     [ClientRpc]
     private void RpcWeaponDicUpdate(GameObject weapon, WeaponType weaponType)
     {
+        if(weaponType == WeaponType.None) return;
         m_WeaponToConfigDic[weapon] = m_WeaponConfigDic[weaponType];
         m_WeaponToTypeDic[weapon] = weaponType;
     }
