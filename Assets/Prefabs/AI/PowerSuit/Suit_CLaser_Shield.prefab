@@ -564,10 +564,10 @@ MonoBehaviour:
   m_AutoAvoid_RestTimes: 0
   m_TokenWeight: 0.5
   m_RangeOfAimingError: 0.8
-  m_LeftHandWeaponAttackingDuration: 1.5
-  m_RightHandWeaponAttackingDuration: 0
-  m_ProbabilityOfLeftWeapon: 0.515
-  m_ProbabilityOfRightWeapon: 0
+  m_LeftHandWeaponAttackingDuration: 0
+  m_RightHandWeaponAttackingDuration: 1.5
+  m_ProbabilityOfLeftWeapon: 0
+  m_ProbabilityOfRightWeapon: 1
   PatrolRoute: {fileID: 0}
 --- !u!114 &8337392909154346315
 MonoBehaviour:
@@ -788,7 +788,7 @@ MonoBehaviour:
     m_LeftWeaponGO: {fileID: 0}
     m_RightWeaponGO: {fileID: 0}
     m_Armor: 0
-    m_EnergyShieldCount: 10
+    m_EnergyShieldCount: 5
     m_CurrentHP: 100
     m_CurrentArmor: 0
     m_AttackRange: 15

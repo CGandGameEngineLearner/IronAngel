@@ -60,14 +60,67 @@ MonoBehaviour:
     dialogStructs:
     - stringToSays: Squad Leader:Set up the perimeter!
       time: 2
-      delayTime: 1
+      delayTime: 0
     - stringToSays: Squad Leader:Squard A!Follow my lead!
-      time: 2
+      time: 3
       delayTime: 1
-    - stringToSays: Squad Leader:Give him everything we got!
-      time: 2
+    - stringToSays: Squad Leader:Give everything we got!
+      time: 3
       delayTime: 1
     - stringToSays: Infantry:Aye Sir!
+      time: 2
+      delayTime: 1
+    waveDelay: 4
+  - enemyListConfigs:
+    - enemyPrefab: {fileID: 2195872794582507982, guid: f4e6249ca37e15e4196a98abb13f0917, type: 3}
+      spawnPosition: {x: -61.262596, y: -36.796333, z: 0}
+    - enemyPrefab: {fileID: 2195872794582507982, guid: f65dee11a7d78b1419d164a007840369, type: 3}
+      spawnPosition: {x: -56.152164, y: -37.648067, z: 0}
+    - enemyPrefab: {fileID: 2195872794582507982, guid: f4e6249ca37e15e4196a98abb13f0917, type: 3}
+      spawnPosition: {x: -62.114315, y: 8.913608, z: 0}
+    - enemyPrefab: {fileID: 2195872794582507982, guid: f65dee11a7d78b1419d164a007840369, type: 3}
+      spawnPosition: {x: -56.3225, y: 10.617084, z: 0}
+    - enemyPrefab: {fileID: 2195872794582507982, guid: 9ce5cfdcaf248f742a786eb3ebecc5ae, type: 3}
+      spawnPosition: {x: -35.40492, y: 8.439661, z: 0}
+    - enemyPrefab: {fileID: 2195872794582507982, guid: 38fbfa9459e315e43ba5550987595c90, type: 3}
+      spawnPosition: {x: -7.9738483, y: 12.636846, z: 0}
+    - enemyPrefab: {fileID: 2195872794582507982, guid: f4e6249ca37e15e4196a98abb13f0917, type: 3}
+      spawnPosition: {x: -45.339615, y: 7.5219994, z: 0}
+    - enemyPrefab: {fileID: 2195872794582507982, guid: 9ce5cfdcaf248f742a786eb3ebecc5ae, type: 3}
+      spawnPosition: {x: 44.48077, y: 10.382004, z: 0}
+    - enemyPrefab: {fileID: 2195872794582507982, guid: 9ce5cfdcaf248f742a786eb3ebecc5ae, type: 3}
+      spawnPosition: {x: 47.803688, y: 9.72929, z: 0}
+    - enemyPrefab: {fileID: 2195872794582507982, guid: 9ce5cfdcaf248f742a786eb3ebecc5ae, type: 3}
+      spawnPosition: {x: 34.156, y: 12.39949, z: 0}
+    - enemyPrefab: {fileID: 2195872794582507982, guid: 9ce5cfdcaf248f742a786eb3ebecc5ae, type: 3}
+      spawnPosition: {x: 45.726864, y: 9.076574, z: 0}
+    - enemyPrefab: {fileID: 2195872794582507982, guid: a5b5da5badf774a4392236e5af463361, type: 3}
+      spawnPosition: {x: 41.98157, y: -34.989326, z: 0}
+    - enemyPrefab: {fileID: 2195872794582507982, guid: f4e6249ca37e15e4196a98abb13f0917, type: 3}
+      spawnPosition: {x: 43.99611, y: -35.504673, z: 0}
+    - enemyPrefab: {fileID: 2195872794582507982, guid: f65dee11a7d78b1419d164a007840369, type: 3}
+      spawnPosition: {x: 43.480762, y: -38.690453, z: 0}
+    - enemyPrefab: {fileID: 2195872794582507982, guid: 9f1872c5830126b4c8ae4a7dac0d4a1d, type: 3}
+      spawnPosition: {x: -57.80835, y: -35.785774, z: 0}
+    - enemyPrefab: {fileID: 2195872794582507982, guid: 9f1872c5830126b4c8ae4a7dac0d4a1d, type: 3}
+      spawnPosition: {x: -58.323696, y: -38.315662, z: 0}
+    - enemyPrefab: {fileID: 2195872794582507982, guid: 9ce5cfdcaf248f742a786eb3ebecc5ae, type: 3}
+      spawnPosition: {x: -7.163803, y: 9.752155, z: 0}
+    onFieldEnemyCount: 6
+    dialogStructs:
+    - stringToSays: "Squad Leader:He\u2019s killing us!"
+      time: 2
+      delayTime: 0
+    - stringToSays: Commander:Send our walkers,NOW!
+      time: 2
+      delayTime: 1
+    - stringToSays: Mecha Pilot:We'll take care of this!
+      time: 2
+      delayTime: 1
+    - stringToSays: Commander:Armed Scout team, provide support!
+      time: 2
+      delayTime: 1
+    - stringToSays: 'ScouterS: Copy 1-1, out.'
       time: 2
       delayTime: 1
     waveDelay: 4
