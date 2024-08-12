@@ -122,9 +122,9 @@ public enum WeaponType
     
     // -- 特殊武器
     SPExplosiveLuncher,
-    KnightPilumLuncher,
-    EMPLuncher,
-    RocketPodLuncher,
+    SPKnightPilumLuncher,
+    SPEMPLuncher,
+    SPRocketPodLuncher,
 }
 
 public enum SpecialAtkType
