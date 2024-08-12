@@ -10,16 +10,8 @@ public class BaseProperties : NetworkBehaviour
 {
     public Properties m_Properties;
 
-    public bool ChangeCurentHP(int val)
-    {
-        m_Properties.m_CurrentHP = m_Properties.m_CurrentHP + val < m_Properties.m_BaseHP ? m_Properties.m_CurrentHP + val : m_Properties.m_BaseHP;
-        if(m_Properties.m_CurrentHP <= 0)
-        {
-            gameObject.SetActive(false);
-            return true;
-        }
-        return false;
-    }
+    [Tooltip("死亡特效种类")]
+    public VfxType DiedVFX;
 }
 
 /// <summary>
@@ -44,6 +36,7 @@ public enum ECamp
 
 /// <summary>
 /// 所有角色都有的属性
+/// 这里以后需要重构，都应该作为BaseProperties的成员变量，方便使用Mirror的SyncVar功能
 /// </summary>
 [Serializable]
 public struct Properties
