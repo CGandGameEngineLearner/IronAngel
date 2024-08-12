@@ -334,6 +334,7 @@ public class PlayerController : NetworkBehaviour
             if (m_Power.Count > 2 && m_BaseProperties.m_Properties.m_Energy >= m_Power[2])
             {
                 m_BaseProperties.m_Properties.m_Energy -= m_Power[2];
+                CmdSpecFire(m_Player.GetPlayer(), WeaponType.SPEMPLuncher, m_InputController.GetMousePositionInWorldSpace(m_CameraController.GetCamera()), Vector3.zero);
             }
         });
         m_InputController.AddPerformedActionToPower_4(() =>
