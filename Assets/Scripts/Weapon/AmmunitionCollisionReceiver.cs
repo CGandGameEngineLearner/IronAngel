@@ -285,7 +285,14 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
                     SpawnWeapon(m_Properties.m_Properties.m_RightHandWeapon, transform.position);  
                 }
             }
-
+            
+            if(m_Properties.DiedVFX!=null)
+            {
+                // 播放死亡特效
+                VfxPool.Instance.GetVfx(m_Properties.DiedVFX, gameObject.transform.position, gameObject.transform.rotation);
+            }
+            
+            
             gameObject.SetActive(false);
             EventCenter.Broadcast<GameObject>(EventType.CharacterDied, gameObject);
 
