@@ -8,7 +8,7 @@ namespace Audio
 {
     public class EvironmentAudioManager : MonoBehaviour
     {
-        public Dictionary<string, SceneEvironmentAudioSetting> m_SceneEvironmentAudioSettingDic;
+        public Dictionary<string, SceneEvironmentAudioSetting> m_SceneEvironmentAudioSettingDic = new Dictionary<string, SceneEvironmentAudioSetting>();
 
         public ScenesEvironmentAudioConfig m_ScenesEvironmentAudioConfig;
 
@@ -23,6 +23,7 @@ namespace Audio
                 m_SceneEvironmentAudioSettingDic[sceneName] = sceneEvironmentAudioSetting;
             }
             EventCenter.AddListener(EventType.ChangeScene,OnChangeScene);
+            OnChangeScene();
         }
 
         // Start is called before the first frame update
@@ -42,7 +43,7 @@ namespace Audio
             string currentSceneName = SceneManager.GetActiveScene().name;
             if (!m_SceneEvironmentAudioSettingDic.ContainsKey(currentSceneName))
             {
-                Debug.LogError("关卡：" + currentSceneName + " 没配置环境音效");
+                Debug.LogWarning("关卡：" + currentSceneName + " 没配置环境音效");
                 return;
             }
             var sceneEvironmentAudioSetting = m_SceneEvironmentAudioSettingDic[currentSceneName];

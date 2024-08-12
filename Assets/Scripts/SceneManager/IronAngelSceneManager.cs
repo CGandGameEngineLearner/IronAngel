@@ -35,6 +35,8 @@ public class IronAngelSceneManager : MonoBehaviour
             // GivePlayerWeapon(gameSaveFile.leftWeaponType, gameSaveFile.rightWeaponType);
             PlayerController.PlayerControllers[0].Player.GivePlayerWeapon(gameSaveFile.leftWeaponType, gameSaveFile.rightWeaponType);
             gameObject.SetActive(false);
+            
+            EventCenter.Broadcast(EventType.ChangeScene);
         }
     }
 
