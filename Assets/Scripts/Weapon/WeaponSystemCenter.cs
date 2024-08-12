@@ -221,14 +221,33 @@ public class WeaponSystemCenter : NetworkBehaviour
         // 给左手装备武器
         var weaponType = aiController.GetLeftHandWeaponType();
         var leftWeapon = AISpawnWeapon(weaponType, Vector3.zero);
-        aiController.SetLeftHandWeapon(leftWeapon);
+        if (leftWeapon)
+        {
+            aiController.SetLeftHandWeapon(leftWeapon);
+            RpcGiveAILeftWeapon(aiController, leftWeapon);
+        }
         
         // 给右手装备武器
         weaponType = aiController.GetRightHandWeaponType();
         var rightWeapon = AISpawnWeapon(weaponType, Vector3.zero);
-        aiController.SetRightHandWeapon(rightWeapon);
-
-        RpcGiveAIWeapon(aiController, leftWeapon, rightWeapon);
+        if (rightWeapon)
+        {
+            aiController.SetRightHandWeapon(rightWeapon);
+            RpcGiveAIRightWeapon(aiController, rightWeapon);
+        }
+        
+    }
+    
+    [ClientRpc]
+    private void RpcGiveAILeftWeapon(AIController aiController, GameObject leftHandWeapon)
+    {
+        aiController.SetLeftHandWeapon(leftHandWeapon);
+    }
+    
+    [ClientRpc]
+    private void RpcGiveAIRightWeapon(AIController aiController,  GameObject rightHandWeapon)
+    {
+        aiController.SetRightHandWeapon(rightHandWeapon);
     }
 
     [ClientRpc]

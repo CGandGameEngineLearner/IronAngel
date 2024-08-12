@@ -15,23 +15,23 @@ MonoBehaviour:
   waveConfigs:
   - enemyListConfigs:
     - enemyPrefab: {fileID: 2195872794582507982, guid: f4e6249ca37e15e4196a98abb13f0917, type: 3}
-      spawnPosition: {x: -3.0660107, y: 106.41947, z: 0}
+      spawnPosition: {x: 3.6542706, y: 101.80463, z: 0}
     - enemyPrefab: {fileID: 2195872794582507982, guid: f4e6249ca37e15e4196a98abb13f0917, type: 3}
-      spawnPosition: {x: 3.8935587, y: 107.94188, z: 0}
+      spawnPosition: {x: -4.037505, y: 100.10912, z: 0}
     - enemyPrefab: {fileID: 2195872794582507982, guid: f4e6249ca37e15e4196a98abb13f0917, type: 3}
-      spawnPosition: {x: 12.027571, y: 105.94099, z: 0}
+      spawnPosition: {x: 11.924996, y: 98.868515, z: 0}
     - enemyPrefab: {fileID: 2195872794582507982, guid: 534df9d583bbf1645a9094310e2122e8, type: 3}
-      spawnPosition: {x: -6.9372663, y: 110.11674, z: 0}
+      spawnPosition: {x: 3.902392, y: 105.981346, z: 0}
     - enemyPrefab: {fileID: 2195872794582507982, guid: 534df9d583bbf1645a9094310e2122e8, type: 3}
-      spawnPosition: {x: 14.637417, y: 109.333786, z: 0}
+      spawnPosition: {x: -4.037505, y: 104.07908, z: 0}
     - enemyPrefab: {fileID: 2195872794582507982, guid: 534df9d583bbf1645a9094310e2122e8, type: 3}
-      spawnPosition: {x: 3.8935742, y: 102.11322, z: 0}
+      spawnPosition: {x: 13.00019, y: 102.30087, z: 0}
     onFieldEnemyCount: 6
     dialogStructs:
     - stringToSays: 'PKSSInfantry:A kinght! '
-      time: 1
-      delayTime: 0
+      time: 2
+      delayTime: 1
     - stringToSays: PKSSInfantry:We need reinforcemence!
-      time: 1
-      delayTime: 0
+      time: 2
+      delayTime: 1
     waveDelay: 0

@@ -119,7 +119,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.1526888, y: -0.36832812}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0.5}
@@ -130,7 +130,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.18833888, y: 0.26334375}
   m_EdgeRadius: 0
 --- !u!114 &6295283052506457838
 MonoBehaviour:
@@ -157,7 +157,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 587068453855920466}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: fd717dbbfb7e5bc4a80e22a08564bcaa, type: 2}
   m_CullingMode: 0
@@ -664,10 +664,10 @@ MonoBehaviour:
   syncInterval: 0
   m_Properties:
     m_Energy: 10
-    m_BaseHP: 50
-    m_LeftHandWeaponHP: 200
+    m_BaseHP: 40
+    m_LeftHandWeaponHP: 40
     m_LeftHandWeaponCurrentHP: 0
-    m_RightHandWeaponHP: 200
+    m_RightHandWeaponHP: 0
     m_RightHandWeaponCurrentHP: 0
     m_LeftHandWeapon: 0
     m_RightHandWeapon: 0
@@ -1039,7 +1039,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.35560405, y: -0.21028186}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0.5}
@@ -1050,7 +1050,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.2887919, y: 0.21512625}
   m_EdgeRadius: 0
 --- !u!114 &699120794273678250
 MonoBehaviour:

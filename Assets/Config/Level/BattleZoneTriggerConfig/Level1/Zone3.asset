@@ -15,18 +15,18 @@ MonoBehaviour:
   waveConfigs:
   - enemyListConfigs:
     - enemyPrefab: {fileID: 2195872794582507982, guid: cb5d6fdf5f3c14448ac69e2ae0b2acf5, type: 3}
-      spawnPosition: {x: -1.6689987, y: 149.6272, z: 0}
+      spawnPosition: {x: -0.6200923, y: 136.791, z: 0}
     - enemyPrefab: {fileID: 2195872794582507982, guid: cb5d6fdf5f3c14448ac69e2ae0b2acf5, type: 3}
-      spawnPosition: {x: 9.831697, y: 147.97778, z: 0}
+      spawnPosition: {x: 7.8422885, y: 136.01047, z: 0}
     onFieldEnemyCount: 2
     dialogStructs:
     - stringToSays: PKSSTureet:Enemy comfirm!
-      time: 1
-      delayTime: 0
+      time: 2
+      delayTime: 1
     - stringToSays: PKSSTureet:We need to protect the rallypoint
       time: 2
-      delayTime: 0
+      delayTime: 1
     - stringToSays: PKSSTureet:Hold the line!
-      time: 1
-      delayTime: 0
+      time: 2
+      delayTime: 1
     waveDelay: 0
