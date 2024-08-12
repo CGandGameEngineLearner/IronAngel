@@ -6,6 +6,10 @@ using UnityEngine.SceneManagement;
 
 public class DiePanel : MonoBehaviour
 {
+    [Tooltip("ÖØ¿ª°´Å¥")]
+    [SerializeField]
+    private GameObject m_Retry;
+
     public void OnBackToStartMenu()
     {
         if (NetworkClient.localPlayer != null)
@@ -18,5 +22,10 @@ public class DiePanel : MonoBehaviour
     public void OnRetryClicked()
     {
 
+    }
+
+    public void SetRetryButtonVisiable(bool visiable)
+    {
+        m_Retry.SetActive(visiable);
     }
 }
