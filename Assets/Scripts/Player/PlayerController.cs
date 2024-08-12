@@ -22,7 +22,7 @@ public class PlayerController : NetworkBehaviour
 
     bool m_AfterStartLocalPlayer = false;
     float m_FireDistance;
-    List<int> m_Power;
+    public List<int> m_Power;
     //  public------------------------------------------
     public Player Player
     {

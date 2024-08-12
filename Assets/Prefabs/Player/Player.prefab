@@ -988,6 +988,7 @@ MonoBehaviour:
   syncDirection: 0
   syncMode: 0
   syncInterval: 0
+  m_Power: 
 --- !u!114 &7307908456998055856
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1019,7 +1020,7 @@ MonoBehaviour:
       serializedVersion: 2
       m_Bits: 512
   _FireDistance: 4
-  _PowerLimit: 
+  _PowerLimit: 640000006400000096000000c8000000
 --- !u!114 &6173973794821627971
 MonoBehaviour:
   m_ObjectHideFlags: 0

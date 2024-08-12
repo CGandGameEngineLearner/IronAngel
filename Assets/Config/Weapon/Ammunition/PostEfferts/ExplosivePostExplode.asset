@@ -10,24 +10,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a59e88c4a9d74b07b64319f8b37e8bad, type: 3}
-  m_Name: HeavyLaserCannonAmmunition
+  m_Name: ExplosivePostExplode
   m_EditorClassIdentifier: 
-  m_Prefab: {fileID: 8422378306381297977, guid: 776382461d237bf44b7832ba1824b5b6, type: 3}
+  m_Prefab: {fileID: 8422378306381297977, guid: 9166f2c5a7d7cf849b136ef4888928a8, type: 3}
   m_MinPoolSize: 50
   m_MaxPoolSize: 100
   isAuto: 0
   m_Speed: 0
-  m_LifeDistance: 30
-  m_Damage: 10
+  m_LifeDistance: 0
+  m_Damage: 1000
   m_PostAmmunitionType: 14
   m_IsExplodeDamage: 0
   sigma: 0
   fallout: 0
   minDamage: 0
-  m_LaserWidth: 1
-  m_LeastLiveFixedFrameCount: 4
+  m_LaserWidth: 0
+  m_LeastLiveFixedFrameCount: 3
   m_specialAtkTypes: 
   m_EffectBuff: []
-  hitVfxType: 17
+  hitVfxType: 0
   holeType: 0
   scrapType: 0
