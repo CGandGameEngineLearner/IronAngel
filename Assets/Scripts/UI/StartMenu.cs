@@ -69,6 +69,11 @@ public class StartMenu : MonoBehaviour
          isSingle = true;
     }
 
+    public void OnSinglePlayerContinue()
+    {
+
+    }
+
     public void OnMultiPlayerPanelEnter()
     {
         SceneManager.LoadScene("PVPLevel");
