@@ -175,7 +175,25 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
             return;
         }
 
-        
+
+        // 移除护甲
+        bool isRemove = true;
+        foreach (var type in m_specialAtkTypes)
+        {
+            // 如果有对不上的type就认为是没有特殊效果的子弹
+            if (config.m_specialAtkTypes.Contains(type) == false)
+            {
+                isRemove = false;
+                break;
+            }
+        }
+        // 如果包含了护甲所有的type(哪怕是子弹的Type种类数量比护盾的多)
+        // 都认为可以直接移除护甲
+        if (m_specialAtkTypes.Count > 0 && isRemove)
+        {
+            m_Properties.m_Properties.m_CurrentArmor = 0;
+            armor = -1;
+        }
 
         // 护甲大于0才进行减伤计算
         // 下面两句的计算顺序不能对换
@@ -406,4 +424,5 @@ public struct DamageData
     public int m_EnergyShieldCount;
     public int m_LeftHandWeaponHP;
     public int m_RightHandWeaponHP;
+
 }
