@@ -308,17 +308,19 @@ public class AIController : NetworkBehaviour
 
         var leftFire = IronAngel.Utils.RandomBool(m_ProbabilityOfLeftWeapon);
         var rightFire = IronAngel.Utils.RandomBool(m_ProbabilityOfRightWeapon);
-
-        if (m_BaseProperties.m_Properties.m_LeftWeaponGO == null)
+        
+        if (leftFire&&m_BaseProperties.m_Properties.m_LeftWeaponGO == null)
         {
             leftFire = false;
         }
 
-        if (m_BaseProperties.m_Properties.m_LeftWeaponGO == null)
+        if (rightFire && m_BaseProperties.m_Properties.m_RightWeaponGO == null)
         {
             rightFire = false;
         }
-
+            
+        
+        
         if (leftFire == false && rightFire == false)
         {
             if (IronAngel.Utils.RandomBool(0.5f))
