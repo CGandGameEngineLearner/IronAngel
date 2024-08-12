@@ -44727,6 +44727,90 @@ Transform:
   m_Father: {fileID: 1996542057}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 270}
+--- !u!1 &1043090533
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1043090534}
+  - component: {fileID: 1043090535}
+  m_Layer: 0
+  m_Name: paotasheet_0
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1043090534
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1043090533}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 14.4, y: 85.21, z: -0.3578505}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1996542057}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &1043090535
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1043090533}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: -626802110, guid: a059a40ed8ea541499c6e31946fac7cd, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 3.14, y: 3.54}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &1086787943
 GameObject:
   m_ObjectHideFlags: 0
@@ -45684,6 +45768,90 @@ SpriteRenderer:
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 25.95156, y: 13.66}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!1 &1376246186
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1376246187}
+  - component: {fileID: 1376246188}
+  m_Layer: 0
+  m_Name: paotasheet_0 (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1376246187
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1376246186}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 26.56, y: 85.21, z: -0.3578505}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1996542057}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &1376246188
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1376246186}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: -626802110, guid: a059a40ed8ea541499c6e31946fac7cd, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 3.14, y: 3.54}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -67455,6 +67623,8 @@ Transform:
   - {fileID: 538994813}
   - {fileID: 1299109968}
   - {fileID: 517432145}
+  - {fileID: 1043090534}
+  - {fileID: 1376246187}
   m_Father: {fileID: 0}
   m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -67591,7 +67761,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4549742626244481203, guid: a2be8ac903b22c049ba304072706a58e, type: 3}
       propertyPath: WeaponSpawnSettings.Array.size
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4549742626244481203, guid: a2be8ac903b22c049ba304072706a58e, type: 3}
       propertyPath: WeaponSpawnSettings.Array.data[0].Position.x
@@ -67631,23 +67801,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4549742626244481203, guid: a2be8ac903b22c049ba304072706a58e, type: 3}
       propertyPath: WeaponSpawnSettings.Array.data[3].Position.x
-      value: -0.009749413
-      objectReference: {fileID: 0}
-    - target: {fileID: 4549742626244481203, guid: a2be8ac903b22c049ba304072706a58e, type: 3}
-      propertyPath: WeaponSpawnSettings.Array.data[3].Position.y
-      value: 60.781487
-      objectReference: {fileID: 0}
-    - target: {fileID: 4549742626244481203, guid: a2be8ac903b22c049ba304072706a58e, type: 3}
-      propertyPath: WeaponSpawnSettings.Array.data[3].WeaponType
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 4549742626244481203, guid: a2be8ac903b22c049ba304072706a58e, type: 3}
-      propertyPath: WeaponSpawnSettings.Array.data[4].Position.x
       value: 7.976522
       objectReference: {fileID: 0}
     - target: {fileID: 4549742626244481203, guid: a2be8ac903b22c049ba304072706a58e, type: 3}
-      propertyPath: WeaponSpawnSettings.Array.data[4].Position.y
+      propertyPath: WeaponSpawnSettings.Array.data[3].Position.y
       value: 116.307655
+      objectReference: {fileID: 0}
+    - target: {fileID: 4549742626244481203, guid: a2be8ac903b22c049ba304072706a58e, type: 3}
+      propertyPath: WeaponSpawnSettings.Array.data[3].WeaponType
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4549742626244481203, guid: a2be8ac903b22c049ba304072706a58e, type: 3}
+      propertyPath: WeaponSpawnSettings.Array.data[4].Position.x
+      value: 12.043083
+      objectReference: {fileID: 0}
+    - target: {fileID: 4549742626244481203, guid: a2be8ac903b22c049ba304072706a58e, type: 3}
+      propertyPath: WeaponSpawnSettings.Array.data[4].Position.y
+      value: 116.22792
       objectReference: {fileID: 0}
     - target: {fileID: 4549742626244481203, guid: a2be8ac903b22c049ba304072706a58e, type: 3}
       propertyPath: WeaponSpawnSettings.Array.data[4].WeaponType
@@ -67655,15 +67825,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4549742626244481203, guid: a2be8ac903b22c049ba304072706a58e, type: 3}
       propertyPath: WeaponSpawnSettings.Array.data[5].Position.x
-      value: 12.043083
+      value: -0.009749413
       objectReference: {fileID: 0}
     - target: {fileID: 4549742626244481203, guid: a2be8ac903b22c049ba304072706a58e, type: 3}
       propertyPath: WeaponSpawnSettings.Array.data[5].Position.y
-      value: 116.22792
+      value: 60.781487
       objectReference: {fileID: 0}
     - target: {fileID: 4549742626244481203, guid: a2be8ac903b22c049ba304072706a58e, type: 3}
       propertyPath: WeaponSpawnSettings.Array.data[5].WeaponType
-      value: 8
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 9191053820183534780, guid: a2be8ac903b22c049ba304072706a58e, type: 3}
       propertyPath: m_Name
