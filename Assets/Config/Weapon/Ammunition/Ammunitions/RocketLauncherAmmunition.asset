@@ -19,7 +19,7 @@ MonoBehaviour:
   m_Speed: 20
   m_LifeDistance: 20
   m_Damage: 0
-  m_PostAmmunitionType: 13
+  m_PostAmmunitionType: 15
   m_IsExplodeDamage: 0
   sigma: 0
   fallout: 0
@@ -28,8 +28,9 @@ MonoBehaviour:
   m_LeastLiveFixedFrameCount: 0
   m_specialAtkTypes: 
   m_EffectBuff:
-  - m_EffectBuff: 12
+  - m_EffectBuff: 15
     m_Duration: 1.5
     m_Number: -1.5
   hitVfxType: 18
-  hitSfxType: 0
+  holeType: 0
+  scrapType: 0
