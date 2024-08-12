@@ -326,6 +326,7 @@ public class PlayerController : NetworkBehaviour
             if(m_Power.Count > 0 && m_BaseProperties.m_Properties.m_Energy >= m_Power[0])
             {
                 m_BaseProperties.m_Properties.m_Energy -= m_Power[0];
+
             }
         });
         m_InputController.AddPerformedActionToPower_2(() =>
@@ -344,9 +345,16 @@ public class PlayerController : NetworkBehaviour
         });
         m_InputController.AddPerformedActionToPower_4(() =>
         {
-            if (m_Power.Count > 3 && m_BaseProperties.m_Properties.m_Energy >= m_Power[2])
+            if (m_Power.Count > 3 && m_BaseProperties.m_Properties.m_Energy >= m_Power[3])
             {
                 m_BaseProperties.m_Properties.m_Energy -= m_Power[3];
+            }
+        });
+        m_InputController.AddPerformedActionToPower_5(() =>
+        {
+            if (m_Power.Count > 3 && m_BaseProperties.m_Properties.m_Energy >= m_Power[4])
+            {
+                m_BaseProperties.m_Properties.m_Energy -= m_Power[4];
             }
         });
     }

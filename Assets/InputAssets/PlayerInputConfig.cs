@@ -134,6 +134,15 @@ public partial class @PlayerInputConfig: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Power_5"",
+                    ""type"": ""Button"",
+                    ""id"": ""70c5fe1b-1750-401a-8b2d-fc741ea85452"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -532,6 +541,28 @@ public partial class @PlayerInputConfig: IInputActionCollection2, IDisposable
                     ""action"": ""Power_4"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5430ea0f-46aa-457f-9765-340c915ae5dc"",
+                    ""path"": ""<Keyboard>/5"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Power_5"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""44152eb3-159c-4537-ba9a-d54a68076f3e"",
+                    ""path"": ""<Keyboard>/numpad5"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Power_5"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -661,6 +692,7 @@ public partial class @PlayerInputConfig: IInputActionCollection2, IDisposable
         m_Player_Power_2 = m_Player.FindAction("Power_2", throwIfNotFound: true);
         m_Player_Power_3 = m_Player.FindAction("Power_3", throwIfNotFound: true);
         m_Player_Power_4 = m_Player.FindAction("Power_4", throwIfNotFound: true);
+        m_Player_Power_5 = m_Player.FindAction("Power_5", throwIfNotFound: true);
         // Camera
         m_Camera = asset.FindActionMap("Camera", throwIfNotFound: true);
         m_Camera_ViewTypeSwitch = m_Camera.FindAction("ViewTypeSwitch", throwIfNotFound: true);
@@ -741,6 +773,7 @@ public partial class @PlayerInputConfig: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Power_2;
     private readonly InputAction m_Player_Power_3;
     private readonly InputAction m_Player_Power_4;
+    private readonly InputAction m_Player_Power_5;
     public struct PlayerActions
     {
         private @PlayerInputConfig m_Wrapper;
@@ -757,6 +790,7 @@ public partial class @PlayerInputConfig: IInputActionCollection2, IDisposable
         public InputAction @Power_2 => m_Wrapper.m_Player_Power_2;
         public InputAction @Power_3 => m_Wrapper.m_Player_Power_3;
         public InputAction @Power_4 => m_Wrapper.m_Player_Power_4;
+        public InputAction @Power_5 => m_Wrapper.m_Player_Power_5;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -802,6 +836,9 @@ public partial class @PlayerInputConfig: IInputActionCollection2, IDisposable
             @Power_4.started += instance.OnPower_4;
             @Power_4.performed += instance.OnPower_4;
             @Power_4.canceled += instance.OnPower_4;
+            @Power_5.started += instance.OnPower_5;
+            @Power_5.performed += instance.OnPower_5;
+            @Power_5.canceled += instance.OnPower_5;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -842,6 +879,9 @@ public partial class @PlayerInputConfig: IInputActionCollection2, IDisposable
             @Power_4.started -= instance.OnPower_4;
             @Power_4.performed -= instance.OnPower_4;
             @Power_4.canceled -= instance.OnPower_4;
+            @Power_5.started -= instance.OnPower_5;
+            @Power_5.performed -= instance.OnPower_5;
+            @Power_5.canceled -= instance.OnPower_5;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -973,6 +1013,7 @@ public partial class @PlayerInputConfig: IInputActionCollection2, IDisposable
         void OnPower_2(InputAction.CallbackContext context);
         void OnPower_3(InputAction.CallbackContext context);
         void OnPower_4(InputAction.CallbackContext context);
+        void OnPower_5(InputAction.CallbackContext context);
     }
     public interface ICameraActions
     {

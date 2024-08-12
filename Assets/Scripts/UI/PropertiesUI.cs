@@ -39,7 +39,8 @@ public class PropertiesUI : MonoBehaviour
     private Image m_Energy;
     
     [Tooltip("最大能量")]
-    private int m_MaxEnergy = 100;
+    [SerializeField]
+    private int m_MaxEnergy = 250;
     
     [Tooltip("冲刺数量面板")]
     [SerializeField]
