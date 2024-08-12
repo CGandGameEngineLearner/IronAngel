@@ -15,12 +15,13 @@ GameObject:
   - component: {fileID: 6995252067645404297}
   - component: {fileID: -2931968228429674523}
   - component: {fileID: -5436993486608545215}
+  - component: {fileID: -5229739957964001899}
   m_Layer: 9
   m_Name: car_wrecked
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &5557442940369654480
 Transform:
@@ -30,7 +31,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 431175558738978858}
   m_LocalRotation: {x: 0, y: 0, z: 0.8286567, w: 0.55975723}
-  m_LocalPosition: {x: -9.27, y: -26.9, z: 0}
+  m_LocalPosition: {x: -9.27, y: -26.9, z: -1}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -209,3 +210,19 @@ MonoBehaviour:
   syncDirection: 0
   syncMode: 0
   syncInterval: 0
+--- !u!114 &-5229739957964001899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 431175558738978858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
