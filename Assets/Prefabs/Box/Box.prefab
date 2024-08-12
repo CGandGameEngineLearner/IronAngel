@@ -563,7 +563,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4274201660998656611}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -761,7 +761,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4668874160764784475}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -1953,6 +1953,7 @@ MonoBehaviour:
     m_DropWeapon_WeaponDestroy: 0
     m_DropWeapon_CharacterDied: 1
     m_CoreSprite: {fileID: 688162638322207188}
+  DiedVFX: 0
 --- !u!195 &3033592911363435758
 NavMeshAgent:
   m_ObjectHideFlags: 0

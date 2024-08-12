@@ -155,6 +155,9 @@ public class AIController : NetworkBehaviour
         weapon.transform.SetParent(LeftHand.transform);
         weapon.transform.localPosition = Vector3.zero;
         weapon.transform.localRotation = Quaternion.identity;
+        
+        // 隐藏AI武器
+        weapon.GetComponent<SpriteRenderer>().enabled = false;
     }
 
     public void SetRightHandWeapon(GameObject weapon)
@@ -165,6 +168,9 @@ public class AIController : NetworkBehaviour
         weapon.transform.SetParent(RightHand.transform);
         weapon.transform.localPosition = Vector3.zero;
         weapon.transform.localRotation = Quaternion.identity;
+        
+        // 隐藏AI武器
+        weapon.GetComponent<SpriteRenderer>().enabled = false;
     }
 
     public WeaponType GetLeftHandWeaponType()
