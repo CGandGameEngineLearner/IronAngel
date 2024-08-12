@@ -274,7 +274,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0
   LeftHand: {fileID: 0}
-  RightHand: {fileID: 0}
+  RightHand: {fileID: 4495865224673025813}
   m_AutoAvoid: 0
   m_AutoAvoid_Probability: 0
   m_AutoAvoid_RestTimes: 0
@@ -499,8 +499,8 @@ MonoBehaviour:
     m_LeftHandWeaponCurrentHP: 0
     m_RightHandWeaponHP: 200
     m_RightHandWeaponCurrentHP: 0
-    m_LeftHandWeapon: 6
-    m_RightHandWeapon: 0
+    m_LeftHandWeapon: 0
+    m_RightHandWeapon: 6
     m_LeftWeaponGO: {fileID: 0}
     m_RightWeaponGO: {fileID: 0}
     m_Armor: 0

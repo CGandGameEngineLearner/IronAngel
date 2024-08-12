@@ -16,13 +16,10 @@ MonoBehaviour:
   - enemyListConfigs: []
     onFieldEnemyCount: 0
     dialogStructs:
-    - stringToSays: BlackBox:Look at you...
-      time: 1
+    - stringToSays: BlackBox:Rules of engagement?
+      time: 2
       delayTime: 0
-    - stringToSays: BlackBox:A poor knight, barehands...
-      time: 1
-      delayTime: 0
-    - stringToSays: BlackBox:Batter find some weapon
-      time: 1
+    - stringToSays: BlackBox:KILL THEM ALL.
+      time: 2
       delayTime: 0
     waveDelay: 0
