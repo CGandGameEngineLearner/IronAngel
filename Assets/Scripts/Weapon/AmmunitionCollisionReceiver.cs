@@ -281,8 +281,8 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
                     prop.m_Properties.m_Energy += m_Properties.m_Properties.m_Energy;
                 if (m_Properties.m_Properties.m_DropWeapon_CharacterDied)
                 {
-                    SpawnWeapon(m_Properties.m_Properties.m_LeftHandWeapon, transform.position);
-                    SpawnWeapon(m_Properties.m_Properties.m_RightHandWeapon, transform.position);
+                    SpawnWeapon(m_Properties.m_Properties.m_LeftHandWeapon, transform.position);  
+                    SpawnWeapon(m_Properties.m_Properties.m_RightHandWeapon, transform.position);  
                 }
             }
 
@@ -319,7 +319,7 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
 
             if (m_Properties.m_Properties.m_DropWeapon_WeaponDestroy)
             {
-                SpawnWeapon(m_Properties.m_Properties.m_LeftHandWeapon, transform.position);
+                SpawnWeapon(m_Properties.m_Properties.m_LeftHandWeapon, transform.position);  
             }
 
             // 如果是角色的话就丢失武器
@@ -338,7 +338,7 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
 
             if (m_Properties.m_Properties.m_DropWeapon_WeaponDestroy)
             {
-                SpawnWeapon(m_Properties.m_Properties.m_RightHandWeapon, transform.position);
+                SpawnWeapon(m_Properties.m_Properties.m_RightHandWeapon, transform.position);  
             }
 
             // 如果是角色的话就丢失武器
@@ -413,11 +413,11 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
         NetworkServer.Destroy(weapon);
     }
 
-    [ServerCallback]
-    public void SpawnWeapon(WeaponType weapon, Vector3 pos)
-    {
-        WeaponSystemCenter.Instance.SpawnWeapon(weapon, pos);
-    }
+    [ServerCallback]  
+    public void SpawnWeapon(WeaponType weapon, Vector3 pos)  
+    {  
+        WeaponSystemCenter.Instance.SpawnWeapon(weapon, pos);  
+    }  
 }
 
 
