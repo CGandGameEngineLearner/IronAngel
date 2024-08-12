@@ -290,7 +290,7 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
                 }
             }
             
-            if(m_Properties.DiedVFX!=null)
+            if(m_Properties.DiedVFX!=VfxType.None)
             {
                 // 播放死亡特效
                 VfxPool.Instance.GetVfx(m_Properties.DiedVFX, gameObject.transform.position, gameObject.transform.rotation);
