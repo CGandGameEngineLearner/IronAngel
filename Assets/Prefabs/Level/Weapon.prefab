@@ -87,6 +87,8 @@ MonoBehaviour:
     WeaponConfig: {fileID: 11400000, guid: 6f1c3bc9c2b492a43a962ddabe6137c4, type: 2}
   - WeaponType: 9
     WeaponConfig: {fileID: 11400000, guid: 1aef03fb8a64bd040a98f2837b1cf0b9, type: 2}
+  - WeaponType: 10
+    WeaponConfig: {fileID: 11400000, guid: 09e34192b0e33394c843862986b9aa2f, type: 2}
   AmmunitionConfigSettings:
   - AmmunitionType: 1
     AmmunitionConfig: {fileID: 11400000, guid: bed67450519c5134f8f42320d2f204d2, type: 2}
@@ -108,10 +110,12 @@ MonoBehaviour:
     AmmunitionConfig: {fileID: 11400000, guid: b0584e6376bcbf74dbcfe9b92783985b, type: 2}
   - AmmunitionType: 10
     AmmunitionConfig: {fileID: 11400000, guid: e6c10971c8a27c04587eea7b94be0fcf, type: 2}
-  - AmmunitionType: 13
-    AmmunitionConfig: {fileID: 11400000, guid: e60c8c96f49698b4fafd98c28b46bc8d, type: 2}
-  - AmmunitionType: 14
-    AmmunitionConfig: {fileID: 11400000, guid: d55f39f625e8a9a468ec18ea4b2797c7, type: 2}
   - AmmunitionType: 15
+    AmmunitionConfig: {fileID: 11400000, guid: e60c8c96f49698b4fafd98c28b46bc8d, type: 2}
+  - AmmunitionType: 16
+    AmmunitionConfig: {fileID: 11400000, guid: d55f39f625e8a9a468ec18ea4b2797c7, type: 2}
+  - AmmunitionType: 17
     AmmunitionConfig: {fileID: 11400000, guid: c1e80c6fea8999b429e81faec9ed40d0, type: 2}
+  - AmmunitionType: 18
+    AmmunitionConfig: {fileID: 11400000, guid: 7f29e9f83f33f2a43baac7536d59d6c9, type: 2}
   StartGame: 0

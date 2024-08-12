@@ -15,7 +15,7 @@ MonoBehaviour:
   m_Prefab: {fileID: 5021276108613369794, guid: 0f4508d3e46a4364eba0795a2a03e552, type: 3}
   m_MinPoolSize: 0
   m_MaxPoolSize: 0
-  weaponName: 
+  weaponName: Haevy Howitzer
   m_AtkType: 0
   m_ammunitionType: 10
   m_WeaponHp: 1600
@@ -27,4 +27,3 @@ MonoBehaviour:
   laserPointerWidth: 0
   m_AttackPreCastDelay: 0
   m_FireVfxType: 10
-  m_FireSfxType: 0

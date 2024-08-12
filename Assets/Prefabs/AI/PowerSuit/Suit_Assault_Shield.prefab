@@ -302,8 +302,8 @@ MonoBehaviour:
     m_Bits: 512
   m_DashSpeed: 0
   m_DashDuration: 0
-  m_EngagementDistance: 0
-  m_ObstacleAvoidanceDistance: 3
+  m_EngagementDistance: 14
+  m_ObstacleAvoidanceDistance: 1
 --- !u!58 &7549400497388090286
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -501,14 +501,17 @@ MonoBehaviour:
     m_RightHandWeaponCurrentHP: 0
     m_LeftHandWeapon: 0
     m_RightHandWeapon: 10
+    m_LeftWeaponGO: {fileID: 0}
+    m_RightWeaponGO: {fileID: 0}
     m_Armor: 0
     m_EnergyShieldCount: 5
     m_CurrentHP: 100
     m_CurrentArmor: 0
-    m_AttackRange: 10
+    m_AttackRange: 16
     m_Camp: 1
     m_DropWeapon_WeaponDestroy: 0
     m_DropWeapon_CharacterDied: 1
+    m_CoreSprite: {fileID: 0}
 --- !u!195 &3478913082591308681
 NavMeshAgent:
   m_ObjectHideFlags: 0

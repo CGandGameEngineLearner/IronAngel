@@ -327,7 +327,7 @@ public class PlayerController : NetworkBehaviour
             if(m_Power.Count > 0 && m_BaseProperties.m_Properties.m_Energy >= m_Power[0])
             {
                 m_BaseProperties.m_Properties.m_Energy -= m_Power[0];
-
+                CmdSpecFire(m_Player.GetPlayer(), WeaponType.SPExplosiveLuncher, m_InputController.GetMousePositionInWorldSpace(m_CameraController.GetCamera()), Vector3.zero);
             }
         });
         m_InputController.AddPerformedActionToPower_2(() =>
@@ -359,6 +359,14 @@ public class PlayerController : NetworkBehaviour
             }
         });
     }
+
+
+    [Command]
+    private void CmdSpecFire(GameObject character, WeaponType type, Vector3 start, Vector3 dir)
+    {
+        WeaponSystemCenter.Instance.CmdSPFire(character, type, start, dir);
+    }
+
     [Command]
     private void UnFire(GameObject weapon)
     {
