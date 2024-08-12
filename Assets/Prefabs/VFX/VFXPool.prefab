@@ -105,3 +105,8 @@ MonoBehaviour:
       prefab: {fileID: 1875443689672974235, guid: 61f46e90f95c6d0469ae50c314a19596, type: 3}
       defaultSize: 50
       maxSize: 100
+  - vfxType: 28
+    vfxCategory:
+      prefab: {fileID: 2730884618167502043, guid: 3cc729addda6e58409cd3d197a56f0f3, type: 3}
+      defaultSize: 50
+      maxSize: 100
