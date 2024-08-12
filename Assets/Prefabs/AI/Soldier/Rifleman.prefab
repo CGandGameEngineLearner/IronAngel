@@ -139,7 +139,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 587068453855920466}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f0cf7b665e638ec4b9ddd2db5998fcef, type: 3}
   m_Name: 
@@ -664,17 +664,17 @@ MonoBehaviour:
   syncInterval: 0
   m_Properties:
     m_Energy: 10
-    m_BaseHP: 500
-    m_LeftHandWeaponHP: 0
+    m_BaseHP: 50
+    m_LeftHandWeaponHP: 200
     m_LeftHandWeaponCurrentHP: 0
-    m_RightHandWeaponHP: 0
+    m_RightHandWeaponHP: 200
     m_RightHandWeaponCurrentHP: 0
     m_LeftHandWeapon: 0
     m_RightHandWeapon: 0
     m_LeftWeaponGO: {fileID: 0}
     m_RightWeaponGO: {fileID: 0}
     m_Armor: 0
-    m_EnergyShieldCount: 0
+    m_EnergyShieldCount: 20
     m_CurrentHP: 100
     m_CurrentArmor: 0
     m_AttackRange: 17
@@ -939,7 +939,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8444586566961838204
 Transform:
   m_ObjectHideFlags: 0
