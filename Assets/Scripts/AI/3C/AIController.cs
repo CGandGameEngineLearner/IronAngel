@@ -194,7 +194,7 @@ public class AIController : NetworkBehaviour
         }
         else
         {
-            Debug.Log("没有设置巡逻路线");
+            //Debug.Log("没有设置巡逻路线");
         }
     }
 
