@@ -169,7 +169,11 @@ public enum VfxType
     Scrap3,
     
     // 角色死亡特效
-    CharacterDied,
+    MachaDied,
+    HumanDied,
+    
+    // 
+    EmpVfx,
 }
 
 public enum SfxType

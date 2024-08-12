@@ -57,7 +57,6 @@ namespace LogicState
             new LogicState_PlayerShooting(ELogicState.PlayerShooting),
             new LogicState(ELogicState.EnemyInRangeOfAttack),
             new LogicState_AIAttacking(ELogicState.AIAttacking),
-            new LogicState(ELogicState.AIAttacking),
             new LogicState(ELogicState.AIDashing),
             new LogicState(ELogicState.AIAttackPreCastDelay),
             new LogicState_Damaged(ELogicState.CoreDamaged),
