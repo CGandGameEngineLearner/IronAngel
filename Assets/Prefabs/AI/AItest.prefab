@@ -1684,8 +1684,8 @@ MonoBehaviour:
         byteData: 
         byteDataArray: 
       Version: 1.7.9
-  gizmoViewMode: 2
-  showBehaviorDesignerGizmo: 1
+  gizmoViewMode: 0
+  showBehaviorDesignerGizmo: 0
 --- !u!114 &3272269002657271859
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1794,7 +1794,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Sight: {fileID: 3064071782270674676}
   VisualAngle: 90
-  MaximumVisualDistance: 10
+  MaximumVisualDistance: 40
   RelativeSightDirection: {x: 0, y: 1, z: 0}
   DrawSightLine: 0
   AutoRemoveGamoObjectExitSight: 0
@@ -1948,7 +1948,7 @@ MonoBehaviour:
     m_EnergyShieldCount: 30
     m_CurrentHP: 0
     m_CurrentArmor: 0
-    m_AttackRange: 10
+    m_AttackRange: 15
     m_Camp: 1
     m_DropWeapon_WeaponDestroy: 0
     m_DropWeapon_CharacterDied: 1
