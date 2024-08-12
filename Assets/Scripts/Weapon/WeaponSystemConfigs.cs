@@ -87,6 +87,9 @@ public enum WeaponType
 {
     // 普通武器 ------------------------------
     // 
+    // 选择没有武器
+    None,
+    
     // 突击炮
     AssaultGun,
 
@@ -122,9 +125,6 @@ public enum WeaponType
     KnightPilumLuncher,
     EMPLuncher,
     RocketPodLuncher,
-
-    // 选择没有武器
-    None,
 }
 
 public enum SpecialAtkType
