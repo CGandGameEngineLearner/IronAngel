@@ -245,8 +245,8 @@ MonoBehaviour:
         byteData: 
         byteDataArray: 
       Version: 1.7.9
-  gizmoViewMode: 2
-  showBehaviorDesignerGizmo: 1
+  gizmoViewMode: 0
+  showBehaviorDesignerGizmo: 0
 --- !u!114 &5384138960469735118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -723,7 +723,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.24387956, y: 0.0056716353}
+  m_Offset: {x: 0.60219604, y: -0.19976316}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0.5}
@@ -734,7 +734,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.5122409, y: 0.8071649}
+  m_Size: {x: 0.36891425, y: 0.39629534}
   m_EdgeRadius: 0
 --- !u!114 &7817908942220644076
 MonoBehaviour:
