@@ -105,6 +105,10 @@ public class WeaponSystemCenter : NetworkBehaviour
     
     public void SpawnWeapon(WeaponType weaponType, Vector3 pos)
     {
+        if (weaponType == WeaponType.None)
+        {
+            return;
+        }
         ServeSpawnWeapon(weaponType, pos);
     }
 
