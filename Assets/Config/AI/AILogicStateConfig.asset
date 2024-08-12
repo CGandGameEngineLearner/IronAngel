@@ -19,12 +19,12 @@ MonoBehaviour:
     included: 
     excluded: 06000000
   - stateEnum: 8
-    Duration: Infinity
+    Duration: 5
     AutoStateOut: 0
     included: 
     excluded: 
   - stateEnum: 10
-    Duration: Infinity
+    Duration: 1
     AutoStateOut: 0
     included: 
     excluded: 

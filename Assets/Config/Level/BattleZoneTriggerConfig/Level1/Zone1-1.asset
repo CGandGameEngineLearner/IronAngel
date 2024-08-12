@@ -24,7 +24,7 @@ MonoBehaviour:
     dialogStructs:
     - stringToSays: Infantry:Hey you!
       time: 2
-      delayTime: 1
+      delayTime: 0
     - stringToSays: Infantry:Stop! RIGHT! NOW!
       time: 2
       delayTime: 1
