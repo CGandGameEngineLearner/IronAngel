@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 8b267ddfd826f204887ca6461da0ccbb
+guid: 64df0a2270a6c474fafcea04c7236868
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -108,18 +108,133 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: DARK RETRY_1
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 172
+        width: 233
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2b940ae46e57884a8c3cf10451a4a34
+      internalID: -129030327
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DARK RETRY_3
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 129
+        width: 233
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e07beb723be9bfd4ba23e46b861aeb62
+      internalID: -227781110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DARK RETRY_5
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 86
+        width: 233
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33187d4fbe1028f4aa7fab2f4d8d2a6c
+      internalID: -617177350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DARK RETRY_7
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 43
+        width: 233
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4898a2efd1d5710458e55cc42139d43c
+      internalID: -1070102462
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DARK RETRY_9
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 0
+        width: 233
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25f304e943dfed64e98223ea5e305c55
+      internalID: -6493731
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: b2d88eedc83147348b27fd8381ad11ba
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      DARK RETRY_0: 1058459668
+      DARK RETRY_1: -129030327
+      DARK RETRY_2: -1172157396
+      DARK RETRY_3: -227781110
+      DARK RETRY_4: 1616788248
+      DARK RETRY_5: -617177350
+      DARK RETRY_6: 1592397622
+      DARK RETRY_7: -1070102462
+      DARK RETRY_8: 289170700
+      DARK RETRY_9: -6493731
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
