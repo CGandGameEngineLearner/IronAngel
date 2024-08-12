@@ -55,6 +55,7 @@ public class PlayerController : NetworkBehaviour
     {
         PlayerSetting setting = GetComponent<PlayerSetting>();
 
+        m_Power = setting._PowerLimit;
         m_FireDistance = setting._FireDistance;
         
         m_CameraController.Init(Camera.main, GameObject.FindAnyObjectByType<CinemachineVirtualCamera>().GetComponent<CinemachineVirtualCamera>(), GameObject.FindWithTag("CameraTarget").transform, setting._CameraMinDistance, setting._CameraMaxDistance);
