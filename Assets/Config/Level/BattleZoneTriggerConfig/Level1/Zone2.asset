@@ -13,16 +13,25 @@ MonoBehaviour:
   m_Name: Zone2
   m_EditorClassIdentifier: 
   waveConfigs:
-  - enemyListConfigs: []
-    onFieldEnemyCount: 0
+  - enemyListConfigs:
+    - enemyPrefab: {fileID: 2195872794582507982, guid: f4e6249ca37e15e4196a98abb13f0917, type: 3}
+      spawnPosition: {x: -3.0660107, y: 106.41947, z: 0}
+    - enemyPrefab: {fileID: 2195872794582507982, guid: f4e6249ca37e15e4196a98abb13f0917, type: 3}
+      spawnPosition: {x: 3.8935587, y: 107.94188, z: 0}
+    - enemyPrefab: {fileID: 2195872794582507982, guid: f4e6249ca37e15e4196a98abb13f0917, type: 3}
+      spawnPosition: {x: 12.027571, y: 105.94099, z: 0}
+    - enemyPrefab: {fileID: 2195872794582507982, guid: 534df9d583bbf1645a9094310e2122e8, type: 3}
+      spawnPosition: {x: -6.9372663, y: 110.11674, z: 0}
+    - enemyPrefab: {fileID: 2195872794582507982, guid: 534df9d583bbf1645a9094310e2122e8, type: 3}
+      spawnPosition: {x: 14.637417, y: 109.333786, z: 0}
+    - enemyPrefab: {fileID: 2195872794582507982, guid: 534df9d583bbf1645a9094310e2122e8, type: 3}
+      spawnPosition: {x: 3.8935742, y: 102.11322, z: 0}
+    onFieldEnemyCount: 6
     dialogStructs:
-    - stringToSays: BlackBox:Look at you...
+    - stringToSays: 'PKSSInfantry:A kinght! '
       time: 1
       delayTime: 0
-    - stringToSays: BlackBox:A poor knight, barehands...
+    - stringToSays: PKSSInfantry:We need reinforcemence!
       time: 1
       delayTime: 0
-    - stringToSays: BlackBox:But there's blood,waiting for you to spill...
-      time: 1.5
-      delayTime: 0
-    waveDelay: 3
+    waveDelay: 0
