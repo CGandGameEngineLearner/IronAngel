@@ -8,9 +8,8 @@ namespace LogicState
     /// </summary>
     public class Buff_Stun : Buff
     {
-        public Buff_Stun(ELogicState stateEnum) : base(stateEnum)
-        {
-        }
+        public Buff_Stun(ELogicState stateEnum) : base(stateEnum) {}
+        public Buff_Stun(ELogicState stateEnum, LogicStateManager parent) : base(stateEnum, parent){}
 
         public override void Init()
         {
