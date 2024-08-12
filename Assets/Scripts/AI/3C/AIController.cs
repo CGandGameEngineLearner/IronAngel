@@ -77,12 +77,7 @@ public class AIController : NetworkBehaviour
         
         m_DamageSensor = GetComponent<DamageSensor>();
         m_DamageSensor.SetNotifyPerceivedDelegate(BeDamaged);
-
-
-        EventCenter.AddListener<LogicStateManager,ELogicState>(
-            EventType.LogicState_AIAttacking_StateOut,
-            OnAIAttackingStateOut
-            );
+        
         
         RegisterWeapon();
     }
@@ -291,35 +286,34 @@ public class AIController : NetworkBehaviour
             return false;
         }
         
-        
-        if (TokenPool.ApplyToken(m_TokenWeight) == false)
-        {
-            return false;
-        }
-
-        
         m_LogicStateManager.AddState(ELogicState.AIAttacking);
         
         if (!m_LogicStateManager.IncludeState(ELogicState.AIAttacking))
         {
             return false;
         }
-       
 
         var leftFire = IronAngel.Utils.RandomBool(m_ProbabilityOfLeftWeapon);
         var rightFire = IronAngel.Utils.RandomBool(m_ProbabilityOfRightWeapon);
+        
+        if (leftFire&&m_BaseProperties.m_Properties.m_LeftWeaponGO == null)
+        {
+            leftFire = false;
+        }
 
+        if (rightFire && m_BaseProperties.m_Properties.m_RightWeaponGO == null)
+        {
+            rightFire = false;
+        }
+            
+        
+        
         if (leftFire == false && rightFire == false)
         {
-            if (IronAngel.Utils.RandomBool(0.5f))
-            {
-                leftFire = true;
-            }
-            else
-            {
-                rightFire = true;
-            }
+            return false;
         }
+        
+        
        
         
         if (leftFire)
@@ -367,7 +361,10 @@ public class AIController : NetworkBehaviour
     [ServerCallback]
     private IEnumerator FireCoroutine(GameObject weapon)
     {
-        
+        if (weapon == null)
+        {
+            yield break;
+        }
         m_LogicStateManager.AddState(ELogicState.AIAttackPreCastDelay);
         var AttackPreCastDelay = WeaponSystemCenter.GetWeaponConfig(weapon).attackPreCastDelay;
         m_LogicStateManager.SetStateDuration(ELogicState.AIAttackPreCastDelay, AttackPreCastDelay);
@@ -422,15 +419,6 @@ public class AIController : NetworkBehaviour
         return result;
     }
 
-    [ServerCallback]
-    private void OnAIAttackingStateOut(LogicStateManager logicStateManager,ELogicState eLogicState)
-    {
-        if (logicStateManager != m_LogicStateManager || eLogicState != ELogicState.AIAttacking)
-        {
-            return;
-        }
-        TokenPool.ReturnToken();
-        
-    }
+    
     
 }

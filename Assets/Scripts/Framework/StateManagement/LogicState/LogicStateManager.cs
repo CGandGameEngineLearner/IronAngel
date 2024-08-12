@@ -56,6 +56,7 @@ namespace LogicState
                     newState.SetOwner(this);
                     newState.Duration = stateTemplate.Duration;
                     newState.StartTime = Time.time;
+                    newState.FirstCreated();
                     newState.Init();
                     newState.OnStateIn();
                     newState.SetActive(true);

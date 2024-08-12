@@ -58,7 +58,16 @@ namespace LogicState
             LogicStateEnum = stateEnum;
             m_HashCode = (int)stateEnum;
         }
-        
+
+        /// <summary>
+        /// 第一次创建此状态时调用
+        /// 为了防止高频创建和析构对象导致的性能问题 逻辑状态第一次创建实例后都会一直留在内存中
+        /// 只是通过对应的方法控制其状态的进入和退出
+        /// </summary>
+        virtual public void FirstCreated()
+        {
+            
+        }
         
         /// <summary>
         /// 每个状态进入时先调用Init初始化成员变量，再调用OnStateIn,

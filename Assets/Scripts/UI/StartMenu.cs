@@ -44,6 +44,7 @@ public class StartMenu : MonoBehaviour
 
     public void OnSinglePlayerStart()
     {
+        UICanvas.Instance.isSingle = true;
         SaveLoadManager.SaveGame(new GameSaveFile() { currentSection = -1 });
 
         SceneManager.LoadScene(m_LevelSwitchConfig.basementName);
@@ -65,6 +66,7 @@ public class StartMenu : MonoBehaviour
         SceneManager.LoadScene(sectionName);
         
         isSingle = true;
+        UICanvas.Instance.isSingle = true;
     }
 
     public void OnMultiPlayerPanelEnter()
@@ -97,6 +99,7 @@ public class StartMenu : MonoBehaviour
         isSingle = false;
         isServer = true;
         m_NetworkStatus.gameObject.SetActive(true);
+        UICanvas.Instance.isSingle = false;
     }
 
     public void OnMultiPlayerJoin()
@@ -117,6 +120,7 @@ public class StartMenu : MonoBehaviour
         }
 
         isSingle = false;
+        UICanvas.Instance.isSingle = false;
         m_NetworkStatus.gameObject.SetActive(true);
     }
 
