@@ -69,7 +69,7 @@ public class WeaponInstance : NetworkBehaviour
     {
         m_WeaponInstanceData.currentMag--;
         m_CurrentMag--;
-        return m_WeaponInstanceData.currentMag > 0;
+        return m_WeaponInstanceData.currentMag >= 0;
     }
 
     public int GetWeaponHP()

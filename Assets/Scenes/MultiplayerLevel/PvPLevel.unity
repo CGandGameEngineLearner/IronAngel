@@ -9788,7 +9788,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4549742626244481203, guid: a2be8ac903b22c049ba304072706a58e, type: 3}
       propertyPath: WeaponSpawnSettings.Array.size
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4549742626244481203, guid: a2be8ac903b22c049ba304072706a58e, type: 3}
       propertyPath: WeaponSpawnSettings.Array.data[0].Position.x
@@ -9825,6 +9825,30 @@ PrefabInstance:
     - target: {fileID: 4549742626244481203, guid: a2be8ac903b22c049ba304072706a58e, type: 3}
       propertyPath: WeaponSpawnSettings.Array.data[2].WeaponType
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4549742626244481203, guid: a2be8ac903b22c049ba304072706a58e, type: 3}
+      propertyPath: WeaponSpawnSettings.Array.data[3].Position.x
+      value: 46.07151
+      objectReference: {fileID: 0}
+    - target: {fileID: 4549742626244481203, guid: a2be8ac903b22c049ba304072706a58e, type: 3}
+      propertyPath: WeaponSpawnSettings.Array.data[3].Position.y
+      value: 4.867264
+      objectReference: {fileID: 0}
+    - target: {fileID: 4549742626244481203, guid: a2be8ac903b22c049ba304072706a58e, type: 3}
+      propertyPath: WeaponSpawnSettings.Array.data[3].WeaponType
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4549742626244481203, guid: a2be8ac903b22c049ba304072706a58e, type: 3}
+      propertyPath: WeaponSpawnSettings.Array.data[4].Position.x
+      value: 47.445427
+      objectReference: {fileID: 0}
+    - target: {fileID: 4549742626244481203, guid: a2be8ac903b22c049ba304072706a58e, type: 3}
+      propertyPath: WeaponSpawnSettings.Array.data[4].Position.y
+      value: 1.9999504
+      objectReference: {fileID: 0}
+    - target: {fileID: 4549742626244481203, guid: a2be8ac903b22c049ba304072706a58e, type: 3}
+      propertyPath: WeaponSpawnSettings.Array.data[4].WeaponType
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 9191053820183534780, guid: a2be8ac903b22c049ba304072706a58e, type: 3}
       propertyPath: m_Name
