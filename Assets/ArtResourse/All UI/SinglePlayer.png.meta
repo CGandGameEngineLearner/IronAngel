@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 7972c172754c7d342a45e54677c40989
+guid: 1e5fe0e3e0b30b647980323184be2efb
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -108,18 +108,133 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: SinglePlayer_1
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 172
+        width: 233
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3edc8902d1e305440b0ff24072b7d606
+      internalID: -1254605219
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SinglePlayer_3
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 129
+        width: 233
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70658f63475eafd4492b321e19578218
+      internalID: 1667921050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SinglePlayer_5
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 86
+        width: 233
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86307d3975749e54e9a23adebb6c1ffb
+      internalID: 151787794
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SinglePlayer_7
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 43
+        width: 233
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a393db4cb6376949946c5daf8a34486
+      internalID: -1917970280
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SinglePlayer_9
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 0
+        width: 233
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 493e16b6b6bcd7941b13f74b87ade9dd
+      internalID: 2111937938
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 681e1e9e575b3c14bb85434248e8447e
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      SinglePlayer_0: 882975150
+      SinglePlayer_1: -1254605219
+      SinglePlayer_2: -910099773
+      SinglePlayer_3: 1667921050
+      SinglePlayer_4: 741662940
+      SinglePlayer_5: 151787794
+      SinglePlayer_6: 421866473
+      SinglePlayer_7: -1917970280
+      SinglePlayer_8: 2082493154
+      SinglePlayer_9: 2111937938
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

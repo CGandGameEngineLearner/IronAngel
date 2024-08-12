@@ -15,7 +15,7 @@ MonoBehaviour:
   m_Prefab: {fileID: 6906689690000143614, guid: e72717d94b31ac848916650508ad2b6a, type: 3}
   m_MinPoolSize: 0
   m_MaxPoolSize: 0
-  weaponName: 
+  weaponName: HEavy Laser Gun
   m_AtkType: 1
   m_ammunitionType: 7
   m_WeaponHp: 1000
@@ -27,4 +27,3 @@ MonoBehaviour:
   laserPointerWidth: 0.5
   m_AttackPreCastDelay: 0
   m_FireVfxType: 7
-  m_FireSfxType: 0

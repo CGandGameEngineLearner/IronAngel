@@ -15,7 +15,7 @@ MonoBehaviour:
   m_Prefab: {fileID: 5021276108613369794, guid: 0e694ad1bc3411444a6e6089f486119e, type: 3}
   m_MinPoolSize: 10
   m_MaxPoolSize: 20
-  weaponName: 
+  weaponName: 105 Rail Gun
   m_AtkType: 0
   m_ammunitionType: 5
   m_WeaponHp: 1200
@@ -27,4 +27,3 @@ MonoBehaviour:
   laserPointerWidth: 0
   m_AttackPreCastDelay: 0
   m_FireVfxType: 5
-  m_FireSfxType: 0
