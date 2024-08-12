@@ -117,7 +117,7 @@ public class LevelManager : NetworkBehaviour
 
     private bool m_IsRunning = false;
     private BattleZoneWaveHandle m_BattleZoneWaveHandle;
-    private HashSet<WaveInstance> m_WaveInstancesToUpdate = new HashSet<WaveInstance>();
+    private WaveInstance m_WaveInstance;
     private Queue<WaveInstance> m_WaveInstancesToAdd = new Queue<WaveInstance>();
     private List<GameObject> m_WaveInvisibleWall;
 
@@ -133,7 +133,7 @@ public class LevelManager : NetworkBehaviour
 
         m_IsRunning = true;
         m_WaveInstancesToAdd.Clear();
-        m_WaveInstancesToUpdate.Clear();
+        m_WaveInstance = null;
 
         AddWaveInstance(m_BattleZoneWaveHandle.GetNextWave());
 
@@ -144,10 +144,11 @@ public class LevelManager : NetworkBehaviour
     {
         if (!m_IsRunning) return;
 
-        foreach (var waveInstance in m_WaveInstancesToUpdate)
+        if (m_WaveInstance != null)
         {
-            waveInstance.currentTime += Time.deltaTime;
+            m_WaveInstance.currentTime += Time.deltaTime;
         }
+
 
         while (m_WaveInstancesToAdd.Count > 0)
         {
@@ -156,7 +157,8 @@ public class LevelManager : NetworkBehaviour
             {
                 instance.Init();
                 instance.GenerateEnemies();
-                m_WaveInstancesToUpdate.Add(instance);
+                m_WaveInstance = instance;
+                StartCoroutine(ShowDialogText(instance.waveListItem));
             }
         }
     }
@@ -165,19 +167,18 @@ public class LevelManager : NetworkBehaviour
     {
         if (waveInstance == null) return;
         m_WaveInstancesToAdd.Enqueue(waveInstance);
-        StartCoroutine(ShowDialogText(waveInstance.waveListItem));
     }
 
     private void OnWaveFinished(WaveInstance waveInstance)
     {
-        m_WaveInstancesToUpdate.Remove(waveInstance);
+        m_WaveInstance = waveInstance;
 
         if (m_BattleZoneWaveHandle.Finished)
         {
             m_IsRunning = false;
 
             // UICanvas.Instance.SetPlotText("They all gone, well done.", 0, 2f);
-            
+
             // TODO: 解锁关卡空气墙
             foreach (var invisibleWall in m_WaveInvisibleWall)
             {
@@ -205,12 +206,14 @@ public class LevelManager : NetworkBehaviour
         {
             if (i < dialogStructs.Count - 1)
             {
-                UICanvas.Instance.SetPlotText(dialogStructs[i].stringToSays, dialogStructs[i].delayTime, dialogStructs[i].time);
+                UICanvas.Instance.SetPlotText(dialogStructs[i].stringToSays, dialogStructs[i].delayTime,
+                    dialogStructs[i].time);
                 yield return new WaitForSeconds(dialogStructs[i].time + dialogStructs[i].delayTime);
             }
             else
             {
-                UICanvas.Instance.SetPlotText(dialogStructs[i].stringToSays, dialogStructs[i].delayTime, dialogStructs[i].time, true);
+                UICanvas.Instance.SetPlotText(dialogStructs[i].stringToSays, dialogStructs[i].delayTime,
+                    dialogStructs[i].time, true);
             }
         }
     }

@@ -20,6 +20,7 @@ public class PlotPanel : MonoBehaviour
     /// <param name="isEnd"></param> 是否是最后一句，是的话这句结束后文字面板会隐藏
     public void SetText(string text, float time, float duration, bool isEnd = false)
     {
+        CancelInvoke();
         m_PlotText.DOKill();
         m_PlotText.text = "";
         m_PlotText.alpha = 1;
