@@ -88,11 +88,14 @@ public class CameraController
 
     public void ShakeCameraPosition(float duration, Vector3 strength)
     {
-        m_Camera.DOShakePosition(duration, strength);
+        m_Camera.DOShakePosition(duration, strength).OnComplete(() =>
+        {
+
+        });
     }
 
     public void ShakeCameraRotation(float duration, float zAxis)
     {
-        m_Camera.DOShakeRotation(duration, new Vector3(0, 0, zAxis));
+        m_VirtualCamera.transform.DOShakeRotation(duration, new Vector3(0, 0, zAxis)).OnComplete(() => { m_VirtualCamera.transform.rotation = Quaternion.identity; });
     }
 }

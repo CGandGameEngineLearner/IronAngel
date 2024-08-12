@@ -17,9 +17,12 @@ MonoBehaviour:
     onFieldEnemyCount: 0
     dialogStructs:
     - stringToSays: BlackBox:Look at you...
-      time: 2
+      time: 1
       delayTime: 0
     - stringToSays: BlackBox:A poor knight, barehands...
-      time: 2
+      time: 1
       delayTime: 0
-    waveDelay: 3
+    - stringToSays: BlackBox:Batter find some weapon
+      time: 1
+      delayTime: 0
+    waveDelay: 0
