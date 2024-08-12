@@ -15,7 +15,7 @@ MonoBehaviour:
   waveConfigs:
   - enemyListConfigs:
     - enemyPrefab: {fileID: 2195872794582507982, guid: cb5d6fdf5f3c14448ac69e2ae0b2acf5, type: 3}
-      spawnPosition: {x: -1.6689987, y: 149.62729, z: 0}
+      spawnPosition: {x: -1.6689987, y: 149.6272, z: 0}
     - enemyPrefab: {fileID: 2195872794582507982, guid: cb5d6fdf5f3c14448ac69e2ae0b2acf5, type: 3}
       spawnPosition: {x: 9.831697, y: 147.97778, z: 0}
     onFieldEnemyCount: 2

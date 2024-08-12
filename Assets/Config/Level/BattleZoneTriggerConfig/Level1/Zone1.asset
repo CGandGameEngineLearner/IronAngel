@@ -17,9 +17,9 @@ MonoBehaviour:
     onFieldEnemyCount: 0
     dialogStructs:
     - stringToSays: BlackBox:Rules of engagement?
-      time: 1
+      time: 2
       delayTime: 0
     - stringToSays: BlackBox:KILL THEM ALL.
-      time: 1
+      time: 2
       delayTime: 0
     waveDelay: 0
