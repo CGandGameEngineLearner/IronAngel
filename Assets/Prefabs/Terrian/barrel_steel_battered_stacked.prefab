@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -7478923315992453892}
   - component: {fileID: 6012701008712588430}
   - component: {fileID: 2382754842192707743}
-  - component: {fileID: -1023036942266648244}
+  - component: {fileID: 8113787388542024805}
   m_Layer: 9
   m_Name: barrel_steel_battered_stacked
   m_TagString: Untagged
@@ -31,7 +31,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 432816159492404774}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 13.44, y: -91.45, z: -0.3578505}
+  m_LocalPosition: {x: 13.44, y: -91.45, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -210,7 +210,7 @@ MonoBehaviour:
   syncDirection: 0
   syncMode: 0
   syncInterval: 0
---- !u!114 &-1023036942266648244
+--- !u!114 &8113787388542024805
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -219,9 +219,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 432816159492404774}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4acde9c6da7423e4493060aaf220e9c9, type: 3}
+  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  syncDirection: 0
-  syncMode: 0
-  syncInterval: 0
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
