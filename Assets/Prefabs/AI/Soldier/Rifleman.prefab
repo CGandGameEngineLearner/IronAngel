@@ -664,10 +664,10 @@ MonoBehaviour:
   syncInterval: 0
   m_Properties:
     m_Energy: 10
-    m_BaseHP: 50
-    m_LeftHandWeaponHP: 200
+    m_BaseHP: 40
+    m_LeftHandWeaponHP: 40
     m_LeftHandWeaponCurrentHP: 0
-    m_RightHandWeaponHP: 200
+    m_RightHandWeaponHP: 0
     m_RightHandWeaponCurrentHP: 0
     m_LeftHandWeapon: 0
     m_RightHandWeapon: 0
