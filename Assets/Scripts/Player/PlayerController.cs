@@ -107,7 +107,7 @@ public class PlayerController : NetworkBehaviour
         }
         if(Input.GetKeyDown(KeyCode.C))
         {
-            m_CameraController.ShakeCameraRotation(1.0f, 180);
+            m_CameraController.ShakeCameraRotation(1.0f, 2);
         }
     }
     
