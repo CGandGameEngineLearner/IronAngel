@@ -20,6 +20,9 @@ public enum EventType
 
     // UI 
     PauseMenu,
+    
+    
+    ChangeScene,                                            // 切换场景
 }
 
 public delegate void Callback();
