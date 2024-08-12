@@ -122,9 +122,9 @@ public enum WeaponType
     
     // -- 特殊武器
     SPExplosiveLuncher,
-    KnightPilumLuncher,
-    EMPLuncher,
-    RocketPodLuncher,
+    SPKnightPilumLuncher,
+    SPEMPLuncher,
+    SPRocketPodLuncher,
 }
 
 public enum SpecialAtkType
@@ -167,6 +167,9 @@ public enum VfxType
     Scrap1,
     Scrap2,
     Scrap3,
+    
+    // 角色死亡特效
+    CharacterDied,
 }
 
 public enum SfxType

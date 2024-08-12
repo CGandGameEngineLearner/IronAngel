@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a59e88c4a9d74b07b64319f8b37e8bad, type: 3}
+  m_Name: SP_KnightPilumAmmunition
+  m_EditorClassIdentifier: 
+  m_Prefab: {fileID: 8422378306381297977, guid: 237dd8d9e9a261e4f939700a15e00c9b, type: 3}
+  m_MinPoolSize: 50
+  m_MaxPoolSize: 100
+  isAuto: 0
+  m_Speed: 30
+  m_LifeDistance: 50
+  m_Damage: 100
+  m_PostAmmunitionType: 14
+  m_IsExplodeDamage: 0
+  sigma: 0
+  fallout: 0
+  minDamage: 0
+  m_LaserWidth: 0
+  m_LeastLiveFixedFrameCount: 0
+  m_specialAtkTypes: 0100000002000000
+  m_EffectBuff: []
+  hitVfxType: 0
+  holeType: 0
+  scrapType: 0

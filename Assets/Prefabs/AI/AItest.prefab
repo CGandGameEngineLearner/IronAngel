@@ -1684,8 +1684,8 @@ MonoBehaviour:
         byteData: 
         byteDataArray: 
       Version: 1.7.9
-  gizmoViewMode: 0
-  showBehaviorDesignerGizmo: 0
+  gizmoViewMode: 2
+  showBehaviorDesignerGizmo: 1
 --- !u!114 &3272269002657271859
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1953,6 +1953,7 @@ MonoBehaviour:
     m_DropWeapon_WeaponDestroy: 0
     m_DropWeapon_CharacterDied: 1
     m_CoreSprite: {fileID: 688162638322207188}
+  DiedVFX: 23
 --- !u!195 &3033592911363435758
 NavMeshAgent:
   m_ObjectHideFlags: 0
