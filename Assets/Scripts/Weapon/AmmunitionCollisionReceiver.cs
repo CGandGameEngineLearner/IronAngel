@@ -322,41 +322,49 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
         // 角色左右手部位损失
         if (m_Properties.m_Properties.m_LeftHandWeaponCurrentHP <= 0)
         {
-            m_LeftWeapon.gameObject.SetActive(false);
-
-            if (m_Properties.m_Properties.m_DropWeapon_WeaponDestroy)
+            if (m_LeftWeapon)
             {
-                SpawnWeapon(m_Properties.m_Properties.m_LeftHandWeapon, transform.position);  
-            }
+                m_LeftWeapon.gameObject.SetActive(false);
 
-            // 如果是角色的话就丢失武器
-            if (TryGetComponent<PlayerController>(out var controller))
-            {
-                var weapon = controller.Player.DropPlayerLeftHandWeapon(transform.position);
-                if (weapon)
+                if (m_Properties.m_Properties.m_DropWeapon_WeaponDestroy)
                 {
-                    DestroyWeapon(weapon);
+                    SpawnWeapon(m_Properties.m_Properties.m_LeftHandWeapon, transform.position);  
+                }
+
+                // 如果是角色的话就丢失武器
+                if (TryGetComponent<PlayerController>(out var controller))
+                {
+                    var weapon = controller.Player.DropPlayerLeftHandWeapon(transform.position);
+                    if (weapon)
+                    {
+                        DestroyWeapon(weapon);
+                    }
                 }
             }
+            
         }
         if (m_Properties.m_Properties.m_RightHandWeaponCurrentHP <= 0)
         {
-            m_RightWeapon.gameObject.SetActive(false);
-
-            if (m_Properties.m_Properties.m_DropWeapon_WeaponDestroy)
+            if (m_RightWeapon)
             {
-                SpawnWeapon(m_Properties.m_Properties.m_RightHandWeapon, transform.position);  
-            }
+                m_RightWeapon.gameObject.SetActive(false);
 
-            // 如果是角色的话就丢失武器
-            if (TryGetComponent<PlayerController>(out var controller))
-            {
-                var weapon = controller.Player.DropPlayerRightHandWeapon(transform.position);
-                if (weapon)
+                if (m_Properties.m_Properties.m_DropWeapon_WeaponDestroy)
                 {
-                    DestroyWeapon(weapon);
+                    SpawnWeapon(m_Properties.m_Properties.m_RightHandWeapon, transform.position);  
+                }
+
+                // 如果是角色的话就丢失武器
+                if (TryGetComponent<PlayerController>(out var controller))
+                {
+                    var weapon = controller.Player.DropPlayerRightHandWeapon(transform.position);
+                    if (weapon)
+                    {
+                        DestroyWeapon(weapon);
+                    }
                 }
             }
+            
         }
     }
 
