@@ -5,7 +5,7 @@ namespace LogicState
     public class LogicState_AIAttacking:LogicState
     {
         public LogicState_AIAttacking(ELogicState stateEnum):base(stateEnum){}
-            public LogicState_AIAttacking(ELogicState stateEnum, LogicStateManager parent) : base(stateEnum, parent){}
+        public LogicState_AIAttacking(ELogicState stateEnum, LogicStateManager parent) : base(stateEnum, parent){}
     
         public override void Init()
         {
@@ -14,7 +14,7 @@ namespace LogicState
         }
         public override void OnStateIn()
         {
-            //Debug.Log(GetType()+"OnStateIn()");
+            Debug.Log(GetType()+"OnStateIn()");
             
         }
     
@@ -30,7 +30,7 @@ namespace LogicState
     
         public override void OnStateOut()
         {
-            //Debug.Log(GetType()+"OnStateOut()");
+            Debug.Log(GetType()+"OnStateOut()");
             
             // 通知攻击状态结束
             EventCenter.Broadcast<LogicStateManager,ELogicState>(

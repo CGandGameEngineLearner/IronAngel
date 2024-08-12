@@ -91,6 +91,8 @@ MonoBehaviour:
     WeaponConfig: {fileID: 11400000, guid: 09e34192b0e33394c843862986b9aa2f, type: 2}
   - WeaponType: 12
     WeaponConfig: {fileID: 11400000, guid: 5abbbec9d528f654a95e2ceb14f2bab9, type: 2}
+  - WeaponType: 13
+    WeaponConfig: {fileID: 11400000, guid: 165953bd0b729c944b9791ff18307253, type: 2}
   AmmunitionConfigSettings:
   - AmmunitionType: 1
     AmmunitionConfig: {fileID: 11400000, guid: bed67450519c5134f8f42320d2f204d2, type: 2}
@@ -122,4 +124,6 @@ MonoBehaviour:
     AmmunitionConfig: {fileID: 11400000, guid: 7f29e9f83f33f2a43baac7536d59d6c9, type: 2}
   - AmmunitionType: 11
     AmmunitionConfig: {fileID: 11400000, guid: 18f263d1b14f7de4f8bcf072044df1ae, type: 2}
+  - AmmunitionType: 19
+    AmmunitionConfig: {fileID: 11400000, guid: bea65726130c01946ae7a2a3a397f023, type: 2}
   StartGame: 0

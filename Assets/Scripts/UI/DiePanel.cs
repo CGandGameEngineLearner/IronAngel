@@ -14,4 +14,9 @@ public class DiePanel : MonoBehaviour
             UICanvas.Instance.BackToStartMenu();
         }
     }
+
+    public void OnRetryClicked()
+    {
+
+    }
 }

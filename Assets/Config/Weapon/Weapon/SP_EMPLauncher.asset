@@ -10,20 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 832d582905de4b3aaebabbb4346a6e4d, type: 3}
-  m_Name: HeavyLaserCannon
+  m_Name: SP_EMPLauncher
   m_EditorClassIdentifier: 
-  m_Prefab: {fileID: 6906689690000143614, guid: e72717d94b31ac848916650508ad2b6a, type: 3}
+  m_Prefab: {fileID: 5021276108613369794, guid: db83b5be8ddc9fc418ecfc216ef4196d, type: 3}
   m_MinPoolSize: 0
   m_MaxPoolSize: 0
-  weaponName: Heavy Laser
-  m_AtkType: 1
-  m_ammunitionType: 7
-  m_WeaponHp: 1000
-  m_Interval: 0.05
-  m_MagSize: 200
+  weaponName: 
+  m_AtkType: 0
+  m_ammunitionType: 0
+  m_WeaponHp: 0
+  m_Interval: 0
+  m_MagSize: 0
   m_SimShots: 0
   m_SpreadAngle: 0
   m_ShotSpreadAngle: 0
-  laserPointerWidth: 0.5
+  laserPointerWidth: 0
   m_AttackPreCastDelay: 0
-  m_FireVfxType: 7
+  m_FireVfxType: 0
