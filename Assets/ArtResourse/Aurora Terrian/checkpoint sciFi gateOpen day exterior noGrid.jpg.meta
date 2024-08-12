@@ -1,0 +1,4527 @@
+fileFormatVersion: 2
+guid: cd49c8314c119344da185c034cc168d6
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 70
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1260
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab3f6ceff6a030a409ce305033a9d9ab
+      internalID: -1144263194
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_1
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 1260
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d40cb5d4cacdc3d44a967000bce1cac9
+      internalID: -988745558
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_2
+      rect:
+        serializedVersion: 2
+        x: 280
+        y: 1260
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f3c04c7584a2e144b6d91d0994ae2c8
+      internalID: 1130453989
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_3
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 1260
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc73f7815e106da4da9ec6da50b4c5e8
+      internalID: -1487613022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_4
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 1260
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7bc9f3a6d9fca854d9af93205e0a2b7c
+      internalID: 1130740098
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_5
+      rect:
+        serializedVersion: 2
+        x: 700
+        y: 1260
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ae3e5e8508c0ff42b98f3261ba98fdf
+      internalID: -1312851858
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_6
+      rect:
+        serializedVersion: 2
+        x: 840
+        y: 1260
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ad54f73f2a1c124c8b8fb8395a7daad
+      internalID: -649359026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_7
+      rect:
+        serializedVersion: 2
+        x: 980
+        y: 1260
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b61109a8c0814b649b730396234578e2
+      internalID: -122932332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_8
+      rect:
+        serializedVersion: 2
+        x: 1120
+        y: 1260
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62bcd83a539b1d243a1617baec2dfb9b
+      internalID: 1006683586
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_9
+      rect:
+        serializedVersion: 2
+        x: 1260
+        y: 1260
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ea5db21043740742a72f0ead40f1e4a
+      internalID: -120344221
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_10
+      rect:
+        serializedVersion: 2
+        x: 1400
+        y: 1260
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a36c74c1c1a3414cafd65e6885daeb8
+      internalID: 534046789
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_11
+      rect:
+        serializedVersion: 2
+        x: 1540
+        y: 1260
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a81d0f5827cebc4e9c650116f6110af
+      internalID: 1550170925
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_12
+      rect:
+        serializedVersion: 2
+        x: 1680
+        y: 1260
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5003e752fe9276342a6fcd6c42729d46
+      internalID: -831873472
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_13
+      rect:
+        serializedVersion: 2
+        x: 1820
+        y: 1260
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 487c46365ca7e5446a5a7fc254419096
+      internalID: -68088550
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_14
+      rect:
+        serializedVersion: 2
+        x: 1960
+        y: 1260
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f77c25d47839214ba51ed41d5a8b26b
+      internalID: 1299087348
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_15
+      rect:
+        serializedVersion: 2
+        x: 2100
+        y: 1260
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 391f27539af59574493964e73aff7661
+      internalID: 686970249
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_16
+      rect:
+        serializedVersion: 2
+        x: 2240
+        y: 1260
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9991474b36c02724fbf4e5ca5d57ef73
+      internalID: -1780574904
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_17
+      rect:
+        serializedVersion: 2
+        x: 2380
+        y: 1260
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a90e8acb4cc0f82418d7c86c9b544deb
+      internalID: -1856780758
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_18
+      rect:
+        serializedVersion: 2
+        x: 2520
+        y: 1260
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2fbafc6a3308e1c409f288672b1ea40c
+      internalID: 763937155
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_19
+      rect:
+        serializedVersion: 2
+        x: 2660
+        y: 1260
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 99d15f72cb2f6c04ebaa4648772656ff
+      internalID: 972312104
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1120
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d3b650cba8450f40a6077c15ba4ebe9
+      internalID: -656839650
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_21
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 1120
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a615d4f006acf644abb7042d6995b704
+      internalID: 1000740022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_22
+      rect:
+        serializedVersion: 2
+        x: 280
+        y: 1120
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0bf36850a69fa584e9a87b13ab18717f
+      internalID: -1096526234
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_23
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 1120
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4928ce6f3e06b114e868573d7f943d63
+      internalID: -118505530
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_24
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 1120
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92dbd3a844bdaff41b67a28155154f8b
+      internalID: 610554601
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_25
+      rect:
+        serializedVersion: 2
+        x: 700
+        y: 1120
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f76b99829bd2784fab8730211e50cb4
+      internalID: 1717480197
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_26
+      rect:
+        serializedVersion: 2
+        x: 840
+        y: 1120
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f8dd26cf5daed443b468ea56b79967a
+      internalID: -692998900
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_27
+      rect:
+        serializedVersion: 2
+        x: 980
+        y: 1120
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6caf168c8a07ac46adefb9b689e41c0
+      internalID: -1633859870
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_28
+      rect:
+        serializedVersion: 2
+        x: 1120
+        y: 1120
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0752a1dc61133bf4db8614d123f4de21
+      internalID: -1502135291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_29
+      rect:
+        serializedVersion: 2
+        x: 1260
+        y: 1120
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ea0111a8f6332041b0ac3acf7df6dbf
+      internalID: 1376396511
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_30
+      rect:
+        serializedVersion: 2
+        x: 1400
+        y: 1120
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85f43ba49731f4343bf1f9e9dc9cec5d
+      internalID: -1119451157
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_31
+      rect:
+        serializedVersion: 2
+        x: 1540
+        y: 1120
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3fa1f288b2f5145498c629ca1b686188
+      internalID: -671470416
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_32
+      rect:
+        serializedVersion: 2
+        x: 1680
+        y: 1120
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3674f1fc8bd7a634c91eac8209a8895e
+      internalID: 1041291635
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_33
+      rect:
+        serializedVersion: 2
+        x: 1820
+        y: 1120
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc277c1d303d88e499854694e3b487f7
+      internalID: 173033083
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_34
+      rect:
+        serializedVersion: 2
+        x: 1960
+        y: 1120
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a7018c16d0484048a23c6cd39097b38
+      internalID: -146704425
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_35
+      rect:
+        serializedVersion: 2
+        x: 2100
+        y: 1120
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f042c8126402b645b74543be955d89e
+      internalID: -1614210911
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_36
+      rect:
+        serializedVersion: 2
+        x: 2240
+        y: 1120
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 411aa889e80459049ac6cb7af6f9adc6
+      internalID: 2063044672
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_37
+      rect:
+        serializedVersion: 2
+        x: 2380
+        y: 1120
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b822d09a4daf9044aa4be02d2a759d3
+      internalID: 1762426482
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_38
+      rect:
+        serializedVersion: 2
+        x: 2520
+        y: 1120
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7e31bd5cbeb6e04aae79539576d4f4e
+      internalID: -315672935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_39
+      rect:
+        serializedVersion: 2
+        x: 2660
+        y: 1120
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b82b9fb7a23e022489eafb3c342a05cb
+      internalID: 1699357926
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_40
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 980
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 008566c6f5c5f8e4ca98759268c67932
+      internalID: -937177611
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_41
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 980
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b9fef47bf0f4614795fd34fef4dd1d4
+      internalID: -771703355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_42
+      rect:
+        serializedVersion: 2
+        x: 280
+        y: 980
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eee6c6e328580ce459825c706d7128f5
+      internalID: 1978667659
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_43
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 980
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d6e1f0354d199a4c8853feb432a98c1
+      internalID: 1850307408
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_44
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 980
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43ba80704edd13848ae854ab76cfaf74
+      internalID: -1367465297
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_45
+      rect:
+        serializedVersion: 2
+        x: 700
+        y: 980
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c31edf4ce9ddb54479317d7b9702ec32
+      internalID: -717672928
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_46
+      rect:
+        serializedVersion: 2
+        x: 840
+        y: 980
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7dfe75fe773a5754a9a9144dbe843014
+      internalID: -1789731435
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_47
+      rect:
+        serializedVersion: 2
+        x: 980
+        y: 980
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cea87e0ba12202d46ad47b7e04d12c6d
+      internalID: -491417304
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_48
+      rect:
+        serializedVersion: 2
+        x: 1120
+        y: 980
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 464a29726e5a50048b1606eb46b8af3f
+      internalID: -109550546
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_49
+      rect:
+        serializedVersion: 2
+        x: 1260
+        y: 980
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd07358b630fec841b1e61a339483bfe
+      internalID: 1186631367
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_50
+      rect:
+        serializedVersion: 2
+        x: 1400
+        y: 980
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a93db8c586c17d45b4832ef493c1989
+      internalID: -1088746632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_51
+      rect:
+        serializedVersion: 2
+        x: 1540
+        y: 980
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1802a3d74355b4044b4319c6bec4c548
+      internalID: -1184986634
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_52
+      rect:
+        serializedVersion: 2
+        x: 1680
+        y: 980
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68a43bf9a7a8a93449d0183cf3ce7ff4
+      internalID: -281893937
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_53
+      rect:
+        serializedVersion: 2
+        x: 1820
+        y: 980
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e08c69758f7e4e45be0f9d7feee3dc1
+      internalID: 1966679147
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_54
+      rect:
+        serializedVersion: 2
+        x: 1960
+        y: 980
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9cd8735d7964424483026f373ebb11e
+      internalID: 1272398408
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_55
+      rect:
+        serializedVersion: 2
+        x: 2100
+        y: 980
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 702b9a2bf333e9a4ead4566a28afbe0d
+      internalID: -234763152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_56
+      rect:
+        serializedVersion: 2
+        x: 2240
+        y: 980
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 241e646d4712f9e4b8367b9eae7a0b57
+      internalID: 1423738707
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_57
+      rect:
+        serializedVersion: 2
+        x: 2380
+        y: 980
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b74fdcda53d981f428459b4cbec1e00f
+      internalID: 81978219
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_58
+      rect:
+        serializedVersion: 2
+        x: 2520
+        y: 980
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ace696f031217449a0a50bf90b7b5b4
+      internalID: 1032314410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_59
+      rect:
+        serializedVersion: 2
+        x: 2660
+        y: 980
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 766794981d59d1d4482608613e28f3cb
+      internalID: -1051559859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_60
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 840
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee2e679445b8ef649b0b7c3997e56564
+      internalID: 1653309566
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_61
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 840
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40a2da19b84aa1e4bb067f5668131436
+      internalID: -1615816850
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_62
+      rect:
+        serializedVersion: 2
+        x: 280
+        y: 840
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 530aa9488be7e8645b5b52edb1cf6816
+      internalID: 569005787
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_63
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 840
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0df8aca11f822dc4186d4d54253087e3
+      internalID: -1158487634
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_64
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 840
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7ef442e47cf45c4e833c991463e0ae5
+      internalID: -697186502
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_65
+      rect:
+        serializedVersion: 2
+        x: 700
+        y: 840
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72215a1347a15f94a97d009cc01d55f2
+      internalID: 967402889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_66
+      rect:
+        serializedVersion: 2
+        x: 840
+        y: 840
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26e936bae92a35643a5984f969af8a2f
+      internalID: -19578787
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_67
+      rect:
+        serializedVersion: 2
+        x: 980
+        y: 840
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09270eb146be76f4d8efcfac9ff2f402
+      internalID: -1451905940
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_68
+      rect:
+        serializedVersion: 2
+        x: 1120
+        y: 840
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d0ddbeec30d58d418dc60c5b86f95a1
+      internalID: -488089033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_69
+      rect:
+        serializedVersion: 2
+        x: 1260
+        y: 840
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a494de7d21a38c14ca9bd920af5f1f89
+      internalID: 1543209718
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_70
+      rect:
+        serializedVersion: 2
+        x: 1400
+        y: 840
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 857f8371af3dce042bdd5b636027d4f2
+      internalID: 795504654
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_71
+      rect:
+        serializedVersion: 2
+        x: 1540
+        y: 840
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 858875cd24c8fd641afdc51b9272d059
+      internalID: -33483362
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_72
+      rect:
+        serializedVersion: 2
+        x: 1680
+        y: 840
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 342ab5c985c61784a84f0ecebba4cfa0
+      internalID: -215583394
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_73
+      rect:
+        serializedVersion: 2
+        x: 1820
+        y: 840
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94c6f33538e28d2429d753d0d67cf4d9
+      internalID: -2128866863
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_74
+      rect:
+        serializedVersion: 2
+        x: 1960
+        y: 840
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 342a1e4c963f1bf419156a79ea92145b
+      internalID: 613401685
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_75
+      rect:
+        serializedVersion: 2
+        x: 2100
+        y: 840
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 278209077e14f264894e7f1f6a629430
+      internalID: 530421051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_76
+      rect:
+        serializedVersion: 2
+        x: 2240
+        y: 840
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e721829d006d94f4a9b2d50d34c47a60
+      internalID: 2121161063
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_77
+      rect:
+        serializedVersion: 2
+        x: 2380
+        y: 840
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a789929a9301c641943f6632c7d057a
+      internalID: 1140540357
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_78
+      rect:
+        serializedVersion: 2
+        x: 2520
+        y: 840
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e2a2fd1fb12d9e43a9fa633579a6882
+      internalID: -1928457032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_79
+      rect:
+        serializedVersion: 2
+        x: 2660
+        y: 840
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c737ce115c299a4b8659945fe16a5ab
+      internalID: 259372244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_80
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 700
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c2dbaf9407d6444fb45529386c2e218
+      internalID: 1710920487
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_81
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 700
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58a8e2dc3cb084144b9a458a6048491a
+      internalID: 1403195472
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_82
+      rect:
+        serializedVersion: 2
+        x: 280
+        y: 700
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da9d2da7561278d4bb88d683eab63818
+      internalID: 202847989
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_83
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 700
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49f433f341757994a8aa0b05d227cb6f
+      internalID: 1240684607
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_84
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 700
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: afe8bb1c4e656964dbfc138984892c11
+      internalID: -178715825
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_85
+      rect:
+        serializedVersion: 2
+        x: 700
+        y: 700
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b512c3b47d5adf469fe6f6b86a9a4e5
+      internalID: 1906470695
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_86
+      rect:
+        serializedVersion: 2
+        x: 840
+        y: 700
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f14d84cd930f6ef4a9ffdca1754b6762
+      internalID: 2002430735
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_87
+      rect:
+        serializedVersion: 2
+        x: 980
+        y: 700
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70249b45956a5434191745ea4f1a2a8a
+      internalID: -38659333
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_88
+      rect:
+        serializedVersion: 2
+        x: 1120
+        y: 700
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e4af82d6ed95bb49a47fad1ed50b1f1
+      internalID: -1389100460
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_89
+      rect:
+        serializedVersion: 2
+        x: 1260
+        y: 700
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dbf57241ab7b83d4eaf10fe6ab83ad62
+      internalID: -1955448209
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_90
+      rect:
+        serializedVersion: 2
+        x: 1400
+        y: 700
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88be04670dd4e5e4fb68f1e664c238f3
+      internalID: -1347309571
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_91
+      rect:
+        serializedVersion: 2
+        x: 1540
+        y: 700
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f7210d510153514d99a99c83931d102
+      internalID: 255110350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_92
+      rect:
+        serializedVersion: 2
+        x: 1680
+        y: 700
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5185a37f0c41e8545960ab842a4ee7ef
+      internalID: 1999600586
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_93
+      rect:
+        serializedVersion: 2
+        x: 1820
+        y: 700
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e050e063dbd01d14684871d7c9f2db8c
+      internalID: -1158391831
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_94
+      rect:
+        serializedVersion: 2
+        x: 1960
+        y: 700
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab50e44778c9c4943988953b202f4f91
+      internalID: 489501176
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_95
+      rect:
+        serializedVersion: 2
+        x: 2100
+        y: 700
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7b60bcb8877a0c4eba70d04833a9798
+      internalID: -651145296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_96
+      rect:
+        serializedVersion: 2
+        x: 2240
+        y: 700
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ad4d7c9a6aff094086e303e4b4f2605
+      internalID: 75717517
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_97
+      rect:
+        serializedVersion: 2
+        x: 2380
+        y: 700
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 23f65a2f4e4b2c441a5d1d463af47b05
+      internalID: 970583016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_98
+      rect:
+        serializedVersion: 2
+        x: 2520
+        y: 700
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0461dcfce23e2634f86b7d3c6a98e801
+      internalID: -1778345629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_99
+      rect:
+        serializedVersion: 2
+        x: 2660
+        y: 700
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 82d3b4df57726964aa6b32d9f6fdf35d
+      internalID: -1782509000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_100
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 560
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 674e23ed32210aa46ac8323f1d406598
+      internalID: 1721929410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_101
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 560
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ecf8909e71f12eb4ab212b73c680215c
+      internalID: -1007956473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_102
+      rect:
+        serializedVersion: 2
+        x: 280
+        y: 560
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 949d8e982af63a143a237875b937f45a
+      internalID: -1144997773
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_103
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 560
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd627826d53cfa64c9d935b956670eef
+      internalID: 577980103
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_104
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 560
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a609a27ff98b094cb9976d756d9d697
+      internalID: -305291613
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_105
+      rect:
+        serializedVersion: 2
+        x: 700
+        y: 560
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c4a12cf6b106d74ea9923b6244fa04b
+      internalID: 2109157202
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_106
+      rect:
+        serializedVersion: 2
+        x: 840
+        y: 560
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3602e8f8f25aaf340bd256293aee471a
+      internalID: 1942544763
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_107
+      rect:
+        serializedVersion: 2
+        x: 980
+        y: 560
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd6dff224140b8d49bf36e747528c1f2
+      internalID: -1683367577
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_108
+      rect:
+        serializedVersion: 2
+        x: 1120
+        y: 560
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b65f2f6afb4369a45b5e4b9ec4508bb7
+      internalID: -1022577747
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_109
+      rect:
+        serializedVersion: 2
+        x: 1260
+        y: 560
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa3011cf40eb4d840a8a1b843b1a6955
+      internalID: -386120251
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_110
+      rect:
+        serializedVersion: 2
+        x: 1400
+        y: 560
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 018495a26ce8b4a4187daf80df536d1b
+      internalID: 885640302
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_111
+      rect:
+        serializedVersion: 2
+        x: 1540
+        y: 560
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4dc89e518d09e2a4aa95455a54aebf4c
+      internalID: 671087435
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_112
+      rect:
+        serializedVersion: 2
+        x: 1680
+        y: 560
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e2479daa3178834daf595957222ac5b
+      internalID: 1919723694
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_113
+      rect:
+        serializedVersion: 2
+        x: 1820
+        y: 560
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f14425112b56cb4c8fc75d7f4615300
+      internalID: 1592082211
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_114
+      rect:
+        serializedVersion: 2
+        x: 1960
+        y: 560
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1fa7aff74844c6d49a55b34a6d233fda
+      internalID: 1558744202
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_115
+      rect:
+        serializedVersion: 2
+        x: 2100
+        y: 560
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 072e309a92972c141b75567dcca4ee81
+      internalID: -360430424
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_116
+      rect:
+        serializedVersion: 2
+        x: 2240
+        y: 560
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 779b580dc0a08414fb4a9d716045cc7b
+      internalID: -839610990
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_117
+      rect:
+        serializedVersion: 2
+        x: 2380
+        y: 560
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e0552ebd0a72c9469117abce6c41f86
+      internalID: 403260364
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_118
+      rect:
+        serializedVersion: 2
+        x: 2520
+        y: 560
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: baa901d91227a324f9f00bcb7af1b675
+      internalID: -785400014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_119
+      rect:
+        serializedVersion: 2
+        x: 2660
+        y: 560
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bed7713300adab741b46e6b4e3957fae
+      internalID: 2049464404
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_120
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 420
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42d32738df6b5d840b8ed64b1390084a
+      internalID: -819956912
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_121
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 420
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e38e5f6a8b4fef748aeec3204accd49b
+      internalID: 1023859826
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_122
+      rect:
+        serializedVersion: 2
+        x: 280
+        y: 420
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a65dd284769db24091d9063740f9c1e
+      internalID: -2008255202
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_123
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 420
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84ba0a9a9b7490240bb250ad3c60e012
+      internalID: 1611109706
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_124
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 420
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d45d4d28451c93f46beb1f6c9d97767c
+      internalID: -1735350214
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_125
+      rect:
+        serializedVersion: 2
+        x: 700
+        y: 420
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95d5c2ac05406c14db656795b82e7df1
+      internalID: 1785376247
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_126
+      rect:
+        serializedVersion: 2
+        x: 840
+        y: 420
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0077c42ffa795534dade316559865f33
+      internalID: -356600349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_127
+      rect:
+        serializedVersion: 2
+        x: 980
+        y: 420
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4dfbf25f031883a4faecb660887fe580
+      internalID: -723041465
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_128
+      rect:
+        serializedVersion: 2
+        x: 1120
+        y: 420
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 690d8d929e8316c41b0327b493d86293
+      internalID: 2025262283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_129
+      rect:
+        serializedVersion: 2
+        x: 1260
+        y: 420
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47f2f7b300a621647b1e7fcf354c08ee
+      internalID: -1471064556
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_130
+      rect:
+        serializedVersion: 2
+        x: 1400
+        y: 420
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5afbb44d8afe558489a8dfc8f00fc1f2
+      internalID: -1867588538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_131
+      rect:
+        serializedVersion: 2
+        x: 1540
+        y: 420
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 99e3392c970f27949bfda3e5bfbbb085
+      internalID: -848253878
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_132
+      rect:
+        serializedVersion: 2
+        x: 1680
+        y: 420
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e50a970086b9be499e8c8baaa4024e7
+      internalID: 1401512965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_133
+      rect:
+        serializedVersion: 2
+        x: 1820
+        y: 420
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a060d59bb5238344d8c2e1e247da13ec
+      internalID: 1641148956
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_134
+      rect:
+        serializedVersion: 2
+        x: 1960
+        y: 420
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39773053961e835419c2bdea3d8e5daa
+      internalID: 2069530360
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_135
+      rect:
+        serializedVersion: 2
+        x: 2100
+        y: 420
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc5ada13f3cc3fb40a98da1b8fb0052b
+      internalID: 333199016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_136
+      rect:
+        serializedVersion: 2
+        x: 2240
+        y: 420
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32c8889355c9f654c9418dac1c36fe68
+      internalID: 2119734335
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_137
+      rect:
+        serializedVersion: 2
+        x: 2380
+        y: 420
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14932789f44586f458a1cf1fae7b0a9c
+      internalID: 183115769
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_138
+      rect:
+        serializedVersion: 2
+        x: 2520
+        y: 420
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8b2e42c3c2308c43a44c346cd62aaed
+      internalID: -1686481300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_139
+      rect:
+        serializedVersion: 2
+        x: 2660
+        y: 420
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a8e6292b44632748a8e081d674666f0
+      internalID: -1525280686
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_140
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 280
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e0a8f83f0040a34fa317dd99e018be4
+      internalID: -359212327
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_141
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 280
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a2eaf8dd4e036345b2ece794ff5c4b5
+      internalID: -2033963310
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_142
+      rect:
+        serializedVersion: 2
+        x: 280
+        y: 280
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 720820fb2f47ae842ac1dae9f9d72ce6
+      internalID: -2026909452
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_143
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 280
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2dc9ca0c8840a6141a0cf81e08041f54
+      internalID: 2086488671
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_144
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 280
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f946a795424591499f140d127933c38
+      internalID: 525526870
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_145
+      rect:
+        serializedVersion: 2
+        x: 700
+        y: 280
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 667384f5f2502494898e64bd5802da29
+      internalID: 2036568340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_146
+      rect:
+        serializedVersion: 2
+        x: 840
+        y: 280
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d6515591f4eddd848a23e54082c09ba6
+      internalID: 1251330246
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_147
+      rect:
+        serializedVersion: 2
+        x: 980
+        y: 280
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed7d31a5e4c746e46829aa9d3f4055f9
+      internalID: -1269448987
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_148
+      rect:
+        serializedVersion: 2
+        x: 1120
+        y: 280
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7eb7f981b0a92f3418de15e9c1da2fd6
+      internalID: -127506271
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_149
+      rect:
+        serializedVersion: 2
+        x: 1260
+        y: 280
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ebd39be6e57808441bb64f7dd3c90875
+      internalID: 1479002792
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_150
+      rect:
+        serializedVersion: 2
+        x: 1400
+        y: 280
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e982a1dc865a4d14786f342f2eb445a6
+      internalID: -591751745
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_151
+      rect:
+        serializedVersion: 2
+        x: 1540
+        y: 280
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31455e5857fdb9941b315124c8255f89
+      internalID: 1063594403
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_152
+      rect:
+        serializedVersion: 2
+        x: 1680
+        y: 280
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 425c0292332a910448da497776416cc7
+      internalID: -1553683116
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_153
+      rect:
+        serializedVersion: 2
+        x: 1820
+        y: 280
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e084712563c970c428868cd9f4d0c435
+      internalID: 667447125
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_154
+      rect:
+        serializedVersion: 2
+        x: 1960
+        y: 280
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d581fd6989a938f43ac35667ecde2365
+      internalID: -1359952520
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_155
+      rect:
+        serializedVersion: 2
+        x: 2100
+        y: 280
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f53901ab2d5adf246b29721fa077a446
+      internalID: -1860898315
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_156
+      rect:
+        serializedVersion: 2
+        x: 2240
+        y: 280
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3aa3855354649cd439405f82425f7952
+      internalID: -1384698927
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_157
+      rect:
+        serializedVersion: 2
+        x: 2380
+        y: 280
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c04b1ca4bcc66e40b6cb063fa2153e5
+      internalID: 1732279555
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_158
+      rect:
+        serializedVersion: 2
+        x: 2520
+        y: 280
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc706e7b10ba2a14d9d92655d5fad903
+      internalID: -2067190990
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_159
+      rect:
+        serializedVersion: 2
+        x: 2660
+        y: 280
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c29c17f0f78f9af4eb7d1ca1984d9722
+      internalID: 1955333516
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_160
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 140
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e991413f5d47f1644885bd6deec03f06
+      internalID: -287032711
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_161
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 140
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2024192426fd52e4186e856778c2f7ca
+      internalID: 843832258
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_162
+      rect:
+        serializedVersion: 2
+        x: 280
+        y: 140
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 08d19da4fde5baf4b88acb0e6fb21ac5
+      internalID: 1592032526
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_163
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 140
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c6a25ade1f0b6944816fe9171c72034
+      internalID: -1552205485
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_164
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 140
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95e6eed7bebfb3a4c856a2906cf98982
+      internalID: 1256701972
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_165
+      rect:
+        serializedVersion: 2
+        x: 700
+        y: 140
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3bbe8c213a97dc14889e1c166153a50c
+      internalID: -85282518
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_166
+      rect:
+        serializedVersion: 2
+        x: 840
+        y: 140
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ae435ae75bddd0478718cd58d54271f
+      internalID: 2138225988
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_167
+      rect:
+        serializedVersion: 2
+        x: 980
+        y: 140
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1efa99253797bf04999f9fde0a70767b
+      internalID: 1799139123
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_168
+      rect:
+        serializedVersion: 2
+        x: 1120
+        y: 140
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 90a9b2a2274b3e0459e12a25c3320aa8
+      internalID: 277849674
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_169
+      rect:
+        serializedVersion: 2
+        x: 1260
+        y: 140
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8003387cdbaaf54a911172a977534a1
+      internalID: 1206735595
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_170
+      rect:
+        serializedVersion: 2
+        x: 1400
+        y: 140
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da7891224467d1e4f9f01d1221390640
+      internalID: 1926042412
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_171
+      rect:
+        serializedVersion: 2
+        x: 1540
+        y: 140
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 355feb697829b324f849130cbc457c00
+      internalID: -1930405704
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_172
+      rect:
+        serializedVersion: 2
+        x: 1680
+        y: 140
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b377f98f7be0b84fba204585fd52d58
+      internalID: 1537163583
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_173
+      rect:
+        serializedVersion: 2
+        x: 1820
+        y: 140
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 087cc03f0bd21904885e23ed3bfef2b9
+      internalID: -137623509
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_174
+      rect:
+        serializedVersion: 2
+        x: 1960
+        y: 140
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c2a62d055aa9fad4cbcb4f4730447144
+      internalID: -1962555610
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_175
+      rect:
+        serializedVersion: 2
+        x: 2100
+        y: 140
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d11a22969cfc8a41b206f6a3d96354c
+      internalID: 235969696
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_176
+      rect:
+        serializedVersion: 2
+        x: 2240
+        y: 140
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9380aabed81382045bfebc6f2e1880d6
+      internalID: -277278405
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_177
+      rect:
+        serializedVersion: 2
+        x: 2380
+        y: 140
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98d18773bdb1bf141b28b527a32b216c
+      internalID: -1649752447
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_178
+      rect:
+        serializedVersion: 2
+        x: 2520
+        y: 140
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f040269e9a12f741af71df7c5aab850
+      internalID: -442356481
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_179
+      rect:
+        serializedVersion: 2
+        x: 2660
+        y: 140
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec5ba8bc72671fb4091893f0997eb94b
+      internalID: -1554796112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_180
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b51e780f563392b46babad42af108234
+      internalID: 752645454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_181
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 0
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d31078392dd6d646aba2534bc0b53e2
+      internalID: 2107868057
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_182
+      rect:
+        serializedVersion: 2
+        x: 280
+        y: 0
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96817d625221ab04b8baa890b6e139b6
+      internalID: -1004637548
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_183
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 0
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c9f7d28b15db1a4da96c568cb66f221
+      internalID: -2049537482
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_184
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 0
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c4504e96250e294e86d3c2a9979ad8f
+      internalID: 637298098
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_185
+      rect:
+        serializedVersion: 2
+        x: 700
+        y: 0
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f84149aab9b450240a032760d9d184ca
+      internalID: -350896795
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_186
+      rect:
+        serializedVersion: 2
+        x: 840
+        y: 0
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7434234130c249e4db1d06d4d67993a0
+      internalID: -1431946708
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_187
+      rect:
+        serializedVersion: 2
+        x: 980
+        y: 0
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: acf1e62609018fe44b3cb40d0ad3c856
+      internalID: -137460442
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_188
+      rect:
+        serializedVersion: 2
+        x: 1120
+        y: 0
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf5d6281353e9e343af28c95609cb9d6
+      internalID: 1765159542
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_189
+      rect:
+        serializedVersion: 2
+        x: 1260
+        y: 0
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c49c6f5f1b0afd4bb0ca9ea1b2daa99
+      internalID: 2080485113
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_190
+      rect:
+        serializedVersion: 2
+        x: 1400
+        y: 0
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d631636a3b60c14c970f31fd79e32c6
+      internalID: -906462480
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_191
+      rect:
+        serializedVersion: 2
+        x: 1540
+        y: 0
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1097b1a212492884f9ba63957353cc3f
+      internalID: -492970896
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_192
+      rect:
+        serializedVersion: 2
+        x: 1680
+        y: 0
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa52efc1c3d760f4eab5cda9dfbd383a
+      internalID: 1747851428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_193
+      rect:
+        serializedVersion: 2
+        x: 1820
+        y: 0
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dbcc09cb36a329d44b70c9e15a257459
+      internalID: -764371861
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_194
+      rect:
+        serializedVersion: 2
+        x: 1960
+        y: 0
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31d8b008168292648ba394937692425e
+      internalID: -130534903
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_195
+      rect:
+        serializedVersion: 2
+        x: 2100
+        y: 0
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 142e092625563e9478ec506b5c67e138
+      internalID: -493885247
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_196
+      rect:
+        serializedVersion: 2
+        x: 2240
+        y: 0
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 040d4a74f5ca90242af45da0575ca15b
+      internalID: -1374770424
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_197
+      rect:
+        serializedVersion: 2
+        x: 2380
+        y: 0
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 38021350c53fa794cb4c09f3375b39de
+      internalID: 206486484
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_198
+      rect:
+        serializedVersion: 2
+        x: 2520
+        y: 0
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b801cd9260e4d74428a5adb5391ec98f
+      internalID: -1510525032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint sciFi gateOpen day exterior noGrid_199
+      rect:
+        serializedVersion: 2
+        x: 2660
+        y: 0
+        width: 140
+        height: 140
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 08d0584b96f5d4a4690b58098e5267ec
+      internalID: -1776572785
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 57a299361f043d44eb329693461f886c
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      checkpoint sciFi gateOpen day exterior noGrid_0: -1144263194
+      checkpoint sciFi gateOpen day exterior noGrid_1: -988745558
+      checkpoint sciFi gateOpen day exterior noGrid_10: 534046789
+      checkpoint sciFi gateOpen day exterior noGrid_100: 1721929410
+      checkpoint sciFi gateOpen day exterior noGrid_101: -1007956473
+      checkpoint sciFi gateOpen day exterior noGrid_102: -1144997773
+      checkpoint sciFi gateOpen day exterior noGrid_103: 577980103
+      checkpoint sciFi gateOpen day exterior noGrid_104: -305291613
+      checkpoint sciFi gateOpen day exterior noGrid_105: 2109157202
+      checkpoint sciFi gateOpen day exterior noGrid_106: 1942544763
+      checkpoint sciFi gateOpen day exterior noGrid_107: -1683367577
+      checkpoint sciFi gateOpen day exterior noGrid_108: -1022577747
+      checkpoint sciFi gateOpen day exterior noGrid_109: -386120251
+      checkpoint sciFi gateOpen day exterior noGrid_11: 1550170925
+      checkpoint sciFi gateOpen day exterior noGrid_110: 885640302
+      checkpoint sciFi gateOpen day exterior noGrid_111: 671087435
+      checkpoint sciFi gateOpen day exterior noGrid_112: 1919723694
+      checkpoint sciFi gateOpen day exterior noGrid_113: 1592082211
+      checkpoint sciFi gateOpen day exterior noGrid_114: 1558744202
+      checkpoint sciFi gateOpen day exterior noGrid_115: -360430424
+      checkpoint sciFi gateOpen day exterior noGrid_116: -839610990
+      checkpoint sciFi gateOpen day exterior noGrid_117: 403260364
+      checkpoint sciFi gateOpen day exterior noGrid_118: -785400014
+      checkpoint sciFi gateOpen day exterior noGrid_119: 2049464404
+      checkpoint sciFi gateOpen day exterior noGrid_12: -831873472
+      checkpoint sciFi gateOpen day exterior noGrid_120: -819956912
+      checkpoint sciFi gateOpen day exterior noGrid_121: 1023859826
+      checkpoint sciFi gateOpen day exterior noGrid_122: -2008255202
+      checkpoint sciFi gateOpen day exterior noGrid_123: 1611109706
+      checkpoint sciFi gateOpen day exterior noGrid_124: -1735350214
+      checkpoint sciFi gateOpen day exterior noGrid_125: 1785376247
+      checkpoint sciFi gateOpen day exterior noGrid_126: -356600349
+      checkpoint sciFi gateOpen day exterior noGrid_127: -723041465
+      checkpoint sciFi gateOpen day exterior noGrid_128: 2025262283
+      checkpoint sciFi gateOpen day exterior noGrid_129: -1471064556
+      checkpoint sciFi gateOpen day exterior noGrid_13: -68088550
+      checkpoint sciFi gateOpen day exterior noGrid_130: -1867588538
+      checkpoint sciFi gateOpen day exterior noGrid_131: -848253878
+      checkpoint sciFi gateOpen day exterior noGrid_132: 1401512965
+      checkpoint sciFi gateOpen day exterior noGrid_133: 1641148956
+      checkpoint sciFi gateOpen day exterior noGrid_134: 2069530360
+      checkpoint sciFi gateOpen day exterior noGrid_135: 333199016
+      checkpoint sciFi gateOpen day exterior noGrid_136: 2119734335
+      checkpoint sciFi gateOpen day exterior noGrid_137: 183115769
+      checkpoint sciFi gateOpen day exterior noGrid_138: -1686481300
+      checkpoint sciFi gateOpen day exterior noGrid_139: -1525280686
+      checkpoint sciFi gateOpen day exterior noGrid_14: 1299087348
+      checkpoint sciFi gateOpen day exterior noGrid_140: -359212327
+      checkpoint sciFi gateOpen day exterior noGrid_141: -2033963310
+      checkpoint sciFi gateOpen day exterior noGrid_142: -2026909452
+      checkpoint sciFi gateOpen day exterior noGrid_143: 2086488671
+      checkpoint sciFi gateOpen day exterior noGrid_144: 525526870
+      checkpoint sciFi gateOpen day exterior noGrid_145: 2036568340
+      checkpoint sciFi gateOpen day exterior noGrid_146: 1251330246
+      checkpoint sciFi gateOpen day exterior noGrid_147: -1269448987
+      checkpoint sciFi gateOpen day exterior noGrid_148: -127506271
+      checkpoint sciFi gateOpen day exterior noGrid_149: 1479002792
+      checkpoint sciFi gateOpen day exterior noGrid_15: 686970249
+      checkpoint sciFi gateOpen day exterior noGrid_150: -591751745
+      checkpoint sciFi gateOpen day exterior noGrid_151: 1063594403
+      checkpoint sciFi gateOpen day exterior noGrid_152: -1553683116
+      checkpoint sciFi gateOpen day exterior noGrid_153: 667447125
+      checkpoint sciFi gateOpen day exterior noGrid_154: -1359952520
+      checkpoint sciFi gateOpen day exterior noGrid_155: -1860898315
+      checkpoint sciFi gateOpen day exterior noGrid_156: -1384698927
+      checkpoint sciFi gateOpen day exterior noGrid_157: 1732279555
+      checkpoint sciFi gateOpen day exterior noGrid_158: -2067190990
+      checkpoint sciFi gateOpen day exterior noGrid_159: 1955333516
+      checkpoint sciFi gateOpen day exterior noGrid_16: -1780574904
+      checkpoint sciFi gateOpen day exterior noGrid_160: -287032711
+      checkpoint sciFi gateOpen day exterior noGrid_161: 843832258
+      checkpoint sciFi gateOpen day exterior noGrid_162: 1592032526
+      checkpoint sciFi gateOpen day exterior noGrid_163: -1552205485
+      checkpoint sciFi gateOpen day exterior noGrid_164: 1256701972
+      checkpoint sciFi gateOpen day exterior noGrid_165: -85282518
+      checkpoint sciFi gateOpen day exterior noGrid_166: 2138225988
+      checkpoint sciFi gateOpen day exterior noGrid_167: 1799139123
+      checkpoint sciFi gateOpen day exterior noGrid_168: 277849674
+      checkpoint sciFi gateOpen day exterior noGrid_169: 1206735595
+      checkpoint sciFi gateOpen day exterior noGrid_17: -1856780758
+      checkpoint sciFi gateOpen day exterior noGrid_170: 1926042412
+      checkpoint sciFi gateOpen day exterior noGrid_171: -1930405704
+      checkpoint sciFi gateOpen day exterior noGrid_172: 1537163583
+      checkpoint sciFi gateOpen day exterior noGrid_173: -137623509
+      checkpoint sciFi gateOpen day exterior noGrid_174: -1962555610
+      checkpoint sciFi gateOpen day exterior noGrid_175: 235969696
+      checkpoint sciFi gateOpen day exterior noGrid_176: -277278405
+      checkpoint sciFi gateOpen day exterior noGrid_177: -1649752447
+      checkpoint sciFi gateOpen day exterior noGrid_178: -442356481
+      checkpoint sciFi gateOpen day exterior noGrid_179: -1554796112
+      checkpoint sciFi gateOpen day exterior noGrid_18: 763937155
+      checkpoint sciFi gateOpen day exterior noGrid_180: 752645454
+      checkpoint sciFi gateOpen day exterior noGrid_181: 2107868057
+      checkpoint sciFi gateOpen day exterior noGrid_182: -1004637548
+      checkpoint sciFi gateOpen day exterior noGrid_183: -2049537482
+      checkpoint sciFi gateOpen day exterior noGrid_184: 637298098
+      checkpoint sciFi gateOpen day exterior noGrid_185: -350896795
+      checkpoint sciFi gateOpen day exterior noGrid_186: -1431946708
+      checkpoint sciFi gateOpen day exterior noGrid_187: -137460442
+      checkpoint sciFi gateOpen day exterior noGrid_188: 1765159542
+      checkpoint sciFi gateOpen day exterior noGrid_189: 2080485113
+      checkpoint sciFi gateOpen day exterior noGrid_19: 972312104
+      checkpoint sciFi gateOpen day exterior noGrid_190: -906462480
+      checkpoint sciFi gateOpen day exterior noGrid_191: -492970896
+      checkpoint sciFi gateOpen day exterior noGrid_192: 1747851428
+      checkpoint sciFi gateOpen day exterior noGrid_193: -764371861
+      checkpoint sciFi gateOpen day exterior noGrid_194: -130534903
+      checkpoint sciFi gateOpen day exterior noGrid_195: -493885247
+      checkpoint sciFi gateOpen day exterior noGrid_196: -1374770424
+      checkpoint sciFi gateOpen day exterior noGrid_197: 206486484
+      checkpoint sciFi gateOpen day exterior noGrid_198: -1510525032
+      checkpoint sciFi gateOpen day exterior noGrid_199: -1776572785
+      checkpoint sciFi gateOpen day exterior noGrid_2: 1130453989
+      checkpoint sciFi gateOpen day exterior noGrid_20: -656839650
+      checkpoint sciFi gateOpen day exterior noGrid_21: 1000740022
+      checkpoint sciFi gateOpen day exterior noGrid_22: -1096526234
+      checkpoint sciFi gateOpen day exterior noGrid_23: -118505530
+      checkpoint sciFi gateOpen day exterior noGrid_24: 610554601
+      checkpoint sciFi gateOpen day exterior noGrid_25: 1717480197
+      checkpoint sciFi gateOpen day exterior noGrid_26: -692998900
+      checkpoint sciFi gateOpen day exterior noGrid_27: -1633859870
+      checkpoint sciFi gateOpen day exterior noGrid_28: -1502135291
+      checkpoint sciFi gateOpen day exterior noGrid_29: 1376396511
+      checkpoint sciFi gateOpen day exterior noGrid_3: -1487613022
+      checkpoint sciFi gateOpen day exterior noGrid_30: -1119451157
+      checkpoint sciFi gateOpen day exterior noGrid_31: -671470416
+      checkpoint sciFi gateOpen day exterior noGrid_32: 1041291635
+      checkpoint sciFi gateOpen day exterior noGrid_33: 173033083
+      checkpoint sciFi gateOpen day exterior noGrid_34: -146704425
+      checkpoint sciFi gateOpen day exterior noGrid_35: -1614210911
+      checkpoint sciFi gateOpen day exterior noGrid_36: 2063044672
+      checkpoint sciFi gateOpen day exterior noGrid_37: 1762426482
+      checkpoint sciFi gateOpen day exterior noGrid_38: -315672935
+      checkpoint sciFi gateOpen day exterior noGrid_39: 1699357926
+      checkpoint sciFi gateOpen day exterior noGrid_4: 1130740098
+      checkpoint sciFi gateOpen day exterior noGrid_40: -937177611
+      checkpoint sciFi gateOpen day exterior noGrid_41: -771703355
+      checkpoint sciFi gateOpen day exterior noGrid_42: 1978667659
+      checkpoint sciFi gateOpen day exterior noGrid_43: 1850307408
+      checkpoint sciFi gateOpen day exterior noGrid_44: -1367465297
+      checkpoint sciFi gateOpen day exterior noGrid_45: -717672928
+      checkpoint sciFi gateOpen day exterior noGrid_46: -1789731435
+      checkpoint sciFi gateOpen day exterior noGrid_47: -491417304
+      checkpoint sciFi gateOpen day exterior noGrid_48: -109550546
+      checkpoint sciFi gateOpen day exterior noGrid_49: 1186631367
+      checkpoint sciFi gateOpen day exterior noGrid_5: -1312851858
+      checkpoint sciFi gateOpen day exterior noGrid_50: -1088746632
+      checkpoint sciFi gateOpen day exterior noGrid_51: -1184986634
+      checkpoint sciFi gateOpen day exterior noGrid_52: -281893937
+      checkpoint sciFi gateOpen day exterior noGrid_53: 1966679147
+      checkpoint sciFi gateOpen day exterior noGrid_54: 1272398408
+      checkpoint sciFi gateOpen day exterior noGrid_55: -234763152
+      checkpoint sciFi gateOpen day exterior noGrid_56: 1423738707
+      checkpoint sciFi gateOpen day exterior noGrid_57: 81978219
+      checkpoint sciFi gateOpen day exterior noGrid_58: 1032314410
+      checkpoint sciFi gateOpen day exterior noGrid_59: -1051559859
+      checkpoint sciFi gateOpen day exterior noGrid_6: -649359026
+      checkpoint sciFi gateOpen day exterior noGrid_60: 1653309566
+      checkpoint sciFi gateOpen day exterior noGrid_61: -1615816850
+      checkpoint sciFi gateOpen day exterior noGrid_62: 569005787
+      checkpoint sciFi gateOpen day exterior noGrid_63: -1158487634
+      checkpoint sciFi gateOpen day exterior noGrid_64: -697186502
+      checkpoint sciFi gateOpen day exterior noGrid_65: 967402889
+      checkpoint sciFi gateOpen day exterior noGrid_66: -19578787
+      checkpoint sciFi gateOpen day exterior noGrid_67: -1451905940
+      checkpoint sciFi gateOpen day exterior noGrid_68: -488089033
+      checkpoint sciFi gateOpen day exterior noGrid_69: 1543209718
+      checkpoint sciFi gateOpen day exterior noGrid_7: -122932332
+      checkpoint sciFi gateOpen day exterior noGrid_70: 795504654
+      checkpoint sciFi gateOpen day exterior noGrid_71: -33483362
+      checkpoint sciFi gateOpen day exterior noGrid_72: -215583394
+      checkpoint sciFi gateOpen day exterior noGrid_73: -2128866863
+      checkpoint sciFi gateOpen day exterior noGrid_74: 613401685
+      checkpoint sciFi gateOpen day exterior noGrid_75: 530421051
+      checkpoint sciFi gateOpen day exterior noGrid_76: 2121161063
+      checkpoint sciFi gateOpen day exterior noGrid_77: 1140540357
+      checkpoint sciFi gateOpen day exterior noGrid_78: -1928457032
+      checkpoint sciFi gateOpen day exterior noGrid_79: 259372244
+      checkpoint sciFi gateOpen day exterior noGrid_8: 1006683586
+      checkpoint sciFi gateOpen day exterior noGrid_80: 1710920487
+      checkpoint sciFi gateOpen day exterior noGrid_81: 1403195472
+      checkpoint sciFi gateOpen day exterior noGrid_82: 202847989
+      checkpoint sciFi gateOpen day exterior noGrid_83: 1240684607
+      checkpoint sciFi gateOpen day exterior noGrid_84: -178715825
+      checkpoint sciFi gateOpen day exterior noGrid_85: 1906470695
+      checkpoint sciFi gateOpen day exterior noGrid_86: 2002430735
+      checkpoint sciFi gateOpen day exterior noGrid_87: -38659333
+      checkpoint sciFi gateOpen day exterior noGrid_88: -1389100460
+      checkpoint sciFi gateOpen day exterior noGrid_89: -1955448209
+      checkpoint sciFi gateOpen day exterior noGrid_9: -120344221
+      checkpoint sciFi gateOpen day exterior noGrid_90: -1347309571
+      checkpoint sciFi gateOpen day exterior noGrid_91: 255110350
+      checkpoint sciFi gateOpen day exterior noGrid_92: 1999600586
+      checkpoint sciFi gateOpen day exterior noGrid_93: -1158391831
+      checkpoint sciFi gateOpen day exterior noGrid_94: 489501176
+      checkpoint sciFi gateOpen day exterior noGrid_95: -651145296
+      checkpoint sciFi gateOpen day exterior noGrid_96: 75717517
+      checkpoint sciFi gateOpen day exterior noGrid_97: 970583016
+      checkpoint sciFi gateOpen day exterior noGrid_98: -1778345629
+      checkpoint sciFi gateOpen day exterior noGrid_99: -1782509000
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

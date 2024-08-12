@@ -523,8 +523,8 @@ MonoBehaviour:
         byteData: 
         byteDataArray: 
       Version: 1.7.9
-  gizmoViewMode: 0
-  showBehaviorDesignerGizmo: 0
+  gizmoViewMode: 2
+  showBehaviorDesignerGizmo: 1
 --- !u!114 &5384138960469735118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -781,6 +781,8 @@ MonoBehaviour:
     m_RightHandWeaponCurrentHP: 0
     m_LeftHandWeapon: 1
     m_RightHandWeapon: 3
+    m_LeftWeaponGO: {fileID: 0}
+    m_RightWeaponGO: {fileID: 0}
     m_Armor: 0
     m_EnergyShieldCount: 10
     m_CurrentHP: 0
@@ -789,6 +791,7 @@ MonoBehaviour:
     m_Camp: 1
     m_DropWeapon_WeaponDestroy: 0
     m_DropWeapon_CharacterDied: 1
+    m_CoreSprite: {fileID: 0}
 --- !u!195 &3478913082591308681
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1375,8 +1378,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 500
-  m_Sprite: {fileID: 21300000, guid: ddd4aaefcbf36c9428368d886cbaf5e2, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.30588236}
+  m_Sprite: {fileID: 21300000, guid: d316da4ee6a3f354cba1a0098d170538, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1729,8 +1732,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6366659864442458561}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.497, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 1, z: 1}
+  m_LocalPosition: {x: -1.083, y: 0, z: 0}
+  m_LocalScale: {x: 4.55, y: 0.11, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 802724896457246220}
@@ -2231,7 +2234,7 @@ Transform:
   m_GameObject: {fileID: 8667285113089106880}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.051, y: 0.957, z: -0.13996744}
-  m_LocalScale: {x: 2.3115, y: 0.13639547, z: 1}
+  m_LocalScale: {x: 0.84, y: 0.69, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6922354997994375767}
@@ -2279,7 +2282,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 500
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7be3fdb8e83ecbd45ae8982ef6e0c5e2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2331,7 +2334,7 @@ SpriteMask:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7be3fdb8e83ecbd45ae8982ef6e0c5e2, type: 3}
   m_MaskAlphaCutoff: 0
   m_FrontSortingLayerID: 0
   m_BackSortingLayerID: 0

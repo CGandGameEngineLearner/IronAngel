@@ -84,7 +84,25 @@ public class WeaponSystemCenter : NetworkBehaviour
         m_RegisteredWeaponAI.Add(aiController);
     }
 
+    [ServerCallback]
+    public GameObject GetWeapon(WeaponType weaponType)
+    {
+        if (weaponType == WeaponType.None) return null;
+        
+        var weaponConfig = m_WeaponConfigDic[weaponType];
+        var prefab = weaponConfig.prefab;
 
+        GameObject weapon = Instantiate(prefab, Vector2.zero,
+            UnityEngine.Quaternion.Euler(0,0,Random.Range(0,360))); // 朝向随机
+
+        weapon.GetComponent<WeaponInstance>().Init(weaponConfig);
+        m_WeaponToConfigDic[weapon] = weaponConfig;
+        m_WeaponToTypeDic[weapon] = weaponType;
+        NetworkServer.Spawn(weapon);
+        RpcWeaponDicUpdate(weapon, weaponType);
+        return weapon;
+    }
+    
     public void SpawnWeapon(WeaponType weaponType, Vector3 pos)
     {
         ServeSpawnWeapon(weaponType, pos);
@@ -132,7 +150,40 @@ public class WeaponSystemCenter : NetworkBehaviour
         return weapon;
     }
 
-    
+    /// <summary>
+    /// 给玩家左右手武器加载使用
+    /// </summary>
+    /// <param name="leftWeaponType"></param>
+    /// <param name="rightWeaponType"></param>
+    [ServerCallback]
+    public void GivePlayerWeapon(WeaponType leftWeaponType, WeaponType rightWeaponType)
+    {
+        if (leftWeaponType != WeaponType.None)
+        {
+            GameObject leftWeapon = GetWeapon(leftWeaponType);
+            PlayerController.PlayerControllers[0].Player.SetPlayerLeftHandWeapon(leftWeapon);
+            RpcGivePlayerLeftWeapon(leftWeapon);
+        }
+        
+        if (rightWeaponType != WeaponType.None)
+        {
+            GameObject rightWeapon = GetWeapon(rightWeaponType);
+            PlayerController.PlayerControllers[0].Player.SetPlayerRightHandWeapon(rightWeapon);
+            RpcGivePlayerRightWeapon(rightWeapon);
+        }
+    }
+
+    [ClientRpc]
+    private void RpcGivePlayerLeftWeapon(GameObject weapon)
+    {
+        PlayerController.PlayerControllers[0].Player.SetPlayerLeftHandWeapon(weapon);
+    }
+
+    [ClientRpc]
+    private void RpcGivePlayerRightWeapon(GameObject weapon)
+    {
+        PlayerController.PlayerControllers[0].Player.SetPlayerRightHandWeapon(weapon);
+    }
     
     /// <summary>
     /// 给AI装备武器
@@ -232,6 +283,16 @@ public class WeaponSystemCenter : NetworkBehaviour
         return m_WeaponConfigDic[weaponType];
     }
 
+    public static WeaponType GetWeaponType(GameObject weapon)
+    {
+        if (!m_WeaponToTypeDic.ContainsKey(weapon))
+        {
+            throw new Exception("查询不到武器配置，武器为：" + weapon);
+        }
+
+        return m_WeaponToTypeDic[weapon];
+    }
+    
     public bool StartGame = false;
 
     /// <summary>
@@ -289,7 +350,7 @@ public class WeaponSystemCenter : NetworkBehaviour
         // 服务端
         Fire(character, m_WeaponToTypeDic[weapon], ammunitionType, startPoint, dir);
         // Rpc调用客户端
-        RPCFire(character, weapon, startPoint, dir);
+        RPCFire(character, weapon, startPoint, dir, isPlayer);
     }
 
     /// <summary>
@@ -300,7 +361,7 @@ public class WeaponSystemCenter : NetworkBehaviour
     /// <param name="startPoint">起始点</param>
     /// <param name="dir">方向</param>
     [ClientRpc]
-    public void RPCFire(GameObject character, GameObject weapon, Vector3 startPoint, Vector3 dir)
+    public void RPCFire(GameObject character, GameObject weapon, Vector3 startPoint, Vector3 dir, bool isPlayer)
     {
         if(m_WeaponToTypeDic.ContainsKey(weapon) == false)
         {
@@ -314,6 +375,9 @@ public class WeaponSystemCenter : NetworkBehaviour
         // 调用客户端的开火特效
         if (!weapon.TryGetComponent<WeaponInstance>(out WeaponInstance weaponInstance)) return;
         weaponInstance.FireVfxAndAnimation(character, weaponType, weaponConfig, startPoint, dir);
+        
+        // 鏡頭晃动，可能出现多个客户端开火只有一个晃动的问题
+        // PlayerController.PlayerControllers[0].CameraController.ShakeCameraPosition(0.3f, new Vector3(3, 3, 0));
     }
 
 

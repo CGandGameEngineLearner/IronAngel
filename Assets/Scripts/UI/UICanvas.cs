@@ -101,10 +101,10 @@ public class UICanvas : MonoBehaviour
     /// <summary>
     /// 
     /// </summary>
-    /// <param name="text"></param> Ä¿±êÎÄ×Ö
-    /// <param name="time"></param> ÓÃ¶à¾Ã³öÏÖ
-    /// <param name="duration"></param> ³ÖĞø¶à¾Ã
-    /// <param name="isEnd"></param> ÊÇ·ñÊÇ×îºóÒ»¾ä£¬ÊÇµÄ»°Õâ¾ä½áÊøºóÎÄ×ÖÃæ°å»áÒş²Ø
+    /// <param name="text"></param> ç›®æ ‡æ–‡å­—
+    /// <param name="time"></param> ç”¨å¤šä¹…å‡ºç°
+    /// <param name="duration"></param> æŒç»­å¤šä¹…
+    /// <param name="isEnd"></param> æ˜¯å¦æ˜¯æœ€åä¸€å¥ï¼Œæ˜¯çš„è¯è¿™å¥ç»“æŸåæ–‡å­—é¢æ¿ä¼šéšè—
     public void SetPlotText(string text, float time, float duration, bool isEnd = false)
     {
         m_PlotPanel.gameObject.SetActive(true);

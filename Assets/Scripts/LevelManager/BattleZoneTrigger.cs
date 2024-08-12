@@ -6,6 +6,7 @@ using UnityEngine;
 public class BattleZoneTrigger : NetworkBehaviour
 {
     public WaveConfig enemyWaveConfig;
+    public List<GameObject> invisibleWalls;
     
     public void OnCollisionEnter2D(Collision2D other)
     {
@@ -15,7 +16,7 @@ public class BattleZoneTrigger : NetworkBehaviour
         if (!other.gameObject.CompareTag("Player")) return;
         
         // 提交到LevelManager
-        LevelManager.Instance.StartBattleZoneWave(enemyWaveConfig);
+        LevelManager.Instance.StartBattleZoneWave(enemyWaveConfig, invisibleWalls);
         
         // 提交后就不再可激活
         this.gameObject.SetActive(false);

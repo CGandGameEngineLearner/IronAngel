@@ -20,22 +20,12 @@ MonoBehaviour:
       spawnPosition: {x: 12.727709, y: 16.57455, z: 0}
     - enemyPrefab: {fileID: 2195872794582507982, guid: 039fd3fee3677004c9040c4e3660fc9a, type: 3}
       spawnPosition: {x: 6.5311737, y: 14.5942135, z: 0}
-    - enemyPrefab: {fileID: 2195872794582507982, guid: 039fd3fee3677004c9040c4e3660fc9a, type: 3}
-      spawnPosition: {x: 11.789249, y: -4.318841, z: 0}
-    - enemyPrefab: {fileID: 2195872794582507982, guid: 039fd3fee3677004c9040c4e3660fc9a, type: 3}
-      spawnPosition: {x: 11.716909, y: 12.46372, z: 0}
     onFieldEnemyCount: 3
-    timeOut: 0
-    waveDelay: 10
-  - enemyListConfigs:
-    - enemyPrefab: {fileID: 2195872794582507982, guid: c25acdb10ed116c4cabc400ac9038732, type: 3}
-      spawnPosition: {x: 35.0807, y: 13.131198, z: 0}
-    - enemyPrefab: {fileID: 2195872794582507982, guid: c25acdb10ed116c4cabc400ac9038732, type: 3}
-      spawnPosition: {x: 37.24013, y: 13.0455065, z: 0}
-    - enemyPrefab: {fileID: 2195872794582507982, guid: c25acdb10ed116c4cabc400ac9038732, type: 3}
-      spawnPosition: {x: 39.22818, y: 13.131198, z: 0}
-    - enemyPrefab: {fileID: 2195872794582507982, guid: c25acdb10ed116c4cabc400ac9038732, type: 3}
-      spawnPosition: {x: 41.07912, y: 13.114059, z: 0}
-    onFieldEnemyCount: 3
-    timeOut: 0
-    waveDelay: 10
+    dialogStructs:
+    - stringToSays: Someone is coming, be careful.
+      time: 3
+      delayTime: 0
+    - stringToSays: All you works.
+      time: 2
+      delayTime: 1
+    waveDelay: 3

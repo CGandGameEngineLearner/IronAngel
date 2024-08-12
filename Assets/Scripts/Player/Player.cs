@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Mirror;
 using UnityEngine;
 
 public class Player
@@ -154,6 +155,12 @@ public class Player
     public GameObject DropPlayerRightHandWeapon(Vector3 pos)
     {
         return m_PlayerHand.DropPlayerRightHandWeapon(pos);
+    }
+    
+    [Command]
+    public void GivePlayerWeapon(WeaponType leftWeaponType, WeaponType rightWeaponType)
+    {
+        WeaponSystemCenter.Instance.GivePlayerWeapon(leftWeaponType, rightWeaponType);
     }
 }
 

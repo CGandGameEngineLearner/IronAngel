@@ -25,10 +25,10 @@ MonoBehaviour:
   fallout: 0
   minDamage: 0
   m_LaserWidth: 0
-  m_LeastLiveFixedFrameCount: 1
+  m_LeastLiveFixedFrameCount: 2
   m_specialAtkTypes: 
   m_EffectBuff:
-  - m_EffectBuff: 13
+  - m_EffectBuff: 15
     m_Duration: 1
     m_Number: 0
   hitVfxType: 18

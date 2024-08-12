@@ -22,6 +22,7 @@ public class PlotPanel : MonoBehaviour
     {
         m_PlotText.DOKill();
         m_PlotText.text = "";
+        m_PlotText.alpha = 1;
         m_PlotText.DOText(text, time).OnComplete(() =>
         {
             if(isEnd)
