@@ -167,6 +167,9 @@ public enum VfxType
     Scrap1,
     Scrap2,
     Scrap3,
+    
+    // 角色死亡特效
+    CharacterDied,
 }
 
 public enum SfxType
