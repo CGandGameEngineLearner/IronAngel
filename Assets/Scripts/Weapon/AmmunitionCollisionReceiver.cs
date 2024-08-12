@@ -210,8 +210,12 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
         // 两边的武器血条还没有考虑
         // 分别计算受击位置和两个手部碰撞体和核心碰撞体的距离
         // 取最短的距离作为受击部位
-        float leftDis = Vector2.Distance(new Vector2(m_LeftWeapon.transform.position.x + m_LeftWeapon.m_Collider.offset.x, m_LeftWeapon.transform.position.y + m_LeftWeapon.m_Collider.offset.y), Pos);
-        float rightDis = Vector2.Distance(new Vector2(m_RightWeapon.transform.position.x + m_RightWeapon.m_Collider.offset.x, m_RightWeapon.transform.position.y + m_RightWeapon.m_Collider.offset.y), Pos);
+        float leftDis = float.MaxValue;
+        if(m_LeftWeapon)
+            leftDis = Vector2.Distance(new Vector2(m_LeftWeapon.transform.position.x + m_LeftWeapon.m_Collider.offset.x, m_LeftWeapon.transform.position.y + m_LeftWeapon.m_Collider.offset.y), Pos);
+        float rightDis = float.MaxValue;
+        if(m_RightWeapon)
+            rightDis = Vector2.Distance(new Vector2(m_RightWeapon.transform.position.x + m_RightWeapon.m_Collider.offset.x, m_RightWeapon.transform.position.y + m_RightWeapon.m_Collider.offset.y), Pos);
         float coreDis = Vector2.Distance(new Vector2(transform.position.x + m_Collider.offset.x, transform.position.y + m_Collider.offset.y), Pos);
         // 击中左手
         if(leftDis < rightDis && leftDis < coreDis && m_Properties.m_Properties.m_LeftHandWeaponCurrentHP > 0)
@@ -322,49 +326,41 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
         // 角色左右手部位损失
         if (m_Properties.m_Properties.m_LeftHandWeaponCurrentHP <= 0)
         {
-            if (m_LeftWeapon)
+            m_LeftWeapon.gameObject.SetActive(false);
+
+            if (m_Properties.m_Properties.m_DropWeapon_WeaponDestroy)
             {
-                m_LeftWeapon.gameObject.SetActive(false);
+                SpawnWeapon(m_Properties.m_Properties.m_LeftHandWeapon, transform.position);  
+            }
 
-                if (m_Properties.m_Properties.m_DropWeapon_WeaponDestroy)
+            // 如果是角色的话就丢失武器
+            if (TryGetComponent<PlayerController>(out var controller))
+            {
+                var weapon = controller.Player.DropPlayerLeftHandWeapon(transform.position);
+                if (weapon)
                 {
-                    SpawnWeapon(m_Properties.m_Properties.m_LeftHandWeapon, transform.position);  
-                }
-
-                // 如果是角色的话就丢失武器
-                if (TryGetComponent<PlayerController>(out var controller))
-                {
-                    var weapon = controller.Player.DropPlayerLeftHandWeapon(transform.position);
-                    if (weapon)
-                    {
-                        DestroyWeapon(weapon);
-                    }
+                    DestroyWeapon(weapon);
                 }
             }
-            
         }
         if (m_Properties.m_Properties.m_RightHandWeaponCurrentHP <= 0)
         {
-            if (m_RightWeapon)
+            m_RightWeapon.gameObject.SetActive(false);
+
+            if (m_Properties.m_Properties.m_DropWeapon_WeaponDestroy)
             {
-                m_RightWeapon.gameObject.SetActive(false);
+                SpawnWeapon(m_Properties.m_Properties.m_RightHandWeapon, transform.position);  
+            }
 
-                if (m_Properties.m_Properties.m_DropWeapon_WeaponDestroy)
+            // 如果是角色的话就丢失武器
+            if (TryGetComponent<PlayerController>(out var controller))
+            {
+                var weapon = controller.Player.DropPlayerRightHandWeapon(transform.position);
+                if (weapon)
                 {
-                    SpawnWeapon(m_Properties.m_Properties.m_RightHandWeapon, transform.position);  
-                }
-
-                // 如果是角色的话就丢失武器
-                if (TryGetComponent<PlayerController>(out var controller))
-                {
-                    var weapon = controller.Player.DropPlayerRightHandWeapon(transform.position);
-                    if (weapon)
-                    {
-                        DestroyWeapon(weapon);
-                    }
+                    DestroyWeapon(weapon);
                 }
             }
-            
         }
     }
 
