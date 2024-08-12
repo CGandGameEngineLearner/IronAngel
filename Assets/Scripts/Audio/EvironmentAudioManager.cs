@@ -23,6 +23,7 @@ namespace Audio
                 m_SceneEvironmentAudioSettingDic[sceneName] = sceneEvironmentAudioSetting;
             }
             EventCenter.AddListener(EventType.ChangeScene,OnChangeScene);
+            OnChangeScene();
         }
 
         // Start is called before the first frame update
