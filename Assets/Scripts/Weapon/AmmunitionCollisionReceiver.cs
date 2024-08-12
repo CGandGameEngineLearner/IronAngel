@@ -300,7 +300,7 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
             gameObject.SetActive(false);
             EventCenter.Broadcast<GameObject>(EventType.CharacterDied, gameObject);
 
-            if (TryGetComponent<PlayerController>(out var controller))
+            if (TryGetComponent<PlayerController>(out var controller)&&gameObject!=null)
             {
                 EventCenter.Broadcast<GameObject>(EventType.PlayerDied, gameObject);
             }

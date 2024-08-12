@@ -79,6 +79,11 @@ public class AIController : NetworkBehaviour
         m_DamageSensor.SetNotifyPerceivedDelegate(BeDamaged);
         
         
+        
+    }
+
+    private void Start()
+    {
         RegisterWeapon();
     }
 

@@ -16,7 +16,7 @@ public class PauseMenu : MonoBehaviour
 
     public void OnBackToStartMenu()
     {
-        if(NetworkClient.localPlayer != null)
+        if(NetworkClient.localPlayer != null||(NetworkClient.localPlayer==null&&!NetworkClient.isConnected))
         {
             UICanvas.Instance.BackToStartMenu();
         }

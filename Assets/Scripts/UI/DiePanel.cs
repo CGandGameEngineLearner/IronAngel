@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class DiePanel : MonoBehaviour
 {
-    [Tooltip("ÖØ¿ª°´Å¥")]
+    [Tooltip("é‡å¼€æŒ‰é’®")]
     [SerializeField]
     private GameObject m_Retry;
 
