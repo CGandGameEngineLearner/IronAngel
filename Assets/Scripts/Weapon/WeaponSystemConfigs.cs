@@ -80,6 +80,9 @@ public enum AmmunitionType
     // 火箭发射仓爆炸
     RocketPodPostExplode,
     
+    // 小兵子弹
+    ARRiffleGunAmmunition,
+    
     Count,
 }
 
@@ -125,6 +128,9 @@ public enum WeaponType
     SPKnightPilumLuncher,
     SPEMPLuncher,
     SPRocketPodLuncher,
+    
+    // 小兵
+    ARRiffleGun,
 }
 
 public enum SpecialAtkType
