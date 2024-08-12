@@ -414,8 +414,8 @@ MonoBehaviour:
         byteData: 
         byteDataArray: 
       Version: 1.7.9
-  gizmoViewMode: 2
-  showBehaviorDesignerGizmo: 1
+  gizmoViewMode: 0
+  showBehaviorDesignerGizmo: 0
 --- !u!114 &5384138960469735118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -452,7 +452,7 @@ MonoBehaviour:
   m_TokenWeight: 1
   m_RangeOfAimingError: 0
   m_LeftHandWeaponAttackingDuration: 3
-  m_RightHandWeaponAttackingDuration: 5
+  m_RightHandWeaponAttackingDuration: 4
   m_ProbabilityOfLeftWeapon: 0.453
   m_ProbabilityOfRightWeapon: 0.788
   PatrolRoute: {fileID: 0}
@@ -473,8 +473,8 @@ MonoBehaviour:
     m_Bits: 512
   m_DashSpeed: 0
   m_DashDuration: 0
-  m_EngagementDistance: 0
-  m_ObstacleAvoidanceDistance: 3
+  m_EngagementDistance: 10
+  m_ObstacleAvoidanceDistance: 2
 --- !u!58 &7549400497388090286
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -670,8 +670,8 @@ MonoBehaviour:
     m_LeftHandWeaponCurrentHP: 0
     m_RightHandWeaponHP: 200
     m_RightHandWeaponCurrentHP: 0
-    m_LeftHandWeapon: 0
-    m_RightHandWeapon: 0
+    m_LeftHandWeapon: 10
+    m_RightHandWeapon: 6
     m_LeftWeaponGO: {fileID: 0}
     m_RightWeaponGO: {fileID: 0}
     m_Armor: 0

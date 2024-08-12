@@ -31,7 +31,7 @@ namespace LogicState
         
         public override void OnStateIn()
         {
-            Debug.Log(GetType()+"OnStateIn()");
+            //Debug.Log(GetType()+"OnStateIn()");
             
             if (GetOwner().IncludeState(LogicStateEnum))
             {
@@ -93,7 +93,7 @@ namespace LogicState
                 return;
             }
             m_SpriteRenderer.color = m_OriginColor;
-            Debug.Log(GetType()+"OnStateOut()");
+            //Debug.Log(GetType()+"OnStateOut()");
         }
     }
 }

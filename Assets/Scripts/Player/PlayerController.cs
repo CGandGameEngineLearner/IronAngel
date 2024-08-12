@@ -22,7 +22,7 @@ public class PlayerController : NetworkBehaviour
 
     bool m_AfterStartLocalPlayer = false;
     float m_FireDistance;
-    List<int> m_Power;
+    public List<int> m_Power;
     //  public------------------------------------------
     public Player Player
     {
@@ -55,6 +55,7 @@ public class PlayerController : NetworkBehaviour
     {
         PlayerSetting setting = GetComponent<PlayerSetting>();
 
+        m_Power = setting._PowerLimit;
         m_FireDistance = setting._FireDistance;
         
         m_CameraController.Init(Camera.main, GameObject.FindAnyObjectByType<CinemachineVirtualCamera>().GetComponent<CinemachineVirtualCamera>(), GameObject.FindWithTag("CameraTarget").transform, setting._CameraMinDistance, setting._CameraMaxDistance);
@@ -326,6 +327,7 @@ public class PlayerController : NetworkBehaviour
             if(m_Power.Count > 0 && m_BaseProperties.m_Properties.m_Energy >= m_Power[0])
             {
                 m_BaseProperties.m_Properties.m_Energy -= m_Power[0];
+                CmdSpecFire(m_Player.GetPlayer(), WeaponType.SPExplosiveLuncher, m_InputController.GetMousePositionInWorldSpace(m_CameraController.GetCamera()), Vector3.zero);
             }
         });
         m_InputController.AddPerformedActionToPower_2(() =>
@@ -344,12 +346,27 @@ public class PlayerController : NetworkBehaviour
         });
         m_InputController.AddPerformedActionToPower_4(() =>
         {
-            if (m_Power.Count > 3 && m_BaseProperties.m_Properties.m_Energy >= m_Power[2])
+            if (m_Power.Count > 3 && m_BaseProperties.m_Properties.m_Energy >= m_Power[3])
             {
                 m_BaseProperties.m_Properties.m_Energy -= m_Power[3];
             }
         });
+        m_InputController.AddPerformedActionToPower_5(() =>
+        {
+            if (m_Power.Count > 3 && m_BaseProperties.m_Properties.m_Energy >= m_Power[4])
+            {
+                m_BaseProperties.m_Properties.m_Energy -= m_Power[4];
+            }
+        });
     }
+
+
+    [Command]
+    private void CmdSpecFire(GameObject character, WeaponType type, Vector3 start, Vector3 dir)
+    {
+        WeaponSystemCenter.Instance.CmdSPFire(character, type, start, dir);
+    }
+
     [Command]
     private void UnFire(GameObject weapon)
     {

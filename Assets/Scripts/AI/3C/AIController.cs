@@ -279,7 +279,7 @@ public class AIController : NetworkBehaviour
         }
         
         
-        if (!TokenPool.ApplyToken(m_TokenWeight) == false)
+        if (TokenPool.ApplyToken(m_TokenWeight) == false)
         {
             return false;
         }

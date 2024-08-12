@@ -422,4 +422,12 @@ public class InputController
             func?.Invoke();
         };
     }
+
+    public void AddPerformedActionToPower_5(Action func)
+    {
+        m_PlayerInputConfig.Player.Power_5.performed += ctx =>
+        {
+            func?.Invoke();
+        };
+    }
 }

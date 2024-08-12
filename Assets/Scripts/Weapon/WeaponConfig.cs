@@ -62,7 +62,7 @@ public class WeaponConfig : ItemConfig
 
     [Header("武器基础属性配置")] [SerializeField] private AtkType m_AtkType;
 
-    [SerializeField] [EnumRange((int)AmmunitionType.Start + 1, (int)AmmunitionType.PostExplodeSplitter - 1)]
+    [SerializeField] 
     private AmmunitionType m_ammunitionType;
 
     [SerializeField] private int m_WeaponHp;

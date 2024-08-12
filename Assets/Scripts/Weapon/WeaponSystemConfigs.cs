@@ -49,6 +49,12 @@ public enum AmmunitionType
 
     // 重型榴弹炮子弹
     HeavyHowitzerAmmunition,
+    
+    // 骑士投矛
+    KnightPilumAmmunition,
+    
+    // 火箭弹仓子弹
+    RocketPodAmmunition,
 
     // 分隔符  --------------- 
     PostExplodeSplitter,
@@ -65,6 +71,15 @@ public enum AmmunitionType
     // 重型榴弹炮子弹产生的爆炸
     HeavyHowitzerPostExplode,
     
+    // c4炸弹爆炸
+    ExplosivePostExplode,
+    
+    // EMP爆炸
+    EmpPostExplode,
+    
+    // 火箭发射仓爆炸
+    RocketPodPostExplode,
+    
     Count,
 }
 
@@ -72,6 +87,9 @@ public enum WeaponType
 {
     // 普通武器 ------------------------------
     // 
+    // 选择没有武器
+    None,
+    
     // 突击炮
     AssaultGun,
 
@@ -101,9 +119,12 @@ public enum WeaponType
 
     // 重型榴弹炮
     HeavyHowitzer,
-
-    // 选择没有武器
-    None,
+    
+    // -- 特殊武器
+    SPExplosiveLuncher,
+    KnightPilumLuncher,
+    EMPLuncher,
+    RocketPodLuncher,
 }
 
 public enum SpecialAtkType
@@ -127,6 +148,7 @@ public enum VfxType
     RocketLauncherFireVfx,
     MissileLauncherFireVfx,
     HeavyHowitzerFireVfx,
+    
     //
     AssaultAmmunitionHitVfx,
     ShotGunAmmunitionHitVfx,
@@ -172,4 +194,10 @@ public enum SfxType
     RocketLauncherAmmunitionHitSfx,
     MissileLauncherAmmunitionHitSfx,
     HeavyHowitzerAmmunitionHitSfx,
+    
+    // add on
+    ExplosiveHitSfx,
+    KnightPilumHitSfx,
+    EMPHitSfx,
+    RocketPodHitSfx
 }

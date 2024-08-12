@@ -988,6 +988,7 @@ MonoBehaviour:
   syncDirection: 0
   syncMode: 0
   syncInterval: 0
+  m_Power: 
 --- !u!114 &7307908456998055856
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1008,7 +1009,7 @@ MonoBehaviour:
     m_DashSpeed: 30
     m_DashCoolDownTime: 1
     m_DashCount: 2
-    m_MaxDashCount: 50
+    m_MaxDashCount: 10
     m_PlayerLeftHand: {fileID: 6057370071172589017}
     m_PlayerRightHand: {fileID: 2600587095255959520}
     m_DetectRange: 1.3
@@ -1019,7 +1020,7 @@ MonoBehaviour:
       serializedVersion: 2
       m_Bits: 512
   _FireDistance: 4
-  _PowerLimit: 
+  _PowerLimit: 640000006400000096000000c8000000
 --- !u!114 &6173973794821627971
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1036,7 +1037,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0
   m_Properties:
-    m_Energy: 0
+    m_Energy: 200
     m_BaseHP: 500
     m_LeftHandWeaponHP: 0
     m_LeftHandWeaponCurrentHP: 0

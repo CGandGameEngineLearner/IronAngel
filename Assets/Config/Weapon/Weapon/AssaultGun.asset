@@ -15,7 +15,7 @@ MonoBehaviour:
   m_Prefab: {fileID: 8270290095630009083, guid: 17e3fdf0100b0ce49baf705ea79b9cc8, type: 3}
   m_MinPoolSize: 10
   m_MaxPoolSize: 20
-  weaponName: 
+  weaponName: Assault Cannon
   m_AtkType: 0
   m_ammunitionType: 1
   m_WeaponHp: 600
@@ -27,4 +27,3 @@ MonoBehaviour:
   laserPointerWidth: 0.5
   m_AttackPreCastDelay: 1
   m_FireVfxType: 1
-  m_FireSfxType: 0

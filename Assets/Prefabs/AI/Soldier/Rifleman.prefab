@@ -413,8 +413,8 @@ MonoBehaviour:
         byteData: 
         byteDataArray: 
       Version: 1.7.9
-  gizmoViewMode: 2
-  showBehaviorDesignerGizmo: 1
+  gizmoViewMode: 0
+  showBehaviorDesignerGizmo: 0
 --- !u!114 &5384138960469735118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -472,8 +472,8 @@ MonoBehaviour:
     m_Bits: 512
   m_DashSpeed: 0
   m_DashDuration: 0
-  m_EngagementDistance: 0
-  m_ObstacleAvoidanceDistance: 3
+  m_EngagementDistance: 16
+  m_ObstacleAvoidanceDistance: 1
 --- !u!58 &7549400497388090286
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -677,7 +677,7 @@ MonoBehaviour:
     m_EnergyShieldCount: 20
     m_CurrentHP: 100
     m_CurrentArmor: 0
-    m_AttackRange: 10
+    m_AttackRange: 17
     m_Camp: 1
     m_DropWeapon_WeaponDestroy: 0
     m_DropWeapon_CharacterDied: 1

@@ -128,6 +128,7 @@ public class WeaponSystemCenter : NetworkBehaviour
     [ClientRpc]
     private void RpcWeaponDicUpdate(GameObject weapon, WeaponType weaponType)
     {
+        if(weaponType == WeaponType.None) return;
         m_WeaponToConfigDic[weapon] = m_WeaponConfigDic[weaponType];
         m_WeaponToTypeDic[weapon] = weaponType;
     }
@@ -295,6 +296,32 @@ public class WeaponSystemCenter : NetworkBehaviour
     
     public bool StartGame = false;
 
+
+    [ServerCallback]
+    public void CmdSPFire(GameObject character, WeaponType weaponType, Vector3 startPoint, Vector3 dir, bool isPlayer = true)
+    {
+        if (weaponType == WeaponType.None) return;
+
+        var weaponConfig = m_WeaponConfigDic[weaponType];
+        var ammunitionType = weaponConfig.ammunitionType;
+
+        // 散布
+        dir = IronAngel.Utils.ApplyScatterZ(dir, weaponConfig.spreadAngle);
+
+        // 服务端
+        Fire(character, weaponType, ammunitionType, startPoint, dir);
+        // Rpc调用客户端
+        RpcSPFire(character, weaponType, startPoint, dir, isPlayer);
+    }
+
+    [ClientRpc]
+    private void RpcSPFire(GameObject character, WeaponType weaponType, Vector3 startPoint, Vector3 dir, bool isPlayer)
+    {
+        WeaponConfig weaponConfig = m_WeaponConfigDic[weaponType];
+
+        Fire(character, weaponType, weaponConfig.ammunitionType, startPoint, dir);
+    }
+    
     /// <summary>
     /// 通知服务器要在指定地点和方向发射子弹
     /// </summary>

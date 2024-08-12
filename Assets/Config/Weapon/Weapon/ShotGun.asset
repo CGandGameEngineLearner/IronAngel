@@ -15,7 +15,7 @@ MonoBehaviour:
   m_Prefab: {fileID: 5021276108613369794, guid: c20a8d6359cb6674f847b890151bdced, type: 3}
   m_MinPoolSize: 0
   m_MaxPoolSize: 0
-  weaponName: 
+  weaponName: Shotcannon
   m_AtkType: 3
   m_ammunitionType: 2
   m_WeaponHp: 600
@@ -27,4 +27,3 @@ MonoBehaviour:
   laserPointerWidth: 0
   m_AttackPreCastDelay: 0
   m_FireVfxType: 2
-  m_FireSfxType: 0

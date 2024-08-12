@@ -336,6 +336,7 @@ MonoBehaviour:
   m_Offset: {x: 0, y: 0, z: 0}
   m_SpriteAlphaFlash: 1
   m_FadeSpeed: 1
+  m_BloodScale: 4.5
 --- !u!1 &2195872794582507982
 GameObject:
   m_ObjectHideFlags: 0
@@ -470,7 +471,7 @@ MonoBehaviour:
   m_TokenWeight: 0.7
   m_RangeOfAimingError: 0.2
   m_LeftHandWeaponAttackingDuration: 2.5
-  m_RightHandWeaponAttackingDuration: 2.5
+  m_RightHandWeaponAttackingDuration: 1.8
   m_ProbabilityOfLeftWeapon: 0.684
   m_ProbabilityOfRightWeapon: 0.5
   PatrolRoute: {fileID: 0}
@@ -489,10 +490,10 @@ MonoBehaviour:
   m_WallLayer:
     serializedVersion: 2
     m_Bits: 512
-  m_DashSpeed: 0
-  m_DashDuration: 0
-  m_EngagementDistance: 0
-  m_ObstacleAvoidanceDistance: 3
+  m_DashSpeed: 7
+  m_DashDuration: 3.5
+  m_EngagementDistance: 14
+  m_ObstacleAvoidanceDistance: 1
 --- !u!58 &7549400497388090286
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -542,7 +543,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Sight: {fileID: 4485799854069038303}
   VisualAngle: 90
-  MaximumVisualDistance: 10
+  MaximumVisualDistance: 15
   RelativeSightDirection: {x: 0, y: 1, z: 0}
   DrawSightLine: 0
   AutoRemoveGamoObjectExitSight: 0
@@ -688,8 +689,10 @@ MonoBehaviour:
     m_LeftHandWeaponCurrentHP: 0
     m_RightHandWeaponHP: 200
     m_RightHandWeaponCurrentHP: 0
-    m_LeftHandWeapon: 7
-    m_RightHandWeapon: 5
+    m_LeftHandWeapon: 8
+    m_RightHandWeapon: 6
+    m_LeftWeaponGO: {fileID: 0}
+    m_RightWeaponGO: {fileID: 0}
     m_Armor: 0
     m_EnergyShieldCount: 25
     m_CurrentHP: 100
@@ -698,6 +701,7 @@ MonoBehaviour:
     m_Camp: 1
     m_DropWeapon_WeaponDestroy: 0
     m_DropWeapon_CharacterDied: 1
+    m_CoreSprite: {fileID: 0}
 --- !u!195 &3478913082591308681
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -711,7 +715,7 @@ NavMeshAgent:
   m_Speed: 3.8
   m_Acceleration: 8
   avoidancePriority: 50
-  m_AngularSpeed: 120
+  m_AngularSpeed: 90
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
@@ -952,6 +956,7 @@ MonoBehaviour:
   m_Offset: {x: 0, y: 0, z: 0}
   m_SpriteAlphaFlash: 1
   m_FadeSpeed: 1
+  m_BloodScale: 4.5
 --- !u!1 &4495865224673025813
 GameObject:
   m_ObjectHideFlags: 0
@@ -1223,6 +1228,7 @@ MonoBehaviour:
   m_Offset: {x: 0, y: 1.5, z: 0}
   m_SpriteAlphaFlash: 0.65
   m_FadeSpeed: 1
+  m_BloodScale: 4.5
 --- !u!1 &5005174867674349316
 GameObject:
   m_ObjectHideFlags: 0
@@ -1389,6 +1395,7 @@ MonoBehaviour:
   m_Offset: {x: 0, y: 0, z: 0}
   m_SpriteAlphaFlash: 1
   m_FadeSpeed: 1
+  m_BloodScale: 4.5
 --- !u!1 &5612599182857872691
 GameObject:
   m_ObjectHideFlags: 0
@@ -1800,6 +1807,7 @@ MonoBehaviour:
   m_Offset: {x: 0, y: 0, z: 0}
   m_SpriteAlphaFlash: 1
   m_FadeSpeed: 1
+  m_BloodScale: 4.5
 --- !u!1 &8491935298018838878
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,31 +12,25 @@ public class StartMenu : MonoBehaviour
 {
     private NetworkManager m_Manager;
     private GameObject m_StartMenu;
-    [SerializeField]
-    private GameObject m_PropertiesUI;
-    [SerializeField]
-    private PauseMenu m_PauseMenu;
-    [SerializeField]
-    private NetworkStatus m_NetworkStatus;
-    [SerializeField]
-    private GameObject m_MultiPlayerReadyPanel;
-    [SerializeField]
-    private GameObject m_MultiplayerPanel;
-    [SerializeField]
-    private TMP_InputField m_IpInput;
-    [SerializeField]
-    private TMP_InputField m_PortInput;
-    
+    [SerializeField] private GameObject m_PropertiesUI;
+    [SerializeField] private PauseMenu m_PauseMenu;
+    [SerializeField] private NetworkStatus m_NetworkStatus;
+    [SerializeField] private GameObject m_MultiPlayerReadyPanel;
+    [SerializeField] private GameObject m_MultiplayerPanel;
+    [SerializeField] private TMP_InputField m_IpInput;
+    [SerializeField] private TMP_InputField m_PortInput;
+
     // 打包有bug，必须得在这拉个shi
     [SerializeField] private LevelSwitchConfig m_LevelSwitchConfig;
 
     public GameObject MultiplayerPanel
     {
-        get { return m_MultiplayerPanel;  }
+        get { return m_MultiplayerPanel; }
     }
 
     bool isSingle = false;
     bool isServer = false;
+
     private void Awake()
     {
         m_Manager = GameObject.FindAnyObjectByType<NetworkManager>();
@@ -50,6 +44,13 @@ public class StartMenu : MonoBehaviour
 
     public void OnSinglePlayerStart()
     {
+        SaveLoadManager.SaveGame(new GameSaveFile() { currentSection = -1 });
+
+        SceneManager.LoadScene(m_LevelSwitchConfig.basementName);
+    }
+
+    public void OnSinglePlayerContinue()
+    {
         // Load Player Save file,Then Get Config to find load which level
         SaveLoadManager.LoadGame();
         LevelSwitchConfig levelSwitchConfig = m_LevelSwitchConfig;
@@ -57,16 +58,13 @@ public class StartMenu : MonoBehaviour
         int level = SaveLoadManager.GlobalSaveFile.currentLevel;
         int section = SaveLoadManager.GlobalSaveFile.currentSection;
 
-        string sectionName = section == -1 ? levelSwitchConfig.basementName : levelSwitchConfig.levelStruct[level].sectionName[section];
-        
+        string sectionName = section == -1
+            ? levelSwitchConfig.basementName
+            : levelSwitchConfig.levelStruct[level].sectionName[section];
+
         SceneManager.LoadScene(sectionName);
         
-        // if(NetworkClient.active == false)
-        // {
-        //     // m_Manager.StartHost();
-        //     SceneManager.LoadScene("Level1_Area1_Highway");
-        // }
-         isSingle = true;
+        isSingle = true;
     }
 
     public void OnMultiPlayerPanelEnter()
@@ -80,7 +78,7 @@ public class StartMenu : MonoBehaviour
         m_MultiplayerPanel.SetActive(false);
         m_MultiPlayerReadyPanel.SetActive(false);
         if (NetworkServer.active || NetworkClient.isConnected)
-        {    
+        {
             m_Manager = GameObject.FindAnyObjectByType<NetworkManager>();
             m_Manager.StopClient();
             m_Manager.StopHost();
@@ -95,6 +93,7 @@ public class StartMenu : MonoBehaviour
             m_Manager = GameObject.FindAnyObjectByType<NetworkManager>();
             m_Manager.StartHost();
         }
+
         isSingle = false;
         isServer = true;
         m_NetworkStatus.gameObject.SetActive(true);
@@ -105,9 +104,9 @@ public class StartMenu : MonoBehaviour
         m_Manager = GameObject.FindAnyObjectByType<NetworkManager>();
         if (NetworkClient.active == false)
         {
-            
             m_Manager.StartClient();
         }
+
         m_Manager.networkAddress = m_IpInput.text;
         if (Transport.active is PortTransport portTransport)
         {
@@ -116,6 +115,7 @@ public class StartMenu : MonoBehaviour
                 portTransport.Port = port;
             }
         }
+
         isSingle = false;
         m_NetworkStatus.gameObject.SetActive(true);
     }
@@ -131,7 +131,7 @@ public class StartMenu : MonoBehaviour
 
     private void Update()
     {
-        if(isSingle && NetworkClient.isConnected && NetworkClient.ready && NetworkClient.localPlayer != null)
+        if (isSingle && NetworkClient.isConnected && NetworkClient.ready && NetworkClient.localPlayer != null)
         {
             //PlayerController.PlayerControllers[0].CmdStartGame();
             // isSingle = false;
@@ -139,16 +139,19 @@ public class StartMenu : MonoBehaviour
             m_StartMenu.SetActive(false);
             m_PropertiesUI.SetActive(true);
         }
-        if(isSingle == false && !NetworkClient.isConnected && !NetworkServer.active)
+
+        if (isSingle == false && !NetworkClient.isConnected && !NetworkServer.active)
         {
             m_NetworkStatus.SetDetail($"Connecting to {m_Manager.networkAddress}..");
         }
-        if(isSingle == false && (NetworkClient.isConnected || NetworkServer.active))
+
+        if (isSingle == false && (NetworkClient.isConnected || NetworkServer.active))
         {
-            if(isServer)
+            if (isServer)
             {
                 m_MultiPlayerReadyPanel.SetActive(true);
             }
+
             m_NetworkStatus.gameObject.SetActive(false);
             m_MultiplayerPanel.SetActive(false);
             m_StartMenu.SetActive(false);

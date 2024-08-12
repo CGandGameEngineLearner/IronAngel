@@ -47,37 +47,4 @@ public class IronAngelSceneManager : MonoBehaviour
             m_Manager.StopServer();
         }
     }
-
-
-    // [ServerCallback]
-    // public void GivePlayerWeapon(WeaponType leftWeaponType, WeaponType rightWeaponType)
-    // {
-    //     GameObject leftWeapon = null;
-    //     GameObject rightWeapon = null;
-    //     if (leftWeaponType != WeaponType.None)
-    //     {
-    //         leftWeapon = WeaponSystemCenter.Instance.GetWeapon(leftWeaponType);
-    //         RpcGivePlayerLeftWeapon(leftWeapon);
-    //     }
-    //
-    //     if (rightWeaponType != WeaponType.None)
-    //     {
-    //         rightWeapon = WeaponSystemCenter.Instance.GetWeapon(rightWeaponType);
-    //         RpcGivePlayerRightWeapon(rightWeapon);
-    //     }
-    //     
-    // }
-    //
-    // [ClientRpc]
-    // private void RpcGivePlayerLeftWeapon(GameObject leftWeapon)
-    // {
-    //     PlayerController.PlayerControllers[0].Player.SetPlayerLeftHandWeapon(leftWeapon);
-    //     
-    // }
-    //
-    // [ClientRpc]
-    // private void RpcGivePlayerRightWeapon(GameObject rightWeapon)
-    // {
-    //     PlayerController.PlayerControllers[0].Player.SetPlayerRightHandWeapon(rightWeapon);
-    // }
 }
