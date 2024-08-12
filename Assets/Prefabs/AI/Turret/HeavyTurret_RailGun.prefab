@@ -646,7 +646,7 @@ MonoBehaviour:
   m_Shields: []
   m_Properties: {fileID: 0}
   m_specialAtkTypes: 
-  m_LeftWeapon: {fileID: 0}
+  m_LeftWeapon: {fileID: 6295283052506457838}
   m_RightWeapon: {fileID: 0}
 --- !u!114 &5312338358657863659
 MonoBehaviour:
@@ -683,6 +683,7 @@ MonoBehaviour:
     m_DropWeapon_WeaponDestroy: 0
     m_DropWeapon_CharacterDied: 1
     m_CoreSprite: {fileID: 3360608816744833715}
+  DiedVFX: 0
 --- !u!195 &3478913082591308681
 NavMeshAgent:
   m_ObjectHideFlags: 0
