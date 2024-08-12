@@ -432,9 +432,6 @@ public class WeaponSystemCenter : NetworkBehaviour
         // 调用客户端的开火特效
         if (!weapon.TryGetComponent<WeaponInstance>(out WeaponInstance weaponInstance)) return;
         weaponInstance.FireVfxAndAnimation(character, weaponType, weaponConfig, startPoint, dir);
-        
-        // 鏡頭晃动，可能出现多个客户端开火只有一个晃动的问题
-        // PlayerController.PlayerControllers[0].CameraController.ShakeCameraPosition(0.3f, new Vector3(3, 3, 0));
     }
 
 

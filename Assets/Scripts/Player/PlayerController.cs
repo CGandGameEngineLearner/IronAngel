@@ -267,6 +267,10 @@ public class PlayerController : NetworkBehaviour
                     v3 = v3.normalized;
                     dir = v3 * m_FireDistance + m_Player.GetPlayerPosition() - m_Player.GetPlayerLeftHandPosition();
                 }
+                
+                // 开火震动
+                // PlayerControllers[0].CameraController.ShakeCameraRotation(0.3f, .1f);
+                
                 CmdFire(weapon,pos, dir);
             }
             
@@ -291,6 +295,8 @@ public class PlayerController : NetworkBehaviour
                     v3 = v3.normalized;
                     dir = v3 * m_FireDistance + m_Player.GetPlayerPosition() - m_Player.GetPlayerRightHandPosition();
                 }
+                
+                // PlayerControllers[0].CameraController.ShakeCameraPosition(0.3f, new Vector3(3, 3, 0));
                 CmdFire(weapon, pos, dir);
             }
         });
