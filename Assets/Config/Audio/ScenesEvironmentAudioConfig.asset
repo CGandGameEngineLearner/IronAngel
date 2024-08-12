@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9d4a1ba7c3757f478ec7d9efcf4d25e, type: 3}
-  m_Name: AudioConfig
+  m_Script: {fileID: 11500000, guid: 74ee769b4aefcae4d8428fa704537a11, type: 3}
+  m_Name: ScenesEvironmentAudioConfig
   m_EditorClassIdentifier: 
-  m_Config: []
+  m_SceneEvironmentAudioSettings: []
