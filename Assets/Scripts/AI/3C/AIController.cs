@@ -309,6 +309,16 @@ public class AIController : NetworkBehaviour
         var leftFire = IronAngel.Utils.RandomBool(m_ProbabilityOfLeftWeapon);
         var rightFire = IronAngel.Utils.RandomBool(m_ProbabilityOfRightWeapon);
 
+        if (m_BaseProperties.m_Properties.m_LeftWeaponGO == null)
+        {
+            leftFire = false;
+        }
+
+        if (m_BaseProperties.m_Properties.m_LeftWeaponGO == null)
+        {
+            rightFire = false;
+        }
+
         if (leftFire == false && rightFire == false)
         {
             if (IronAngel.Utils.RandomBool(0.5f))
@@ -367,7 +377,10 @@ public class AIController : NetworkBehaviour
     [ServerCallback]
     private IEnumerator FireCoroutine(GameObject weapon)
     {
-        
+        if (weapon == null)
+        {
+            yield break;
+        }
         m_LogicStateManager.AddState(ELogicState.AIAttackPreCastDelay);
         var AttackPreCastDelay = WeaponSystemCenter.GetWeaponConfig(weapon).attackPreCastDelay;
         m_LogicStateManager.SetStateDuration(ELogicState.AIAttackPreCastDelay, AttackPreCastDelay);

@@ -24,7 +24,7 @@ namespace Audio
      public struct ScenesEvironmentAudioSetting
      {
           [SerializeField]
-          public string m_LevelName;
+          public string m_SceneName;
           
           [SerializeField]
           public EPlayModeOfEvironmentAudio m_EPlayModeOfEvironmentAudio;
@@ -33,7 +33,7 @@ namespace Audio
           public bool m_Loop;
           
           [SerializeField]
-          public AudioClip _AudioSource;
+          public AudioClip m_AudioSource;
      }
 
      [CreateAssetMenu(fileName = "Config", menuName = "ScriptableObjects/EvironmentAudioConfig", order = 1)]

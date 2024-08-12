@@ -3,24 +3,38 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EvironmentAudioManager : MonoBehaviour
+namespace Audio
 {
-    //public Dictionary<>
-
-    private void OnEnable()
+    public class EvironmentAudioManager : MonoBehaviour
     {
-        
-    }
+        public Dictionary<string, ScenesEvironmentAudioSetting> m_ScenesEvironmentAudioSettingDic;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+        public ScenesEvironmentAudioConfig m_ScenesEvironmentAudioConfig;
 
-    // Update is called once per frame
-    void Update()
-    {
+        private void OnEnable()
+        {
+            foreach (var scenesEvironmentAudioSetting in m_ScenesEvironmentAudioSettingDic.Values)
+            {
+                
+            }
+        }
+
+        // Start is called before the first frame update
+        void Start()
+        {
         
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+        
+        }
+
+        void OnChangeScene()
+        {
+        
+        }
     }
 }
+
