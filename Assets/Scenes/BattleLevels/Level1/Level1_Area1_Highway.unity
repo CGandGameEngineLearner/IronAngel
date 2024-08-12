@@ -46502,6 +46502,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: InvisiableWall
       objectReference: {fileID: 0}
+    - target: {fileID: 1477195009664870610, guid: 899017e47bf698e4fa53b21515046ee1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
