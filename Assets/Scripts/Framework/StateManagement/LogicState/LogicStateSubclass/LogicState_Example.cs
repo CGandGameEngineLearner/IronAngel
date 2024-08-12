@@ -7,6 +7,12 @@ namespace LogicState
     {
         public LogicState_Example(ELogicState stateEnum):base(stateEnum){}
         public LogicState_Example(ELogicState stateEnum, LogicStateManager parent) : base(stateEnum, parent){}
+
+        public override void FirstCreated()
+        {
+            Debug.Log(GetType()+"FirstCreated()");
+        }
+        
         public override void Init()
         {
             Debug.Log(GetType()+"Init()");

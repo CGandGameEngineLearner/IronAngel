@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 8b267ddfd826f204887ca6461da0ccbb
+guid: b5fa8c946d1a6864ca4e5a7ab1a87083
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -108,18 +108,133 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Dark Exit_1
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 172
+        width: 233
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d34f6495b15c80489f4ce60e265a6ff
+      internalID: 1021599243
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dark Exit_3
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 129
+        width: 233
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee12f50a12d48d44aa69d0814c07e2a0
+      internalID: 1333452329
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dark Exit_5
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 86
+        width: 233
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d8b80863689a0b439b7c27918adc669
+      internalID: 706843849
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dark Exit_7
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 43
+        width: 233
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4fc13ad2f09572d48acb23ae0364e35b
+      internalID: 1121961003
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Dark Exit_9
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 0
+        width: 233
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c6af3620f3d03e468c729fd83f69659
+      internalID: 1440345964
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 51d1bbae4cad7914092e396c668e1b79
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Dark Exit_0: 786054256
+      Dark Exit_1: 1021599243
+      Dark Exit_2: 2020638032
+      Dark Exit_3: 1333452329
+      Dark Exit_4: 454134238
+      Dark Exit_5: 706843849
+      Dark Exit_6: -422080386
+      Dark Exit_7: 1121961003
+      Dark Exit_8: 1127294320
+      Dark Exit_9: 1440345964
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

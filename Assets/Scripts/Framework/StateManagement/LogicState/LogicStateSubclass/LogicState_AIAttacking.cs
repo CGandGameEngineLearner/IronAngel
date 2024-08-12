@@ -6,16 +6,28 @@ namespace LogicState
     {
         public LogicState_AIAttacking(ELogicState stateEnum):base(stateEnum){}
         public LogicState_AIAttacking(ELogicState stateEnum, LogicStateManager parent) : base(stateEnum, parent){}
-    
+
+        private BaseProperties m_BaseProperties;
+        private AIController m_AIController;
+        
+        public override void FirstCreated()
+        {
+            m_BaseProperties = gameObject.GetComponent<BaseProperties>();
+            m_AIController = gameObject.GetComponent<AIController>();
+        }
+        
         public override void Init()
         {
             //Debug.Log(GetType()+"Init()");
-            
         }
         public override void OnStateIn()
         {
+            if (TokenPool.ApplyToken(m_AIController.m_TokenWeight) == false)
+            {
+                GetOwner().RemoveState(ELogicState.AIAttacking);
+                return;
+            }
             Debug.Log(GetType()+"OnStateIn()");
-            
         }
     
         public override void Update(float deltaTime)
@@ -31,13 +43,7 @@ namespace LogicState
         public override void OnStateOut()
         {
             Debug.Log(GetType()+"OnStateOut()");
-            
-            // 通知攻击状态结束
-            EventCenter.Broadcast<LogicStateManager,ELogicState>(
-                EventType.LogicState_AIAttacking_StateOut,
-                GetOwner(),
-                ELogicState.AIAttacking
-            );
+            TokenPool.ReturnToken();
         }
     
         public override void UnInit()
