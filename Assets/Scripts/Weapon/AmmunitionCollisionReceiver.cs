@@ -400,7 +400,7 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
                         {
                             m_LogicStateManager.SetStateDuration(ELogicState.StunModifier, buff.m_Duration);
                             EventCenter.Broadcast<GameObject, bool>(EventType.Buff_Stun, gameObject, true);
-                        }
+                        }  
                         break;
                     }
             }
