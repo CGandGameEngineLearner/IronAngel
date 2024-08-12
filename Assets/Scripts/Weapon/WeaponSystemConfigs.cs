@@ -116,6 +116,9 @@ public enum WeaponType
 
     // 重型榴弹炮
     HeavyHowitzer,
+    
+    // -- 特殊武器
+    SPExplosiveLuncher,
 
     // 选择没有武器
     None,
