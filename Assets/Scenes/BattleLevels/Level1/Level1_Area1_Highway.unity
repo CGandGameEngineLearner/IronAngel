@@ -68522,7 +68522,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8721000690680277809, guid: c6e2eded75b555341827218b4228d9ef, type: 3}
       propertyPath: AI_Attack_Tokens
-      value: 10
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
