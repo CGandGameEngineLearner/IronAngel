@@ -102,7 +102,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0
   m_ShieldType: 0
-  m_SubArmor: 25
+  m_SubArmor: 50
   m_specialAtkTypes: 
 --- !u!61 &4788707432746406319
 BoxCollider2D:
@@ -496,7 +496,7 @@ MonoBehaviour:
   syncInterval: 0
   m_Properties:
     m_Energy: 20
-    m_BaseHP: 250
+    m_BaseHP: 150
     m_LeftHandWeaponHP: 200
     m_LeftHandWeaponCurrentHP: 0
     m_RightHandWeaponHP: 200
@@ -903,7 +903,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0
   m_ShieldType: 0
-  m_SubArmor: 25
+  m_SubArmor: 50
   m_specialAtkTypes: 
 --- !u!61 &4779021538546674247
 BoxCollider2D:
@@ -1200,7 +1200,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0
   m_ShieldType: 0
-  m_SubArmor: 100
+  m_SubArmor: 50
   m_specialAtkTypes: 
 --- !u!61 &8819393010746239652
 BoxCollider2D:
@@ -1640,7 +1640,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0
   m_ShieldType: 0
-  m_SubArmor: 25
+  m_SubArmor: 50
   m_specialAtkTypes: 
 --- !u!61 &3929051370594886967
 BoxCollider2D:
