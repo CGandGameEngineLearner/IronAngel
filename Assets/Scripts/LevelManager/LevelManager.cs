@@ -206,7 +206,7 @@ public class LevelManager : NetworkBehaviour
             if (i < dialogStructs.Count - 1)
             {
                 UICanvas.Instance.SetPlotText(dialogStructs[i].stringToSays, dialogStructs[i].delayTime, dialogStructs[i].time);
-                yield return new WaitForSeconds(dialogStructs[i].time);
+                yield return new WaitForSeconds(dialogStructs[i].time + dialogStructs[i].delayTime);
             }
             else
             {
