@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 832d582905de4b3aaebabbb4346a6e4d, type: 3}
+  m_Name: ARRiffleGun
+  m_EditorClassIdentifier: 
+  m_Prefab: {fileID: 8422378306381297977, guid: 986031063fff139468265c1fa7e0e175, type: 3}
+  m_MinPoolSize: 50
+  m_MaxPoolSize: 100
+  weaponName: 
+  m_AtkType: 0
+  m_ammunitionType: 21
+  m_WeaponHp: 1
+  m_Interval: 0.2
+  m_MagSize: 0
+  m_SimShots: 0
+  m_SpreadAngle: 0
+  m_ShotSpreadAngle: 0
+  laserPointerWidth: 0
+  m_AttackPreCastDelay: 0
+  m_FireVfxType: 0
