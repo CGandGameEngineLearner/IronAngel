@@ -349,7 +349,9 @@ public class AIController : NetworkBehaviour
         var RightHandAttackPreCastDelay = WeaponSystemCenter.GetWeaponConfig( m_BaseProperties.m_Properties.m_RightWeaponGO).attackPreCastDelay;
         if (rightDuration <= RightHandAttackPreCastDelay)
         {
+            #if UNITY_EDITOR
             Debug.LogError("攻击时长包含前摇时长，所以前摇时长不能大于攻击时长");
+            #endif
         }
         m_LogicStateManager.SetStateDuration(ELogicState.AIAttacking, rightDuration);
         StartCoroutine(FireCoroutine( m_BaseProperties.m_Properties.m_RightWeaponGO));
