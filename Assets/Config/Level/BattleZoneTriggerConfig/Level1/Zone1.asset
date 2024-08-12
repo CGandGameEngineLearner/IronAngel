@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waveConfigs:
   - enemyListConfigs:
-    - enemyPrefab: {fileID: 2195872794582507982, guid: 039fd3fee3677004c9040c4e3660fc9a, type: 3}
-      spawnPosition: {x: 6.2117643, y: 17.94801, z: 0}
-    - enemyPrefab: {fileID: 2195872794582507982, guid: 039fd3fee3677004c9040c4e3660fc9a, type: 3}
-      spawnPosition: {x: 12.727709, y: 16.57455, z: 0}
-    - enemyPrefab: {fileID: 2195872794582507982, guid: 039fd3fee3677004c9040c4e3660fc9a, type: 3}
-      spawnPosition: {x: 6.5311737, y: 14.5942135, z: 0}
+    - enemyPrefab: {fileID: 2195872794582507982, guid: f4e6249ca37e15e4196a98abb13f0917, type: 3}
+      spawnPosition: {x: -5.0908284, y: 16.443502, z: 0}
+    - enemyPrefab: {fileID: 2195872794582507982, guid: 7165d85203646ed40b010540d8a80c02, type: 3}
+      spawnPosition: {x: 1.5891, y: 17.68641, z: 0}
+    - enemyPrefab: {fileID: 2195872794582507982, guid: 9f1872c5830126b4c8ae4a7dac0d4a1d, type: 3}
+      spawnPosition: {x: 7.415968, y: 16.987274, z: 0}
     onFieldEnemyCount: 3
     dialogStructs:
     - stringToSays: Someone is coming, be careful.
