@@ -19,4 +19,7 @@ public class PlayerSetting : MonoBehaviour
 
     [Header("Power")]
     public List<int> _PowerLimit;
+
+    [Header("玩家冲刺尾焰")]
+    public List<GameObject> _Whiff;
 }
