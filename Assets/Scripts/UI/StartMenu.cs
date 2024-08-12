@@ -63,12 +63,7 @@ public class StartMenu : MonoBehaviour
             : levelSwitchConfig.levelStruct[level].sectionName[section];
 
         SceneManager.LoadScene(sectionName);
-
-        // if(NetworkClient.active == false)
-        // {
-        //     // m_Manager.StartHost();
-        //     SceneManager.LoadScene("Level1_Area1_Highway");
-        // }
+        
         isSingle = true;
     }
 

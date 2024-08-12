@@ -67,27 +67,27 @@ MonoBehaviour:
   syncInterval: 0
   WeaponSpawnSettings: []
   WeaponConfigSettings:
-  - WeaponType: 0
-    WeaponConfig: {fileID: 11400000, guid: 1466359d5658cb04e9354a90dd965ebb, type: 2}
   - WeaponType: 1
-    WeaponConfig: {fileID: 11400000, guid: 1b6a4f853aa73884da557bedbcf18dc5, type: 2}
+    WeaponConfig: {fileID: 11400000, guid: 1466359d5658cb04e9354a90dd965ebb, type: 2}
   - WeaponType: 2
-    WeaponConfig: {fileID: 11400000, guid: b7b40e62641aba549a14ab5c05fdb70f, type: 2}
+    WeaponConfig: {fileID: 11400000, guid: 1b6a4f853aa73884da557bedbcf18dc5, type: 2}
   - WeaponType: 3
-    WeaponConfig: {fileID: 11400000, guid: 744bb74590ffd6c44a56744876a67544, type: 2}
+    WeaponConfig: {fileID: 11400000, guid: b7b40e62641aba549a14ab5c05fdb70f, type: 2}
   - WeaponType: 4
-    WeaponConfig: {fileID: 11400000, guid: 4eda8c9cc13271a45ae9d0a1f973c5a8, type: 2}
-  - WeaponType: 7
-    WeaponConfig: {fileID: 11400000, guid: 5326b9aa40f3a93478b6c74f4bbe0e92, type: 2}
+    WeaponConfig: {fileID: 11400000, guid: 744bb74590ffd6c44a56744876a67544, type: 2}
   - WeaponType: 5
-    WeaponConfig: {fileID: 11400000, guid: b8a7465884029e7499473ae8bc461509, type: 2}
-  - WeaponType: 6
-    WeaponConfig: {fileID: 11400000, guid: 70ace25079a90e547b3a730f8902f10c, type: 2}
+    WeaponConfig: {fileID: 11400000, guid: 4eda8c9cc13271a45ae9d0a1f973c5a8, type: 2}
   - WeaponType: 8
-    WeaponConfig: {fileID: 11400000, guid: 6f1c3bc9c2b492a43a962ddabe6137c4, type: 2}
+    WeaponConfig: {fileID: 11400000, guid: 5326b9aa40f3a93478b6c74f4bbe0e92, type: 2}
+  - WeaponType: 6
+    WeaponConfig: {fileID: 11400000, guid: b8a7465884029e7499473ae8bc461509, type: 2}
+  - WeaponType: 7
+    WeaponConfig: {fileID: 11400000, guid: 70ace25079a90e547b3a730f8902f10c, type: 2}
   - WeaponType: 9
-    WeaponConfig: {fileID: 11400000, guid: 1aef03fb8a64bd040a98f2837b1cf0b9, type: 2}
+    WeaponConfig: {fileID: 11400000, guid: 6f1c3bc9c2b492a43a962ddabe6137c4, type: 2}
   - WeaponType: 10
+    WeaponConfig: {fileID: 11400000, guid: 1aef03fb8a64bd040a98f2837b1cf0b9, type: 2}
+  - WeaponType: 11
     WeaponConfig: {fileID: 11400000, guid: 09e34192b0e33394c843862986b9aa2f, type: 2}
   AmmunitionConfigSettings:
   - AmmunitionType: 1
