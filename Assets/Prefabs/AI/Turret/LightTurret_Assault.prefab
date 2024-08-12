@@ -272,7 +272,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0
   m_ShieldType: 0
-  m_SubArmor: 100
+  m_SubArmor: 160
   m_specialAtkTypes: 
 --- !u!61 &4788707432746406319
 BoxCollider2D:
@@ -360,7 +360,7 @@ Transform:
   m_GameObject: {fileID: 2195872794582507982}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5624187325333055347}
@@ -665,7 +665,7 @@ MonoBehaviour:
   syncInterval: 0
   m_Properties:
     m_Energy: 0
-    m_BaseHP: 450
+    m_BaseHP: 240
     m_LeftHandWeaponHP: 200
     m_LeftHandWeaponCurrentHP: 0
     m_RightHandWeaponHP: 200
@@ -874,7 +874,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0
   m_ShieldType: 0
-  m_SubArmor: 100
+  m_SubArmor: 160
   m_specialAtkTypes: 
 --- !u!61 &4779021538546674247
 BoxCollider2D:
@@ -1193,7 +1193,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0
   m_ShieldType: 0
-  m_SubArmor: 100
+  m_SubArmor: 160
   m_specialAtkTypes: 
 --- !u!61 &8819393010746239652
 BoxCollider2D:
@@ -1611,7 +1611,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0
   m_ShieldType: 0
-  m_SubArmor: 100
+  m_SubArmor: 160
   m_specialAtkTypes: 
 --- !u!61 &3929051370594886967
 BoxCollider2D:

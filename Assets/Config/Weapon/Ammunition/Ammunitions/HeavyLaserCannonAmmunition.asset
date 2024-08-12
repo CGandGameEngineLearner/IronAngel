@@ -24,7 +24,7 @@ MonoBehaviour:
   sigma: 0
   fallout: 0
   minDamage: 0
-  m_LaserWidth: 1
+  m_LaserWidth: 0.06
   m_LeastLiveFixedFrameCount: 4
   m_specialAtkTypes: 
   m_EffectBuff: []

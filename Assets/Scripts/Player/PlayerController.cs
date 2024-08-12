@@ -19,6 +19,7 @@ public class PlayerController : NetworkBehaviour
     private InputController m_InputController = new InputController();
     private LogicStateManager m_LogicStateManager;
     private BaseProperties m_BaseProperties;
+    private PlayerSetting setting;
 
     bool m_AfterStartLocalPlayer = false;
     float m_FireDistance;
@@ -41,7 +42,7 @@ public class PlayerController : NetworkBehaviour
     {
         m_LogicStateManager = GetComponent<LogicStateManager>();
         m_BaseProperties = GetComponent<BaseProperties>();
-        PlayerSetting setting = GetComponent<PlayerSetting>();
+        setting = GetComponent<PlayerSetting>();
         PlayerSpec playerSpec = new PlayerSpec();
         playerSpec = setting._PlayerSpec;
         playerSpec.m_Player = this.gameObject;
@@ -266,6 +267,10 @@ public class PlayerController : NetworkBehaviour
                     v3 = v3.normalized;
                     dir = v3 * m_FireDistance + m_Player.GetPlayerPosition() - m_Player.GetPlayerLeftHandPosition();
                 }
+                
+                // 开火震动
+                // PlayerControllers[0].CameraController.ShakeCameraRotation(0.3f, .1f);
+                
                 CmdFire(weapon,pos, dir);
             }
             
@@ -290,6 +295,8 @@ public class PlayerController : NetworkBehaviour
                     v3 = v3.normalized;
                     dir = v3 * m_FireDistance + m_Player.GetPlayerPosition() - m_Player.GetPlayerRightHandPosition();
                 }
+                
+                // PlayerControllers[0].CameraController.ShakeCameraPosition(0.3f, new Vector3(3, 3, 0));
                 CmdFire(weapon, pos, dir);
             }
         });
@@ -439,6 +446,10 @@ public class PlayerController : NetworkBehaviour
             var v3 = m_InputController.GetMousePositionInWorldSpace(m_CameraController.GetCamera()) - m_Player.GetPlayerPosition();
             var v2 = m_InputController.GetPlayerMoveInputVector2() == Vector2.zero ? new Vector2(v3.x, v3.y) : m_InputController.GetPlayerMoveInputVector2();
             m_Player.SetDashDirection(v2);
+            foreach (var whiff in setting._Whiff)
+            {
+                whiff.SetActive(true);
+            }
         }
         else
         {
@@ -449,6 +460,10 @@ public class PlayerController : NetworkBehaviour
     private void OnWalkEvent()
     {
         m_Player.Move(m_InputController.GetPlayerMoveInputVector2());
+        foreach (var whiff in setting._Whiff)
+        {
+            whiff.SetActive(false);
+        }
     }
 }
 

@@ -335,6 +335,10 @@ public class WeaponSystemCenter : NetworkBehaviour
         Fire(character, weaponType, ammunitionType, startPoint, dir);
         // Rpc调用客户端
         RpcSPFire(character, weaponType, startPoint, dir, isPlayer);
+        
+        VfxPool.Instance.GetVfx(m_AmmunitionFactory.GetAmmunitionConfig(weaponConfig.ammunitionType).hitVfxType, startPoint, Quaternion.identity );
+        VfxPool.Instance.GetVfx(m_AmmunitionFactory.GetAmmunitionConfig(weaponConfig.ammunitionType).holeType, startPoint, Quaternion.identity );
+        VfxPool.Instance.GetVfx(m_AmmunitionFactory.GetAmmunitionConfig(weaponConfig.ammunitionType).scrapType, startPoint, Quaternion.identity );
     }
 
     [ClientRpc]
@@ -343,6 +347,9 @@ public class WeaponSystemCenter : NetworkBehaviour
         WeaponConfig weaponConfig = m_WeaponConfigDic[weaponType];
 
         Fire(character, weaponType, weaponConfig.ammunitionType, startPoint, dir);
+        // VfxPool.Instance.GetVfx(m_AmmunitionFactory.GetAmmunitionConfig(weaponConfig.ammunitionType).hitVfxType, startPoint, Quaternion.identity );
+        // VfxPool.Instance.GetVfx(m_AmmunitionFactory.GetAmmunitionConfig(weaponConfig.ammunitionType).holeType, startPoint, Quaternion.identity );
+        // VfxPool.Instance.GetVfx(m_AmmunitionFactory.GetAmmunitionConfig(weaponConfig.ammunitionType).scrapType, startPoint, Quaternion.identity );
     }
     
     /// <summary>
@@ -425,9 +432,6 @@ public class WeaponSystemCenter : NetworkBehaviour
         // 调用客户端的开火特效
         if (!weapon.TryGetComponent<WeaponInstance>(out WeaponInstance weaponInstance)) return;
         weaponInstance.FireVfxAndAnimation(character, weaponType, weaponConfig, startPoint, dir);
-        
-        // 鏡頭晃动，可能出现多个客户端开火只有一个晃动的问题
-        // PlayerController.PlayerControllers[0].CameraController.ShakeCameraPosition(0.3f, new Vector3(3, 3, 0));
     }
 
 
@@ -521,6 +525,10 @@ public class WeaponSystemCenter : NetworkBehaviour
                 FireShotgun(character, weaponConfigData, ammunitionType, startPoint, dir);
                 break;
             case AtkType.Default:
+                var ammunitionConfig = m_AmmunitionConfigDic[ammunitionType];
+                GameObject ammunition = GetAmmunitionFromPool(ammunitionType, startPoint, dir);
+                m_AmmunitionFactory.ShootAmmunition(character, ammunition, ammunitionType, ammunitionConfig,
+                    AtkType.Default, startPoint, dir);
                 break;
         }
     }
