@@ -42,8 +42,19 @@ public class WeaponInstance : NetworkBehaviour
         m_Name = weaponConfig.weaponName;
     }
 
+    public WeaponConfig weaponConfig => m_WeaponConfig;
+
     public LineRenderer lineRenderer => m_LineRenderer;
 
+    /// <summary>
+    /// 是否可以开火，不会修改数值
+    /// </summary>
+    /// <returns></returns>
+    public bool CanFire()
+    {
+        return Time.time - m_WeaponInstanceData.lastFiredTime >= m_WeaponConfig.interval;
+    }
+    
     /// <summary>
     /// 尝试开火，如果距离上一次开火时间大于武器设置开火间隔，则可以开火，将会重新设置时间并返回true
     /// </summary>

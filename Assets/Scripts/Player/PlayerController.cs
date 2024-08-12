@@ -35,7 +35,7 @@ public class PlayerController : NetworkBehaviour
     }
     public CameraController CameraController
     {
-        get { return CameraController; }
+        get { return m_CameraController; }
     }
 
     private void Start()
@@ -268,10 +268,15 @@ public class PlayerController : NetworkBehaviour
                     dir = v3 * m_FireDistance + m_Player.GetPlayerPosition() - m_Player.GetPlayerLeftHandPosition();
                 }
                 
-                // 开火震动
-                // PlayerControllers[0].CameraController.ShakeCameraRotation(0.3f, .1f);
-                
-                CmdFire(weapon,pos, dir);
+                // // 客户端开火
+                // if (weapon.TryGetComponent<WeaponInstance>(out WeaponInstance weaponInstance) && weaponInstance.CanFire())
+                // {
+                //     // CameraController.ShakeCameraPosition(0.02f, new Vector3(1,1,0));
+                //     CameraController.ShakeCameraRotation(.01f, 10);
+                //     CameraController.ShakeCameraRotation(weaponInstance.weaponConfig.interval, 1);
+                // }
+                //
+                // CmdFire(weapon,pos, dir);
             }
             
         });
@@ -296,7 +301,14 @@ public class PlayerController : NetworkBehaviour
                     dir = v3 * m_FireDistance + m_Player.GetPlayerPosition() - m_Player.GetPlayerRightHandPosition();
                 }
                 
-                // PlayerControllers[0].CameraController.ShakeCameraPosition(0.3f, new Vector3(3, 3, 0));
+                // 客户端开火
+                // if (weapon.TryGetComponent<WeaponInstance>(out WeaponInstance weaponInstance) && weaponInstance.CanFire())
+                // {
+                //     // CameraController.ShakeCameraRotation(.01f, 10);
+                //     // CameraController.ShakeCameraRotation(weaponInstance.weaponConfig.interval, 1);
+                // }
+                
+                
                 CmdFire(weapon, pos, dir);
             }
         });
