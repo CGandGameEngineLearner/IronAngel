@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 599153167453624138}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.585, z: 0}
-  m_LocalScale: {x: 1.2319034, y: 0.14133652, z: 1}
+  m_LocalScale: {x: 0.7, y: 0.14133652, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6485104532671038429}
@@ -102,7 +102,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0
   m_ShieldType: 0
-  m_SubArmor: 100
+  m_SubArmor: 25
   m_specialAtkTypes: 
 --- !u!61 &4788707432746406319
 BoxCollider2D:
@@ -494,7 +494,7 @@ MonoBehaviour:
   syncInterval: 0
   m_Properties:
     m_Energy: 20
-    m_BaseHP: 300
+    m_BaseHP: 250
     m_LeftHandWeaponHP: 200
     m_LeftHandWeaponCurrentHP: 0
     m_RightHandWeaponHP: 200
@@ -512,6 +512,7 @@ MonoBehaviour:
     m_DropWeapon_WeaponDestroy: 0
     m_DropWeapon_CharacterDied: 1
     m_CoreSprite: {fileID: 0}
+  DiedVFX: 0
 --- !u!195 &3478913082591308681
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -627,7 +628,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3342869003483958290}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.73, y: 0, z: 0}
+  m_LocalPosition: {x: 0.37, y: 0, z: 0}
   m_LocalScale: {x: 0.17, y: 1.4192194, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -702,7 +703,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0
   m_ShieldType: 0
-  m_SubArmor: 100
+  m_SubArmor: 25
   m_specialAtkTypes: 
 --- !u!61 &4779021538546674247
 BoxCollider2D:
@@ -924,7 +925,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5005174867674349316}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.726, y: 0, z: 0}
+  m_LocalPosition: {x: -0.43, y: 0, z: 0}
   m_LocalScale: {x: 0.17, y: 1.4192194, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1365,7 +1366,7 @@ Transform:
   m_GameObject: {fileID: 7466956782151199271}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.0063, y: -0.648, z: 0}
-  m_LocalScale: {x: 1.2319034, y: 0.14133652, z: 1}
+  m_LocalScale: {x: 0.7, y: 0.14133652, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6485104532671038429}
@@ -1439,7 +1440,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0
   m_ShieldType: 0
-  m_SubArmor: 100
+  m_SubArmor: 25
   m_specialAtkTypes: 
 --- !u!61 &3929051370594886967
 BoxCollider2D:
