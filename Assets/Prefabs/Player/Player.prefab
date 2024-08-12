@@ -1056,6 +1056,7 @@ MonoBehaviour:
     m_DropWeapon_WeaponDestroy: 0
     m_DropWeapon_CharacterDied: 0
     m_CoreSprite: {fileID: 3705890767357961549}
+  DiedVFX: 0
 --- !u!61 &1091420559612212904
 BoxCollider2D:
   m_ObjectHideFlags: 0
