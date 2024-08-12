@@ -21,12 +21,12 @@ MonoBehaviour:
     onFieldEnemyCount: 2
     dialogStructs:
     - stringToSays: PKSSTureet:Enemy comfirm!
-      time: 1
+      time: 2
       delayTime: 0
     - stringToSays: PKSSTureet:We need to protect the rallypoint
       time: 2
       delayTime: 0
     - stringToSays: PKSSTureet:Hold the line!
-      time: 1
+      time: 2
       delayTime: 0
     waveDelay: 0
