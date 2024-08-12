@@ -40,6 +40,11 @@ namespace Audio
         void OnChangeScene()
         {
             string currentSceneName = SceneManager.GetActiveScene().name;
+            if (!m_SceneEvironmentAudioSettingDic.ContainsKey(currentSceneName))
+            {
+                Debug.LogError("关卡：" + currentSceneName + " 没配置环境音效");
+                return;
+            }
             var sceneEvironmentAudioSetting = m_SceneEvironmentAudioSettingDic[currentSceneName];
             var playModeOfEvironmentAudio = sceneEvironmentAudioSetting.m_EPlayModeOfEvironmentAudio;
             var loop = sceneEvironmentAudioSetting.m_Loop;
