@@ -22,9 +22,9 @@ MonoBehaviour:
       spawnPosition: {x: 11.840675, y: 41.791775, z: 0}
     onFieldEnemyCount: 3
     dialogStructs:
-    - stringToSays: "PKSSinfantry:Hey you\uFF01"
+    - stringToSays: PKSSinfantry:Hey you!
       time: 2
-      delayTime: 0
+      delayTime: 1
     - stringToSays: PKSSinfantry:Stop! RIGHT! NOW!
       time: 2
       delayTime: 1
