@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 77632915628770224}
   - component: {fileID: -6364281989267640493}
   - component: {fileID: -3134415227759077336}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: UniversalCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34,7 +34,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &6915870583156553920
 Rigidbody2D:
