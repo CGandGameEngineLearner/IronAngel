@@ -88,6 +88,13 @@ public class AIController : NetworkBehaviour
     }
 
     [ServerCallback]
+    private void OnDisable()
+    {
+        // 移除攻击状态以归还Token
+        m_LogicStateManager.RemoveState(ELogicState.AIAttacking);
+    }
+
+    [ServerCallback]
     public void BeDamaged()
     {
         if (m_AutoAvoid)
