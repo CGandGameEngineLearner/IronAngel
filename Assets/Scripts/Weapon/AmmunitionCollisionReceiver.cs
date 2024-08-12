@@ -244,7 +244,6 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
         m_LogicStateManager.AddState(stateEnum);
     }
 
-    
 
 
     [ServerCallback]
@@ -266,41 +265,48 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
         m_Properties.m_Properties.m_LeftHandWeaponCurrentHP = data.m_LeftHandWeaponHP;
         m_Properties.m_Properties.m_RightHandWeaponCurrentHP = data.m_RightHandWeaponHP;
         // 被记录在WeaponInstance里的当前武器血量只有在玩家手上才会更改
-        if(TryGetComponent<PlayerController>(out var playerController))
+        if (TryGetComponent<PlayerController>(out var playerController))
         {
             playerController.Player.GetPlayerLeftHandWeapon()?.GetComponent<WeaponInstance>().SetWeaponCurrentHP(data.m_LeftHandWeaponHP);
             playerController.Player.GetPlayerRightHandWeapon()?.GetComponent<WeaponInstance>().SetWeaponCurrentHP(data.m_RightHandWeaponHP);
             m_Properties.m_Properties.m_Energy += UnityEngine.Random.Range(0, 2);
         }
         // 角色死亡
-        if(m_Properties.m_Properties.m_CurrentHP <= 0)
+        if (m_Properties.m_Properties.m_CurrentHP <= 0)
         {
-            if(gameObject.active)
+            if (gameObject.active)
             {
                 BaseProperties prop = m_Launcher?.GetComponent<BaseProperties>();
-                if(prop)
+                if (prop)
                     prop.m_Properties.m_Energy += m_Properties.m_Properties.m_Energy;
                 if (m_Properties.m_Properties.m_DropWeapon_CharacterDied)
                 {
-                    WeaponSystemCenter.Instance.SpawnWeapon(m_Properties.m_Properties.m_LeftHandWeapon, transform.position);
-                    WeaponSystemCenter.Instance.SpawnWeapon(m_Properties.m_Properties.m_RightHandWeapon, transform.position);
+                    SpawnWeapon(m_Properties.m_Properties.m_LeftHandWeapon, transform.position);  
+                    SpawnWeapon(m_Properties.m_Properties.m_RightHandWeapon, transform.position);  
                 }
             }
             
-            gameObject.SetActive(false);
-            EventCenter.Broadcast<GameObject>(EventType.CharacterDied,gameObject);
-            
-            if(TryGetComponent<PlayerController>(out var controller))
+            if(m_Properties.DiedVFX!=null)
             {
-                EventCenter.Broadcast< GameObject>(EventType.PlayerDied,gameObject);
+                // 播放死亡特效
+                VfxPool.Instance.GetVfx(m_Properties.DiedVFX, gameObject.transform.position, gameObject.transform.rotation);
+            }
+            
+            
+            gameObject.SetActive(false);
+            EventCenter.Broadcast<GameObject>(EventType.CharacterDied, gameObject);
+
+            if (TryGetComponent<PlayerController>(out var controller))
+            {
+                EventCenter.Broadcast<GameObject>(EventType.PlayerDied, gameObject);
             }
         }
         // 角色所有护甲损失
-        if(m_IsOverallArmor && m_Properties.m_Properties.m_CurrentArmor <= 0)
+        if (m_IsOverallArmor && m_Properties.m_Properties.m_CurrentArmor <= 0)
         {
             foreach (var shield in m_Shields)
             {
-                if(shield.m_ShieldType == ShieldType.Armor)
+                if (shield.m_ShieldType == ShieldType.Armor)
                     shield.gameObject.SetActive(false);
             }
         }
@@ -314,32 +320,32 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
             }
         }
         // 角色左右手部位损失
-        if(m_Properties.m_Properties.m_LeftHandWeaponCurrentHP <= 0)
+        if (m_Properties.m_Properties.m_LeftHandWeaponCurrentHP <= 0)
         {
             m_LeftWeapon.gameObject.SetActive(false);
 
             if (m_Properties.m_Properties.m_DropWeapon_WeaponDestroy)
             {
-                WeaponSystemCenter.Instance.SpawnWeapon(m_Properties.m_Properties.m_LeftHandWeapon, transform.position);
+                SpawnWeapon(m_Properties.m_Properties.m_LeftHandWeapon, transform.position);  
             }
 
             // 如果是角色的话就丢失武器
-            if(TryGetComponent<PlayerController>(out var controller))
+            if (TryGetComponent<PlayerController>(out var controller))
             {
                 var weapon = controller.Player.DropPlayerLeftHandWeapon(transform.position);
-                if(weapon)
+                if (weapon)
                 {
                     DestroyWeapon(weapon);
                 }
             }
         }
-        if(m_Properties.m_Properties.m_RightHandWeaponCurrentHP <= 0)
+        if (m_Properties.m_Properties.m_RightHandWeaponCurrentHP <= 0)
         {
             m_RightWeapon.gameObject.SetActive(false);
 
             if (m_Properties.m_Properties.m_DropWeapon_WeaponDestroy)
             {
-                WeaponSystemCenter.Instance.SpawnWeapon(m_Properties.m_Properties.m_RightHandWeapon, transform.position);
+                SpawnWeapon(m_Properties.m_Properties.m_RightHandWeapon, transform.position);  
             }
 
             // 如果是角色的话就丢失武器
@@ -401,7 +407,7 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
                         {
                             m_LogicStateManager.SetStateDuration(ELogicState.StunModifier, buff.m_Duration);
                             EventCenter.Broadcast<GameObject, bool>(EventType.Buff_Stun, gameObject, true);
-                        }
+                        }  
                         break;
                     }
             }
@@ -413,6 +419,12 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
     {
         NetworkServer.Destroy(weapon);
     }
+
+    [ServerCallback]  
+    public void SpawnWeapon(WeaponType weapon, Vector3 pos)  
+    {  
+        WeaponSystemCenter.Instance.SpawnWeapon(weapon, pos);  
+    }  
 }
 
 
