@@ -125,14 +125,14 @@ MonoBehaviour:
       delayTime: 1
     waveDelay: 10
   - enemyListConfigs:
-    - enemyPrefab: {fileID: 0}
-      spawnPosition: {x: 0, y: 0, z: 0}
-    - enemyPrefab: {fileID: 0}
-      spawnPosition: {x: 0, y: 0, z: 0}
-    - enemyPrefab: {fileID: 0}
-      spawnPosition: {x: 0, y: 0, z: 0}
-    - enemyPrefab: {fileID: 0}
-      spawnPosition: {x: 0, y: 0, z: 0}
+    - enemyPrefab: {fileID: 2195872794582507982, guid: e2d872d0cdcd43a479143816197ffced, type: 3}
+      spawnPosition: {x: 47.50564, y: 11.798571, z: 0}
+    - enemyPrefab: {fileID: 2195872794582507982, guid: 9ce5cfdcaf248f742a786eb3ebecc5ae, type: 3}
+      spawnPosition: {x: 34.597725, y: 12.939025, z: 0}
+    - enemyPrefab: {fileID: 2195872794582507982, guid: 9ce5cfdcaf248f742a786eb3ebecc5ae, type: 3}
+      spawnPosition: {x: 37.18968, y: 8.99926, z: 0}
+    - enemyPrefab: {fileID: 2195872794582507982, guid: 534df9d583bbf1645a9094310e2122e8, type: 3}
+      spawnPosition: {x: 18.372105, y: 13.042703, z: 0}
     onFieldEnemyCount: 4
     dialogStructs:
     - stringToSays: Battalion Adjutant:The Scout squad...All gone...
