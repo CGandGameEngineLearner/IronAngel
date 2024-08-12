@@ -1,3 +1,4 @@
+using System;
 using Mirror;
 using System.Collections;
 using System.Collections.Generic;
@@ -134,8 +135,13 @@ public class UICanvas : MonoBehaviour
         }
     }
 
+    private void OnDisable()
+    {
+        EventCenter.RemoveListener<GameObject>(EventType.PlayerDied, ShowDirPanel);
+    }
+
     private void OnDestroy()
     {
-        EventCenter.RemoveListener< GameObject>(EventType.PlayerDied, ShowDirPanel);
+        EventCenter.RemoveListener<GameObject>(EventType.PlayerDied, ShowDirPanel);
     }
 }
