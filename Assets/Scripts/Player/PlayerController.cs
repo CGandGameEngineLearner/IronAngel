@@ -100,15 +100,6 @@ public class PlayerController : NetworkBehaviour
         
         m_Player.Update();
         m_InputController.UpdateInputDevice();
-
-        if(Input.GetKeyDown(KeyCode.B))
-        {
-            m_CameraController.ShakeCameraPosition(1.0f, new Vector3(3, 3, 0));
-        }
-        if(Input.GetKeyDown(KeyCode.C))
-        {
-            m_CameraController.ShakeCameraRotation(1.0f, 2);
-        }
     }
     
     
@@ -335,6 +326,7 @@ public class PlayerController : NetworkBehaviour
             if (m_Power.Count > 1 && m_BaseProperties.m_Properties.m_Energy >= m_Power[1])
             {
                 m_BaseProperties.m_Properties.m_Energy -= m_Power[1];
+                CmdSpecFire(m_Player.GetPlayer(), WeaponType.SPKnightPilumLuncher, m_Player.GetPlayerPosition(), (m_InputController.GetMousePositionInWorldSpace(m_CameraController.GetCamera()) - m_Player.GetPlayerPosition()).normalized);
             }
         });
         m_InputController.AddPerformedActionToPower_3(() =>
