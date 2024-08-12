@@ -61,6 +61,13 @@ public class PropertiesUI : MonoBehaviour
     [Tooltip("ÓÒÎäÆ÷Ãû×Ö")]
     [SerializeField]
     private TextMeshProUGUI m_RightWeaponName;
+
+    [Tooltip("ÄÜÁ¿Í¼")]
+    [SerializeField]
+    private List<Image> m_Powers = new List<Image>();
+    [Tooltip("»Ò¶ÈÍ¼")]
+    [SerializeField]
+    private Color m_GrayColor;
     
 
     private void Update()
@@ -76,7 +83,7 @@ public class PropertiesUI : MonoBehaviour
             m_Energy.material.SetFloat(m_RateName, propertity.m_Properties.m_Energy * 1.0f / m_MaxEnergy);
             var leftWeapon = controller.Player.GetPlayerLeftHandWeapon();
             var rightWeapon = controller.Player.GetPlayerRightHandWeapon();
-            if(leftWeapon)
+            if (leftWeapon)
             {
                 m_LeftMag.text = leftWeapon.GetComponent<WeaponInstance>().GetCurrentMag() >= 0 ? leftWeapon.GetComponent<WeaponInstance>().GetCurrentMag().ToString() : "0";
                 m_LeftWeaponName.text = leftWeapon.GetComponent<WeaponInstance>().GetWeaponName();
@@ -86,7 +93,7 @@ public class PropertiesUI : MonoBehaviour
                 m_LeftMag.text = "0";
                 m_LeftWeaponName.text = "";
             }
-            if(rightWeapon)
+            if (rightWeapon)
             {
                 m_RightMag.text = rightWeapon.GetComponent<WeaponInstance>().GetCurrentMag() >= 0 ? rightWeapon.GetComponent<WeaponInstance>().GetCurrentMag().ToString() : "0";
                 m_RightWeaponName.text = rightWeapon.GetComponent<WeaponInstance>().GetWeaponName();
@@ -99,11 +106,11 @@ public class PropertiesUI : MonoBehaviour
 
             var playerPosOnScreen = Camera.main.WorldToScreenPoint(controller.Player.GetPlayerPosition());
             Vector2 dashCountUI = Vector2.zero;
-            RectTransformUtility.ScreenPointToLocalPointInRectangle(GetComponent<RectTransform>(), playerPosOnScreen, null,out dashCountUI);
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(GetComponent<RectTransform>(), playerPosOnScreen, null, out dashCountUI);
             m_DashPanel.rectTransform.localPosition = dashCountUI + m_DashUIOffset;
-            for (int i = 0; i< m_DashCountImages.Count; i++)
+            for (int i = 0; i < m_DashCountImages.Count; i++)
             {
-                if(controller.Player.GetDashCount() >= i + 1)
+                if (controller.Player.GetDashCount() >= i + 1)
                 {
                     m_DashCountImages[i].gameObject.SetActive(true);
                 }
@@ -112,6 +119,18 @@ public class PropertiesUI : MonoBehaviour
                     m_DashCountImages[i].gameObject.SetActive(false);
                 }
 
+            }
+            var power = controller.m_Power;
+            for (int i = 0; i < power.Count; i++)
+            {
+                if(propertity.m_Properties.m_Energy >= power[i])
+                {
+                    m_Powers[i].color = Color.white;
+                }
+                else
+                {
+                    m_Powers[i].color = m_GrayColor;
+                }
             }
         }
     }
