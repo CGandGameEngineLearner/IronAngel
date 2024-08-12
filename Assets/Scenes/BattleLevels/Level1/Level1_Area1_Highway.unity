@@ -68520,6 +68520,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8721000690680277809, guid: c6e2eded75b555341827218b4228d9ef, type: 3}
+      propertyPath: AI_Attack_Tokens
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -68580,6 +68584,14 @@ PrefabInstance:
     - target: {fileID: 229731086994181052, guid: a0323b4a4ea56cc41ad698716e8fd3fd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2303743712576155674, guid: a0323b4a4ea56cc41ad698716e8fd3fd, type: 3}
+      propertyPath: m_Size.x
+      value: 10.393209
+      objectReference: {fileID: 0}
+    - target: {fileID: 2303743712576155674, guid: a0323b4a4ea56cc41ad698716e8fd3fd, type: 3}
+      propertyPath: m_Offset.x
+      value: 3.6346273
       objectReference: {fileID: 0}
     - target: {fileID: 6059947040432930115, guid: a0323b4a4ea56cc41ad698716e8fd3fd, type: 3}
       propertyPath: m_Name
