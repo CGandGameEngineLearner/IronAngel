@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 329a42aa4eff495f87cc0fc5196876c6, type: 3}
+  m_Name: Zone1-1
+  m_EditorClassIdentifier: 
+  waveConfigs:
+  - enemyListConfigs:
+    - enemyPrefab: {fileID: 2195872794582507982, guid: 9ce5cfdcaf248f742a786eb3ebecc5ae, type: 3}
+      spawnPosition: {x: -4.1869607, y: 42.846886, z: 0}
+    - enemyPrefab: {fileID: 2195872794582507982, guid: 9ce5cfdcaf248f742a786eb3ebecc5ae, type: 3}
+      spawnPosition: {x: 4.0027094, y: 44.153214, z: 0}
+    - enemyPrefab: {fileID: 2195872794582507982, guid: 9ce5cfdcaf248f742a786eb3ebecc5ae, type: 3}
+      spawnPosition: {x: 11.840675, y: 41.791775, z: 0}
+    onFieldEnemyCount: 3
+    dialogStructs:
+    - stringToSays: Infantry:Hey you!
+      time: 2
+      delayTime: 1
+    - stringToSays: Infantry:Stop! RIGHT! NOW!
+      time: 2
+      delayTime: 1
+    waveDelay: 0
