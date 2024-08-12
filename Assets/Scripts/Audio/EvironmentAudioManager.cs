@@ -49,6 +49,12 @@ namespace Audio
             var sceneEvironmentAudioSetting = m_SceneEvironmentAudioSettingDic[currentSceneName];
             var playModeOfEvironmentAudio = sceneEvironmentAudioSetting.m_EPlayModeOfEvironmentAudio;
             var loop = sceneEvironmentAudioSetting.m_Loop;
+            var audioClip = sceneEvironmentAudioSetting.m_AudioClip;
+            if (audioClip == null)
+            {
+                Debug.LogWarning("关卡：" + currentSceneName + " 没配置AudioClip");
+                return;
+            }
             if (playModeOfEvironmentAudio == EPlayModeOfEvironmentAudio.None)
             {
                 m_AudioSource.Stop();
@@ -56,7 +62,7 @@ namespace Audio
             }
             else if (playModeOfEvironmentAudio == EPlayModeOfEvironmentAudio.DirectlyPlay)
             {
-                m_AudioSource.clip = sceneEvironmentAudioSetting.m_AudioClip;
+                m_AudioSource.clip = audioClip;
                 m_AudioSource.loop = loop;
                 m_AudioSource.Play();
             }
@@ -64,7 +70,7 @@ namespace Audio
             {
                 if (!m_AudioSource.isPlaying)
                 {
-                    m_AudioSource.clip = sceneEvironmentAudioSetting.m_AudioClip;
+                    m_AudioSource.clip = audioClip;
                     m_AudioSource.loop = loop;
                     m_AudioSource.Play();
                 }
