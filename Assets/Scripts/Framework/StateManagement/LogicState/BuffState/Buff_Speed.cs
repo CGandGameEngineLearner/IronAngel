@@ -4,9 +4,8 @@ namespace LogicState
 {
     public class Buff_Speed : Buff
     {
-        public Buff_Speed(ELogicState stateEnum) : base(stateEnum)
-        {
-        }
+        public Buff_Speed(ELogicState stateEnum) : base(stateEnum) {}
+        public Buff_Speed(ELogicState stateEnum, LogicStateManager parent) : base(stateEnum, parent){}
 
         public override void Init()
         {
