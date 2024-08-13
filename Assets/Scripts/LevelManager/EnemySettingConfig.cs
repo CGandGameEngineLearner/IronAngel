@@ -14,7 +14,7 @@ public class EnemySettingConfig:ScriptableObject
         if (!m_EnemyPrefabDic.ContainsKey(enemyType))
         {
 #if UNITY_EDITOR
-            Debug.LogWarning(enemyType+"使用了默认DefaultEnemySetting");
+            Debug.LogWarning(enemyType+"使用了默认DefaultEnemySetting!");
 #endif
             return DefaultEnemySetting;
         }

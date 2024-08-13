@@ -20,7 +20,7 @@ public class DamageSensor:MonoBehaviour,IAISensor
     private List<GameObject> m_WhoDamaged = new List<GameObject>();
     public List<GameObject> GetPerceiveGameObjects()
     {
-        m_WhoDamaged.RemoveAll(go => go == null);
+        m_WhoDamaged.RemoveAll(go => go == null || go.activeSelf==false);
         return m_WhoDamaged;
     }
 

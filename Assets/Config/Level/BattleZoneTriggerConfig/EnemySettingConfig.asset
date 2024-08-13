@@ -20,7 +20,7 @@ MonoBehaviour:
   - EnemyType: 3
     EnemyPrefab: {fileID: 3041229852222691761, guid: 0a29e43cc88b19d4689866b4821b5444, type: 3}
   - EnemyType: 4
-    EnemyPrefab: {fileID: 4446028379923702090, guid: 9ce5cfdcaf248f742a786eb3ebecc5ae, type: 3}
+    EnemyPrefab: {fileID: 3041229852222691761, guid: 25d539e195b29a444b68f7e5f9767971, type: 3}
   - EnemyType: 5
     EnemyPrefab: {fileID: 6053823690440650867, guid: 534df9d583bbf1645a9094310e2122e8, type: 3}
   - EnemyType: 6

@@ -14,15 +14,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waveConfigs:
   - enemyListConfigs:
-    - enemyPrefab: {fileID: 3041229852222691761, guid: 25d539e195b29a444b68f7e5f9767971, type: 3}
+    - enemyType: 4
+      enemyPrefab: {fileID: 0}
       spawnPosition: {x: 4.014878, y: 115.47566, z: 0}
-    - enemyPrefab: {fileID: 3041229852222691761, guid: 25d539e195b29a444b68f7e5f9767971, type: 3}
+    - enemyType: 0
+      enemyPrefab: {fileID: 3041229852222691761, guid: 25d539e195b29a444b68f7e5f9767971, type: 3}
       spawnPosition: {x: -0.08809614, y: 113.822014, z: 0}
-    - enemyPrefab: {fileID: 3041229852222691761, guid: 25d539e195b29a444b68f7e5f9767971, type: 3}
+    - enemyType: 0
+      enemyPrefab: {fileID: 3041229852222691761, guid: 25d539e195b29a444b68f7e5f9767971, type: 3}
       spawnPosition: {x: 8.585851, y: 114.726845, z: 0}
-    - enemyPrefab: {fileID: 3041229852222691761, guid: 25d539e195b29a444b68f7e5f9767971, type: 3}
+    - enemyType: 0
+      enemyPrefab: {fileID: 3041229852222691761, guid: 25d539e195b29a444b68f7e5f9767971, type: 3}
       spawnPosition: {x: 3.8744636, y: 114.539635, z: 0}
-    - enemyPrefab: {fileID: 3041229852222691761, guid: 25d539e195b29a444b68f7e5f9767971, type: 3}
+    - enemyType: 0
+      enemyPrefab: {fileID: 3041229852222691761, guid: 25d539e195b29a444b68f7e5f9767971, type: 3}
       spawnPosition: {x: 4.030469, y: 111.63792, z: 0}
     onFieldEnemyCount: 5
     dialogStructs:
