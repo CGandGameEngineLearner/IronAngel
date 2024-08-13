@@ -1033,7 +1033,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4394949497655171685}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dcf4b16528a0a0d41ba817e306246775, type: 3}
   m_Name: 
@@ -1041,8 +1041,8 @@ MonoBehaviour:
   m_WallLayer:
     serializedVersion: 2
     m_Bits: 512
-  m_DashSpeed: 5
-  m_DashDuration: 1
+  m_DashSpeed: 0
+  m_DashDuration: Infinity
   m_EngagementDistance: 0
   m_ObstacleAvoidanceDistance: 0
 --- !u!58 &6504355535078145481
@@ -1245,7 +1245,7 @@ MonoBehaviour:
     m_LeftWeaponGO: {fileID: 0}
     m_RightWeaponGO: {fileID: 0}
     m_Armor: 0
-    m_EnergyShieldCount: 30
+    m_EnergyShieldCount: 0
     m_CurrentHP: 0
     m_CurrentArmor: 0
     m_AttackRange: 15
