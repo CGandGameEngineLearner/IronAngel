@@ -145,11 +145,11 @@ public class UICanvas : MonoBehaviour
         }
         if(Input.GetMouseButton(0))
         {
-            Cursor.SetCursor(m_Aim_2, Vector2.zero, CursorMode.ForceSoftware);
+            Cursor.SetCursor(m_Aim_2, new Vector2(0, 30), CursorMode.ForceSoftware);
         }
         else
         {
-            Cursor.SetCursor(m_Aim_1, Vector2.zero, CursorMode.ForceSoftware);
+            Cursor.SetCursor(m_Aim_1, new Vector2(0, 30), CursorMode.ForceSoftware);
         }
     }
 
