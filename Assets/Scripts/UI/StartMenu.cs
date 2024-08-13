@@ -71,7 +71,7 @@ public class StartMenu : MonoBehaviour
 
     public void OnMultiPlayerPanelEnter()
     {
-        SceneManager.LoadScene("PVPLevel");
+        SceneManager.LoadScene("PvELevel");
         m_MultiplayerPanel.SetActive(true);
     }
 
