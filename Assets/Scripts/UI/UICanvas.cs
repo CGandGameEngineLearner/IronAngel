@@ -47,6 +47,11 @@ public class UICanvas : MonoBehaviour
     [SerializeField]
     private Texture2D m_Aim_2;
 
+
+
+
+
+
     public bool isSingle = true;
     bool isPause = false;
 
@@ -69,7 +74,9 @@ public class UICanvas : MonoBehaviour
     {
         if(NetworkClient.localPlayer.gameObject == player)
         {
+            m_PropertiesUI.gameObject.SetActive(false);
             VfxPool.Instance.GetVfx(VfxType.MachaDied, player.transform.position, Quaternion.identity);
+            VfxPool.Instance.GetVfx(VfxType.Hole1, player.transform.position, Quaternion.identity);
             m_DieEffect.SetActive(true);
             Invoke("ShowDie", 3.0f);
         }
