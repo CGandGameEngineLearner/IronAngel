@@ -71,6 +71,10 @@ public class PropertiesUI : MonoBehaviour
     private Color m_GrayColor;
 
 
+    
+
+
+    private AudioSource m_AudioSource;
     private Volume m_Volume;
     [SerializeField]
     private VolumeProfile m_OriProfile;
@@ -79,13 +83,17 @@ public class PropertiesUI : MonoBehaviour
     [SerializeField]
     [Range(0f, 1f)]
     private float m_ChangeRate = 0.5f;
+
+
+    public AudioClip m_LowBloodAudio;
     private void Start()
     {
         m_Volume = GameObject.FindAnyObjectByType<Volume>();
+        m_AudioSource = GetComponent<AudioSource>();
     }
 
 
-    private void Update()
+    private void Update()  
     {
         if (NetworkClient.localPlayer != null)
         {
@@ -93,6 +101,20 @@ public class PropertiesUI : MonoBehaviour
             var controller = player.GetComponent<PlayerController>();
             var propertity = player.GetComponent<BaseProperties>();
             m_HP.material.SetFloat(m_RateName, 1.0f * propertity.m_Properties.m_CurrentHP / propertity.m_Properties.m_BaseHP);
+            if(m_AudioSource)
+            {
+                if(1.0f * propertity.m_Properties.m_CurrentHP / propertity.m_Properties.m_BaseHP <= 0.1 && propertity.m_Properties.m_CurrentHP > 1)
+                {
+                    if(m_AudioSource.isPlaying == false)
+                    {
+                        m_AudioSource.Play();
+                    }
+                }
+                else
+                {
+                    m_AudioSource.Stop();
+                }
+            }
             if(m_Volume == null)
             {
                 m_Volume = GameObject.FindAnyObjectByType<Volume>();
