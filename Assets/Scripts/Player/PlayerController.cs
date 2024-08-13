@@ -35,7 +35,7 @@ public class PlayerController : NetworkBehaviour
     }
     public CameraController CameraController
     {
-        get { return CameraController; }
+        get { return m_CameraController; }
     }
 
     private void Start()
@@ -196,11 +196,6 @@ public class PlayerController : NetworkBehaviour
         {
             return;
         }
-        if(m_InputController.IsGamePadInput())
-        {
-            m_Player.LookAt(m_InputController.GetGamePadViewInput());
-        }
-        else
         {
             Vector3 v3 = m_InputController.GetMousePositionInWorldSpace(m_CameraController.GetCamera()) - m_Player.GetPlayerPosition();
             m_Player.LookAt(new Vector2(v3.x, v3.y));
@@ -259,6 +254,10 @@ public class PlayerController : NetworkBehaviour
                     return;
                 }
                 pos = weapon.GetComponent<WeaponInstance>().firePoint.position;
+                if(weapon.GetComponent<WeaponInstance>().GetCurrentMag() <= 0)
+                {
+                    UICanvas.Instance.SetTips("Ammo ran out!!(Left)", 1.0f);
+                }
                 Vector3 dir = m_InputController.GetMousePositionInWorldSpace(m_CameraController.GetCamera()) - m_Player.GetPlayerLeftHandPosition();
                 if (Vector2.Distance(m_InputController.GetMousePositionInWorldSpace(m_CameraController.GetCamera()), m_Player.GetPlayerLeftHandPosition()) <= m_FireDistance)
                 {
@@ -268,9 +267,14 @@ public class PlayerController : NetworkBehaviour
                     dir = v3 * m_FireDistance + m_Player.GetPlayerPosition() - m_Player.GetPlayerLeftHandPosition();
                 }
                 
-                // 开火震动
-                // PlayerControllers[0].CameraController.ShakeCameraRotation(0.3f, .1f);
-                
+                // // 客户端开火
+                // if (weapon.TryGetComponent<WeaponInstance>(out WeaponInstance weaponInstance) && weaponInstance.CanFire())
+                // {
+                //     // CameraController.ShakeCameraPosition(0.02f, new Vector3(1,1,0));
+                //     CameraController.ShakeCameraRotation(.01f, 10);
+                //     CameraController.ShakeCameraRotation(weaponInstance.weaponConfig.interval, 1);
+                // }
+                //
                 CmdFire(weapon,pos, dir);
             }
             
@@ -287,6 +291,10 @@ public class PlayerController : NetworkBehaviour
                     return;
                 }
                 pos = weapon.GetComponent<WeaponInstance>().firePoint.position;
+                if (weapon.GetComponent<WeaponInstance>().GetCurrentMag() <= 0)
+                {
+                    UICanvas.Instance.SetTips("Ammo ran out!!(Right)", 1.0f);
+                }
                 Vector3 dir = m_InputController.GetMousePositionInWorldSpace(m_CameraController.GetCamera()) - m_Player.GetPlayerRightHandPosition();
                 if (Vector2.Distance(m_InputController.GetMousePositionInWorldSpace(m_CameraController.GetCamera()), m_Player.GetPlayerRightHandPosition()) <= m_FireDistance)
                 {
@@ -296,7 +304,14 @@ public class PlayerController : NetworkBehaviour
                     dir = v3 * m_FireDistance + m_Player.GetPlayerPosition() - m_Player.GetPlayerRightHandPosition();
                 }
                 
-                // PlayerControllers[0].CameraController.ShakeCameraPosition(0.3f, new Vector3(3, 3, 0));
+                // 客户端开火
+                // if (weapon.TryGetComponent<WeaponInstance>(out WeaponInstance weaponInstance) && weaponInstance.CanFire())
+                // {
+                //     // CameraController.ShakeCameraRotation(.01f, 10);
+                //     // CameraController.ShakeCameraRotation(weaponInstance.weaponConfig.interval, 1);
+                // }
+                
+                
                 CmdFire(weapon, pos, dir);
             }
         });
@@ -350,6 +365,7 @@ public class PlayerController : NetworkBehaviour
             {
                 m_BaseProperties.m_Properties.m_Energy -= m_Power[3];
             }
+            CmdSpecFire(m_Player.GetPlayer(), WeaponType.SPRocketPodLuncher, m_Player.GetPlayerPosition(), (m_InputController.GetMousePositionInWorldSpace(m_CameraController.GetCamera()) - m_Player.GetPlayerPosition()).normalized);
         });
         m_InputController.AddPerformedActionToPower_5(() =>
         {

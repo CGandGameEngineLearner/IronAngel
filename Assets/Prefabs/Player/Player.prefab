@@ -372,7 +372,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.01836051, y: -0.029734433}
+  m_Offset: {x: -0.044435605, y: -0.05247107}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0.5}
@@ -383,7 +383,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.36657706, y: 0.8151897}
+  m_Size: {x: 0.4921693, y: 0.860663}
   m_EdgeRadius: 0
 --- !u!114 &6605865318230209861
 MonoBehaviour:
@@ -654,7 +654,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.067644045, y: 0.012940347}
+  m_Offset: {x: 0.015087366, y: -0.027847752}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0.5}
@@ -665,7 +665,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.39855757, y: 0.8324305}
+  m_Size: {x: 0.5640204, y: 0.9140067}
   m_EdgeRadius: 0
 --- !u!114 &19072517700520672
 MonoBehaviour:
@@ -895,7 +895,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.029152215, y: -0.29002738}
+  m_Offset: {x: -0.019257724, y: -0.47860992}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -906,7 +906,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.6908302, y: 2.5919871}
+  m_Size: {x: 2.6710415, y: 2.214822}
   m_EdgeRadius: 0
 --- !u!114 &4360781162981487168
 MonoBehaviour:
@@ -1093,7 +1093,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0275594, y: -0.28525162}
+  m_Offset: {x: -0.025085688, y: -0.48033702}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -1104,7 +1104,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.705754, y: 2.5853415}
+  m_Size: {x: 2.6711235, y: 2.1951706}
   m_EdgeRadius: 0
 --- !u!114 &4040649623466495946
 MonoBehaviour:

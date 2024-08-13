@@ -449,10 +449,10 @@ MonoBehaviour:
   m_AutoAvoid_Probability: 0
   m_AutoAvoid_RestTimes: 0
   m_TokenWeight: 0.3
-  m_RangeOfAimingError: 0
-  m_LeftHandWeaponAttackingDuration: 3
+  m_RangeOfAimingError: 2
+  m_LeftHandWeaponAttackingDuration: 5
   m_RightHandWeaponAttackingDuration: 0
-  m_ProbabilityOfLeftWeapon: 0.416
+  m_ProbabilityOfLeftWeapon: 1
   m_ProbabilityOfRightWeapon: 0
   PatrolRoute: {fileID: 0}
 --- !u!114 &8337392909154346315
@@ -613,7 +613,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.03949374, y: -0.13189936}
+  m_Offset: {x: 0.006721139, y: -0.13189936}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -624,7 +624,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.6313921, y: 0.7630377}
+  m_Size: {x: 1.2282023, y: 0.7630377}
   m_EdgeRadius: 0
 --- !u!114 &6156403838176766774
 MonoBehaviour:
@@ -674,7 +674,7 @@ MonoBehaviour:
     m_LeftWeaponGO: {fileID: 0}
     m_RightWeaponGO: {fileID: 0}
     m_Armor: 0
-    m_EnergyShieldCount: 20
+    m_EnergyShieldCount: 0
     m_CurrentHP: 100
     m_CurrentArmor: 0
     m_AttackRange: 16
@@ -682,7 +682,7 @@ MonoBehaviour:
     m_DropWeapon_WeaponDestroy: 0
     m_DropWeapon_CharacterDied: 1
     m_CoreSprite: {fileID: 3360608816744833715}
-  DiedVFX: 0
+  DiedVFX: 28
 --- !u!195 &3478913082591308681
 NavMeshAgent:
   m_ObjectHideFlags: 0

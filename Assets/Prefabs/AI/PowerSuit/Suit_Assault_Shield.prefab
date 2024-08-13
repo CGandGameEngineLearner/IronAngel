@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3214879402463197141
 Transform:
   m_ObjectHideFlags: 0
@@ -284,8 +284,8 @@ MonoBehaviour:
   m_RangeOfAimingError: 2.5
   m_LeftHandWeaponAttackingDuration: 1.6
   m_RightHandWeaponAttackingDuration: 1.6
-  m_ProbabilityOfLeftWeapon: 0.482
-  m_ProbabilityOfRightWeapon: 0.51
+  m_ProbabilityOfLeftWeapon: 0
+  m_ProbabilityOfRightWeapon: 1
   PatrolRoute: {fileID: 0}
 --- !u!114 &8337392909154346315
 MonoBehaviour:
@@ -445,7 +445,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.074529886, y: -0.119170845}
+  m_Offset: {x: -0.053941727, y: -0.16292065}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -456,7 +456,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.6445501, y: 0.95413554}
+  m_Size: {x: 1.3136652, y: 1.0416352}
   m_EdgeRadius: 0
 --- !u!114 &6156403838176766774
 MonoBehaviour:
@@ -514,7 +514,7 @@ MonoBehaviour:
     m_DropWeapon_WeaponDestroy: 0
     m_DropWeapon_CharacterDied: 1
     m_CoreSprite: {fileID: 0}
-  DiedVFX: 0
+  DiedVFX: 28
 --- !u!195 &3478913082591308681
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -819,7 +819,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4510283745943052819
 Transform:
   m_ObjectHideFlags: 0
@@ -1116,7 +1116,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1519109785258440038
 Transform:
   m_ObjectHideFlags: 0
@@ -1556,7 +1556,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1057950110670980675
 Transform:
   m_ObjectHideFlags: 0

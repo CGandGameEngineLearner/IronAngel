@@ -42,8 +42,19 @@ public class WeaponInstance : NetworkBehaviour
         m_Name = weaponConfig.weaponName;
     }
 
+    public WeaponConfig weaponConfig => m_WeaponConfig;
+
     public LineRenderer lineRenderer => m_LineRenderer;
 
+    /// <summary>
+    /// 是否可以开火，不会修改数值
+    /// </summary>
+    /// <returns></returns>
+    public bool CanFire()
+    {
+        return Time.time - m_WeaponInstanceData.lastFiredTime >= m_WeaponConfig.interval;
+    }
+    
     /// <summary>
     /// 尝试开火，如果距离上一次开火时间大于武器设置开火间隔，则可以开火，将会重新设置时间并返回true
     /// </summary>
@@ -124,39 +135,39 @@ public class WeaponInstance : NetworkBehaviour
         }
         else
         {
-            // 仅限激光
-            if (m_LineRenderer)
-            {
-                m_LineRenderer.startWidth = weaponConfig.LaserPointerWidth;
-                m_LineRenderer.endWidth = weaponConfig.LaserPointerWidth;
-                m_LineRenderer.startColor = Color.green;
-                m_LineRenderer.endColor = Color.green;
-                m_LineRenderer.positionCount = 2;
-            
-                // 最大射线距离为子弹最远距离
-                AmmunitionType ammunitionType = weaponConfig.ammunitionType;
-                AmmunitionConfig ammunitionConfig = WeaponSystemCenter.GetAmmunitionFactory().GetAmmunitionConfig(ammunitionType);
-                int ignoreLayer = ~(LayerMask.GetMask("Bullet") | LayerMask.GetMask("Ground") | LayerMask.GetMask("Sensor"));
-
-                HashSet<GameObject> ignoredObjects = character.GetComponent<AutoGetChild>().ignoredObjects;
-
-                RaycastHit2D[] hits = Physics2D.RaycastAll(startPoint, dir, ammunitionConfig.lifeDistance, ignoreLayer);
-
-                Vector2 endPoint = startPoint + dir.normalized * ammunitionConfig.lifeDistance;
-
-                foreach (var hit in hits)
-                {
-                    if (hit.collider != null && !hit.collider.isTrigger && !ignoredObjects.Contains(hit.collider.gameObject))
-                    {
-                        // 如果碰撞到非触发器且不在忽略列表中的物体，使用碰撞点作为终点
-                        endPoint = hit.point;
-                        break; // 找到第一个非触发器碰撞后停止
-                    }
-                }
-
-                lineRenderer.SetPosition(0, startPoint);
-                lineRenderer.SetPosition(1, endPoint);
-            }
+            // // 仅限激光
+            // if (m_LineRenderer)
+            // {
+            //     m_LineRenderer.startWidth = weaponConfig.LaserPointerWidth;
+            //     m_LineRenderer.endWidth = weaponConfig.LaserPointerWidth;
+            //     m_LineRenderer.startColor = Color.green;
+            //     m_LineRenderer.endColor = Color.green;
+            //     m_LineRenderer.positionCount = 2;
+            //
+            //     // 最大射线距离为子弹最远距离
+            //     AmmunitionType ammunitionType = weaponConfig.ammunitionType;
+            //     AmmunitionConfig ammunitionConfig = WeaponSystemCenter.GetAmmunitionFactory().GetAmmunitionConfig(ammunitionType);
+            //     int ignoreLayer = ~(LayerMask.GetMask("Bullet") | LayerMask.GetMask("Ground") | LayerMask.GetMask("Sensor"));
+            //
+            //     HashSet<GameObject> ignoredObjects = character.GetComponent<AutoGetChild>().ignoredObjects;
+            //
+            //     RaycastHit2D[] hits = Physics2D.RaycastAll(startPoint, dir, ammunitionConfig.lifeDistance, ignoreLayer);
+            //
+            //     Vector2 endPoint = startPoint + dir.normalized * ammunitionConfig.lifeDistance;
+            //
+            //     foreach (var hit in hits)
+            //     {
+            //         if (hit.collider != null && !hit.collider.isTrigger && !ignoredObjects.Contains(hit.collider.gameObject))
+            //         {
+            //             // 如果碰撞到非触发器且不在忽略列表中的物体，使用碰撞点作为终点
+            //             endPoint = hit.point;
+            //             break; // 找到第一个非触发器碰撞后停止
+            //         }
+            //     }
+            //
+            //     lineRenderer.SetPosition(0, startPoint);
+            //     lineRenderer.SetPosition(1, endPoint);
+            // }
         }
 
         if (m_Animator)

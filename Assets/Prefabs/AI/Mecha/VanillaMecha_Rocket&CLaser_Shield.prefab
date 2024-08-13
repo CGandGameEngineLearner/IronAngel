@@ -378,7 +378,7 @@ Transform:
   m_GameObject: {fileID: 2195872794582507982}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5624187325333055347}
@@ -433,8 +433,8 @@ MonoBehaviour:
         byteData: 
         byteDataArray: 
       Version: 1.7.9
-  gizmoViewMode: 2
-  showBehaviorDesignerGizmo: 1
+  gizmoViewMode: 0
+  showBehaviorDesignerGizmo: 0
 --- !u!114 &5384138960469735118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -490,8 +490,8 @@ MonoBehaviour:
   m_WallLayer:
     serializedVersion: 2
     m_Bits: 512
-  m_DashSpeed: 7
-  m_DashDuration: 3.5
+  m_DashSpeed: 20
+  m_DashDuration: 1.2
   m_EngagementDistance: 14
   m_ObstacleAvoidanceDistance: 1
 --- !u!58 &7549400497388090286
@@ -1153,9 +1153,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4526419129806610789}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.04, y: 1.505, z: 0}
-  m_LocalScale: {x: 0.09, y: 0.09, z: 0.09}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.016, y: 0.953, z: 0}
+  m_LocalScale: {x: 0.1665, y: 0.1665, z: 0.1665}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 6485104532671038429}
@@ -1202,8 +1202,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 500
-  m_Sprite: {fileID: 21300000, guid: ddd4aaefcbf36c9428368d886cbaf5e2, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.30588236}
+  m_Sprite: {fileID: 21300000, guid: 09516bd7367d85f4a9656afeda4bdc17, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

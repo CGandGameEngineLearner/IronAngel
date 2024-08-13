@@ -27,7 +27,6 @@ namespace LogicState
                 GetOwner().RemoveState(ELogicState.AIAttacking);
                 return;
             }
-            Debug.Log(GetType()+"OnStateIn()");
         }
     
         public override void Update(float deltaTime)
@@ -42,7 +41,6 @@ namespace LogicState
     
         public override void OnStateOut()
         {
-            Debug.Log(GetType()+"OnStateOut()");
             TokenPool.ReturnToken();
         }
     

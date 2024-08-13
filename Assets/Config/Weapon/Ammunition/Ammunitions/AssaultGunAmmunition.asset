@@ -20,7 +20,7 @@ MonoBehaviour:
   m_LifeDistance: 40
   m_Damage: 40
   m_PostAmmunitionType: 14
-  m_IsExplodeDamage: 0
+  m_IsExplodeDamage: 1
   sigma: 0
   fallout: 0
   minDamage: 0

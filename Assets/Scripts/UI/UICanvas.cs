@@ -36,6 +36,10 @@ public class UICanvas : MonoBehaviour
     public PlotPanel PlotPanel { get { return m_PlotPanel; } }
 
     [SerializeField]
+    private TipsPanel m_TipsPanel;
+
+
+    [SerializeField]
     private Texture2D m_Aim_1;
     [SerializeField]
     private Texture2D m_Aim_2;
@@ -116,6 +120,17 @@ public class UICanvas : MonoBehaviour
     public bool IsPauseMenuActive()
     {
         return m_PauseMenu.gameObject.active;
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="text"></param> 文字
+    /// <param name="duration"></param> 持续时间
+    public void SetTips(string text, float duration)
+    {
+        m_TipsPanel.gameObject.SetActive(true);
+        m_TipsPanel.SetTips(text, duration);
     }
 
     private void Update()

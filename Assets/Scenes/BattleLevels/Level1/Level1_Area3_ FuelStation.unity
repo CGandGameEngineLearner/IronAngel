@@ -14559,6 +14559,10 @@ PrefabInstance:
       value: BattleZoneTrigger
       objectReference: {fileID: 0}
     - target: {fileID: 679987570865259501, guid: d40afa9f46ee65d40bbe077cad20da45, type: 3}
+      propertyPath: enemyWaveConfig
+      value: 
+      objectReference: {fileID: 11400000, guid: d4692873724b41940a1c37f933d3329d, type: 2}
+    - target: {fileID: 679987570865259501, guid: d40afa9f46ee65d40bbe077cad20da45, type: 3}
       propertyPath: invisibleWalls.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -14580,11 +14584,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1166078273585867681, guid: d40afa9f46ee65d40bbe077cad20da45, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.19
+      value: 2.03
       objectReference: {fileID: 0}
     - target: {fileID: 1166078273585867681, guid: d40afa9f46ee65d40bbe077cad20da45, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 28.63
+      value: 19.63
       objectReference: {fileID: 0}
     - target: {fileID: 1166078273585867681, guid: d40afa9f46ee65d40bbe077cad20da45, type: 3}
       propertyPath: m_LocalPosition.z

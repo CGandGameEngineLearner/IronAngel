@@ -16,7 +16,8 @@ public class IronAngelSceneManager : MonoBehaviour
 
     private void Start()
     {
-        m_Manager.StartHost();
+        if (NetworkClient.active == false)
+            m_Manager.StartHost();
     }
 
     public void LoadScene(string sceneName)
