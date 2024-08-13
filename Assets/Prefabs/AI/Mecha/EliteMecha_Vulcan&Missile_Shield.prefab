@@ -490,8 +490,8 @@ MonoBehaviour:
   m_WallLayer:
     serializedVersion: 2
     m_Bits: 512
-  m_DashSpeed: 8
-  m_DashDuration: 3
+  m_DashSpeed: 20
+  m_DashDuration: 1.3
   m_EngagementDistance: 12
   m_ObstacleAvoidanceDistance: 1
 --- !u!58 &7549400497388090286
