@@ -360,6 +360,11 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
                 var weapon = controller.Player.DropPlayerLeftHandWeapon(transform.position);
                 if (weapon)
                 {
+                    // 本地玩家武器炸了的音效 
+                    if(gameObject == NetworkClient.localPlayer.gameObject)
+                    {
+                        // 写在这里
+                    }
                     DestroyWeapon(weapon);
                 }
             }
@@ -379,6 +384,11 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
                 var weapon = controller.Player.DropPlayerRightHandWeapon(transform.position);
                 if (weapon)
                 {
+                    // 本地玩家武器炸了的音效 
+                    if (gameObject == NetworkClient.localPlayer.gameObject)
+                    {
+                        // 写在这里
+                    }
                     DestroyWeapon(weapon);
                 }
             }
