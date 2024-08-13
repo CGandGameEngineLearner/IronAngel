@@ -365,7 +365,7 @@ public class PlayerController : NetworkBehaviour
             {
                 m_BaseProperties.m_Properties.m_Energy -= m_Power[3];
             }
-            StartCoroutine(SpecFire(m_Player.GetPlayer(), WeaponType.SPRocketPodLuncher, m_Player.GetPlayerPosition(), (m_InputController.GetMousePositionInWorldSpace(m_CameraController.GetCamera()) - m_Player.GetPlayerPosition()).normalized));
+            StartCoroutine(SpecFire());
         });
         m_InputController.AddPerformedActionToPower_5(() =>
         {
@@ -376,11 +376,11 @@ public class PlayerController : NetworkBehaviour
         });
     }
 
-    IEnumerator SpecFire(GameObject character, WeaponType type, Vector3 start, Vector3 dir)
+    IEnumerator SpecFire()
     {
         for(int i = 0; i < 10; i++)
         {
-            CmdSpecFire(character, type, start, dir);
+            CmdSpecFire(m_Player.GetPlayer(), WeaponType.SPRocketPodLuncher, m_Player.GetPlayerPosition(), (m_InputController.GetMousePositionInWorldSpace(m_CameraController.GetCamera()) - m_Player.GetPlayerPosition()).normalized);
             yield return new WaitForSeconds(0.5f); ;
         }
         yield return null;

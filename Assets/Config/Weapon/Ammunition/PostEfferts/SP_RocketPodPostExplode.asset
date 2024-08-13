@@ -13,14 +13,14 @@ MonoBehaviour:
   m_Name: SP_RocketPodPostExplode
   m_EditorClassIdentifier: 
   m_Prefab: {fileID: 8422378306381297977, guid: 329f2e277d1fde14eb9225b390273d32, type: 3}
-  m_MinPoolSize: 0
-  m_MaxPoolSize: 0
+  m_MinPoolSize: 10
+  m_MaxPoolSize: 30
   isAuto: 0
   m_Speed: 0
   m_LifeDistance: 0
-  m_Damage: 40
+  m_Damage: 400
   m_PostAmmunitionType: 14
-  m_IsExplodeDamage: 0
+  m_IsExplodeDamage: 1
   sigma: 0
   fallout: 0
   minDamage: 0
