@@ -136,7 +136,6 @@ public class LevelManager : NetworkBehaviour
     public void Start()
     {
         m_Audio = FindObjectOfType<EnvironmentAudioManager>();
-        
     }
 
     public void StartBattleZoneWave(WaveConfig enemyWaveConfig, List<GameObject> invisibleWall)

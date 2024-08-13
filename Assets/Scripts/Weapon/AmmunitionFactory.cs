@@ -243,8 +243,7 @@ public class AmmunitionFactory
                     // 碎屑
                     VfxPool.Instance.GetVfx(ammunitionConfig.scrapType, ammunition.transform.position, randomRotation);
                     // 爆炸
-                    VfxPool.Instance.GetVfx(ammunitionConfig.hitVfxType, ammunition.transform.position,
-                        Quaternion.identity);
+                    VfxPool.Instance.GetVfx(ammunitionConfig.hitVfxType, ammunition.transform.position, Quaternion.identity);
                 }
             }
         }
