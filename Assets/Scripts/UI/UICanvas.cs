@@ -83,6 +83,9 @@ public class UICanvas : MonoBehaviour
         m_PropertiesUI.gameObject.SetActive(false);
         m_PauseMenu.gameObject.SetActive(false);
         m_StartMenu.gameObject.SetActive(true);
+        
+        // 发事件来切换音乐
+        EventCenter.Broadcast(EventType.ChangeScene);
     }
 
     public void ShowPauseMenu(bool val)

@@ -46391,14 +46391,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1477924843}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 66.26, y: -31.34, z: 0.022265006}
+  m_LocalRotation: {x: -0, y: -0.017451515, z: -0, w: 0.99984777}
+  m_LocalPosition: {x: 66.26, y: -31.339996, z: 0.022265017}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 761191182}
   m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -2, z: 0}
 --- !u!212 &1477924845
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -67739,6 +67739,70 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1227052512424862531, guid: a2be8ac903b22c049ba304072706a58e, type: 3}
+      propertyPath: WeaponSpawnSettings.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1227052512424862531, guid: a2be8ac903b22c049ba304072706a58e, type: 3}
+      propertyPath: WeaponSpawnSettings.Array.data[0].Position.x
+      value: -4.0376315
+      objectReference: {fileID: 0}
+    - target: {fileID: 1227052512424862531, guid: a2be8ac903b22c049ba304072706a58e, type: 3}
+      propertyPath: WeaponSpawnSettings.Array.data[0].Position.y
+      value: 32.995083
+      objectReference: {fileID: 0}
+    - target: {fileID: 1227052512424862531, guid: a2be8ac903b22c049ba304072706a58e, type: 3}
+      propertyPath: WeaponSpawnSettings.Array.data[0].WeaponType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1227052512424862531, guid: a2be8ac903b22c049ba304072706a58e, type: 3}
+      propertyPath: WeaponSpawnSettings.Array.data[1].Position.x
+      value: -0.030988693
+      objectReference: {fileID: 0}
+    - target: {fileID: 1227052512424862531, guid: a2be8ac903b22c049ba304072706a58e, type: 3}
+      propertyPath: WeaponSpawnSettings.Array.data[1].Position.y
+      value: 33.05444
+      objectReference: {fileID: 0}
+    - target: {fileID: 1227052512424862531, guid: a2be8ac903b22c049ba304072706a58e, type: 3}
+      propertyPath: WeaponSpawnSettings.Array.data[1].WeaponType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1227052512424862531, guid: a2be8ac903b22c049ba304072706a58e, type: 3}
+      propertyPath: WeaponSpawnSettings.Array.data[2].Position.x
+      value: -1.968277
+      objectReference: {fileID: 0}
+    - target: {fileID: 1227052512424862531, guid: a2be8ac903b22c049ba304072706a58e, type: 3}
+      propertyPath: WeaponSpawnSettings.Array.data[2].Position.y
+      value: 60.710262
+      objectReference: {fileID: 0}
+    - target: {fileID: 1227052512424862531, guid: a2be8ac903b22c049ba304072706a58e, type: 3}
+      propertyPath: WeaponSpawnSettings.Array.data[2].WeaponType
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1227052512424862531, guid: a2be8ac903b22c049ba304072706a58e, type: 3}
+      propertyPath: WeaponSpawnSettings.Array.data[3].Position.x
+      value: 7.9391174
+      objectReference: {fileID: 0}
+    - target: {fileID: 1227052512424862531, guid: a2be8ac903b22c049ba304072706a58e, type: 3}
+      propertyPath: WeaponSpawnSettings.Array.data[3].Position.y
+      value: 116.35803
+      objectReference: {fileID: 0}
+    - target: {fileID: 1227052512424862531, guid: a2be8ac903b22c049ba304072706a58e, type: 3}
+      propertyPath: WeaponSpawnSettings.Array.data[3].WeaponType
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1227052512424862531, guid: a2be8ac903b22c049ba304072706a58e, type: 3}
+      propertyPath: WeaponSpawnSettings.Array.data[4].Position.x
+      value: 11.955099
+      objectReference: {fileID: 0}
+    - target: {fileID: 1227052512424862531, guid: a2be8ac903b22c049ba304072706a58e, type: 3}
+      propertyPath: WeaponSpawnSettings.Array.data[4].Position.y
+      value: 116.157234
+      objectReference: {fileID: 0}
+    - target: {fileID: 1227052512424862531, guid: a2be8ac903b22c049ba304072706a58e, type: 3}
+      propertyPath: WeaponSpawnSettings.Array.data[4].WeaponType
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 1367431619645190377, guid: a2be8ac903b22c049ba304072706a58e, type: 3}
       propertyPath: sceneId
       value: 2056205057
