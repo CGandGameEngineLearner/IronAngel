@@ -77,6 +77,12 @@ namespace IronAngel
         
             return damage;
         }
+
+        public static Vector3 RandomDirection2D()
+        {
+            Vector3 dir = new Vector3(UnityEngine.Random.Range(-1.0f,1.0f),UnityEngine.Random.Range(-1.0f,1.0f),0);
+            return dir.normalized;
+        }
     }
 }
 
