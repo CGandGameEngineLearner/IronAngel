@@ -26,6 +26,7 @@ public class PlayerController : NetworkBehaviour
     public List<int> m_Power;
     public List<AudioClip> m_PowerAudios;
     public AudioClip m_WeaponBrokenAudio;
+    public AudioClip m_EmptyWeapon;
     //  public------------------------------------------
     public Player Player
     {
@@ -60,8 +61,9 @@ public class PlayerController : NetworkBehaviour
 
         m_Power = setting._PowerLimit;
         m_FireDistance = setting._FireDistance;
-        m_PowerAudios = setting._AudioClips;
+        m_PowerAudios = setting._PowerAudioClips;
         m_WeaponBrokenAudio = setting._WeaponBroken;
+        m_EmptyWeapon = setting.m_EmptyWeapon;
 
 
         m_CameraController.Init(Camera.main, GameObject.FindAnyObjectByType<CinemachineVirtualCamera>().GetComponent<CinemachineVirtualCamera>(), GameObject.FindWithTag("CameraTarget").transform, setting._CameraMinDistance, setting._CameraMaxDistance);
@@ -356,6 +358,8 @@ public class PlayerController : NetworkBehaviour
             StartCoroutine(SpecFire());
         });
     }
+
+ 
 
     IEnumerator SpecFire()
     {
