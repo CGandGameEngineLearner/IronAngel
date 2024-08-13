@@ -52,6 +52,7 @@ public class PlayerHand
             m_PlayerLeftHand.SetActive(true);
             m_BaseProperties.m_Properties.m_LeftHandWeaponHP = obj.GetComponent<WeaponInstance>().GetWeaponHP();
             m_BaseProperties.m_Properties.m_LeftHandWeaponCurrentHP = obj.GetComponent<WeaponInstance>().GetWeaponCurrentHP();
+            obj.GetComponent<WeaponInstance>().ResetRestTime();
             m_BaseProperties.m_Properties.m_LeftWeaponGO = m_ObjectInLeftHand;
             obj.transform.SetParent(m_PlayerLeftHand.transform);
             obj.transform.localPosition = Vector3.zero;
@@ -72,6 +73,7 @@ public class PlayerHand
             m_PlayerRightHand.SetActive(true);
             m_BaseProperties.m_Properties.m_RightHandWeaponHP = obj.GetComponent<WeaponInstance>().GetWeaponHP();
             m_BaseProperties.m_Properties.m_RightHandWeaponCurrentHP = obj.GetComponent<WeaponInstance>().GetWeaponCurrentHP();
+            obj.GetComponent<WeaponInstance>().ResetRestTime();
             m_BaseProperties.m_Properties.m_RightWeaponGO = m_ObjectInRightHand;
             obj.transform.SetParent (m_PlayerRightHand.transform);
             obj.transform.localPosition = Vector3.zero;

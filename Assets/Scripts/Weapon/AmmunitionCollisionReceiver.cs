@@ -308,6 +308,14 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
                 VfxPool.Instance.GetVfx(m_Properties.DiedVFX, gameObject.transform.position, gameObject.transform.rotation);
             }
             
+            // 死亡音效
+            var audioSource = gameObject.GetComponent<AudioSource>();
+            if (audioSource!=null&&m_Properties.DiedAudioClip!=null)
+            {
+                audioSource.clip = m_Properties.DiedAudioClip;
+                audioSource.Play();
+            }
+            
             
             gameObject.SetActive(false);
             EventCenter.Broadcast<GameObject>(EventType.CharacterDied, gameObject);
