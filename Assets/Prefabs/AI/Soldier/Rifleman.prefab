@@ -436,8 +436,8 @@ MonoBehaviour:
         byteData: 
         byteDataArray: 
       Version: 1.7.9
-  gizmoViewMode: 2
-  showBehaviorDesignerGizmo: 1
+  gizmoViewMode: 0
+  showBehaviorDesignerGizmo: 0
 --- !u!114 &5068676805691518248
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -472,8 +472,8 @@ MonoBehaviour:
   m_AutoAvoid_Probability: 0
   m_AutoAvoid_RestTimes: 0
   m_TokenWeight: 0.3
-  m_RangeOfAimingError: 1
-  m_LeftHandWeaponAttackingDuration: 1.5
+  m_RangeOfAimingError: 2
+  m_LeftHandWeaponAttackingDuration: 1.3
   m_RightHandWeaponAttackingDuration: 0
   m_ProbabilityOfLeftWeapon: 1
   m_ProbabilityOfRightWeapon: 0
@@ -1110,7 +1110,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8831764633733023275
 Transform:
   m_ObjectHideFlags: 0
