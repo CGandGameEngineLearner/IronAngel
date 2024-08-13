@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waveConfigs:
   - enemyListConfigs:
-    - enemyPrefab: {fileID: 2483032008555634172, guid: 9ce5cfdcaf248f742a786eb3ebecc5ae, type: 3}
-      spawnPosition: {x: 3.867216, y: 7.819974, z: 0}
+    - enemyPrefab: {fileID: 2195872794582507982, guid: 0a29e43cc88b19d4689866b4821b5444, type: 3}
+      spawnPosition: {x: -39.156322, y: -22.71764, z: 0}
     onFieldEnemyCount: 1
     dialogStructs: []
     waveDelay: 0
