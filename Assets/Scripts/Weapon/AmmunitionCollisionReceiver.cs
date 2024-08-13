@@ -132,10 +132,13 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
         NoticeBuff(config.m_EffectBuff);
 
 
-        
+        data.m_isShake = false;
+        if(config.m_IsExplodeDamage)
+        {
+            data.m_isShake = true;
+        }
 
         int damage = config.m_Damage;
-
 
         // 有能量护盾
         // 直接结算
@@ -268,6 +271,15 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
         m_Properties.m_Properties.m_EnergyShieldCount = data.m_EnergyShieldCount;
         m_Properties.m_Properties.m_LeftHandWeaponCurrentHP = data.m_LeftHandWeaponHP;
         m_Properties.m_Properties.m_RightHandWeaponCurrentHP = data.m_RightHandWeaponHP;
+        // 受击效果
+        if(NetworkClient.localPlayer != null && data.m_isShake)
+        {
+            if(NetworkClient.localPlayer.TryGetComponent<PlayerController>(out var con))
+            {
+                con.CameraController.ShakeCameraPosition(0.3f, new Vector3(UnityEngine.Random.Range(0.0f, 1.5f), UnityEngine.Random.Range(0.0f, 1.5f), 0));
+                con.CameraController.ShakeCameraRotation(0.3f, UnityEngine.Random.Range(0.0f, 5f));
+            }
+        }
         // 被记录在WeaponInstance里的当前武器血量只有在玩家手上才会更改
         if (TryGetComponent<PlayerController>(out var playerController))
         {
@@ -294,6 +306,14 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
             {
                 // 播放死亡特效
                 VfxPool.Instance.GetVfx(m_Properties.DiedVFX, gameObject.transform.position, gameObject.transform.rotation);
+            }
+            
+            // 死亡音效
+            var audioSource = gameObject.GetComponent<AudioSource>();
+            if (audioSource!=null&&m_Properties.DiedAudioClip!=null)
+            {
+                audioSource.clip = m_Properties.DiedAudioClip;
+                audioSource.Play();
             }
             
             
@@ -440,5 +460,5 @@ public struct DamageData
     public int m_EnergyShieldCount;
     public int m_LeftHandWeaponHP;
     public int m_RightHandWeaponHP;
-
+    public bool m_isShake;
 }

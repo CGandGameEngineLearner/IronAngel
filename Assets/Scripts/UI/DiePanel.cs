@@ -12,7 +12,7 @@ public class DiePanel : MonoBehaviour
 
     public void OnBackToStartMenu()
     {
-        if (NetworkClient.localPlayer != null)
+        if (NetworkClient.localPlayer != null||!NetworkClient.isConnected)
         {
 
             UICanvas.Instance.BackToStartMenu();
@@ -30,10 +30,17 @@ public class DiePanel : MonoBehaviour
         string sectionName = section == -1
             ? levelSwitchConfig.basementName
             : levelSwitchConfig.levelStruct[level].sectionName[section];
-
-
-
+        
         SceneManager.LoadScene(sectionName);
+        
+        if (NetworkServer.active || NetworkClient.isConnected)
+        {
+            NetworkManager networkManager = GameObject.FindAnyObjectByType<NetworkManager>();
+            networkManager.StopClient();
+            networkManager.StopHost();
+            networkManager.StopServer();
+        }
+        
         UICanvas.Instance.DiePanel.gameObject.SetActive(false);
         UICanvas.Instance.PropertiesUI.gameObject.SetActive(true);
     }

@@ -119,7 +119,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.24387956, y: 0.0056716353}
+  m_Offset: {x: 0.6737009, y: -0.4069569}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0.5}
@@ -130,7 +130,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.5122409, y: 0.8071649}
+  m_Size: {x: 0.35750508, y: 0.34868884}
   m_EdgeRadius: 0
 --- !u!114 &6295283052506457838
 MonoBehaviour:
@@ -491,8 +491,8 @@ MonoBehaviour:
   m_WallLayer:
     serializedVersion: 2
     m_Bits: 512
-  m_DashSpeed: 7
-  m_DashDuration: 3
+  m_DashSpeed: 18
+  m_DashDuration: 1
   m_EngagementDistance: 9
   m_ObstacleAvoidanceDistance: 3
 --- !u!58 &7549400497388090286
@@ -634,7 +634,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.19951087}
+  m_Offset: {x: -0.024070084, y: -0.092767626}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -645,7 +645,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.39902174}
+  m_Size: {x: 1.2682089, y: 0.98357874}
   m_EdgeRadius: 0
 --- !u!114 &6156403838176766774
 MonoBehaviour:
@@ -685,7 +685,7 @@ MonoBehaviour:
   syncInterval: 0
   m_Properties:
     m_Energy: 55
-    m_BaseHP: 250
+    m_BaseHP: 750
     m_LeftHandWeaponHP: 250
     m_LeftHandWeaponCurrentHP: 0
     m_RightHandWeaponHP: 250
@@ -717,7 +717,7 @@ NavMeshAgent:
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
-  m_AngularSpeed: 90
+  m_AngularSpeed: 110
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
@@ -1174,7 +1174,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.16731267, y: 0.0075621605}
+  m_Offset: {x: -0.23242112, y: -0.4652413}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0.5}
@@ -1185,7 +1185,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.60865843, y: 0.8865676}
+  m_Size: {x: 0.30778357, y: 0.4108987}
   m_EdgeRadius: 0
 --- !u!114 &699120794273678250
 MonoBehaviour:

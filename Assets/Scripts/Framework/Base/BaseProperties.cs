@@ -12,6 +12,9 @@ public class BaseProperties : NetworkBehaviour
 
     [Tooltip("死亡特效种类")]
     public VfxType DiedVFX;
+
+    [Tooltip("死亡音效")]
+    public AudioClip DiedAudioClip;
 }
 
 /// <summary>
