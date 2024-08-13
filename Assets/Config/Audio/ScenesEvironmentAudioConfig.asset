@@ -16,8 +16,8 @@ MonoBehaviour:
   - m_SceneName: StartMenu
     m_EPlayModeOfEvironmentAudio: 1
     m_Loop: 1
-    m_AudioClip: {fileID: 8300000, guid: 52cfc6f25e40fea45ab95383d06113e9, type: 3}
+    m_AudioClip: {fileID: 8300000, guid: c3b3bcac29f7a9642928d19e652fa226, type: 3}
   - m_SceneName: Basement
-    m_EPlayModeOfEvironmentAudio: 1
+    m_EPlayModeOfEvironmentAudio: 2
     m_Loop: 1
-    m_AudioClip: {fileID: 8300000, guid: 52cfc6f25e40fea45ab95383d06113e9, type: 3}
+    m_AudioClip: {fileID: 8300000, guid: 8684f8436ce33154f9e4a6ab7047c87a, type: 3}

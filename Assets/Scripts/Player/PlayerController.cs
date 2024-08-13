@@ -367,13 +367,6 @@ public class PlayerController : NetworkBehaviour
             }
             StartCoroutine(SpecFire());
         });
-        m_InputController.AddPerformedActionToPower_5(() =>
-        {
-            if (m_Power.Count > 3 && m_BaseProperties.m_Properties.m_Energy >= m_Power[4])
-            {
-                m_BaseProperties.m_Properties.m_Energy -= m_Power[4];
-            }
-        });
     }
 
     IEnumerator SpecFire()
