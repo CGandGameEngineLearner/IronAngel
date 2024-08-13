@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 832d582905de4b3aaebabbb4346a6e4d, type: 3}
-  m_Name: ARRiffleGun
+  m_Name: AR_RiffleGun
   m_EditorClassIdentifier: 
   m_Prefab: {fileID: 5021276108613369794, guid: be4125cae762b4f4082cc0953d1b1283, type: 3}
   m_MinPoolSize: 50
@@ -25,5 +25,5 @@ MonoBehaviour:
   m_SpreadAngle: 0
   m_ShotSpreadAngle: 0
   laserPointerWidth: 0.2
-  m_AttackPreCastDelay: 0
+  m_AttackPreCastDelay: 1
   m_FireVfxType: 0
