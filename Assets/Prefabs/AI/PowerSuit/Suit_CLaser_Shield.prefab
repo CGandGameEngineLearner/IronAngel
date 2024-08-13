@@ -369,7 +369,7 @@ MonoBehaviour:
     m_DropWeapon_CharacterDied: 1
     m_CoreSprite: {fileID: 0}
   DiedVFX: 28
-  DiedAudioClip: {fileID: 0}
+  DiedAudioClip: {fileID: 8300000, guid: 3c7ed4651ee040c419f1c8b407600745, type: 3}
 --- !u!195 &6469044780402769639
 NavMeshAgent:
   m_ObjectHideFlags: 0
