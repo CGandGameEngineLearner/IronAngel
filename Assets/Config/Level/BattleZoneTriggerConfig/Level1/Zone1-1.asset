@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waveConfigs:
   - enemyListConfigs:
-    - enemyPrefab: {fileID: 2195872794582507982, guid: 9ce5cfdcaf248f742a786eb3ebecc5ae, type: 3}
+    - enemyPrefab: {fileID: 2483032008555634172, guid: 9ce5cfdcaf248f742a786eb3ebecc5ae, type: 3}
       spawnPosition: {x: -4.1869607, y: 42.846886, z: 0}
-    - enemyPrefab: {fileID: 2195872794582507982, guid: 9ce5cfdcaf248f742a786eb3ebecc5ae, type: 3}
+    - enemyPrefab: {fileID: 2483032008555634172, guid: 9ce5cfdcaf248f742a786eb3ebecc5ae, type: 3}
       spawnPosition: {x: 4.0027094, y: 44.153214, z: 0}
-    - enemyPrefab: {fileID: 2195872794582507982, guid: 9ce5cfdcaf248f742a786eb3ebecc5ae, type: 3}
+    - enemyPrefab: {fileID: 2483032008555634172, guid: 9ce5cfdcaf248f742a786eb3ebecc5ae, type: 3}
       spawnPosition: {x: 11.840675, y: 41.791775, z: 0}
     onFieldEnemyCount: 3
     dialogStructs:

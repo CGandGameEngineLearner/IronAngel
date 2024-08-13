@@ -14,47 +14,47 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waveConfigs:
   - enemyListConfigs:
-    - enemyPrefab: {fileID: 2195872794582507982, guid: f4e6249ca37e15e4196a98abb13f0917, type: 3}
+    - enemyPrefab: {fileID: 1157686176795255648, guid: f4e6249ca37e15e4196a98abb13f0917, type: 3}
       spawnPosition: {x: -42.147743, y: 2.8139868, z: 0}
-    - enemyPrefab: {fileID: 2195872794582507982, guid: f65dee11a7d78b1419d164a007840369, type: 3}
+    - enemyPrefab: {fileID: 265621177695738335, guid: f65dee11a7d78b1419d164a007840369, type: 3}
       spawnPosition: {x: -34.008472, y: 3.3326652, z: 0}
-    - enemyPrefab: {fileID: 2195872794582507982, guid: 534df9d583bbf1645a9094310e2122e8, type: 3}
+    - enemyPrefab: {fileID: 3269898915944577015, guid: 534df9d583bbf1645a9094310e2122e8, type: 3}
       spawnPosition: {x: -41.629066, y: 6.125554, z: 0}
-    - enemyPrefab: {fileID: 2195872794582507982, guid: 9ce5cfdcaf248f742a786eb3ebecc5ae, type: 3}
+    - enemyPrefab: {fileID: 2483032008555634172, guid: 9ce5cfdcaf248f742a786eb3ebecc5ae, type: 3}
       spawnPosition: {x: -36.282684, y: 5.9659615, z: 0}
-    - enemyPrefab: {fileID: 2195872794582507982, guid: 9ce5cfdcaf248f742a786eb3ebecc5ae, type: 3}
+    - enemyPrefab: {fileID: 2483032008555634172, guid: 9ce5cfdcaf248f742a786eb3ebecc5ae, type: 3}
       spawnPosition: {x: -35.40492, y: 8.439661, z: 0}
-    - enemyPrefab: {fileID: 2195872794582507982, guid: 9ce5cfdcaf248f742a786eb3ebecc5ae, type: 3}
+    - enemyPrefab: {fileID: 2483032008555634172, guid: 9ce5cfdcaf248f742a786eb3ebecc5ae, type: 3}
       spawnPosition: {x: -42.586628, y: 8.439661, z: 0}
-    - enemyPrefab: {fileID: 2195872794582507982, guid: 9ce5cfdcaf248f742a786eb3ebecc5ae, type: 3}
+    - enemyPrefab: {fileID: 2483032008555634172, guid: 9ce5cfdcaf248f742a786eb3ebecc5ae, type: 3}
       spawnPosition: {x: -45.339615, y: 7.5219994, z: 0}
-    - enemyPrefab: {fileID: 2195872794582507982, guid: f4e6249ca37e15e4196a98abb13f0917, type: 3}
+    - enemyPrefab: {fileID: 1157686176795255648, guid: f4e6249ca37e15e4196a98abb13f0917, type: 3}
       spawnPosition: {x: 18.572153, y: 5.5076866, z: 0}
-    - enemyPrefab: {fileID: 2195872794582507982, guid: f65dee11a7d78b1419d164a007840369, type: 3}
+    - enemyPrefab: {fileID: 265621177695738335, guid: f65dee11a7d78b1419d164a007840369, type: 3}
       spawnPosition: {x: 25.510202, y: 5.0403557, z: 0}
-    - enemyPrefab: {fileID: 2195872794582507982, guid: 534df9d583bbf1645a9094310e2122e8, type: 3}
+    - enemyPrefab: {fileID: 3269898915944577015, guid: 534df9d583bbf1645a9094310e2122e8, type: 3}
       spawnPosition: {x: 22.418638, y: 8.527355, z: 0}
-    - enemyPrefab: {fileID: 2195872794582507982, guid: 9ce5cfdcaf248f742a786eb3ebecc5ae, type: 3}
+    - enemyPrefab: {fileID: 2483032008555634172, guid: 9ce5cfdcaf248f742a786eb3ebecc5ae, type: 3}
       spawnPosition: {x: 20.836905, y: 10.97185, z: 0}
-    - enemyPrefab: {fileID: 2195872794582507982, guid: 9ce5cfdcaf248f742a786eb3ebecc5ae, type: 3}
+    - enemyPrefab: {fileID: 2483032008555634172, guid: 9ce5cfdcaf248f742a786eb3ebecc5ae, type: 3}
       spawnPosition: {x: 23.71278, y: -0.5676048, z: 0}
-    - enemyPrefab: {fileID: 2195872794582507982, guid: 9ce5cfdcaf248f742a786eb3ebecc5ae, type: 3}
+    - enemyPrefab: {fileID: 2483032008555634172, guid: 9ce5cfdcaf248f742a786eb3ebecc5ae, type: 3}
       spawnPosition: {x: 46.360306, y: 11.582961, z: 0}
-    - enemyPrefab: {fileID: 2195872794582507982, guid: 9ce5cfdcaf248f742a786eb3ebecc5ae, type: 3}
+    - enemyPrefab: {fileID: 2483032008555634172, guid: 9ce5cfdcaf248f742a786eb3ebecc5ae, type: 3}
       spawnPosition: {x: 45.892975, y: 9.929332, z: 0}
-    - enemyPrefab: {fileID: 2195872794582507982, guid: 9ce5cfdcaf248f742a786eb3ebecc5ae, type: 3}
+    - enemyPrefab: {fileID: 2483032008555634172, guid: 9ce5cfdcaf248f742a786eb3ebecc5ae, type: 3}
       spawnPosition: {x: 25.11477, y: 9.318221, z: 0}
-    - enemyPrefab: {fileID: 2195872794582507982, guid: 9ce5cfdcaf248f742a786eb3ebecc5ae, type: 3}
+    - enemyPrefab: {fileID: 2483032008555634172, guid: 9ce5cfdcaf248f742a786eb3ebecc5ae, type: 3}
       spawnPosition: {x: -62.896553, y: 9.5588045, z: 0}
-    - enemyPrefab: {fileID: 2195872794582507982, guid: 9ce5cfdcaf248f742a786eb3ebecc5ae, type: 3}
+    - enemyPrefab: {fileID: 2483032008555634172, guid: 9ce5cfdcaf248f742a786eb3ebecc5ae, type: 3}
       spawnPosition: {x: -63.03095, y: 12.649887, z: 0}
-    - enemyPrefab: {fileID: 2195872794582507982, guid: f65dee11a7d78b1419d164a007840369, type: 3}
+    - enemyPrefab: {fileID: 265621177695738335, guid: f65dee11a7d78b1419d164a007840369, type: 3}
       spawnPosition: {x: 25.11477, y: 9.318221, z: 0}
-    - enemyPrefab: {fileID: 2195872794582507982, guid: f65dee11a7d78b1419d164a007840369, type: 3}
+    - enemyPrefab: {fileID: 265621177695738335, guid: f65dee11a7d78b1419d164a007840369, type: 3}
       spawnPosition: {x: 49.23358, y: 10.185985, z: 0}
-    - enemyPrefab: {fileID: 2195872794582507982, guid: f4e6249ca37e15e4196a98abb13f0917, type: 3}
+    - enemyPrefab: {fileID: 1157686176795255648, guid: f4e6249ca37e15e4196a98abb13f0917, type: 3}
       spawnPosition: {x: -65.98765, y: 7.6324825, z: 0}
-    - enemyPrefab: {fileID: 2195872794582507982, guid: f4e6249ca37e15e4196a98abb13f0917, type: 3}
+    - enemyPrefab: {fileID: 1157686176795255648, guid: f4e6249ca37e15e4196a98abb13f0917, type: 3}
       spawnPosition: {x: -65.67406, y: 12.605091, z: 0}
     onFieldEnemyCount: 12
     dialogStructs:
@@ -71,6 +71,7 @@ MonoBehaviour:
       time: 2
       delayTime: 1
     waveDelay: 4
+    thisWaveBGM: {fileID: 0}
   - enemyListConfigs:
     - enemyPrefab: {fileID: 2195872794582507982, guid: f4e6249ca37e15e4196a98abb13f0917, type: 3}
       spawnPosition: {x: -61.262596, y: -36.796333, z: 0}
@@ -124,6 +125,7 @@ MonoBehaviour:
       time: 2
       delayTime: 1
     waveDelay: 10
+    thisWaveBGM: {fileID: 0}
   - enemyListConfigs:
     - enemyPrefab: {fileID: 2195872794582507982, guid: e2d872d0cdcd43a479143816197ffced, type: 3}
       spawnPosition: {x: 47.50564, y: 11.798571, z: 0}
@@ -151,6 +153,7 @@ MonoBehaviour:
       time: 2
       delayTime: 1
     waveDelay: 0
+    thisWaveBGM: {fileID: 0}
   - enemyListConfigs:
     - enemyPrefab: {fileID: 2195872794582507982, guid: e2d872d0cdcd43a479143816197ffced, type: 3}
       spawnPosition: {x: 47.50564, y: 11.798571, z: 0}
@@ -178,6 +181,7 @@ MonoBehaviour:
       time: 2
       delayTime: 1
     waveDelay: 0
+    thisWaveBGM: {fileID: 0}
   - enemyListConfigs:
     - enemyPrefab: {fileID: 2195872794582507982, guid: e2d872d0cdcd43a479143816197ffced, type: 3}
       spawnPosition: {x: 47.50564, y: 11.798571, z: 0}
@@ -205,6 +209,7 @@ MonoBehaviour:
       time: 2
       delayTime: 1
     waveDelay: 0
+    thisWaveBGM: {fileID: 0}
   - enemyListConfigs:
     - enemyPrefab: {fileID: 2195872794582507982, guid: e2d872d0cdcd43a479143816197ffced, type: 3}
       spawnPosition: {x: 47.50564, y: 11.798571, z: 0}
@@ -232,6 +237,7 @@ MonoBehaviour:
       time: 2
       delayTime: 1
     waveDelay: 0
+    thisWaveBGM: {fileID: 0}
   - enemyListConfigs:
     - enemyPrefab: {fileID: 2195872794582507982, guid: e2d872d0cdcd43a479143816197ffced, type: 3}
       spawnPosition: {x: 47.50564, y: 11.798571, z: 0}
@@ -259,6 +265,7 @@ MonoBehaviour:
       time: 2
       delayTime: 1
     waveDelay: 0
+    thisWaveBGM: {fileID: 0}
   - enemyListConfigs:
     - enemyPrefab: {fileID: 2195872794582507982, guid: e2d872d0cdcd43a479143816197ffced, type: 3}
       spawnPosition: {x: 47.50564, y: 11.798571, z: 0}
@@ -286,6 +293,7 @@ MonoBehaviour:
       time: 2
       delayTime: 1
     waveDelay: 0
+    thisWaveBGM: {fileID: 0}
   - enemyListConfigs:
     - enemyPrefab: {fileID: 2195872794582507982, guid: e2d872d0cdcd43a479143816197ffced, type: 3}
       spawnPosition: {x: 47.50564, y: 11.798571, z: 0}
@@ -313,6 +321,7 @@ MonoBehaviour:
       time: 2
       delayTime: 1
     waveDelay: 0
+    thisWaveBGM: {fileID: 0}
   - enemyListConfigs:
     - enemyPrefab: {fileID: 2195872794582507982, guid: e2d872d0cdcd43a479143816197ffced, type: 3}
       spawnPosition: {x: 47.50564, y: 11.798571, z: 0}
@@ -340,6 +349,7 @@ MonoBehaviour:
       time: 2
       delayTime: 1
     waveDelay: 0
+    thisWaveBGM: {fileID: 0}
   - enemyListConfigs:
     - enemyPrefab: {fileID: 2195872794582507982, guid: e2d872d0cdcd43a479143816197ffced, type: 3}
       spawnPosition: {x: 47.50564, y: 11.798571, z: 0}
@@ -367,6 +377,7 @@ MonoBehaviour:
       time: 2
       delayTime: 1
     waveDelay: 0
+    thisWaveBGM: {fileID: 0}
   - enemyListConfigs:
     - enemyPrefab: {fileID: 2195872794582507982, guid: e2d872d0cdcd43a479143816197ffced, type: 3}
       spawnPosition: {x: 47.50564, y: 11.798571, z: 0}
@@ -394,6 +405,7 @@ MonoBehaviour:
       time: 2
       delayTime: 1
     waveDelay: 0
+    thisWaveBGM: {fileID: 0}
   - enemyListConfigs:
     - enemyPrefab: {fileID: 2195872794582507982, guid: e2d872d0cdcd43a479143816197ffced, type: 3}
       spawnPosition: {x: 47.50564, y: 11.798571, z: 0}
@@ -421,6 +433,7 @@ MonoBehaviour:
       time: 2
       delayTime: 1
     waveDelay: 0
+    thisWaveBGM: {fileID: 0}
   - enemyListConfigs:
     - enemyPrefab: {fileID: 2195872794582507982, guid: e2d872d0cdcd43a479143816197ffced, type: 3}
       spawnPosition: {x: 47.50564, y: 11.798571, z: 0}
@@ -448,6 +461,7 @@ MonoBehaviour:
       time: 2
       delayTime: 1
     waveDelay: 0
+    thisWaveBGM: {fileID: 0}
   - enemyListConfigs:
     - enemyPrefab: {fileID: 2195872794582507982, guid: e2d872d0cdcd43a479143816197ffced, type: 3}
       spawnPosition: {x: 47.50564, y: 11.798571, z: 0}
@@ -475,6 +489,7 @@ MonoBehaviour:
       time: 2
       delayTime: 1
     waveDelay: 0
+    thisWaveBGM: {fileID: 0}
   - enemyListConfigs:
     - enemyPrefab: {fileID: 2195872794582507982, guid: e2d872d0cdcd43a479143816197ffced, type: 3}
       spawnPosition: {x: 47.50564, y: 11.798571, z: 0}
@@ -502,6 +517,7 @@ MonoBehaviour:
       time: 2
       delayTime: 1
     waveDelay: 0
+    thisWaveBGM: {fileID: 0}
   - enemyListConfigs:
     - enemyPrefab: {fileID: 2195872794582507982, guid: e2d872d0cdcd43a479143816197ffced, type: 3}
       spawnPosition: {x: 47.50564, y: 11.798571, z: 0}
@@ -529,6 +545,7 @@ MonoBehaviour:
       time: 2
       delayTime: 1
     waveDelay: 0
+    thisWaveBGM: {fileID: 0}
   - enemyListConfigs:
     - enemyPrefab: {fileID: 2195872794582507982, guid: e2d872d0cdcd43a479143816197ffced, type: 3}
       spawnPosition: {x: 47.50564, y: 11.798571, z: 0}
@@ -556,6 +573,7 @@ MonoBehaviour:
       time: 2
       delayTime: 1
     waveDelay: 0
+    thisWaveBGM: {fileID: 0}
   - enemyListConfigs:
     - enemyPrefab: {fileID: 2195872794582507982, guid: e2d872d0cdcd43a479143816197ffced, type: 3}
       spawnPosition: {x: 47.50564, y: 11.798571, z: 0}
@@ -583,6 +601,7 @@ MonoBehaviour:
       time: 2
       delayTime: 1
     waveDelay: 0
+    thisWaveBGM: {fileID: 0}
   - enemyListConfigs:
     - enemyPrefab: {fileID: 2195872794582507982, guid: e2d872d0cdcd43a479143816197ffced, type: 3}
       spawnPosition: {x: 47.50564, y: 11.798571, z: 0}
@@ -610,6 +629,7 @@ MonoBehaviour:
       time: 2
       delayTime: 1
     waveDelay: 0
+    thisWaveBGM: {fileID: 0}
   - enemyListConfigs:
     - enemyPrefab: {fileID: 2195872794582507982, guid: e2d872d0cdcd43a479143816197ffced, type: 3}
       spawnPosition: {x: 47.50564, y: 11.798571, z: 0}
@@ -637,6 +657,7 @@ MonoBehaviour:
       time: 2
       delayTime: 1
     waveDelay: 0
+    thisWaveBGM: {fileID: 0}
   - enemyListConfigs:
     - enemyPrefab: {fileID: 2195872794582507982, guid: e2d872d0cdcd43a479143816197ffced, type: 3}
       spawnPosition: {x: 47.50564, y: 11.798571, z: 0}
@@ -664,6 +685,7 @@ MonoBehaviour:
       time: 2
       delayTime: 1
     waveDelay: 0
+    thisWaveBGM: {fileID: 0}
   - enemyListConfigs:
     - enemyPrefab: {fileID: 2195872794582507982, guid: e2d872d0cdcd43a479143816197ffced, type: 3}
       spawnPosition: {x: 47.50564, y: 11.798571, z: 0}
@@ -691,6 +713,7 @@ MonoBehaviour:
       time: 2
       delayTime: 1
     waveDelay: 0
+    thisWaveBGM: {fileID: 0}
   - enemyListConfigs:
     - enemyPrefab: {fileID: 2195872794582507982, guid: e2d872d0cdcd43a479143816197ffced, type: 3}
       spawnPosition: {x: 47.50564, y: 11.798571, z: 0}
@@ -718,6 +741,7 @@ MonoBehaviour:
       time: 2
       delayTime: 1
     waveDelay: 0
+    thisWaveBGM: {fileID: 0}
   - enemyListConfigs:
     - enemyPrefab: {fileID: 2195872794582507982, guid: e2d872d0cdcd43a479143816197ffced, type: 3}
       spawnPosition: {x: 47.50564, y: 11.798571, z: 0}
@@ -745,6 +769,7 @@ MonoBehaviour:
       time: 2
       delayTime: 1
     waveDelay: 0
+    thisWaveBGM: {fileID: 0}
   - enemyListConfigs:
     - enemyPrefab: {fileID: 2195872794582507982, guid: e2d872d0cdcd43a479143816197ffced, type: 3}
       spawnPosition: {x: 47.50564, y: 11.798571, z: 0}
@@ -772,6 +797,7 @@ MonoBehaviour:
       time: 2
       delayTime: 1
     waveDelay: 0
+    thisWaveBGM: {fileID: 0}
   - enemyListConfigs:
     - enemyPrefab: {fileID: 2195872794582507982, guid: e2d872d0cdcd43a479143816197ffced, type: 3}
       spawnPosition: {x: 47.50564, y: 11.798571, z: 0}
@@ -799,6 +825,7 @@ MonoBehaviour:
       time: 2
       delayTime: 1
     waveDelay: 0
+    thisWaveBGM: {fileID: 0}
   - enemyListConfigs:
     - enemyPrefab: {fileID: 2195872794582507982, guid: e2d872d0cdcd43a479143816197ffced, type: 3}
       spawnPosition: {x: 47.50564, y: 11.798571, z: 0}
@@ -826,6 +853,7 @@ MonoBehaviour:
       time: 2
       delayTime: 1
     waveDelay: 0
+    thisWaveBGM: {fileID: 0}
   - enemyListConfigs:
     - enemyPrefab: {fileID: 2195872794582507982, guid: e2d872d0cdcd43a479143816197ffced, type: 3}
       spawnPosition: {x: 47.50564, y: 11.798571, z: 0}
@@ -853,6 +881,7 @@ MonoBehaviour:
       time: 2
       delayTime: 1
     waveDelay: 0
+    thisWaveBGM: {fileID: 0}
   - enemyListConfigs:
     - enemyPrefab: {fileID: 2195872794582507982, guid: e2d872d0cdcd43a479143816197ffced, type: 3}
       spawnPosition: {x: 47.50564, y: 11.798571, z: 0}
@@ -880,6 +909,7 @@ MonoBehaviour:
       time: 2
       delayTime: 1
     waveDelay: 0
+    thisWaveBGM: {fileID: 0}
   - enemyListConfigs:
     - enemyPrefab: {fileID: 2195872794582507982, guid: e2d872d0cdcd43a479143816197ffced, type: 3}
       spawnPosition: {x: 47.50564, y: 11.798571, z: 0}
@@ -907,6 +937,7 @@ MonoBehaviour:
       time: 2
       delayTime: 1
     waveDelay: 0
+    thisWaveBGM: {fileID: 0}
   - enemyListConfigs:
     - enemyPrefab: {fileID: 2195872794582507982, guid: e2d872d0cdcd43a479143816197ffced, type: 3}
       spawnPosition: {x: 47.50564, y: 11.798571, z: 0}
@@ -934,6 +965,7 @@ MonoBehaviour:
       time: 2
       delayTime: 1
     waveDelay: 0
+    thisWaveBGM: {fileID: 0}
   - enemyListConfigs:
     - enemyPrefab: {fileID: 2195872794582507982, guid: e2d872d0cdcd43a479143816197ffced, type: 3}
       spawnPosition: {x: 47.50564, y: 11.798571, z: 0}
@@ -961,6 +993,7 @@ MonoBehaviour:
       time: 2
       delayTime: 1
     waveDelay: 0
+    thisWaveBGM: {fileID: 0}
   - enemyListConfigs:
     - enemyPrefab: {fileID: 2195872794582507982, guid: e2d872d0cdcd43a479143816197ffced, type: 3}
       spawnPosition: {x: 47.50564, y: 11.798571, z: 0}
@@ -988,6 +1021,7 @@ MonoBehaviour:
       time: 2
       delayTime: 1
     waveDelay: 0
+    thisWaveBGM: {fileID: 0}
   - enemyListConfigs:
     - enemyPrefab: {fileID: 2195872794582507982, guid: e2d872d0cdcd43a479143816197ffced, type: 3}
       spawnPosition: {x: 47.50564, y: 11.798571, z: 0}
@@ -1015,6 +1049,7 @@ MonoBehaviour:
       time: 2
       delayTime: 1
     waveDelay: 0
+    thisWaveBGM: {fileID: 0}
   - enemyListConfigs:
     - enemyPrefab: {fileID: 2195872794582507982, guid: e2d872d0cdcd43a479143816197ffced, type: 3}
       spawnPosition: {x: 47.50564, y: 11.798571, z: 0}
@@ -1042,6 +1077,7 @@ MonoBehaviour:
       time: 2
       delayTime: 1
     waveDelay: 0
+    thisWaveBGM: {fileID: 0}
   - enemyListConfigs:
     - enemyPrefab: {fileID: 2195872794582507982, guid: e2d872d0cdcd43a479143816197ffced, type: 3}
       spawnPosition: {x: 47.50564, y: 11.798571, z: 0}
@@ -1069,6 +1105,7 @@ MonoBehaviour:
       time: 2
       delayTime: 1
     waveDelay: 0
+    thisWaveBGM: {fileID: 0}
   - enemyListConfigs:
     - enemyPrefab: {fileID: 2195872794582507982, guid: e2d872d0cdcd43a479143816197ffced, type: 3}
       spawnPosition: {x: 47.50564, y: 11.798571, z: 0}
@@ -1096,6 +1133,7 @@ MonoBehaviour:
       time: 2
       delayTime: 1
     waveDelay: 0
+    thisWaveBGM: {fileID: 0}
   - enemyListConfigs:
     - enemyPrefab: {fileID: 2195872794582507982, guid: e2d872d0cdcd43a479143816197ffced, type: 3}
       spawnPosition: {x: 47.50564, y: 11.798571, z: 0}
@@ -1123,6 +1161,7 @@ MonoBehaviour:
       time: 2
       delayTime: 1
     waveDelay: 0
+    thisWaveBGM: {fileID: 0}
   - enemyListConfigs:
     - enemyPrefab: {fileID: 2195872794582507982, guid: e2d872d0cdcd43a479143816197ffced, type: 3}
       spawnPosition: {x: 47.50564, y: 11.798571, z: 0}
@@ -1150,6 +1189,7 @@ MonoBehaviour:
       time: 2
       delayTime: 1
     waveDelay: 0
+    thisWaveBGM: {fileID: 0}
   - enemyListConfigs:
     - enemyPrefab: {fileID: 2195872794582507982, guid: e2d872d0cdcd43a479143816197ffced, type: 3}
       spawnPosition: {x: 47.50564, y: 11.798571, z: 0}
@@ -1177,6 +1217,7 @@ MonoBehaviour:
       time: 2
       delayTime: 1
     waveDelay: 0
+    thisWaveBGM: {fileID: 0}
   - enemyListConfigs:
     - enemyPrefab: {fileID: 2195872794582507982, guid: e2d872d0cdcd43a479143816197ffced, type: 3}
       spawnPosition: {x: 47.50564, y: 11.798571, z: 0}
@@ -1204,6 +1245,7 @@ MonoBehaviour:
       time: 2
       delayTime: 1
     waveDelay: 0
+    thisWaveBGM: {fileID: 0}
   - enemyListConfigs:
     - enemyPrefab: {fileID: 2195872794582507982, guid: e2d872d0cdcd43a479143816197ffced, type: 3}
       spawnPosition: {x: 47.50564, y: 11.798571, z: 0}
@@ -1231,6 +1273,7 @@ MonoBehaviour:
       time: 2
       delayTime: 1
     waveDelay: 0
+    thisWaveBGM: {fileID: 0}
   - enemyListConfigs:
     - enemyPrefab: {fileID: 2195872794582507982, guid: e2d872d0cdcd43a479143816197ffced, type: 3}
       spawnPosition: {x: 47.50564, y: 11.798571, z: 0}
@@ -1258,6 +1301,7 @@ MonoBehaviour:
       time: 2
       delayTime: 1
     waveDelay: 0
+    thisWaveBGM: {fileID: 0}
   - enemyListConfigs:
     - enemyPrefab: {fileID: 2195872794582507982, guid: e2d872d0cdcd43a479143816197ffced, type: 3}
       spawnPosition: {x: 47.50564, y: 11.798571, z: 0}
@@ -1285,6 +1329,7 @@ MonoBehaviour:
       time: 2
       delayTime: 1
     waveDelay: 0
+    thisWaveBGM: {fileID: 0}
   - enemyListConfigs:
     - enemyPrefab: {fileID: 2195872794582507982, guid: e2d872d0cdcd43a479143816197ffced, type: 3}
       spawnPosition: {x: 47.50564, y: 11.798571, z: 0}
@@ -1312,6 +1357,7 @@ MonoBehaviour:
       time: 2
       delayTime: 1
     waveDelay: 0
+    thisWaveBGM: {fileID: 0}
   - enemyListConfigs:
     - enemyPrefab: {fileID: 2195872794582507982, guid: e2d872d0cdcd43a479143816197ffced, type: 3}
       spawnPosition: {x: 47.50564, y: 11.798571, z: 0}
@@ -1339,6 +1385,7 @@ MonoBehaviour:
       time: 2
       delayTime: 1
     waveDelay: 0
+    thisWaveBGM: {fileID: 0}
   - enemyListConfigs:
     - enemyPrefab: {fileID: 2195872794582507982, guid: e2d872d0cdcd43a479143816197ffced, type: 3}
       spawnPosition: {x: 47.50564, y: 11.798571, z: 0}
@@ -1366,6 +1413,7 @@ MonoBehaviour:
       time: 2
       delayTime: 1
     waveDelay: 0
+    thisWaveBGM: {fileID: 0}
   - enemyListConfigs:
     - enemyPrefab: {fileID: 2195872794582507982, guid: e2d872d0cdcd43a479143816197ffced, type: 3}
       spawnPosition: {x: 47.50564, y: 11.798571, z: 0}
@@ -1393,6 +1441,7 @@ MonoBehaviour:
       time: 2
       delayTime: 1
     waveDelay: 0
+    thisWaveBGM: {fileID: 0}
   - enemyListConfigs:
     - enemyPrefab: {fileID: 2195872794582507982, guid: e2d872d0cdcd43a479143816197ffced, type: 3}
       spawnPosition: {x: 47.50564, y: 11.798571, z: 0}
@@ -1420,6 +1469,7 @@ MonoBehaviour:
       time: 2
       delayTime: 1
     waveDelay: 0
+    thisWaveBGM: {fileID: 0}
   - enemyListConfigs:
     - enemyPrefab: {fileID: 2195872794582507982, guid: e2d872d0cdcd43a479143816197ffced, type: 3}
       spawnPosition: {x: 47.50564, y: 11.798571, z: 0}
@@ -1447,6 +1497,7 @@ MonoBehaviour:
       time: 2
       delayTime: 1
     waveDelay: 0
+    thisWaveBGM: {fileID: 0}
   - enemyListConfigs:
     - enemyPrefab: {fileID: 2195872794582507982, guid: e2d872d0cdcd43a479143816197ffced, type: 3}
       spawnPosition: {x: 47.50564, y: 11.798571, z: 0}
@@ -1474,3 +1525,4 @@ MonoBehaviour:
       time: 2
       delayTime: 1
     waveDelay: 0
+    thisWaveBGM: {fileID: 0}
