@@ -11388,6 +11388,7 @@ MonoBehaviour:
   m_OriProfile: {fileID: 11400000, guid: 234c8840e5e6d58418209ef242366908, type: 2}
   m_BloodProfile: {fileID: 11400000, guid: a8d811dac62d1aa44a9106d70cc9ba9d, type: 2}
   m_ChangeRate: 0.5
+  m_LowBloodAudio: {fileID: 0}
 --- !u!114 &2108055924
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11986,7 +11987,7 @@ PrefabInstance:
       objectReference: {fileID: 7899007317602492697, guid: b319a1beeb967194bbc9b9fa245fb3d7, type: 3}
     - target: {fileID: 8276411310757479430, guid: e66042891968d984998b301985d984d3, type: 3}
       propertyPath: spawnPrefabs.Array.size
-      value: 106
+      value: 107
       objectReference: {fileID: 0}
     - target: {fileID: 8276411310757479430, guid: e66042891968d984998b301985d984d3, type: 3}
       propertyPath: spawnPrefabs.Array.data[23]
