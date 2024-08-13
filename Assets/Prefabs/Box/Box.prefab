@@ -1042,7 +1042,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   m_DashSpeed: 0
-  m_DashDuration: Infinity
+  m_DashDuration: 0
   m_EngagementDistance: 0
   m_ObstacleAvoidanceDistance: 0
 --- !u!58 &6504355535078145481
