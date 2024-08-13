@@ -23,7 +23,7 @@ namespace Audio
                 var sceneName = sceneEvironmentAudioSetting.m_SceneName;
                 m_SceneEvironmentAudioSettingDic[sceneName] = sceneEvironmentAudioSetting;
             }
-
+            
             EventCenter.AddListener(EventType.ChangeScene, OnChangeScene);
             OnChangeScene();
         }

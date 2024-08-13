@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Mirror;
 using Random = System.Random;
+using Audio;
 
 public class WaveInstance
 {
@@ -125,9 +126,17 @@ public class LevelManager : NetworkBehaviour
     private Queue<WaveInstance> m_WaveInstancesToAdd = new Queue<WaveInstance>();
     private List<GameObject> m_WaveInvisibleWall;
 
+    private EvironmentAudioManager m_Audio;
+    
     public void Awake()
     {
         Instance = this;
+    }
+
+    public void Start()
+    {
+        m_Audio = FindObjectOfType<EvironmentAudioManager>();
+        
     }
 
     public void StartBattleZoneWave(WaveConfig enemyWaveConfig, List<GameObject> invisibleWall)
@@ -162,7 +171,11 @@ public class LevelManager : NetworkBehaviour
                 instance.Init();
                 instance.GenerateEnemies();
                 m_WaveInstance = instance;
+                // 播语音
                 StartCoroutine(ShowDialogText(instance.waveListItem));
+                
+                // 换音乐
+                m_Audio.WaveChangeSceneMusic(instance.waveListItem.thisWaveBGM);
             }
         }
     }
@@ -180,9 +193,7 @@ public class LevelManager : NetworkBehaviour
         if (m_BattleZoneWaveHandle.Finished)
         {
             m_IsRunning = false;
-
-            // UICanvas.Instance.SetPlotText("They all gone, well done.", 0, 2f);
-
+            
             // TODO: 解锁关卡空气墙
             foreach (var invisibleWall in m_WaveInvisibleWall)
             {
