@@ -22,21 +22,21 @@ MonoBehaviour:
       spawnPosition: {x: -27.885765, y: 20.862795, z: 0}
     - enemyPrefab: {fileID: 265621177695738335, guid: f65dee11a7d78b1419d164a007840369, type: 3}
       spawnPosition: {x: -26.452394, y: 23.078005, z: 0}
-    - enemyPrefab: {fileID: 2483032008555634172, guid: 9ce5cfdcaf248f742a786eb3ebecc5ae, type: 3}
+    - enemyPrefab: {fileID: 265621177695738335, guid: f65dee11a7d78b1419d164a007840369, type: 3}
       spawnPosition: {x: -32.446487, y: 22.426462, z: 0}
-    - enemyPrefab: {fileID: 2483032008555634172, guid: 9ce5cfdcaf248f742a786eb3ebecc5ae, type: 3}
+    - enemyPrefab: {fileID: 265621177695738335, guid: f65dee11a7d78b1419d164a007840369, type: 3}
       spawnPosition: {x: -29.319138, y: 19.23396, z: 0}
     - enemyPrefab: {fileID: 1157686176795255648, guid: f4e6249ca37e15e4196a98abb13f0917, type: 3}
       spawnPosition: {x: 23.808899, y: 24.546738, z: 0}
     - enemyPrefab: {fileID: 1157686176795255648, guid: f4e6249ca37e15e4196a98abb13f0917, type: 3}
       spawnPosition: {x: 24.43047, y: 20.895008, z: 0}
-    - enemyPrefab: {fileID: 2483032008555634172, guid: 9ce5cfdcaf248f742a786eb3ebecc5ae, type: 3}
+    - enemyPrefab: {fileID: 265621177695738335, guid: f65dee11a7d78b1419d164a007840369, type: 3}
       spawnPosition: {x: -31.534327, y: 56.892464, z: 0}
-    - enemyPrefab: {fileID: 2483032008555634172, guid: 9ce5cfdcaf248f742a786eb3ebecc5ae, type: 3}
+    - enemyPrefab: {fileID: 265621177695738335, guid: f65dee11a7d78b1419d164a007840369, type: 3}
       spawnPosition: {x: -25.670544, y: 58.065224, z: 0}
-    - enemyPrefab: {fileID: 2483032008555634172, guid: 9ce5cfdcaf248f742a786eb3ebecc5ae, type: 3}
+    - enemyPrefab: {fileID: 265621177695738335, guid: f65dee11a7d78b1419d164a007840369, type: 3}
       spawnPosition: {x: 22.998863, y: 57.86975, z: 0}
-    - enemyPrefab: {fileID: 2483032008555634172, guid: 9ce5cfdcaf248f742a786eb3ebecc5ae, type: 3}
+    - enemyPrefab: {fileID: 265621177695738335, guid: f65dee11a7d78b1419d164a007840369, type: 3}
       spawnPosition: {x: 25.409529, y: 57.934906, z: 0}
     onFieldEnemyCount: 6
     dialogStructs:

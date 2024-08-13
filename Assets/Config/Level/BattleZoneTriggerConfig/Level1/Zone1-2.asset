@@ -20,11 +20,11 @@ MonoBehaviour:
       spawnPosition: {x: -4.037505, y: 100.10912, z: 0}
     - enemyPrefab: {fileID: 1157686176795255648, guid: f4e6249ca37e15e4196a98abb13f0917, type: 3}
       spawnPosition: {x: 11.924996, y: 98.868515, z: 0}
-    - enemyPrefab: {fileID: 3269898915944577015, guid: 534df9d583bbf1645a9094310e2122e8, type: 3}
+    - enemyPrefab: {fileID: 6053823690440650867, guid: 534df9d583bbf1645a9094310e2122e8, type: 3}
       spawnPosition: {x: 3.902392, y: 105.981346, z: 0}
-    - enemyPrefab: {fileID: 3269898915944577015, guid: 534df9d583bbf1645a9094310e2122e8, type: 3}
+    - enemyPrefab: {fileID: 6053823690440650867, guid: 534df9d583bbf1645a9094310e2122e8, type: 3}
       spawnPosition: {x: -4.037505, y: 104.07908, z: 0}
-    - enemyPrefab: {fileID: 3269898915944577015, guid: 534df9d583bbf1645a9094310e2122e8, type: 3}
+    - enemyPrefab: {fileID: 6053823690440650867, guid: 534df9d583bbf1645a9094310e2122e8, type: 3}
       spawnPosition: {x: 13.00019, y: 102.30087, z: 0}
     onFieldEnemyCount: 6
     dialogStructs:
