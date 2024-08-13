@@ -14,54 +14,75 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waveConfigs:
   - enemyListConfigs:
-    - enemyPrefab: {fileID: 1157686176795255648, guid: f4e6249ca37e15e4196a98abb13f0917, type: 3}
-      spawnPosition: {x: -42.147743, y: 2.8139868, z: 0}
-    - enemyPrefab: {fileID: 265621177695738335, guid: f65dee11a7d78b1419d164a007840369, type: 3}
+    - enemyType: 6
+      enemyPrefab: {fileID: 1157686176795255648, guid: f4e6249ca37e15e4196a98abb13f0917, type: 3}
+      spawnPosition: {x: -40.69222, y: 4.6897645, z: 0}
+    - enemyType: 7
+      enemyPrefab: {fileID: 265621177695738335, guid: f65dee11a7d78b1419d164a007840369, type: 3}
       spawnPosition: {x: -34.008472, y: 3.3326652, z: 0}
-    - enemyPrefab: {fileID: 6053823690440650867, guid: 534df9d583bbf1645a9094310e2122e8, type: 3}
+    - enemyType: 4
+      enemyPrefab: {fileID: 6053823690440650867, guid: 534df9d583bbf1645a9094310e2122e8, type: 3}
       spawnPosition: {x: -41.629066, y: 6.125554, z: 0}
-    - enemyPrefab: {fileID: 2815240021534141112, guid: 9ce5cfdcaf248f742a786eb3ebecc5ae, type: 3}
+    - enemyType: 4
+      enemyPrefab: {fileID: 2815240021534141112, guid: 9ce5cfdcaf248f742a786eb3ebecc5ae, type: 3}
       spawnPosition: {x: -36.282684, y: 5.9659615, z: 0}
-    - enemyPrefab: {fileID: 2815240021534141112, guid: 9ce5cfdcaf248f742a786eb3ebecc5ae, type: 3}
+    - enemyType: 4
+      enemyPrefab: {fileID: 2815240021534141112, guid: 9ce5cfdcaf248f742a786eb3ebecc5ae, type: 3}
       spawnPosition: {x: -35.40492, y: 8.439661, z: 0}
-    - enemyPrefab: {fileID: 2815240021534141112, guid: 9ce5cfdcaf248f742a786eb3ebecc5ae, type: 3}
+    - enemyType: 5
+      enemyPrefab: {fileID: 2815240021534141112, guid: 9ce5cfdcaf248f742a786eb3ebecc5ae, type: 3}
       spawnPosition: {x: -42.586628, y: 8.439661, z: 0}
-    - enemyPrefab: {fileID: 2483032008555634172, guid: 9ce5cfdcaf248f742a786eb3ebecc5ae, type: 3}
+    - enemyType: 5
+      enemyPrefab: {fileID: 2483032008555634172, guid: 9ce5cfdcaf248f742a786eb3ebecc5ae, type: 3}
       spawnPosition: {x: -45.339615, y: 7.5219994, z: 0}
-    - enemyPrefab: {fileID: 1157686176795255648, guid: f4e6249ca37e15e4196a98abb13f0917, type: 3}
+    - enemyType: 6
+      enemyPrefab: {fileID: 1157686176795255648, guid: f4e6249ca37e15e4196a98abb13f0917, type: 3}
       spawnPosition: {x: 18.572153, y: 5.5076866, z: 0}
-    - enemyPrefab: {fileID: 265621177695738335, guid: f65dee11a7d78b1419d164a007840369, type: 3}
+    - enemyType: 7
+      enemyPrefab: {fileID: 265621177695738335, guid: f65dee11a7d78b1419d164a007840369, type: 3}
       spawnPosition: {x: 25.510202, y: 5.0403557, z: 0}
-    - enemyPrefab: {fileID: 265621177695738335, guid: f65dee11a7d78b1419d164a007840369, type: 3}
+    - enemyType: 4
+      enemyPrefab: {fileID: 265621177695738335, guid: f65dee11a7d78b1419d164a007840369, type: 3}
       spawnPosition: {x: 22.418638, y: 8.527355, z: 0}
-    - enemyPrefab: {fileID: 265621177695738335, guid: f65dee11a7d78b1419d164a007840369, type: 3}
+    - enemyType: 4
+      enemyPrefab: {fileID: 265621177695738335, guid: f65dee11a7d78b1419d164a007840369, type: 3}
       spawnPosition: {x: 20.836905, y: 10.97185, z: 0}
-    - enemyPrefab: {fileID: 265621177695738335, guid: f65dee11a7d78b1419d164a007840369, type: 3}
+    - enemyType: 4
+      enemyPrefab: {fileID: 265621177695738335, guid: f65dee11a7d78b1419d164a007840369, type: 3}
       spawnPosition: {x: 23.71278, y: -0.5676048, z: 0}
-    - enemyPrefab: {fileID: 265621177695738335, guid: f65dee11a7d78b1419d164a007840369, type: 3}
+    - enemyType: 4
+      enemyPrefab: {fileID: 265621177695738335, guid: f65dee11a7d78b1419d164a007840369, type: 3}
       spawnPosition: {x: 46.360306, y: 11.582961, z: 0}
-    - enemyPrefab: {fileID: 265621177695738335, guid: f65dee11a7d78b1419d164a007840369, type: 3}
+    - enemyType: 6
+      enemyPrefab: {fileID: 265621177695738335, guid: f65dee11a7d78b1419d164a007840369, type: 3}
       spawnPosition: {x: 45.892975, y: 9.929332, z: 0}
-    - enemyPrefab: {fileID: 265621177695738335, guid: f65dee11a7d78b1419d164a007840369, type: 3}
+    - enemyType: 7
+      enemyPrefab: {fileID: 265621177695738335, guid: f65dee11a7d78b1419d164a007840369, type: 3}
       spawnPosition: {x: 25.11477, y: 9.318221, z: 0}
-    - enemyPrefab: {fileID: 265621177695738335, guid: f65dee11a7d78b1419d164a007840369, type: 3}
+    - enemyType: 4
+      enemyPrefab: {fileID: 265621177695738335, guid: f65dee11a7d78b1419d164a007840369, type: 3}
       spawnPosition: {x: -62.896553, y: 9.5588045, z: 0}
-    - enemyPrefab: {fileID: 265621177695738335, guid: f65dee11a7d78b1419d164a007840369, type: 3}
+    - enemyType: 4
+      enemyPrefab: {fileID: 265621177695738335, guid: f65dee11a7d78b1419d164a007840369, type: 3}
       spawnPosition: {x: -63.03095, y: 12.649887, z: 0}
-    - enemyPrefab: {fileID: 265621177695738335, guid: f65dee11a7d78b1419d164a007840369, type: 3}
+    - enemyType: 4
+      enemyPrefab: {fileID: 265621177695738335, guid: f65dee11a7d78b1419d164a007840369, type: 3}
       spawnPosition: {x: 25.11477, y: 9.318221, z: 0}
-    - enemyPrefab: {fileID: 265621177695738335, guid: f65dee11a7d78b1419d164a007840369, type: 3}
+    - enemyType: 4
+      enemyPrefab: {fileID: 265621177695738335, guid: f65dee11a7d78b1419d164a007840369, type: 3}
       spawnPosition: {x: 49.23358, y: 10.185985, z: 0}
-    - enemyPrefab: {fileID: 1157686176795255648, guid: f4e6249ca37e15e4196a98abb13f0917, type: 3}
+    - enemyType: 5
+      enemyPrefab: {fileID: 1157686176795255648, guid: f4e6249ca37e15e4196a98abb13f0917, type: 3}
       spawnPosition: {x: -65.98765, y: 7.6324825, z: 0}
-    - enemyPrefab: {fileID: 1157686176795255648, guid: f4e6249ca37e15e4196a98abb13f0917, type: 3}
+    - enemyType: 5
+      enemyPrefab: {fileID: 1157686176795255648, guid: f4e6249ca37e15e4196a98abb13f0917, type: 3}
       spawnPosition: {x: -65.67406, y: 12.605091, z: 0}
-    onFieldEnemyCount: 12
+    onFieldEnemyCount: 8
     dialogStructs:
     - stringToSays: Squad Leader:Set up the perimeter!
       time: 2
       delayTime: 0
-    - stringToSays: Squad Leader:Squard A!Follow my lead!
+    - stringToSays: Squad Leader:Squard A ! Follow my lead!
       time: 3
       delayTime: 1
     - stringToSays: Squad Leader:Give everything we got!
@@ -70,52 +91,33 @@ MonoBehaviour:
     - stringToSays: Infantry:Aye Sir!
       time: 2
       delayTime: 1
-    waveDelay: 4
+    waveDelay: 10
     thisWaveBGM: {fileID: 0}
   - enemyListConfigs:
-    - enemyPrefab: {fileID: 1157686176795255648, guid: f4e6249ca37e15e4196a98abb13f0917, type: 3}
-      spawnPosition: {x: -61.262596, y: -36.796333, z: 0}
-    - enemyPrefab: {fileID: 1157686176795255648, guid: f4e6249ca37e15e4196a98abb13f0917, type: 3}
-      spawnPosition: {x: -56.152164, y: -37.648067, z: 0}
-    - enemyPrefab: {fileID: 2195872794582507982, guid: a510a544ff5692b4e8c3196c3a7c63b1, type: 3}
-      spawnPosition: {x: -62.114315, y: 8.913608, z: 0}
-    - enemyPrefab: {fileID: 265621177695738335, guid: f65dee11a7d78b1419d164a007840369, type: 3}
-      spawnPosition: {x: -56.3225, y: 10.617084, z: 0}
-    - enemyPrefab: {fileID: 1157686176795255648, guid: f4e6249ca37e15e4196a98abb13f0917, type: 3}
-      spawnPosition: {x: -35.40492, y: 8.439661, z: 0}
-    - enemyPrefab: {fileID: 265621177695738335, guid: f65dee11a7d78b1419d164a007840369, type: 3}
-      spawnPosition: {x: -7.9738483, y: 12.636846, z: 0}
-    - enemyPrefab: {fileID: 1157686176795255648, guid: f4e6249ca37e15e4196a98abb13f0917, type: 3}
-      spawnPosition: {x: -45.339615, y: 7.5219994, z: 0}
-    - enemyPrefab: {fileID: 1157686176795255648, guid: f4e6249ca37e15e4196a98abb13f0917, type: 3}
-      spawnPosition: {x: 44.48077, y: 10.382004, z: 0}
-    - enemyPrefab: {fileID: 1157686176795255648, guid: f4e6249ca37e15e4196a98abb13f0917, type: 3}
-      spawnPosition: {x: 47.803688, y: 9.72929, z: 0}
-    - enemyPrefab: {fileID: 1157686176795255648, guid: f4e6249ca37e15e4196a98abb13f0917, type: 3}
-      spawnPosition: {x: 34.156, y: 12.39949, z: 0}
-    - enemyPrefab: {fileID: 1157686176795255648, guid: f4e6249ca37e15e4196a98abb13f0917, type: 3}
-      spawnPosition: {x: 45.726864, y: 9.076574, z: 0}
-    - enemyPrefab: {fileID: 2195872794582507982, guid: a510a544ff5692b4e8c3196c3a7c63b1, type: 3}
-      spawnPosition: {x: 41.98157, y: -34.989326, z: 0}
-    - enemyPrefab: {fileID: 2195872794582507982, guid: a510a544ff5692b4e8c3196c3a7c63b1, type: 3}
-      spawnPosition: {x: 43.99611, y: -35.504673, z: 0}
-    - enemyPrefab: {fileID: 9120111122076499636, guid: 518f06ce088092c428d8bcc12ac2969a, type: 3}
-      spawnPosition: {x: 43.480762, y: -38.690453, z: 0}
-    - enemyPrefab: {fileID: 265621177695738335, guid: f65dee11a7d78b1419d164a007840369, type: 3}
-      spawnPosition: {x: -57.80835, y: -35.785774, z: 0}
-    - enemyPrefab: {fileID: 1157686176795255648, guid: f4e6249ca37e15e4196a98abb13f0917, type: 3}
-      spawnPosition: {x: -58.323696, y: -38.315662, z: 0}
-    - enemyPrefab: {fileID: 1157686176795255648, guid: f4e6249ca37e15e4196a98abb13f0917, type: 3}
-      spawnPosition: {x: -7.163803, y: 9.752155, z: 0}
-    onFieldEnemyCount: 6
+    - enemyType: 2
+      enemyPrefab: {fileID: 0}
+      spawnPosition: {x: 22.214201, y: -12.209615, z: 0}
+    - enemyType: 6
+      enemyPrefab: {fileID: 0}
+      spawnPosition: {x: 0, y: 0, z: 0}
+    - enemyType: 7
+      enemyPrefab: {fileID: 0}
+      spawnPosition: {x: 0, y: 0, z: 0}
+    - enemyType: 4
+      enemyPrefab: {fileID: 0}
+      spawnPosition: {x: 0, y: 0, z: 0}
+    - enemyType: 4
+      enemyPrefab: {fileID: 0}
+      spawnPosition: {x: 0, y: 0, z: 0}
+    onFieldEnemyCount: 5
     dialogStructs:
     - stringToSays: "Squad Leader:He\u2019s killing us!"
       time: 2
       delayTime: 0
-    - stringToSays: Commander:Send our walkers,NOW!
+    - stringToSays: Commander:Send our TANKS, NOW!
       time: 2
       delayTime: 1
-    - stringToSays: Mecha Pilot:We'll take care of this!
+    - stringToSays: TANK Crew:We'll take care of this!
       time: 2
       delayTime: 1
     - stringToSays: Commander:Armed Scout team, provide support!
@@ -124,18 +126,13 @@ MonoBehaviour:
     - stringToSays: 'ScouterS: Copy 1-1, out.'
       time: 2
       delayTime: 1
-    waveDelay: 10
+    waveDelay: 0
     thisWaveBGM: {fileID: 0}
   - enemyListConfigs:
-    - enemyPrefab: {fileID: 2195872794582507982, guid: a510a544ff5692b4e8c3196c3a7c63b1, type: 3}
-      spawnPosition: {x: 47.50564, y: 11.798571, z: 0}
-    - enemyPrefab: {fileID: 2815240021534141112, guid: 9ce5cfdcaf248f742a786eb3ebecc5ae, type: 3}
-      spawnPosition: {x: 34.597725, y: 12.939025, z: 0}
-    - enemyPrefab: {fileID: 2815240021534141112, guid: 9ce5cfdcaf248f742a786eb3ebecc5ae, type: 3}
-      spawnPosition: {x: 37.18968, y: 8.99926, z: 0}
-    - enemyPrefab: {fileID: 2195872794582507982, guid: a510a544ff5692b4e8c3196c3a7c63b1, type: 3}
-      spawnPosition: {x: 18.372105, y: 13.042703, z: 0}
-    onFieldEnemyCount: 4
+    - enemyType: 4
+      enemyPrefab: {fileID: 0}
+      spawnPosition: {x: -8.062141, y: 12.386728, z: 0}
+    onFieldEnemyCount: 1
     dialogStructs:
     - stringToSays: Battalion Adjutant:The Scout squad...All gone...
       time: 2
@@ -145,12 +142,6 @@ MonoBehaviour:
       delayTime: 1
     - stringToSays: Commander:......
       time: 3
-      delayTime: 1
-    - stringToSays: 'Commander: Send M79 BattleTank'
-      time: 2
-      delayTime: 1
-    - stringToSays: 'Commander: ...And prepare for the worst.'
-      time: 2
       delayTime: 1
     waveDelay: 0
     thisWaveBGM: {fileID: 0}
