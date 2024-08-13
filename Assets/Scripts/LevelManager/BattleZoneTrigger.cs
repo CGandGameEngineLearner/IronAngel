@@ -8,6 +8,7 @@ public class BattleZoneTrigger : NetworkBehaviour
     public WaveConfig enemyWaveConfig;
     public List<GameObject> invisibleWalls;
     
+    
     public void OnCollisionEnter2D(Collision2D other)
     {
         // 测试，后续想让服务端RPC生成角色，但是播报应该是本地的
