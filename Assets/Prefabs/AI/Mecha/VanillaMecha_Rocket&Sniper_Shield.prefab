@@ -138,7 +138,7 @@ MonoBehaviour:
   syncInterval: 0
   m_ShieldType: 1
   m_SubArmor: 100
-  m_specialAtkTypes: 
+  m_specialAtkTypes: 02000000
 --- !u!1 &1138073858750824656
 GameObject:
   m_ObjectHideFlags: 0
@@ -433,7 +433,7 @@ MonoBehaviour:
   syncInterval: 0
   m_ShieldType: 0
   m_SubArmor: 100
-  m_specialAtkTypes: 
+  m_specialAtkTypes: 01000000
 --- !u!61 &2168886505820364987
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -925,7 +925,7 @@ MonoBehaviour:
   syncInterval: 0
   m_ShieldType: 0
   m_SubArmor: 100
-  m_specialAtkTypes: 
+  m_specialAtkTypes: 01000000
 --- !u!61 &1186309705809219703
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1347,7 +1347,7 @@ MonoBehaviour:
     m_LeftWeaponGO: {fileID: 0}
     m_RightWeaponGO: {fileID: 0}
     m_Armor: 0
-    m_EnergyShieldCount: 15
+    m_EnergyShieldCount: 45
     m_CurrentHP: 100
     m_CurrentArmor: 0
     m_AttackRange: 18
@@ -1645,7 +1645,7 @@ MonoBehaviour:
   syncInterval: 0
   m_ShieldType: 0
   m_SubArmor: 100
-  m_specialAtkTypes: 
+  m_specialAtkTypes: 01000000
 --- !u!61 &1819181867106327954
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1812,7 +1812,7 @@ MonoBehaviour:
   syncInterval: 0
   m_ShieldType: 0
   m_SubArmor: 100
-  m_specialAtkTypes: 
+  m_specialAtkTypes: 01000000
 --- !u!61 &472055813711318895
 BoxCollider2D:
   m_ObjectHideFlags: 0
