@@ -98,8 +98,8 @@ MonoBehaviour:
         byteData: 
         byteDataArray: 
       Version: 1.7.9
-  gizmoViewMode: 2
-  showBehaviorDesignerGizmo: 1
+  gizmoViewMode: 0
+  showBehaviorDesignerGizmo: 0
 --- !u!114 &5395160667378315722
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -329,7 +329,7 @@ MonoBehaviour:
   m_IsOverallArmor: 1
   m_Shields: []
   m_Properties: {fileID: 0}
-  m_specialAtkTypes: 
+  m_specialAtkTypes: 01000000
   m_LeftWeapon: {fileID: 5456721556876475810}
   m_RightWeapon: {fileID: 0}
 --- !u!114 &719383686271162760
