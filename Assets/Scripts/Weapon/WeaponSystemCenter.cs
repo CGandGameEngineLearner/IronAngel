@@ -501,24 +501,29 @@ public class WeaponSystemCenter : NetworkBehaviour
 
     private IEnumerator DisableLineRenderer(float seconds, LineRenderer lineRenderer)
     {
-        // 交替激光的颜色
         float counter = 0;
         bool transTo = false;
+        float lastTime = 0;
+
         while (counter < seconds)
         {
             counter += Time.deltaTime;
-            if (transTo)
+            if (counter - lastTime > 0.05f)
             {
-                lineRenderer.startColor = Color.yellow;
-                lineRenderer.endColor = Color.yellow;
-            }
-            else
-            {
-                lineRenderer.startColor = Color.red;
-                lineRenderer.endColor = Color.red;
-            }
+                lastTime = counter;
+                if (transTo)
+                {
+                    lineRenderer.startColor = Color.yellow;
+                    lineRenderer.endColor = Color.yellow;
+                }
+                else
+                {
+                    lineRenderer.startColor = Color.red;
+                    lineRenderer.endColor = Color.red;
+                }
 
-            transTo = !transTo;
+                transTo = !transTo;
+            }
 
             yield return null;
         }
