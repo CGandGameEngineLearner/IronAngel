@@ -362,7 +362,7 @@ Transform:
   m_GameObject: {fileID: 2195872794582507982}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5624187325333055347}
@@ -687,6 +687,7 @@ MonoBehaviour:
     m_DropWeapon_CharacterDied: 1
     m_CoreSprite: {fileID: 3360608816744833715}
   DiedVFX: 25
+  DiedAudioClip: {fileID: 0}
 --- !u!195 &3478913082591308681
 NavMeshAgent:
   m_ObjectHideFlags: 0
