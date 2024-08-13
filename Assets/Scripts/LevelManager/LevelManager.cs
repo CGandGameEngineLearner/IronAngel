@@ -126,7 +126,7 @@ public class LevelManager : NetworkBehaviour
     private Queue<WaveInstance> m_WaveInstancesToAdd = new Queue<WaveInstance>();
     private List<GameObject> m_WaveInvisibleWall;
 
-    private EvironmentAudioManager m_Audio;
+    private EnvironmentAudioManager m_Audio;
     
     public void Awake()
     {
@@ -135,7 +135,7 @@ public class LevelManager : NetworkBehaviour
 
     public void Start()
     {
-        m_Audio = FindObjectOfType<EvironmentAudioManager>();
+        m_Audio = FindObjectOfType<EnvironmentAudioManager>();
         
     }
 
