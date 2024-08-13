@@ -11306,6 +11306,9 @@ MonoBehaviour:
   - {fileID: 1224737363}
   - {fileID: 1920550602}
   m_GrayColor: {r: 0.4811321, g: 0.4811321, b: 0.4811321, a: 1}
+  m_OriProfile: {fileID: 11400000, guid: 234c8840e5e6d58418209ef242366908, type: 2}
+  m_BloodProfile: {fileID: 11400000, guid: a8d811dac62d1aa44a9106d70cc9ba9d, type: 2}
+  m_ChangeRate: 0.5
 --- !u!114 &2108055924
 MonoBehaviour:
   m_ObjectHideFlags: 0
