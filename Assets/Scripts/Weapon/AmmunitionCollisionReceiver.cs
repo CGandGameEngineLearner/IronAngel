@@ -287,11 +287,7 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
             playerController.Player.GetPlayerRightHandWeapon()?.GetComponent<WeaponInstance>().SetWeaponCurrentHP(data.m_RightHandWeaponHP);
             m_Properties.m_Properties.m_Energy += UnityEngine.Random.Range(0, 2);
         }
-        // 本地玩家低于10%血播放声音
-        if(m_Properties.m_Properties.m_CurrentHP * 1.0f / m_Properties.m_Properties.m_BaseHP <= 0.1 && gameObject == NetworkClient.localPlayer.gameObject)
-        {
-            UICanvas.Instance.PlayLowBloodAudio();
-        }
+
         // 角色死亡
         if (m_Properties.m_Properties.m_CurrentHP <= 0)
         {
