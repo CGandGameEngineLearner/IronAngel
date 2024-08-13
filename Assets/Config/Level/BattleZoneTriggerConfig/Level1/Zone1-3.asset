@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waveConfigs:
   - enemyListConfigs:
-    - enemyPrefab: {fileID: 2195872794582507982, guid: cb5d6fdf5f3c14448ac69e2ae0b2acf5, type: 3}
+    - enemyPrefab: {fileID: 2895893485022886558, guid: cb5d6fdf5f3c14448ac69e2ae0b2acf5, type: 3}
       spawnPosition: {x: -4.1394663, y: 138.35486, z: 0}
-    - enemyPrefab: {fileID: 2195872794582507982, guid: cb5d6fdf5f3c14448ac69e2ae0b2acf5, type: 3}
+    - enemyPrefab: {fileID: 2895893485022886558, guid: cb5d6fdf5f3c14448ac69e2ae0b2acf5, type: 3}
       spawnPosition: {x: 7.9667068, y: 138.2448, z: 0}
     onFieldEnemyCount: 2
     dialogStructs:
@@ -30,3 +30,4 @@ MonoBehaviour:
       time: 2
       delayTime: 1
     waveDelay: 0
+    thisWaveBGM: {fileID: 0}
