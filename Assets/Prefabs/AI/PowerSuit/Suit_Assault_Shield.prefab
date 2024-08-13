@@ -508,7 +508,7 @@ MonoBehaviour:
     m_LeftWeaponGO: {fileID: 0}
     m_RightWeaponGO: {fileID: 0}
     m_Armor: 0
-    m_EnergyShieldCount: 5
+    m_EnergyShieldCount: 30
     m_CurrentHP: 100
     m_CurrentArmor: 0
     m_AttackRange: 16
@@ -1555,7 +1555,7 @@ MonoBehaviour:
   syncInterval: 0
   m_ShieldType: 1
   m_SubArmor: 100
-  m_specialAtkTypes: 
+  m_specialAtkTypes: 02000000
 --- !u!61 &1942775990574389320
 BoxCollider2D:
   m_ObjectHideFlags: 0
