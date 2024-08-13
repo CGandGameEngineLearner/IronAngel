@@ -75,6 +75,12 @@ public class StartMenu : MonoBehaviour
         m_MultiplayerPanel.SetActive(true);
     }
 
+    public void OnMultiPlayerTestRoomEnter()
+    {
+        SceneManager.LoadScene("MultiPlayerTestRoom");
+        m_MultiplayerPanel.SetActive(true);
+    }
+
     public void OnBackToStartMenu()
     {
         m_MultiplayerPanel.SetActive(false);
