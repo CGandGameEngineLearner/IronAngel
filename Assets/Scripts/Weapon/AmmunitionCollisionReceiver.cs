@@ -310,7 +310,7 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
             
             // 死亡音效
             var audioSource = gameObject.GetComponent<AudioSource>();
-            if (audioSource&&m_Properties.DiedAudioClip!=null)
+            if (audioSource!=null&&m_Properties.DiedAudioClip!=null)
             {
                 audioSource.clip = m_Properties.DiedAudioClip;
                 audioSource.Play();
