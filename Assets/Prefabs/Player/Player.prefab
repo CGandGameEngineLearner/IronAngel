@@ -1011,9 +1011,9 @@ MonoBehaviour:
     m_Player: {fileID: 0}
     m_NormalSpeed: 8
     m_DashSpeed: 30
-    m_DashCoolDownTime: 1
-    m_DashCount: 2
-    m_MaxDashCount: 8
+    m_DashCoolDownTime: 1.5
+    m_DashCount: 3
+    m_MaxDashCount: 5
     m_PlayerLeftHand: {fileID: 6057370071172589017}
     m_PlayerRightHand: {fileID: 2600587095255959520}
     m_DetectRange: 1.3
