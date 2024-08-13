@@ -2,6 +2,7 @@ using Mirror;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Audio;
 using BehaviorDesigner.Runtime.Tasks.Unity.UnityPlayerPrefs;
 using TMPro;
 using UnityEngine;
@@ -92,6 +93,9 @@ public class StartMenu : MonoBehaviour
             m_Manager.StopHost();
             m_Manager.StopServer();
         }
+        
+        // 发事件来切换音乐
+        EnvironmentAudioManager.Instance.WaveChangeSceneMusic(EnvironmentAudioManager.Instance.m_SceneEvironmentAudioSettingDic["StartMenu"].m_AudioClip);
     }
 
     public void OnMultiPlayerStart()

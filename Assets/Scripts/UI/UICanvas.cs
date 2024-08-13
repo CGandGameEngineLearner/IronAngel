@@ -61,6 +61,7 @@ public class UICanvas : MonoBehaviour
         EventCenter.AddListener<GameObject>(EventType.PlayerDied, ShowDirPanel);
         DontDestroyOnLoad(gameObject);
     }
+    
     private void ShowDirPanel(GameObject player)
     {
         if(NetworkClient.localPlayer.gameObject == player)
@@ -83,9 +84,6 @@ public class UICanvas : MonoBehaviour
         m_PropertiesUI.gameObject.SetActive(false);
         m_PauseMenu.gameObject.SetActive(false);
         m_StartMenu.gameObject.SetActive(true);
-        
-        // 发事件来切换音乐
-        EventCenter.Broadcast(EventType.ChangeScene);
     }
 
     public void ShowPauseMenu(bool val)
@@ -145,11 +143,11 @@ public class UICanvas : MonoBehaviour
         }
         if(Input.GetMouseButton(0))
         {
-            Cursor.SetCursor(m_Aim_2, Vector2.zero, CursorMode.ForceSoftware);
+            Cursor.SetCursor(m_Aim_2, new Vector2(0, 30), CursorMode.ForceSoftware);
         }
         else
         {
-            Cursor.SetCursor(m_Aim_1, Vector2.zero, CursorMode.ForceSoftware);
+            Cursor.SetCursor(m_Aim_1, new Vector2(0, 30), CursorMode.ForceSoftware);
         }
     }
 

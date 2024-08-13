@@ -175,7 +175,7 @@ public class LevelManager : NetworkBehaviour
                 StartCoroutine(ShowDialogText(instance.waveListItem));
                 
                 // 换音乐
-                m_Audio.WaveChangeSceneMusic(instance.waveListItem.thisWaveBGM);
+                EnvironmentAudioManager.Instance.WaveChangeSceneMusic(instance.waveListItem.thisWaveBGM);
             }
         }
     }

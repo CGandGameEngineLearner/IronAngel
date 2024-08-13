@@ -8,12 +8,26 @@ namespace Audio
 {
     public class EnvironmentAudioManager : MonoBehaviour
     {
+        public static EnvironmentAudioManager Instance { get; private set; }
+
         public Dictionary<string, SceneEvironmentAudioSetting> m_SceneEvironmentAudioSettingDic =
             new Dictionary<string, SceneEvironmentAudioSetting>();
 
         public ScenesEvironmentAudioConfig m_ScenesEvironmentAudioConfig;
 
         private AudioSource m_AudioSource;
+
+        private void Awake()
+        {
+            if(Instance == null)
+            {
+                Instance = this;
+            }
+            else if(Instance != this)
+            {
+                Destroy(gameObject);
+            }
+        }
 
         private void OnEnable()
         {
@@ -41,6 +55,7 @@ namespace Audio
         void OnChangeScene()
         {
             string currentSceneName = SceneManager.GetActiveScene().name;
+            Debug.Log(currentSceneName);
             if (!m_SceneEvironmentAudioSettingDic.ContainsKey(currentSceneName))
             {
                 Debug.LogWarning("关卡：" + currentSceneName + " 没配置环境音效");
@@ -64,6 +79,7 @@ namespace Audio
             }
             else if (playModeOfEvironmentAudio == EPlayModeOfEvironmentAudio.DirectlyPlay)
             {
+                m_AudioSource.Stop();
                 m_AudioSource.clip = audioClip;
                 m_AudioSource.loop = loop;
                 m_AudioSource.Play();
@@ -81,7 +97,8 @@ namespace Audio
 
         public void WaveChangeSceneMusic(AudioClip audioClip)
         {
-            if (audioClip == null) return ;
+            if (audioClip == null) return;
+            m_AudioSource.Stop();
             m_AudioSource.clip = audioClip;
             m_AudioSource.loop = true;
             m_AudioSource.Play();
