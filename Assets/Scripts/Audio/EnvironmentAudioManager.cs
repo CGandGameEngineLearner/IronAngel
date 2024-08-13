@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 namespace Audio
 {
-    public class EvironmentAudioManager : MonoBehaviour
+    public class EnvironmentAudioManager : MonoBehaviour
     {
         public Dictionary<string, SceneEvironmentAudioSetting> m_SceneEvironmentAudioSettingDic =
             new Dictionary<string, SceneEvironmentAudioSetting>();
