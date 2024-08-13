@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 184475564177973939}
   - component: {fileID: 7075509089992316594}
   - component: {fileID: -1998743043140916663}
+  - component: {fileID: 6189199496535958655}
   m_Layer: 0
-  m_Name: Hole 1
+  m_Name: MachaExplodeVfx
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -73,8 +74,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 499
-  m_Sprite: {fileID: 614735008, guid: 43170f9381818164d8a69965e781e1cb, type: 3}
+  m_SortingOrder: 500
+  m_Sprite: {fileID: 1187789439, guid: 8f8da34449f104f4984d5a9c4838d921, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -97,6 +98,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 473752e01c4346048a994fba29145def, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selfVfxType: 21
+  selfVfxType: 27
   autoDestroyTime: 100
   needRelease: 1
+--- !u!95 &6189199496535958655
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1875443689672974235}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5183366c18a59cb4a9cffbc034125af6, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
