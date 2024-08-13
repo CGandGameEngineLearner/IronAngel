@@ -1954,6 +1954,7 @@ MonoBehaviour:
     m_DropWeapon_CharacterDied: 1
     m_CoreSprite: {fileID: 688162638322207188}
   DiedVFX: 0
+  DiedAudioClip: {fileID: 0}
 --- !u!195 &3033592911363435758
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1961,7 +1962,7 @@ NavMeshAgent:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9054080282336912570}
-  m_Enabled: 1
+  m_Enabled: 0
   m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 0
@@ -1983,7 +1984,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9054080282336912570}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7e39f6090724e4a4a8aadeb042afa2bc, type: 3}
   m_Name: 
