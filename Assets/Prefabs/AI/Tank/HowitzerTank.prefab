@@ -346,7 +346,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1428994739158690773}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0255, y: 0.4785, z: -0.13996744}
+  m_LocalPosition: {x: -0.0255, y: 0.63, z: -0.13996744}
   m_LocalScale: {x: 0.42, y: 0.345, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -574,8 +574,8 @@ MonoBehaviour:
         byteData: 
         byteDataArray: 
       Version: 1.7.9
-  gizmoViewMode: 2
-  showBehaviorDesignerGizmo: 1
+  gizmoViewMode: 0
+  showBehaviorDesignerGizmo: 0
 --- !u!114 &5384138960469735118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -834,7 +834,7 @@ MonoBehaviour:
     m_RightHandWeapon: 6
     m_LeftWeaponGO: {fileID: 0}
     m_RightWeaponGO: {fileID: 0}
-    m_Armor: 0
+    m_Armor: 350
     m_EnergyShieldCount: 0
     m_CurrentHP: 100
     m_CurrentArmor: 0
@@ -2018,8 +2018,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6869753185912170918}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.02, y: 0.7525, z: 0}
-  m_LocalScale: {x: 0.06, y: 0.06, z: 0.12}
+  m_LocalPosition: {x: 0.02, y: 0.328, z: 0}
+  m_LocalScale: {x: 0.15, y: 0.15, z: 0.3}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 6485104532671038429}

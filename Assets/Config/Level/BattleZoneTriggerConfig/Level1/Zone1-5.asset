@@ -10,19 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 329a42aa4eff495f87cc0fc5196876c6, type: 3}
-  m_Name: Zone1-1
+  m_Name: Zone1-5
   m_EditorClassIdentifier: 
   waveConfigs:
   - enemyListConfigs:
-    - enemyPrefab: {fileID: 3041229852222691761, guid: 25d539e195b29a444b68f7e5f9767971, type: 3}
-      spawnPosition: {x: 3.9673493, y: 11.19631, z: 0}
+    - enemyPrefab: {fileID: 2195872794582507982, guid: c2a05a61d79fe3440a045e455ac2c392, type: 3}
+      spawnPosition: {x: 3.9785156, y: 143.11128, z: 0}
     onFieldEnemyCount: 1
     dialogStructs:
-    - stringToSays: Infantry:Hey you!
+    - stringToSays: 'Tank:  Last stand !'
       time: 2
       delayTime: 0
-    - stringToSays: Infantry:Stop! RIGHT! NOW!
-      time: 2
-      delayTime: 1
-    waveDelay: 1
-    thisWaveBGM: {fileID: 8300000, guid: 52cfc6f25e40fea45ab95383d06113e9, type: 3}
+    waveDelay: 0
+    thisWaveBGM: {fileID: 0}
