@@ -364,6 +364,7 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
                     if(gameObject == NetworkClient.localPlayer.gameObject)
                     {
                         // 写在这里
+                        gameObject.GetComponent<AudioSource>().PlayOneShot(controller.m_WeaponBrokenAudio);
                     }
                     DestroyWeapon(weapon);
                 }
@@ -388,6 +389,7 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
                     if (gameObject == NetworkClient.localPlayer.gameObject)
                     {
                         // 写在这里
+                        gameObject.GetComponent<AudioSource>().PlayOneShot(controller.m_WeaponBrokenAudio);
                     }
                     DestroyWeapon(weapon);
                 }
