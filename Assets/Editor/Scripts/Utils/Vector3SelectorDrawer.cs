@@ -1,3 +1,4 @@
+
 using UnityEngine;
 using UnityEditor;
 
@@ -40,16 +41,17 @@ public class Vector3SelectorDrawer : PropertyDrawer
 
         if (isSelecting && e.type == UnityEngine.EventType.MouseDown && e.button == 0)
         {
-            Ray ray = HandleUtility.GUIPointToWorldRay(e.mousePosition);
-            if (Physics.Raycast(ray, out RaycastHit hit))
-            {
-                currentProperty.vector3Value = hit.point;
-                currentProperty.serializedObject.ApplyModifiedProperties();
+            Vector3 mousePosition = e.mousePosition;
+            mousePosition.y = SceneView.currentDrawingSceneView.camera.pixelHeight - mousePosition.y; // Invert y axis
+            Vector3 worldPosition = SceneView.currentDrawingSceneView.camera.ScreenToWorldPoint(mousePosition);
+            worldPosition.z = 0; // Ensure z is always 0
 
-                isSelecting = false;
-                SceneView.duringSceneGui -= OnSceneGUI;
-                e.Use();
-            }
+            currentProperty.vector3Value = worldPosition;
+            currentProperty.serializedObject.ApplyModifiedProperties();
+
+            isSelecting = false;
+            SceneView.duringSceneGui -= OnSceneGUI;
+            e.Use();
         }
         else if (e.type == UnityEngine.EventType.MouseDown && e.button != 0)
         {
