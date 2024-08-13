@@ -1095,7 +1095,7 @@ MonoBehaviour:
     m_Player: {fileID: 0}
     m_NormalSpeed: 8
     m_DashSpeed: 30
-    m_DashCoolDownTime: 1.5
+    m_DashCoolDownTime: 0.7
     m_DashCount: 3
     m_MaxDashCount: 8
     m_PlayerLeftHand: {fileID: 1516391106525814097}
@@ -1137,7 +1137,7 @@ MonoBehaviour:
   syncInterval: 0
   m_Properties:
     m_Energy: 200
-    m_BaseHP: 600
+    m_BaseHP: 1000
     m_LeftHandWeaponHP: 0
     m_LeftHandWeaponCurrentHP: 0
     m_RightHandWeaponHP: 0
