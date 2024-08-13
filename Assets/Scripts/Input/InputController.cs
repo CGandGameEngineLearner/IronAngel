@@ -280,6 +280,22 @@ public class InputController
         m_PlayerLeftHandShooting += func;
     }
 
+    public void AddPerformedToPlayerAttackLeft(Action func)
+    {
+        m_PlayerInputConfig.Player.Shoot_Left.performed += ctx =>
+        {
+            func?.Invoke();
+        };
+    }
+
+    public void AddPerformedToPlayerAttackRight(Action func)
+    {
+        m_PlayerInputConfig.Player.Shoot_Right.performed += ctx =>
+        {
+            func?.Invoke();
+        };
+    }
+
     public void RemoveActionWhilePlayerShootLeftInputPerformedAndStay(Action func)
     {
         m_PlayerLeftHandShooting -= func;

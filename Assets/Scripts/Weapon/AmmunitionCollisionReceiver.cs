@@ -287,6 +287,7 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
             playerController.Player.GetPlayerRightHandWeapon()?.GetComponent<WeaponInstance>().SetWeaponCurrentHP(data.m_RightHandWeaponHP);
             m_Properties.m_Properties.m_Energy += UnityEngine.Random.Range(0, 2);
         }
+
         // 角色死亡
         if (m_Properties.m_Properties.m_CurrentHP <= 0)
         {
@@ -305,17 +306,11 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
             
             if(m_Properties.DiedVFX!=VfxType.None)
             {
-                // 播放死亡特效
-                VfxPool.Instance.GetVfx(m_Properties.DiedVFX, gameObject.transform.position, gameObject.transform.rotation);
+                // 播放死亡特效和音效
+                VfxPool.Instance.GetVfx(m_Properties.DiedVFX, gameObject.transform.position, gameObject.transform.rotation,m_Properties.DiedAudioClip);
             }
             
-            // 死亡音效
-            var audioSource = gameObject.GetComponent<AudioSource>();
-            if (audioSource!=null&&m_Properties.DiedAudioClip!=null)
-            {
-                audioSource.clip = m_Properties.DiedAudioClip;
-                audioSource.Play();
-            }
+            
             
             
             gameObject.SetActive(false);

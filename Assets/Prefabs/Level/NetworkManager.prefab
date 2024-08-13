@@ -75,7 +75,7 @@ MonoBehaviour:
   disconnectInactiveConnections: 0
   disconnectInactiveTimeout: 60
   authenticator: {fileID: 0}
-  playerPrefab: {fileID: 7899007317602492697, guid: b319a1beeb967194bbc9b9fa245fb3d7, type: 3}
+  playerPrefab: {fileID: 7498102588528620223, guid: b319a1beeb967194bbc9b9fa245fb3d7, type: 3}
   autoCreatePlayer: 1
   playerSpawnMethod: 1
   spawnPrefabs:
@@ -163,6 +163,27 @@ MonoBehaviour:
   - {fileID: 2195872794582507982, guid: a5b5da5badf774a4392236e5af463361, type: 3}
   - {fileID: 5021276108613369794, guid: 8ef668efa7ffed24ea883a972ab1bdc3, type: 3}
   - {fileID: 9191053820183534780, guid: a2be8ac903b22c049ba304072706a58e, type: 3}
+  - {fileID: 3963506992231610316, guid: f28189ddf82e3474e9979b4d4146fa64, type: 3}
+  - {fileID: 1131541440290416406, guid: 7165d85203646ed40b010540d8a80c02, type: 3}
+  - {fileID: 6027127835026737769, guid: d471e2002a9e90a4a90f5cea391f918a, type: 3}
+  - {fileID: 6853808647809491705, guid: 38fbfa9459e315e43ba5550987595c90, type: 3}
+  - {fileID: 5876895614130007988, guid: a5b5da5badf774a4392236e5af463361, type: 3}
+  - {fileID: 1157686176795255648, guid: f4e6249ca37e15e4196a98abb13f0917, type: 3}
+  - {fileID: 265621177695738335, guid: f65dee11a7d78b1419d164a007840369, type: 3}
+  - {fileID: 7337662348208496736, guid: 9f1872c5830126b4c8ae4a7dac0d4a1d, type: 3}
+  - {fileID: 2195872794582507982, guid: 0a29e43cc88b19d4689866b4821b5444, type: 3}
+  - {fileID: 2483032008555634172, guid: 9ce5cfdcaf248f742a786eb3ebecc5ae, type: 3}
+  - {fileID: 3269898915944577015, guid: 534df9d583bbf1645a9094310e2122e8, type: 3}
+  - {fileID: 5516283152165274337, guid: e2d872d0cdcd43a479143816197ffced, type: 3}
+  - {fileID: 3567592279305309407, guid: ee0e0b3524bc41b4a9548d1a74ad5ddf, type: 3}
+  - {fileID: 1181888035047119629, guid: 1ef7346f31a6c5c49874ea7fd132c98e, type: 3}
+  - {fileID: 2895893485022886558, guid: cb5d6fdf5f3c14448ac69e2ae0b2acf5, type: 3}
+  - {fileID: 4394949497655171685, guid: 8b3120ef08cb81246ba273c96bc4d1ab, type: 3}
+  - {fileID: 4394949497655171685, guid: dac8d0da2e3f8454192b4da4b2e546a4, type: 3}
+  - {fileID: 4394949497655171685, guid: ae407b7e560a48348b5f7292e1bec3bb, type: 3}
+  - {fileID: 4394949497655171685, guid: 84c8b74df93495142b34805b35b07251, type: 3}
+  - {fileID: 4743677118601204328, guid: a2be8ac903b22c049ba304072706a58e, type: 3}
+  - {fileID: 5021276108613369794, guid: c647fee262ab519448dc80d6630121ae, type: 3}
   exceptionsDisconnect: 1
   snapshotSettings:
     bufferTimeMultiplier: 2

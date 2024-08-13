@@ -273,7 +273,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0
   m_ShieldType: 0
-  m_SubArmor: 70
+  m_SubArmor: 120
   m_specialAtkTypes: 01000000
 --- !u!61 &4788707432746406319
 BoxCollider2D:
@@ -474,8 +474,8 @@ MonoBehaviour:
   m_RangeOfAimingError: 0.3
   m_LeftHandWeaponAttackingDuration: 4
   m_RightHandWeaponAttackingDuration: 2
-  m_ProbabilityOfLeftWeapon: 0.647
-  m_ProbabilityOfRightWeapon: 0.5
+  m_ProbabilityOfLeftWeapon: 0.812
+  m_ProbabilityOfRightWeapon: 0.725
   PatrolRoute: {fileID: 0}
 --- !u!114 &8337392909154346315
 MonoBehaviour:
@@ -993,7 +993,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0
   m_ShieldType: 0
-  m_SubArmor: 70
+  m_SubArmor: 120
   m_specialAtkTypes: 01000000
 --- !u!61 &4779021538546674247
 BoxCollider2D:
@@ -1330,7 +1330,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0
   m_ShieldType: 0
-  m_SubArmor: 70
+  m_SubArmor: 120
   m_specialAtkTypes: 01000000
 --- !u!61 &8819393010746239652
 BoxCollider2D:
@@ -1890,7 +1890,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0
   m_ShieldType: 0
-  m_SubArmor: 70
+  m_SubArmor: 120
   m_specialAtkTypes: 01000000
 --- !u!61 &3929051370594886967
 BoxCollider2D:

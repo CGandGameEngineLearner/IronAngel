@@ -38,11 +38,19 @@ public class UICanvas : MonoBehaviour
     [SerializeField]
     private TipsPanel m_TipsPanel;
 
+    [SerializeField]
+    private GameObject m_DieEffect;
+
 
     [SerializeField]
     private Texture2D m_Aim_1;
     [SerializeField]
     private Texture2D m_Aim_2;
+
+
+
+
+
 
     public bool isSingle = true;
     bool isPause = false;
@@ -66,13 +74,18 @@ public class UICanvas : MonoBehaviour
     {
         if(NetworkClient.localPlayer.gameObject == player)
         {
-            Invoke("ShowDie", 2.0f);
+            m_PropertiesUI.gameObject.SetActive(false);
+            VfxPool.Instance.GetVfx(VfxType.MachaDied, player.transform.position, Quaternion.identity);
+            VfxPool.Instance.GetVfx(VfxType.Hole1, player.transform.position, Quaternion.identity);
+            m_DieEffect.SetActive(true);
+            Invoke("ShowDie", 3.0f);
         }
         
     }
 
     private void ShowDie()
     {
+        m_DieEffect.SetActive(false);
         m_DiePanel.gameObject.SetActive(true);
         m_DiePanel.SetRetryButtonVisiable(isSingle);
         m_PropertiesUI.gameObject.SetActive(false);
