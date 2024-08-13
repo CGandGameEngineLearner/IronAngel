@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 public class PropertiesUI : MonoBehaviour
@@ -68,7 +69,21 @@ public class PropertiesUI : MonoBehaviour
     [Tooltip("ª“∂»Õº")]
     [SerializeField]
     private Color m_GrayColor;
-    
+
+
+    private Volume m_Volume;
+    [SerializeField]
+    private VolumeProfile m_OriProfile;
+    [SerializeField]
+    private VolumeProfile m_BloodProfile;
+    [SerializeField]
+    [Range(0f, 1f)]
+    private float m_ChangeRate = 0.5f;
+    private void Start()
+    {
+        m_Volume = GameObject.FindAnyObjectByType<Volume>();
+    }
+
 
     private void Update()
     {
@@ -78,6 +93,21 @@ public class PropertiesUI : MonoBehaviour
             var controller = player.GetComponent<PlayerController>();
             var propertity = player.GetComponent<BaseProperties>();
             m_HP.material.SetFloat(m_RateName, 1.0f * propertity.m_Properties.m_CurrentHP / propertity.m_Properties.m_BaseHP);
+            if(m_Volume == null)
+            {
+                m_Volume = GameObject.FindAnyObjectByType<Volume>();
+            }
+            if(m_Volume)
+            {
+                if(1.0f * propertity.m_Properties.m_CurrentHP / propertity.m_Properties.m_BaseHP < m_ChangeRate)
+                {
+                    m_Volume.profile = m_BloodProfile;
+                }
+                else
+                {
+                    m_Volume.profile = m_OriProfile;
+                }
+            }
             m_LeftHP.material.SetFloat(m_RateName, propertity.m_Properties.m_LeftHandWeaponHP > 0 ? 1.0f * propertity.m_Properties.m_LeftHandWeaponCurrentHP / propertity.m_Properties.m_LeftHandWeaponHP : 0);
             m_RightHP.material.SetFloat(m_RateName, propertity.m_Properties.m_RightHandWeaponHP > 0 ? 1.0f * propertity.m_Properties.m_RightHandWeaponCurrentHP / propertity.m_Properties.m_RightHandWeaponHP : 0);
             m_Energy.material.SetFloat(m_RateName, propertity.m_Properties.m_Energy * 1.0f / m_MaxEnergy);

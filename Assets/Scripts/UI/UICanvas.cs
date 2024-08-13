@@ -66,12 +66,17 @@ public class UICanvas : MonoBehaviour
     {
         if(NetworkClient.localPlayer.gameObject == player)
         {
-            m_DiePanel.gameObject.SetActive(true);
-            m_DiePanel.SetRetryButtonVisiable(isSingle);
-            m_PropertiesUI.gameObject.SetActive(false);
-            m_PauseMenu.gameObject.SetActive(false);
+            Invoke("ShowDie", 2.0f);
         }
         
+    }
+
+    private void ShowDie()
+    {
+        m_DiePanel.gameObject.SetActive(true);
+        m_DiePanel.SetRetryButtonVisiable(isSingle);
+        m_PropertiesUI.gameObject.SetActive(false);
+        m_PauseMenu.gameObject.SetActive(false);
     }
 
     public void BackToStartMenu()
