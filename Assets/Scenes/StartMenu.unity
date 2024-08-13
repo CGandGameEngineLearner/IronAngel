@@ -3636,8 +3636,8 @@ MonoBehaviour:
   m_StartMenu: {fileID: 240951640}
   m_PlotPanel: {fileID: 20367563}
   m_TipsPanel: {fileID: 121370764}
-  m_Aim_1: {fileID: 2800000, guid: 8ac3078263015924084f4213faa99ad9, type: 3}
-  m_Aim_2: {fileID: 2800000, guid: 6284321be28b0d24ca1c720c891e8297, type: 3}
+  m_Aim_1: {fileID: 2800000, guid: e27a0b2cc83c6ce45ab6a00b89537340, type: 3}
+  m_Aim_2: {fileID: 2800000, guid: 999dd6a09a254044a8e1c39468076300, type: 3}
   isSingle: 1
 --- !u!1 &624632057
 GameObject:
@@ -8774,6 +8774,7 @@ GameObject:
   - component: {fileID: 1620293339}
   - component: {fileID: 1620293341}
   - component: {fileID: 1620293340}
+  - component: {fileID: 1620293342}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -8898,6 +8899,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1620293338}
   m_CullTransparentMesh: 1
+--- !u!114 &1620293342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1620293338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0.41459322, b: 1, a: 1}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!1 &1624088327
 GameObject:
   m_ObjectHideFlags: 0
