@@ -297,8 +297,9 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
                     prop.m_Properties.m_Energy += m_Properties.m_Properties.m_Energy;
                 if (m_Properties.m_Properties.m_DropWeapon_CharacterDied)
                 {
-                    SpawnWeapon(m_Properties.m_Properties.m_LeftHandWeapon, transform.position);  
-                    SpawnWeapon(m_Properties.m_Properties.m_RightHandWeapon, transform.position);  
+                    // 随机散布一个单位远
+                    SpawnWeapon(m_Properties.m_Properties.m_LeftHandWeapon, transform.position+IronAngel.Utils.RandomDirection2D());  
+                    SpawnWeapon(m_Properties.m_Properties.m_RightHandWeapon, transform.position+IronAngel.Utils.RandomDirection2D());  
                 }
             }
             

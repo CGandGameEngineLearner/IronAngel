@@ -23,7 +23,7 @@ namespace Audio
                 var sceneName = sceneEvironmentAudioSetting.m_SceneName;
                 m_SceneEvironmentAudioSettingDic[sceneName] = sceneEvironmentAudioSetting;
             }
-            
+
             EventCenter.AddListener(EventType.ChangeScene, OnChangeScene);
             OnChangeScene();
         }
@@ -81,15 +81,10 @@ namespace Audio
 
         public void WaveChangeSceneMusic(AudioClip audioClip)
         {
-            if (!m_AudioSource.isPlaying)
-            {
-#if UNITY_EDITOR
-                Debug.LogError("正在播放新的背景音乐");
-#endif
-                m_AudioSource.clip = audioClip;
-                m_AudioSource.loop = true;
-                m_AudioSource.Play();
-            }
+            if (audioClip == null) return ;
+            m_AudioSource.clip = audioClip;
+            m_AudioSource.loop = true;
+            m_AudioSource.Play();
         }
 
         private void OnDisable()

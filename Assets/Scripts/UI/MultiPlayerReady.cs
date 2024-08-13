@@ -18,7 +18,11 @@ public class MultiPlayerReady : MonoBehaviour
         m_MultiPlayerReadyPanel.SetActive(false);
         EventCenter.Broadcast(EventType.MultiPlayerGameStart);
 
-        GameObject battleZoneTriggers = GameObject.Find("BattleZoneTrigger");
-        battleZoneTriggers.SetActive(true);
+        GameObject battleZoneTrigger = GameObject.Find("BattleZoneTrigger");
+        if (battleZoneTrigger)
+        {
+            battleZoneTrigger.SetActive(true);
+        }
+        
     }
 }
