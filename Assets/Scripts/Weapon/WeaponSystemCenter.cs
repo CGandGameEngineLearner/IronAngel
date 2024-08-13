@@ -420,7 +420,7 @@ public class WeaponSystemCenter : NetworkBehaviour
     [ClientRpc]
     public void RPCFire(GameObject character, GameObject weapon, Vector3 startPoint, Vector3 dir, bool isPlayer)
     {
-        if(m_WeaponToTypeDic.ContainsKey(weapon) == false)
+        if(m_WeaponToTypeDic == null || m_WeaponToTypeDic.ContainsKey(weapon) == false)
         {
             return;
         }
