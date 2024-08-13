@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ProgressBar_X_Energy
-  m_Shader: {fileID: -6465566751694194690, guid: e994bf1c9b3b8a64ab3e3be912e01adb, type: 3}
+  m_Name: EnemyHighLight
+  m_Shader: {fileID: -6465566751694194690, guid: e523363da87f3a74aa0a4d5e04a7a4aa, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -40,12 +40,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
-    m_Floats:
-    - _Rate: 1.42
+    m_Floats: []
     m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 766.99615, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []
---- !u!114 &6796597818345950491
+--- !u!114 &304093385681486965
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
