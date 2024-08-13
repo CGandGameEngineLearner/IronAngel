@@ -24,6 +24,8 @@ public class PlayerController : NetworkBehaviour
     bool m_AfterStartLocalPlayer = false;
     float m_FireDistance;
     public List<int> m_Power;
+    public List<AudioClip> m_PowerAudios;
+    public AudioClip m_WeaponBrokenAudio;
     //  public------------------------------------------
     public Player Player
     {
@@ -58,7 +60,10 @@ public class PlayerController : NetworkBehaviour
 
         m_Power = setting._PowerLimit;
         m_FireDistance = setting._FireDistance;
-        
+        m_PowerAudios = setting._AudioClips;
+        m_WeaponBrokenAudio = setting._WeaponBroken;
+
+
         m_CameraController.Init(Camera.main, GameObject.FindAnyObjectByType<CinemachineVirtualCamera>().GetComponent<CinemachineVirtualCamera>(), GameObject.FindWithTag("CameraTarget").transform, setting._CameraMinDistance, setting._CameraMaxDistance);
         m_InputController.Init();
         
@@ -266,15 +271,6 @@ public class PlayerController : NetworkBehaviour
                     v3 = v3.normalized;
                     dir = v3 * m_FireDistance + m_Player.GetPlayerPosition() - m_Player.GetPlayerLeftHandPosition();
                 }
-                
-                // // 客户端开火
-                // if (weapon.TryGetComponent<WeaponInstance>(out WeaponInstance weaponInstance) && weaponInstance.CanFire())
-                // {
-                //     // CameraController.ShakeCameraPosition(0.02f, new Vector3(1,1,0));
-                //     CameraController.ShakeCameraRotation(.01f, 10);
-                //     CameraController.ShakeCameraRotation(weaponInstance.weaponConfig.interval, 1);
-                // }
-                //
                 CmdFire(weapon,pos, dir);
             }
             
@@ -303,15 +299,7 @@ public class PlayerController : NetworkBehaviour
                     v3 = v3.normalized;
                     dir = v3 * m_FireDistance + m_Player.GetPlayerPosition() - m_Player.GetPlayerRightHandPosition();
                 }
-                
-                // 客户端开火
-                // if (weapon.TryGetComponent<WeaponInstance>(out WeaponInstance weaponInstance) && weaponInstance.CanFire())
-                // {
-                //     // CameraController.ShakeCameraRotation(.01f, 10);
-                //     // CameraController.ShakeCameraRotation(weaponInstance.weaponConfig.interval, 1);
-                // }
-                
-                
+               
                 CmdFire(weapon, pos, dir);
             }
         });

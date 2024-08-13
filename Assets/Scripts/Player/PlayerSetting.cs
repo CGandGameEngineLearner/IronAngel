@@ -22,4 +22,9 @@ public class PlayerSetting : MonoBehaviour
 
     [Header("玩家冲刺尾焰")]
     public List<GameObject> _Whiff;
+
+    [Header("能量武器音效")]
+    public List<AudioClip> _AudioClips;
+    [Header("武器炸了的音效")]
+    public AudioClip _WeaponBroken;
 }
