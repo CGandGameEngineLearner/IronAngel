@@ -14,42 +14,42 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waveConfigs:
   - enemyListConfigs:
+    - enemyType: 4
+      enemyPrefab: {fileID: 0}
+      spawnPosition: {x: 3.4064007, y: -6.856162, z: 0}
+    - enemyType: 4
+      enemyPrefab: {fileID: 0}
+      spawnPosition: {x: 6.273676, y: -11.77149, z: 0}
+    - enemyType: 4
+      enemyPrefab: {fileID: 0}
+      spawnPosition: {x: -16.676386, y: -10.012312, z: 0}
+    - enemyType: 4
+      enemyPrefab: {fileID: 0}
+      spawnPosition: {x: -19.206257, y: -14.052798, z: 0}
+    - enemyType: 8
+      enemyPrefab: {fileID: 0}
+      spawnPosition: {x: -28.14806, y: -10.843274, z: 0}
     - enemyType: 6
-      enemyPrefab: {fileID: 1157686176795255648, guid: f4e6249ca37e15e4196a98abb13f0917, type: 3}
-      spawnPosition: {x: -40.69222, y: 4.6897645, z: 0}
+      enemyPrefab: {fileID: 0}
+      spawnPosition: {x: -19.206257, y: -14.052798, z: 0}
+    - enemyType: 4
+      enemyPrefab: {fileID: 0}
+      spawnPosition: {x: -19.206257, y: -14.052798, z: 0}
+    - enemyType: 4
+      enemyPrefab: {fileID: 0}
+      spawnPosition: {x: -19.206257, y: -14.052798, z: 0}
+    - enemyType: 4
+      enemyPrefab: {fileID: 0}
+      spawnPosition: {x: -55.328575, y: 9.938595, z: 0}
+    - enemyType: 4
+      enemyPrefab: {fileID: 0}
+      spawnPosition: {x: -58.867702, y: 7.65679, z: 0}
     - enemyType: 7
-      enemyPrefab: {fileID: 265621177695738335, guid: f65dee11a7d78b1419d164a007840369, type: 3}
-      spawnPosition: {x: -34.008472, y: 3.3326652, z: 0}
-    - enemyType: 4
-      enemyPrefab: {fileID: 6053823690440650867, guid: 534df9d583bbf1645a9094310e2122e8, type: 3}
-      spawnPosition: {x: -41.629066, y: 6.125554, z: 0}
-    - enemyType: 4
-      enemyPrefab: {fileID: 2815240021534141112, guid: 9ce5cfdcaf248f742a786eb3ebecc5ae, type: 3}
-      spawnPosition: {x: -36.282684, y: 5.9659615, z: 0}
-    - enemyType: 4
-      enemyPrefab: {fileID: 2815240021534141112, guid: 9ce5cfdcaf248f742a786eb3ebecc5ae, type: 3}
-      spawnPosition: {x: -35.40492, y: 8.439661, z: 0}
-    - enemyType: 5
-      enemyPrefab: {fileID: 2815240021534141112, guid: 9ce5cfdcaf248f742a786eb3ebecc5ae, type: 3}
-      spawnPosition: {x: -42.586628, y: 8.439661, z: 0}
-    - enemyType: 5
-      enemyPrefab: {fileID: 2483032008555634172, guid: 9ce5cfdcaf248f742a786eb3ebecc5ae, type: 3}
-      spawnPosition: {x: -45.339615, y: 7.5219994, z: 0}
+      enemyPrefab: {fileID: 0}
+      spawnPosition: {x: 34.16091, y: 11.4814415, z: 0}
     - enemyType: 6
-      enemyPrefab: {fileID: 1157686176795255648, guid: f4e6249ca37e15e4196a98abb13f0917, type: 3}
-      spawnPosition: {x: 18.572153, y: 5.5076866, z: 0}
-    - enemyType: 7
-      enemyPrefab: {fileID: 265621177695738335, guid: f65dee11a7d78b1419d164a007840369, type: 3}
-      spawnPosition: {x: 25.510202, y: 5.0403557, z: 0}
-    - enemyType: 4
-      enemyPrefab: {fileID: 265621177695738335, guid: f65dee11a7d78b1419d164a007840369, type: 3}
-      spawnPosition: {x: 22.418638, y: 8.527355, z: 0}
-    - enemyType: 4
-      enemyPrefab: {fileID: 265621177695738335, guid: f65dee11a7d78b1419d164a007840369, type: 3}
-      spawnPosition: {x: 20.836905, y: 10.97185, z: 0}
-    - enemyType: 4
-      enemyPrefab: {fileID: 265621177695738335, guid: f65dee11a7d78b1419d164a007840369, type: 3}
-      spawnPosition: {x: 23.71278, y: -0.5676048, z: 0}
+      enemyPrefab: {fileID: 0}
+      spawnPosition: {x: 46.217308, y: 9.755696, z: 0}
     onFieldEnemyCount: 8
     dialogStructs:
     - stringToSays: Squad Leader:Set up the perimeter!
@@ -69,16 +69,16 @@ MonoBehaviour:
   - enemyListConfigs:
     - enemyType: 2
       enemyPrefab: {fileID: 0}
-      spawnPosition: {x: 22.214201, y: -12.209615, z: 0}
+      spawnPosition: {x: 22.145569, y: 14.086023, z: 0}
     - enemyType: 6
       enemyPrefab: {fileID: 0}
-      spawnPosition: {x: 0, y: 0, z: 0}
+      spawnPosition: {x: 14.298119, y: 0.9949119, z: 0}
     - enemyType: 7
       enemyPrefab: {fileID: 0}
-      spawnPosition: {x: 0, y: 0, z: 0}
+      spawnPosition: {x: 29.747414, y: -0.9062747, z: 0}
     - enemyType: 4
       enemyPrefab: {fileID: 0}
-      spawnPosition: {x: 0, y: 0, z: 0}
+      spawnPosition: {x: 9.327597, y: -11.896973, z: 0}
     - enemyType: 4
       enemyPrefab: {fileID: 0}
       spawnPosition: {x: 0, y: 0, z: 0}
