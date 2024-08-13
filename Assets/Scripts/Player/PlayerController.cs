@@ -254,6 +254,10 @@ public class PlayerController : NetworkBehaviour
                     return;
                 }
                 pos = weapon.GetComponent<WeaponInstance>().firePoint.position;
+                if(weapon.GetComponent<WeaponInstance>().GetCurrentMag() <= 0)
+                {
+                    UICanvas.Instance.SetTips("Ammo ran out!!(Left)", 1.0f);
+                }
                 Vector3 dir = m_InputController.GetMousePositionInWorldSpace(m_CameraController.GetCamera()) - m_Player.GetPlayerLeftHandPosition();
                 if (Vector2.Distance(m_InputController.GetMousePositionInWorldSpace(m_CameraController.GetCamera()), m_Player.GetPlayerLeftHandPosition()) <= m_FireDistance)
                 {
@@ -287,6 +291,10 @@ public class PlayerController : NetworkBehaviour
                     return;
                 }
                 pos = weapon.GetComponent<WeaponInstance>().firePoint.position;
+                if (weapon.GetComponent<WeaponInstance>().GetCurrentMag() <= 0)
+                {
+                    UICanvas.Instance.SetTips("Ammo ran out!!(Right)", 1.0f);
+                }
                 Vector3 dir = m_InputController.GetMousePositionInWorldSpace(m_CameraController.GetCamera()) - m_Player.GetPlayerRightHandPosition();
                 if (Vector2.Distance(m_InputController.GetMousePositionInWorldSpace(m_CameraController.GetCamera()), m_Player.GetPlayerRightHandPosition()) <= m_FireDistance)
                 {

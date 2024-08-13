@@ -31,6 +31,8 @@ public class DiePanel : MonoBehaviour
             ? levelSwitchConfig.basementName
             : levelSwitchConfig.levelStruct[level].sectionName[section];
 
+
+
         SceneManager.LoadScene(sectionName);
         UICanvas.Instance.DiePanel.gameObject.SetActive(false);
         UICanvas.Instance.PropertiesUI.gameObject.SetActive(true);
