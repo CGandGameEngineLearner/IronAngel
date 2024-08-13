@@ -8,7 +8,8 @@ namespace Audio
 {
     public class EvironmentAudioManager : MonoBehaviour
     {
-        public Dictionary<string, SceneEvironmentAudioSetting> m_SceneEvironmentAudioSettingDic = new Dictionary<string, SceneEvironmentAudioSetting>();
+        public Dictionary<string, SceneEvironmentAudioSetting> m_SceneEvironmentAudioSettingDic =
+            new Dictionary<string, SceneEvironmentAudioSetting>();
 
         public ScenesEvironmentAudioConfig m_ScenesEvironmentAudioConfig;
 
@@ -22,20 +23,19 @@ namespace Audio
                 var sceneName = sceneEvironmentAudioSetting.m_SceneName;
                 m_SceneEvironmentAudioSettingDic[sceneName] = sceneEvironmentAudioSetting;
             }
-            EventCenter.AddListener(EventType.ChangeScene,OnChangeScene);
+
+            EventCenter.AddListener(EventType.ChangeScene, OnChangeScene);
             OnChangeScene();
         }
 
         // Start is called before the first frame update
         void Start()
         {
-        
         }
 
         // Update is called once per frame
         void Update()
         {
-        
         }
 
         void OnChangeScene()
@@ -46,6 +46,7 @@ namespace Audio
                 Debug.LogWarning("关卡：" + currentSceneName + " 没配置环境音效");
                 return;
             }
+
             var sceneEvironmentAudioSetting = m_SceneEvironmentAudioSettingDic[currentSceneName];
             var playModeOfEvironmentAudio = sceneEvironmentAudioSetting.m_EPlayModeOfEvironmentAudio;
             var loop = sceneEvironmentAudioSetting.m_Loop;
@@ -55,6 +56,7 @@ namespace Audio
                 Debug.LogWarning("关卡：" + currentSceneName + " 没配置AudioClip");
                 return;
             }
+
             if (playModeOfEvironmentAudio == EPlayModeOfEvironmentAudio.None)
             {
                 m_AudioSource.Stop();
@@ -77,10 +79,22 @@ namespace Audio
             }
         }
 
+        public void WaveChangeSceneMusic(AudioClip audioClip)
+        {
+            if (!m_AudioSource.isPlaying)
+            {
+#if UNITY_EDITOR
+                Debug.LogError("正在播放新的背景音乐");
+#endif
+                m_AudioSource.clip = audioClip;
+                m_AudioSource.loop = true;
+                m_AudioSource.Play();
+            }
+        }
+
         private void OnDisable()
         {
-            EventCenter.RemoveListener(EventType.ChangeScene,OnChangeScene);
+            EventCenter.RemoveListener(EventType.ChangeScene, OnChangeScene);
         }
     }
 }
-
