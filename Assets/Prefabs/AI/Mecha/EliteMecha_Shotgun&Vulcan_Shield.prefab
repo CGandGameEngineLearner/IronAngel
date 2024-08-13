@@ -263,7 +263,7 @@ MonoBehaviour:
     m_Bits: 512
   m_DashSpeed: 20
   m_DashDuration: 1
-  m_EngagementDistance: 8
+  m_EngagementDistance: 6
   m_ObstacleAvoidanceDistance: 1
 --- !u!58 &6439072114006339838
 CircleCollider2D:
@@ -488,7 +488,7 @@ NavMeshAgent:
   m_Speed: 3.8
   m_Acceleration: 8
   avoidancePriority: 50
-  m_AngularSpeed: 90
+  m_AngularSpeed: 120
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
