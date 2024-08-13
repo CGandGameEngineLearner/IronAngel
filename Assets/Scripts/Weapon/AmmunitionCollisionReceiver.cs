@@ -310,17 +310,11 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
             
             if(m_Properties.DiedVFX!=VfxType.None)
             {
-                // 播放死亡特效
-                VfxPool.Instance.GetVfx(m_Properties.DiedVFX, gameObject.transform.position, gameObject.transform.rotation);
+                // 播放死亡特效和音效
+                VfxPool.Instance.GetVfx(m_Properties.DiedVFX, gameObject.transform.position, gameObject.transform.rotation,m_Properties.DiedAudioClip);
             }
             
-            // 死亡音效
-            var audioSource = gameObject.GetComponent<AudioSource>();
-            if (audioSource!=null&&m_Properties.DiedAudioClip!=null)
-            {
-                audioSource.clip = m_Properties.DiedAudioClip;
-                audioSource.Play();
-            }
+            
             
             
             gameObject.SetActive(false);

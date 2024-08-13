@@ -243,8 +243,8 @@ MonoBehaviour:
   m_RangeOfAimingError: 3
   m_LeftHandWeaponAttackingDuration: 2.6
   m_RightHandWeaponAttackingDuration: 2.5
-  m_ProbabilityOfLeftWeapon: 0.505
-  m_ProbabilityOfRightWeapon: 0.5
+  m_ProbabilityOfLeftWeapon: 0.75
+  m_ProbabilityOfRightWeapon: 0.739
   PatrolRoute: {fileID: 0}
 --- !u!114 &8770212618080901390
 MonoBehaviour:
