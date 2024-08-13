@@ -1,0 +1,1227 @@
+fileFormatVersion: 2
+guid: 89aa2ca671eadf94a937a15740990fe5
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: NEW XINGSHOU_0
+      rect:
+        serializedVersion: 2
+        x: 392
+        y: 882
+        width: 60
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b73c30c3b2c706479fec3d901d46f84
+      internalID: 1730415004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NEW XINGSHOU_1
+      rect:
+        serializedVersion: 2
+        x: 579
+        y: 855
+        width: 63
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 848b0e222927a6c4eae654134a4d05f5
+      internalID: 2096657928
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NEW XINGSHOU_2
+      rect:
+        serializedVersion: 2
+        x: 650
+        y: 815
+        width: 150
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c56c26fad5099bf40aa56f34102cb13f
+      internalID: -1391347208
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NEW XINGSHOU_3
+      rect:
+        serializedVersion: 2
+        x: 1120
+        y: 872
+        width: 60
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d1d9c2db23dda34891d18e463feb46d
+      internalID: 1975819712
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NEW XINGSHOU_4
+      rect:
+        serializedVersion: 2
+        x: 1213
+        y: 872
+        width: 60
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9907461d4f22e2143a1ec3dc0dd62692
+      internalID: 94814614
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NEW XINGSHOU_5
+      rect:
+        serializedVersion: 2
+        x: 1319
+        y: 808
+        width: 82
+        height: 102
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 212440831a3b54a4c88b65118f2ffd85
+      internalID: -1430990177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NEW XINGSHOU_6
+      rect:
+        serializedVersion: 2
+        x: 1402
+        y: 810
+        width: 104
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64863f361e026244db1435309348589a
+      internalID: -458836417
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NEW XINGSHOU_7
+      rect:
+        serializedVersion: 2
+        x: 1507
+        y: 808
+        width: 34
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 625484858e80e564b8765e474cc4e923
+      internalID: -952762299
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NEW XINGSHOU_8
+      rect:
+        serializedVersion: 2
+        x: 1558
+        y: 821
+        width: 11
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53f1fb956c4394f40bbb2824a1b168b1
+      internalID: -942864411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NEW XINGSHOU_9
+      rect:
+        serializedVersion: 2
+        x: 1576
+        y: 808
+        width: 208
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bcd6eaf24928af745a24ffa47e8c9564
+      internalID: 2088702101
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NEW XINGSHOU_10
+      rect:
+        serializedVersion: 2
+        x: 1788
+        y: 821
+        width: 12
+        height: 85
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8ee39663e7b4b343b0bc36b60595362
+      internalID: 519626043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NEW XINGSHOU_11
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 784
+        width: 60
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1534cb53c1448b648979ae0b19872d3f
+      internalID: 15868544
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NEW XINGSHOU_12
+      rect:
+        serializedVersion: 2
+        x: 391
+        y: 784
+        width: 60
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 90d0e7062b6b2054197dafcb8e29abf2
+      internalID: -745035286
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NEW XINGSHOU_13
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 784
+        width: 60
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dba39ff0edf47d64c86d4ff0b3d45b6b
+      internalID: -1031268208
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NEW XINGSHOU_14
+      rect:
+        serializedVersion: 2
+        x: 1120
+        y: 759
+        width: 60
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 785470a6e94215141bb250d16ce7fc66
+      internalID: -137920330
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NEW XINGSHOU_15
+      rect:
+        serializedVersion: 2
+        x: 1211
+        y: 759
+        width: 61
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 396ccf864e59aa6488dda09a06fc1998
+      internalID: 638339091
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NEW XINGSHOU_16
+      rect:
+        serializedVersion: 2
+        x: 334
+        y: 591
+        width: 60
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5a07a79324332f49bd7083b8ed0141f
+      internalID: -1773185401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NEW XINGSHOU_17
+      rect:
+        serializedVersion: 2
+        x: 447
+        y: 592
+        width: 60
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 563191305f62158409dea17469d361df
+      internalID: -1439222958
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NEW XINGSHOU_18
+      rect:
+        serializedVersion: 2
+        x: 589
+        y: 612
+        width: 36
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f5ebce9529f8494188b6023856a931c
+      internalID: -2009919902
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NEW XINGSHOU_19
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 574
+        width: 88
+        height: 106
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf29ca5d19789e3419c5ba1fc5495858
+      internalID: 362346311
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NEW XINGSHOU_20
+      rect:
+        serializedVersion: 2
+        x: 721
+        y: 594
+        width: 19
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32cf9e536d0ec1a4882a647d43fbde72
+      internalID: 963355877
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NEW XINGSHOU_21
+      rect:
+        serializedVersion: 2
+        x: 740
+        y: 574
+        width: 87
+        height: 106
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cca644b489c5103459c0b4f79cc3ab5c
+      internalID: -2056557660
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NEW XINGSHOU_22
+      rect:
+        serializedVersion: 2
+        x: 827
+        y: 574
+        width: 43
+        height: 103
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9eb09a22d767aa74098b4ffc4ed630cb
+      internalID: -1724143012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NEW XINGSHOU_23
+      rect:
+        serializedVersion: 2
+        x: 870
+        y: 574
+        width: 175
+        height: 106
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1efdb6692e9988e4a8b71ed71c955486
+      internalID: -2053319564
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NEW XINGSHOU_24
+      rect:
+        serializedVersion: 2
+        x: 1122
+        y: 565
+        width: 135
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68f460be595e13847b775145b619f8ee
+      internalID: 880375523
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NEW XINGSHOU_25
+      rect:
+        serializedVersion: 2
+        x: 1318
+        y: 579
+        width: 43
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9027e049877c0fd458897b34019c6039
+      internalID: 1128990508
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NEW XINGSHOU_26
+      rect:
+        serializedVersion: 2
+        x: 1348
+        y: 558
+        width: 181
+        height: 113
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b7d79d77c1a76a4f82b27f03383a2a5
+      internalID: 1952555921
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NEW XINGSHOU_27
+      rect:
+        serializedVersion: 2
+        x: 1532
+        y: 558
+        width: 97
+        height: 110
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce4b84c3b485dd94a87d8e28055ca24b
+      internalID: -1111819619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NEW XINGSHOU_28
+      rect:
+        serializedVersion: 2
+        x: 295
+        y: 420
+        width: 28
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9cd7226734f6ff8469e8c195ad690272
+      internalID: 1995954962
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NEW XINGSHOU_29
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 282
+        width: 98
+        height: 144
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2506e51bcbe07db4d98a357db1cbdc4b
+      internalID: -1120439876
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NEW XINGSHOU_30
+      rect:
+        serializedVersion: 2
+        x: 327
+        y: 420
+        width: 9
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1f1f268c4133264fa9f77777e02cb15
+      internalID: -1720034913
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NEW XINGSHOU_31
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 419
+        width: 30
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52bacda6ba51af84ea0569f039ec16c2
+      internalID: -837416593
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NEW XINGSHOU_32
+      rect:
+        serializedVersion: 2
+        x: 438
+        y: 282
+        width: 100
+        height: 146
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee263c7c6d3732a46a85e116939ce444
+      internalID: 1509870103
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NEW XINGSHOU_33
+      rect:
+        serializedVersion: 2
+        x: 495
+        y: 420
+        width: 28
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85c2580a6590f3540b33fc1923f6bade
+      internalID: -61709156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NEW XINGSHOU_34
+      rect:
+        serializedVersion: 2
+        x: 527
+        y: 420
+        width: 8
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c2e06f58bf49af429dfd7fda1d8b558
+      internalID: -1696254996
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NEW XINGSHOU_35
+      rect:
+        serializedVersion: 2
+        x: 539
+        y: 420
+        width: 27
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d94d605aa86ed1441910901c9c850650
+      internalID: 1852254279
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NEW XINGSHOU_36
+      rect:
+        serializedVersion: 2
+        x: 283
+        y: 404
+        width: 39
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf2ff915b2c9e7148aa4fa91dec67164
+      internalID: 138356506
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NEW XINGSHOU_37
+      rect:
+        serializedVersion: 2
+        x: 539
+        y: 405
+        width: 39
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 013bc0b519aabc04baf9ac1bd8df7a3b
+      internalID: -2131300957
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NEW XINGSHOU_38
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 377
+        width: 26
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d98ebdda446d1d4097cf92d59f493a7
+      internalID: 1949448034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NEW XINGSHOU_39
+      rect:
+        serializedVersion: 2
+        x: 539
+        y: 377
+        width: 27
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d88967a1f5742a41b40607079c0dfc7
+      internalID: -1467171561
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NEW XINGSHOU_40
+      rect:
+        serializedVersion: 2
+        x: 602
+        y: 362
+        width: 34
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32733c00aa9c77d4d93257c16ed2bb60
+      internalID: -1640304926
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NEW XINGSHOU_41
+      rect:
+        serializedVersion: 2
+        x: 642
+        y: 306
+        width: 40
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24620f6bdea6f30438263b519a49b957
+      internalID: -758177279
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NEW XINGSHOU_42
+      rect:
+        serializedVersion: 2
+        x: 684
+        y: 306
+        width: 236
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f8d7b338bbeb0a4b9e64caabec918c9
+      internalID: 1671263636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NEW XINGSHOU_43
+      rect:
+        serializedVersion: 2
+        x: 908
+        y: 306
+        width: 41
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81b9d1f0ff29f224da7b4babce52144c
+      internalID: 1860522322
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NEW XINGSHOU_44
+      rect:
+        serializedVersion: 2
+        x: 1478
+        y: 291
+        width: 82
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 118e9684551f8f446a3a9b8511fc5fdd
+      internalID: 424611943
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NEW XINGSHOU_45
+      rect:
+        serializedVersion: 2
+        x: 1558
+        y: 291
+        width: 78
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3bb6886b22f42334c86ff5828b63e0d3
+      internalID: -1024455391
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NEW XINGSHOU_46
+      rect:
+        serializedVersion: 2
+        x: 602
+        y: 343
+        width: 34
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d3148435aad80a14fae471e385ed32d5
+      internalID: 261171712
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NEW XINGSHOU_47
+      rect:
+        serializedVersion: 2
+        x: 1120
+        y: 301
+        width: 235
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 033d11b811252b442b9f43c96ad43b2f
+      internalID: -1403146123
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NEW XINGSHOU_48
+      rect:
+        serializedVersion: 2
+        x: 1408
+        y: 342
+        width: 63
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12ce58690c3c0fc458c86a5db97f5ed2
+      internalID: -1918911993
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NEW XINGSHOU_49
+      rect:
+        serializedVersion: 2
+        x: 1408
+        y: 323
+        width: 63
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ebd25b035361228469c8e979b31f7baa
+      internalID: -180831402
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      NEW XINGSHOU_0: 1730415004
+      NEW XINGSHOU_1: 2096657928
+      NEW XINGSHOU_10: 519626043
+      NEW XINGSHOU_11: 15868544
+      NEW XINGSHOU_12: -745035286
+      NEW XINGSHOU_13: -1031268208
+      NEW XINGSHOU_14: -137920330
+      NEW XINGSHOU_15: 638339091
+      NEW XINGSHOU_16: -1773185401
+      NEW XINGSHOU_17: -1439222958
+      NEW XINGSHOU_18: -2009919902
+      NEW XINGSHOU_19: 362346311
+      NEW XINGSHOU_2: -1391347208
+      NEW XINGSHOU_20: 963355877
+      NEW XINGSHOU_21: -2056557660
+      NEW XINGSHOU_22: -1724143012
+      NEW XINGSHOU_23: -2053319564
+      NEW XINGSHOU_24: 880375523
+      NEW XINGSHOU_25: 1128990508
+      NEW XINGSHOU_26: 1952555921
+      NEW XINGSHOU_27: -1111819619
+      NEW XINGSHOU_28: 1995954962
+      NEW XINGSHOU_29: -1120439876
+      NEW XINGSHOU_3: 1975819712
+      NEW XINGSHOU_30: -1720034913
+      NEW XINGSHOU_31: -837416593
+      NEW XINGSHOU_32: 1509870103
+      NEW XINGSHOU_33: -61709156
+      NEW XINGSHOU_34: -1696254996
+      NEW XINGSHOU_35: 1852254279
+      NEW XINGSHOU_36: 138356506
+      NEW XINGSHOU_37: -2131300957
+      NEW XINGSHOU_38: 1949448034
+      NEW XINGSHOU_39: -1467171561
+      NEW XINGSHOU_4: 94814614
+      NEW XINGSHOU_40: -1640304926
+      NEW XINGSHOU_41: -758177279
+      NEW XINGSHOU_42: 1671263636
+      NEW XINGSHOU_43: 1860522322
+      NEW XINGSHOU_44: 424611943
+      NEW XINGSHOU_45: -1024455391
+      NEW XINGSHOU_46: 261171712
+      NEW XINGSHOU_47: -1403146123
+      NEW XINGSHOU_48: -1918911993
+      NEW XINGSHOU_49: -180831402
+      NEW XINGSHOU_5: -1430990177
+      NEW XINGSHOU_6: -458836417
+      NEW XINGSHOU_7: -952762299
+      NEW XINGSHOU_8: -942864411
+      NEW XINGSHOU_9: 2088702101
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
