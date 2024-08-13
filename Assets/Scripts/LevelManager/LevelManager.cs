@@ -4,6 +4,7 @@ using UnityEngine.Networking;
 using System.Collections;
 using System.Collections.Generic;
 using Mirror;
+using Random = System.Random;
 
 public class WaveInstance
 {
@@ -50,9 +51,12 @@ public class WaveInstance
             {
                 NetworkServer.Spawn(enemy);
             }
-
-            // 设置仇恨
-            enemy.GetComponent<DamageSensor>().PutPerceiveGameObject(PlayerController.PlayerControllers[0].gameObject);
+            
+            
+            int randomIndex = UnityEngine.Random.Range(0, PlayerController.PlayerControllers.Count);
+            
+            // 设置仇恨s
+            enemy.GetComponent<DamageSensor>().PutPerceiveGameObject(PlayerController.PlayerControllers[randomIndex].gameObject);
             WeaponSystemCenter.Instance.GiveAIWeapon(enemy);
             enemySet.Add(enemy);
         }
