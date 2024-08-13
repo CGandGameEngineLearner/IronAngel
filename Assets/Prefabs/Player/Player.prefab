@@ -1001,8 +1001,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5b882c521fc1a346a1ef4c9ce24e16a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _CameraMinDistance: 0.313
-  _CameraMaxDistance: 0.477
+  _CameraMinDistance: 0.477
+  _CameraMaxDistance: 0.313
   _PlayerSpec:
     m_Player: {fileID: 0}
     m_NormalSpeed: 8
@@ -1061,6 +1061,7 @@ MonoBehaviour:
     m_DropWeapon_CharacterDied: 0
     m_CoreSprite: {fileID: 3705890767357961549}
   DiedVFX: 0
+  DiedAudioClip: {fileID: 0}
 --- !u!61 &1091420559612212904
 BoxCollider2D:
   m_ObjectHideFlags: 0
