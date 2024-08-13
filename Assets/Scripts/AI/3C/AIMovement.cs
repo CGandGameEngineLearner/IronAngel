@@ -92,6 +92,10 @@ public class AIMovement : MonoBehaviour
     /// <param name="speed"></param> 这个参数是detla值
     public void SetSpeed(float speed)
     {
+        if (agent == null)
+        {
+            return;
+        }
         agent.speed = agent.speed + speed > 0 ? agent.speed + speed : 0;
     }
 

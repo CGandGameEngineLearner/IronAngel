@@ -49,6 +49,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0
   levelSwitchConfig: {fileID: 11400000, guid: f01d2b6537ef5df4491d2bc14593f0f2, type: 2}
+  m_EnemySettingConfig: {fileID: 11400000, guid: 90d7e63c4d1a01c499f3a38e799fca40, type: 2}
 --- !u!114 &8959503897623114592
 MonoBehaviour:
   m_ObjectHideFlags: 0

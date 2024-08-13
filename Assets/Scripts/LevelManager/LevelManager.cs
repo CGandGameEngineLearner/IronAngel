@@ -15,6 +15,8 @@ public class WaveInstance
     public float currentTime = 0;
     public int CurrentEnemyCount => enemySet.Count;
 
+    
+
     private HashSet<GameObject> enemySet = new HashSet<GameObject>();
     public WaveListItem waveListItem;
     private Queue<EnemyListItemConfig> m_EnemyToSpawn = new Queue<EnemyListItemConfig>();
@@ -45,21 +47,53 @@ public class WaveInstance
         {
             EnemyListItemConfig enemyConfig = m_EnemyToSpawn.Dequeue();
 
-            GameObject enemy =
-                GameObject.Instantiate(enemyConfig.enemyPrefab, enemyConfig.spawnPosition, Quaternion.identity);
-            // 只有服务端调用
-            if (isServer)
+            if (enemyConfig.enemyPrefab != null)
             {
-                NetworkServer.Spawn(enemy);
+                GameObject enemy =
+                    GameObject.Instantiate(enemyConfig.enemyPrefab, enemyConfig.spawnPosition, Quaternion.identity);
+                // 只有服务端调用
+                if (isServer)
+                {
+                    NetworkServer.Spawn(enemy);
+                }
+                int randomIndex = UnityEngine.Random.Range(0, PlayerController.PlayerControllers.Count);
+            
+                // 设置仇恨s
+                enemy.GetComponent<DamageSensor>().PutPerceiveGameObject(PlayerController.PlayerControllers[randomIndex].gameObject);
+                WeaponSystemCenter.Instance.GiveAIWeapon(enemy);
+                enemySet.Add(enemy);
+            }
+            else if (enemyConfig.enemyType!=EnemyType.None&&LevelManager.Instance.m_EnemySettingConfig!=null)
+            {
+                var enemyPrefab = LevelManager.Instance.m_EnemySettingConfig.GetEnemySetting(enemyConfig.enemyType).EnemyPrefab;
+
+                if (enemyPrefab == null)
+                {
+                    Debug.LogWarning("敌人波次配置有误"+enemyConfig);
+                    return;
+                }
+                
+                GameObject enemy =
+                    GameObject.Instantiate(enemyPrefab, enemyConfig.spawnPosition, Quaternion.identity);
+                // 只有服务端调用
+                if (isServer)
+                {
+                    NetworkServer.Spawn(enemy);
+                }
+                int randomIndex = UnityEngine.Random.Range(0, PlayerController.PlayerControllers.Count);
+            
+                // 设置仇恨s
+                enemy.GetComponent<DamageSensor>().PutPerceiveGameObject(PlayerController.PlayerControllers[randomIndex].gameObject);
+                WeaponSystemCenter.Instance.GiveAIWeapon(enemy);
+                enemySet.Add(enemy);
+            }
+            else
+            {
+                Debug.LogWarning("敌人波次配置有误"+enemyConfig);
             }
             
             
-            int randomIndex = UnityEngine.Random.Range(0, PlayerController.PlayerControllers.Count);
             
-            // 设置仇恨s
-            enemy.GetComponent<DamageSensor>().PutPerceiveGameObject(PlayerController.PlayerControllers[randomIndex].gameObject);
-            WeaponSystemCenter.Instance.GiveAIWeapon(enemy);
-            enemySet.Add(enemy);
         }
     }
 
@@ -119,7 +153,7 @@ public class LevelManager : NetworkBehaviour
 {
     public LevelSwitchConfig levelSwitchConfig;
     public static LevelManager Instance { get; private set; }
-
+    public EnemySettingConfig m_EnemySettingConfig;
     private bool m_IsRunning = false;
     private BattleZoneWaveHandle m_BattleZoneWaveHandle;
     private WaveInstance m_WaveInstance;

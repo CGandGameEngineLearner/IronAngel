@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 102416909b304dd29f21767af48e401e, type: 3}
+  m_Name: EnemySettingConfig
+  m_EditorClassIdentifier: 
+  EnemyTypeSettings:
+  - EnemyType: 1
+    EnemyPrefab: {fileID: 2195872794582507982, guid: a510a544ff5692b4e8c3196c3a7c63b1, type: 3}
+  - EnemyType: 2
+    EnemyPrefab: {fileID: 5516283152165274337, guid: e2d872d0cdcd43a479143816197ffced, type: 3}
+  - EnemyType: 3
+    EnemyPrefab: {fileID: 3041229852222691761, guid: 0a29e43cc88b19d4689866b4821b5444, type: 3}
+  - EnemyType: 4
+    EnemyPrefab: {fileID: 4446028379923702090, guid: 9ce5cfdcaf248f742a786eb3ebecc5ae, type: 3}
+  - EnemyType: 5
+    EnemyPrefab: {fileID: 6053823690440650867, guid: 534df9d583bbf1645a9094310e2122e8, type: 3}
+  - EnemyType: 6
+    EnemyPrefab: {fileID: 1157686176795255648, guid: f4e6249ca37e15e4196a98abb13f0917, type: 3}
+  - EnemyType: 7
+    EnemyPrefab: {fileID: 265621177695738335, guid: f65dee11a7d78b1419d164a007840369, type: 3}
+  - EnemyType: 8
+    EnemyPrefab: {fileID: 7337662348208496736, guid: 9f1872c5830126b4c8ae4a7dac0d4a1d, type: 3}
+  - EnemyType: 9
+    EnemyPrefab: {fileID: 9120111122076499636, guid: 518f06ce088092c428d8bcc12ac2969a, type: 3}
+  - EnemyType: 10
+    EnemyPrefab: {fileID: 2195872794582507982, guid: 3b0bfff10d74b854888f18d3cca66850, type: 3}
+  - EnemyType: 10
+    EnemyPrefab: {fileID: 2195872794582507982, guid: 3b0bfff10d74b854888f18d3cca66850, type: 3}
+  - EnemyType: 11
+    EnemyPrefab: {fileID: 1131541440290416406, guid: 7165d85203646ed40b010540d8a80c02, type: 3}
+  - EnemyType: 12
+    EnemyPrefab: {fileID: 2195872794582507982, guid: 66d01fb17dfe1fc4e9c2603ed85f1622, type: 3}
+  - EnemyType: 13
+    EnemyPrefab: {fileID: 2195872794582507982, guid: 5e2933194652ae34890c14634e07ec73, type: 3}
+  - EnemyType: 14
+    EnemyPrefab: {fileID: 6027127835026737769, guid: d471e2002a9e90a4a90f5cea391f918a, type: 3}
+  - EnemyType: 15
+    EnemyPrefab: {fileID: 6853808647809491705, guid: 38fbfa9459e315e43ba5550987595c90, type: 3}
+  - EnemyType: 16
+    EnemyPrefab: {fileID: 5876895614130007988, guid: a5b5da5badf774a4392236e5af463361, type: 3}
+  - EnemyType: 16
+    EnemyPrefab: {fileID: 5876895614130007988, guid: a5b5da5badf774a4392236e5af463361, type: 3}
+  - EnemyType: 17
+    EnemyPrefab: {fileID: 8573781265586609372, guid: ee0e0b3524bc41b4a9548d1a74ad5ddf, type: 3}
+  - EnemyType: 18
+    EnemyPrefab: {fileID: 7177421604400669015, guid: 1ef7346f31a6c5c49874ea7fd132c98e, type: 3}
+  - EnemyType: 19
+    EnemyPrefab: {fileID: 4046720498335541685, guid: cb5d6fdf5f3c14448ac69e2ae0b2acf5, type: 3}
+  - EnemyType: 22
+    EnemyPrefab: {fileID: 3963506992231610316, guid: f28189ddf82e3474e9979b4d4146fa64, type: 3}
+  - EnemyType: 20
+    EnemyPrefab: {fileID: 1963061903958582378, guid: c25acdb10ed116c4cabc400ac9038732, type: 3}

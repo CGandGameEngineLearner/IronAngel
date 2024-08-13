@@ -214,6 +214,10 @@ public class AIController : NetworkBehaviour
     [ServerCallback]
     public virtual void Chase()
     {
+        if (m_AIMovement == null)
+        {
+            return;
+        }
         var chaseGameObjects = GetPerceiveGameObjects();
         if (chaseGameObjects.Count > 0)
         {
