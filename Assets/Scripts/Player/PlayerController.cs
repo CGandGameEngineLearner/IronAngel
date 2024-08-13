@@ -276,7 +276,7 @@ public class PlayerController : NetworkBehaviour
                 //     CameraController.ShakeCameraRotation(weaponInstance.weaponConfig.interval, 1);
                 // }
                 //
-                // CmdFire(weapon,pos, dir);
+                CmdFire(weapon,pos, dir);
             }
             
         });
