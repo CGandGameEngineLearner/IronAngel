@@ -276,7 +276,8 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
         {
             if(NetworkClient.localPlayer.TryGetComponent<PlayerController>(out var con))
             {
-                con.CameraController.ShakeCameraPosition(0.3f, new Vector3(2, 2, 0));
+                con.CameraController.ShakeCameraPosition(0.3f, new Vector3(UnityEngine.Random.Range(0.0f, 1.5f), UnityEngine.Random.Range(0.0f, 1.5f), 0));
+                con.CameraController.ShakeCameraRotation(0.3f, UnityEngine.Random.Range(0.0f, 5f));
             }
         }
         // 被记录在WeaponInstance里的当前武器血量只有在玩家手上才会更改
@@ -305,6 +306,14 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
             {
                 // 播放死亡特效
                 VfxPool.Instance.GetVfx(m_Properties.DiedVFX, gameObject.transform.position, gameObject.transform.rotation);
+            }
+            
+            // 死亡音效
+            var audioSource = gameObject.GetComponent<AudioSource>();
+            if (audioSource!=null&&m_Properties.DiedAudioClip!=null)
+            {
+                audioSource.clip = m_Properties.DiedAudioClip;
+                audioSource.Play();
             }
             
             

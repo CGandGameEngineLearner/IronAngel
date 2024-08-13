@@ -1534,7 +1534,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5497438150242597434, guid: e66042891968d984998b301985d984d3, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5497438150242597434, guid: e66042891968d984998b301985d984d3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1582,7 +1582,7 @@ PrefabInstance:
       objectReference: {fileID: 7899007317602492697, guid: b319a1beeb967194bbc9b9fa245fb3d7, type: 3}
     - target: {fileID: 8276411310757479430, guid: e66042891968d984998b301985d984d3, type: 3}
       propertyPath: spawnPrefabs.Array.size
-      value: 89
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 8276411310757479430, guid: e66042891968d984998b301985d984d3, type: 3}
       propertyPath: spawnPrefabs.Array.data[6]
@@ -1899,15 +1899,15 @@ PrefabInstance:
     - target: {fileID: 8276411310757479430, guid: e66042891968d984998b301985d984d3, type: 3}
       propertyPath: spawnPrefabs.Array.data[84]
       value: 
-      objectReference: {fileID: 9191053820183534780, guid: a2be8ac903b22c049ba304072706a58e, type: 3}
+      objectReference: {fileID: 6788423322115559337, guid: f28189ddf82e3474e9979b4d4146fa64, type: 3}
     - target: {fileID: 8276411310757479430, guid: e66042891968d984998b301985d984d3, type: 3}
       propertyPath: spawnPrefabs.Array.data[85]
       value: 
-      objectReference: {fileID: 6788423322115559337, guid: f28189ddf82e3474e9979b4d4146fa64, type: 3}
+      objectReference: {fileID: 391040811499106348, guid: d40afa9f46ee65d40bbe077cad20da45, type: 3}
     - target: {fileID: 8276411310757479430, guid: e66042891968d984998b301985d984d3, type: 3}
       propertyPath: spawnPrefabs.Array.data[86]
       value: 
-      objectReference: {fileID: 391040811499106348, guid: d40afa9f46ee65d40bbe077cad20da45, type: 3}
+      objectReference: {fileID: 5021276108613369794, guid: db83b5be8ddc9fc418ecfc216ef4196d, type: 3}
     - target: {fileID: 8276411310757479430, guid: e66042891968d984998b301985d984d3, type: 3}
       propertyPath: spawnPrefabs.Array.data[87]
       value: 
@@ -1915,15 +1915,15 @@ PrefabInstance:
     - target: {fileID: 8276411310757479430, guid: e66042891968d984998b301985d984d3, type: 3}
       propertyPath: spawnPrefabs.Array.data[88]
       value: 
-      objectReference: {fileID: 5021276108613369794, guid: db83b5be8ddc9fc418ecfc216ef4196d, type: 3}
+      objectReference: {fileID: 4743677118601204328, guid: a2be8ac903b22c049ba304072706a58e, type: 3}
     - target: {fileID: 8276411310757479430, guid: e66042891968d984998b301985d984d3, type: 3}
       propertyPath: spawnPrefabs.Array.data[89]
       value: 
-      objectReference: {fileID: 5021276108613369794, guid: db83b5be8ddc9fc418ecfc216ef4196d, type: 3}
+      objectReference: {fileID: 5021276108613369794, guid: c647fee262ab519448dc80d6630121ae, type: 3}
     - target: {fileID: 8276411310757479430, guid: e66042891968d984998b301985d984d3, type: 3}
       propertyPath: spawnPrefabs.Array.data[90]
       value: 
-      objectReference: {fileID: 5021276108613369794, guid: db83b5be8ddc9fc418ecfc216ef4196d, type: 3}
+      objectReference: {fileID: 5021276108613369794, guid: c647fee262ab519448dc80d6630121ae, type: 3}
     - target: {fileID: 8276411310757479430, guid: e66042891968d984998b301985d984d3, type: 3}
       propertyPath: spawnPrefabs.Array.data[91]
       value: 
@@ -47637,7 +47637,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!114 &1778331822
 MonoBehaviour:
@@ -67786,6 +67786,10 @@ PrefabInstance:
     - target: {fileID: 3532554612095802979, guid: a2be8ac903b22c049ba304072706a58e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4223465562359304094, guid: a2be8ac903b22c049ba304072706a58e, type: 3}
+      propertyPath: sceneId
+      value: 1242045349
       objectReference: {fileID: 0}
     - target: {fileID: 4549742626244481203, guid: a2be8ac903b22c049ba304072706a58e, type: 3}
       propertyPath: WeaponSpawnSettings.Array.size

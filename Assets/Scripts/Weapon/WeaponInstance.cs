@@ -25,6 +25,8 @@ public class WeaponInstance : NetworkBehaviour
     private WeaponConfig m_WeaponConfig;
 
     private LineRenderer m_LineRenderer;
+    private float m_HealthTime = 3.0f;
+    private float m_RestTime = 0f;
 
     private void Awake()
     {
@@ -108,6 +110,11 @@ public class WeaponInstance : NetworkBehaviour
         return m_Name;
     }
 
+    public void ResetRestTime()
+    {
+        m_RestTime = 0;
+    }
+
     public void FireVfxAndAnimation(GameObject character, WeaponType weaponType, WeaponConfig weaponConfig, Vector3 startPoint,
         Vector3 dir)
     {
@@ -187,5 +194,24 @@ public class WeaponInstance : NetworkBehaviour
         {
             m_LineRenderer.positionCount = 0;
         }
+    }
+
+    private void Update()
+    {
+        if(m_CurrentMag <= 0 && transform.parent == null)
+        {
+            m_RestTime += Time.deltaTime;
+        }
+        if(m_RestTime >= m_HealthTime)
+        {
+            ServerDestroyWeapon();
+        }
+    }
+
+
+    [ServerCallback]
+    void ServerDestroyWeapon()
+    {
+        NetworkServer.Destroy(gameObject);
     }
 }

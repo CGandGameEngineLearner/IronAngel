@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &9191053820183534780
+--- !u!1 &4743677118601204328
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,9 +8,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3532554612095802979}
-  - component: {fileID: 1367431619645190377}
-  - component: {fileID: 4549742626244481203}
+  - component: {fileID: 4852256210355497189}
+  - component: {fileID: 4223465562359304094}
+  - component: {fileID: 1227052512424862531}
   m_Layer: 0
   m_Name: Weapon
   m_TagString: Untagged
@@ -18,13 +18,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3532554612095802979
+--- !u!4 &4852256210355497189
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9191053820183534780}
+  m_GameObject: {fileID: 4743677118601204328}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -33,13 +33,13 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1367431619645190377
+--- !u!114 &4223465562359304094
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9191053820183534780}
+  m_GameObject: {fileID: 4743677118601204328}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
@@ -50,13 +50,13 @@ MonoBehaviour:
   serverOnly: 0
   visibility: 0
   hasSpawned: 0
---- !u!114 &4549742626244481203
+--- !u!114 &1227052512424862531
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9191053820183534780}
+  m_GameObject: {fileID: 4743677118601204328}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6a82880fa6c9487f9bc119247aacb263, type: 3}
@@ -95,6 +95,8 @@ MonoBehaviour:
     WeaponConfig: {fileID: 11400000, guid: 165953bd0b729c944b9791ff18307253, type: 2}
   - WeaponType: 15
     WeaponConfig: {fileID: 11400000, guid: e6960ab314a90de40818135003e0e1cc, type: 2}
+  - WeaponType: 14
+    WeaponConfig: {fileID: 11400000, guid: 5c093e20978cb6b45bedd1e4a4b20e83, type: 2}
   AmmunitionConfigSettings:
   - AmmunitionType: 1
     AmmunitionConfig: {fileID: 11400000, guid: bed67450519c5134f8f42320d2f204d2, type: 2}
@@ -130,4 +132,8 @@ MonoBehaviour:
     AmmunitionConfig: {fileID: 11400000, guid: bea65726130c01946ae7a2a3a397f023, type: 2}
   - AmmunitionType: 21
     AmmunitionConfig: {fileID: 11400000, guid: ef1427f79bf9e164b9abca635647347a, type: 2}
+  - AmmunitionType: 12
+    AmmunitionConfig: {fileID: 11400000, guid: 90e260bd76f9f864ab281111fbe02fab, type: 2}
+  - AmmunitionType: 20
+    AmmunitionConfig: {fileID: 11400000, guid: 9e1ac45f5105cc4438b68a2bc342042d, type: 2}
   StartGame: 0

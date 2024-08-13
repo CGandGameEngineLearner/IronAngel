@@ -6,6 +6,7 @@ using UnityEngine;
 public class MultiPlayerReady : MonoBehaviour
 {
     private GameObject m_MultiPlayerReadyPanel;
+    
 
     private void Awake()
     {
@@ -16,5 +17,8 @@ public class MultiPlayerReady : MonoBehaviour
         PlayerController.PlayerControllers[0].CmdStartGame();
         m_MultiPlayerReadyPanel.SetActive(false);
         EventCenter.Broadcast(EventType.MultiPlayerGameStart);
+
+        GameObject battleZoneTriggers = GameObject.Find("BattleZoneTrigger");
+        battleZoneTriggers.SetActive(true);
     }
 }
