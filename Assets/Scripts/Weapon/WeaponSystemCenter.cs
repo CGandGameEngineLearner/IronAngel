@@ -88,12 +88,12 @@ public class WeaponSystemCenter : NetworkBehaviour
     public GameObject GetWeapon(WeaponType weaponType)
     {
         if (weaponType == WeaponType.None) return null;
-        
+
         var weaponConfig = m_WeaponConfigDic[weaponType];
         var prefab = weaponConfig.prefab;
 
         GameObject weapon = Instantiate(prefab, Vector2.zero,
-            UnityEngine.Quaternion.Euler(0,0,Random.Range(0,360))); // 朝向随机
+            UnityEngine.Quaternion.Euler(0, 0, Random.Range(0, 360))); // 朝向随机
 
         weapon.GetComponent<WeaponInstance>().Init(weaponConfig);
         m_WeaponToConfigDic[weapon] = weaponConfig;
@@ -102,13 +102,14 @@ public class WeaponSystemCenter : NetworkBehaviour
         RpcWeaponDicUpdate(weapon, weaponType);
         return weapon;
     }
-    
+
     public void SpawnWeapon(WeaponType weaponType, Vector3 pos)
     {
         if (weaponType == WeaponType.None)
         {
             return;
         }
+
         ServeSpawnWeapon(weaponType, pos);
     }
 
@@ -119,7 +120,7 @@ public class WeaponSystemCenter : NetworkBehaviour
         var prefab = weaponConfig.prefab;
 
         GameObject weapon = Instantiate(prefab, pos,
-            UnityEngine.Quaternion.Euler(0,0,Random.Range(0,360))); // 朝向随机
+            UnityEngine.Quaternion.Euler(0, 0, Random.Range(0, 360))); // 朝向随机
 
         weapon.GetComponent<WeaponInstance>().Init(weaponConfig);
         m_WeaponToConfigDic[weapon] = weaponConfig;
@@ -132,7 +133,7 @@ public class WeaponSystemCenter : NetworkBehaviour
     [ClientRpc]
     private void RpcWeaponDicUpdate(GameObject weapon, WeaponType weaponType)
     {
-        if(weaponType == WeaponType.None) return;
+        if (weaponType == WeaponType.None) return;
         m_WeaponToConfigDic[weapon] = m_WeaponConfigDic[weaponType];
         m_WeaponToTypeDic[weapon] = weaponType;
     }
@@ -141,7 +142,7 @@ public class WeaponSystemCenter : NetworkBehaviour
     private GameObject AISpawnWeapon(WeaponType weaponType, Vector3 pos)
     {
         if (weaponType == WeaponType.None) return null;
-        
+
         var weaponConfig = m_WeaponConfigDic[weaponType];
         var prefab = weaponConfig.prefab;
 
@@ -169,7 +170,7 @@ public class WeaponSystemCenter : NetworkBehaviour
             PlayerController.PlayerControllers[0].Player.SetPlayerLeftHandWeapon(leftWeapon);
             RpcGivePlayerLeftWeapon(leftWeapon);
         }
-        
+
         if (rightWeaponType != WeaponType.None)
         {
             GameObject rightWeapon = GetWeapon(rightWeaponType);
@@ -189,7 +190,7 @@ public class WeaponSystemCenter : NetworkBehaviour
     {
         PlayerController.PlayerControllers[0].Player.SetPlayerRightHandWeapon(weapon);
     }
-    
+
     /// <summary>
     /// 给AI装备武器
     /// </summary>
@@ -217,7 +218,7 @@ public class WeaponSystemCenter : NetworkBehaviour
     public void GiveAIWeapon(GameObject enemy)
     {
         AIController aiController = enemy.GetComponent<AIController>();
-        
+
         // 给左手装备武器
         var weaponType = aiController.GetLeftHandWeaponType();
         var leftWeapon = AISpawnWeapon(weaponType, Vector3.zero);
@@ -226,7 +227,7 @@ public class WeaponSystemCenter : NetworkBehaviour
             aiController.SetLeftHandWeapon(leftWeapon);
             RpcGiveAILeftWeapon(aiController, leftWeapon);
         }
-        
+
         // 给右手装备武器
         weaponType = aiController.GetRightHandWeaponType();
         var rightWeapon = AISpawnWeapon(weaponType, Vector3.zero);
@@ -235,17 +236,16 @@ public class WeaponSystemCenter : NetworkBehaviour
             aiController.SetRightHandWeapon(rightWeapon);
             RpcGiveAIRightWeapon(aiController, rightWeapon);
         }
-        
     }
-    
+
     [ClientRpc]
     private void RpcGiveAILeftWeapon(AIController aiController, GameObject leftHandWeapon)
     {
         aiController.SetLeftHandWeapon(leftHandWeapon);
     }
-    
+
     [ClientRpc]
-    private void RpcGiveAIRightWeapon(AIController aiController,  GameObject rightHandWeapon)
+    private void RpcGiveAIRightWeapon(AIController aiController, GameObject rightHandWeapon)
     {
         aiController.SetRightHandWeapon(rightHandWeapon);
     }
@@ -316,12 +316,13 @@ public class WeaponSystemCenter : NetworkBehaviour
 
         return m_WeaponToTypeDic[weapon];
     }
-    
+
     public bool StartGame = false;
 
 
     [ServerCallback]
-    public void CmdSPFire(GameObject character, WeaponType weaponType, Vector3 startPoint, Vector3 dir, bool isPlayer = true)
+    public void CmdSPFire(GameObject character, WeaponType weaponType, Vector3 startPoint, Vector3 dir,
+        bool isPlayer = true)
     {
         if (weaponType == WeaponType.None) return;
 
@@ -335,10 +336,13 @@ public class WeaponSystemCenter : NetworkBehaviour
         Fire(character, weaponType, ammunitionType, startPoint, dir);
         // Rpc调用客户端
         RpcSPFire(character, weaponType, startPoint, dir, isPlayer);
-        
-        VfxPool.Instance.GetVfx(m_AmmunitionFactory.GetAmmunitionConfig(weaponConfig.ammunitionType).hitVfxType, startPoint, Quaternion.identity );
-        VfxPool.Instance.GetVfx(m_AmmunitionFactory.GetAmmunitionConfig(weaponConfig.ammunitionType).holeType, startPoint, Quaternion.identity );
-        VfxPool.Instance.GetVfx(m_AmmunitionFactory.GetAmmunitionConfig(weaponConfig.ammunitionType).scrapType, startPoint, Quaternion.identity );
+
+        VfxPool.Instance.GetVfx(m_AmmunitionFactory.GetAmmunitionConfig(weaponConfig.ammunitionType).hitVfxType,
+            startPoint, Quaternion.identity);
+        VfxPool.Instance.GetVfx(m_AmmunitionFactory.GetAmmunitionConfig(weaponConfig.ammunitionType).holeType,
+            startPoint, Quaternion.identity);
+        VfxPool.Instance.GetVfx(m_AmmunitionFactory.GetAmmunitionConfig(weaponConfig.ammunitionType).scrapType,
+            startPoint, Quaternion.identity);
     }
 
     [ClientRpc]
@@ -351,7 +355,7 @@ public class WeaponSystemCenter : NetworkBehaviour
         // VfxPool.Instance.GetVfx(m_AmmunitionFactory.GetAmmunitionConfig(weaponConfig.ammunitionType).holeType, startPoint, Quaternion.identity );
         // VfxPool.Instance.GetVfx(m_AmmunitionFactory.GetAmmunitionConfig(weaponConfig.ammunitionType).scrapType, startPoint, Quaternion.identity );
     }
-    
+
     /// <summary>
     /// 通知服务器要在指定地点和方向发射子弹
     /// </summary>
@@ -366,6 +370,7 @@ public class WeaponSystemCenter : NetworkBehaviour
         {
             return;
         }
+
         dir = dir.normalized;
 #if UNITY_EDITOR
         //Debug.Log(GetType() + "Command" + "Fire");
@@ -382,7 +387,7 @@ public class WeaponSystemCenter : NetworkBehaviour
 #endif
             return;
         }
-        
+
         // 武器射击间隔
         if (!weaponInstance.TryFire())
         {
@@ -420,10 +425,11 @@ public class WeaponSystemCenter : NetworkBehaviour
     [ClientRpc]
     public void RPCFire(GameObject character, GameObject weapon, Vector3 startPoint, Vector3 dir, bool isPlayer)
     {
-        if(m_WeaponToTypeDic == null || m_WeaponToTypeDic.ContainsKey(weapon) == false)
+        if (m_WeaponToTypeDic == null || m_WeaponToTypeDic.ContainsKey(weapon) == false)
         {
             return;
         }
+
         WeaponType weaponType = m_WeaponToTypeDic[weapon];
         WeaponConfig weaponConfig = m_WeaponConfigDic[weaponType];
 
@@ -445,6 +451,7 @@ public class WeaponSystemCenter : NetworkBehaviour
         {
             return;
         }
+
         if (!weapon.TryGetComponent<WeaponInstance>(out WeaponInstance weaponInstance)) return;
         weaponInstance.UnFireVfxAndAnimation();
     }
@@ -494,10 +501,25 @@ public class WeaponSystemCenter : NetworkBehaviour
 
     private IEnumerator DisableLineRenderer(float seconds, LineRenderer lineRenderer)
     {
+        // 交替激光的颜色
         float counter = 0;
+        bool transTo = false;
         while (counter < seconds)
         {
             counter += Time.deltaTime;
+            if (transTo)
+            {
+                lineRenderer.startColor = Color.yellow;
+                lineRenderer.endColor = Color.yellow;
+            }
+            else
+            {
+                lineRenderer.startColor = Color.red;
+                lineRenderer.endColor = Color.red;
+            }
+
+            transTo = !transTo;
+
             yield return null;
         }
 
