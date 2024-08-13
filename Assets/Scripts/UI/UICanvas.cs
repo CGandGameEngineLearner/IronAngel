@@ -141,13 +141,13 @@ public class UICanvas : MonoBehaviour
             ShowPauseMenu(!isPause);
             isPause = !isPause;
         }
-        if(Input.GetMouseButton(0))
+        if(Input.GetMouseButton(0) || Input.GetMouseButton(1))
         {
-            Cursor.SetCursor(m_Aim_2, new Vector2(0, 30), CursorMode.ForceSoftware);
+            Cursor.SetCursor(m_Aim_2, new Vector2(30, 30), CursorMode.ForceSoftware);
         }
         else
         {
-            Cursor.SetCursor(m_Aim_1, new Vector2(0, 30), CursorMode.ForceSoftware);
+            Cursor.SetCursor(m_Aim_1, new Vector2(30, 30), CursorMode.ForceSoftware);
         }
     }
 
