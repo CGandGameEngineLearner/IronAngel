@@ -18,14 +18,14 @@ MonoBehaviour:
   isAuto: 0
   m_Speed: 0
   m_LifeDistance: 0
-  m_Damage: 400
+  m_Damage: 40
   m_PostAmmunitionType: 14
   m_IsExplodeDamage: 1
   sigma: 0
   fallout: 0
   minDamage: 0
   m_LaserWidth: 0
-  m_LeastLiveFixedFrameCount: 0
+  m_LeastLiveFixedFrameCount: 3
   m_specialAtkTypes: 
   m_EffectBuff: []
   hitVfxType: 0
