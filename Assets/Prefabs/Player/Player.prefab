@@ -1030,12 +1030,12 @@ MonoBehaviour:
   - {fileID: 115500364834811415}
   - {fileID: 2153753680464865728}
   _PowerAudioClips:
-  - {fileID: 8300000, guid: 116601ca4d474ff469bb0f574e9e9eaa, type: 3}
-  - {fileID: 8300000, guid: 116601ca4d474ff469bb0f574e9e9eaa, type: 3}
-  - {fileID: 8300000, guid: 116601ca4d474ff469bb0f574e9e9eaa, type: 3}
-  - {fileID: 8300000, guid: 116601ca4d474ff469bb0f574e9e9eaa, type: 3}
+  - {fileID: 8300000, guid: 3d3c7a285f3e39747a329a64edf41e93, type: 3}
+  - {fileID: 8300000, guid: 5d25cf453f01d9d428d760d87711ec27, type: 3}
+  - {fileID: 8300000, guid: 5619efc05bd2f3c4982aff59cca8b175, type: 3}
+  - {fileID: 8300000, guid: 0820da8ab30de6f4da3b13e4066b8182, type: 3}
   _WeaponBroken: {fileID: 8300000, guid: 116601ca4d474ff469bb0f574e9e9eaa, type: 3}
-  m_EmptyWeapon: {fileID: 8300000, guid: 116601ca4d474ff469bb0f574e9e9eaa, type: 3}
+  m_EmptyWeapon: {fileID: 8300000, guid: 99500887a3c2ba04b8c6b57adce2b7e5, type: 3}
 --- !u!114 &6173973794821627971
 MonoBehaviour:
   m_ObjectHideFlags: 0
