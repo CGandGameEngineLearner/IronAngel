@@ -3636,8 +3636,8 @@ MonoBehaviour:
   m_StartMenu: {fileID: 240951640}
   m_PlotPanel: {fileID: 20367563}
   m_TipsPanel: {fileID: 121370764}
-  m_Aim_1: {fileID: 2800000, guid: e27a0b2cc83c6ce45ab6a00b89537340, type: 3}
-  m_Aim_2: {fileID: 2800000, guid: 999dd6a09a254044a8e1c39468076300, type: 3}
+  m_Aim_1: {fileID: 2800000, guid: 3dbe610088c5f46498862a41ffff6dad, type: 3}
+  m_Aim_2: {fileID: 2800000, guid: 42e7ab92f3b769d4b8128c36f3b0426f, type: 3}
   isSingle: 1
 --- !u!1 &624632057
 GameObject:
@@ -11727,7 +11727,7 @@ PrefabInstance:
       objectReference: {fileID: 7899007317602492697, guid: b319a1beeb967194bbc9b9fa245fb3d7, type: 3}
     - target: {fileID: 8276411310757479430, guid: e66042891968d984998b301985d984d3, type: 3}
       propertyPath: spawnPrefabs.Array.size
-      value: 87
+      value: 89
       objectReference: {fileID: 0}
     - target: {fileID: 8276411310757479430, guid: e66042891968d984998b301985d984d3, type: 3}
       propertyPath: spawnPrefabs.Array.data[23]
