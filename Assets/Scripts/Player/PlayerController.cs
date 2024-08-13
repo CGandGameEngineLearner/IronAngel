@@ -196,11 +196,6 @@ public class PlayerController : NetworkBehaviour
         {
             return;
         }
-        if(m_InputController.IsGamePadInput())
-        {
-            m_Player.LookAt(m_InputController.GetGamePadViewInput());
-        }
-        else
         {
             Vector3 v3 = m_InputController.GetMousePositionInWorldSpace(m_CameraController.GetCamera()) - m_Player.GetPlayerPosition();
             m_Player.LookAt(new Vector2(v3.x, v3.y));
@@ -362,6 +357,7 @@ public class PlayerController : NetworkBehaviour
             {
                 m_BaseProperties.m_Properties.m_Energy -= m_Power[3];
             }
+            CmdSpecFire(m_Player.GetPlayer(), WeaponType.SPRocketPodLuncher, m_Player.GetPlayerPosition(), (m_InputController.GetMousePositionInWorldSpace(m_CameraController.GetCamera()) - m_Player.GetPlayerPosition()).normalized);
         });
         m_InputController.AddPerformedActionToPower_5(() =>
         {
