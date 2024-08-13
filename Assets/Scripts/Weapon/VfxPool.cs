@@ -38,8 +38,14 @@ public class VfxPool : MonoBehaviour
         m_VfxObjectPoolManager.ReleaseObject(vfxType, vfx);
     }
 
-    public GameObject GetVfx(VfxType vfxType, Vector2 position, Quaternion quaternion)
+    public GameObject GetVfx(VfxType vfxType, Vector2 position, Quaternion quaternion, AudioClip audioClip = null)
     {
-        return m_VfxObjectPoolManager.GetObject(vfxType, position, quaternion);
+        var vfxObject = m_VfxObjectPoolManager.GetObject(vfxType, position, quaternion);
+        if (vfxObject == null)
+        {
+            return null;
+        }
+        vfxObject.GetComponent<VFXAutoRelease>()?.PlayAudioClip(audioClip);
+        return vfxObject;
     }
 }
