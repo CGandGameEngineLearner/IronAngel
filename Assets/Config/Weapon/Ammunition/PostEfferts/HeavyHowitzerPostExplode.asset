@@ -18,7 +18,7 @@ MonoBehaviour:
   isAuto: 0
   m_Speed: 0
   m_LifeDistance: 0
-  m_Damage: 500
+  m_Damage: 300
   m_PostAmmunitionType: 14
   m_IsExplodeDamage: 1
   sigma: 0
@@ -31,6 +31,6 @@ MonoBehaviour:
   - m_EffectBuff: 15
     m_Duration: 1.5
     m_Number: 0
-  hitVfxType: 20
-  holeType: 21
-  scrapType: 24
+  hitVfxType: 19
+  holeType: 22
+  scrapType: 22

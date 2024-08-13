@@ -1033,7 +1033,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4394949497655171685}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dcf4b16528a0a0d41ba817e306246775, type: 3}
   m_Name: 
@@ -1041,8 +1041,8 @@ MonoBehaviour:
   m_WallLayer:
     serializedVersion: 2
     m_Bits: 512
-  m_DashSpeed: 5
-  m_DashDuration: 1
+  m_DashSpeed: 0
+  m_DashDuration: Infinity
   m_EngagementDistance: 0
   m_ObstacleAvoidanceDistance: 0
 --- !u!58 &6504355535078145481
@@ -1184,7 +1184,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.049073398}
+  m_Offset: {x: 0.038444996, y: -0.087518394}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -1195,7 +1195,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.8961903}
+  m_Size: {x: 2.0468874, y: 1.8957607}
   m_EdgeRadius: 0
 --- !u!114 &4557585944028170807
 MonoBehaviour:
@@ -1245,7 +1245,7 @@ MonoBehaviour:
     m_LeftWeaponGO: {fileID: 0}
     m_RightWeaponGO: {fileID: 0}
     m_Armor: 0
-    m_EnergyShieldCount: 30
+    m_EnergyShieldCount: 0
     m_CurrentHP: 0
     m_CurrentArmor: 0
     m_AttackRange: 15

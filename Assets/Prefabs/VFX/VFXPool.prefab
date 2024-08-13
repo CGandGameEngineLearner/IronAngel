@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 2572318141705409347}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.4577377, y: -3.5262191, z: 1911.9677}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -52,17 +52,17 @@ MonoBehaviour:
       maxSize: 100
   - vfxType: 18
     vfxCategory:
-      prefab: {fileID: 1875443689672974235, guid: 39ef2bf5284e11f4cbcf81f8ea5fd821, type: 3}
-      defaultSize: 50
-      maxSize: 100
-  - vfxType: 20
-    vfxCategory:
-      prefab: {fileID: 1875443689672974235, guid: bf1f0eca9828c2749b65f10aaf912fd8, type: 3}
+      prefab: {fileID: 1875443689672974235, guid: c6e7b2d92bd80ff49af79ece726635d8, type: 3}
       defaultSize: 50
       maxSize: 100
   - vfxType: 19
     vfxCategory:
-      prefab: {fileID: 1875443689672974235, guid: c6e7b2d92bd80ff49af79ece726635d8, type: 3}
+      prefab: {fileID: 1875443689672974235, guid: bf1f0eca9828c2749b65f10aaf912fd8, type: 3}
+      defaultSize: 50
+      maxSize: 100
+  - vfxType: 20
+    vfxCategory:
+      prefab: {fileID: 1875443689672974235, guid: 39ef2bf5284e11f4cbcf81f8ea5fd821, type: 3}
       defaultSize: 50
       maxSize: 100
   - vfxType: 2
@@ -97,7 +97,7 @@ MonoBehaviour:
       maxSize: 100
   - vfxType: 23
     vfxCategory:
-      prefab: {fileID: 1875443689672974235, guid: 61f46e90f95c6d0469ae50c314a19596, type: 3}
+      prefab: {fileID: 1875443689672974235, guid: dd127d49d2b5d61419d11226f72731eb, type: 3}
       defaultSize: 50
       maxSize: 100
   - vfxType: 29

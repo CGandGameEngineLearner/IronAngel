@@ -24,6 +24,9 @@ public class PlayerController : NetworkBehaviour
     bool m_AfterStartLocalPlayer = false;
     float m_FireDistance;
     public List<int> m_Power;
+    public List<AudioClip> m_PowerAudios;
+    public AudioClip m_WeaponBrokenAudio;
+    public AudioClip m_EmptyWeapon;
     //  public------------------------------------------
     public Player Player
     {
@@ -58,7 +61,11 @@ public class PlayerController : NetworkBehaviour
 
         m_Power = setting._PowerLimit;
         m_FireDistance = setting._FireDistance;
-        
+        m_PowerAudios = setting._PowerAudioClips;
+        m_WeaponBrokenAudio = setting._WeaponBroken;
+        m_EmptyWeapon = setting.m_EmptyWeapon;
+
+
         m_CameraController.Init(Camera.main, GameObject.FindAnyObjectByType<CinemachineVirtualCamera>().GetComponent<CinemachineVirtualCamera>(), GameObject.FindWithTag("CameraTarget").transform, setting._CameraMinDistance, setting._CameraMaxDistance);
         m_InputController.Init();
         
@@ -257,6 +264,7 @@ public class PlayerController : NetworkBehaviour
                 if(weapon.GetComponent<WeaponInstance>().GetCurrentMag() <= 0)
                 {
                     UICanvas.Instance.SetTips("Ammo ran out!!(Left)", 1.0f);
+                    weapon.GetComponent<WeaponInstance>().DoWeaponAudio(m_EmptyWeapon);
                 }
                 Vector3 dir = m_InputController.GetMousePositionInWorldSpace(m_CameraController.GetCamera()) - m_Player.GetPlayerLeftHandPosition();
                 if (Vector2.Distance(m_InputController.GetMousePositionInWorldSpace(m_CameraController.GetCamera()), m_Player.GetPlayerLeftHandPosition()) <= m_FireDistance)
@@ -266,15 +274,6 @@ public class PlayerController : NetworkBehaviour
                     v3 = v3.normalized;
                     dir = v3 * m_FireDistance + m_Player.GetPlayerPosition() - m_Player.GetPlayerLeftHandPosition();
                 }
-                
-                // // 客户端开火
-                // if (weapon.TryGetComponent<WeaponInstance>(out WeaponInstance weaponInstance) && weaponInstance.CanFire())
-                // {
-                //     // CameraController.ShakeCameraPosition(0.02f, new Vector3(1,1,0));
-                //     CameraController.ShakeCameraRotation(.01f, 10);
-                //     CameraController.ShakeCameraRotation(weaponInstance.weaponConfig.interval, 1);
-                // }
-                //
                 CmdFire(weapon,pos, dir);
             }
             
@@ -294,6 +293,7 @@ public class PlayerController : NetworkBehaviour
                 if (weapon.GetComponent<WeaponInstance>().GetCurrentMag() <= 0)
                 {
                     UICanvas.Instance.SetTips("Ammo ran out!!(Right)", 1.0f);
+                    weapon.GetComponent<WeaponInstance>().DoWeaponAudio(m_EmptyWeapon);
                 }
                 Vector3 dir = m_InputController.GetMousePositionInWorldSpace(m_CameraController.GetCamera()) - m_Player.GetPlayerRightHandPosition();
                 if (Vector2.Distance(m_InputController.GetMousePositionInWorldSpace(m_CameraController.GetCamera()), m_Player.GetPlayerRightHandPosition()) <= m_FireDistance)
@@ -303,15 +303,7 @@ public class PlayerController : NetworkBehaviour
                     v3 = v3.normalized;
                     dir = v3 * m_FireDistance + m_Player.GetPlayerPosition() - m_Player.GetPlayerRightHandPosition();
                 }
-                
-                // 客户端开火
-                // if (weapon.TryGetComponent<WeaponInstance>(out WeaponInstance weaponInstance) && weaponInstance.CanFire())
-                // {
-                //     // CameraController.ShakeCameraRotation(.01f, 10);
-                //     // CameraController.ShakeCameraRotation(weaponInstance.weaponConfig.interval, 1);
-                // }
-                
-                
+               
                 CmdFire(weapon, pos, dir);
             }
         });
@@ -341,6 +333,7 @@ public class PlayerController : NetworkBehaviour
             {
                 m_BaseProperties.m_Properties.m_Energy -= m_Power[0];
                 CmdSpecFire(m_Player.GetPlayer(), WeaponType.SPExplosiveLuncher, m_InputController.GetMousePositionInWorldSpace(m_CameraController.GetCamera()), Vector3.zero);
+                GetComponent<AudioSource>().PlayOneShot(m_PowerAudios[0]);
             }
         });
         m_InputController.AddPerformedActionToPower_2(() =>
@@ -349,6 +342,7 @@ public class PlayerController : NetworkBehaviour
             {
                 m_BaseProperties.m_Properties.m_Energy -= m_Power[1];
                 CmdSpecFire(m_Player.GetPlayer(), WeaponType.SPKnightPilumLuncher, m_Player.GetPlayerPosition(), (m_InputController.GetMousePositionInWorldSpace(m_CameraController.GetCamera()) - m_Player.GetPlayerPosition()).normalized);
+                GetComponent<AudioSource>().PlayOneShot(m_PowerAudios[1]);
             }
         });
         m_InputController.AddPerformedActionToPower_3(() =>
@@ -357,6 +351,7 @@ public class PlayerController : NetworkBehaviour
             {
                 m_BaseProperties.m_Properties.m_Energy -= m_Power[2];
                 CmdSpecFire(m_Player.GetPlayer(), WeaponType.SPEMPLuncher, m_InputController.GetMousePositionInWorldSpace(m_CameraController.GetCamera()), Vector3.zero);
+                GetComponent<AudioSource>().PlayOneShot(m_PowerAudios[2]);
             }
         });
         m_InputController.AddPerformedActionToPower_4(() =>
@@ -369,11 +364,14 @@ public class PlayerController : NetworkBehaviour
         });
     }
 
+ 
+
     IEnumerator SpecFire()
     {
         for(int i = 0; i < 10; i++)
         {
             CmdSpecFire(m_Player.GetPlayer(), WeaponType.SPRocketPodLuncher, m_Player.GetPlayerPosition(), (m_InputController.GetMousePositionInWorldSpace(m_CameraController.GetCamera()) - m_Player.GetPlayerPosition()).normalized);
+            GetComponent<AudioSource>().PlayOneShot(m_PowerAudios[3]);
             yield return new WaitForSeconds(0.5f); ;
         }
         yield return null;

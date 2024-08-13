@@ -18,8 +18,8 @@ MonoBehaviour:
   weaponName: Vulcan
   m_AtkType: 0
   m_ammunitionType: 4
-  m_WeaponHp: 1400
-  m_Interval: 0.15
+  m_WeaponHp: 900
+  m_Interval: 0.12
   m_MagSize: 70
   m_SimShots: 0
   m_SpreadAngle: 0.8
