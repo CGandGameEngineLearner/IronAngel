@@ -16,9 +16,9 @@ MonoBehaviour:
   levelStruct:
   - levelName: LEVEL1 Wagamama Highway
     sectionName:
+    - Level1_Area2_ ParkingLot
     - Level1_Area1_Highway
     - Level1_Area3_ FuelStation
-    - Level1_Area2_ ParkingLot
   - levelName: LEVEL2 DesertStorm
     sectionName:
     - Level2_Area1_Camp
