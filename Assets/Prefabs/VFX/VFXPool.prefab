@@ -85,6 +85,11 @@ MonoBehaviour:
       prefab: {fileID: 2193544161663551073, guid: 2b5d376b620219946afc6c7c58d7cc34, type: 3}
       defaultSize: 50
       maxSize: 100
+  - vfxType: 21
+    vfxCategory:
+      prefab: {fileID: 1875443689672974235, guid: ee5636fe6f6db304cacf77b5c198df50, type: 3}
+      defaultSize: 50
+      maxSize: 100
   - vfxType: 22
     vfxCategory:
       prefab: {fileID: 1875443689672974235, guid: ff233f82234b80f45b9d9e357fba3b8e, type: 3}
@@ -102,11 +107,26 @@ MonoBehaviour:
       maxSize: 100
   - vfxType: 27
     vfxCategory:
-      prefab: {fileID: 1875443689672974235, guid: 61f46e90f95c6d0469ae50c314a19596, type: 3}
+      prefab: {fileID: 1875443689672974235, guid: 0a1fee6a45e2c5e45bee8e7cafd00923, type: 3}
       defaultSize: 50
       maxSize: 100
   - vfxType: 28
     vfxCategory:
       prefab: {fileID: 2730884618167502043, guid: 3cc729addda6e58409cd3d197a56f0f3, type: 3}
+      defaultSize: 50
+      maxSize: 100
+  - vfxType: 24
+    vfxCategory:
+      prefab: {fileID: 1875443689672974235, guid: 141b350f343307c4fa3712b846e8a6d4, type: 3}
+      defaultSize: 50
+      maxSize: 100
+  - vfxType: 25
+    vfxCategory:
+      prefab: {fileID: 1875443689672974235, guid: 6780e8b069ef4ef4a997cddc6fc9c188, type: 3}
+      defaultSize: 50
+      maxSize: 100
+  - vfxType: 26
+    vfxCategory:
+      prefab: {fileID: 1875443689672974235, guid: 61f46e90f95c6d0469ae50c314a19596, type: 3}
       defaultSize: 50
       maxSize: 100
