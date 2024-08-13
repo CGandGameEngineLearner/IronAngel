@@ -402,6 +402,10 @@ PrefabInstance:
       propertyPath: m_Properties.m_RightHandWeapon
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 4349108200981855422, guid: 84c8b74df93495142b34805b35b07251, type: 3}
+      propertyPath: sceneId
+      value: 1395531146
+      objectReference: {fileID: 0}
     - target: {fileID: 5311347249680574909, guid: 84c8b74df93495142b34805b35b07251, type: 3}
       propertyPath: m_RootOrder
       value: -1
@@ -637,6 +641,10 @@ PrefabInstance:
     - target: {fileID: 1414487576585961535, guid: 84c8b74df93495142b34805b35b07251, type: 3}
       propertyPath: sceneId
       value: 934897567
+      objectReference: {fileID: 0}
+    - target: {fileID: 4349108200981855422, guid: 84c8b74df93495142b34805b35b07251, type: 3}
+      propertyPath: sceneId
+      value: 3948748734
       objectReference: {fileID: 0}
     - target: {fileID: 5311347249680574909, guid: 84c8b74df93495142b34805b35b07251, type: 3}
       propertyPath: m_RootOrder
@@ -6148,7 +6156,7 @@ PrefabInstance:
       objectReference: {fileID: 7899007317602492697, guid: b319a1beeb967194bbc9b9fa245fb3d7, type: 3}
     - target: {fileID: 8276411310757479430, guid: e66042891968d984998b301985d984d3, type: 3}
       propertyPath: spawnPrefabs.Array.size
-      value: 100
+      value: 116
       objectReference: {fileID: 0}
     - target: {fileID: 8276411310757479430, guid: e66042891968d984998b301985d984d3, type: 3}
       propertyPath: spawnPrefabs.Array.data[0]
@@ -6698,6 +6706,10 @@ PrefabInstance:
       propertyPath: sceneId
       value: 611865781
       objectReference: {fileID: 0}
+    - target: {fileID: 4349108200981855422, guid: 84c8b74df93495142b34805b35b07251, type: 3}
+      propertyPath: sceneId
+      value: 834151201
+      objectReference: {fileID: 0}
     - target: {fileID: 5311347249680574909, guid: 84c8b74df93495142b34805b35b07251, type: 3}
       propertyPath: m_RootOrder
       value: -1
@@ -6779,6 +6791,10 @@ PrefabInstance:
     - target: {fileID: 3505047447875443191, guid: 84c8b74df93495142b34805b35b07251, type: 3}
       propertyPath: m_Properties.m_RightHandWeapon
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4349108200981855422, guid: 84c8b74df93495142b34805b35b07251, type: 3}
+      propertyPath: sceneId
+      value: 69923182
       objectReference: {fileID: 0}
     - target: {fileID: 5311347249680574909, guid: 84c8b74df93495142b34805b35b07251, type: 3}
       propertyPath: m_RootOrder
@@ -6970,6 +6986,10 @@ PrefabInstance:
       propertyPath: m_Properties.m_RightHandWeaponHP
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4349108200981855422, guid: 84c8b74df93495142b34805b35b07251, type: 3}
+      propertyPath: sceneId
+      value: 4112866545
+      objectReference: {fileID: 0}
     - target: {fileID: 5311347249680574909, guid: 84c8b74df93495142b34805b35b07251, type: 3}
       propertyPath: m_RootOrder
       value: -1
@@ -7051,6 +7071,10 @@ PrefabInstance:
     - target: {fileID: 3505047447875443191, guid: 84c8b74df93495142b34805b35b07251, type: 3}
       propertyPath: m_Properties.m_RightHandWeapon
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4349108200981855422, guid: 84c8b74df93495142b34805b35b07251, type: 3}
+      propertyPath: sceneId
+      value: 1763486282
       objectReference: {fileID: 0}
     - target: {fileID: 5311347249680574909, guid: 84c8b74df93495142b34805b35b07251, type: 3}
       propertyPath: m_RootOrder
@@ -7275,6 +7299,10 @@ PrefabInstance:
     - target: {fileID: 1414487576585961535, guid: 84c8b74df93495142b34805b35b07251, type: 3}
       propertyPath: sceneId
       value: 2102296765
+      objectReference: {fileID: 0}
+    - target: {fileID: 4349108200981855422, guid: 84c8b74df93495142b34805b35b07251, type: 3}
+      propertyPath: sceneId
+      value: 948887971
       objectReference: {fileID: 0}
     - target: {fileID: 5311347249680574909, guid: 84c8b74df93495142b34805b35b07251, type: 3}
       propertyPath: m_RootOrder
@@ -7508,6 +7536,10 @@ PrefabInstance:
       propertyPath: m_Properties.m_RightHandWeapon
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 4349108200981855422, guid: 84c8b74df93495142b34805b35b07251, type: 3}
+      propertyPath: sceneId
+      value: 3080206730
+      objectReference: {fileID: 0}
     - target: {fileID: 5311347249680574909, guid: 84c8b74df93495142b34805b35b07251, type: 3}
       propertyPath: m_RootOrder
       value: -1
@@ -7660,6 +7692,10 @@ PrefabInstance:
       propertyPath: sceneId
       value: 3115855001
       objectReference: {fileID: 0}
+    - target: {fileID: 4349108200981855422, guid: 84c8b74df93495142b34805b35b07251, type: 3}
+      propertyPath: sceneId
+      value: 2249823816
+      objectReference: {fileID: 0}
     - target: {fileID: 5311347249680574909, guid: 84c8b74df93495142b34805b35b07251, type: 3}
       propertyPath: m_RootOrder
       value: -1
@@ -7737,6 +7773,10 @@ PrefabInstance:
     - target: {fileID: 1414487576585961535, guid: 84c8b74df93495142b34805b35b07251, type: 3}
       propertyPath: sceneId
       value: 4013441212
+      objectReference: {fileID: 0}
+    - target: {fileID: 4349108200981855422, guid: 84c8b74df93495142b34805b35b07251, type: 3}
+      propertyPath: sceneId
+      value: 206027447
       objectReference: {fileID: 0}
     - target: {fileID: 5311347249680574909, guid: 84c8b74df93495142b34805b35b07251, type: 3}
       propertyPath: m_RootOrder
