@@ -441,6 +441,10 @@ public class WeaponSystemCenter : NetworkBehaviour
     [ClientRpc]
     public void RpcUnFire(GameObject weapon)
     {
+        if (weapon == null)
+        {
+            return;
+        }
         if (!weapon.TryGetComponent<WeaponInstance>(out WeaponInstance weaponInstance)) return;
         weaponInstance.UnFireVfxAndAnimation();
     }
