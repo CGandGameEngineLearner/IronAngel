@@ -16,7 +16,8 @@ public class WeaponInstance : NetworkBehaviour
     private WeaponInstanceData m_WeaponInstanceData;
     private Animator m_Animator;
     private int fireHash = Animator.StringToHash("fire");
-
+    
+    
     [SyncVar] private int m_WeaponHP;
     [SyncVar] private int m_WeaponCurrentHP;
     [SyncVar] private int m_CurrentMag;
@@ -47,6 +48,18 @@ public class WeaponInstance : NetworkBehaviour
     public WeaponConfig weaponConfig => m_WeaponConfig;
 
     public LineRenderer lineRenderer => m_LineRenderer;
+
+    /// <summary>
+    /// 给个clip完事
+    /// </summary>
+    /// <param name="audioClip"></param>
+    public void DoWeaponAudio(AudioClip audioClip)
+    {
+        if (audioClip != null)
+        {
+            GetComponent<AudioSource>().PlayOneShot(audioClip);
+        }
+    }
 
     /// <summary>
     /// 是否可以开火，不会修改数值
