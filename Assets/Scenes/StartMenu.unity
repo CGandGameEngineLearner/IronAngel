@@ -10678,6 +10678,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MultiPlayerTestRoom
       objectReference: {fileID: 0}
+    - target: {fileID: 3862833496210750000, guid: d95908b4d98f2f2449171883e2e44a0a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4183346831035840989, guid: d95908b4d98f2f2449171883e2e44a0a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1
