@@ -7,7 +7,16 @@ public class VFXAutoRelease : MonoBehaviour
     public float autoDestroyTime = 0.2f;
     public bool needRelease = true;
 
-    private float counter = 0; 
+    private float counter = 0;
+
+    public void PlayAudioClip(AudioClip audioClip)
+    {
+        var audioSource = gameObject.GetComponent<AudioSource>();
+        if (audioSource!=null&&audioClip!=null)
+        {
+            audioSource.PlayOneShot(audioClip);
+        }
+    }
     
     public void Update()
     {
