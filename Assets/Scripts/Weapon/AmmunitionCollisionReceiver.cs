@@ -276,7 +276,8 @@ public class AmmunitionCollisionReceiver : NetworkBehaviour
         {
             if(NetworkClient.localPlayer.TryGetComponent<PlayerController>(out var con))
             {
-                con.CameraController.ShakeCameraPosition(0.3f, new Vector3(2, 2, 0));
+                con.CameraController.ShakeCameraPosition(0.3f, new Vector3(1.5f, 1.5f, 0));
+                con.CameraController.ShakeCameraRotation(0.3f, 2);
             }
         }
         // 被记录在WeaponInstance里的当前武器血量只有在玩家手上才会更改

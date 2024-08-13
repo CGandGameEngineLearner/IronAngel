@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a59e88c4a9d74b07b64319f8b37e8bad, type: 3}
-  m_Name: AssaultGunAmmunition
+  m_Name: SP_RocketPodPostExplode
   m_EditorClassIdentifier: 
-  m_Prefab: {fileID: 8422378306381297977, guid: 78a3ef50cb73ebd4d81bd5ef9aeab0aa, type: 3}
-  m_MinPoolSize: 50
-  m_MaxPoolSize: 100
+  m_Prefab: {fileID: 8422378306381297977, guid: 329f2e277d1fde14eb9225b390273d32, type: 3}
+  m_MinPoolSize: 0
+  m_MaxPoolSize: 0
   isAuto: 0
-  m_Speed: 38
-  m_LifeDistance: 40
+  m_Speed: 0
+  m_LifeDistance: 0
   m_Damage: 40
   m_PostAmmunitionType: 14
   m_IsExplodeDamage: 0
@@ -28,6 +28,6 @@ MonoBehaviour:
   m_LeastLiveFixedFrameCount: 0
   m_specialAtkTypes: 
   m_EffectBuff: []
-  hitVfxType: 11
+  hitVfxType: 0
   holeType: 0
   scrapType: 0
