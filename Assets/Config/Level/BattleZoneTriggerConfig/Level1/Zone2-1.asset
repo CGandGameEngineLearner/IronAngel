@@ -50,33 +50,6 @@ MonoBehaviour:
     - enemyType: 4
       enemyPrefab: {fileID: 265621177695738335, guid: f65dee11a7d78b1419d164a007840369, type: 3}
       spawnPosition: {x: 23.71278, y: -0.5676048, z: 0}
-    - enemyType: 4
-      enemyPrefab: {fileID: 265621177695738335, guid: f65dee11a7d78b1419d164a007840369, type: 3}
-      spawnPosition: {x: 46.360306, y: 11.582961, z: 0}
-    - enemyType: 6
-      enemyPrefab: {fileID: 265621177695738335, guid: f65dee11a7d78b1419d164a007840369, type: 3}
-      spawnPosition: {x: 45.892975, y: 9.929332, z: 0}
-    - enemyType: 7
-      enemyPrefab: {fileID: 265621177695738335, guid: f65dee11a7d78b1419d164a007840369, type: 3}
-      spawnPosition: {x: 25.11477, y: 9.318221, z: 0}
-    - enemyType: 4
-      enemyPrefab: {fileID: 265621177695738335, guid: f65dee11a7d78b1419d164a007840369, type: 3}
-      spawnPosition: {x: -62.896553, y: 9.5588045, z: 0}
-    - enemyType: 4
-      enemyPrefab: {fileID: 265621177695738335, guid: f65dee11a7d78b1419d164a007840369, type: 3}
-      spawnPosition: {x: -63.03095, y: 12.649887, z: 0}
-    - enemyType: 4
-      enemyPrefab: {fileID: 265621177695738335, guid: f65dee11a7d78b1419d164a007840369, type: 3}
-      spawnPosition: {x: 25.11477, y: 9.318221, z: 0}
-    - enemyType: 4
-      enemyPrefab: {fileID: 265621177695738335, guid: f65dee11a7d78b1419d164a007840369, type: 3}
-      spawnPosition: {x: 49.23358, y: 10.185985, z: 0}
-    - enemyType: 5
-      enemyPrefab: {fileID: 1157686176795255648, guid: f4e6249ca37e15e4196a98abb13f0917, type: 3}
-      spawnPosition: {x: -65.98765, y: 7.6324825, z: 0}
-    - enemyType: 5
-      enemyPrefab: {fileID: 1157686176795255648, guid: f4e6249ca37e15e4196a98abb13f0917, type: 3}
-      spawnPosition: {x: -65.67406, y: 12.605091, z: 0}
     onFieldEnemyCount: 8
     dialogStructs:
     - stringToSays: Squad Leader:Set up the perimeter!
