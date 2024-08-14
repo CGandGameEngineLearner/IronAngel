@@ -199,7 +199,7 @@ public class AIMovement : MonoBehaviour
         var offsetVec = (transform.position - targetGameObject.transform.position).normalized;
         offsetVec += m_EngagementDistance * offsetVec;
         var targetPos = targetGameObject.transform.position + offsetVec;
-        if (agent.isOnNavMesh)
+        if (agent!=null&&agent.isOnNavMesh)
         {
             SetDestination(targetPos);
         }

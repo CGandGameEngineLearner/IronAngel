@@ -223,7 +223,12 @@ public class AIController : NetworkBehaviour
         {
             m_ChaseGO = chaseGameObjects[0];
             //Debug.Log("AI正在追逐"+chaseGameObjects[0]);
-            m_AIMovement.Chase(chaseGameObjects[0]);
+            if (m_AIMovement != null)
+            {
+                m_AIMovement.Chase(chaseGameObjects[0]);
+            }
+
+            
         }
         else
         {
