@@ -62,6 +62,8 @@ public class WaveInstance
                 enemy.GetComponent<DamageSensor>().PutPerceiveGameObject(PlayerController.PlayerControllers[randomIndex].gameObject);
                 WeaponSystemCenter.Instance.GiveAIWeapon(enemy);
                 enemySet.Add(enemy);
+                // 设置箭头指示
+                UICanvas.Instance.arrowPointer.RegisterEnemy(enemy);
             }
             else if (enemyConfig.enemyType!=EnemyType.None&&LevelManager.Instance.m_EnemySettingConfig!=null)
             {
@@ -86,6 +88,8 @@ public class WaveInstance
                 enemy.GetComponent<DamageSensor>().PutPerceiveGameObject(PlayerController.PlayerControllers[randomIndex].gameObject);
                 WeaponSystemCenter.Instance.GiveAIWeapon(enemy);
                 enemySet.Add(enemy);
+                // 设置箭头指示
+                UICanvas.Instance.arrowPointer.RegisterEnemy(enemy);
             }
             else
             {

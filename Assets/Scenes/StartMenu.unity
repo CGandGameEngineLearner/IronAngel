@@ -3612,6 +3612,7 @@ RectTransform:
   - {fileID: 240951637}
   - {fileID: 1595934313}
   - {fileID: 1302218256}
+  - {fileID: 1102588851}
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3641,6 +3642,7 @@ MonoBehaviour:
   m_DieEffect: {fileID: 1176461222}
   m_Aim_1: {fileID: 2800000, guid: 3dbe610088c5f46498862a41ffff6dad, type: 3}
   m_Aim_2: {fileID: 2800000, guid: 42e7ab92f3b769d4b8128c36f3b0426f, type: 3}
+  m_ArrowPointer: {fileID: 1102588852}
   isSingle: 1
 --- !u!1 &624632057
 GameObject:
@@ -5879,6 +5881,66 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1100988402}
+  m_CullTransparentMesh: 1
+--- !u!1 &1102588850
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1102588851}
+  - component: {fileID: 1102588853}
+  - component: {fileID: 1102588852}
+  m_Layer: 5
+  m_Name: ArrowPointer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1102588851
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1102588850}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 613957041}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1102588852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1102588850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a444ad3be26d4eeda3163a8de325decb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  arrowPrefab: {fileID: 1454309721949891008, guid: 1bf237a311b44d54bb26648503403e83, type: 3}
+  uiCanvas: {fileID: 613957040}
+--- !u!222 &1102588853
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1102588850}
   m_CullTransparentMesh: 1
 --- !u!1 &1106595645
 GameObject:
