@@ -33,14 +33,3 @@ MonoBehaviour:
       delayTime: 0
     waveDelay: 0
     thisWaveBGM: {fileID: 0}
-  - enemyListConfigs:
-    - enemyType: 0
-      enemyPrefab: {fileID: 0}
-      spawnPosition: {x: 55.31243, y: 2.930192, z: 0}
-    onFieldEnemyCount: 2
-    dialogStructs:
-    - stringToSays: 'All Clear '
-      time: 2
-      delayTime: 0
-    waveDelay: 0
-    thisWaveBGM: {fileID: 0}
