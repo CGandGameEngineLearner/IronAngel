@@ -47,9 +47,9 @@ public class UICanvas : MonoBehaviour
     [SerializeField]
     private Texture2D m_Aim_2;
 
+    [SerializeField] private ArrowPointer m_ArrowPointer;
 
-
-
+    public ArrowPointer arrowPointer => m_ArrowPointer;
 
 
     public bool isSingle = true;

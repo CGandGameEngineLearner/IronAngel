@@ -14,33 +14,50 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waveConfigs:
   - enemyListConfigs:
-    - enemyPrefab: {fileID: 1131541440290416406, guid: 7165d85203646ed40b010540d8a80c02, type: 3}
-      spawnPosition: {x: -10.455675, y: 40.851795, z: 0}
-    - enemyPrefab: {fileID: 6027127835026737769, guid: d471e2002a9e90a4a90f5cea391f918a, type: 3}
-      spawnPosition: {x: 10.103558, y: 42.125156, z: 0}
-    - enemyPrefab: {fileID: 265621177695738335, guid: f65dee11a7d78b1419d164a007840369, type: 3}
-      spawnPosition: {x: -27.885765, y: 20.862795, z: 0}
-    - enemyPrefab: {fileID: 265621177695738335, guid: f65dee11a7d78b1419d164a007840369, type: 3}
-      spawnPosition: {x: -26.452394, y: 23.078005, z: 0}
-    - enemyPrefab: {fileID: 265621177695738335, guid: f65dee11a7d78b1419d164a007840369, type: 3}
-      spawnPosition: {x: -32.446487, y: 22.426462, z: 0}
-    - enemyPrefab: {fileID: 265621177695738335, guid: f65dee11a7d78b1419d164a007840369, type: 3}
-      spawnPosition: {x: -29.319138, y: 19.23396, z: 0}
-    - enemyPrefab: {fileID: 1157686176795255648, guid: f4e6249ca37e15e4196a98abb13f0917, type: 3}
-      spawnPosition: {x: 23.808899, y: 24.546738, z: 0}
-    - enemyPrefab: {fileID: 1157686176795255648, guid: f4e6249ca37e15e4196a98abb13f0917, type: 3}
-      spawnPosition: {x: 24.43047, y: 20.895008, z: 0}
-    - enemyPrefab: {fileID: 265621177695738335, guid: f65dee11a7d78b1419d164a007840369, type: 3}
-      spawnPosition: {x: -31.534327, y: 56.892464, z: 0}
-    - enemyPrefab: {fileID: 265621177695738335, guid: f65dee11a7d78b1419d164a007840369, type: 3}
-      spawnPosition: {x: -25.670544, y: 58.065224, z: 0}
-    - enemyPrefab: {fileID: 265621177695738335, guid: f65dee11a7d78b1419d164a007840369, type: 3}
-      spawnPosition: {x: 22.998863, y: 57.86975, z: 0}
-    - enemyPrefab: {fileID: 265621177695738335, guid: f65dee11a7d78b1419d164a007840369, type: 3}
-      spawnPosition: {x: 25.409529, y: 57.934906, z: 0}
-    onFieldEnemyCount: 6
+    - enemyType: 11
+      enemyPrefab: {fileID: 0}
+      spawnPosition: {x: 1.7163312, y: 41.418583, z: 0}
+    - enemyType: 6
+      enemyPrefab: {fileID: 0}
+      spawnPosition: {x: -13.745875, y: 37.985554, z: 0}
+    - enemyType: 6
+      enemyPrefab: {fileID: 0}
+      spawnPosition: {x: -17.325361, y: 33.871815, z: 0}
+    - enemyType: 7
+      enemyPrefab: {fileID: 0}
+      spawnPosition: {x: -17.432213, y: 33.17729, z: 0}
+    - enemyType: 7
+      enemyPrefab: {fileID: 0}
+      spawnPosition: {x: 22.155834, y: 24.949816, z: 0}
+    - enemyType: 4
+      enemyPrefab: {fileID: 0}
+      spawnPosition: {x: -31.336391, y: 24.441662, z: 0}
+    - enemyType: 4
+      enemyPrefab: {fileID: 0}
+      spawnPosition: {x: 0.20810509, y: 42.781807, z: 0}
+    - enemyType: 4
+      enemyPrefab: {fileID: 0}
+      spawnPosition: {x: 19.82314, y: 28.83769, z: 0}
+    - enemyType: 4
+      enemyPrefab: {fileID: 0}
+      spawnPosition: {x: 23.390926, y: 22.594063, z: 0}
+    onFieldEnemyCount: 5
     dialogStructs:
     - stringToSays: "Commander:Alright! Let\u2019s see what you made of!"
+      time: 2
+      delayTime: 0
+    waveDelay: 0
+    thisWaveBGM: {fileID: 0}
+  - enemyListConfigs:
+    - enemyType: 4
+      enemyPrefab: {fileID: 0}
+      spawnPosition: {x: 1.4397123, y: 61.688908, z: 0}
+    onFieldEnemyCount: 5
+    dialogStructs:
+    - stringToSays: BlackBox:Entire Unit has been destoryed.
+      time: 2
+      delayTime: 0
+    - stringToSays: 'BlackBox: Well done.'
       time: 2
       delayTime: 0
     waveDelay: 0

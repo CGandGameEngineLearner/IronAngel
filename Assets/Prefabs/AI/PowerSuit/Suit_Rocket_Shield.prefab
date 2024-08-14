@@ -1625,8 +1625,8 @@ MonoBehaviour:
         byteData: 
         byteDataArray: 
       Version: 1.7.9
-  gizmoViewMode: 2
-  showBehaviorDesignerGizmo: 1
+  gizmoViewMode: 0
+  showBehaviorDesignerGizmo: 0
 --- !u!114 &6878317447600579952
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1662,8 +1662,8 @@ MonoBehaviour:
   m_AutoAvoid_RestTimes: 0
   m_TokenWeight: 0.519
   m_RangeOfAimingError: 1.5
-  m_LeftHandWeaponAttackingDuration: 2
-  m_RightHandWeaponAttackingDuration: 0
+  m_LeftHandWeaponAttackingDuration: 0
+  m_RightHandWeaponAttackingDuration: 2
   m_ProbabilityOfLeftWeapon: 0
   m_ProbabilityOfRightWeapon: 1
   PatrolRoute: {fileID: 0}
