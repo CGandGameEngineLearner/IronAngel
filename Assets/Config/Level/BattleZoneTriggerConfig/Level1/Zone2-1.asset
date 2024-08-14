@@ -70,10 +70,10 @@ MonoBehaviour:
     - enemyType: 2
       enemyPrefab: {fileID: 0}
       spawnPosition: {x: 22.145569, y: 14.086023, z: 0}
-    - enemyType: 6
+    - enemyType: 5
       enemyPrefab: {fileID: 0}
       spawnPosition: {x: 14.298119, y: 0.9949119, z: 0}
-    - enemyType: 7
+    - enemyType: 25
       enemyPrefab: {fileID: 0}
       spawnPosition: {x: 29.747414, y: -0.9062747, z: 0}
     - enemyType: 4

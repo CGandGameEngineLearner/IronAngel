@@ -59,3 +59,9 @@ MonoBehaviour:
     EnemyPrefab: {fileID: 3963506992231610316, guid: f28189ddf82e3474e9979b4d4146fa64, type: 3}
   - EnemyType: 20
     EnemyPrefab: {fileID: 1963061903958582378, guid: c25acdb10ed116c4cabc400ac9038732, type: 3}
+  - EnemyType: 23
+    EnemyPrefab: {fileID: 1157686176795255648, guid: a98ab418bb017ef4f8ba5044d3888d83, type: 3}
+  - EnemyType: 24
+    EnemyPrefab: {fileID: 265621177695738335, guid: a9cec3ab5d8f4544db0e7844444bf112, type: 3}
+  - EnemyType: 25
+    EnemyPrefab: {fileID: 7337662348208496736, guid: 4d49c2b6fc5d00947b463a72959351fd, type: 3}

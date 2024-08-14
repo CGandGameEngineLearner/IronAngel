@@ -52,13 +52,30 @@ MonoBehaviour:
     - enemyType: 4
       enemyPrefab: {fileID: 0}
       spawnPosition: {x: 1.4397123, y: 61.688908, z: 0}
-    onFieldEnemyCount: 5
+    onFieldEnemyCount: 1
     dialogStructs:
-    - stringToSays: BlackBox:Entire Unit has been destoryed.
+    - stringToSays: Follow the ARROW...
       time: 2
       delayTime: 0
-    - stringToSays: 'BlackBox: Well done.'
-      time: 2
+    - stringToSays: AND watch out for TANK
+      time: 4
       delayTime: 0
     waveDelay: 0
+    thisWaveBGM: {fileID: 0}
+  - enemyListConfigs:
+    - enemyType: 2
+      enemyPrefab: {fileID: 0}
+      spawnPosition: {x: -28.713264, y: 21.149956, z: 0}
+    - enemyType: 2
+      enemyPrefab: {fileID: 0}
+      spawnPosition: {x: 32.09453, y: 20.491169, z: 0}
+    - enemyType: 5
+      enemyPrefab: {fileID: 0}
+      spawnPosition: {x: -25.048023, y: 57.142517, z: 0}
+    - enemyType: 5
+      enemyPrefab: {fileID: 0}
+      spawnPosition: {x: 31.229404, y: 60.993965, z: 0}
+    onFieldEnemyCount: 4
+    dialogStructs: []
+    waveDelay: 4
     thisWaveBGM: {fileID: 0}
