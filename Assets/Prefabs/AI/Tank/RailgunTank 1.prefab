@@ -898,9 +898,9 @@ MonoBehaviour:
   m_TokenWeight: 1
   m_RangeOfAimingError: 0
   m_LeftHandWeaponAttackingDuration: 3
-  m_RightHandWeaponAttackingDuration: 5
-  m_ProbabilityOfLeftWeapon: 0.453
-  m_ProbabilityOfRightWeapon: 0.788
+  m_RightHandWeaponAttackingDuration: 4
+  m_ProbabilityOfLeftWeapon: 0.4
+  m_ProbabilityOfRightWeapon: 0.6
   PatrolRoute: {fileID: 0}
 --- !u!114 &8795804929093474933
 MonoBehaviour:
@@ -919,7 +919,7 @@ MonoBehaviour:
     m_Bits: 512
   m_DashSpeed: 0
   m_DashDuration: 0
-  m_EngagementDistance: 14
+  m_EngagementDistance: 13
   m_ObstacleAvoidanceDistance: 2
 --- !u!58 &3497932170643814977
 CircleCollider2D:
