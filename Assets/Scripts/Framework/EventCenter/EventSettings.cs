@@ -23,6 +23,7 @@ public enum EventType
     
     
     ChangeScene,                                            // 切换场景
+    RequireChangeMultiScene                                 // 请求切换多人场景
 }
 
 public delegate void Callback();

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using Mirror;
 using Random = System.Random;
 using Audio;
+using UnityEngine.SceneManagement;
 
 public class WaveInstance
 {
@@ -14,8 +15,6 @@ public class WaveInstance
     public int waveIdx = -1;
     public float currentTime = 0;
     public int CurrentEnemyCount => enemySet.Count;
-
-    
 
     private HashSet<GameObject> enemySet = new HashSet<GameObject>();
     public WaveListItem waveListItem;
@@ -56,25 +55,28 @@ public class WaveInstance
                 {
                     NetworkServer.Spawn(enemy);
                 }
+
                 int randomIndex = UnityEngine.Random.Range(0, PlayerController.PlayerControllers.Count);
-            
+
                 // 设置仇恨s
-                enemy.GetComponent<DamageSensor>().PutPerceiveGameObject(PlayerController.PlayerControllers[randomIndex].gameObject);
+                enemy.GetComponent<DamageSensor>()
+                    .PutPerceiveGameObject(PlayerController.PlayerControllers[randomIndex].gameObject);
                 WeaponSystemCenter.Instance.GiveAIWeapon(enemy);
                 enemySet.Add(enemy);
                 // 设置箭头指示
                 UICanvas.Instance.arrowPointer.RegisterEnemy(enemy);
             }
-            else if (enemyConfig.enemyType!=EnemyType.None&&LevelManager.Instance.m_EnemySettingConfig!=null)
+            else if (enemyConfig.enemyType != EnemyType.None && LevelManager.Instance.m_EnemySettingConfig != null)
             {
-                var enemyPrefab = LevelManager.Instance.m_EnemySettingConfig.GetEnemySetting(enemyConfig.enemyType).EnemyPrefab;
+                var enemyPrefab = LevelManager.Instance.m_EnemySettingConfig.GetEnemySetting(enemyConfig.enemyType)
+                    .EnemyPrefab;
 
                 if (enemyPrefab == null)
                 {
-                    Debug.LogWarning("敌人波次配置有误"+enemyConfig);
+                    Debug.LogWarning("敌人波次配置有误" + enemyConfig);
                     return;
                 }
-                
+
                 GameObject enemy =
                     GameObject.Instantiate(enemyPrefab, enemyConfig.spawnPosition, Quaternion.identity);
                 // 只有服务端调用
@@ -82,10 +84,12 @@ public class WaveInstance
                 {
                     NetworkServer.Spawn(enemy);
                 }
+
                 int randomIndex = UnityEngine.Random.Range(0, PlayerController.PlayerControllers.Count);
-            
+
                 // 设置仇恨s
-                enemy.GetComponent<DamageSensor>().PutPerceiveGameObject(PlayerController.PlayerControllers[randomIndex].gameObject);
+                enemy.GetComponent<DamageSensor>()
+                    .PutPerceiveGameObject(PlayerController.PlayerControllers[randomIndex].gameObject);
                 WeaponSystemCenter.Instance.GiveAIWeapon(enemy);
                 enemySet.Add(enemy);
                 // 设置箭头指示
@@ -93,11 +97,8 @@ public class WaveInstance
             }
             else
             {
-                Debug.LogWarning("敌人波次配置有误"+enemyConfig);
+                Debug.LogWarning("敌人波次配置有误" + enemyConfig);
             }
-            
-            
-            
         }
     }
 
@@ -165,15 +166,41 @@ public class LevelManager : NetworkBehaviour
     private List<GameObject> m_WaveInvisibleWall;
 
     private EnvironmentAudioManager m_Audio;
-    
+
     public void Awake()
     {
         Instance = this;
+        EventCenter.AddListener<string>(EventType.RequireChangeMultiScene,ChangeMultiScene);
     }
 
     public void Start()
     {
         m_Audio = FindObjectOfType<EnvironmentAudioManager>();
+    }
+
+    /// <summary>
+    /// 多人切换场景
+    /// </summary>
+    /// <param name="sceneName"></param>
+    private void ChangeMultiScene(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName);
+        
+        // NetworkManager m_Manager = GameObject.FindAnyObjectByType<NetworkManager>();
+        // if (NetworkClient.active == false)
+        // {
+        //     m_Manager.StartHost();
+        // }
+        //
+        // UICanvas.Instance.isSingle = false;
+        //
+        // if (NetworkServer.active || NetworkClient.isConnected)
+        // {
+        //     NetworkManager networkManager = GameObject.FindAnyObjectByType<NetworkManager>();
+        //     networkManager.StopClient();
+        //     networkManager.StopHost();
+        //     networkManager.StopServer();
+        // }
     }
 
     public void StartBattleZoneWave(WaveConfig enemyWaveConfig, List<GameObject> invisibleWall)
@@ -210,7 +237,7 @@ public class LevelManager : NetworkBehaviour
                 m_WaveInstance = instance;
                 // 播语音
                 StartCoroutine(ShowDialogText(instance.waveListItem));
-                
+
                 // 换音乐
                 EnvironmentAudioManager.Instance.WaveChangeSceneMusic(instance.waveListItem.thisWaveBGM);
             }
@@ -230,7 +257,7 @@ public class LevelManager : NetworkBehaviour
         if (m_BattleZoneWaveHandle.Finished)
         {
             m_IsRunning = false;
-            
+
             // TODO: 解锁关卡空气墙
             foreach (var invisibleWall in m_WaveInvisibleWall)
             {

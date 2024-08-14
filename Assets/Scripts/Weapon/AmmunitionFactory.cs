@@ -199,6 +199,11 @@ public class AmmunitionFactory
     {
         if (!m_AmmunitionsDict.ContainsKey(ammunition)) return;
 
+        if (ammunition.TryGetComponent(out TrailRenderer trailRenderer))
+        {
+            trailRenderer.Clear();
+        }
+        
         // Debug.LogError("Unregister Enter");
         AmmunitionHandle ammunitionHandle = m_AmmunitionsDict[ammunition];
         AmmunitionConfig ammunitionConfig = ammunitionHandle.ammunitionConfig;
