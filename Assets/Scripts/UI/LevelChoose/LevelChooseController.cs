@@ -14,18 +14,13 @@ public class LevelChooseController : MonoBehaviour
     [SerializeField]
     public LevelChooseConfig LevelChooseConfig;
     
-    private ScrollRect m_ScrollRect;
+    public ScrollRect m_ScrollRect;
 
-    private RectTransform m_contentTransform;
+    public RectTransform m_contentTransform;
 
     private void OnEnable()
     {
-        if(ScrollView == null)
-        {
-            ScrollView = transform.Find("Scroll View");
-            m_ScrollRect = ScrollView.GetComponent<ScrollRect>();
-            m_contentTransform =  m_ScrollRect.content;
-        }
+        
     }
 
     // Start is called before the first frame update

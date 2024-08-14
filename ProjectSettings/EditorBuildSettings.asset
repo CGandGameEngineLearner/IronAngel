@@ -44,4 +44,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Test/MultiPlayerTestRoom.unity
     guid: 2de11865e60df5d4d919c32ea6217c5b
+  - enabled: 1
+    path: Assets/Scenes/MultiplayerLevel/PVPLevel1_Area3_ FuelStation.unity
+    guid: 0e6e55fddc790ff4983c4282a32dc0ad
   m_configObjects: {}

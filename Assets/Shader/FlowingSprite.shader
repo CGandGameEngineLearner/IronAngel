@@ -21,6 +21,7 @@ Shader "Cus/FlowingSprite"
         ENDHLSL
         Pass
         {
+            
             HLSLPROGRAM
             #pragma vertex vert
             #pragma fragment frag
