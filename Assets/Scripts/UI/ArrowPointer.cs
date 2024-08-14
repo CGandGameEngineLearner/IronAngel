@@ -71,6 +71,7 @@ public class ArrowPointer : MonoBehaviour
             if (!NetworkClient.isConnected || NetworkClient.localPlayer == null) continue;
             if (!NetworkClient.localPlayer.TryGetComponent<PlayerController>(out var playerController)) return;
 
+            if(enemyPair.Key == null) continue;
             Vector3 screenPos = playerController.CameraController.GetCamera().WorldToScreenPoint(enemyPair.Key.transform.position);
             RectTransform arrowUI = enemyPointers[enemyPair.Key].GetComponent<RectTransform>();
 
