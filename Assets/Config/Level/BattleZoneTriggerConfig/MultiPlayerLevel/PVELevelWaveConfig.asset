@@ -14,9 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waveConfigs:
   - enemyListConfigs:
-    - enemyPrefab: {fileID: 1157686176795255648, guid: f4e6249ca37e15e4196a98abb13f0917, type: 3}
+    - enemyType: 0
+      enemyPrefab: {fileID: 1157686176795255648, guid: f4e6249ca37e15e4196a98abb13f0917, type: 3}
       spawnPosition: {x: -42.147743, y: 2.8139868, z: 0}
-    - enemyPrefab: {fileID: 265621177695738335, guid: f65dee11a7d78b1419d164a007840369, type: 3}
+    - enemyType: 0
+      enemyPrefab: {fileID: 265621177695738335, guid: f65dee11a7d78b1419d164a007840369, type: 3}
       spawnPosition: {x: -34.008472, y: 3.3326652, z: 0}
     onFieldEnemyCount: 12
     dialogStructs:
@@ -32,18 +34,23 @@ MonoBehaviour:
     - stringToSays: Infantry:Aye Sir!
       time: 2
       delayTime: 1
-    waveDelay: 4
+    waveDelay: 10
     thisWaveBGM: {fileID: 0}
   - enemyListConfigs:
-    - enemyPrefab: {fileID: 5516283152165274337, guid: e2d872d0cdcd43a479143816197ffced, type: 3}
+    - enemyType: 0
+      enemyPrefab: {fileID: 5516283152165274337, guid: e2d872d0cdcd43a479143816197ffced, type: 3}
       spawnPosition: {x: -42.586628, y: 8.439661, z: 0}
-    - enemyPrefab: {fileID: 2195872794582507982, guid: a510a544ff5692b4e8c3196c3a7c63b1, type: 3}
+    - enemyType: 0
+      enemyPrefab: {fileID: 2195872794582507982, guid: a510a544ff5692b4e8c3196c3a7c63b1, type: 3}
       spawnPosition: {x: -45.339615, y: 7.5219994, z: 0}
-    - enemyPrefab: {fileID: 265621177695738335, guid: f65dee11a7d78b1419d164a007840369, type: 3}
+    - enemyType: 0
+      enemyPrefab: {fileID: 265621177695738335, guid: f65dee11a7d78b1419d164a007840369, type: 3}
       spawnPosition: {x: 23.71278, y: -0.5676048, z: 0}
-    - enemyPrefab: {fileID: 265621177695738335, guid: f65dee11a7d78b1419d164a007840369, type: 3}
+    - enemyType: 0
+      enemyPrefab: {fileID: 265621177695738335, guid: f65dee11a7d78b1419d164a007840369, type: 3}
       spawnPosition: {x: 45.892975, y: 9.929332, z: 0}
-    - enemyPrefab: {fileID: 265621177695738335, guid: f65dee11a7d78b1419d164a007840369, type: 3}
+    - enemyType: 0
+      enemyPrefab: {fileID: 265621177695738335, guid: f65dee11a7d78b1419d164a007840369, type: 3}
       spawnPosition: {x: 25.11477, y: 9.318221, z: 0}
     onFieldEnemyCount: 5
     dialogStructs:
@@ -62,11 +69,14 @@ MonoBehaviour:
     waveDelay: 8
     thisWaveBGM: {fileID: 0}
   - enemyListConfigs:
-    - enemyPrefab: {fileID: 3963506992231610316, guid: f28189ddf82e3474e9979b4d4146fa64, type: 3}
+    - enemyType: 0
+      enemyPrefab: {fileID: 3963506992231610316, guid: f28189ddf82e3474e9979b4d4146fa64, type: 3}
       spawnPosition: {x: -42.147743, y: 2.8139868, z: 0}
-    - enemyPrefab: {fileID: 3963506992231610316, guid: f28189ddf82e3474e9979b4d4146fa64, type: 3}
+    - enemyType: 0
+      enemyPrefab: {fileID: 3963506992231610316, guid: f28189ddf82e3474e9979b4d4146fa64, type: 3}
       spawnPosition: {x: -34.008472, y: 3.3326652, z: 0}
-    - enemyPrefab: {fileID: 265621177695738335, guid: f65dee11a7d78b1419d164a007840369, type: 3}
+    - enemyType: 0
+      enemyPrefab: {fileID: 265621177695738335, guid: f65dee11a7d78b1419d164a007840369, type: 3}
       spawnPosition: {x: 25.510202, y: 5.0403557, z: 0}
     onFieldEnemyCount: 10
     dialogStructs:
@@ -85,11 +95,14 @@ MonoBehaviour:
     waveDelay: 4
     thisWaveBGM: {fileID: 0}
   - enemyListConfigs:
-    - enemyPrefab: {fileID: 1157686176795255648, guid: f4e6249ca37e15e4196a98abb13f0917, type: 3}
+    - enemyType: 0
+      enemyPrefab: {fileID: 1157686176795255648, guid: f4e6249ca37e15e4196a98abb13f0917, type: 3}
       spawnPosition: {x: -42.147743, y: 2.8139868, z: 0}
-    - enemyPrefab: {fileID: 265621177695738335, guid: f65dee11a7d78b1419d164a007840369, type: 3}
+    - enemyType: 0
+      enemyPrefab: {fileID: 265621177695738335, guid: f65dee11a7d78b1419d164a007840369, type: 3}
       spawnPosition: {x: -34.008472, y: 3.3326652, z: 0}
-    - enemyPrefab: {fileID: 1157686176795255648, guid: f4e6249ca37e15e4196a98abb13f0917, type: 3}
+    - enemyType: 0
+      enemyPrefab: {fileID: 1157686176795255648, guid: f4e6249ca37e15e4196a98abb13f0917, type: 3}
       spawnPosition: {x: 18.572153, y: 5.5076866, z: 0}
     onFieldEnemyCount: 10
     dialogStructs:
