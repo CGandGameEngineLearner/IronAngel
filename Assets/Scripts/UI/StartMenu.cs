@@ -69,6 +69,7 @@ public class StartMenu : MonoBehaviour
         SaveLoadManager.SaveGame(new GameSaveFile() { currentSection = -1 });
 
         SceneManager.LoadScene(m_LevelSwitchConfig.basementName);
+        m_MultiplayerLevelChoosePanel_Exit.SetActive(false);
     }
 
     public void OnSinglePlayerContinue()
@@ -88,14 +89,15 @@ public class StartMenu : MonoBehaviour
         
         isSingle = true;
         UICanvas.Instance.isSingle = true;
+        m_MultiplayerLevelChoosePanel_Exit.SetActive(false);
     }
 
     public void OnMultiPlayerPanelEnter()
     {
-       // m_MultiplayerLevelChoosePanel.SetActive(true);
-        //m_MultiplayerLevelChoosePanel_Exit.SetActive(true);
-         SceneManager.LoadScene("PvELevel");
-         m_MultiplayerPanel.SetActive(true);
+        m_MultiplayerLevelChoosePanel.SetActive(true);
+        m_MultiplayerLevelChoosePanel_Exit.SetActive(true);
+         // SceneManager.LoadScene("PvELevel");
+         // m_MultiplayerPanel.SetActive(true);
     }
 
     public void OnMultiPlayerPanelExit()
