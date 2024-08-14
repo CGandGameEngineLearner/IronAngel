@@ -175,7 +175,7 @@ GameObject:
   - component: {fileID: 1391261144140310376}
   - component: {fileID: 7340580431995393451}
   m_Layer: 7
-  m_Name: Suit_Assault_Shield
+  m_Name: Suit_Assault
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -411,7 +411,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneId: 0
-  _assetId: 1569968714
+  _assetId: 279133490
   serverOnly: 0
   visibility: 0
   hasSpawned: 0
@@ -508,7 +508,7 @@ MonoBehaviour:
     m_LeftWeaponGO: {fileID: 0}
     m_RightWeaponGO: {fileID: 0}
     m_Armor: 0
-    m_EnergyShieldCount: 20
+    m_EnergyShieldCount: 0
     m_CurrentHP: 100
     m_CurrentArmor: 0
     m_AttackRange: 16
@@ -1435,7 +1435,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6204626262319703367
 Transform:
   m_ObjectHideFlags: 0
