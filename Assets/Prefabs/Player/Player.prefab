@@ -1093,7 +1093,7 @@ MonoBehaviour:
   _CameraMaxDistance: 0.313
   _PlayerSpec:
     m_Player: {fileID: 0}
-    m_NormalSpeed: 8
+    m_NormalSpeed: 10
     m_DashSpeed: 30
     m_DashCoolDownTime: 0.7
     m_DashCount: 3
@@ -1118,7 +1118,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 5d25cf453f01d9d428d760d87711ec27, type: 3}
   - {fileID: 8300000, guid: 5619efc05bd2f3c4982aff59cca8b175, type: 3}
   - {fileID: 8300000, guid: 0820da8ab30de6f4da3b13e4066b8182, type: 3}
-  _WeaponBroken: {fileID: 8300000, guid: 116601ca4d474ff469bb0f574e9e9eaa, type: 3}
+  _WeaponBroken: {fileID: 8300000, guid: 1244de3be0864024aa367c764411c821, type: 3}
   m_EmptyWeapon: {fileID: 8300000, guid: 1fee6582008a5ab46bff86c38a225d25, type: 3}
 --- !u!114 &6117905935438283622
 MonoBehaviour:

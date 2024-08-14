@@ -16,8 +16,16 @@ MonoBehaviour:
   - m_SceneName: StartMenu
     m_EPlayModeOfEvironmentAudio: 1
     m_Loop: 1
-    m_AudioClip: {fileID: 8300000, guid: c3b3bcac29f7a9642928d19e652fa226, type: 3}
+    m_AudioClip: {fileID: 8300000, guid: 8a27f469069a4054caf4ca1a6a0b7860, type: 3}
   - m_SceneName: Basement
     m_EPlayModeOfEvironmentAudio: 1
     m_Loop: 1
-    m_AudioClip: {fileID: 8300000, guid: 8684f8436ce33154f9e4a6ab7047c87a, type: 3}
+    m_AudioClip: {fileID: 8300000, guid: 68727a8994ebc3148b67078eec5ca305, type: 3}
+  - m_SceneName: Level1_Area1_Highway
+    m_EPlayModeOfEvironmentAudio: 1
+    m_Loop: 1
+    m_AudioClip: {fileID: 8300000, guid: 6ebfc998e01b6f34299d1a91a2e1e1fb, type: 3}
+  - m_SceneName: Level1_Area2_ ParkingLot
+    m_EPlayModeOfEvironmentAudio: 1
+    m_Loop: 1
+    m_AudioClip: {fileID: 8300000, guid: 6ebfc998e01b6f34299d1a91a2e1e1fb, type: 3}

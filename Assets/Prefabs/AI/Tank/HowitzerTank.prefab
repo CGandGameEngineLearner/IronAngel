@@ -609,8 +609,8 @@ MonoBehaviour:
   m_AutoAvoid: 0
   m_AutoAvoid_Probability: 0
   m_AutoAvoid_RestTimes: 0
-  m_TokenWeight: 0.8
-  m_RangeOfAimingError: 0
+  m_TokenWeight: 0.9
+  m_RangeOfAimingError: 3
   m_LeftHandWeaponAttackingDuration: 3
   m_RightHandWeaponAttackingDuration: 4
   m_ProbabilityOfLeftWeapon: 0.25

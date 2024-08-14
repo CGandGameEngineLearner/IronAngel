@@ -14,11 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waveConfigs:
   - enemyListConfigs:
-    - enemyPrefab: {fileID: 2195872794582507982, guid: c2a05a61d79fe3440a045e455ac2c392, type: 3}
+    - enemyType: 0
+      enemyPrefab: {fileID: 2195872794582507982, guid: c2a05a61d79fe3440a045e455ac2c392, type: 3}
       spawnPosition: {x: 3.9785156, y: 143.11128, z: 0}
     onFieldEnemyCount: 1
     dialogStructs:
-    - stringToSays: 'Tank:  Last stand !'
+    - stringToSays: 'Tank: This is my Last Stand !'
       time: 2
       delayTime: 0
     waveDelay: 0

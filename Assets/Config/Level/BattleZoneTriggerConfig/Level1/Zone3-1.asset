@@ -49,20 +49,6 @@ MonoBehaviour:
     waveDelay: 0
     thisWaveBGM: {fileID: 0}
   - enemyListConfigs:
-    - enemyType: 4
-      enemyPrefab: {fileID: 0}
-      spawnPosition: {x: 1.4397123, y: 61.688908, z: 0}
-    onFieldEnemyCount: 1
-    dialogStructs:
-    - stringToSays: Follow the ARROW...
-      time: 2
-      delayTime: 0
-    - stringToSays: AND watch out for TANK
-      time: 4
-      delayTime: 0
-    waveDelay: 0
-    thisWaveBGM: {fileID: 0}
-  - enemyListConfigs:
     - enemyType: 2
       enemyPrefab: {fileID: 0}
       spawnPosition: {x: -28.713264, y: 21.149956, z: 0}
@@ -76,6 +62,23 @@ MonoBehaviour:
       enemyPrefab: {fileID: 0}
       spawnPosition: {x: 31.229404, y: 60.993965, z: 0}
     onFieldEnemyCount: 4
-    dialogStructs: []
-    waveDelay: 4
+    dialogStructs:
+    - stringToSays: '! TANKS INCOMING ! '
+      time: 4
+      delayTime: 0
+    waveDelay: 0
+    thisWaveBGM: {fileID: 0}
+  - enemyListConfigs:
+    - enemyType: 4
+      enemyPrefab: {fileID: 0}
+      spawnPosition: {x: 1.4397123, y: 61.688908, z: 0}
+    onFieldEnemyCount: 1
+    dialogStructs:
+    - stringToSays: Enemy destoried !
+      time: 2
+      delayTime: 0
+    - stringToSays: Good Work.
+      time: 4
+      delayTime: 0
+    waveDelay: 0
     thisWaveBGM: {fileID: 0}
