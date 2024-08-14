@@ -2058,7 +2058,6 @@ MonoBehaviour:
   m_MultiplayerPanel: {fileID: 731027530}
   m_IpInput: {fileID: 1698782656}
   m_PortInput: {fileID: 1309624918}
-  m_Wind: {fileID: 0}
   m_MultiplayerLevelChoosePanel: {fileID: 1797630344}
   m_MultiplayerLevelChoosePanel_Exit: {fileID: 360754666}
   m_LevelSwitchConfig: {fileID: 11400000, guid: f01d2b6537ef5df4491d2bc14593f0f2, type: 2}
@@ -12632,7 +12631,7 @@ PrefabInstance:
       objectReference: {fileID: 7498102588528620223, guid: b319a1beeb967194bbc9b9fa245fb3d7, type: 3}
     - target: {fileID: 8276411310757479430, guid: e66042891968d984998b301985d984d3, type: 3}
       propertyPath: spawnPrefabs.Array.size
-      value: 98
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 8276411310757479430, guid: e66042891968d984998b301985d984d3, type: 3}
       propertyPath: spawnPrefabs.Array.data[0]
