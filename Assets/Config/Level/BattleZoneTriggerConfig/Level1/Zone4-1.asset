@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 329a42aa4eff495f87cc0fc5196876c6, type: 3}
+  m_Name: Zone4-1
+  m_EditorClassIdentifier: 
+  waveConfigs:
+  - enemyListConfigs:
+    - enemyType: 25
+      enemyPrefab: {fileID: 0}
+      spawnPosition: {x: 15.14996, y: 3.3309143, z: 0}
+    - enemyType: 25
+      enemyPrefab: {fileID: 0}
+      spawnPosition: {x: 16.489365, y: -5.839463, z: 0}
+    - enemyType: 24
+      enemyPrefab: {fileID: 0}
+      spawnPosition: {x: 13.243165, y: 7.3391433, z: 0}
+    - enemyType: 24
+      enemyPrefab: {fileID: 0}
+      spawnPosition: {x: 19.590214, y: 7.3391433, z: 0}
+    - enemyType: 4
+      enemyPrefab: {fileID: 0}
+      spawnPosition: {x: 13.869228, y: 9.085245, z: 0}
+    - enemyType: 4
+      enemyPrefab: {fileID: 0}
+      spawnPosition: {x: 5.110235, y: 6.892256, z: 0}
+    - enemyType: 4
+      enemyPrefab: {fileID: 0}
+      spawnPosition: {x: -2.520149, y: -12.243948, z: 0}
+    - enemyType: 4
+      enemyPrefab: {fileID: 0}
+      spawnPosition: {x: 9.453941, y: -2.65022, z: 0}
+    onFieldEnemyCount: 8
+    dialogStructs: []
+    waveDelay: 0
+    thisWaveBGM: {fileID: 0}
