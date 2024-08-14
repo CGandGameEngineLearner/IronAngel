@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -5,8 +6,19 @@ using UnityEngine;
 
 public class LevelOption : MonoBehaviour
 {
-    public Sprite LevelIcon;
+    private SpriteRenderer m_SpriteRenderer;
+
+    public Sprite LevelIcon
+    {
+        set { m_SpriteRenderer.sprite = value; }
+        get { return m_SpriteRenderer.sprite; }
+    }
     public string LevelSceneName;
+
+    public void OnEnable()
+    {
+        m_SpriteRenderer = GetComponent<SpriteRenderer>();
+    }
 
     public void OnButtonClick()
     {

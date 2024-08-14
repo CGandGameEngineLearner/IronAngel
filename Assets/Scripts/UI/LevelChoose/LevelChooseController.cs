@@ -33,11 +33,18 @@ public class LevelChooseController : MonoBehaviour
     {
         for(int i = 0;i < LevelChooseConfig.LevelOptionSettings.Count;i++)
         {
-            var newItemTransform = Instantiate(ItemPrefab).transform;
+            var Item = Instantiate(ItemPrefab);
+            var newItemTransform = Item.transform;
             newItemTransform.SetParent(m_contentTransform);
             newItemTransform.localPosition = Vector3.zero;
             newItemTransform.localRotation = Quaternion.identity;
             newItemTransform.localScale = Vector3.one;
+            var levelOption = Item.GetComponent<LevelOption>();
+            if (levelOption != null)
+            {
+                levelOption.LevelIcon = LevelChooseConfig.LevelOptionSettings[i].LevelIcon;
+                levelOption.LevelSceneName = LevelChooseConfig.LevelOptionSettings[i].LevelSceneName;
+            }
         }
     }
 
@@ -46,4 +53,5 @@ public class LevelChooseController : MonoBehaviour
     {
         
     }
+    
 }
