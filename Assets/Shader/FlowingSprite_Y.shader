@@ -1,4 +1,4 @@
-Shader "Cus/FlowingSprite"
+Shader "Cus/FlowingSprite_Y"
 {
     Properties
     {

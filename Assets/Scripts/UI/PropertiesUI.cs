@@ -67,10 +67,8 @@ public class PropertiesUI : MonoBehaviour
     [SerializeField]
     private List<Image> m_Powers = new List<Image>();
     [Tooltip("ª“∂»Õº")]
-    [SerializeField]
+    [SerializeField]    
     private Color m_GrayColor;
-
-
     
 
 
@@ -83,9 +81,6 @@ public class PropertiesUI : MonoBehaviour
     [SerializeField]
     [Range(0f, 1f)]
     private float m_ChangeRate = 0.5f;
-
-
-    public AudioClip m_LowBloodAudio;
     private void Start()
     {
         m_Volume = GameObject.FindAnyObjectByType<Volume>();

@@ -9,6 +9,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
+using UnityEngine.UI;
 
 public class StartMenu : MonoBehaviour
 {
@@ -21,6 +22,8 @@ public class StartMenu : MonoBehaviour
     [SerializeField] private GameObject m_MultiplayerPanel;
     [SerializeField] private TMP_InputField m_IpInput;
     [SerializeField] private TMP_InputField m_PortInput;
+
+
     [SerializeField] private GameObject m_MultiplayerLevelChoosePanel;
     [SerializeField] private GameObject m_MultiplayerLevelChoosePanel_Exit;
 
@@ -89,10 +92,10 @@ public class StartMenu : MonoBehaviour
 
     public void OnMultiPlayerPanelEnter()
     {
-        m_MultiplayerLevelChoosePanel.SetActive(true);
-        m_MultiplayerLevelChoosePanel_Exit.SetActive(true);
-        // SceneManager.LoadScene("PvELevel");
-        // m_MultiplayerPanel.SetActive(true);
+       // m_MultiplayerLevelChoosePanel.SetActive(true);
+        //m_MultiplayerLevelChoosePanel_Exit.SetActive(true);
+         SceneManager.LoadScene("PvELevel");
+         m_MultiplayerPanel.SetActive(true);
     }
 
     public void OnMultiPlayerPanelExit()

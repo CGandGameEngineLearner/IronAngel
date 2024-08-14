@@ -10,7 +10,6 @@ Shader "Cus/FlowingSprite"
     {
         Tags { 
             "RenderType"="Transparent" 
-            "RenderQueue"="Transparent"
             "RenderPipeLine"="UniversalRenderPipeline"
         }
 
