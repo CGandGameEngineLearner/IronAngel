@@ -170,7 +170,7 @@ public class LevelManager : NetworkBehaviour
     public void Awake()
     {
         Instance = this;
-        EventCenter.AddListener<string>(EventType.RequireChangeMultiScene,ChangeMultiScene);
+        
     }
 
     public void Start()
@@ -184,6 +184,11 @@ public class LevelManager : NetworkBehaviour
     /// <param name="sceneName"></param>
     private void ChangeMultiScene(string sceneName)
     {
+        if (sceneName == null)
+        {
+            return;
+        }
+
         SceneManager.LoadScene(sceneName);
         
         // NetworkManager m_Manager = GameObject.FindAnyObjectByType<NetworkManager>();

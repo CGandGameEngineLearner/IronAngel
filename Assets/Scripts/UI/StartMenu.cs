@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Audio;
+using BehaviorDesigner.Runtime.Tasks.Unity.UnityGameObject;
 using BehaviorDesigner.Runtime.Tasks.Unity.UnityPlayerPrefs;
 using TMPro;
 using UnityEngine;
@@ -38,6 +39,20 @@ public class StartMenu : MonoBehaviour
     {
         m_Manager = GameObject.FindAnyObjectByType<NetworkManager>();
         m_StartMenu = gameObject;
+        EventCenter.AddListener<string>(EventType.RequireChangeMultiScene,ChangeMultiScene);
+    }
+    
+    private void ChangeMultiScene(string sceneName)
+    {
+        if (sceneName == null)
+        {
+            return;
+        }
+
+        SceneManager.LoadScene(sceneName);
+        m_MultiplayerPanel.SetActive(true);
+        m_MultiplayerLevelChoosePanel.SetActive(false);
+        m_MultiplayerLevelChoosePanel_Exit.SetActive(false);
     }
 
     private void Start()

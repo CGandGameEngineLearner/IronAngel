@@ -3,26 +3,29 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Serialization;
+using UnityEngine.UI;
 
 public class LevelOption : MonoBehaviour
 {
-    private SpriteRenderer m_SpriteRenderer;
+    [SerializeField]
+    private Image m_LevelIcon;
 
     public Sprite LevelIcon
     {
-        set { m_SpriteRenderer.sprite = value; }
-        get { return m_SpriteRenderer.sprite; }
+        set { m_LevelIcon.sprite = value; }
+        get { return m_LevelIcon.sprite; }
     }
     public string LevelSceneName;
 
-    public void OnEnable()
+    public void Awake()
     {
-        m_SpriteRenderer = GetComponent<SpriteRenderer>();
+        m_LevelIcon = GetComponent<Image>();
     }
 
     public void OnButtonClick()
     {
-        
+        EventCenter.Broadcast<string>(EventType.RequireChangeMultiScene,LevelSceneName);
     }
     
     // Start is called before the first frame update
