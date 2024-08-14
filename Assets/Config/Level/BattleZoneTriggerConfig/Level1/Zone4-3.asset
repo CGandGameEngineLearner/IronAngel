@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 329a42aa4eff495f87cc0fc5196876c6, type: 3}
+  m_Name: Zone4-3
+  m_EditorClassIdentifier: 
+  waveConfigs:
+  - enemyListConfigs:
+    - enemyType: 25
+      enemyPrefab: {fileID: 0}
+      spawnPosition: {x: 55.31243, y: 2.930192, z: 0}
+    - enemyType: 10
+      enemyPrefab: {fileID: 0}
+      spawnPosition: {x: 56.65869, y: -15.570154, z: 0}
+    - enemyType: 24
+      enemyPrefab: {fileID: 0}
+      spawnPosition: {x: 55.107727, y: 6.439518, z: 0}
+    - enemyType: 14
+      enemyPrefab: {fileID: 0}
+      spawnPosition: {x: 59.529053, y: -4.3672824, z: 0}
+    onFieldEnemyCount: 2
+    dialogStructs:
+    - stringToSays: '! ! ! Enemy Elite MECHA ! ! !'
+      time: 2
+      delayTime: 0
+    waveDelay: 0
+    thisWaveBGM: {fileID: 0}
