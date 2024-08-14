@@ -82,23 +82,52 @@ MonoBehaviour:
     - enemyType: 4
       enemyPrefab: {fileID: 0}
       spawnPosition: {x: 0, y: 0, z: 0}
-    onFieldEnemyCount: 5
+    - enemyType: 1
+      enemyPrefab: {fileID: 0}
+      spawnPosition: {x: 44.084236, y: -37.42912, z: 0}
+    onFieldEnemyCount: 6
     dialogStructs:
-    - stringToSays: "Squad Leader:He\u2019s killing us!"
+    - stringToSays: WARNING TANK COMING
       time: 2
       delayTime: 0
-    - stringToSays: Commander:Send our TANKS, NOW!
+    waveDelay: 2
+    thisWaveBGM: {fileID: 0}
+  - enemyListConfigs:
+    - enemyType: 16
+      enemyPrefab: {fileID: 0}
+      spawnPosition: {x: 30.33553, y: 9.214987, z: 0}
+    - enemyType: 14
+      enemyPrefab: {fileID: 0}
+      spawnPosition: {x: 30.144958, y: -33.805042, z: 0}
+    - enemyType: 4
+      enemyPrefab: {fileID: 0}
+      spawnPosition: {x: 18.989632, y: -10.63453, z: 0}
+    - enemyType: 4
+      enemyPrefab: {fileID: 0}
+      spawnPosition: {x: 18.029007, y: -22.840124, z: 0}
+    - enemyType: 6
+      enemyPrefab: {fileID: 0}
+      spawnPosition: {x: 20.828074, y: -37.071022, z: 0}
+    - enemyType: 7
+      enemyPrefab: {fileID: 0}
+      spawnPosition: {x: 27.705551, y: -34.420853, z: 0}
+    - enemyType: 4
+      enemyPrefab: {fileID: 0}
+      spawnPosition: {x: 43.104103, y: 10.415148, z: 0}
+    - enemyType: 4
+      enemyPrefab: {fileID: 0}
+      spawnPosition: {x: 43.104103, y: 10.415148, z: 0}
+    - enemyType: 5
+      enemyPrefab: {fileID: 0}
+      spawnPosition: {x: 12.140925, y: 13.543856, z: 0}
+    - enemyType: 5
+      enemyPrefab: {fileID: 0}
+      spawnPosition: {x: 20.830757, y: 12.902157, z: 0}
+    onFieldEnemyCount: 6
+    dialogStructs:
+    - stringToSays: WARING MECHA IS COMING
       time: 2
-      delayTime: 1
-    - stringToSays: TANK Crew:We'll take care of this!
-      time: 2
-      delayTime: 1
-    - stringToSays: Commander:Armed Scout team, provide support!
-      time: 2
-      delayTime: 1
-    - stringToSays: 'ScouterS: Copy 1-1, out.'
-      time: 2
-      delayTime: 1
+      delayTime: 0
     waveDelay: 0
     thisWaveBGM: {fileID: 0}
   - enemyListConfigs:
@@ -107,14 +136,8 @@ MonoBehaviour:
       spawnPosition: {x: -8.062141, y: 12.386728, z: 0}
     onFieldEnemyCount: 1
     dialogStructs:
-    - stringToSays: Battalion Adjutant:The Scout squad...All gone...
+    - stringToSays: Area Clear
       time: 2
-      delayTime: 0
-    - stringToSays: "Battalion Adjutant:We\u2018re running of options..."
-      time: 2
-      delayTime: 1
-    - stringToSays: Commander:......
-      time: 3
       delayTime: 1
     waveDelay: 0
     thisWaveBGM: {fileID: 0}
