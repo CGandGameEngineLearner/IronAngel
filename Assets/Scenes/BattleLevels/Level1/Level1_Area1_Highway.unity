@@ -1700,7 +1700,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 517432144}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 16.49, y: 2.04, z: -0.3578505}
+  m_LocalPosition: {x: 28.1, y: -0.69, z: -0.3578505}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -68875,11 +68875,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1227052512424862531, guid: a2be8ac903b22c049ba304072706a58e, type: 3}
       propertyPath: WeaponSpawnSettings.Array.data[3].Position.x
-      value: -4.547369
+      value: 8.350719
       objectReference: {fileID: 0}
     - target: {fileID: 1227052512424862531, guid: a2be8ac903b22c049ba304072706a58e, type: 3}
       propertyPath: WeaponSpawnSettings.Array.data[3].Position.y
-      value: 58.54309
+      value: 56.04068
       objectReference: {fileID: 0}
     - target: {fileID: 1227052512424862531, guid: a2be8ac903b22c049ba304072706a58e, type: 3}
       propertyPath: WeaponSpawnSettings.Array.data[3].WeaponType
@@ -68887,11 +68887,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1227052512424862531, guid: a2be8ac903b22c049ba304072706a58e, type: 3}
       propertyPath: WeaponSpawnSettings.Array.data[4].Position.x
-      value: 0.5812812
+      value: 12.193355
       objectReference: {fileID: 0}
     - target: {fileID: 1227052512424862531, guid: a2be8ac903b22c049ba304072706a58e, type: 3}
       propertyPath: WeaponSpawnSettings.Array.data[4].Position.y
-      value: 56.07127
+      value: 56.0863
       objectReference: {fileID: 0}
     - target: {fileID: 1227052512424862531, guid: a2be8ac903b22c049ba304072706a58e, type: 3}
       propertyPath: WeaponSpawnSettings.Array.data[4].WeaponType
