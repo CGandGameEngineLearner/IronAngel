@@ -1755,7 +1755,7 @@ PrefabInstance:
     - target: {fileID: 679987570865259501, guid: d40afa9f46ee65d40bbe077cad20da45, type: 3}
       propertyPath: enemyWaveConfig
       value: 
-      objectReference: {fileID: 11400000, guid: 98257850e1af55d4ab2cb6f7459b38cc, type: 2}
+      objectReference: {fileID: 11400000, guid: 8fde120eaf0f5b34ca756c1514884830, type: 2}
     - target: {fileID: 679987570865259501, guid: d40afa9f46ee65d40bbe077cad20da45, type: 3}
       propertyPath: invisibleWalls.Array.size
       value: 0
@@ -15080,7 +15080,7 @@ PrefabInstance:
     - target: {fileID: 679987570865259501, guid: d40afa9f46ee65d40bbe077cad20da45, type: 3}
       propertyPath: enemyWaveConfig
       value: 
-      objectReference: {fileID: 11400000, guid: d4692873724b41940a1c37f933d3329d, type: 2}
+      objectReference: {fileID: 11400000, guid: 214d08c3b7d8e9d40bca6a55912fa5b7, type: 2}
     - target: {fileID: 679987570865259501, guid: d40afa9f46ee65d40bbe077cad20da45, type: 3}
       propertyPath: invisibleWalls.Array.size
       value: 1
