@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waveConfigs:
   - enemyListConfigs:
-    - enemyType: 0
-      enemyPrefab: {fileID: 1157686176795255648, guid: f4e6249ca37e15e4196a98abb13f0917, type: 3}
+    - enemyType: 23
+      enemyPrefab: {fileID: 0}
       spawnPosition: {x: -42.147743, y: 2.8139868, z: 0}
     - enemyType: 0
       enemyPrefab: {fileID: 265621177695738335, guid: f65dee11a7d78b1419d164a007840369, type: 3}
