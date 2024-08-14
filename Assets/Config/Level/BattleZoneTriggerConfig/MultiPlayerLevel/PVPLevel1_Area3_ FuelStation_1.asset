@@ -14,20 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waveConfigs:
   - enemyListConfigs:
-    - enemyType: 0
-      enemyPrefab: {fileID: 0}
-      spawnPosition: {x: 0, y: 0, z: 0}
-    onFieldEnemyCount: 0
-    dialogStructs:
-    - stringToSays: Enemy destoried !
-      time: 2
-      delayTime: 0
-    - stringToSays: Good Work.
-      time: 4
-      delayTime: 0
-    waveDelay: 10
-    thisWaveBGM: {fileID: 0}
-  - enemyListConfigs:
     - enemyType: 11
       enemyPrefab: {fileID: 0}
       spawnPosition: {x: 1.7163312, y: 41.418583, z: 0}
