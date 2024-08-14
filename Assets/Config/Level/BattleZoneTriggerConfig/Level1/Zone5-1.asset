@@ -71,9 +71,36 @@ MonoBehaviour:
     - enemyType: 1
       enemyPrefab: {fileID: 0}
       spawnPosition: {x: 1.8822163, y: 9.527508, z: 0}
-    - enemyType: 10
+    - enemyType: 4
       enemyPrefab: {fileID: 0}
       spawnPosition: {x: -5.2388105, y: 24.839752, z: 0}
+    - enemyType: 4
+      enemyPrefab: {fileID: 0}
+      spawnPosition: {x: -5.2388105, y: 24.839752, z: 0}
+    - enemyType: 4
+      enemyPrefab: {fileID: 0}
+      spawnPosition: {x: -5.2388105, y: 24.839752, z: 0}
+    - enemyType: 4
+      enemyPrefab: {fileID: 0}
+      spawnPosition: {x: -5.2388105, y: 24.839752, z: 0}
+    - enemyType: 4
+      enemyPrefab: {fileID: 0}
+      spawnPosition: {x: -5.2388105, y: 24.839752, z: 0}
+    - enemyType: 4
+      enemyPrefab: {fileID: 0}
+      spawnPosition: {x: -5.2388105, y: 24.839752, z: 0}
+    - enemyType: 12
+      enemyPrefab: {fileID: 0}
+      spawnPosition: {x: -0.054447174, y: 13.868767, z: 0}
+    - enemyType: 7
+      enemyPrefab: {fileID: 0}
+      spawnPosition: {x: -5.2388105, y: 24.839752, z: 0}
+    - enemyType: 10
+      enemyPrefab: {fileID: 0}
+      spawnPosition: {x: -5.6849585, y: 24.611252, z: 0}
+    - enemyType: 8
+      enemyPrefab: {fileID: 0}
+      spawnPosition: {x: -7.400104, y: 21.601425, z: 0}
     onFieldEnemyCount: 10
     dialogStructs: []
     waveDelay: 0
