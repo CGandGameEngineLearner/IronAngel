@@ -22,7 +22,6 @@ public class StartMenu : MonoBehaviour
     [SerializeField] private GameObject m_MultiplayerPanel;
     [SerializeField] private TMP_InputField m_IpInput;
     [SerializeField] private TMP_InputField m_PortInput;
-    [SerializeField] private GameObject m_Wind;
 
 
     [SerializeField] private GameObject m_MultiplayerLevelChoosePanel;
@@ -57,7 +56,6 @@ public class StartMenu : MonoBehaviour
         m_MultiplayerPanel.SetActive(true);
         m_MultiplayerLevelChoosePanel.SetActive(false);
         m_MultiplayerLevelChoosePanel_Exit.SetActive(false);
-        m_Wind.SetActive(false);
     }
 
     private void Start()
@@ -72,7 +70,6 @@ public class StartMenu : MonoBehaviour
 
         SceneManager.LoadScene(m_LevelSwitchConfig.basementName);
         m_MultiplayerLevelChoosePanel_Exit.SetActive(false);
-        m_Wind.SetActive(false);
     }
 
     public void OnSinglePlayerContinue()
@@ -93,7 +90,6 @@ public class StartMenu : MonoBehaviour
         isSingle = true;
         UICanvas.Instance.isSingle = true;
         m_MultiplayerLevelChoosePanel_Exit.SetActive(false);
-        m_Wind.SetActive(false);
     }
 
     public void OnMultiPlayerPanelEnter()
