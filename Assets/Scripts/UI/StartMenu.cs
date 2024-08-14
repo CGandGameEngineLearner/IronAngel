@@ -20,6 +20,8 @@ public class StartMenu : MonoBehaviour
     [SerializeField] private GameObject m_MultiplayerPanel;
     [SerializeField] private TMP_InputField m_IpInput;
     [SerializeField] private TMP_InputField m_PortInput;
+    [SerializeField] private GameObject m_MultiplayerLevelChoosePanel;
+    [SerializeField] private GameObject m_MultiplayerLevelChoosePanel_Exit;
 
     // 打包有bug，必须得在这拉个shi
     [SerializeField] private LevelSwitchConfig m_LevelSwitchConfig;
@@ -72,8 +74,16 @@ public class StartMenu : MonoBehaviour
 
     public void OnMultiPlayerPanelEnter()
     {
-        SceneManager.LoadScene("PvELevel");
-        m_MultiplayerPanel.SetActive(true);
+        m_MultiplayerLevelChoosePanel.SetActive(true);
+        m_MultiplayerLevelChoosePanel_Exit.SetActive(true);
+        // SceneManager.LoadScene("PvELevel");
+        // m_MultiplayerPanel.SetActive(true);
+    }
+
+    public void OnMultiPlayerPanelExit()
+    {
+        m_MultiplayerLevelChoosePanel.SetActive(false);
+        m_MultiplayerLevelChoosePanel_Exit.SetActive(false);
     }
 
     public void OnMultiPlayerTestRoomEnter()
