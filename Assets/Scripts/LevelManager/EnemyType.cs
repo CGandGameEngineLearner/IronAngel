@@ -46,7 +46,9 @@ public enum EnemyType
     Drone,
     
     // 新增的都排在下面↓
-    
+    Suit_Assault,
+    Suit_CLaser,
+    Suit_Rocket,
     
     Count                // 用于计数
 }
