@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 329a42aa4eff495f87cc0fc5196876c6, type: 3}
+  m_Name: Zone5-0
+  m_EditorClassIdentifier: 
+  waveConfigs:
+  - enemyListConfigs:
+    - enemyType: 0
+      enemyPrefab: {fileID: 3041229852222691761, guid: 0a29e43cc88b19d4689866b4821b5444, type: 3}
+      spawnPosition: {x: -36.83982, y: -51.33526, z: 0}
+    onFieldEnemyCount: 1
+    dialogStructs:
+    - stringToSays: One way trip.
+      time: 2
+      delayTime: 0
+    - stringToSays: One shot One kill.
+      time: 3
+      delayTime: 0
+    waveDelay: 0
+    thisWaveBGM: {fileID: 0}

@@ -1,0 +1,94 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 329a42aa4eff495f87cc0fc5196876c6, type: 3}
+  m_Name: Zone5-1
+  m_EditorClassIdentifier: 
+  waveConfigs:
+  - enemyListConfigs:
+    - enemyType: 19
+      enemyPrefab: {fileID: 0}
+      spawnPosition: {x: -13.951281, y: 49.401886, z: 0}
+    - enemyType: 19
+      enemyPrefab: {fileID: 0}
+      spawnPosition: {x: -13.919866, y: 42.64063, z: 0}
+    - enemyType: 19
+      enemyPrefab: {fileID: 0}
+      spawnPosition: {x: -14.037481, y: 18.322058, z: 0}
+    - enemyType: 19
+      enemyPrefab: {fileID: 0}
+      spawnPosition: {x: -14.090077, y: 9.428045, z: 0}
+    - enemyType: 5
+      enemyPrefab: {fileID: 0}
+      spawnPosition: {x: -11.907764, y: 53.575485, z: 0}
+    - enemyType: 5
+      enemyPrefab: {fileID: 0}
+      spawnPosition: {x: -8.9578285, y: 55.907764, z: 0}
+    - enemyType: 5
+      enemyPrefab: {fileID: 0}
+      spawnPosition: {x: -8.9578285, y: 55.907764, z: 0}
+    - enemyType: 5
+      enemyPrefab: {fileID: 0}
+      spawnPosition: {x: -10.680542, y: 9.441436, z: 0}
+    - enemyType: 23
+      enemyPrefab: {fileID: 0}
+      spawnPosition: {x: -5.3237906, y: 12.604387, z: 0}
+    - enemyType: 23
+      enemyPrefab: {fileID: 0}
+      spawnPosition: {x: -3.1021147, y: 42.10394, z: 0}
+    - enemyType: 12
+      enemyPrefab: {fileID: 0}
+      spawnPosition: {x: -3.1021147, y: 42.10394, z: 0}
+    - enemyType: 10
+      enemyPrefab: {fileID: 0}
+      spawnPosition: {x: -11.460121, y: 13.601568, z: 0}
+    - enemyType: 9
+      enemyPrefab: {fileID: 0}
+      spawnPosition: {x: -11.460121, y: 13.601568, z: 0}
+    - enemyType: 10
+      enemyPrefab: {fileID: 0}
+      spawnPosition: {x: -9.935843, y: 57.833755, z: 0}
+    - enemyType: 13
+      enemyPrefab: {fileID: 0}
+      spawnPosition: {x: -13.503457, y: 56.50254, z: 0}
+    - enemyType: 1
+      enemyPrefab: {fileID: 0}
+      spawnPosition: {x: -13.503457, y: 56.50254, z: 0}
+    - enemyType: 2
+      enemyPrefab: {fileID: 0}
+      spawnPosition: {x: -13.503457, y: 56.50254, z: 0}
+    - enemyType: 2
+      enemyPrefab: {fileID: 0}
+      spawnPosition: {x: -1.7924252, y: 7.1967006, z: 0}
+    - enemyType: 1
+      enemyPrefab: {fileID: 0}
+      spawnPosition: {x: 1.8822163, y: 9.527508, z: 0}
+    - enemyType: 10
+      enemyPrefab: {fileID: 0}
+      spawnPosition: {x: -5.2388105, y: 24.839752, z: 0}
+    onFieldEnemyCount: 10
+    dialogStructs: []
+    waveDelay: 0
+    thisWaveBGM: {fileID: 0}
+  - enemyListConfigs:
+    - enemyType: 19
+      enemyPrefab: {fileID: 0}
+      spawnPosition: {x: -28.7333, y: 30.652765, z: 0}
+    onFieldEnemyCount: 1
+    dialogStructs:
+    - stringToSays: Amazing performance
+      time: 2
+      delayTime: 0
+    - stringToSays: Wating for your next dance.
+      time: 2
+      delayTime: 0
+    waveDelay: 0
+    thisWaveBGM: {fileID: 0}
