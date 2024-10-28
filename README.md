@@ -20,6 +20,7 @@ Bookmarks
 ```
 ### 启动！
 双击`open_unity.bat`
+(在这之前，请把Unity的安装目录添加到Path环境变量下)
 
 ### 武器预制体
 - 武器预制体要把碰撞体的callback layer设置成nothing，不然会无法触发玩家护盾和护甲的碰撞
@@ -38,6 +39,9 @@ Bookmarks
 - 其中，状态只会在满足LogicStateManager中有included列表中定义的状态，且没有exincluded列表中的状态时，才能存在。当AutoStateOut选项打勾时，如果运行时不满足这一容斥条件了，这个状态就会被自动移除，AutoStateOut未打勾时，不会自动退出。
 - 每个状态默认持续时间为无限时长，由程序员在逻辑中移除这个状态，如果状态存在的时间超过了这个设置，也会被自动移除。设置Duration时，输入inf并回车，会被自动补全为infinity，无限持续时长。
 
+使用LogicState系统，可以很好地管理各种逻辑互斥问题，状态容斥问题、持续Buff问题、CD等待问题等等。
+
+[关于LogicState的更多说明](./Assets/Scripts/Framework/StateManagement/LogicState/LogicState.md)
 
 ### CSV转对话SO数据工具
 ![1](./illustraction/对话CSV工具_0.png)
